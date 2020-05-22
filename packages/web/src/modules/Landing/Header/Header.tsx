@@ -21,7 +21,7 @@ const Header = () => {
 
   return (
     <HeaderContainer>
-      <HeaderTitle>xgruve</HeaderTitle>
+      <HeaderTitle>Podhouse</HeaderTitle>
 
       <HeaderLinksContainer>
         <SectionLink section="features">
@@ -31,7 +31,7 @@ const Header = () => {
           {({ onClick }) => <HeaderLink onClick={onClick}>Pricing</HeaderLink>}
         </SectionLink>
         <HeaderLink
-          href="mailto:leonardomso11@gmail.com?subject=Hi%20Leo%2C%20let's%20talk%20about%20xgruve!"
+          href="mailto:leonardomso11@gmail.com?subject=Hi%20Leo%2C%20let's%20talk%20about%20Podhouse!"
           target="_blank"
           rel="noopener noreferrer"
         >

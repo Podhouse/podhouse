@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 
 import useSettings from "../../hooks/useSettings";
 
-const SettingsContext = React.createContext(undefined);
+const SettingsContext = React.createContext(undefined as any);
 
 const SettingsProvider = ({ children }: any) => {
   const { settings, handleSettings } = useSettings();

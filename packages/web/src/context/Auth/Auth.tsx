@@ -2,14 +2,14 @@ import React, { useContext } from "react";
 
 import useAuth from "../../hooks/useAuth";
 
-const AuthContext = React.createContext(undefined);
+const AuthContext = React.createContext(undefined as any);
 
-const AuthProvider = ({ children }) => {
+const AuthProvider = ({ children }: any) => {
   const { auth, handleAuth, logoutAuth, send } = useAuth();
 
-  const data = [auth, handleAuth, logoutAuth, send];
+  const value = [auth, handleAuth, logoutAuth, send];
 
-  return <AuthContext.Provider value={data}>{children}</AuthContext.Provider>;
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
 
 const useAuthContext = () => {

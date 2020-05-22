@@ -35,7 +35,7 @@ const CTA = () => (
       <Facebook cursor="pointer" color="#666" />
     </FooterBrandsContainer>
 
-    <FooterBottomText>2020 Otto, Inc. All rights reserved</FooterBottomText>
+    <FooterBottomText>2020 Podhouse, Inc. All rights reserved</FooterBottomText>
   </FooterContainer>
 );
 
