@@ -1,4 +1,4 @@
-import { styled } from "../../../system/theme";
+import { styled } from "../../../../system/theme";
 
 export const PricingContainer = styled.div`
   width: auto;

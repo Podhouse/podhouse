@@ -5,27 +5,31 @@ import Button from "../../../system/Button/Button";
 
 import {
   LandingGridContainer,
+  LandingGridContentContainer,
   LandingSubTitle,
   LandingParagraph,
 } from "../Landing.styles";
 
-const CTA = () => {
+const CallToAction = () => {
   const router = useRouter();
 
-  const handleStart = (e) => {
+  const handleStart = e => {
     e.preventDefault();
     router.push("/app");
   };
 
   return (
     <LandingGridContainer>
-      <LandingSubTitle>
-        Start listen to your favorite podcasts now
-      </LandingSubTitle>
-      <LandingParagraph>
-        Try now and listen to your podcasts freely, without having annoying ads,
-        listen freely everywhere and anytime
-      </LandingParagraph>
+      <LandingGridContentContainer>
+        <LandingSubTitle>
+          Start listen to your favorite podcasts now
+        </LandingSubTitle>
+        <LandingParagraph>
+          Try Podhouse now and listen to your podcasts freely, without having
+          annoying ads, everywhere and anytime
+        </LandingParagraph>
+      </LandingGridContentContainer>
+
       <Button type="button" width={160} onClick={handleStart}>
         Get started
       </Button>
@@ -33,4 +37,4 @@ const CTA = () => {
   );
 };
 
-export default CTA;
+export default CallToAction;

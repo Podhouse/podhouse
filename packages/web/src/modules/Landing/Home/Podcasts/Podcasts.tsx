@@ -6,7 +6,7 @@ import {
   LandingGridContainer,
   LandingSubTitle,
   LandingParagraph,
-} from "../Landing.styles";
+} from "../../Landing.styles";
 
 const Podcasts = () => (
   <LandingGridContainer>

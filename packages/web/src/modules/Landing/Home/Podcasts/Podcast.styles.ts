@@ -1,4 +1,4 @@
-import { styled } from "../../../system/theme";
+import { styled } from "../../../../system/theme";
 
 export const PodcastsContainer = styled.div`
   width: 100%;

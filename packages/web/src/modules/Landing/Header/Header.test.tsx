@@ -15,10 +15,10 @@ describe("Header", () => {
   it("should render correctly", async () => {
     const { getByText } = withTheme;
 
-    expect(getByText(/About/i)).toBeDefined();
-    expect(getByText(/Advertisers/i)).toBeDefined();
-    expect(getByText(/Brand/i)).toBeDefined();
-    expect(getByText(/Contact/i)).toBeDefined();
-    expect(getByText(/Sign in/i)).toBeDefined();
+    expect(getByText(/About/i)).toBeInTheDocument();
+    expect(getByText(/Advertisers/i)).toBeInTheDocument();
+    expect(getByText(/Brand/i)).toBeInTheDocument();
+    expect(getByText(/Contact/i)).toBeInTheDocument();
+    expect(getByText(/Sign in/i)).toBeInTheDocument();
   });
 });

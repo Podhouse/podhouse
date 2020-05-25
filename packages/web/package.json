@@ -69,6 +69,7 @@
     "eslint-plugin-react": "^7.20.0",
     "jest": "^26.0.1",
     "jest-cli": "^26.0.1",
+    "jest-dom": "^4.0.0",
     "prettier": "^2.0.5",
     "ts-jest": "^26.0.0",
     "typescript": "^3.9.3"
