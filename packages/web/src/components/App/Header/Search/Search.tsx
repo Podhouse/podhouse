@@ -5,9 +5,7 @@ import Input from "../../../../system/Input/Input";
 
 import { SearchContainer } from "./Search.styles";
 
-interface SearchProps {}
-
-const Search: React.FC<SearchProps> = () => {
+const Search: React.FC = () => {
   const [search, setSearch] = useState<string>("");
 
   const onSearch = (e: any) => {
@@ -16,7 +14,7 @@ const Search: React.FC<SearchProps> = () => {
 
   const router = useRouter();
 
-  const pushSearch = (e) => {
+  const pushSearch = e => {
     e.preventDefault();
     router.push("/app/search");
   };

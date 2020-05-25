@@ -22,8 +22,6 @@ import {
   UpgradeFormCVCDateContainer,
 } from "./Upgrade.styles";
 
-interface UpgradeProps {}
-
 interface UpgradeFormProps {
   cardNumber: string;
   cvc: string;
@@ -36,7 +34,7 @@ const validationSchema = Yup.object().shape({
   expirationDate: Yup.string().required("Expiration date is required"),
 });
 
-const Upgrade: React.FC<UpgradeProps> = () => {
+const Upgrade: React.FC = () => {
   const {
     handleBlur,
     handleChange,

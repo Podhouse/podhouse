@@ -6,8 +6,6 @@ import Row from "../../../components/Row/Row";
 
 import { BrowseContainer } from "./Browse.styles";
 
-interface BrowseProps {}
-
 const items = [
   {
     id: 1,
@@ -39,7 +37,7 @@ const items = [
   },
 ];
 
-const Browse: React.FC<BrowseProps> = () => (
+const Browse: React.FC = () => (
   <Scrollbars universal autoHide autoHideTimeout={100} autoHideDuration={100}>
     <BrowseContainer>
       {/* <AdCarousel /> */}

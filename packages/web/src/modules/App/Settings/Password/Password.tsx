@@ -14,8 +14,6 @@ import {
   SettingsRowBreakLine,
 } from "../Settings.styles";
 
-interface PasswordProps {}
-
 interface PasswordFormProps {
   currentPassword: string;
   newPassword: string;
@@ -31,7 +29,7 @@ const validationSchema = Yup.object().shape({
     .required("Confirm new password is required"),
 });
 
-const Password: React.FC<PasswordProps> = () => {
+const Password: React.FC = () => {
   const {
     handleBlur,
     handleChange,

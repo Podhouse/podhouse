@@ -5,8 +5,6 @@ import Row from "../../../components/Row/Row";
 
 import { SearchContainer } from "./Search.styles";
 
-interface SearchProps {}
-
 const items = [
   {
     id: 1,
@@ -31,7 +29,7 @@ const items = [
   },
 ];
 
-const Search: React.FC<SearchProps> = () => (
+const Search: React.FC = () => (
   <Scrollbars universal autoHide autoHideTimeout={100} autoHideDuration={100}>
     <SearchContainer>
       <Row title="Search" items={items} />

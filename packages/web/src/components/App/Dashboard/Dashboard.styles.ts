@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
-interface DashboardProps {}
-
-export const DashboardContainer = styled.main<DashboardProps>`
+export const DashboardContainer = styled.main`
   width: 100%;
   height: 100%;
   grid-row: 1 / 2;

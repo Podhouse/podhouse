@@ -5,8 +5,6 @@ import Row from "../../../components/Row/Row";
 
 import { SubscriptionsContainer } from "./Subscriptions.styles";
 
-interface SubscriptionsProps {}
-
 const items = [
   {
     id: 1,
@@ -73,7 +71,7 @@ const items = [
   },
 ];
 
-const Subscriptions: React.FC<SubscriptionsProps> = () => (
+const Subscriptions: React.FC = () => (
   <Scrollbars universal autoHide autoHideTimeout={100} autoHideDuration={100}>
     <SubscriptionsContainer>
       <Row title="Subscriptions" items={items} />
