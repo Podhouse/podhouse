@@ -15,14 +15,12 @@ export const HeaderContainer = styled.header`
   }
 `;
 
-export const HeaderTitle = styled.h1`
-  font-family: Inter;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 36px;
-  line-height: 55px;
-  letter-spacing: -0.03em;
-  color: ${({ theme }) => theme.colors.black};
+export const HeaderLogoContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 `;
 
 export const HeaderLinksContainer = styled.div`
@@ -34,7 +32,7 @@ export const HeaderLinksContainer = styled.div`
     grid-column: 2 / 3;
     grid-row: 1 / 2;
     display: grid;
-    grid-template-columns: repeat(3, max-content);
+    grid-template-columns: repeat(4, max-content);
     grid-template-rows: 1fr;
     grid-column-gap: 30px;
     align-items: center;
@@ -60,7 +58,7 @@ export const HeaderLink = styled.a`
   }
 `;
 
-export const HeaderButtonContainer = styled.div`
+export const HeaderSignInContainer = styled.div`
   width: auto;
   height: 100%;
   grid-column: 2 / 3;
@@ -80,36 +78,5 @@ export const HeaderButtonContainer = styled.div`
     grid-column-gap: 30px;
     align-self: center;
     justify-self: flex-end;
-  }
-`;
-
-export const HeaderButton = styled.button`
-  width: 120px;
-  height: 40px;
-  grid-column: 1 / 2;
-  grid-row: 1 / 2;
-  background: ${({ theme }) => theme.colors.white};
-  border: ${({ theme }) => `1px solid ${theme.colors.lightGray}`};
-  box-sizing: border-box;
-  border-radius: 5px;
-  font-family: Inter;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 17px;
-  text-align: center;
-  color: ${({ theme }) => theme.colors.strongestGray};
-  cursor: pointer;
-  outline: none;
-  grid-area: "button";
-
-  :hover {
-    border: ${({ theme }) => `1px solid ${theme.colors.black}`};
-    color: ${({ theme }) => theme.colors.black};
-  }
-
-  @media screen and (min-width: 800px) {
-    grid-column: 2 / 3;
-    grid-row: 1 / 2;
   }
 `;

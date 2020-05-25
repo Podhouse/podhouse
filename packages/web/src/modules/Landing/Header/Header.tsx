@@ -1,37 +1,54 @@
 import * as React from "react";
-import { SectionLink } from "react-scroll-section";
 import { useRouter } from "next/router";
+
+import LogoPodhouse from "../../../../public/logo/2.svg";
 
 import {
   HeaderContainer,
-  HeaderTitle,
+  HeaderLogoContainer,
   HeaderLinksContainer,
   HeaderLink,
-  HeaderButtonContainer,
-  HeaderButton,
+  HeaderSignInContainer,
 } from "./Header.styles";
 
 const Header = () => {
   const router = useRouter();
 
-  const handleStart = (e) => {
+  const handleStart = e => {
     e.preventDefault();
     router.push("/app");
   };
 
   return (
     <HeaderContainer>
-      <HeaderTitle>Podhouse</HeaderTitle>
+      <HeaderLogoContainer>
+        <LogoPodhouse />
+      </HeaderLogoContainer>
 
       <HeaderLinksContainer>
-        <SectionLink section="features">
-          {({ onClick }) => <HeaderLink onClick={onClick}>Features</HeaderLink>}
-        </SectionLink>
-        <SectionLink section="pricing">
-          {({ onClick }) => <HeaderLink onClick={onClick}>Pricing</HeaderLink>}
-        </SectionLink>
         <HeaderLink
-          href="mailto:leonardomso11@gmail.com?subject=Hi%20Leo%2C%20let's%20talk%20about%20Podhouse!"
+          onClick={() => {
+            console.log("clicked");
+          }}
+        >
+          About
+        </HeaderLink>
+        <HeaderLink
+          onClick={() => {
+            console.log("clicked");
+          }}
+        >
+          Advertisers
+        </HeaderLink>
+        <HeaderLink
+          onClick={() => {
+            console.log("clicked");
+          }}
+        >
+          Brand
+        </HeaderLink>
+        <HeaderLink
+          href="mailto:leonardomso11@gmail.com"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -39,11 +56,9 @@ const Header = () => {
         </HeaderLink>
       </HeaderLinksContainer>
 
-      <HeaderButtonContainer>
-        <HeaderButton type="button" onClick={handleStart}>
-          Get started
-        </HeaderButton>
-      </HeaderButtonContainer>
+      <HeaderSignInContainer>
+        <HeaderLink onClick={handleStart}>Sign in</HeaderLink>
+      </HeaderSignInContainer>
     </HeaderContainer>
   );
 };
