@@ -1,6 +1,6 @@
 import { styled } from "../../../../system/theme";
 
-export const PricingContainer = styled.div`
+export const PremiumContainer = styled.div`
   width: auto;
   max-width: 800px;
   height: auto;
@@ -15,7 +15,7 @@ export const PricingContainer = styled.div`
   justify-items: flex-start;
 `;
 
-export const PricingAvailableContainer = styled.div`
+export const PremiumAvailableContainer = styled.div`
   width: auto;
   height: auto;
   padding: 10px;
@@ -28,7 +28,7 @@ export const PricingAvailableContainer = styled.div`
   grid-row: 1 / 2;
 `;
 
-export const PricingAvailableText = styled.p`
+export const PremiumAvailableText = styled.p`
   font-family: Inter;
   font-style: normal;
   font-weight: 600;
@@ -39,7 +39,7 @@ export const PricingAvailableText = styled.p`
   color: ${({ theme }) => theme.colors.strongestGray};
 `;
 
-export const PricingTitle = styled.h1`
+export const PremiumTitle = styled.h1`
   font-family: Inter;
   font-style: normal;
   font-weight: 600;
@@ -51,7 +51,7 @@ export const PricingTitle = styled.h1`
   text-align: start;
 `;
 
-export const PricingItemsContainer = styled.div`
+export const PremiumItemsContainer = styled.div`
   width: 100%;
   height: auto;
   display: grid;
@@ -66,7 +66,7 @@ export const PricingItemsContainer = styled.div`
   }
 `;
 
-export const PricingItemContainer = styled.div`
+export const PremiumItemContainer = styled.div`
   width: 100%;
   height: auto;
   display: grid;
@@ -75,7 +75,7 @@ export const PricingItemContainer = styled.div`
   grid-row-gap: 10px;
 `;
 
-export const PricingItemTitle = styled.h3`
+export const PremiumItemTitle = styled.h3`
   font-family: Inter;
   font-style: normal;
   font-weight: 500;
@@ -85,7 +85,7 @@ export const PricingItemTitle = styled.h3`
   color: ${({ theme }) => theme.colors.black};
 `;
 
-export const PricingItemText = styled.p`
+export const PremiumItemText = styled.p`
   font-family: Inter;
   font-style: normal;
   font-weight: normal;

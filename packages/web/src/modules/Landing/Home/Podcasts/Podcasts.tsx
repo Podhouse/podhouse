@@ -4,17 +4,21 @@ import { PodcastsContainer, PodcastPictureContainer } from "./Podcast.styles";
 
 import {
   LandingGridContainer,
+  LandingGridContentContainer,
   LandingSubTitle,
   LandingParagraph,
 } from "../../Landing.styles";
 
 const Podcasts = () => (
   <LandingGridContainer>
-    <LandingSubTitle>Listen to your favorite podcasts</LandingSubTitle>
-    <LandingParagraph>
-      Get started now and listen to the best podcasts, without having to pay
-      anything for it.
-    </LandingParagraph>
+    <LandingGridContentContainer>
+      <LandingSubTitle>Listen to your favorite podcasts</LandingSubTitle>
+      <LandingParagraph>
+        Get started now and listen to the best podcasts, without having to pay
+        anything for it.
+      </LandingParagraph>
+    </LandingGridContentContainer>
+
     <PodcastsContainer>
       <PodcastPictureContainer>
         <source srcSet="/images/joe.webp" type="image/webp" />
