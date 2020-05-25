@@ -6,7 +6,8 @@
   "scripts": {
     "start": "nodemon",
     "lint": "eslint --fix --ext .js,.ts,.tsx src",
-    "format": "prettier --write src"
+    "format": "prettier --write src",
+    "test": "jest"
   },
   "dependencies": {
     "@entria/graphql-mongoose-loader": "^4.3.0",
@@ -30,6 +31,7 @@
   "devDependencies": {
     "@types/bcrypt": "^3.0.0",
     "@types/graphql-relay": "^0.6.0",
+    "@types/jest": "^25.2.3",
     "@types/jsonwebtoken": "^8.5.0",
     "@types/koa": "^2.11.3",
     "@types/koa-bodyparser": "^4.3.0",
