@@ -28,7 +28,9 @@
     "update": "yarn update-schema && yarn relay",
     "update-schema": "yarn workspace @golden-stack/server update-schema",
     "relay": "yarn workspace @podhouse/relay relay",
-    "lint:staged": "lint-staged"
+    "lint:staged": "lint-staged",
+    "lint": "yarn workspace @podhouse/web lint & yarn workspace @podhouse/server lint",
+    "test": "yarn workspace @podhouse/web test & yarn workspace @podhouse/server test"
   },
   "devDependencies": {
     "husky": "^4.2.5",
