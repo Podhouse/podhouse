@@ -21,8 +21,8 @@ const Landing = () => (
     <Section id="pricing">
       <Pricing />
     </Section>
-    <CTA />
-    <Footer />*/}
+    <CTA />*/}
+    <Footer />
   </LandingContainer>
 );
 

@@ -21,6 +21,10 @@ export const HeaderLogoContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
+
+  svg {
+    cursor: pointer;
+  }
 `;
 
 export const HeaderLinksContainer = styled.div`

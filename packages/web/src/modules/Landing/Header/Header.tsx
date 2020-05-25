@@ -19,34 +19,21 @@ const Header = () => {
     router.push("/app");
   };
 
+  const handleHome = e => {
+    e.preventDefault();
+    router.push("/");
+  };
+
   return (
     <HeaderContainer>
       <HeaderLogoContainer>
-        <LogoPodhouse />
+        <LogoPodhouse onClick={handleHome} />
       </HeaderLogoContainer>
 
       <HeaderLinksContainer>
-        <HeaderLink
-          onClick={() => {
-            console.log("clicked");
-          }}
-        >
-          About
-        </HeaderLink>
-        <HeaderLink
-          onClick={() => {
-            console.log("clicked");
-          }}
-        >
-          Advertisers
-        </HeaderLink>
-        <HeaderLink
-          onClick={() => {
-            console.log("clicked");
-          }}
-        >
-          Brand
-        </HeaderLink>
+        <HeaderLink href="/about">About</HeaderLink>
+        <HeaderLink href="/advertisers">Advertisers</HeaderLink>
+        <HeaderLink href="/brand">Brand</HeaderLink>
         <HeaderLink
           href="mailto:leonardomso11@gmail.com"
           target="_blank"

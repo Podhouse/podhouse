@@ -17,11 +17,17 @@ export const FooterLinksContainer = styled.div`
   grid-column: 1 / 2;
   grid-row: 1 / 2;
   display: grid;
-  grid-template-columns: repeat(3, max-content);
-  grid-template-rows: 1fr;
-  grid-column-gap: 30px;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-gap: 30px;
   align-items: center;
   justify-content: center;
+
+  @media screen and (min-width: 400px) {
+    grid-template-columns: repeat(4, max-content);
+    grid-template-rows: 1fr;
+    grid-column-gap: 30px;
+  }
 `;
 
 export const FooterLink = styled.a`
