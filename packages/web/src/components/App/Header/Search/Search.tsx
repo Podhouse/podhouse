@@ -14,7 +14,7 @@ const Search: React.FC = () => {
 
   const router = useRouter();
 
-  const pushSearch = e => {
+  const pushSearch = (e) => {
     e.preventDefault();
     router.push("/app/search");
   };
