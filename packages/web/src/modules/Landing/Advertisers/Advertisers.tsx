@@ -4,6 +4,7 @@ import FAQ from "../FAQ/FAQ";
 import CallToAction from "../CallToAction/CallToAction";
 
 import Main from "./Main/Main";
+import Pricing from "./Pricing/Pricing";
 
 const items = [
   {
@@ -41,6 +42,7 @@ const items = [
 const Brand = () => (
   <Fragment>
     <Main />
+    <Pricing />
     <FAQ
       description="Here's some questions about advertising in Podhouse that you might have."
       items={items}
