@@ -1,6 +1,5 @@
 import * as React from "react";
 import { Twitter, Linkedin, Instagram, Facebook } from "react-feather";
-import { SectionLink } from "react-scroll-section";
 
 import {
   FooterContainer,
@@ -10,17 +9,14 @@ import {
   FooterBottomText,
 } from "./Footer.styles";
 
-const CTA = () => (
+const Footer = () => (
   <FooterContainer>
     <FooterLinksContainer>
-      <SectionLink section="features">
-        {({ onClick }) => <FooterLink onClick={onClick}>Features</FooterLink>}
-      </SectionLink>
-      <SectionLink section="pricing">
-        {({ onClick }) => <FooterLink onClick={onClick}>Pricing</FooterLink>}
-      </SectionLink>
+      <FooterLink href="/about">About</FooterLink>
+      <FooterLink href="/advertisers">Advertisers</FooterLink>
+      <FooterLink href="/brand">Brand</FooterLink>
       <FooterLink
-        href="mailto:leonardomso11@gmail.com?subject=Hi%20Leo%2C%20let's%20talk%20about%20xgruve!"
+        href="mailto:leonardomso11@gmail.com"
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -29,14 +25,38 @@ const CTA = () => (
     </FooterLinksContainer>
 
     <FooterBrandsContainer>
-      <Twitter cursor="pointer" color="#666" />
-      <Linkedin cursor="pointer" color="#666" />
-      <Instagram cursor="pointer" color="#666" />
-      <Facebook cursor="pointer" color="#666" />
+      <a
+        href="https://twitter.com/leonardomso"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Twitter cursor="pointer" color="#666" />
+      </a>
+      <a
+        href="https://twitter.com/leonardomso"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Linkedin cursor="pointer" color="#666" />
+      </a>
+      <a
+        href="https://twitter.com/leonardomso"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Instagram cursor="pointer" color="#666" />
+      </a>
+      <a
+        href="https://twitter.com/leonardomso"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Facebook cursor="pointer" color="#666" />
+      </a>
     </FooterBrandsContainer>
 
-    <FooterBottomText>2020 Podhouse, Inc. All rights reserved</FooterBottomText>
+    <FooterBottomText>2020 Podhouse. All rights reserved</FooterBottomText>
   </FooterContainer>
 );
 
-export default CTA;
+export default Footer;

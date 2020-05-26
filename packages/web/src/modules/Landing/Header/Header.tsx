@@ -1,37 +1,41 @@
 import * as React from "react";
-import { SectionLink } from "react-scroll-section";
 import { useRouter } from "next/router";
+
+import LogoPodhouseDark from "../../../../public/logo/logo-podhouse-medium-dark.svg";
 
 import {
   HeaderContainer,
-  HeaderTitle,
+  HeaderLogoContainer,
   HeaderLinksContainer,
   HeaderLink,
-  HeaderButtonContainer,
-  HeaderButton,
+  HeaderSignInContainer,
 } from "./Header.styles";
 
 const Header = () => {
   const router = useRouter();
 
-  const handleStart = (e) => {
+  const handleStart = e => {
     e.preventDefault();
     router.push("/app");
   };
 
+  const handleHome = e => {
+    e.preventDefault();
+    router.push("/");
+  };
+
   return (
     <HeaderContainer>
-      <HeaderTitle>Podhouse</HeaderTitle>
+      <HeaderLogoContainer>
+        <LogoPodhouseDark onClick={handleHome} />
+      </HeaderLogoContainer>
 
       <HeaderLinksContainer>
-        <SectionLink section="features">
-          {({ onClick }) => <HeaderLink onClick={onClick}>Features</HeaderLink>}
-        </SectionLink>
-        <SectionLink section="pricing">
-          {({ onClick }) => <HeaderLink onClick={onClick}>Pricing</HeaderLink>}
-        </SectionLink>
+        <HeaderLink href="/about">About</HeaderLink>
+        <HeaderLink href="/advertisers">Advertisers</HeaderLink>
+        <HeaderLink href="/brand">Brand</HeaderLink>
         <HeaderLink
-          href="mailto:leonardomso11@gmail.com?subject=Hi%20Leo%2C%20let's%20talk%20about%20Podhouse!"
+          href="mailto:leonardomso11@gmail.com"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -39,11 +43,9 @@ const Header = () => {
         </HeaderLink>
       </HeaderLinksContainer>
 
-      <HeaderButtonContainer>
-        <HeaderButton type="button" onClick={handleStart}>
-          Get started
-        </HeaderButton>
-      </HeaderButtonContainer>
+      <HeaderSignInContainer>
+        <HeaderLink onClick={handleStart}>Get started</HeaderLink>
+      </HeaderSignInContainer>
     </HeaderContainer>
   );
 };

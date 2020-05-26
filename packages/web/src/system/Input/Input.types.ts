@@ -10,6 +10,7 @@ export interface InputProps {
   error: string | undefined;
   width?: number;
   height?: number;
+  dataTestId?: string;
   autoComplete?: "on" | "off";
 }
 

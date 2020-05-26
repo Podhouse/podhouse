@@ -20,6 +20,8 @@ const Input: React.FC<InputProps> = ({
   width,
   height,
   autoComplete = "off",
+  dataTestId,
+  ...props
 }) => (
   <InputContainer width={width}>
     {label ? <Label label={label} mb={10} /> : null}
@@ -35,6 +37,8 @@ const Input: React.FC<InputProps> = ({
       onClick={onClick}
       error={error}
       autoComplete={autoComplete}
+      {...props}
+      data-testid={dataTestId}
     />
 
     {error ? <Error error={error} mt={10} /> : null}

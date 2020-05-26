@@ -22,11 +22,15 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.28",
     "@fortawesome/free-solid-svg-icons": "^5.13.0",
     "@fortawesome/react-fontawesome": "^0.1.9",
+    "@sentry/browser": "^5.15.5",
+    "@sentry/typescript": "^5.15.5",
     "@xstate/react": "^0.8.1",
     "@xstate/test": "^0.4.0",
+    "@zeit/next-source-maps": "^0.0.3",
     "formik": "^2.1.4",
     "graphql": "^15.0.0",
     "next": "^9.4.2",
+    "next-compose-plugins": "^2.2.0",
     "next-ga": "^2.3.4",
     "next-images": "^1.4.0",
     "next-pwa": "^2.4.1",
@@ -59,7 +63,9 @@
     "@typescript-eslint/eslint-plugin": "^3.0.0",
     "@typescript-eslint/parser": "^3.0.0",
     "babel-jest": "^26.0.1",
+    "babel-plugin-inline-react-svg": "^1.1.1",
     "cypress": "^4.6.0",
+    "dotenv": "^8.2.0",
     "eslint": "^7.1.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-config-react-app": "^5.2.1",
@@ -68,8 +74,10 @@
     "eslint-plugin-react": "^7.20.0",
     "jest": "^26.0.1",
     "jest-cli": "^26.0.1",
+    "jest-dom": "^4.0.0",
     "prettier": "^2.0.5",
     "ts-jest": "^26.0.0",
-    "typescript": "^3.9.3"
+    "typescript": "^3.9.3",
+    "webpack": "^4.43.0"
   }
 }
