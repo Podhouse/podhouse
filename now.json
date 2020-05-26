@@ -2,6 +2,9 @@
   "version": 2,
   "public": true,
   "alias": ["podhouse.now.sh"],
+  "github": {
+    "enabled": false
+  },
   "builds": [
     {
       "src": "packages/web/package.json",
