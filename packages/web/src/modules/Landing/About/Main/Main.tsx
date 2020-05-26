@@ -15,7 +15,7 @@ const Main = () => (
       </LandingTitle>
       <LandingParagraph>
         We aim to provide the best podcast experience, that's why we created
-        Podhouse, from podcast listeners for podcast listeners.
+        Podhouse, from podcast listeners for podcast listeners
       </LandingParagraph>
     </LandingGridContentContainer>
   </LandingGridContainer>

@@ -14,7 +14,7 @@ const Main = () => (
       <LandingParagraph>
         We take our design experience very seriously, our idea is to be a
         podcast app with a clean, beautiful, and simple experience. You can
-        download our logo and badges here.
+        download our logo and badges here
       </LandingParagraph>
     </LandingGridContentContainer>
   </LandingGridContainer>

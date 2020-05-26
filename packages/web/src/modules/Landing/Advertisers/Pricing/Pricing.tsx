@@ -28,7 +28,7 @@ const Pricing = () => (
     <LandingGridContentContainer>
       <LandingSubTitle>Our unique advertising plan</LandingSubTitle>
       <LandingParagraph>
-        Now that you know our monthly stats, check our unique advertising plan.
+        Now that you know our monthly stats, check our unique advertising plan
       </LandingParagraph>
     </LandingGridContentContainer>
 

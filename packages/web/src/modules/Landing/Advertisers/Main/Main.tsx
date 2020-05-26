@@ -15,7 +15,7 @@ const Main = () => (
       </LandingTitle>
       <LandingParagraph>
         Podcast listeners are very highly engaged, you can grow your audience by
-        advertising with us.
+        advertising with us
       </LandingParagraph>
     </LandingGridContentContainer>
   </LandingGridContainer>
