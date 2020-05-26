@@ -16,9 +16,9 @@ export const PremiumContainer = styled.div`
 `;
 
 export const PremiumAvailableContainer = styled.div`
-  width: auto;
-  height: auto;
+  width: fit-content;
   padding: 10px;
+  height: 35px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -33,9 +33,8 @@ export const PremiumAvailableText = styled.p`
   font-style: normal;
   font-weight: 600;
   font-size: 12px;
-  line-height: 12px;
+  line-height: 15px;
   text-align: center;
-  letter-spacing: -0.03em;
   color: ${({ theme }) => theme.colors.strongestGray};
 `;
 
