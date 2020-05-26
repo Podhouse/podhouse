@@ -14,7 +14,7 @@ const StyledButton = styled.button<ButtonProps>`
   cursor: pointer;
   font-family: Inter;
   font-style: normal;
-  font-weight: normal;
+  font-weight: 500;
   font-size: 14px;
   line-height: 17px;
   text-align: center;

@@ -1,7 +1,6 @@
 import React, { Fragment } from "react";
 
 import FAQ from "../FAQ/FAQ";
-import Newsletter from "../Newsletter/Newsletter";
 import CallToAction from "../CallToAction/CallToAction";
 
 import Main from "./Main/Main";
@@ -42,7 +41,6 @@ const Home = () => (
       items={items}
     />
     <Premium />
-    <Newsletter />
     <CallToAction />
   </Fragment>
 );
