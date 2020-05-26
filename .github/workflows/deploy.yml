@@ -1,5 +1,5 @@
-name: Podhouse Deploy
-on: [Podhouse]
+name: deploy website
+on: [pull_request]
 jobs:
   deploy:
     runs-on: ubuntu-latest
