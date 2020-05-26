@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useRouter } from "next/router";
 
-import LogoPodhouse from "../../../../public/logo/2.svg";
+import LogoPodhouseDark from "../../../../public/logo/logo-podhouse-medium-dark.svg";
 
 import {
   HeaderContainer,
@@ -27,7 +27,7 @@ const Header = () => {
   return (
     <HeaderContainer>
       <HeaderLogoContainer>
-        <LogoPodhouse onClick={handleHome} />
+        <LogoPodhouseDark onClick={handleHome} />
       </HeaderLogoContainer>
 
       <HeaderLinksContainer>
@@ -44,7 +44,7 @@ const Header = () => {
       </HeaderLinksContainer>
 
       <HeaderSignInContainer>
-        <HeaderLink onClick={handleStart}>Sign in</HeaderLink>
+        <HeaderLink onClick={handleStart}>Get started</HeaderLink>
       </HeaderSignInContainer>
     </HeaderContainer>
   );

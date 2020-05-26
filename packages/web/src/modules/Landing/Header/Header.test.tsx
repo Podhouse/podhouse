@@ -19,6 +19,6 @@ describe("Header", () => {
     expect(getByText(/Advertisers/i)).toBeInTheDocument();
     expect(getByText(/Brand/i)).toBeInTheDocument();
     expect(getByText(/Contact/i)).toBeInTheDocument();
-    expect(getByText(/Sign in/i)).toBeInTheDocument();
+    expect(getByText(/Get started/i)).toBeInTheDocument();
   });
 });
