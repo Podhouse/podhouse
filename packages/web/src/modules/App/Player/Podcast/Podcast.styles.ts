@@ -26,15 +26,15 @@ export const PodcastContainer = styled.div`
 `;
 
 export const PodcastAvatar = styled.div<PodcastAvatarProps>`
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   background-image: url(${({ avatar }) => avatar});
   background-size: cover;
   border-radius: 5px;
 
   @media screen and (min-width: 800px) {
-    width: 75px;
-    height: 75px;
+    width: 60px;
+    height: 60px;
     grid-column: 1 / 2;
     grid-row: 1 / 2;
     align-self: center;

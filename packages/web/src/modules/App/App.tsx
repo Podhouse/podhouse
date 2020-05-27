@@ -2,6 +2,7 @@ import React from "react";
 
 import Header from "./Header/Header";
 import Menu from "./Menu/Menu";
+import Player from "./Player/Player";
 
 import AuthModal from "../../components/AuthModal/AuthModal";
 import SettingsModal from "../../components/SettingsModal/SettingsModal";
@@ -49,6 +50,7 @@ const App: React.FC<AppProps> = () => {
 
       <AppContainer>
         <Header />
+        <Player />
         <Menu />
       </AppContainer>
     </>

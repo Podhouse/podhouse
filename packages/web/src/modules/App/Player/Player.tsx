@@ -16,8 +16,8 @@ const currentPodcast = {
 const Player: React.FC = () => (
   <PlayerContainer>
     <Podcast currentPodcast={currentPodcast} />
-    <Controls playing />
-    <Volume volume={30} mute={false} />
+    <Controls playing={false} />
+    <Volume volume={100} mute={false} />
   </PlayerContainer>
 );
 

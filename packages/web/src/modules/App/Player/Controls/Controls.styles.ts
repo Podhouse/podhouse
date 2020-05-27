@@ -30,6 +30,7 @@ export const ControlsButtonsContainer = styled.div`
   justify-self: flex-end;
   align-items: center;
   justify-items: flex-end;
+  justify-self: center;
 
   @media screen and (min-width: 800px) {
     grid-column: 1 / 2;
@@ -65,12 +66,11 @@ export const ControlsTime = styled.p`
     display: block;
     font-family: Inter;
     font-style: normal;
-    font-weight: 500;
+    font-weight: normal;
     font-size: 12px;
     line-height: 15px;
     color: ${({ theme }) => theme.colors.black};
     text-transform: uppercase;
-    cursor: pointer;
     justify-self: center;
   }
 `;

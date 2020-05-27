@@ -1,11 +1,5 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faPlay,
-  faPause,
-  faRedo,
-  faUndo,
-} from "@fortawesome/free-solid-svg-icons";
+import { Play, Pause, RotateCcw, RotateCw } from "react-feather";
 
 import HorizontalSlider from "../../../../components/Slider/HorizontalSlider/HorizontalSlider";
 
@@ -20,51 +14,27 @@ interface ControlsProps {
   playing: boolean;
 }
 
+const iconStyle = { cursor: "pointer" };
+
 const Controls: React.FC<ControlsProps> = ({ playing }) => {
   const onPlaying = () => {
     if (playing) {
       return (
-        <FontAwesomeIcon
-          icon={faPause}
-          size="1x"
-          color="#000000"
-          onClick={() => {}}
-          style={{ cursor: "pointer" }}
-        />
+        <Pause size={30} color="#000" strokeWidth={1.5} style={iconStyle} />
       );
     }
 
-    return (
-      <FontAwesomeIcon
-        icon={faPlay}
-        size="1x"
-        color="#000000"
-        onClick={() => {}}
-        style={{ cursor: "pointer" }}
-      />
-    );
+    return <Play size={30} color="#000" strokeWidth={1.5} style={iconStyle} />;
   };
 
   return (
     <ControlsContainer>
       <ControlsButtonsContainer>
-        <FontAwesomeIcon
-          icon={faUndo}
-          size="1x"
-          color="#000000"
-          onClick={() => {}}
-          style={{ cursor: "pointer" }}
-        />
+        <RotateCw size={18} color="#000" style={iconStyle} />
 
         {onPlaying()}
 
-        <FontAwesomeIcon
-          icon={faRedo}
-          size="1x"
-          color="#000000"
-          onClick={() => {}}
-          style={{ cursor: "pointer" }}
-        />
+        <RotateCcw size={18} color="#000" style={iconStyle} />
       </ControlsButtonsContainer>
 
       <ControlsSliderContainer>

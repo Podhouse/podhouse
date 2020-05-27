@@ -1,6 +1,5 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faVolumeUp, faVolumeMute } from "@fortawesome/free-solid-svg-icons";
+import { Volume2, VolumeX } from "react-feather";
 
 import HorizontalSlider from "../../../../components/Slider/HorizontalSlider/HorizontalSlider";
 
@@ -11,29 +10,15 @@ interface VolumeProps {
   mute: boolean;
 }
 
+const iconStyle = { cursor: "pointer" };
+
 const Volume: React.FC<VolumeProps> = ({ volume, mute }) => {
   const onVolume = () => {
     if (volume <= 0 || mute) {
-      return (
-        <FontAwesomeIcon
-          icon={faVolumeMute}
-          size="1x"
-          color="#000000"
-          onClick={() => {}}
-          style={{ cursor: "pointer" }}
-        />
-      );
+      return <VolumeX size={20} color="#000" style={iconStyle} />;
     }
 
-    return (
-      <FontAwesomeIcon
-        icon={faVolumeUp}
-        size="1x"
-        color="#000000"
-        onClick={() => {}}
-        style={{ cursor: "pointer" }}
-      />
-    );
+    return <Volume2 size={20} color="#000" style={iconStyle} />;
   };
 
   return (
