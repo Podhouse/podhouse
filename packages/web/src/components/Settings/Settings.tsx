@@ -1,7 +1,7 @@
 import React from "react";
 import Scrollbars from "react-custom-scrollbars";
 
-import Header from "../../modules/App/Settings/Header/Header";
+import Header from "../../modules/App/Dashboard/Settings/Header/Header";
 
 import { SettingsContainer, SettingsInsideContainer } from "./Settings.styles";
 

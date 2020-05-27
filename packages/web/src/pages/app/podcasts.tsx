@@ -2,17 +2,17 @@ import * as React from "react";
 import Head from "next/head";
 
 import Provider from "../../provider/index";
-import Search from "../../modules/App/Dashboard/Search/Search";
+import Podcasts from "../../modules/App/Dashboard/Podcasts/Podcasts";
 
 const Page = () => (
   <div className="container">
     <Head>
-      <title>Search — Podhouse</title>
+      <title>Podcasts — Podhouse</title>
       <link rel="icon" href="/favicon.ico" />
     </Head>
 
     <Provider>
-      <Search />
+      <Podcasts />
     </Provider>
   </div>
 );

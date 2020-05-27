@@ -4,7 +4,7 @@ import Head from "next/head";
 import App from "../../../components/App/App";
 import Settings from "../../../components/Settings/Settings";
 
-import Initial from "../../../modules/App/Settings/Initial/Initial";
+import Initial from "../../../modules/App/Dashboard/Settings/Initial/Initial";
 
 import { AuthProvider } from "../../../context/Auth/Auth";
 import { SettingsProvider } from "../../../context/Settings/Settings";

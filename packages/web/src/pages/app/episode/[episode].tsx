@@ -2,7 +2,7 @@ import * as React from "react";
 import Head from "next/head";
 
 import App from "../../../components/App/App";
-import Episode from "../../../modules/App/Episode/Episode";
+import Episode from "../../../modules/App/Dashboard/Episode/Episode";
 
 import { AuthProvider } from "../../../context/Auth/Auth";
 import { SettingsProvider } from "../../../context/Settings/Settings";

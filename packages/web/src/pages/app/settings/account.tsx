@@ -4,7 +4,7 @@ import Head from "next/head";
 import App from "../../../components/App/App";
 import Settings from "../../../components/Settings/Settings";
 
-import Account from "../../../modules/App/Settings/Account/Account";
+import Account from "../../../modules/App/Dashboard/Settings/Account/Account";
 
 import { AuthProvider } from "../../../context/Auth/Auth";
 import { SettingsProvider } from "../../../context/Settings/Settings";

@@ -2,7 +2,7 @@ import * as React from "react";
 import Head from "next/head";
 
 import App from "../../../components/App/App";
-import Podcast from "../../../modules/App/Podcast/Podcast";
+import Podcast from "../../../modules/App/Dashboard/Podcast/Podcast";
 
 import { AuthProvider } from "../../../context/Auth/Auth";
 import { SettingsProvider } from "../../../context/Settings/Settings";
