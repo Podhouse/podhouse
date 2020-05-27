@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
 
-import Input from "../../../../system/Input/Input";
+import SearchInput from "./SearchInput/SearchInput";
 
 import { SearchContainer } from "./Search.styles";
 
@@ -21,16 +21,13 @@ const Search: React.FC = () => {
 
   return (
     <SearchContainer>
-      <Input
-        width={400}
-        height={40}
+      <SearchInput
         type="text"
         name="search"
         placeholder="Search"
         onChange={onSearch}
         onClick={pushSearch}
         value={search}
-        error=""
       />
     </SearchContainer>
   );
