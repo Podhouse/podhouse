@@ -22,15 +22,10 @@ export const HeaderContainer = styled.header`
   }
 `;
 
-export const Logo = styled.h1`
-  font-family: Inter;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 28px;
-  line-height: 29px;
-  color: ${({ theme }) => theme.colors.black};
-  grid-row: 1 / 2;
-  grid-column: 1 / 2;
-  align-self: center;
-  letter-spacing: -0.03em;
+export const LogoContainer = styled.h1`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 `;
