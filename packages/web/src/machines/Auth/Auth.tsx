@@ -4,7 +4,7 @@ import { AuthContext, AuthStateSchema, AuthEvent } from "./Auth.types";
 
 const Auth = Machine<AuthContext, AuthStateSchema, AuthEvent>({
   id: "auth",
-  initial: "loggedIn",
+  initial: "idle",
   states: {
     idle: {
       on: {

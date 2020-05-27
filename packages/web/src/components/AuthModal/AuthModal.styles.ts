@@ -34,6 +34,7 @@ export const AuthModalLinkContainer = styled.div`
 
     a {
       color: ${({ theme }) => theme.colors.black};
+      cursor: pointer;
     }
   }
 `;

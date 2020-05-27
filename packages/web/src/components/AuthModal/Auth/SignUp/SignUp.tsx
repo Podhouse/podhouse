@@ -7,7 +7,12 @@ import Button from "../../../../system/Button/Button";
 
 import { useAuthContext } from "../../../../context/Auth/Auth";
 
-import { AuthTextContainer, AuthText, AuthFormContainer } from "../Auth.styles";
+import {
+  AuthTextContainer,
+  AuthText,
+  AuthFormContainer,
+  AuthParagraphLink,
+} from "../Auth.styles";
 
 interface SignUpFormProps {
   email: string;
@@ -41,7 +46,7 @@ const SignUp: React.FC = () => {
   return (
     <>
       <AuthTextContainer>
-        <AuthText>Sign up to listen to your favorite podcasts</AuthText>
+        <AuthText>The best way to listen to your favorite podcasts</AuthText>
       </AuthTextContainer>
 
       <AuthFormContainer onSubmit={handleSubmit}>
@@ -50,6 +55,7 @@ const SignUp: React.FC = () => {
           name="email"
           label="Email"
           placeholder="Email"
+          height={40}
           onChange={handleChange}
           onBlur={handleBlur}
           value={values.email}
@@ -61,17 +67,20 @@ const SignUp: React.FC = () => {
           name="password"
           label="Password"
           placeholder="Password"
+          height={40}
           onChange={handleChange}
           onBlur={handleBlur}
           value={values.password}
           error={errors.password}
         />
 
-        <Button type="submit" submitting={isSubmitting}>
+        <Button type="submit" submitting={isSubmitting} height={40}>
           Sign up
         </Button>
 
-        <p onClick={() => send("SIGNIN")}>Already have an account? Sign in</p>
+        <AuthParagraphLink onClick={() => send("SIGNIN")}>
+          Already have an account? Sign in
+        </AuthParagraphLink>
       </AuthFormContainer>
     </>
   );

@@ -55,7 +55,7 @@ export const AuthFormContainer = styled.form`
   height: 100%;
   background-color: ${({ theme }) => theme.colors.white};
   display: grid;
-  grid-template-rows: repeat(4, max-content);
+  grid-template-rows: repeat(auto-fill, max-content);
   grid-template-columns: 1fr;
   grid-row-gap: 20px;
   align-items: center;
@@ -64,40 +64,16 @@ export const AuthFormContainer = styled.form`
   justify-self: center;
 `;
 
-export const AuthCheckboxPasswordContainer = styled.div`
-  width: 100%;
-  height: auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr;
-  align-items: center;
-`;
-
-export const AuthCheckboxContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-`;
-
-export const AuthLinkContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-`;
-
-export const XgruveTitle = styled.h1`
+export const AuthParagraphLink = styled.p`
   font-family: Inter;
   font-style: normal;
-  font-weight: 700;
-  font-size: 36px;
-  line-height: 29px;
-  letter-spacing: -0.03em;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
   color: ${({ theme }) => theme.colors.black};
-  text-align: center;
-  align-self: center;
-  justify-self: center;
+
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
 `;

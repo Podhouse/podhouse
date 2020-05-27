@@ -13,7 +13,7 @@ import {
 const Main = () => {
   const router = useRouter();
 
-  const handleStart = e => {
+  const handleStart = (e) => {
     e.preventDefault();
     router.push("/app");
   };

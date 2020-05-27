@@ -29,7 +29,7 @@ const ForgotPasswordSuccess = () => {
         </AuthText>
       </HeaderIconTextContainer>
 
-      <Button type="button" onClick={() => send("SIGNIN")}>
+      <Button type="button" onClick={() => send("SIGNIN")} height={40}>
         OK
       </Button>
     </>
