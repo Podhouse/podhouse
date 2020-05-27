@@ -1,18 +1,18 @@
 import * as React from "react";
 import Head from "next/head";
 
-import Provider from "../../../provider/index";
-import Episode from "../../../modules/App/Dashboard/Episode/Episode";
+import Provider from "../../provider/index";
+import Browse from "../../modules/App/Dashboard/Browse/Browse";
 
 const Page = () => (
   <div className="container">
     <Head>
-      <title>Episode — Podhouse</title>
+      <title>Settings — Podhouse</title>
       <link rel="icon" href="/favicon.ico" />
     </Head>
 
     <Provider>
-      <Episode />
+      <Browse />
     </Provider>
   </div>
 );

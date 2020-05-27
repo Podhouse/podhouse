@@ -1,11 +1,8 @@
 import * as React from "react";
 import Head from "next/head";
 
-import App from "../../../components/App/App";
+import Provider from "../../../provider/index";
 import Podcast from "../../../modules/App/Dashboard/Podcast/Podcast";
-
-import { AuthProvider } from "../../../context/Auth/Auth";
-import { SettingsProvider } from "../../../context/Settings/Settings";
 
 const Page = () => (
   <div className="container">
@@ -14,13 +11,9 @@ const Page = () => (
       <link rel="icon" href="/favicon.ico" />
     </Head>
 
-    <AuthProvider>
-      <SettingsProvider>
-        <App>
-          <Podcast />
-        </App>
-      </SettingsProvider>
-    </AuthProvider>
+    <Provider>
+      <Podcast />
+    </Provider>
   </div>
 );
 
