@@ -3,20 +3,16 @@ import { styled } from "../../../../system/theme";
 export const SettingsContainer = styled.div`
   width: 100%;
   height: 100%;
-  grid-column: 5 / 6;
+  grid-column: 3 / 4;
   grid-row: 1 / 2;
-  flex-basis: 70px;
-`;
-
-export const SettingsInnerContainer = styled.div`
-  width: 100%;
-  height: 100%;
   display: flex;
+  justify-content: center;
   align-items: center;
-  justify-content: flex-end;
 
-  :hover {
-    cursor: pointer;
+  svg {
+    :hover {
+      cursor: pointer;
+    }
   }
 `;
 

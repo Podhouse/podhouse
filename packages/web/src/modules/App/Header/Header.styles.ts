@@ -22,10 +22,12 @@ export const HeaderContainer = styled.header`
   }
 `;
 
-export const LogoContainer = styled.h1`
+export const LogoContainer = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
 `;
