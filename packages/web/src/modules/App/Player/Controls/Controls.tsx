@@ -2,6 +2,7 @@ import React from "react";
 import { Play, Pause, RotateCcw, RotateCw } from "react-feather";
 
 import HorizontalSlider from "../../../../components/Slider/HorizontalSlider/HorizontalSlider";
+import Tooltip from "../../../../components/Tooltip/Tooltip";
 
 import {
   ControlsContainer,
@@ -20,21 +21,31 @@ const Controls: React.FC<ControlsProps> = ({ playing }) => {
   const onPlaying = () => {
     if (playing) {
       return (
-        <Pause size={30} color="#000" strokeWidth={1.5} style={iconStyle} />
+        <Tooltip title="Pause">
+          <Pause size={30} color="#000" strokeWidth={1.5} style={iconStyle} />
+        </Tooltip>
       );
     }
 
-    return <Play size={30} color="#000" strokeWidth={1.5} style={iconStyle} />;
+    return (
+      <Tooltip title="Play">
+        <Play size={30} color="#000" strokeWidth={1.5} style={iconStyle} />
+      </Tooltip>
+    );
   };
 
   return (
     <ControlsContainer>
       <ControlsButtonsContainer>
-        <RotateCw size={18} color="#000" style={iconStyle} />
+        <Tooltip title="-15">
+          <RotateCcw size={18} color="#000" style={iconStyle} />
+        </Tooltip>
 
         {onPlaying()}
 
-        <RotateCcw size={18} color="#000" style={iconStyle} />
+        <Tooltip title="+15">
+          <RotateCw size={18} color="#000" style={iconStyle} />
+        </Tooltip>
       </ControlsButtonsContainer>
 
       <ControlsSliderContainer>

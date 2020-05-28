@@ -1,4 +1,5 @@
 import React from "react";
+import { Provider as ReakitProvider } from "reakit";
 
 import App from "../modules/App/App";
 
@@ -12,7 +13,9 @@ interface ProviderProps {
 const Provider: React.FC<ProviderProps> = ({ children }) => (
   <AuthProvider>
     <SettingsProvider>
-      <App>{children}</App>
+      <ReakitProvider>
+        <App>{children}</App>
+      </ReakitProvider>
     </SettingsProvider>
   </AuthProvider>
 );

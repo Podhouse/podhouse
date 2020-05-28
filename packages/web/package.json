@@ -40,6 +40,7 @@
     "react-dom": "^16.13.1",
     "react-feather": "^2.0.8",
     "react-scroll-section": "^2.0.0",
+    "reakit": "^1.0.2",
     "rebass": "^4.0.7",
     "styled-components": "^5.1.0",
     "styled-system": "^5.1.5",

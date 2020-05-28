@@ -62,7 +62,7 @@ export const PodcastDetails = styled.div`
 export const PodcastEpisode = styled.h3`
   font-family: Inter;
   font-style: normal;
-  font-weight: 500;
+  font-weight: normal;
   font-size: 14px;
   line-height: 17px;
   color: ${({ theme }) => theme.colors.black};
@@ -76,6 +76,6 @@ export const PodcastName = styled.h1`
   font-weight: normal;
   font-size: 14px;
   line-height: 17px;
-  color: ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.colors.midGray};
   cursor: pointer;
 `;

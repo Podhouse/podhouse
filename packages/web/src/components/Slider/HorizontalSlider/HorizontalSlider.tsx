@@ -13,7 +13,7 @@ const HorizontalSlider = () => (
         background: "#EAEAEA",
       }}
       handleStyle={{
-        border: "1px solid rgba(65, 65, 65, 0.2)",
+        border: "1px solid rgba(65, 65, 65, 0.1)",
       }}
       trackStyle={{
         background: "#000000",
