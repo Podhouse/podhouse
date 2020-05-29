@@ -1,9 +1,5 @@
 import { styled } from "../../../system/theme";
 
-interface PodcastItemProps {
-  avatar: string;
-}
-
 export const PodcastItemContainer = styled.div`
   width: 100%;
   min-width: 50px;
@@ -19,19 +15,14 @@ export const PodcastItemContainer = styled.div`
   justify-items: flex-start;
 `;
 
-export const PodcastItemAvatar = styled.div<PodcastItemProps>`
+export const PodcastItemAvatar = styled.img`
   width: 140px;
   height: 140px;
-  background-image: url(${({ avatar }) => avatar});
-  background-size: cover;
   border-radius: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   cursor: pointer;
 `;
 
-export const PodcastItemTitle = styled.a`
+export const PodcastItemName = styled.a`
   font-family: Inter;
   font-style: normal;
   font-weight: 500;
@@ -50,21 +41,15 @@ export const PodcastItemTitle = styled.a`
   }
 `;
 
-export const PodcastItemSubTitle = styled.a`
+export const PodcastItemAuthor = styled.p`
   font-family: Inter;
   font-style: normal;
-  font-weight: 400;
+  font-weight: normal;
   font-size: 14px;
   line-height: 17px;
-  color: ${({ theme }) => theme.colors.strongestGray};
-  cursor: pointer;
-  text-decoration: none;
+  color: ${({ theme }) => theme.colors.midGray};
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-
-  &:hover {
-    color: ${({ theme }) => theme.colors.black};
-  }
 `;

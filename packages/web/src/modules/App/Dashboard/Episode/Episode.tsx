@@ -1,7 +1,5 @@
 import React from "react";
 import Scrollbars from "react-custom-scrollbars";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShare } from "@fortawesome/free-solid-svg-icons";
 
 import Button from "../../../../system/Button/Button";
 
@@ -10,12 +8,10 @@ import {
   EpisodeHeader,
   EpisodeAvatar,
   EpisodeDetailsContainer,
-  EpisodePageTitle,
   EpisodeName,
-  EpisodeProdName,
+  EpisodeAuthor,
   EpisodeDescription,
-  EpisodeButtonsContainer,
-  EpisodeShareButton,
+  EpisodeListenButtonContainer,
 } from "./Episode.styles";
 
 const avatar =
@@ -25,12 +21,13 @@ const Episode = () => (
   <Scrollbars universal autoHide autoHideTimeout={100} autoHideDuration={100}>
     <EpisodeContainer>
       <EpisodeHeader>
-        <EpisodeAvatar avatar={avatar} />
+        <EpisodeAvatar src={avatar} />
 
         <EpisodeDetailsContainer>
-          <EpisodePageTitle>EPISODE</EpisodePageTitle>
-          <EpisodeName>99% Invisible</EpisodeName>
-          <EpisodeProdName>NPR</EpisodeProdName>
+          <EpisodeName>
+            A Fantasy of Fashion: Articles of Interest #7
+          </EpisodeName>
+          <EpisodeAuthor href="/app/podcast/123">99% Invisible</EpisodeAuthor>
           <EpisodeDescription>
             Design is everywhere in our lives, perhaps most importantly in the
             places where we've just stopped noticing. 99% Invisible is a weekly
@@ -41,15 +38,11 @@ const Episode = () => (
           </EpisodeDescription>
         </EpisodeDetailsContainer>
 
-        <EpisodeButtonsContainer>
-          <Button type="button" width={200}>
+        <EpisodeListenButtonContainer>
+          <Button type="button" width={200} height={40}>
             Listen
           </Button>
-          <EpisodeShareButton>
-            <FontAwesomeIcon icon={faShare} size="1x" color="#000" />
-            Share
-          </EpisodeShareButton>
-        </EpisodeButtonsContainer>
+        </EpisodeListenButtonContainer>
       </EpisodeHeader>
     </EpisodeContainer>
   </Scrollbars>

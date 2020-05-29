@@ -2,7 +2,7 @@ import * as React from "react";
 import Head from "next/head";
 
 import Provider from "../../provider/index";
-import Browse from "../../modules/App/Dashboard/Browse/Browse";
+import Settings from "../../modules/App/Dashboard/Settings/Settings";
 
 const Page = () => (
   <div className="container">
@@ -12,7 +12,7 @@ const Page = () => (
     </Head>
 
     <Provider>
-      <Browse />
+      <Settings />
     </Provider>
   </div>
 );

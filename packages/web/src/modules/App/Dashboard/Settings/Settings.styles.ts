@@ -1,93 +1,69 @@
 import { styled } from "../../../../system/theme";
 
-export const SettingsRowContainer = styled.div`
+export const SettingsContainer = styled.div`
+  width: 100%;
+  max-width: 530px;
+  height: 100%;
+  align-self: center;
+  justify-self: center;
+  padding-top: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, max-content);
+  grid-row-gap: 50px;
+`;
+
+export const SettingsItemContainer = styled.div`
   width: 100%;
   height: 100%;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: max-content 1fr;
-  grid-row-gap: 20px;
+  grid-row-gap: 30px;
+  padding-bottom: 20px;
 `;
 
-export const SettingsRowHeader = styled.div`
+export const SettingsItemHeader = styled.div`
   width: 100%;
   height: auto;
   grid-column: 1 / 2;
   grid-row: 1 / 2;
   display: grid;
   grid-template-columns: 1fr;
-  grid-row-gap: 10px;
   grid-template-rows: max-content max-content;
+  grid-row-gap: 10px;
 `;
 
-export const SettingsRowHeaderTitle = styled.h1`
+export const SettingsItemHeaderTitle = styled.h1`
   font-family: Inter;
   font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 17px;
-  color: ${({ theme }) => theme.colors.strongestGray};
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  color: ${({ theme }) => theme.colors.black};
   align-self: center;
   justify-self: flex-start;
 `;
 
-export const SettingsRowBreakLine = styled.hr`
-  width: 100%;
-  height: 1px;
-  background-color: ${({ theme }) => theme.colors.lighestGray};
-  margin: 0;
-  border: none;
-`;
-
-export const SettingsRowSectionSingle = styled.div`
-  width: 100%;
-  height: 100%;
-  display: grid;
-  grid-template-rows: 1fr;
-  grid-template-columns: 1fr 120px;
-  grid-template-rows: 1fr;
-  grid-column-gap: 20px;
-
-  @media screen and (min-width: 800px) {
-    grid-template-columns: 1fr 180px;
-  }
-`;
-
-export const SettingsRowSectionMultiple = styled.div`
-  width: 100%;
-  height: auto;
-  display: grid;
-  grid-template-rows: repeat(auto-fill, max-content);
-  grid-template-columns: 1fr;
-  grid-row-gap: 20px;
-
-  @media screen and (min-width: 800px) {
-    grid-template-rows: repeat(auto-fill, max-content);
-    grid-template-columns: 1fr;
-  }
-`;
-
-export const SettingsRowText = styled.p`
+export const SettingsItemHeaderDescription = styled.p`
   font-family: Inter;
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
-  line-height: 17px;
-  color: ${({ theme }) => theme.colors.strongestGray};
+  line-height: 25px;
+  color: ${({ theme }) => theme.colors.midGray};
+  align-self: center;
+  justify-self: flex-start;
 `;
 
-export const SettingsFieldContainer = styled.div`
+export const SettingsItemContentContainer = styled.div`
   width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-export const SettingsToggleContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
+  height: auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(auto-fill, max-content);
+  grid-row-gap: 30px;
 `;

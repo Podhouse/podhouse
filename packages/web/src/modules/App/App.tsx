@@ -3,6 +3,7 @@ import React from "react";
 import Header from "./Header/Header";
 import Menu from "./Menu/Menu";
 import Player from "./Player/Player";
+import Dashboard from "./Dashboard/Dashboard";
 
 import AuthModal from "../../components/AuthModal/AuthModal";
 import SettingsModal from "../../components/SettingsModal/SettingsModal";
@@ -16,7 +17,7 @@ interface AppProps {
   children: React.ReactNode;
 }
 
-const App: React.FC<AppProps> = () => {
+const App: React.FC<AppProps> = ({ children }) => {
   const [auth, handleAuth, logoutAuth] = useAuthContext();
   const [settings, handleSettings] = useSettingsContext();
 
@@ -49,6 +50,7 @@ const App: React.FC<AppProps> = () => {
       {renderSettingsModal()}
 
       <AppContainer>
+        <Dashboard>{children}</Dashboard>
         <Header />
         <Player />
         <Menu />
