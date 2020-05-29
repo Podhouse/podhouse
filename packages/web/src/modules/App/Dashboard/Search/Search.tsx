@@ -9,21 +9,28 @@ const items = [
   {
     id: 1,
     name: "99% Invisible",
-    episode: "387 - The Worst Video Game Ever",
+    author: "Roman Mars",
     avatar:
       "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
   },
   {
     id: 2,
     name: "99% Invisible",
-    episode: "387 - The Worst Video Game Ever",
+    author: "Roman Mars",
     avatar:
       "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
   },
   {
     id: 3,
     name: "99% Invisible",
-    episode: "387 - The Worst Video Game Ever",
+    author: "Roman Mars",
+    avatar:
+      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
+  },
+  {
+    id: 4,
+    name: "99% Invisible",
+    author: "Roman Mars",
     avatar:
       "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
   },
