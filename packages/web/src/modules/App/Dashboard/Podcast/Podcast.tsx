@@ -3,6 +3,8 @@ import Scrollbars from "react-custom-scrollbars";
 
 import Button from "../../../../system/Button/Button";
 
+import EpisodeItem from "../../../../components/Podcast/EpisodeItem/EpisodeItem";
+
 import {
   PodcastContainer,
   PodcastHeader,
@@ -12,10 +14,20 @@ import {
   PodcastAuthor,
   PodcastDescription,
   PodcastSubscribeButtonContainer,
+  PodcastEpisodesContainer,
 } from "./Podcast.styles";
 
 const avatar =
   "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg";
+
+const episode = {
+  avatar,
+  name: "A Fantasy of Fashion: Articles of Interest #7",
+  author: "99% Invisible",
+  description:
+    "In the wake of World War II, the government of France commissioned its most prominent designers to create a collection of miniature fashion dolls. It might seem like an odd thing to fund, but the fantasy of high fashion inspired hope in postwar Paris. These dolls also...",
+  publishedDate: "May 12, 2020",
+};
 
 const Podcast = () => (
   <Scrollbars universal autoHide autoHideTimeout={100} autoHideDuration={100}>
@@ -42,6 +54,17 @@ const Podcast = () => (
           </Button>
         </PodcastSubscribeButtonContainer>
       </PodcastHeader>
+
+      <PodcastEpisodesContainer>
+        <EpisodeItem episode={episode} />
+        <EpisodeItem episode={episode} />
+        <EpisodeItem episode={episode} />
+        <EpisodeItem episode={episode} />
+        <EpisodeItem episode={episode} />
+        <EpisodeItem episode={episode} />
+        <EpisodeItem episode={episode} />
+        <EpisodeItem episode={episode} />
+      </PodcastEpisodesContainer>
     </PodcastContainer>
   </Scrollbars>
 );

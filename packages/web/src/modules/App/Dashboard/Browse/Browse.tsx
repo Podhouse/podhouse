@@ -2,7 +2,6 @@ import React from "react";
 import Scrollbars from "react-custom-scrollbars";
 
 import Row from "../../../../components/Row/Row";
-import Featured from "../../../../components/Featured/Featured";
 
 import { BrowseContainer } from "./Browse.styles";
 
@@ -40,7 +39,6 @@ const items = [
 const Browse: React.FC = () => (
   <Scrollbars universal autoHide autoHideTimeout={100} autoHideDuration={100}>
     <BrowseContainer>
-      <Featured />
       <Row title="Trending" items={items} />
     </BrowseContainer>
   </Scrollbars>

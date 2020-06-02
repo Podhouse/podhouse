@@ -2,7 +2,6 @@ import React from "react";
 import { Volume2, VolumeX } from "react-feather";
 
 import HorizontalSlider from "../../../../components/Slider/HorizontalSlider/HorizontalSlider";
-import Tooltip from "../../../../components/Tooltip/Tooltip";
 
 import { VolumeContainer } from "./Volume.styles";
 
@@ -24,7 +23,7 @@ const Volume: React.FC<VolumeProps> = ({ volume, mute }) => {
 
   return (
     <VolumeContainer>
-      <Tooltip title="Mute">{onVolume()}</Tooltip>
+      {onVolume()}
 
       <HorizontalSlider />
     </VolumeContainer>

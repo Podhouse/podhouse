@@ -23,7 +23,7 @@ const PodcastItem: React.FC<PodcastItemProps> = ({ podcast }) => {
   return (
     <PodcastItemContainer>
       <PodcastItemAvatar src={avatar} alt={imageAlt} />
-      <PodcastItemName href="/app/podcast/123">{name}</PodcastItemName>
+      <PodcastItemName href="/app/episode/123">{name}</PodcastItemName>
       <PodcastItemAuthor>{author}</PodcastItemAuthor>
     </PodcastItemContainer>
   );

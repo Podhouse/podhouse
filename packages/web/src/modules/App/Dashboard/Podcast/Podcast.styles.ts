@@ -6,7 +6,7 @@ export const PodcastContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(2, max-content);
-  grid-row-gap: 20px;
+  grid-row-gap: 30px;
   padding: 30px 30px 0px 30px;
 
   @media screen and (min-width: 800px) {
@@ -162,4 +162,13 @@ export const PodcastItemsContainer = styled.div`
   @media screen and (min-width: 800px) {
     justify-content: flex-start;
   }
+`;
+
+export const PodcastEpisodesContainer = styled.div`
+  width: 100%;
+  height: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 140px);
+  grid-template-rows: repeat(auto-fill, max-content);
+  grid-gap: 20px;
 `;
