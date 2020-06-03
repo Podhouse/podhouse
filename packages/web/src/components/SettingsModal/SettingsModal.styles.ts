@@ -32,6 +32,10 @@ export const SettingsModalLinkContainer = styled.div`
   padding-left: 20px;
   cursor: pointer;
 
+  a {
+    text-decoration: none;
+  }
+
   &:hover {
     background: ${({ theme }) => theme.colors.lighestGray};
 

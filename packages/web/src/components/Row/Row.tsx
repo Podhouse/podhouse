@@ -13,7 +13,7 @@ import {
 interface Podcast {
   id: number;
   name: string;
-  episode: string;
+  author: string;
   avatar: string;
 }
 

@@ -56,6 +56,7 @@ const ResetPassword: React.FC = () => {
           name="newPassword"
           label="New password"
           placeholder="New password"
+          height={40}
           onChange={handleChange}
           onBlur={handleBlur}
           value={values.newPassword}
@@ -67,6 +68,7 @@ const ResetPassword: React.FC = () => {
           name="confirmNewPassword"
           label="Confirm new password"
           placeholder="Confirm new password"
+          height={40}
           onChange={handleChange}
           onBlur={handleBlur}
           value={values.confirmNewPassword}
@@ -77,6 +79,7 @@ const ResetPassword: React.FC = () => {
           type="submit"
           submitting={isSubmitting}
           onClick={() => send("SUCCESS")}
+          height={40}
         >
           Set new password
         </Button>

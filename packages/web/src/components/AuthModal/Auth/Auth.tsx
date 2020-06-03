@@ -1,14 +1,16 @@
 import * as React from "react";
 
-import { AuthContainer, AuthInsideContainer, XgruveTitle } from "./Auth.styles";
+import { AuthContainer, AuthInsideContainer } from "./Auth.styles";
+
+import LogoPodhouseDark from "../../../../public/logo/logo-podhouse-medium-dark.svg";
 
 interface AuthProps {
-  children: any;
+  children: React.ReactNode;
 }
 
 const Auth: React.FC<AuthProps> = ({ children }) => (
   <AuthContainer>
-    <XgruveTitle>xgruve</XgruveTitle>
+    <LogoPodhouseDark />
 
     <AuthInsideContainer>{children}</AuthInsideContainer>
   </AuthContainer>

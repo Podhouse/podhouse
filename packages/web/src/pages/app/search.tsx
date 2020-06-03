@@ -1,11 +1,8 @@
 import * as React from "react";
 import Head from "next/head";
 
-import App from "../../components/App/App";
-import Search from "../../modules/App/Search/Search";
-
-import { AuthProvider } from "../../context/Auth/Auth";
-import { SettingsProvider } from "../../context/Settings/Settings";
+import Provider from "../../provider/index";
+import Search from "../../modules/App/Dashboard/Search/Search";
 
 const Page = () => (
   <div className="container">
@@ -14,13 +11,9 @@ const Page = () => (
       <link rel="icon" href="/favicon.ico" />
     </Head>
 
-    <AuthProvider>
-      <SettingsProvider>
-        <App>
-          <Search />
-        </App>
-      </SettingsProvider>
-    </AuthProvider>
+    <Provider>
+      <Search />
+    </Provider>
   </div>
 );
 

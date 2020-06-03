@@ -3,26 +3,28 @@ import React from "react";
 import {
   PodcastItemContainer,
   PodcastItemAvatar,
-  PodcastItemTitle,
-  PodcastItemSubTitle,
+  PodcastItemName,
+  PodcastItemAuthor,
 } from "./PodcastItem.styles";
 
 interface PodcastItemProps {
   podcast: {
     name: string;
-    episode: string;
+    author: string;
     avatar: string;
   };
 }
 
 const PodcastItem: React.FC<PodcastItemProps> = ({ podcast }) => {
-  const { name, episode, avatar } = podcast;
+  const { name, author, avatar } = podcast;
+
+  const imageAlt = `${name} avatar`;
 
   return (
     <PodcastItemContainer>
-      <PodcastItemAvatar avatar={avatar} />
-      <PodcastItemTitle href="/app/episode/123">{episode}</PodcastItemTitle>
-      <PodcastItemSubTitle href="/app/podcast/123">{name}</PodcastItemSubTitle>
+      <PodcastItemAvatar src={avatar} alt={imageAlt} />
+      <PodcastItemName href="/app/podcast/123">{name}</PodcastItemName>
+      <PodcastItemAuthor>{author}</PodcastItemAuthor>
     </PodcastItemContainer>
   );
 };

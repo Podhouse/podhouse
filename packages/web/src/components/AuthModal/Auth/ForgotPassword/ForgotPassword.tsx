@@ -7,7 +7,12 @@ import Button from "../../../../system/Button/Button";
 
 import { useAuthContext } from "../../../../context/Auth/Auth";
 
-import { AuthTextContainer, AuthText, AuthFormContainer } from "../Auth.styles";
+import {
+  AuthTextContainer,
+  AuthText,
+  AuthFormContainer,
+  AuthParagraphLink,
+} from "../Auth.styles";
 
 interface ForgotPasswordFormProps {
   email: string;
@@ -53,17 +58,20 @@ const ForgotPassword: React.FC = () => {
           name="email"
           label="Email"
           placeholder="Email"
+          height={40}
           onChange={handleChange}
           onBlur={handleBlur}
           value={values.email}
           error={errors.email}
         />
 
-        <Button type="submit" submitting={isSubmitting}>
+        <Button type="submit" submitting={isSubmitting} height={40}>
           Send reset link
         </Button>
 
-        <p onClick={() => send("SIGNIN")}>Back to Sign In</p>
+        <AuthParagraphLink onClick={() => send("SIGNIN")}>
+          Back to Sign In
+        </AuthParagraphLink>
       </AuthFormContainer>
     </>
   );

@@ -1480,6 +1480,11 @@
     "@nodelib/fs.scandir" "2.1.3"
     fastq "^1.6.0"
 
+"@popperjs/core@^2.4.0":
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.4.0.tgz#0e1bdf8d021e7ea58affade33d9d607e11365915"
+  integrity sha512-NMrDy6EWh9TPdSRiHmHH2ye1v5U0gBD7pRYwSwJvomx7Bm4GG04vu63dYiVzebLOx2obPpJugew06xVP0Nk7hA==
+
 "@rollup/plugin-node-resolve@^7.1.1":
   version "7.1.3"
   resolved "https://registry.yarnpkg.com/@rollup/plugin-node-resolve/-/plugin-node-resolve-7.1.3.tgz#80de384edfbd7bfc9101164910f86078151a3eca"
@@ -3195,6 +3200,11 @@ bn.js@^5.1.1:
   version "5.1.2"
   resolved "https://registry.yarnpkg.com/bn.js/-/bn.js-5.1.2.tgz#c9686902d3c9a27729f43ab10f9d79c2004da7b0"
   integrity sha512-40rZaf3bUNKTVYu9sIeeEGOg7g14Yvnj9kH7b50EiwX0Q7A6umbvfI5tvHaOERH0XigqKkfLkFQxzb4e6CIXnA==
+
+body-scroll-lock@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/body-scroll-lock/-/body-scroll-lock-3.0.2.tgz#97df9bb3b17a0140c4a09b3568d146ae9af6b981"
+  integrity sha512-PtItUun94iIupKry8J/h6SfRCLWZnly77KbPsTSKALmxfR282L8R0Ujkv7bydSZvLxAJS4sBJ3y/E6X8gYkGrQ==
 
 boolbase@^1.0.0, boolbase@~1.0.0:
   version "1.0.0"
@@ -6186,6 +6196,11 @@ hosted-git-info@^2.1.4:
   version "2.8.8"
   resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-2.8.8.tgz#7539bd4bc1e0e0a895815a2e0262420b12858488"
   integrity sha512-f/wzC2QaWBs7t9IYqB4T3sR1xviIViXJRJTWBlx2Gf3g0Xi5vI7Yy4koXQ1c9OYDGHN9sBy1DQ2AB8fqZBWhUg==
+
+howler@^2.1.2, howler@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/howler/-/howler-2.2.0.tgz#0e2c780997ae65ab9a1a186333031beac1c63c6b"
+  integrity sha512-sGPkrAQy7jh5mNDbkRNG0F82R2HFDYNsQXBcX4smXQT0y0F4UMsa/+jXaGwWvcrajWr2tDB7JUkH7G5qSnuIyQ==
 
 hpkp@2.0.0:
   version "2.0.0"
@@ -9993,6 +10008,13 @@ react-scroll-section@^2.0.0:
     debounce "^1.2.0"
     prop-types "^15.6.2"
 
+react-use-audio-player@^0.0.17:
+  version "0.0.17"
+  resolved "https://registry.yarnpkg.com/react-use-audio-player/-/react-use-audio-player-0.0.17.tgz#76c9210b783c14d9884cdc3f3885040ed9764607"
+  integrity sha512-qv1tKrEMAxokjlxa43Nwp/Ihj3aXtA5KvVexWhTadj5FuzcISuCSiFwA1gik2lR7xQP8Jf1D3jSQWjY8mpjpBw==
+  dependencies:
+    howler "^2.1.2"
+
 react@^16.13.1:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react/-/react-16.13.1.tgz#2e818822f1a9743122c063d6410d85c1e3afe48e"
@@ -10075,6 +10097,36 @@ readdirp@~3.4.0:
   integrity sha512-0xe001vZBnJEK+uKcj8qOhyAKPzIT+gStxWr3LCB0DwcXR5NZJ3IaC+yGnHCYzB/S7ov3m3EEbZI2zeNvX+hGQ==
   dependencies:
     picomatch "^2.2.1"
+
+reakit-system@^0.12.1:
+  version "0.12.1"
+  resolved "https://registry.yarnpkg.com/reakit-system/-/reakit-system-0.12.1.tgz#fc2f817f7c9159136d3f632181cad222aabe7c1f"
+  integrity sha512-92NRBxCHslIkME4y2Z5jPAOESiBbkOF2g0LE2FiPSzZwdJ9/geWfhP50y/WFAO1WIFChVREATSXqng1xhWGwwg==
+  dependencies:
+    reakit-utils "^0.12.0"
+
+reakit-utils@^0.12.0:
+  version "0.12.0"
+  resolved "https://registry.yarnpkg.com/reakit-utils/-/reakit-utils-0.12.0.tgz#4335553b1bfd0c421e552bf608b5560f47c4ab1f"
+  integrity sha512-B0KUjRDu0GFDTi+FQApm4gynJGn18DuDdgCtcUytkN/AIJdKGaqHJ6FpeE1zMr1KAAUzZKrRqq/x93MrcQtvfQ==
+
+reakit-warning@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/reakit-warning/-/reakit-warning-0.3.0.tgz#24d860fd3911bfe034584173366ab0c5e193fc20"
+  integrity sha512-sJhgKQl6b4BZOo8jAXpneYFuAkx4wuftGl5KiIDAQZWg+e8YfB41QayjqM2eh0mQkG13hbc4pBOAyR5oFZxK0w==
+  dependencies:
+    reakit-utils "^0.12.0"
+
+reakit@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/reakit/-/reakit-1.0.2.tgz#ff879f63a47b4d61051f8e991b187f14c8fc391e"
+  integrity sha512-l1yvXm9sjVGljsVxoPoSOWwsZWVMJZI7nWEgY+HqzPcsVH483F64oLamj21uCAbwpxfaEkQ/hS5g9RAbdfGEog==
+  dependencies:
+    "@popperjs/core" "^2.4.0"
+    body-scroll-lock "^3.0.2"
+    reakit-system "^0.12.1"
+    reakit-utils "^0.12.0"
+    reakit-warning "^0.3.0"
 
 rebass@^4.0.7:
   version "4.0.7"
@@ -10215,6 +10267,11 @@ regjsparser@^0.6.4:
   integrity sha512-64O87/dPDgfk8/RQqC4gkZoGyyWFIEUTTh80CU6CWuK5vkCGyekIx+oKcEIYtP/RAxSQltCZHCNu/mdd7fqlJw==
   dependencies:
     jsesc "~0.5.0"
+
+rehowl@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/rehowl/-/rehowl-0.6.0.tgz#52a9c3c0de65a025a9a90ddb196ae75114733974"
+  integrity sha512-dBVrMe3fHt3omsMnHcvZltVh4V/xY33CamYTVowSPpuq63t5wlKSGMXYO7qdH8Ht723qdBvnZYouwT1B/JF6Og==
 
 remove-trailing-separator@^1.0.1:
   version "1.1.0"

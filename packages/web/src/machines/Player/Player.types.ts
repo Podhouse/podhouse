@@ -1,18 +1,28 @@
-export type AuthContext = {};
+export type PlayerContext = {
+  name: string;
+  episode: string;
+  avatar: string;
+  duration: string;
+};
 
-export type AuthStateSchema = {
+export type PlayerStateSchema = {
   states: {
-    idle: {};
-    open: {};
     loading: {};
-    loggedIn: {};
+    ready: {
+      states: {
+        playing: {};
+        paused: {};
+        ended: {};
+      };
+    };
+    error: {};
   };
 };
 
-export type AuthEvent =
-  | { type: "OPEN" }
-  | { type: "CLOSE" }
-  | { type: "SUBMIT" }
-  | { type: "SUCCESS" }
+export type PlayerEvent =
+  | { type: "LOADED" }
   | { type: "ERROR" }
-  | { type: "LOGOUT" };
+  | { type: "PLAY" }
+  | { type: "PAUSE" }
+  | { type: "END" }
+  | { type: "RETRY" };

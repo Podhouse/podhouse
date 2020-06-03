@@ -14,12 +14,12 @@ import {
 const Header = () => {
   const router = useRouter();
 
-  const handleStart = e => {
+  const handleStart = (e) => {
     e.preventDefault();
     router.push("/app");
   };
 
-  const handleHome = e => {
+  const handleHome = (e) => {
     e.preventDefault();
     router.push("/");
   };

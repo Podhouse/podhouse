@@ -25,9 +25,13 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
   return (
     <SettingsModalContainer ref={ref}>
       <SettingsModalLinkContainer>
-        <Link href="/app/settings/account" passHref>
-          <SettingsModalLink>Account</SettingsModalLink>
-        </Link>
+        <a
+          href="mailto:leonardomso11@gmail.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <SettingsModalLink>Feedback</SettingsModalLink>
+        </a>
       </SettingsModalLinkContainer>
 
       <SettingsModalLinkContainer>

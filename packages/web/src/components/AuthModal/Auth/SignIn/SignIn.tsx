@@ -3,7 +3,6 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 
 import Button from "../../../../system/Button/Button";
-import Checkbox from "../../../../system/Checkbox/Checkbox";
 import Input from "../../../../system/Input/Input";
 
 import { useAuthContext } from "../../../../context/Auth/Auth";
@@ -12,9 +11,7 @@ import {
   AuthTextContainer,
   AuthText,
   AuthFormContainer,
-  AuthCheckboxPasswordContainer,
-  AuthCheckboxContainer,
-  AuthLinkContainer,
+  AuthParagraphLink,
 } from "../Auth.styles";
 
 interface SignInFormProps {
@@ -49,7 +46,7 @@ const SignIn: React.FC = () => {
   return (
     <>
       <AuthTextContainer>
-        <AuthText>Sign in to listen to your favorite podcasts</AuthText>
+        <AuthText>The best way to listen to your favorite podcasts</AuthText>
       </AuthTextContainer>
 
       <AuthFormContainer onSubmit={handleSubmit}>
@@ -58,6 +55,7 @@ const SignIn: React.FC = () => {
           name="email"
           label="Email"
           placeholder="Email"
+          height={40}
           onChange={handleChange}
           onBlur={handleBlur}
           value={values.email}
@@ -69,29 +67,24 @@ const SignIn: React.FC = () => {
           name="password"
           label="Password"
           placeholder="Password"
+          height={40}
           onChange={handleChange}
           onBlur={handleBlur}
           value={values.password}
           error={errors.password}
         />
 
-        <AuthCheckboxPasswordContainer>
-          <AuthCheckboxContainer>
-            <Checkbox label="Stay signed in" checked={false} />
-          </AuthCheckboxContainer>
-
-          <AuthLinkContainer>
-            <p onClick={() => send("FORGOT")}>Forgot your password?</p>
-          </AuthLinkContainer>
-        </AuthCheckboxPasswordContainer>
-
-        <Button type="submit" submitting={isSubmitting}>
+        <Button type="submit" submitting={isSubmitting} height={40}>
           Sign in
         </Button>
 
-        <p onClick={() => send("SIGNUP")}>
+        <AuthParagraphLink onClick={() => send("SIGNUP")}>
           Don't have an account? Create account
-        </p>
+        </AuthParagraphLink>
+
+        <AuthParagraphLink onClick={() => send("FORGOT")}>
+          Forgot your password?
+        </AuthParagraphLink>
       </AuthFormContainer>
     </>
   );
