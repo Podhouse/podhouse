@@ -3,12 +3,25 @@ import Slider from "rc-slider";
 
 import { HorizontalSliderContainer } from "./HorizontalSlider.styles";
 
-const HorizontalSlider = () => (
+interface HorizontalSliderProps {
+  min: number;
+  max: number;
+  onChange: (event: any) => void;
+  defaultValue: number;
+}
+
+const HorizontalSlider: React.FC<HorizontalSliderProps> = ({
+  min,
+  max,
+  onChange,
+  defaultValue,
+}) => (
   <HorizontalSliderContainer>
     <Slider
-      min={0}
-      max={100}
-      defaultValue={0}
+      min={min}
+      max={max}
+      defaultValue={defaultValue}
+      onChange={onChange}
       railStyle={{
         background: "#EAEAEA",
       }}

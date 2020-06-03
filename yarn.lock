@@ -6197,6 +6197,11 @@ hosted-git-info@^2.1.4:
   resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-2.8.8.tgz#7539bd4bc1e0e0a895815a2e0262420b12858488"
   integrity sha512-f/wzC2QaWBs7t9IYqB4T3sR1xviIViXJRJTWBlx2Gf3g0Xi5vI7Yy4koXQ1c9OYDGHN9sBy1DQ2AB8fqZBWhUg==
 
+howler@^2.1.2, howler@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/howler/-/howler-2.2.0.tgz#0e2c780997ae65ab9a1a186333031beac1c63c6b"
+  integrity sha512-sGPkrAQy7jh5mNDbkRNG0F82R2HFDYNsQXBcX4smXQT0y0F4UMsa/+jXaGwWvcrajWr2tDB7JUkH7G5qSnuIyQ==
+
 hpkp@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/hpkp/-/hpkp-2.0.0.tgz#10e142264e76215a5d30c44ec43de64dee6d1672"
@@ -10003,6 +10008,13 @@ react-scroll-section@^2.0.0:
     debounce "^1.2.0"
     prop-types "^15.6.2"
 
+react-use-audio-player@^0.0.17:
+  version "0.0.17"
+  resolved "https://registry.yarnpkg.com/react-use-audio-player/-/react-use-audio-player-0.0.17.tgz#76c9210b783c14d9884cdc3f3885040ed9764607"
+  integrity sha512-qv1tKrEMAxokjlxa43Nwp/Ihj3aXtA5KvVexWhTadj5FuzcISuCSiFwA1gik2lR7xQP8Jf1D3jSQWjY8mpjpBw==
+  dependencies:
+    howler "^2.1.2"
+
 react@^16.13.1:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react/-/react-16.13.1.tgz#2e818822f1a9743122c063d6410d85c1e3afe48e"
@@ -10255,6 +10267,11 @@ regjsparser@^0.6.4:
   integrity sha512-64O87/dPDgfk8/RQqC4gkZoGyyWFIEUTTh80CU6CWuK5vkCGyekIx+oKcEIYtP/RAxSQltCZHCNu/mdd7fqlJw==
   dependencies:
     jsesc "~0.5.0"
+
+rehowl@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/rehowl/-/rehowl-0.6.0.tgz#52a9c3c0de65a025a9a90ddb196ae75114733974"
+  integrity sha512-dBVrMe3fHt3omsMnHcvZltVh4V/xY33CamYTVowSPpuq63t5wlKSGMXYO7qdH8Ht723qdBvnZYouwT1B/JF6Og==
 
 remove-trailing-separator@^1.0.1:
   version "1.1.0"
