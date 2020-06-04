@@ -13,12 +13,11 @@ import {
 
 interface ControlsProps {
   playing: boolean;
-  togglePlayPause: () => void;
 }
 
 const iconStyle = { cursor: "pointer" };
 
-const Controls: React.FC<ControlsProps> = ({ playing, togglePlayPause }) => {
+const Controls: React.FC<ControlsProps> = ({ playing }) => {
   const onPlaying = () => {
     if (playing) {
       return (
@@ -28,7 +27,7 @@ const Controls: React.FC<ControlsProps> = ({ playing, togglePlayPause }) => {
             color="#000"
             strokeWidth={1.5}
             style={iconStyle}
-            onClick={togglePlayPause}
+            onClick={() => {}}
           />
         </Tooltip>
       );
@@ -41,7 +40,7 @@ const Controls: React.FC<ControlsProps> = ({ playing, togglePlayPause }) => {
           color="#000"
           strokeWidth={1.5}
           style={iconStyle}
-          onClick={togglePlayPause}
+          onClick={() => {}}
         />
       </Tooltip>
     );
