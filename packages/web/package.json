@@ -25,6 +25,7 @@
     "formik": "^2.1.4",
     "graphql": "^15.0.0",
     "howler": "^2.2.0",
+    "lint-staged": "^10.2.6",
     "next": "^9.4.2",
     "next-compose-plugins": "^2.2.0",
     "next-ga": "^2.3.4",
@@ -42,6 +43,7 @@
     "styled-components": "^5.1.0",
     "styled-system": "^5.1.5",
     "theme-ui": "^0.3.1",
+    "typescript": "^3.9.3",
     "xstate": "^4.10.0",
     "yup": "^0.29.0"
   },

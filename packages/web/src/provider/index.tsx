@@ -1,5 +1,4 @@
 import React from "react";
-import { AudioPlayerProvider } from "react-use-audio-player";
 
 import App from "../modules/App/App";
 
@@ -11,13 +10,11 @@ interface ProviderProps {
 }
 
 const Provider: React.FC<ProviderProps> = ({ children }) => (
-  <AudioPlayerProvider>
-    <AuthProvider>
-      <SettingsProvider>
-        <App>{children}</App>
-      </SettingsProvider>
-    </AuthProvider>
-  </AudioPlayerProvider>
+  <AuthProvider>
+    <SettingsProvider>
+      <App>{children}</App>
+    </SettingsProvider>
+  </AuthProvider>
 );
 
 export default Provider;
