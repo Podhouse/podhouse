@@ -1,36 +1,50 @@
 import React from "react";
-import Slider from "rc-slider";
+import { Range } from "react-range";
 
 import { HorizontalSliderContainer } from "./HorizontalSlider.styles";
 
 interface HorizontalSliderProps {
-  min: number;
   max: number;
+  value: number[];
   onChange: (event: any) => void;
-  defaultValue: number;
 }
 
 const HorizontalSlider: React.FC<HorizontalSliderProps> = ({
-  min,
   max,
+  value,
   onChange,
-  defaultValue,
 }) => (
   <HorizontalSliderContainer>
-    <Slider
-      min={min}
-      max={max}
-      defaultValue={defaultValue}
+    <Range
+      step={0.1}
+      min={0}
+      max={max !== 0 ? max : 100}
+      values={value}
       onChange={onChange}
-      railStyle={{
-        background: "#EAEAEA",
-      }}
-      handleStyle={{
-        border: "1px solid rgba(65, 65, 65, 0.1)",
-      }}
-      trackStyle={{
-        background: "#000000",
-      }}
+      renderTrack={({ props, children }) => (
+        <div
+          {...props}
+          style={{
+            ...props.style,
+            height: "6px",
+            width: "100%",
+            backgroundColor: "#ccc",
+          }}
+        >
+          {children}
+        </div>
+      )}
+      renderThumb={({ props }) => (
+        <div
+          {...props}
+          style={{
+            ...props.style,
+            height: "42px",
+            width: "42px",
+            backgroundColor: "#999",
+          }}
+        />
+      )}
     />
   </HorizontalSliderContainer>
 );

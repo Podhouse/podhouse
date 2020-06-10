@@ -1,9 +1,6 @@
 import React from "react";
 import { Play, Pause, RotateCcw, RotateCw } from "react-feather";
 
-import HorizontalSlider from "../../../../components/Slider/HorizontalSlider/HorizontalSlider";
-import Tooltip from "../../../../components/Tooltip/Tooltip";
-
 import {
   ControlsContainer,
   ControlsButtonsContainer,
@@ -13,64 +10,68 @@ import {
 
 interface ControlsProps {
   playing: boolean;
+  seek: number;
+  duration: number;
+  onPlay: () => void;
+  onPause: () => void;
+  onSeek: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const iconStyle = { cursor: "pointer" };
 
-const Controls: React.FC<ControlsProps> = ({ playing }) => {
+const Controls: React.FC<ControlsProps> = ({
+  playing,
+  seek,
+  duration,
+  onPlay,
+  onPause,
+  onSeek,
+}) => {
   const onPlaying = () => {
     if (playing) {
       return (
-        <Tooltip title="Pause">
-          <Pause
-            size={30}
-            color="#000"
-            strokeWidth={1.5}
-            style={iconStyle}
-            onClick={() => {}}
-          />
-        </Tooltip>
-      );
-    }
-
-    return (
-      <Tooltip title="Play">
-        <Play
+        <Pause
           size={30}
           color="#000"
           strokeWidth={1.5}
           style={iconStyle}
-          onClick={() => {}}
+          onClick={onPause}
         />
-      </Tooltip>
+      );
+    }
+
+    return (
+      <Play
+        size={30}
+        color="#000"
+        strokeWidth={1.5}
+        style={iconStyle}
+        onClick={onPlay}
+      />
     );
   };
-
-  const handleChange = () => {};
 
   return (
     <ControlsContainer>
       <ControlsButtonsContainer>
-        <Tooltip title="-15">
-          <RotateCcw size={18} color="#000" style={iconStyle} />
-        </Tooltip>
+        <RotateCcw size={18} color="#000" style={iconStyle} />
 
         {onPlaying()}
 
-        <Tooltip title="+15">
-          <RotateCw size={18} color="#000" style={iconStyle} />
-        </Tooltip>
+        <RotateCw size={18} color="#000" style={iconStyle} />
       </ControlsButtonsContainer>
 
       <ControlsSliderContainer>
-        <ControlsTime>28:21</ControlsTime>
-        <HorizontalSlider
+        <ControlsTime>{seek}</ControlsTime>
+        <input
+          type="range"
           min={0}
-          max={100}
-          onChange={handleChange}
-          defaultValue={100}
+          max={duration}
+          value={seek}
+          step={0.1}
+          onChange={onSeek}
         />
-        <ControlsTime>1:27:17</ControlsTime>
+        <ControlsTime>{duration}</ControlsTime>
       </ControlsSliderContainer>
     </ControlsContainer>
   );

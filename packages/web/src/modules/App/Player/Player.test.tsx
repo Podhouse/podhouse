@@ -1,3 +1,4 @@
+import React from "react";
 import { render } from "@testing-library/react";
 import { ThemeProvider } from "styled-components";
 
@@ -17,8 +18,15 @@ const currentPodcast = {
 const withTheme = render(
   <ThemeProvider theme={theme}>
     <Podcast currentPodcast={currentPodcast} />
-    <Controls playing={false} />
-    <Volume volume={100} mute={false} />
+    <Controls
+      playing={false}
+      seek={0}
+      duration={0}
+      onPlay={() => {}}
+      onPause={() => {}}
+      onSeek={() => {}}
+    />
+    <Volume volume={1.0} muted={false} onVolume={() => {}} onMute={() => {}} />
   </ThemeProvider>,
 );
 

@@ -1,4 +1,5 @@
 import React from "react";
+import { RehawkProvider } from "rehawk";
 
 import App from "../modules/App/App";
 
@@ -10,11 +11,13 @@ interface ProviderProps {
 }
 
 const Provider: React.FC<ProviderProps> = ({ children }) => (
-  <AuthProvider>
-    <SettingsProvider>
-      <App>{children}</App>
-    </SettingsProvider>
-  </AuthProvider>
+  <RehawkProvider>
+    <AuthProvider>
+      <SettingsProvider>
+        <App>{children}</App>
+      </SettingsProvider>
+    </AuthProvider>
+  </RehawkProvider>
 );
 
 export default Provider;
