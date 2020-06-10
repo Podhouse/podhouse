@@ -19,11 +19,6 @@
     "upgrade": "yarn upgrade-interactive --latest"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.28",
-    "@fortawesome/free-solid-svg-icons": "^5.13.0",
-    "@fortawesome/react-fontawesome": "^0.1.9",
-    "@sentry/browser": "^5.15.5",
-    "@sentry/typescript": "^5.15.5",
     "@xstate/react": "^0.8.1",
     "@xstate/test": "^0.4.0",
     "@zeit/next-source-maps": "^0.0.3",
@@ -41,10 +36,9 @@
     "react-dom": "^16.13.1",
     "react-feather": "^2.0.8",
     "react-scroll-section": "^2.0.0",
-    "react-use-audio-player": "^0.0.17",
     "reakit": "^1.0.2",
     "rebass": "^4.0.7",
-    "rehowl": "^0.6.0",
+    "rehawk": "^0.1.1",
     "styled-components": "^5.1.0",
     "styled-system": "^5.1.5",
     "theme-ui": "^0.3.1",
