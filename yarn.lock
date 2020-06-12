@@ -6159,11 +6159,6 @@ hosted-git-info@^2.1.4:
   resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-2.8.8.tgz#7539bd4bc1e0e0a895815a2e0262420b12858488"
   integrity sha512-f/wzC2QaWBs7t9IYqB4T3sR1xviIViXJRJTWBlx2Gf3g0Xi5vI7Yy4koXQ1c9OYDGHN9sBy1DQ2AB8fqZBWhUg==
 
-howler@^2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/howler/-/howler-2.2.0.tgz#0e2c780997ae65ab9a1a186333031beac1c63c6b"
-  integrity sha512-sGPkrAQy7jh5mNDbkRNG0F82R2HFDYNsQXBcX4smXQT0y0F4UMsa/+jXaGwWvcrajWr2tDB7JUkH7G5qSnuIyQ==
-
 hpkp@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/hpkp/-/hpkp-2.0.0.tgz#10e142264e76215a5d30c44ec43de64dee6d1672"
@@ -10140,12 +10135,10 @@ regjsparser@^0.6.4:
   dependencies:
     jsesc "~0.5.0"
 
-rehawk@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/rehawk/-/rehawk-0.1.1.tgz#c968c677fea323a88f3879706863849f35dce48e"
-  integrity sha512-4hzL5Pit+wgVgGWa2VSRX0yhXb14AmozHZLwjzEPotQuAOdyT0dx1bT79/l0phaDhlVbA5HE6RkOfisbzC4Niw==
-  dependencies:
-    howler "^2.2.0"
+rehawk@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/rehawk/-/rehawk-0.1.2.tgz#7be336592bb025b227bade83c767f34245228daa"
+  integrity sha512-Qb5ykKDiKB2H0zPVPtPIRLgLHAibyyIX8O99kcSRpS7leJJqYYppT6UzNx9/yoNQHJpeECoFUacG3ItwGRep1w==
 
 remove-trailing-separator@^1.0.1:
   version "1.1.0"

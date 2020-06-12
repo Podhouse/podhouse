@@ -1,51 +1,123 @@
-import { Machine } from "xstate";
+import { Machine, assign } from "xstate";
 
-import { PlayerContext, PlayerStateSchema, PlayerEvent } from "./Player.types";
+import { 
+  PlayerMachineContext, 
+  PlayerMachineState, 
+  PlayerMachineEvents,
+  PlayerOnReadyEvent,
+  PlayerOnErrorEvent
+} from "./Player.types";
 
-const Player = Machine<PlayerContext, PlayerStateSchema, PlayerEvent>({
+const Player = Machine<PlayerMachineContext, PlayerMachineState, PlayerMachineEvents>({
   id: "player",
   initial: "loading",
   context: {
     name: null,
     episode: null,
     avatar: null,
-    duration: null,
+    error: null,
   },
   states: {
     loading: {
       on: {
-        LOADED: "ready",
-        ERROR: "error",
+        READY: {
+          target: 'ready',
+          actions: 'onReady',
+        },
+        ERROR: {
+          target: 'error',
+          actions: 'onError',
+        },
       },
     },
     ready: {
-      initial: "playing",
+      initial: 'idle',
       states: {
+        idle: {
+          on: {
+            PLAY: 'playing',
+            MUTE: {
+              target: '',
+              actions: 'onMute',
+            },
+            LOOP: {
+              target: '',
+              actions: 'onLoop',
+            },
+          },
+        },
         playing: {
           on: {
-            PAUSE: "paused",
-            END: "ended",
+            PAUSE: 'paused',
+            STOP: 'stopped',
+            MUTE: {
+              target: '',
+              actions: 'onMute',
+            },
+            LOOP: {
+              target: '',
+              actions: 'onLoop',
+            },
+            END: 'ended',
+            ERROR: {
+              target: 'error',
+              actions: 'onError',
+            },
           },
         },
         paused: {
           on: {
-            PLAY: "playing",
-            END: "ended",
+            PLAY: 'playing',
+            STOP: 'stopped',
+            MUTE: {
+              target: '',
+              actions: 'onMute',
+            },
+            LOOP: {
+              target: '',
+              actions: 'onLoop',
+            },
+            END: 'ended',
+          },
+        },
+        stopped: {
+          on: {
+            PLAY: 'playing',
+            MUTE: {
+              target: '',
+              actions: 'onMute',
+            },
+            LOOP: {
+              target: '',
+              actions: 'onLoop',
+            },
           },
         },
         ended: {
           on: {
-            RETRY: "playing",
+            RETRY: 'idle',
           },
+        },
+        error: {
+          type: 'final',
         },
       },
     },
     error: {
-      on: {
-        RETRY: "loading",
-      },
+      type: 'final',
+    }
+  }
+  }, {
+    actions: {
+      onError: assign<PlayerMachineContext, any>({
+        error: (_, event) => (event as PlayerOnErrorEvent).error,
+      }),
+      onReady: assign<PlayerMachineContext, any>({
+        name: (_, event) => (event as PlayerOnReadyEvent).name,
+        episode: (_, event) => (event as PlayerOnReadyEvent).episode,
+        avatar: (_, event) => (event as PlayerOnReadyEvent).avatar,
+      })
     },
-  },
 });
 
 export default Player;

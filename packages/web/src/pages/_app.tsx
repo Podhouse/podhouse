@@ -2,8 +2,6 @@ import * as React from "react";
 import App from "next/app";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 
-import "rc-slider/assets/index.css";
-
 import { theme } from "../system/theme";
 import reset from "../system/reset";
 
