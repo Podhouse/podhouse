@@ -9,6 +9,7 @@ import {
 } from "./Podcast.styles";
 
 interface PodcastProps {
+  ready: boolean;
   currentPodcast: {
     avatar: string;
     name: string;
@@ -16,23 +17,29 @@ interface PodcastProps {
   };
 }
 
-const Podcast: React.FC<PodcastProps> = ({ currentPodcast }) => {
+const Podcast: React.FC<PodcastProps> = ({ ready, currentPodcast }) => {
   const { avatar, name, episode } = currentPodcast;
 
   const redirectPodcast = () => {};
 
   const redirectEpisode = () => {};
 
-  return (
-    <PodcastContainer>
-      <PodcastAvatar avatar={avatar} />
+  const onReady = () => {
+    if (!ready) return null;
 
-      <PodcastDetails>
-        <PodcastEpisode onClick={redirectEpisode}>{episode}</PodcastEpisode>
-        <PodcastName onClick={redirectPodcast}>{name}</PodcastName>
-      </PodcastDetails>
-    </PodcastContainer>
-  );
+    return (
+      <PodcastContainer>
+        <PodcastAvatar avatar={avatar} />
+
+        <PodcastDetails>
+          <PodcastEpisode onClick={redirectEpisode}>{episode}</PodcastEpisode>
+          <PodcastName onClick={redirectPodcast}>{name}</PodcastName>
+        </PodcastDetails>
+      </PodcastContainer>
+    )
+  }
+
+  return onReady();
 };
 
 export default Podcast;

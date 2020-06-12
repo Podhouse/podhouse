@@ -11,13 +11,14 @@ import { VolumeContainer } from "./Volume.styles";
 const iconStyle = { cursor: "pointer" };
 
 interface VolumeProps {
+  ready: boolean;
   volume: number;
   muted: boolean;
   onVolume: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onMute: () => void;
 }
 
-const Volume: React.FC<VolumeProps> = ({ volume, muted, onVolume, onMute }) => {
+const Volume: React.FC<VolumeProps> = ({ ready, volume, muted, onVolume, onMute }) => {
   const renderVolume = () => {
     if (volume === 0 || muted) {
       return (
@@ -49,19 +50,25 @@ const Volume: React.FC<VolumeProps> = ({ volume, muted, onVolume, onMute }) => {
     );
   };
 
-  return (
-    <VolumeContainer>
-      {renderVolume()}
-      <input
-        type="range"
-        min={0}
-        max={1}
-        value={volume}
-        step={0.1}
-        onChange={onVolume}
-      />
-    </VolumeContainer>
-  );
+  const onReady = () => {
+    if (!ready) return null;
+
+    return (
+      <VolumeContainer>
+        {renderVolume()}
+        <input
+          type="range"
+          min={0}
+          max={1}
+          value={volume}
+          step={0.1}
+          onChange={onVolume}
+        />
+      </VolumeContainer>
+    )
+  }
+
+  return onReady();
 };
 
 export default Volume;

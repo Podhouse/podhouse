@@ -8,7 +8,10 @@ import {
   ControlsTime,
 } from "./Controls.styles";
 
+import formatTime from "../../../../utils/formatTime";
+
 interface ControlsProps {
+  ready: boolean;
   playing: boolean;
   seek: number;
   duration: number;
@@ -20,6 +23,7 @@ interface ControlsProps {
 const iconStyle = { cursor: "pointer" };
 
 const Controls: React.FC<ControlsProps> = ({
+  ready,
   playing,
   seek,
   duration,
@@ -51,30 +55,36 @@ const Controls: React.FC<ControlsProps> = ({
     );
   };
 
-  return (
-    <ControlsContainer>
-      <ControlsButtonsContainer>
-        <RotateCcw size={18} color="#000" style={iconStyle} />
+  const onReady = () => {
+    if (!ready) return null;
 
-        {onPlaying()}
+    return (
+      <ControlsContainer>
+        <ControlsButtonsContainer>
+          <RotateCcw size={18} color="#000" style={iconStyle} />
 
-        <RotateCw size={18} color="#000" style={iconStyle} />
-      </ControlsButtonsContainer>
+          {onPlaying()}
 
-      <ControlsSliderContainer>
-        <ControlsTime>{seek}</ControlsTime>
-        <input
-          type="range"
-          min={0}
-          max={duration}
-          value={seek}
-          step={0.1}
-          onChange={onSeek}
-        />
-        <ControlsTime>{duration}</ControlsTime>
-      </ControlsSliderContainer>
-    </ControlsContainer>
-  );
+          <RotateCw size={18} color="#000" style={iconStyle} />
+        </ControlsButtonsContainer>
+
+        <ControlsSliderContainer>
+          <ControlsTime>{formatTime(seek)}</ControlsTime>
+          <input
+            type="range"
+            min={0}
+            max={duration}
+            value={seek}
+            step={0.1}
+            onChange={onSeek}
+          />
+          <ControlsTime>{formatTime(duration)}</ControlsTime>
+        </ControlsSliderContainer>
+      </ControlsContainer>
+    )
+  }
+
+  return onReady();
 };
 
 export default Controls;

@@ -20,8 +20,6 @@ const currentPodcast = {
 const Player: React.FC = () => {
   const {
     ready,
-    loading,
-    error,
     playing,
     seek,
     duration,
@@ -34,18 +32,17 @@ const Player: React.FC = () => {
     onMute,
   } = useRehawk({
     src,
+    preload: true,
+    volume: 1.0,
+    rate: 1.0,
     autoplay: false,
-    html5: true,
   });
-
-  if (ready) console.log("ready!", ready);
-  if (loading) console.log("loading!", loading);
-  if (error) console.log("error!", error);
 
   return (
     <PlayerContainer>
-      <Podcast currentPodcast={currentPodcast} />
+      <Podcast ready={ready} currentPodcast={currentPodcast} />
       <Controls
+        ready={ready}
         playing={playing}
         seek={seek}
         duration={duration}
@@ -54,6 +51,7 @@ const Player: React.FC = () => {
         onSeek={onSeek}
       />
       <Volume
+        ready={ready}
         volume={volume}
         muted={muted}
         onVolume={onVolume}
