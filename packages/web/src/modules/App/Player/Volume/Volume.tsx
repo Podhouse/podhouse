@@ -8,6 +8,8 @@ import {
 
 import { VolumeContainer } from "./Volume.styles";
 
+import Slider from "../../../../components/Slider/Slider";
+
 const iconStyle = { cursor: "pointer" };
 
 interface VolumeProps {
@@ -56,8 +58,7 @@ const Volume: React.FC<VolumeProps> = ({ ready, volume, muted, onVolume, onMute 
     return (
       <VolumeContainer>
         {renderVolume()}
-        <input
-          type="range"
+        <Slider
           min={0}
           max={1}
           value={volume}

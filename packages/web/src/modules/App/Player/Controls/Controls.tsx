@@ -8,6 +8,8 @@ import {
   ControlsTime,
 } from "./Controls.styles";
 
+import Slider from "../../../../components/Slider/Slider";
+
 import formatTime from "../../../../utils/formatTime";
 
 interface ControlsProps {
@@ -70,8 +72,7 @@ const Controls: React.FC<ControlsProps> = ({
 
         <ControlsSliderContainer>
           <ControlsTime>{formatTime(seek)}</ControlsTime>
-          <input
-            type="range"
+          <Slider
             min={0}
             max={duration}
             value={seek}
