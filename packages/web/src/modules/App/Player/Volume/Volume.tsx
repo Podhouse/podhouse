@@ -20,7 +20,13 @@ interface VolumeProps {
   onMute: () => void;
 }
 
-const Volume: React.FC<VolumeProps> = ({ ready, volume, muted, onVolume, onMute }) => {
+const Volume: React.FC<VolumeProps> = ({
+  ready,
+  volume,
+  muted,
+  onVolume,
+  onMute,
+}) => {
   const renderVolume = () => {
     if (volume === 0 || muted) {
       return (
@@ -58,16 +64,10 @@ const Volume: React.FC<VolumeProps> = ({ ready, volume, muted, onVolume, onMute 
     return (
       <VolumeContainer>
         {renderVolume()}
-        <Slider
-          min={0}
-          max={1}
-          value={volume}
-          step={0.1}
-          onChange={onVolume}
-        />
+        <Slider min={0} max={1} value={volume} step={0.1} onChange={onVolume} />
       </VolumeContainer>
-    )
-  }
+    );
+  };
 
   return onReady();
 };

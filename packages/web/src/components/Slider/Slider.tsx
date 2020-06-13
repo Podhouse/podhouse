@@ -15,16 +15,16 @@ const Component: React.FC<SliderProps> = ({
   max,
   value,
   step,
-  onChange
+  onChange,
 }) => (
   <SliderContainer>
-    <input 
-      type="range" 
-      min={min} 
-      max={max} 
-      value={value} 
-      step={step} 
-      onChange={onChange} 
+    <input
+      type="range"
+      min={min}
+      max={max}
+      value={value}
+      step={step}
+      onChange={onChange}
     />
   </SliderContainer>
 );

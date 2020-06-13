@@ -53,9 +53,8 @@ export const ControlsSliderContainer = styled.div`
     grid-column: 1 / 2;
     grid-row: 2 / 3;
     display: grid;
-    grid-template-columns: max-content 1fr max-content;
+    grid-template-columns: 50px 1fr 50px;
     grid-template-rows: 1fr;
-    grid-column-gap: 20px;
   }
 `;
 

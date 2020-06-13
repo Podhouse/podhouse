@@ -23,51 +23,51 @@ export type PlayerMachineState = {
 };
 
 export type PlayerLoadEvent = {
-  type: 'LOAD';
+  type: "LOAD";
 };
 
 export type PlayerReadyEvent = {
-  type: 'READY';
+  type: "READY";
 };
 
 export type PlayerPlayEvent = {
-  type: 'PLAY';
+  type: "PLAY";
 };
 
 export type PlayerPauseEvent = {
-  type: 'PAUSE';
+  type: "PAUSE";
 };
 
 export type PlayerStopEvent = {
-  type: 'STOP';
+  type: "STOP";
 };
 
 export type PlayerMuteEvent = {
-  type: 'MUTE';
+  type: "MUTE";
 };
 
 export type PlayerLoopEvent = {
-  type: 'LOOP';
+  type: "LOOP";
 };
 
 export type PlayerEndEvent = {
-  type: 'END';
+  type: "END";
 };
 
 export type PlayerOnErrorEvent = {
-  type: 'ERROR';
+  type: "ERROR";
   error: string;
 };
 
 export type PlayerOnReadyEvent = {
-  type: 'READY';
+  type: "READY";
   name: string;
   episode: string;
   avatar: string;
 };
 
 export type PlayerRetryEvent = {
-  type: 'RETRY';
+  type: "RETRY";
 };
 
 export type PlayerMachineEvents =

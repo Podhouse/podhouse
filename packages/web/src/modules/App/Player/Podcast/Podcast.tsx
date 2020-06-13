@@ -36,8 +36,8 @@ const Podcast: React.FC<PodcastProps> = ({ ready, currentPodcast }) => {
           <PodcastName onClick={redirectPodcast}>{name}</PodcastName>
         </PodcastDetails>
       </PodcastContainer>
-    )
-  }
+    );
+  };
 
   return onReady();
 };

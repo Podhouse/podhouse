@@ -82,8 +82,8 @@ const Controls: React.FC<ControlsProps> = ({
           <ControlsTime>{formatTime(duration)}</ControlsTime>
         </ControlsSliderContainer>
       </ControlsContainer>
-    )
-  }
+    );
+  };
 
   return onReady();
 };
