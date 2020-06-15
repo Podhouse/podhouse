@@ -37,7 +37,7 @@ export const FooterLink = styled.a`
   font-size: 14px;
   line-height: 17px;
   text-align: center;
-  color: ${({ theme }) => theme.colors.strongestGray};
+  color: ${({ theme }) => theme.colors.grayFour};
   text-decoration: none;
   outline: none;
   cursor: pointer;
@@ -73,6 +73,6 @@ export const FooterBottomText = styled.p`
   font-size: 12px;
   line-height: 17px;
   text-align: center;
-  color: ${({ theme }) => theme.colors.strongestGray};
+  color: ${({ theme }) => theme.colors.grayFour};
   justify-self: center;
 `;

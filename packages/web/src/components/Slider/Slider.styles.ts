@@ -41,7 +41,7 @@ export const SliderContainer = styled.div`
     background: #000000;
     border: 0;
     width: 100%;
-    height: 5px;
+    height: 3px;
     cursor: pointer;
   }
   input[type="range"]::-moz-range-thumb {

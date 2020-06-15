@@ -15,8 +15,8 @@ const Settings: React.FC = () => {
       return (
         <User
           onClick={handleSettings}
-          size={18}
-          color="#999999"
+          size={16}
+          color="#B7B7B7"
           strokeWidth={1.5}
         />
       );

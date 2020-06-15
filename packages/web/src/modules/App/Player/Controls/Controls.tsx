@@ -20,6 +20,8 @@ interface ControlsProps {
   onPlay: () => void;
   onPause: () => void;
   onSeek: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onBackward: (value?: number) => void;
+  onForward: (value?: number) => void;
 }
 
 const iconStyle = { cursor: "pointer" };
@@ -32,14 +34,16 @@ const Controls: React.FC<ControlsProps> = ({
   onPlay,
   onPause,
   onSeek,
+  onBackward,
+  onForward,
 }) => {
   const onPlaying = () => {
     if (playing) {
       return (
         <Pause
-          size={30}
+          size={28}
           color="#000"
-          strokeWidth={1.5}
+          strokeWidth={1}
           style={iconStyle}
           onClick={onPause}
         />
@@ -48,9 +52,9 @@ const Controls: React.FC<ControlsProps> = ({
 
     return (
       <Play
-        size={30}
+        size={28}
         color="#000"
-        strokeWidth={1.5}
+        strokeWidth={1}
         style={iconStyle}
         onClick={onPlay}
       />
@@ -63,11 +67,23 @@ const Controls: React.FC<ControlsProps> = ({
     return (
       <ControlsContainer>
         <ControlsButtonsContainer>
-          <RotateCcw size={18} color="#000" style={iconStyle} />
+          <RotateCcw
+            size={18}
+            color="#000"
+            style={iconStyle}
+            strokeWidth={1.5}
+            onClick={() => onBackward(15)}
+          />
 
           {onPlaying()}
 
-          <RotateCw size={18} color="#000" style={iconStyle} />
+          <RotateCw
+            size={18}
+            color="#000"
+            style={iconStyle}
+            strokeWidth={1.5}
+            onClick={() => onForward(15)}
+          />
         </ControlsButtonsContainer>
 
         <ControlsSliderContainer>

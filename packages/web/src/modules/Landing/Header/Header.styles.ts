@@ -52,7 +52,7 @@ export const HeaderLink = styled.a`
   font-size: 14px;
   line-height: 17px;
   text-align: center;
-  color: ${({ theme }) => theme.colors.strongestGray};
+  color: ${({ theme }) => theme.colors.grayFour};
   text-decoration: none;
   outline: none;
   cursor: pointer;

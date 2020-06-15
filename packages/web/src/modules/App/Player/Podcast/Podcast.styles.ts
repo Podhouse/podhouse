@@ -21,7 +21,7 @@ export const PodcastContainer = styled.div`
     display: grid;
     grid-template-columns: 75px 1fr;
     grid-template-rows: 1fr;
-    grid-column-gap: 20px;
+    grid-column-gap: 10px;
   }
 `;
 
@@ -62,7 +62,7 @@ export const PodcastDetails = styled.div`
 export const PodcastEpisode = styled.h3`
   font-family: Inter;
   font-style: normal;
-  font-weight: 500;
+  font-weight: normal;
   font-size: 14px;
   line-height: 17px;
   color: ${({ theme }) => theme.colors.black};
@@ -76,6 +76,6 @@ export const PodcastName = styled.h1`
   font-weight: normal;
   font-size: 14px;
   line-height: 17px;
-  color: ${({ theme }) => theme.colors.midGray};
+  color: ${({ theme }) => theme.colors.grayFour};
   cursor: pointer;
 `;

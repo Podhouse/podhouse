@@ -47,7 +47,7 @@ export const AuthText = styled.h3`
   line-height: 20px;
   text-align: center;
   letter-spacing: -0.004em;
-  color: ${({ theme }) => theme.colors.strongestGray};
+  color: ${({ theme }) => theme.colors.grayFour};
 `;
 
 export const AuthFormContainer = styled.form`

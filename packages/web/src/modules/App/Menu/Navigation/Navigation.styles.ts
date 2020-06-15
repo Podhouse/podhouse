@@ -62,7 +62,7 @@ export const NavigationItemLink = styled.a`
     font-weight: 400;
     font-size: 14px;
     line-height: 19px;
-    color: ${({ theme }) => theme.colors.midGray};
+    color: ${({ theme }) => theme.colors.grayThree};
     text-decoration: none;
     cursor: pointer;
   }

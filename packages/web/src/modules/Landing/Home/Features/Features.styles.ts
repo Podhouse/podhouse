@@ -68,6 +68,6 @@ export const FeaturesItemText = styled.p`
   font-size: 14px;
   line-height: 25px;
   text-align: center;
-  color: ${({ theme }) => theme.colors.strongestGray};
+  color: ${({ theme }) => theme.colors.grayFour};
   text-align: start;
 `;

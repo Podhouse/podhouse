@@ -23,7 +23,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
 }) => (
   <SearchInputContainer>
     <Search
-      color="#999999"
+      color="#B7B7B7"
       strokeWidth={1.5}
       size={16}
       style={{

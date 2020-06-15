@@ -10130,10 +10130,10 @@ regjsparser@^0.6.4:
   dependencies:
     jsesc "~0.5.0"
 
-rehawk@^0.1.2:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/rehawk/-/rehawk-0.1.2.tgz#7be336592bb025b227bade83c767f34245228daa"
-  integrity sha512-Qb5ykKDiKB2H0zPVPtPIRLgLHAibyyIX8O99kcSRpS7leJJqYYppT6UzNx9/yoNQHJpeECoFUacG3ItwGRep1w==
+rehawk@^0.1.3:
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/rehawk/-/rehawk-0.1.3.tgz#e491db3a5ad0df7ca3f99ce4cfc50cfe44b5e325"
+  integrity sha512-LB0a/yTqr/D6dN0jWVTegsWxVgClJ819GcpN03xi5AKIt1oV7uLmey4ILwokswxzB9QkUH1cqKkc0ZZKZ7cVoQ==
 
 remove-trailing-separator@^1.0.1:
   version "1.1.0"

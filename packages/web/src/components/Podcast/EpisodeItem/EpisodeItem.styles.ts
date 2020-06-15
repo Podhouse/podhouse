@@ -28,7 +28,7 @@ export const EpisodeItemName = styled.a`
   font-weight: 500;
   font-size: 14px;
   line-height: 17px;
-  color: ${({ theme }) => theme.colors.strongestGray};
+  color: ${({ theme }) => theme.colors.grayFour};
   cursor: pointer;
   text-decoration: none;
   display: -webkit-box;
@@ -47,7 +47,7 @@ export const EpisodeItemAuthor = styled.p`
   font-weight: normal;
   font-size: 14px;
   line-height: 17px;
-  color: ${({ theme }) => theme.colors.midGray};
+  color: ${({ theme }) => theme.colors.grayThree};
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;

@@ -20,7 +20,7 @@ export const InputStyled = styled.input<InputFieldProps>`
   font-weight: 400;
   font-size: 14px;
   line-height: 19px;
-  color: ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.colors.grayFour};
   background: ${({ theme }) => theme.colors.white};
   border: ${({ theme }) => `1px solid ${theme.colors.lightGray}`};
   box-sizing: border-box;
@@ -44,7 +44,7 @@ export const InputStyled = styled.input<InputFieldProps>`
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
-    color: ${({ theme }) => theme.colors.midGray};
+    color: ${({ theme }) => theme.colors.grayThree};
     text-indent: 20px;
   }
 

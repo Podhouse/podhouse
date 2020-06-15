@@ -68,7 +68,7 @@ export const DownloadAssetsContainer = styled.div<AssetsContainerProps>`
   display: flex;
   align-items: center;
   justify-content: center;
-  border: ${({ theme }) => `1px solid ${theme.colors.lightGray}`};
+  border: ${({ theme }) => `1px solid ${theme.colors.grayOne}`};
   box-sizing: border-box;
   border-radius: 5px;
   background-color: ${({ color }) => color};

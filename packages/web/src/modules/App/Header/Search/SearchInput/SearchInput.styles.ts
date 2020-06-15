@@ -19,8 +19,8 @@ export const SearchInputStyled = styled.input`
   font-weight: normal;
   font-size: 14px;
   line-height: 17px;
-  color: ${({ theme }) => theme.colors.strongestGray};
-  background: ${({ theme }) => theme.colors.lighestGray};
+  background: ${({ theme }) => theme.colors.grayOne};
+  color: ${({ theme }) => theme.colors.grayFour};
   border: none;
   border-radius: 5px;
   outline: none;
@@ -32,6 +32,6 @@ export const SearchInputStyled = styled.input`
     font-weight: normal;
     font-size: 14px;
     line-height: 17px;
-    color: ${({ theme }) => theme.colors.midGray};
+    color: ${({ theme }) => theme.colors.grayThree};
   }
 `;

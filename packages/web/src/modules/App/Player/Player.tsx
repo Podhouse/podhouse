@@ -30,6 +30,8 @@ const Player: React.FC = () => {
     onSeek,
     onVolume,
     onMute,
+    onBackward,
+    onForward,
   } = useRehawk({
     src,
     preload: true,
@@ -49,6 +51,8 @@ const Player: React.FC = () => {
         onPlay={onPlay}
         onPause={onPause}
         onSeek={onSeek}
+        onBackward={onBackward}
+        onForward={onForward}
       />
       <Volume
         ready={ready}

@@ -18,7 +18,7 @@ export const PricingBadgeContainer = styled.div`
   padding: 10px;
   height: 35px;
   border-radius: 5px;
-  background-color: ${({ theme }) => theme.colors.lightGray};
+  background-color: ${({ theme }) => theme.colors.grayOne};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -31,7 +31,7 @@ export const PricingBadgeText = styled.p`
   font-size: 12px;
   line-height: 15px;
   text-align: center;
-  color: ${({ theme }) => theme.colors.strongestGray};
+  color: ${({ theme }) => theme.colors.grayThree};
 `;
 
 export const PricingPriceContainer = styled.div`
@@ -71,7 +71,7 @@ export const PricingDescription = styled.p`
   font-weight: normal;
   font-size: 14px;
   line-height: 20px;
-  color: ${({ theme }) => theme.colors.strongestGray};
+  color: ${({ theme }) => theme.colors.grayFour};
 `;
 
 export const PricingFeaturesContainer = styled.div`

@@ -30,13 +30,20 @@ const Volume: React.FC<VolumeProps> = ({
   const renderVolume = () => {
     if (volume === 0 || muted) {
       return (
-        <VolumeX size={20} color="#000" style={iconStyle} onClick={onMute} />
+        <VolumeX
+          size={20}
+          strokeWidth={1.5}
+          color="#000"
+          style={iconStyle}
+          onClick={onMute}
+        />
       );
     }
     if (volume === 0.1) {
       return (
         <VolumeFirst
           size={20}
+          strokeWidth={1.5}
           color="#000"
           style={iconStyle}
           onClick={onMute}
@@ -45,16 +52,34 @@ const Volume: React.FC<VolumeProps> = ({
     }
     if (volume > 0.1 && volume < 0.5) {
       return (
-        <Volume1 size={20} color="#000" style={iconStyle} onClick={onMute} />
+        <Volume1
+          size={20}
+          strokeWidth={1.5}
+          color="#000"
+          style={iconStyle}
+          onClick={onMute}
+        />
       );
     }
     if (volume > 0.5 && volume < 0.8) {
       return (
-        <Volume2 size={20} color="#000" style={iconStyle} onClick={onMute} />
+        <Volume2
+          size={20}
+          strokeWidth={1.5}
+          color="#000"
+          style={iconStyle}
+          onClick={onMute}
+        />
       );
     }
     return (
-      <Volume2 size={20} color="#000" style={iconStyle} onClick={onMute} />
+      <Volume2
+        size={20}
+        strokeWidth={1.5}
+        color="#000"
+        style={iconStyle}
+        onClick={onMute}
+      />
     );
   };
 
