@@ -17,7 +17,7 @@ interface AppProps {
   children: React.ReactNode;
 }
 
-const App: React.FC<AppProps> = ({ children }) => {
+const App = ({ children }: AppProps) => {
   const [auth, handleAuth, logoutAuth] = useAuthContext();
   const [settings, handleSettings] = useSettingsContext();
 

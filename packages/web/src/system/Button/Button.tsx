@@ -4,7 +4,7 @@ import StyledButton from "./Button.styles";
 
 import { ButtonProps } from "./Button.types";
 
-const Button: React.FC<ButtonProps> = ({
+const Button = ({
   type,
   onClick,
   submitting,
@@ -14,7 +14,7 @@ const Button: React.FC<ButtonProps> = ({
   bgColor,
   color,
   children,
-}) => (
+}: ButtonProps) => (
   <StyledButton
     type={type}
     onClick={onClick}

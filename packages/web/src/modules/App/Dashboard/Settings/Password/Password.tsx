@@ -25,7 +25,7 @@ const validationSchema = Yup.object().shape({
   newPassword: Yup.string().required("New password is required"),
 });
 
-const Password: React.FC = () => {
+const Password = () => {
   const {
     handleBlur,
     handleChange,

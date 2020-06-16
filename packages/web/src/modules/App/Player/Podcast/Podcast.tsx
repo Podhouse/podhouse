@@ -17,7 +17,7 @@ interface PodcastProps {
   };
 }
 
-const Podcast: React.FC<PodcastProps> = ({ ready, currentPodcast }) => {
+const Podcast = ({ ready, currentPodcast }: PodcastProps) => {
   const { avatar, name, episode } = currentPodcast;
 
   const redirectPodcast = () => {};

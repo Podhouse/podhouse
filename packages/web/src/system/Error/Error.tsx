@@ -8,7 +8,7 @@ interface ErrorProps {
   mt?: number;
 }
 
-const Error: React.FC<ErrorProps> = ({ error, mt }) => (
+const Error = ({ error, mt }: ErrorProps) => (
   <ErrorContainer mt={mt}>
     <AlertTriangle size={16} color="#fc3d28" />
 

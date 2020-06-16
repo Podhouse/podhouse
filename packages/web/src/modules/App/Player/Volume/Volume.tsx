@@ -20,13 +20,7 @@ interface VolumeProps {
   onMute: () => void;
 }
 
-const Volume: React.FC<VolumeProps> = ({
-  ready,
-  volume,
-  muted,
-  onVolume,
-  onMute,
-}) => {
+const Volume = ({ ready, volume, muted, onVolume, onMute }: VolumeProps) => {
   const renderVolume = () => {
     if (volume === 0 || muted) {
       return (

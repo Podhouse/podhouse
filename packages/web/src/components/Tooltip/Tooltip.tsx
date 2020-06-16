@@ -4,11 +4,11 @@ import { useTooltipState, TooltipReference } from "reakit/Tooltip";
 import { StyledTooltip } from "./Tooltip.styles";
 
 interface TooltipProps {
-  children: any;
+  children: React.ReactNode;
   title: string;
 }
 
-const Tooltip: React.FC<TooltipProps> = ({ children, title, ...props }) => {
+const Tooltip = ({ children, title, ...props }: TooltipProps) => {
   const tooltip = useTooltipState();
 
   return (

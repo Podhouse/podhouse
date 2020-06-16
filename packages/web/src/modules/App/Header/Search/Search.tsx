@@ -5,7 +5,7 @@ import SearchInput from "./SearchInput/SearchInput";
 
 import { SearchContainer } from "./Search.styles";
 
-const Search: React.FC = () => {
+const Search = () => {
   const [search, setSearch] = useState<string>("");
 
   const onSearch = (e: any) => {

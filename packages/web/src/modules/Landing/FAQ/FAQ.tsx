@@ -14,17 +14,17 @@ import {
   LandingParagraph,
 } from "../Landing.styles";
 
-interface FAQProps {
-  description: string;
-  items: Array<FAQItem>;
-}
-
 interface FAQItem {
   title: string;
   body: string;
 }
 
-const FAQ: React.FC<FAQProps> = ({ description, items }) => (
+interface FAQProps {
+  description: string;
+  items: Array<FAQItem>;
+}
+
+const FAQ = ({ description, items }: FAQProps) => (
   <LandingGridContainer>
     <LandingGridContentContainer>
       <LandingSubTitle>Frequently asked questions</LandingSubTitle>

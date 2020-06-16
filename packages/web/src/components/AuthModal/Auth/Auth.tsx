@@ -8,7 +8,7 @@ interface AuthProps {
   children: React.ReactNode;
 }
 
-const Auth: React.FC<AuthProps> = ({ children }) => (
+const Auth = ({ children }: AuthProps) => (
   <AuthContainer>
     <LogoPodhouseDark />
 

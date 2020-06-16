@@ -22,7 +22,7 @@ const validationSchema = Yup.object().shape({
     .required("Confirm password is required"),
 });
 
-const ResetPassword: React.FC = () => {
+const ResetPassword = () => {
   const [, , , send] = useAuthContext();
 
   const {

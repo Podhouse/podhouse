@@ -11,7 +11,7 @@ interface SelectProps {
   options: Array<Option>;
 }
 
-const Select: React.FC<SelectProps> = ({ options }) => {
+const Select = ({ options }: SelectProps) => {
   const renderOptions = () =>
     options.map(({ name, value }: Option) => (
       <option key={value} value={value}>

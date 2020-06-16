@@ -12,7 +12,7 @@ interface ModalProps {
   children?: any;
 }
 
-const Modal: React.FC<ModalProps> = ({ children, render }) => (
+const Modal = ({ children, render }: ModalProps) => (
   <Portal>{render(children) || children}</Portal>
 );
 

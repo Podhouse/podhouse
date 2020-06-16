@@ -24,7 +24,7 @@ const validationSchema = Yup.object().shape({
   password: Yup.string().required("Password is required"),
 });
 
-const SignUp: React.FC = () => {
+const SignUp = () => {
   const [, , , send] = useAuthContext();
 
   const {

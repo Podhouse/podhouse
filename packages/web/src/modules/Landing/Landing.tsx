@@ -9,7 +9,7 @@ interface LandingProps {
   children: React.ReactNode;
 }
 
-const Landing: React.FC<LandingProps> = ({ children }) => (
+const Landing = ({ children }: LandingProps) => (
   <LandingContainer>
     <Header />
     {children}

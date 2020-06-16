@@ -3,10 +3,10 @@ import React from "react";
 import { DashboardContainer } from "./Dashboard.styles";
 
 interface DashboardProps {
-  children: any;
+  children: React.ReactNode;
 }
 
-const Dashboard: React.FC<DashboardProps> = ({ children }) => (
+const Dashboard = ({ children }: DashboardProps) => (
   <DashboardContainer>{children}</DashboardContainer>
 );
 

@@ -20,7 +20,7 @@ interface AuthModalProps {
   handleAuth: () => any;
 }
 
-const AuthModal: React.FC<AuthModalProps> = ({ auth, handleAuth }) => {
+const AuthModal = ({ auth, handleAuth }: AuthModalProps) => {
   const ref = useRef<any>();
 
   useOnClickOutside(ref, () => handleAuth());

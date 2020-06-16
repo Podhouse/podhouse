@@ -10,7 +10,7 @@ interface ProviderProps {
   children: React.ReactNode;
 }
 
-const Provider: React.FC<ProviderProps> = ({ children }) => (
+const Provider = ({ children }: ProviderProps) => (
   <RehawkProvider>
     <AuthProvider>
       <SettingsProvider>

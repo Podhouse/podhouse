@@ -36,7 +36,7 @@ const items = [
   },
 ];
 
-const Browse: React.FC = () => (
+const Browse = () => (
   <Scrollbars universal autoHide autoHideTimeout={100} autoHideDuration={100}>
     <BrowseContainer>
       <Row title="Trending" items={items} />

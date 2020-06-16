@@ -6,7 +6,7 @@ import { useSettingsContext } from "../../../../context/Settings/Settings";
 
 import { SettingsContainer, SettingsLoginLink } from "./Settings.styles";
 
-const Settings: React.FC = () => {
+const Settings = () => {
   const [auth, handleAuth] = useAuthContext();
   const [, handleSettings] = useSettingsContext();
 

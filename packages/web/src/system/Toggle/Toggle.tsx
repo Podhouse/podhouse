@@ -8,7 +8,7 @@ interface ToggleProps {
   onChange: () => void;
 }
 
-const Toggle: React.FC<ToggleProps> = ({ checked, onChange }) => (
+const Toggle = ({ checked, onChange }: ToggleProps) => (
   <ToggleWrapper>
     <ToggleContainer
       id="checkbox"

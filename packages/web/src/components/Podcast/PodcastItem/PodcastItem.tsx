@@ -15,7 +15,7 @@ interface PodcastItemProps {
   };
 }
 
-const PodcastItem: React.FC<PodcastItemProps> = ({ podcast }) => {
+const PodcastItem = ({ podcast }: PodcastItemProps) => {
   const { name, author, avatar } = podcast;
 
   const imageAlt = `${name} avatar`;

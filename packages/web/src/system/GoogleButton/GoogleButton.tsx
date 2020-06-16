@@ -11,14 +11,14 @@ interface GoogleButtonProps {
   mt?: number;
 }
 
-const GoogleButton: React.FC<GoogleButtonProps> = ({
+const GoogleButton = ({
   type,
   text,
   width,
   height,
   color,
   mt,
-}) => (
+}: GoogleButtonProps) => (
   <StyledGoogleButton
     type={type}
     width={width}

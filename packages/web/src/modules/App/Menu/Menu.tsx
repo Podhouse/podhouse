@@ -5,7 +5,7 @@ import Navigation from "./Navigation/Navigation";
 
 import { MenuContainer, MenuInsideContainer } from "./Menu.styles";
 
-const Menu: React.FC = () => (
+const Menu = () => (
   <MenuContainer>
     <Scrollbars universal autoHide autoHideTimeout={100} autoHideDuration={100}>
       <MenuInsideContainer>

@@ -36,7 +36,7 @@ const items = [
   },
 ];
 
-const Podcasts: React.FC = () => (
+const Podcasts = () => (
   <Scrollbars universal autoHide autoHideTimeout={100} autoHideDuration={100}>
     <PodcastsContainer>
       <Row title="Podcasts" items={items} />

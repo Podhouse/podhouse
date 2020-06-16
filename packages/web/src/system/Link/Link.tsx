@@ -4,7 +4,7 @@ import StyledLink from "./Link.styles";
 
 import { LinkProps } from "./Link.types";
 
-const Link: React.FC<LinkProps> = ({ href, children }) => (
+const Link = ({ href, children }: LinkProps) => (
   <StyledLink href={href}>{children}</StyledLink>
 );
 

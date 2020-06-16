@@ -7,7 +7,7 @@ interface LabelProps {
   mb?: number;
 }
 
-const Label: React.FC<LabelProps> = ({ label, mb }) => (
+const Label = ({ label, mb }: LabelProps) => (
   <StyledLabel mb={mb}>{label}</StyledLabel>
 );
 

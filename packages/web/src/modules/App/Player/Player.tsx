@@ -17,7 +17,7 @@ const currentPodcast = {
   episode: "EP 928 - Trying to redesign this app",
 };
 
-const Player: React.FC = () => {
+const Player = () => {
   const {
     ready,
     playing,

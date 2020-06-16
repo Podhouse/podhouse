@@ -17,7 +17,7 @@ interface EpisodeItemProps {
   };
 }
 
-const EpisodeItem: React.FC<EpisodeItemProps> = ({ episode }) => {
+const EpisodeItem = ({ episode }: EpisodeItemProps) => {
   const { name, author, avatar } = episode;
 
   const imageAlt = `${name} avatar`;

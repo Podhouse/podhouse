@@ -36,7 +36,7 @@ const items = [
   },
 ];
 
-const Search: React.FC = () => (
+const Search = () => (
   <Scrollbars universal autoHide autoHideTimeout={100} autoHideDuration={100}>
     <SearchContainer>
       <Row title="Search" items={items} />

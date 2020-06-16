@@ -12,7 +12,7 @@ interface SearchInputProps {
   onClick: (e: any) => void;
 }
 
-const SearchInput: React.FC<SearchInputProps> = ({
+const SearchInput = ({
   type,
   name,
   value,
@@ -20,7 +20,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
   onChange,
   onClick,
   ...props
-}) => (
+}: SearchInputProps) => (
   <SearchInputContainer>
     <Search
       color="#B7B7B7"

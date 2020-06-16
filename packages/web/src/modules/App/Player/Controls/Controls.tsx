@@ -26,7 +26,7 @@ interface ControlsProps {
 
 const iconStyle = { cursor: "pointer" };
 
-const Controls: React.FC<ControlsProps> = ({
+const Controls = ({
   ready,
   playing,
   seek,
@@ -36,7 +36,7 @@ const Controls: React.FC<ControlsProps> = ({
   onSeek,
   onBackward,
   onForward,
-}) => {
+}: ControlsProps) => {
   const onPlaying = () => {
     if (playing) {
       return (

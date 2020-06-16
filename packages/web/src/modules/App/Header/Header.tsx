@@ -7,7 +7,7 @@ import { HeaderContainer, LogoContainer } from "./Header.styles";
 
 import LogoDark from "../../../../public/logo/logo-medium-dark.svg";
 
-const Header: React.FC = () => (
+const Header = () => (
   <HeaderContainer>
     <LogoContainer>
       <LogoDark />
