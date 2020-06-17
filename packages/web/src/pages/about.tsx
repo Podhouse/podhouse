@@ -1,20 +1,11 @@
 import * as React from "react";
-import Head from "next/head";
 
-import Landing from "../modules/Landing/Landing";
+import Landing from "../components/Landing/Landing";
+
 import About from "../modules/Landing/About/About";
 
-const Page = () => (
-  <div className="container">
-    <Head>
-      <title>About — Podhouse</title>
-      <link rel="icon" href="/favicon.ico" />
-    </Head>
+const Index = () => <About />;
 
-    <Landing>
-      <About />
-    </Landing>
-  </div>
-);
+Index.getLayout = page => <Landing>{page}</Landing>
 
-export default Page;
+export default Index;

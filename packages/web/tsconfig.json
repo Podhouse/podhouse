@@ -14,7 +14,6 @@
     "preserveConstEnums": true,
     "sourceMap": true,
     "skipLibCheck": true,
-    "baseUrl": ".",
     "lib": ["dom", "es2016"],
     "strict": false,
     "forceConsistentCasingInFileNames": true,
@@ -22,7 +21,8 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "strictNullChecks": false
+    "strictNullChecks": false,
+    "baseUrl": ".",
   },
   "exclude": ["node_modules"],
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]

@@ -1,20 +1,11 @@
 import * as React from "react";
-import Head from "next/head";
 
-import Provider from "../../provider/index";
-import Podcasts from "../../modules/App/Dashboard/Podcasts/Podcasts";
+import Provider from "src/provider/";
 
-const Page = () => (
-  <div className="container">
-    <Head>
-      <title>Podcasts — Podhouse</title>
-      <link rel="icon" href="/favicon.ico" />
-    </Head>
+import Podcasts from "src/modules/App/Podcasts/Podcasts";
 
-    <Provider>
-      <Podcasts />
-    </Provider>
-  </div>
-);
+const Index = () => <Podcasts />;
 
-export default Page;
+Index.getLayout = page => <Provider name="Podcasts">{page}</Provider>
+
+export default Index;

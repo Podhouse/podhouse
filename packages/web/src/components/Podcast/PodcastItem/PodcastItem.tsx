@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 import {
   PodcastItemContainer,
@@ -23,7 +24,9 @@ const PodcastItem = ({ podcast }: PodcastItemProps) => {
   return (
     <PodcastItemContainer>
       <PodcastItemAvatar src={avatar} alt={imageAlt} />
-      <PodcastItemName href="/app/podcast/123">{name}</PodcastItemName>
+      <Link href="/app/podcast/123" passHref>
+        <PodcastItemName>{name}</PodcastItemName>
+      </Link>
       <PodcastItemAuthor>{author}</PodcastItemAuthor>
     </PodcastItemContainer>
   );

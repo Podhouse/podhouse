@@ -1,6 +1,6 @@
 import React from "react";
 
-import { LandingSubTitle } from "../../Landing.styles";
+import { LandingSubTitle } from "../../../../components/Landing/Landing.styles";
 
 import {
   TeamContainer,

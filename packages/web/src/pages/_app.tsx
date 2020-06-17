@@ -1,35 +1,18 @@
 import * as React from "react";
-import App from "next/app";
-import { createGlobalStyle, ThemeProvider } from "styled-components";
+import App from 'next/app'
 
-import { theme } from "../system/theme";
-import reset from "../system/reset";
+import Provider from "src/provider/";
 
-const GlobalStyle = createGlobalStyle`${reset}`;
-
-class MyApp extends App<unknown, unknown> {
-  static async getInitialProps({ Component, ctx }: any) {
-    let pageProps = {};
-
-    if (Component.getInitialProps) {
-      pageProps = await Component.getInitialProps(ctx);
-    }
-
-    return { pageProps };
-  }
-
+class MyApp extends App<{ Component: any }, any> {
   render() {
-    const { Component, pageProps } = this.props;
+    const { Component, pageProps } = this.props
 
-    return (
-      <>
-        <ThemeProvider theme={theme}>
-          <Component {...pageProps} />
-        </ThemeProvider>
-        <GlobalStyle />
-      </>
-    );
+    const getLayout =
+      Component.getLayout || (page => <Provider children={page} {...pageProps} />)
+
+    return getLayout(<Component {...pageProps} />)
   }
 }
 
 export default MyApp;
+

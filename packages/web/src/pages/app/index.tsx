@@ -1,20 +1,11 @@
 import * as React from "react";
-import Head from "next/head";
 
-import Provider from "../../provider/index";
-import Browse from "../../modules/App/Dashboard/Browse/Browse";
+import Provider from "src/provider/";
 
-const Page = () => (
-  <div className="container">
-    <Head>
-      <title>Browse — Podhouse</title>
-      <link rel="icon" href="/favicon.ico" />
-    </Head>
+import Browse from "src/modules/App/Browse/Browse";
 
-    <Provider>
-      <Browse />
-    </Provider>
-  </div>
-);
+const Index = () => <Browse />;
 
-export default Page;
+Index.getLayout = page => <Provider name="Browse">{page}</Provider>
+
+export default Index;

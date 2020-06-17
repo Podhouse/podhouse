@@ -1,20 +1,11 @@
 import * as React from "react";
-import Head from "next/head";
 
-import Provider from "../../provider/index";
-import Search from "../../modules/App/Dashboard/Search/Search";
+import Provider from "src/provider/";
 
-const Page = () => (
-  <div className="container">
-    <Head>
-      <title>Search — Podhouse</title>
-      <link rel="icon" href="/favicon.ico" />
-    </Head>
+import Search from "src/modules/App/Search/Search";
 
-    <Provider>
-      <Search />
-    </Provider>
-  </div>
-);
+const Index = () => <Search />;
 
-export default Page;
+Index.getLayout = page => <Provider name="Search">{page}</Provider>
+
+export default Index;

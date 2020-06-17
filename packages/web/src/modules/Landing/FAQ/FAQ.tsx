@@ -12,7 +12,7 @@ import {
   LandingGridContentContainer,
   LandingSubTitle,
   LandingParagraph,
-} from "../Landing.styles";
+} from "../../../components/Landing/Landing.styles";
 
 interface FAQItem {
   title: string;

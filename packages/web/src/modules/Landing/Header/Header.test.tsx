@@ -17,7 +17,7 @@ describe("Header", () => {
     const { getByText } = withTheme;
 
     expect(getByText(/About/i)).toBeInTheDocument();
-    expect(getByText(/Advertisers/i)).toBeInTheDocument();
+    expect(getByText(/Advertise/i)).toBeInTheDocument();
     expect(getByText(/Brand/i)).toBeInTheDocument();
     expect(getByText(/Contact/i)).toBeInTheDocument();
     expect(getByText(/Get started/i)).toBeInTheDocument();

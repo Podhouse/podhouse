@@ -1,20 +1,11 @@
 import * as React from "react";
-import Head from "next/head";
 
-import Provider from "../../provider/index";
-import Settings from "../../modules/App/Dashboard/Settings/Settings";
+import Provider from "src/provider/";
 
-const Page = () => (
-  <div className="container">
-    <Head>
-      <title>Settings — Podhouse</title>
-      <link rel="icon" href="/favicon.ico" />
-    </Head>
+import Settings from "src/modules/App/Settings/Settings";
 
-    <Provider>
-      <Settings />
-    </Provider>
-  </div>
-);
+const Index = () => <Settings />;
 
-export default Page;
+Index.getLayout = page => <Provider name="Settings">{page}</Provider>
+
+export default Index;

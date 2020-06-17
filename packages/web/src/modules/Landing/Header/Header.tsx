@@ -14,12 +14,12 @@ import {
 const Header = () => {
   const router = useRouter();
 
-  const handleStart = (e) => {
+  const handleStart = (e: any) => {
     e.preventDefault();
     router.push("/app");
   };
 
-  const handleHome = (e) => {
+  const handleHome = (e: any) => {
     e.preventDefault();
     router.push("/");
   };
@@ -32,7 +32,7 @@ const Header = () => {
 
       <HeaderLinksContainer>
         <HeaderLink href="/about">About</HeaderLink>
-        <HeaderLink href="/advertisers">Advertisers</HeaderLink>
+        <HeaderLink href="/advertise">Advertise</HeaderLink>
         <HeaderLink href="/brand">Brand</HeaderLink>
         <HeaderLink
           href="mailto:leonardomso11@gmail.com"
