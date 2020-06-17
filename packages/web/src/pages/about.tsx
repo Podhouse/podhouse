@@ -1,11 +1,11 @@
 import * as React from "react";
 
-import Landing from "../components/Landing/Landing";
+import Landing from "src/components/Landing/Landing";
 
-import About from "../modules/Landing/About/About";
+import About from "src/modules/Landing/About/About";
 
 const Index = () => <About />;
 
-Index.getLayout = page => <Landing>{page}</Landing>
+Index.Layout = Landing;
 
 export default Index;

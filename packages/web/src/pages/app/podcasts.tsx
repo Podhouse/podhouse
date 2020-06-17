@@ -6,6 +6,6 @@ import Podcasts from "src/modules/App/Podcasts/Podcasts";
 
 const Index = () => <Podcasts />;
 
-Index.getLayout = page => <Provider name="Podcasts">{page}</Provider>
+Index.Layout = Provider;
 
 export default Index;

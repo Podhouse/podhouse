@@ -6,6 +6,6 @@ import Settings from "src/modules/App/Settings/Settings";
 
 const Index = () => <Settings />;
 
-Index.getLayout = page => <Provider name="Settings">{page}</Provider>
+Index.Layout = Provider;
 
 export default Index;

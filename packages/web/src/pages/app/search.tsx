@@ -6,6 +6,6 @@ import Search from "src/modules/App/Search/Search";
 
 const Index = () => <Search />;
 
-Index.getLayout = page => <Provider name="Search">{page}</Provider>
+Index.Layout = Provider;
 
 export default Index;

@@ -6,6 +6,6 @@ import Episode from "src/modules/App/Episode/Episode";
 
 const Index = () => <Episode />;
 
-Index.getLayout = page => <Provider name="Episode">{page}</Provider>
+Index.Layout = Provider;
 
 export default Index;

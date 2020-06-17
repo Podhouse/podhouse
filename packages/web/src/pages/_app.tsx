@@ -1,7 +1,7 @@
 import * as React from "react";
 import App from 'next/app'
 
-import Provider from "src/provider/";
+const Noop = ({ children }) => children;
 
 class MyApp extends App<{ Component: any }, any> {
   static async getInitialProps({ Component, ctx }: any) {
@@ -13,14 +13,16 @@ class MyApp extends App<{ Component: any }, any> {
 
     return { pageProps };
   }
-  
+
   render() {
     const { Component, pageProps } = this.props
+    const Layout = Component.Layout || Noop
 
-    const getLayout =
-      Component.getLayout || (page => <Provider children={page} {...pageProps} />)
-
-    return getLayout(<Component {...pageProps} />)
+    return (
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    )
   }
 }
 

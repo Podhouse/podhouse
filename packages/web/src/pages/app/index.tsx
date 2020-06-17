@@ -6,6 +6,6 @@ import Browse from "src/modules/App/Browse/Browse";
 
 const Index = () => <Browse />;
 
-Index.getLayout = page => <Provider name="Browse">{page}</Provider>
+Index.Layout = Provider;
 
 export default Index;

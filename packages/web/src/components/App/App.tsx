@@ -16,10 +16,9 @@ import { AppContainer } from "./App.styles";
 
 interface AppProps {
   children: React.ReactNode;
-  name: string;
 }
 
-const App = ({ name, children }: AppProps) => {
+const App = ({ children }: AppProps) => {
   const [auth, handleAuth, logoutAuth] = useAuthContext();
   const [settings, handleSettings] = useSettingsContext();
 
@@ -49,7 +48,7 @@ const App = ({ name, children }: AppProps) => {
   return (
     <div>
       <Head>
-        <title>{name} — Podhouse</title>
+        <title>Podhouse</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

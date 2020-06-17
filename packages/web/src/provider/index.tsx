@@ -14,16 +14,15 @@ const GlobalStyle = createGlobalStyle`${reset}`;
 
 interface ProviderProps {
   children: React.ReactNode;
-  name: string;
 }
 
-const Provider = ({ name, children }: ProviderProps) => (
+const Provider = ({ children }: ProviderProps) => (
   <>
     <ThemeProvider theme={theme}>
       <RehawkProvider>
         <AuthProvider>
           <SettingsProvider>
-            <App name={name}>
+            <App>
               {children}
             </App>
           </SettingsProvider>
