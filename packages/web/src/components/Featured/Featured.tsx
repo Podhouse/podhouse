@@ -16,7 +16,7 @@ const avatar =
 const Featured = () => {
   return (
     <FeaturedContainer>
-      <a href="/app/podcast/123">
+      <a href="/app/podcast/invisible">
         <FeaturedAvatar src={avatar} />
       </a>
 
@@ -29,7 +29,7 @@ const Featured = () => {
           FEATURED
         </FeaturedBadge>
 
-        <FeaturedName href="/app/podcast/123">99% Invisible</FeaturedName>
+        <FeaturedName href="/app/podcast/invisible">99% Invisible</FeaturedName>
         <FeaturedAuthor>Roman Mars</FeaturedAuthor>
         <FeaturedDescription>
           Design is everywhere in our lives, perhaps most importantly in the
