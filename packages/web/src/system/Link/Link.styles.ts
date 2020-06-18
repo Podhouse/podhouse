@@ -1,4 +1,4 @@
-import { styled } from "../theme";
+import { styled } from "src/system/theme";
 
 const StyledLink = styled.a`
   font-family: Inter;

@@ -16,7 +16,7 @@ interface ErrorPageProps {
   description: string;
 }
 
-const ErrorPage: React.FC<ErrorPageProps> = ({ title, description }) => (
+const ErrorPage = ({ title, description }: ErrorPageProps) => (
   <ErrorPageContainer>
     <ErrorPageInnerContainer>
       <ErrorPageTitle>{title}</ErrorPageTitle>

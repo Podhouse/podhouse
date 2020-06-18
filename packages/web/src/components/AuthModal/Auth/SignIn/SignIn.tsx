@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
@@ -24,7 +24,7 @@ const validationSchema = Yup.object().shape({
   password: Yup.string().required("Password is required"),
 });
 
-const SignIn: React.FC = () => {
+const SignIn = () => {
   const [, , , send] = useAuthContext();
 
   const {

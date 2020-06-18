@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 
 import PodcastItem from "../Podcast/PodcastItem/PodcastItem";
 
@@ -22,7 +22,7 @@ interface RowProps {
   items: Array<Podcast>;
 }
 
-const Row: React.FC<RowProps> = ({ title, items }) => {
+const Row = ({ title, items }: RowProps) => {
   const renderItems = () =>
     items.map((item: Podcast) => <PodcastItem key={item.id} podcast={item} />);
 

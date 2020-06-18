@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 
 import { ToggleWrapper, ToggleLabel, ToggleContainer } from "./Toggle.styles";
 
@@ -8,7 +8,7 @@ interface ToggleProps {
   onChange: () => void;
 }
 
-const Toggle: React.FC<ToggleProps> = ({ checked, onChange }) => (
+const Toggle = ({ checked, onChange }: ToggleProps) => (
   <ToggleWrapper>
     <ToggleContainer
       id="checkbox"

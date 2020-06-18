@@ -8,7 +8,7 @@ import {
   LandingGridContentContainer,
   LandingTitle,
   LandingParagraph,
-} from "../../Landing.styles";
+} from "../../../../components/Landing/Landing.styles";
 
 const Main = () => {
   const router = useRouter();

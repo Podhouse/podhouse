@@ -1,4 +1,5 @@
-import React from "react";
+import * as React from "react";
+import Link from "next/link";
 
 import {
   PodcastItemContainer,
@@ -15,7 +16,7 @@ interface PodcastItemProps {
   };
 }
 
-const PodcastItem: React.FC<PodcastItemProps> = ({ podcast }) => {
+const PodcastItem = ({ podcast }: PodcastItemProps) => {
   const { name, author, avatar } = podcast;
 
   const imageAlt = `${name} avatar`;
@@ -23,7 +24,9 @@ const PodcastItem: React.FC<PodcastItemProps> = ({ podcast }) => {
   return (
     <PodcastItemContainer>
       <PodcastItemAvatar src={avatar} alt={imageAlt} />
-      <PodcastItemName href="/app/podcast/123">{name}</PodcastItemName>
+      <Link href="/app/podcast/[podcast]" as="/app/podcast/123">
+        <PodcastItemName href="/app/podcast/123">{name}</PodcastItemName>
+      </Link>
       <PodcastItemAuthor>{author}</PodcastItemAuthor>
     </PodcastItemContainer>
   );

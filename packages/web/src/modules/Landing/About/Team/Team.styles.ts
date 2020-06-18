@@ -76,6 +76,6 @@ export const TeamTextParagraph = styled.p`
   font-weight: normal;
   font-size: 14px;
   line-height: 25px;
-  color: ${({ theme }) => theme.colors.strongestGray};
+  color: ${({ theme }) => theme.colors.grayFour};
   text-align: start;
 `;

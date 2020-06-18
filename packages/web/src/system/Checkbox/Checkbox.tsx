@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 
 import {
   CheckboxContainer,
@@ -12,11 +12,11 @@ interface CheckboxProps {
   label?: string;
 }
 
-const Checkbox: React.FC<CheckboxProps> = ({
+const Checkbox = ({
   checked = false,
   disabled = false,
   label,
-}) => (
+}: CheckboxProps) => (
   <CheckboxContainer>
     <StyledCheckbox type="checkbox" checked={checked} disabled={disabled} />
     {label ? <StyledLabel disabled={disabled}>{label}</StyledLabel> : null}

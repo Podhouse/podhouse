@@ -1,6 +1,5 @@
-import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
+import * as React from "react";
+import { AlertTriangle } from "react-feather";
 
 import { ErrorContainer, ErrorText } from "./Error.styles";
 
@@ -9,9 +8,9 @@ interface ErrorProps {
   mt?: number;
 }
 
-const Error: React.FC<ErrorProps> = ({ error, mt }) => (
+const Error = ({ error, mt }: ErrorProps) => (
   <ErrorContainer mt={mt}>
-    <FontAwesomeIcon icon={faExclamationTriangle} size="sm" color="#fc3d28" />
+    <AlertTriangle size={16} color="#fc3d28" />
 
     <ErrorText mt={mt}>{error}</ErrorText>
   </ErrorContainer>

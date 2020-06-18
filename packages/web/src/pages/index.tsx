@@ -1,20 +1,11 @@
 import * as React from "react";
-import Head from "next/head";
 
-import Landing from "../modules/Landing/Landing";
-import Home from "../modules/Landing/Home/Home";
+import { getLayout } from "src/components/Landing/Landing";
 
-const Page = () => (
-  <div className="container">
-    <Head>
-      <title>Podhouse — The best way to listen to your favorite podcasts</title>
-      <link rel="icon" href="/favicon.ico" />
-    </Head>
+import Home from "src/modules/Landing/Home/Home";
 
-    <Landing>
-      <Home />
-    </Landing>
-  </div>
-);
+const Index = () => <Home />;
 
-export default Page;
+Index.getLayout = getLayout;
+
+export default Index;

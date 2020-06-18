@@ -26,7 +26,7 @@ export const RowHeaderTitle = styled.h1`
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
-  color: ${({ theme }) => theme.colors.strongestGray};
+  color: ${({ theme }) => theme.colors.grayThree};
   align-self: center;
   justify-self: flex-start;
 `;
@@ -34,7 +34,7 @@ export const RowHeaderTitle = styled.h1`
 export const RowBreakLine = styled.hr`
   width: 100%;
   height: 1px;
-  background-color: ${({ theme }) => theme.colors.lighestGray};
+  background-color: ${({ theme }) => theme.colors.grayOne};
   margin: 0;
   border: none;
 `;

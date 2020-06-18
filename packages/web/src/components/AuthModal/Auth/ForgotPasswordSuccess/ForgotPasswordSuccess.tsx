@@ -1,6 +1,5 @@
-import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import * as React from "react";
+import { Check } from "react-feather";
 
 import Button from "../../../../system/Button/Button";
 
@@ -20,7 +19,7 @@ const ForgotPasswordSuccess = () => {
     <>
       <HeaderIconTextContainer>
         <CheckContainer>
-          <FontAwesomeIcon icon={faCheck} size="1x" color="#27AE60" />
+          <Check size={20} color="#27AE60" />
         </CheckContainer>
 
         <AuthText>

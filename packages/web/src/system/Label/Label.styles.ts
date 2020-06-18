@@ -1,4 +1,4 @@
-import { styled } from "../theme";
+import { styled } from "src/system/theme";
 
 interface LabelProps {
   mb?: number;
@@ -11,7 +11,7 @@ export const StyledLabel = styled.label<LabelProps>`
   font-size: 14px;
   line-height: 17px;
   text-align: center;
-  color: ${({ theme }) => theme.colors.strongestGray};
+  color: ${({ theme }) => theme.colors.grayFour};
   margin-bottom: ${({ mb }) => mb}px;
   outline: none;
 `;

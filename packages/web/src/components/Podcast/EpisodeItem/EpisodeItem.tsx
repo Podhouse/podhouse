@@ -1,4 +1,5 @@
-import React from "react";
+import * as React from "react";
+import Link from "next/link";
 
 import {
   EpisodeItemContainer,
@@ -17,7 +18,7 @@ interface EpisodeItemProps {
   };
 }
 
-const EpisodeItem: React.FC<EpisodeItemProps> = ({ episode }) => {
+const EpisodeItem = ({ episode }: EpisodeItemProps) => {
   const { name, author, avatar } = episode;
 
   const imageAlt = `${name} avatar`;
@@ -25,7 +26,9 @@ const EpisodeItem: React.FC<EpisodeItemProps> = ({ episode }) => {
   return (
     <EpisodeItemContainer>
       <EpisodeItemAvatar src={avatar} alt={imageAlt} />
-      <EpisodeItemName href="/app/episode/123">{name}</EpisodeItemName>
+      <Link href="/app/episode/[episode]" as="/app/episode/123">
+        <EpisodeItemName href="/app/episode/123">{name}</EpisodeItemName>
+      </Link>
       <EpisodeItemAuthor>{author}</EpisodeItemAuthor>
     </EpisodeItemContainer>
   );

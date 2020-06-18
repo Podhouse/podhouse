@@ -15,9 +15,9 @@ import {
   LandingGridContentContainer,
   LandingSubTitle,
   LandingParagraph,
-} from "../../Landing.styles";
+} from "../../../../components/Landing/Landing.styles";
 
-const Features: React.FC = () => (
+const Features = () => (
   <LandingGridContainer>
     <LandingGridContentContainer>
       <LandingSubTitle>A better podcast experience</LandingSubTitle>

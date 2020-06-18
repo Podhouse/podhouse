@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
@@ -22,7 +22,7 @@ const validationSchema = Yup.object().shape({
     .required("Confirm password is required"),
 });
 
-const ResetPassword: React.FC = () => {
+const ResetPassword = () => {
   const [, , , send] = useAuthContext();
 
   const {

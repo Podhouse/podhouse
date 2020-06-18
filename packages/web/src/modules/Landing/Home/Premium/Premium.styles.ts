@@ -22,7 +22,7 @@ export const PremiumAvailableContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: ${({ theme }) => theme.colors.lighestGray};
+  background: ${({ theme }) => theme.colors.grayOne};
   border-radius: 5px;
   grid-column: 1 / 2;
   grid-row: 1 / 2;
@@ -35,7 +35,7 @@ export const PremiumAvailableText = styled.p`
   font-size: 12px;
   line-height: 15px;
   text-align: center;
-  color: ${({ theme }) => theme.colors.strongestGray};
+  color: ${({ theme }) => theme.colors.grayThree};
 `;
 
 export const PremiumTitle = styled.h1`
@@ -90,5 +90,5 @@ export const PremiumItemText = styled.p`
   font-weight: normal;
   font-size: 14px;
   line-height: 25px;
-  color: ${({ theme }) => theme.colors.strongestGray};
+  color: ${({ theme }) => theme.colors.grayFour};
 `;

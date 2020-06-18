@@ -7,4 +7,5 @@ export interface ButtonProps {
   height?: number;
   bgColor?: string;
   color?: string;
+  children?: any;
 }

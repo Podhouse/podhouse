@@ -37,10 +37,10 @@ export const SettingsModalLinkContainer = styled.div`
   }
 
   &:hover {
-    background: ${({ theme }) => theme.colors.lighestGray};
+    background: ${({ theme }) => theme.colors.grayOne};
 
     a {
-      color: ${({ theme }) => theme.colors.black};
+      color: ${({ theme }) => theme.colors.grayFour};
     }
   }
 `;
@@ -51,6 +51,6 @@ export const SettingsModalLink = styled.a`
   font-weight: normal;
   font-size: 14px;
   line-height: 17px;
-  color: ${({ theme }) => theme.colors.strongestGray};
+  color: ${({ theme }) => theme.colors.grayThree};
   text-decoration: none;
 `;

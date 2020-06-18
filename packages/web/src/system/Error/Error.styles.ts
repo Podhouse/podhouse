@@ -1,4 +1,4 @@
-import { styled } from "../theme";
+import { styled } from "src/system/theme";
 
 interface ErrorProps {
   mt?: number;

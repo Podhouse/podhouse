@@ -14,10 +14,7 @@ interface SettingsModalProps {
   handleSettings: () => any;
 }
 
-const SettingsModal: React.FC<SettingsModalProps> = ({
-  logoutAuth,
-  handleSettings,
-}) => {
+const SettingsModal = ({ logoutAuth, handleSettings }: SettingsModalProps) => {
   const ref = useRef<any>();
 
   useOnClickOutside(ref, () => handleSettings());

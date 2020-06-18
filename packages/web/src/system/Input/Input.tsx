@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 
 import Label from "../Label/Label";
 import Error from "../Error/Error";
@@ -7,7 +7,7 @@ import { InputContainer, InputStyled } from "./Input.styles";
 
 import { InputProps } from "./Input.types";
 
-const Input: React.FC<InputProps> = ({
+const Input = ({
   type,
   name,
   placeholder,
@@ -22,7 +22,7 @@ const Input: React.FC<InputProps> = ({
   autoComplete = "off",
   dataTestId,
   ...props
-}) => (
+}: InputProps) => (
   <InputContainer width={width}>
     {label ? <Label label={label} mb={10} /> : null}
 
