@@ -1,11 +1,11 @@
 import * as React from "react";
 
-import Provider from "src/provider/";
+import { getLayout } from "src/components/Provider/Provider";
 
 import Settings from "src/modules/App/Settings/Settings";
 
 const Index = () => <Settings />;
 
-Index.Layout = Provider;
+Index.getLayout = getLayout;
 
 export default Index;

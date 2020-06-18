@@ -1,7 +1,7 @@
-import React, { Fragment } from "react";
+import React from "react";
 
-import FAQ from "../FAQ/FAQ";
-import CallToAction from "../CallToAction/CallToAction";
+import FAQ from "src/components/Landing/FAQ/FAQ";
+import CallToAction from "src/components/Landing/CallToAction/CallToAction";
 
 import Main from "./Main/Main";
 import Podcasts from "./Podcasts/Podcasts";
@@ -32,7 +32,7 @@ const items = [
 ];
 
 const Home = () => (
-  <Fragment>
+  <>
     <Main />
     <Podcasts />
     <Features />
@@ -42,7 +42,7 @@ const Home = () => (
     />
     <Premium />
     <CallToAction />
-  </Fragment>
+  </>
 );
 
 export default Home;

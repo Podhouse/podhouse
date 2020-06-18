@@ -27,7 +27,9 @@ const Episode = () => (
           <EpisodeName>
             A Fantasy of Fashion: Articles of Interest #7
           </EpisodeName>
-          <EpisodeAuthor href="/app/podcast/invisible">99% Invisible</EpisodeAuthor>
+          <EpisodeAuthor href="/app/podcast/invisible">
+            99% Invisible
+          </EpisodeAuthor>
           <EpisodeDescription>
             Design is everywhere in our lives, perhaps most importantly in the
             places where we've just stopped noticing. 99% Invisible is a weekly

@@ -1,4 +1,5 @@
 import * as React from "react";
+import Link from "next/link";
 import { useRouter } from "next/router";
 
 import LogoPodhouseDark from "../../../../public/logo/logo-podhouse-medium-dark.svg";
@@ -31,9 +32,15 @@ const Header = () => {
       </HeaderLogoContainer>
 
       <HeaderLinksContainer>
-        <HeaderLink href="/about">About</HeaderLink>
-        <HeaderLink href="/advertise">Advertise</HeaderLink>
-        <HeaderLink href="/brand">Brand</HeaderLink>
+        <Link href="/about" as="/about">
+          <HeaderLink href="/about">About</HeaderLink>
+        </Link>
+        <Link href="/advertise" as="/advertise">
+          <HeaderLink href="/advertise">Advertise</HeaderLink>
+        </Link>
+        <Link href="/brand" as="/brand">
+          <HeaderLink href="/brand">Brand</HeaderLink>
+        </Link>
         <HeaderLink
           href="mailto:leonardomso11@gmail.com"
           target="_blank"

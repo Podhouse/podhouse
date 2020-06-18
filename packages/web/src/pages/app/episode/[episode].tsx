@@ -1,11 +1,11 @@
 import * as React from "react";
 
-import Provider from "src/provider/";
+import { getLayout } from "src/components/Provider/Provider";
 
 import Episode from "src/modules/App/Episode/Episode";
 
 const Index = () => <Episode />;
 
-Index.Layout = Provider;
+Index.getLayout = getLayout;
 
 export default Index;

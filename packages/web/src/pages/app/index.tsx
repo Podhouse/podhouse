@@ -1,11 +1,11 @@
 import * as React from "react";
 
-import Provider from "src/provider/";
+import { getLayout } from "src/components/Provider/Provider";
 
 import Browse from "src/modules/App/Browse/Browse";
 
 const Index = () => <Browse />;
 
-Index.Layout = Provider;
+Index.getLayout = getLayout;
 
 export default Index;

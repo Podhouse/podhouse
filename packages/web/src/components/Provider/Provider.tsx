@@ -31,4 +31,6 @@ const Provider = ({ children }: ProviderProps) => (
   </>
 );
 
+export const getLayout = (page) => <Provider>{page}</Provider>;
+
 export default Provider;

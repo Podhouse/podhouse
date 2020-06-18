@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 import {
   EpisodeItemContainer,
@@ -25,7 +26,9 @@ const EpisodeItem = ({ episode }: EpisodeItemProps) => {
   return (
     <EpisodeItemContainer>
       <EpisodeItemAvatar src={avatar} alt={imageAlt} />
-      <EpisodeItemName>{name}</EpisodeItemName>
+      <Link href="/app/episode/[episode]" as="/app/episode/123">
+        <EpisodeItemName href="/app/episode/123">{name}</EpisodeItemName>
+      </Link>
       <EpisodeItemAuthor>{author}</EpisodeItemAuthor>
     </EpisodeItemContainer>
   );

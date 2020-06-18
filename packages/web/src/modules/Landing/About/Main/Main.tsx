@@ -5,7 +5,7 @@ import {
   LandingGridContentContainer,
   LandingTitle,
   LandingParagraph,
-} from "../../../../components/Landing/Landing.styles";
+} from "src/components/Landing/Landing.styles";
 
 const Main = () => (
   <LandingGridContainer>

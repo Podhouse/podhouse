@@ -8,7 +8,7 @@ import {
   LandingGridContentContainer,
   LandingSubTitle,
   LandingParagraph,
-} from "../../../components/Landing/Landing.styles";
+} from "../Landing.styles";
 
 const CallToAction = () => {
   const router = useRouter();

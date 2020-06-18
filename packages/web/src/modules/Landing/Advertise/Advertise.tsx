@@ -1,10 +1,10 @@
-import React, { Fragment } from "react";
+import React from "react";
+
+import FAQ from "src/components/Landing/FAQ/FAQ";
+import CallToAction from "src/components/Landing/CallToAction/CallToAction";
 
 import Main from "./Main/Main";
 import Pricing from "./Pricing/Pricing";
-
-import FAQ from "../FAQ/FAQ";
-import CallToAction from "../CallToAction/CallToAction";
 
 const items = [
   {
@@ -40,7 +40,7 @@ const items = [
 ];
 
 const Advertise = () => (
-  <Fragment>
+  <>
     <Main />
     <Pricing />
     <FAQ
@@ -48,7 +48,7 @@ const Advertise = () => (
       items={items}
     />
     <CallToAction />
-  </Fragment>
+  </>
 );
 
 export default Advertise;
