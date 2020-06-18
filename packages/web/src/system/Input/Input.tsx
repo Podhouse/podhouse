@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 
 import Label from "../Label/Label";
 import Error from "../Error/Error";

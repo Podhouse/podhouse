@@ -1,4 +1,4 @@
-import { styled } from "../theme";
+import { styled } from "src/system/theme";
 
 export const StyledSelect = styled.select`
   width: 100%;

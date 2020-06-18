@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import Scrollbars from "react-custom-scrollbars";
 
 import Row from "../../../components/Row/Row";

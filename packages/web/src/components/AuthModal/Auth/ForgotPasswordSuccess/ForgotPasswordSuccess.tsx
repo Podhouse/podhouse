@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { Check } from "react-feather";
 
 import Button from "../../../../system/Button/Button";

@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 
 import FAQ from "src/components/Landing/FAQ/FAQ";
 import CallToAction from "src/components/Landing/CallToAction/CallToAction";

@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import App from "next/app";
 
 import Provider from "src/components/Provider/Provider";

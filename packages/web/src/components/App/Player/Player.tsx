@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { useRehawk } from "rehawk";
 
 import Podcast from "./Podcast/Podcast";
