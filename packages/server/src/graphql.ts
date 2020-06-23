@@ -1,33 +1,33 @@
 import { Request, Response } from "koa";
-import { Options } from "koa-graphql";
 
 import schema from "./graphql/schema";
-
 import * as loaders from "./loaders";
-
-import { Loaders } from "./common/types";
+import { Loaders } from './interface/NodeInterface';
+import { getUser } from './auth';
 
 const graphql = async (req: Request, res: Response) => {
-  const allLoaders: Loaders = loaders;
+  const { user } = await getUser(req.header.authorization);
 
-  const dataloaders = Object.keys(allLoaders).reduce(
+  const AllLoaders: Loaders = loaders;
+
+  const dataloaders = Object.keys(AllLoaders).reduce(
     (acc, loaderKey) => ({
       ...acc,
-      [loaderKey]: allLoaders[loaderKey].getLoader(),
+      [loaderKey]: AllLoaders[loaderKey].getLoader(),
     }),
     {},
   );
 
-  const options: Options = {
+  return {
+    graphiql: process.env.NODE_ENV !== 'production',
     schema,
     context: {
       req,
       res,
+      user,
       dataloaders,
     },
   };
-
-  return options;
 };
 
 export default graphql;

@@ -3,14 +3,24 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const connectDB = () =>
-  mongoose
-    .connect(process.env.DB_URI, {
-      useCreateIndex: true,
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    })
-    .then(() => console.log("✅  Database connected!"))
-    .catch(() => console.log("🚫  Could not connect to database"));
+const connectDB = () => {
+  return new Promise((resolve, reject) => {
+    mongoose.Promise = global.Promise;
+    mongoose.connection
+      .on('error', error => reject(error))
+      .on('close', () => console.log('Database connection closed.'))
+      .once('open', () => resolve(mongoose.connections[0]));
+
+    mongoose.connect(
+      process.env.DB_URI,
+      {
+        useNewUrlParser: true,
+        useCreateIndex: true,
+        useUnifiedTopology: true
+      },
+    );
+  });
+}
 
 export default connectDB;
+

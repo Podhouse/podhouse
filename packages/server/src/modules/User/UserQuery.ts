@@ -1,16 +1,14 @@
-import { GraphQLID, GraphQLNonNull } from "graphql";
+import { GraphQLID, GraphQLNonNull, GraphQLList } from "graphql";
 import { fromGlobalId } from "graphql-relay";
 
 import UserType from "./UserType";
 import * as UserLoader from "./UserLoader";
 
-import { GraphQLContext } from "../../common/types";
-
 const UserQuery = {
   currentUser: {
     type: UserType,
     description: "Get current user",
-    resolve: (parent, args, context: GraphQLContext, info) => context.user,
+    resolve: (root, args, context) => console.log('context -> ', context),
   },
   getUser: {
     type: UserType,
@@ -21,6 +19,11 @@ const UserQuery = {
     },
     resolve: async (_, { id }, context) =>
       await UserLoader.load(context, fromGlobalId(id).id),
+  },
+  getUsers: {
+    type: GraphQLList(UserType),
+    resolve: async (_, args, context) =>
+      await UserLoader.loadUsers(context, args),
   },
 };
 

@@ -8,23 +8,21 @@ import { ConnectionArguments } from "graphql-relay";
 
 import UserModel, { IUser } from "./UserModel";
 
-declare type ObjectId = mongoose.Schema.Types.ObjectId;
+import { GraphQLContext } from "../../types";
 
-import { GraphQLContext } from "../../common/types";
+declare type ObjectId = mongoose.Schema.Types.ObjectId;
 
 export default class User {
   id: string;
-  _id: Types.ObjectId | undefined;
-  email: string;
+  _id: Types.ObjectId;
+  name: string;
+  email: string | null | undefined;
+  active: boolean | null | undefined;
 
-  constructor(data: IUser, { user }: GraphQLContext) {
-    this.id = data.id;
+  constructor(data: IUser, context: GraphQLContext) {
+    this.id = data._id;
     this._id = data._id;
     this.email = data.email;
-
-    if (user && user._id.equals(data._id)) {
-      this.email = data.email;
-    }
   }
 }
 
@@ -37,7 +35,7 @@ const viewerCanSee = () => true;
 
 export const load = async (
   context: GraphQLContext,
-  id: string | Record<string, any> | ObjectId,
+  id: string | Object | ObjectId,
 ): Promise<User | null> => {
   if (!id && typeof id !== "string") {
     return null;
@@ -56,13 +54,11 @@ export const clearCache = (
   { dataloaders }: GraphQLContext,
   id: Types.ObjectId,
 ) => dataloaders.UserLoader.clear(id.toString());
-
 export const primeCache = (
   { dataloaders }: GraphQLContext,
   id: Types.ObjectId,
   data: IUser,
 ) => dataloaders.UserLoader.prime(id.toString(), data);
-
 export const clearAndPrimeCache = (
   context: GraphQLContext,
   id: Types.ObjectId,
@@ -72,7 +68,6 @@ export const clearAndPrimeCache = (
 type UserArgs = ConnectionArguments & {
   search?: string;
 };
-
 export const loadUsers = async (context: GraphQLContext, args: UserArgs) => {
   const where = args.search
     ? { name: { $regex: new RegExp(`^${args.search}`, "ig") } }
