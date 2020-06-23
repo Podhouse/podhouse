@@ -8,9 +8,9 @@ import helmet from "koa-helmet";
 import graphqlHttp from "koa-graphql";
 import koaPlayground from "graphql-playground-middleware-koa";
 
-import connectDB from "./common/database";
+import connectDB from "./database";
 
-import graphql from "./graphql/graphql";
+import graphql from "./graphql";
 
 dotenv.config();
 

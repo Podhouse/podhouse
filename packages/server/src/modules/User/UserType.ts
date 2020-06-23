@@ -1,16 +1,11 @@
-import {
-  GraphQLObjectType,
-  GraphQLString,
-  GraphQLInt,
-  GraphQLList,
-} from "graphql";
+import { GraphQLObjectType, GraphQLString, GraphQLInt } from "graphql";
 import { globalIdField } from "graphql-relay";
 
-import PodcastType from "../Podcast/PodcastType";
-import NotificationsType from "../Notifications/NotificationsType";
+import { NodeInterface } from "../../common/nodeInterface";
 
 const UserType = new GraphQLObjectType({
   name: "UserType",
+  description: "User type",
   fields: () => ({
     id: globalIdField("UserType"),
     _id: {
@@ -21,15 +16,8 @@ const UserType = new GraphQLObjectType({
       type: GraphQLString,
       resolve: ({ email }) => email,
     },
-    subscriptions: {
-      type: new GraphQLList(PodcastType),
-      resolve: ({ email }) => email,
-    },
-    notifications: {
-      type: NotificationsType,
-      resolve: ({ notifications }) => notifications,
-    },
   }),
+  interfaces: () => [NodeInterface],
 });
 
 export default UserType;

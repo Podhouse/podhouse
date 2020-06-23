@@ -1,6 +1,6 @@
 import { GraphQLObjectType } from "graphql";
 
-import UserMutation from "../modules/User/UserMutation";
+import UserMutation from "../modules/User/mutations";
 
 const MutationType = new GraphQLObjectType({
   name: "Mutation",

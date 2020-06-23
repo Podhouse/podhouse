@@ -1,4 +1,5 @@
-import mongoose, { Schema, Document, Model, model } from "mongoose";
+import mongoose, { Schema, Document, Model } from "mongoose";
+import bcrypt from "bcrypt";
 
 import { hashPassword, authenticate, encryptPassword } from "../../common/auth";
 
@@ -15,35 +16,7 @@ const UserSchema = new Schema(
       type: String,
       hidden: true,
       required: true,
-    },
-    subscriptions: [
-      {
-        name: {
-          type: String,
-          trim: true,
-          lowercase: true,
-        },
-        feed: {
-          type: String,
-          trim: true,
-          lowercase: true,
-        },
-        avatar: {
-          type: String,
-          trim: true,
-          lowercase: true,
-        },
-      },
-    ],
-    notifications: {
-      weekly: {
-        type: Boolean,
-        default: false,
-      },
-      news: {
-        type: Boolean,
-        default: false,
-      },
+      minlength: 6,
     },
   },
   {
@@ -55,15 +28,6 @@ const UserSchema = new Schema(
 export interface IUser extends Document {
   email: string;
   password: string;
-  subscriptions: Array<{
-    name: string;
-    feed: string;
-    avatar: string;
-  }>;
-  notifications: {
-    weekly: boolean;
-    news: boolean;
-  };
   authenticate: (password: string) => boolean;
   encryptPassword: (password: string | undefined) => Promise<string>;
 }
@@ -73,12 +37,30 @@ UserSchema.methods = {
   encryptPassword,
 };
 
-UserSchema.pre<IUser>("save", hashPassword);
+UserSchema.methods = {
+  authenticate(plainTextPassword: string) {
+    return bcrypt.compareSync(plainTextPassword, this.password);
+  },
+  encryptPassword(password: string) {
+    return bcrypt.hashSync(password, 8);
+  },
+};
+
+UserSchema.pre<IUser>("save", function hashPassword(this: IUser, next) {
+  if (!this.isModified("password")) return next();
+  if (!this.password) return next();
+  return encryptPassword(this.password)
+    .then((hash: string) => {
+      this.password = hash;
+      next();
+    })
+    .catch((err: Error) => next(err));
+});
 
 // This line is only to fix "Cannot overwrite `User` model once compiled." error.
 // https://stackoverflow.com/questions/19051041/cannot-overwrite-model-once-compiled-mongoose
 mongoose.models = {};
 
-const UserModel: Model<IUser> = model("User", UserSchema);
+const UserModel: Model<IUser> = mongoose.model("User", UserSchema);
 
 export default UserModel;

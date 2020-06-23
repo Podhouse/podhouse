@@ -1,10 +1,10 @@
 import { hash, compare } from "bcrypt";
-import { sign } from "jsonwebtoken";
+import { sign, verify } from "jsonwebtoken";
 import dotenv from "dotenv";
 
 dotenv.config();
 
-import { IUser } from "../modules/User/UserModel";
+import UserModel, { IUser } from "../modules/User/UserModel";
 
 export function hashPassword(this: IUser, next) {
   if (!this.isModified("password")) return next();
@@ -27,3 +27,21 @@ export function encryptPassword(password: string) {
 
 export const generateToken = (user: IUser) =>
   `JWT ${sign({ id: user._id }, process.env.JWT_SECRET)}`;
+
+export async function getUser(token: string) {
+  if (!token) return { user: null };
+
+  try {
+    const decodedToken = verify(token.substring(4), process.env.JWT_SECRET);
+
+    const user = await UserModel.findOne({
+      _id: (decodedToken as { id: string }).id,
+    });
+
+    return {
+      user,
+    };
+  } catch (err) {
+    return { user: null };
+  }
+}

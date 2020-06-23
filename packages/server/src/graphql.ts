@@ -1,11 +1,11 @@
 import { Request, Response } from "koa";
 import { Options } from "koa-graphql";
 
-import schema from "./schema";
+import schema from "./graphql/schema";
 
-import * as loaders from "../loaders";
+import * as loaders from "./loaders";
 
-import { Loaders } from "../common/types";
+import { Loaders } from "./common/types";
 
 const graphql = async (req: Request, res: Response) => {
   const allLoaders: Loaders = loaders;

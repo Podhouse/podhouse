@@ -39,3 +39,5 @@ export type DataLoaderUserLoad<T> = (
 export type ViewerCanSee = (context: GraphQLContext) => any;
 
 export type ClearCache = (context: GraphQLContext, id: Types.ObjectId) => void;
+
+export type GetUser = (token: string) => Promise<IUser | { user: null }>;
