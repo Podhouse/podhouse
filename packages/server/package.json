@@ -5,12 +5,14 @@
   "author": "Leonardo Maldonado <leonardomso11@gmail.com>",
   "scripts": {
     "start": "nodemon",
+    "build": "tsc",
+    "test": "jest",
     "lint": "eslint --fix --ext .js,.ts,.tsx src",
     "format": "prettier --write src",
-    "test": "jest"
+    "schema": "graphql get-schema"
   },
   "dependencies": {
-    "@entria/graphql-mongoose-loader": "^4.3.1",
+    "@entria/graphql-mongoose-loader": "^4.3.2",
     "@koa/cors": "^3.1.0",
     "@koa/router": "^9.0.1",
     "bcrypt": "^5.0.0",
@@ -20,12 +22,12 @@
     "graphql-playground-middleware-koa": "^1.6.17",
     "graphql-relay": "^0.6.0",
     "jsonwebtoken": "^8.5.1",
-    "koa": "^2.12.1",
+    "koa": "^2.13.0",
     "koa-bodyparser": "^4.3.0",
     "koa-graphql": "^0.8.0",
     "koa-helmet": "^5.2.0",
     "koa-logger": "^3.2.1",
-    "mongoose": "^5.9.19",
+    "mongoose": "^5.9.20",
     "nodemon": "^2.0.4"
   },
   "devDependencies": {

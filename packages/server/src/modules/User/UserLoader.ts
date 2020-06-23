@@ -29,6 +29,7 @@ export default class User {
     this._id = data._id;
     this.email = data.email;
     this.subscriptions = data.subscriptions;
+    this.notifications = data.notifications;
   }
 }
 
