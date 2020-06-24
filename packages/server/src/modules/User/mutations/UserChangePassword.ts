@@ -1,31 +1,33 @@
 import { GraphQLString, GraphQLNonNull } from "graphql";
 import { mutationWithClientMutationId } from "graphql-relay";
 
-import * as UserLoader from "../UserLoader";
-import UserType from "../UserType";
+import { GraphQLContext } from "../../../types";
 
 export default mutationWithClientMutationId({
   name: "UserChangePassword",
   inputFields: {
-    currentPassword: {
+    oldPassword: {
       type: new GraphQLNonNull(GraphQLString),
     },
     newPassword: {
       type: new GraphQLNonNull(GraphQLString),
     },
   },
-  mutateAndGetPayload: async ({ currentPassword, newPassword }, { user }) => {
+  mutateAndGetPayload: async (
+    { oldPassword, newPassword },
+    { user }: GraphQLContext,
+  ) => {
     if (!user) {
       return {
         error: "User not authenticated",
       };
     }
 
-    const correctPassword = user.authenticate(currentPassword);
+    const correctPassword = user.authenticate(oldPassword);
 
     if (!correctPassword) {
       return {
-        error: "Current password invalid",
+        error: "INVALID_PASSWORD",
       };
     }
 
@@ -33,18 +35,18 @@ export default mutationWithClientMutationId({
     await user.save();
 
     return {
+      message: "Password updated successfully",
       error: null,
     };
   },
   outputFields: {
+    message: {
+      type: GraphQLString,
+      resolve: ({ message }) => message,
+    },
     error: {
       type: GraphQLString,
       resolve: ({ error }) => error,
-    },
-    me: {
-      type: UserType,
-      resolve: (obj, args, context) =>
-        UserLoader.load(context, context.user.id),
     },
   },
 });
