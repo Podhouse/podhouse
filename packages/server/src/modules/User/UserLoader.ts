@@ -9,8 +9,6 @@ import { DataLoaderKey } from '../../loaders';
 
 import { escapeRegex } from "../../utils/escapeRegex";
 
-export { IUser } from './UserModel';
-
 export default class User {
   id: string;
   _id: string;
