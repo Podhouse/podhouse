@@ -1,19 +1,19 @@
-import { GraphQLObjectType, GraphQLString, GraphQLNonNull } from "graphql";
+import { GraphQLObjectType, GraphQLString } from "graphql";
 import { globalIdField } from "graphql-relay";
 
 import { NodeInterface } from "../../interface/NodeInterface";
 
 const UserType: GraphQLObjectType = new GraphQLObjectType({
-  name: "User",
-  description: "User",
+  name: 'User',
+  description: 'User data',
   fields: () => ({
-    id: globalIdField("User"),
+    id: globalIdField('User'),
     _id: {
-      type: GraphQLNonNull(GraphQLString),
-      resolve: (user) => user._id,
+      type: GraphQLString,
+      resolve: user => user._id,
     },
     email: {
-      type: GraphQLNonNull(GraphQLString),
+      type: GraphQLString,
       resolve: (user) => user.email,
     },
   }),
