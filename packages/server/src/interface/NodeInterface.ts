@@ -1,36 +1,22 @@
-import { fromGlobalId, nodeDefinitions } from 'graphql-relay';
-import DataLoader from 'dataloader';
-import { GraphQLObjectType } from 'graphql';
+import { nodeDefinitions, fromGlobalId } from 'graphql-relay';
 
-import * as loaders from '../loaders';
 import { GraphQLContext } from '../types';
 
-type RegisteredTypes = {
-  [key: string]: GraphQLObjectType;
-};
-const registeredTypes: RegisteredTypes = {};
+import User, * as UserLoader from '../modules/user/UserLoader';
+import UserType from '../modules/user/UserType';
 
-export function registerType(type: GraphQLObjectType) {
-  registeredTypes[type.name] = type;
-  return type;
-}
-
-type Loader = {
-  load: (context: GraphQLContext, id: string) => Promise<any>;
-  getLoader: () => DataLoader<string, any>;
-};
-
-export type Loaders = {
-  [key: string]: Loader;
-};
-
-export const { nodeField, nodeInterface } = nodeDefinitions(
-  (globalId, context: GraphQLContext) => {
-    const { type, id } = fromGlobalId(globalId);
-    // TODO - convert loaders to Loaders
-    const loader: Loader = (loaders as Loaders)[`${type}Loader`];
-
-    return (loader && loader.load(context, id)) || null;
+const { nodeField, nodesField, nodeInterface } = nodeDefinitions(
+  async (globalId, context: GraphQLContext) => {
+    const { id, type } = fromGlobalId(globalId);
+    if (type === 'User') return await UserLoader.load(context, id);
+    return null;
   },
-  object => registeredTypes[object.constructor.name] || null,
+  obj => {
+    if (obj instanceof User) return UserType;
+    return null;
+  },
 );
+
+export const NodeInterface = nodeInterface;
+export const NodeField = nodeField;
+export const NodesField = nodesField;

@@ -2,13 +2,12 @@ import { Request, Response } from "koa";
 
 import schema from "./graphql/schema";
 import * as loaders from "./loaders";
-import { Loaders } from './interface/NodeInterface';
 import { getUser } from './auth';
 
 const graphql = async (req: Request, res: Response) => {
   const { user } = await getUser(req.header.authorization);
 
-  const AllLoaders: Loaders = loaders;
+  const AllLoaders = loaders;
 
   const dataloaders = Object.keys(AllLoaders).reduce(
     (acc, loaderKey) => ({
@@ -25,7 +24,7 @@ const graphql = async (req: Request, res: Response) => {
       req,
       res,
       user,
-      dataloaders,
+      dataloaders
     },
   };
 };

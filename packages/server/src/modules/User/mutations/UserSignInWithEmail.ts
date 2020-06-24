@@ -16,12 +16,12 @@ export default mutationWithClientMutationId({
     },
   },
   mutateAndGetPayload: async ({ email, password }) => {
-    const user = await UserModel.findOne({ email });
+    const user = await UserModel.findOne({ email: email.toLowerCase() });
 
     if (!user) {
       return {
         token: null,
-        error: "Invalid email or password",
+        error: "User doesn't exist",
       };
     }
 

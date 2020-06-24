@@ -1,25 +1,22 @@
-import DataLoader from "dataloader";
-import {
-  connectionFromMongoCursor,
-  mongooseLoader,
-} from "@entria/graphql-mongoose-loader";
-import mongoose, { Types } from "mongoose";
-import { ConnectionArguments } from "graphql-relay";
+import { connectionFromMongoCursor, mongooseLoader } from '@entria/graphql-mongoose-loader';
+import DataLoader from 'dataloader';
+import { ConnectionArguments } from 'graphql-relay';
+import { Schema } from 'mongoose';
 
-import UserModel, { IUser } from "./UserModel";
+import UserModel, { IUser } from './UserModel';
+import { GraphQLContext } from '../../types';
+import { DataLoaderKey } from '../../loaders';
 
-import { GraphQLContext } from "../../types";
+import { escapeRegex } from "../../utils/escapeRegex";
 
-declare type ObjectId = mongoose.Schema.Types.ObjectId;
+export { IUser } from './UserModel';
 
 export default class User {
   id: string;
-  _id: Types.ObjectId;
-  name: string;
-  email: string | null | undefined;
-  active: boolean | null | undefined;
+  _id: string;
+  email: string;
 
-  constructor(data: IUser, context: GraphQLContext) {
+  constructor(data: IUser) {
     this.id = data._id;
     this._id = data._id;
     this.email = data.email;
@@ -27,53 +24,36 @@ export default class User {
 }
 
 export const getLoader = () =>
-  new DataLoader((ids: ReadonlyArray<string>) =>
-    mongooseLoader(UserModel, ids),
-  );
+  new DataLoader<DataLoaderKey, IUser>(ids => mongooseLoader(UserModel, ids as string[]));
 
 const viewerCanSee = () => true;
 
-export const load = async (
-  context: GraphQLContext,
-  id: string | Object | ObjectId,
-): Promise<User | null> => {
-  if (!id && typeof id !== "string") {
+export const load = async (context: GraphQLContext, id: DataLoaderKey): Promise<User | null> => {
+  if (!id && typeof id !== 'string') {
     return null;
   }
-
   let data;
   try {
-    data = await context.dataloaders.UserLoader.load(id as string);
+    data = await context.dataloaders.UserLoader.load((id as string));
   } catch (err) {
     return null;
   }
-  return viewerCanSee() ? new User(data, context) : null;
+  return viewerCanSee() ? new User(data) : null;
 };
 
-export const clearCache = (
-  { dataloaders }: GraphQLContext,
-  id: Types.ObjectId,
-) => dataloaders.UserLoader.clear(id.toString());
-export const primeCache = (
-  { dataloaders }: GraphQLContext,
-  id: Types.ObjectId,
-  data: IUser,
-) => dataloaders.UserLoader.prime(id.toString(), data);
-export const clearAndPrimeCache = (
-  context: GraphQLContext,
-  id: Types.ObjectId,
-  data: IUser,
-) => clearCache(context, id) && primeCache(context, id, data);
+export const clearCache = ({ dataloaders }: GraphQLContext, id: Schema.Types.ObjectId) =>
+  dataloaders.UserLoader.clear(id.toString());
 
-type UserArgs = ConnectionArguments & {
+interface LoadUsersArgs extends ConnectionArguments {
   search?: string;
-};
-export const loadUsers = async (context: GraphQLContext, args: UserArgs) => {
-  const where = args.search
-    ? { name: { $regex: new RegExp(`^${args.search}`, "ig") } }
-    : {};
-  const users = UserModel.find(where, { _id: 1 }).sort({ createdAt: -1 });
+}
 
+export const loadUsers = async (context: any, args: LoadUsersArgs) => {
+  const defaultWhere = {
+    removedAt: null
+  }
+  const where = args.search ? { ...defaultWhere, name: { $regex: new RegExp(`^${escapeRegex(args.search)}`, 'ig') } } : defaultWhere;
+  const users = UserModel.find(where, { _id: 1 }).sort({ createdAt: -1 }).lean();
   return connectionFromMongoCursor({
     cursor: users,
     context,
