@@ -1,7 +1,4 @@
-import {
-  GraphQLObjectType,
-  GraphQLString,
-} from "graphql";
+import { GraphQLObjectType, GraphQLString } from "graphql";
 import { connectionArgs } from "graphql-relay";
 
 import UserType from "../modules/User/UserType";

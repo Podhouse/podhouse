@@ -4,10 +4,8 @@ import Dataloader from "dataloader";
 
 import { IUser } from "./modules/User/UserModel";
 
-type Key = string;
-
 export type Dataloaders = {
-  UserLoader: Dataloader<Key, IUser>;
+  UserLoader: Dataloader<string, IUser>;
 };
 
 export type GraphQLContext = {
