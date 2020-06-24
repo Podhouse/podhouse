@@ -36,7 +36,7 @@ UserSchema.methods = {
   encryptPassword,
 };
 
-UserSchema.pre<IUser>('save', hashPassword);
+UserSchema.pre<IUser>("save", hashPassword);
 
 // This line is only to fix "Cannot overwrite `User` model once compiled." error.
 // https://stackoverflow.com/questions/19051041/cannot-overwrite-model-once-compiled-mongoose

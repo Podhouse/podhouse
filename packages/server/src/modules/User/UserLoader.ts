@@ -1,11 +1,14 @@
-import { connectionFromMongoCursor, mongooseLoader } from '@entria/graphql-mongoose-loader';
-import DataLoader from 'dataloader';
-import { ConnectionArguments } from 'graphql-relay';
-import { Schema } from 'mongoose';
+import {
+  connectionFromMongoCursor,
+  mongooseLoader,
+} from "@entria/graphql-mongoose-loader";
+import DataLoader from "dataloader";
+import { ConnectionArguments } from "graphql-relay";
+import { Schema } from "mongoose";
 
-import UserModel, { IUser } from './UserModel';
-import { GraphQLContext } from '../../types';
-import { DataLoaderKey } from '../../loaders';
+import UserModel, { IUser } from "./UserModel";
+import { GraphQLContext } from "../../types";
+import { DataLoaderKey } from "../../loaders";
 
 import { escapeRegex } from "../../utils/escapeRegex";
 
@@ -22,25 +25,32 @@ export default class User {
 }
 
 export const getLoader = () =>
-  new DataLoader<DataLoaderKey, IUser>(ids => mongooseLoader(UserModel, ids as string[]));
+  new DataLoader<DataLoaderKey, IUser>((ids) =>
+    mongooseLoader(UserModel, ids as string[]),
+  );
 
 const viewerCanSee = () => true;
 
-export const load = async (context: GraphQLContext, id: DataLoaderKey): Promise<User | null> => {
-  if (!id && typeof id !== 'string') {
+export const load = async (
+  context: GraphQLContext,
+  id: DataLoaderKey,
+): Promise<User | null> => {
+  if (!id && typeof id !== "string") {
     return null;
   }
   let data;
   try {
-    data = await context.dataloaders.UserLoader.load((id as string));
+    data = await context.dataloaders.UserLoader.load(id as string);
   } catch (err) {
     return null;
   }
   return viewerCanSee() ? new User(data) : null;
 };
 
-export const clearCache = ({ dataloaders }: GraphQLContext, id: Schema.Types.ObjectId) =>
-  dataloaders.UserLoader.clear(id.toString());
+export const clearCache = (
+  { dataloaders }: GraphQLContext,
+  id: Schema.Types.ObjectId,
+) => dataloaders.UserLoader.clear(id.toString());
 
 interface LoadUsersArgs extends ConnectionArguments {
   search?: string;
@@ -48,10 +58,17 @@ interface LoadUsersArgs extends ConnectionArguments {
 
 export const loadUsers = async (context: any, args: LoadUsersArgs) => {
   const defaultWhere = {
-    removedAt: null
-  }
-  const where = args.search ? { ...defaultWhere, name: { $regex: new RegExp(`^${escapeRegex(args.search)}`, 'ig') } } : defaultWhere;
-  const users = UserModel.find(where, { _id: 1 }).sort({ createdAt: -1 }).lean();
+    removedAt: null,
+  };
+  const where = args.search
+    ? {
+        ...defaultWhere,
+        name: { $regex: new RegExp(`^${escapeRegex(args.search)}`, "ig") },
+      }
+    : defaultWhere;
+  const users = UserModel.find(where, { _id: 1 })
+    .sort({ createdAt: -1 })
+    .lean();
   return connectionFromMongoCursor({
     cursor: users,
     context,

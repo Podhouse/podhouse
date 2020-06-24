@@ -1,9 +1,9 @@
-import bcrypt from 'bcrypt';
+import bcrypt from "bcrypt";
 
-import { IUser } from '../modules/User/UserModel';
+import { IUser } from "../modules/User/UserModel";
 
 export function hashPassword(this: IUser, next) {
-  if (!this.isModified('password')) return next();
+  if (!this.isModified("password")) return next();
   if (!this.password) return next();
   return this.encryptPassword(this.password)
     .then((hash: string) => {

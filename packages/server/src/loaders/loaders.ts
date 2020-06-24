@@ -1,9 +1,9 @@
-import * as DataLoader from 'dataloader';
-import { Types } from 'mongoose';
+import * as DataLoader from "dataloader";
+import { Types } from "mongoose";
 
-import * as UserLoader from '../modules/User/UserLoader';
+import * as UserLoader from "../modules/User/UserLoader";
 
-import { IUser } from '../modules/User/UserModel';
+import { IUser } from "../modules/User/UserModel";
 
 export type DataLoaderKey = string | object | Types.ObjectId;
 

@@ -2,7 +2,7 @@ import { Request, Response } from "koa";
 
 import schema from "./graphql/schema";
 import * as loaders from "./loaders";
-import { getUser } from './auth';
+import { getUser } from "./auth";
 
 const graphql = async (req: Request, res: Response) => {
   const { user } = await getUser(req.header.authorization);
@@ -18,13 +18,13 @@ const graphql = async (req: Request, res: Response) => {
   );
 
   return {
-    graphiql: process.env.NODE_ENV !== 'production',
+    graphiql: process.env.NODE_ENV !== "production",
     schema,
     context: {
       req,
       res,
       user,
-      dataloaders
+      dataloaders,
     },
   };
 };

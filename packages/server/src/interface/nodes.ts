@@ -1,4 +1,4 @@
-import { GraphQLID } from 'graphql';
+import { GraphQLID } from "graphql";
 import {
   GraphQLFieldConfig,
   GraphQLInterfaceType,
@@ -6,7 +6,7 @@ import {
   GraphQLNonNull,
   GraphQLResolveInfo,
   GraphQLTypeResolver,
-} from 'graphql/type/definition';
+} from "graphql/type/definition";
 
 interface GraphQLNodeDefinitions<TContext> {
   nodeInterface: GraphQLInterfaceType;
@@ -29,12 +29,12 @@ export function nodeDefinitions<TContext>(
   typeResolver?: GraphQLTypeResolver<any, TContext> | undefined,
 ): GraphQLNodeDefinitions<TContext> {
   const nodeInterface = new GraphQLInterfaceType({
-    name: 'Node',
-    description: 'An object with an ID',
+    name: "Node",
+    description: "An object with an ID",
     fields: () => ({
       id: {
         type: new GraphQLNonNull(GraphQLID),
-        description: 'The id of the object.',
+        description: "The id of the object.",
       },
     }),
     resolveType: typeResolver,
@@ -43,27 +43,32 @@ export function nodeDefinitions<TContext>(
   return {
     nodeInterface,
     nodeField: {
-      description: 'Fetches an object given its ID',
+      description: "Fetches an object given its ID",
       type: nodeInterface,
       args: {
         id: {
           type: GraphQLID,
-          description: 'The ID of an object',
+          description: "The ID of an object",
         },
       },
-      resolve: (obj, { id }, context, info) => (id ? idFetcher(id, context, info) : null),
+      resolve: (obj, { id }, context, info) =>
+        id ? idFetcher(id, context, info) : null,
     },
     nodesField: {
-      description: 'Fetches objects given their IDs',
+      description: "Fetches objects given their IDs",
       type: new GraphQLNonNull(new GraphQLList(nodeInterface)),
       args: {
         ids: {
-          type: new GraphQLNonNull(new GraphQLList(new GraphQLNonNull(GraphQLID))),
-          description: 'The IDs of objects',
+          type: new GraphQLNonNull(
+            new GraphQLList(new GraphQLNonNull(GraphQLID)),
+          ),
+          description: "The IDs of objects",
         },
       },
       resolve: (obj, { ids }, context, info) =>
-        Promise.all(ids.map(id => Promise.resolve(idFetcher(id, context, info)))),
+        Promise.all(
+          ids.map((id) => Promise.resolve(idFetcher(id, context, info))),
+        ),
     },
   };
 }
