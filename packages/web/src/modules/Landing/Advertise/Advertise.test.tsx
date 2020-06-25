@@ -31,7 +31,7 @@ describe("Advertise", () => {
       ),
     ).toBeInTheDocument();
     expect(getByText("STANDARD")).toBeInTheDocument();
-    expect(getByText("$999")).toBeInTheDocument();
+    expect(getByText("$499")).toBeInTheDocument();
     expect(getByText("/mo")).toBeInTheDocument();
     expect(
       getByText(
