@@ -1,6 +1,6 @@
 import { css } from "styled-components";
 
-import { styled } from "src/system/theme";
+import { styled } from "../theme";
 
 import { ButtonProps } from "./Button.types";
 

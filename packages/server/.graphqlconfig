@@ -1,0 +1,12 @@
+{
+  "projects": {
+    "graphql": {
+      "schemaPath": "../schema/schema.graphql",
+      "extensions": {
+        "endpoints": {
+          "default": "http://localhost:4000"
+        }
+      }
+    }
+  }
+}

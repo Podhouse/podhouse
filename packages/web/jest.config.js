@@ -6,4 +6,7 @@ module.exports = {
   },
   coveragePathIgnorePatterns: ['/node_modules/', 'jest.config.js'],
   setupFilesAfterEnv: ['./src/tests/setupTests.ts'],
+  moduleNameMapper: {
+    "src(.*)$": "<rootDir>/src$1"
+  }
 }
