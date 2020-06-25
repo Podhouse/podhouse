@@ -8,8 +8,7 @@
     "build": "tsc",
     "test": "jest",
     "lint": "eslint --fix --ext .js,.ts,.tsx src",
-    "format": "prettier --write src",
-    "schema": "graphql get-schema"
+    "format": "prettier --write src"
   },
   "dependencies": {
     "@entria/graphql-mongoose-loader": "^4.3.2",
@@ -27,7 +26,12 @@
     "koa-graphql": "^0.8.0",
     "koa-helmet": "^5.2.0",
     "koa-logger": "^3.2.1",
-    "mongoose": "^5.9.20"
+    "mailgun-js": "^0.22.0",
+    "mongoose": "^5.9.20",
+    "nodemailer": "^6.4.10",
+    "passport": "^0.4.1",
+    "passport-apple": "^1.1.1",
+    "passport-google-oauth": "^2.0.0"
   },
   "devDependencies": {
     "@types/bcrypt": "^3.0.0",
