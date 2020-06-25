@@ -13,10 +13,7 @@ export default mutationWithClientMutationId({
       type: new GraphQLNonNull(GraphQLBoolean),
     },
   },
-  mutateAndGetPayload: async (
-    { weekly, news },
-    { user }: GraphQLContext,
-  ) => {
+  mutateAndGetPayload: async ({ weekly, news }, { user }: GraphQLContext) => {
     if (!user) {
       return {
         error: "User not authenticated",

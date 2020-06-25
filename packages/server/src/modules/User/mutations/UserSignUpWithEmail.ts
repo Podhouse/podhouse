@@ -30,8 +30,8 @@ export default mutationWithClientMutationId({
       password,
       notifications: {
         weekly: false,
-        news: false
-      }
+        news: false,
+      },
     });
 
     await user.save();

@@ -21,14 +21,14 @@ const UserSchema = new Schema(
       weekly: {
         type: Boolean,
         required: false,
-        hidden: false
+        hidden: false,
       },
       news: {
         type: Boolean,
         required: false,
-        hidden: false
-      }
-    }
+        hidden: false,
+      },
+    },
   },
   {
     timestamps: true,

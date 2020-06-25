@@ -21,7 +21,7 @@ const UserType: GraphQLObjectType = new GraphQLObjectType({
     notifications: {
       type: NotificationsType,
       resolve: ({ notifications }) => notifications,
-    }
+    },
   }),
   interfaces: () => [NodeInterface],
 });

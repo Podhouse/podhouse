@@ -5,14 +5,14 @@ const NotificationsType: GraphQLObjectType = new GraphQLObjectType({
   description: "Notifications",
   fields: () => ({
     weekly: {
-      type: GraphQLBoolean,
+      type: new GraphQLNonNull(GraphQLBoolean),
       resolve: ({ weekly }) => weekly,
     },
     news: {
-      type: GraphQLBoolean,
+      type: new GraphQLNonNull(GraphQLBoolean),
       resolve: ({ news }) => news,
     },
-  })
+  }),
 });
 
 export default NotificationsType;
