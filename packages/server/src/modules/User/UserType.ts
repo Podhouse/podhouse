@@ -3,6 +3,8 @@ import { globalIdField } from "graphql-relay";
 
 import { NodeInterface } from "../../interface/NodeInterface";
 
+import NotificationsType from "../Notifications/NotificationsType";
+
 const UserType: GraphQLObjectType = new GraphQLObjectType({
   name: "User",
   description: "User data",
@@ -16,6 +18,10 @@ const UserType: GraphQLObjectType = new GraphQLObjectType({
       type: GraphQLNonNull(GraphQLString),
       resolve: ({ email }) => email,
     },
+    notifications: {
+      type: NotificationsType,
+      resolve: ({ notifications }) => notifications,
+    }
   }),
   interfaces: () => [NodeInterface],
 });

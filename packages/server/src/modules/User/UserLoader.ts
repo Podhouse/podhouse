@@ -16,11 +16,17 @@ export default class User {
   id: string;
   _id: string;
   email: string;
+  password: string;
+  notifications: {
+    weekly: boolean;
+    news: boolean;
+  };
 
   constructor(data: IUser) {
     this.id = data._id;
     this._id = data._id;
     this.email = data.email;
+    this.notifications = data.notifications;
   }
 }
 

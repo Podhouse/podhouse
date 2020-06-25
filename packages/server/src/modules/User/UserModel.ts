@@ -17,6 +17,18 @@ const UserSchema = new Schema(
       required: true,
       minlength: 6,
     },
+    notifications: {
+      weekly: {
+        type: Boolean,
+        required: false,
+        hidden: false
+      },
+      news: {
+        type: Boolean,
+        required: false,
+        hidden: false
+      }
+    }
   },
   {
     timestamps: true,
@@ -27,6 +39,10 @@ const UserSchema = new Schema(
 export interface IUser extends Document {
   email: string;
   password: string;
+  notifications: {
+    weekly: boolean;
+    news: boolean;
+  };
   authenticate: (plainTextPassword: string) => boolean;
   encryptPassword: (password: string | undefined) => Promise<string>;
 }

@@ -28,6 +28,10 @@ export default mutationWithClientMutationId({
     user = new UserModel({
       email,
       password,
+      notifications: {
+        weekly: false,
+        news: false
+      }
     });
 
     await user.save();
