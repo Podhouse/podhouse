@@ -2,7 +2,7 @@ import { Request, Response } from "koa";
 
 import schema from "./graphql/schema";
 import * as loaders from "./loaders";
-import { getUser } from "./auth";
+import { getUser } from "./utils/auth";
 
 const graphql = async (req: Request, res: Response) => {
   const { user } = await getUser(req.header.authorization);

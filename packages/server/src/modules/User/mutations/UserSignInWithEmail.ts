@@ -3,7 +3,7 @@ import { mutationWithClientMutationId } from "graphql-relay";
 
 import UserModel from "../UserModel";
 
-import { generateToken } from "../../../auth";
+import { generateToken } from "../../../utils/auth";
 
 export default mutationWithClientMutationId({
   name: "UserSignInWithEmail",

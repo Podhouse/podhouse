@@ -1,6 +1,5 @@
 import mongoose, { Schema, Document, Model } from "mongoose";
-
-import { authenticate, encryptPassword, hashPassword } from "../../utils/auth";
+import bcrypt from "bcrypt";
 
 const UserSchema = new Schema(
   {
@@ -29,6 +28,16 @@ const UserSchema = new Schema(
         hidden: false,
       },
     },
+    providers: [
+      {
+        id: {
+          type: String,
+        },
+        provider: {
+          type: String,
+        },
+      },
+    ],
   },
   {
     timestamps: true,
@@ -43,16 +52,28 @@ export interface IUser extends Document {
     weekly: boolean;
     news: boolean;
   };
+  providers: Array<{
+    id: string;
+    provider: string;
+  }>;
   authenticate: (plainTextPassword: string) => boolean;
   encryptPassword: (password: string | undefined) => Promise<string>;
 }
 
 UserSchema.methods = {
-  authenticate,
-  encryptPassword,
+  authenticate: function (this: IUser, plainTextPassword: string) {
+    return bcrypt.compare(plainTextPassword, this.password);
+  },
 };
 
-UserSchema.pre<IUser>("save", hashPassword);
+UserSchema.pre<IUser>("save", function (next) {
+  if (!this.isModified("password")) return next();
+  if (!this.password) return next();
+  return bcrypt.hash(this.password, 8).then((hash: string) => {
+    this.password = hash;
+    next();
+  });
+});
 
 // This line is only to fix "Cannot overwrite `User` model once compiled." error.
 // https://stackoverflow.com/questions/19051041/cannot-overwrite-model-once-compiled-mongoose
