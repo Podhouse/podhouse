@@ -6,6 +6,7 @@ import bodyParser from "koa-bodyparser";
 import logger from "koa-logger";
 import helmet from "koa-helmet";
 import graphqlHttp from "koa-graphql";
+import passport from "koa-passport";
 import koaPlayground from "graphql-playground-middleware-koa";
 
 import connectDB from "./database";
@@ -31,6 +32,8 @@ app.listen(process.env.GRAPHQL_PORT);
 app.use(logger());
 app.use(cors());
 app.use(helmet());
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(router.routes()).use(router.allowedMethods());
 
 connectDB();

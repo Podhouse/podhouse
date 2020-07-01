@@ -3,7 +3,7 @@ import { mutationWithClientMutationId } from "graphql-relay";
 
 import UserModel from "../UserModel";
 
-import { generateToken } from "../../../auth";
+import { generateToken } from "../../../utils/auth";
 
 export default mutationWithClientMutationId({
   name: "UserSignUpWithEmail",
@@ -32,6 +32,7 @@ export default mutationWithClientMutationId({
         weekly: false,
         news: false,
       },
+      providers: [],
     });
 
     await user.save();

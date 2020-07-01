@@ -21,12 +21,17 @@ export default class User {
     weekly: boolean;
     news: boolean;
   };
+  providers: Array<{
+    id: string;
+    provider: string;
+  }>;
 
   constructor(data: IUser) {
     this.id = data._id;
     this._id = data._id;
     this.email = data.email;
     this.notifications = data.notifications;
+    this.providers = data.providers;
   }
 }
 
