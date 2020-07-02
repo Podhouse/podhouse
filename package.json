@@ -40,14 +40,8 @@
     }
   },
   "lint-staged": {
-    "*.ts": [
+    "*.{js,ts,tsx}": [
       "yarn lint",
-      "yarn test",
-      "git add"
-    ],
-    "*.tsx": [
-      "yarn lint",
-      "yarn test",
       "git add"
     ]
   }

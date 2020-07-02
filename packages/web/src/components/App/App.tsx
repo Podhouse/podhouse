@@ -1,10 +1,10 @@
 import * as React from "react";
 import Head from "next/head";
 
-import Header from "./Header/Header";
+// import Header from "./Header/Header";
 import Menu from "./Menu/Menu";
-import Player from "./Player/Player";
-import Dashboard from "./Dashboard/Dashboard";
+// import Player from "./Player/Player";
+// import Dashboard from "./Dashboard/Dashboard";
 
 import AuthModal from "../AuthModal/AuthModal";
 import SettingsModal from "../SettingsModal/SettingsModal";
@@ -57,9 +57,6 @@ const App = ({ children }: AppProps) => {
         {renderSettingsModal()}
 
         <AppContainer>
-          <Dashboard>{children}</Dashboard>
-          <Header />
-          <Player />
           <Menu />
         </AppContainer>
       </>

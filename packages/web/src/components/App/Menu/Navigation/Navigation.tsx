@@ -1,6 +1,6 @@
 import * as React from "react";
 import Link from "next/link";
-import { Home, Headphones, Search, User } from "react-feather";
+import { Home, Headphones, Search, User, Heart } from "react-feather";
 
 import {
   NavigationContainer,
@@ -12,7 +12,7 @@ const Navigation = () => (
   <NavigationContainer>
     <NavigationItemContainer className="browse">
       <Link href="/app" passHref>
-        <Home size={16} color="#B7B7B7" strokeWidth={1.5} />
+        <Home size={16} color="#B7B7B7" strokeWidth={1} />
       </Link>
 
       <Link href="/app" passHref>
@@ -22,7 +22,7 @@ const Navigation = () => (
 
     <NavigationItemContainer className="podcasts">
       <Link href="/app/podcasts" passHref>
-        <Headphones size={16} color="#B7B7B7" strokeWidth={1.5} />
+        <Headphones size={16} color="#B7B7B7" strokeWidth={1} />
       </Link>
 
       <Link href="/app/podcasts" passHref>
@@ -30,9 +30,19 @@ const Navigation = () => (
       </Link>
     </NavigationItemContainer>
 
+    <NavigationItemContainer className="favorites">
+      <Link href="/app/favorites" passHref>
+        <Heart size={16} color="#B7B7B7" strokeWidth={1} />
+      </Link>
+
+      <Link href="/app/favorites" passHref>
+        <NavigationItemLink>Favorites</NavigationItemLink>
+      </Link>
+    </NavigationItemContainer>
+
     <NavigationItemContainer className="search">
       <Link href="/app/search" passHref>
-        <Search size={16} color="#B7B7B7" strokeWidth={1.5} />
+        <Search size={16} color="#B7B7B7" strokeWidth={1} />
       </Link>
 
       <Link href="/app/search" passHref>
@@ -42,7 +52,7 @@ const Navigation = () => (
 
     <NavigationItemContainer className="settings">
       <Link href="/app/settings" passHref>
-        <User size={16} color="#B7B7B7" strokeWidth={1.5} />
+        <User size={16} color="#B7B7B7" strokeWidth={1} />
       </Link>
 
       <Link href="/app/settings" passHref>

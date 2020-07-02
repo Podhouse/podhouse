@@ -13,10 +13,19 @@ export const NavigationContainer = styled.div`
   justify-content: center;
   justify-self: center;
 
+  .favorites {
+    display: none;
+  }
+
   @media screen and (min-width: 800px) {
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(2, max-content);
+    grid-template-rows: repeat(3, max-content);
     grid-row-gap: 30px;
+    padding: 0 20px 0 20px;
+
+    .favorites {
+      display: grid;
+    }
 
     .search,
     .settings {

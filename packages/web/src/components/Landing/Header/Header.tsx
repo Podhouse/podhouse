@@ -2,8 +2,6 @@ import * as React from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-import LogoPodhouseDark from "../../../../public/logo/logo-podhouse-medium-dark.svg";
-
 import {
   HeaderContainer,
   HeaderLogoContainer,
@@ -20,16 +18,14 @@ const Header = () => {
     router.push("/app");
   };
 
-  const handleHome = (e: any) => {
-    e.preventDefault();
-    router.push("/");
-  };
+  // const handleHome = (e: any) => {
+  //   e.preventDefault();
+  //   router.push("/");
+  // };
 
   return (
     <HeaderContainer>
-      <HeaderLogoContainer>
-        <LogoPodhouseDark onClick={handleHome} />
-      </HeaderLogoContainer>
+      <HeaderLogoContainer>Podhoue</HeaderLogoContainer>
 
       <HeaderLinksContainer>
         <Link href="/about" as="/about">
