@@ -1,4 +1,6 @@
-import { styled } from "../../../system/theme";
+import styled from "@emotion/styled";
+
+import { StyleProps } from "src/system/styles.types";
 
 export const EpisodeItemContainer = styled.div`
   width: 100%;
@@ -22,13 +24,13 @@ export const EpisodeItemAvatar = styled.img`
   cursor: pointer;
 `;
 
-export const EpisodeItemName = styled.a`
+export const EpisodeItemName = styled.a<StyleProps>`
   font-family: Inter;
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
   line-height: 17px;
-  color: ${({ theme }) => theme.colors.grayFour};
+  color: ${({ theme }) => theme.secondary};
   cursor: pointer;
   text-decoration: none;
   display: -webkit-box;
@@ -37,17 +39,17 @@ export const EpisodeItemName = styled.a`
   overflow: hidden;
 
   &:hover {
-    color: ${({ theme }) => theme.colors.black};
+    color: ${({ theme }) => theme.primary};
   }
 `;
 
-export const EpisodeItemAuthor = styled.p`
+export const EpisodeItemAuthor = styled.p<StyleProps>`
   font-family: Inter;
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
   line-height: 17px;
-  color: ${({ theme }) => theme.colors.grayThree};
+  color: ${({ theme }) => theme.tertiary};
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;

@@ -7,7 +7,7 @@
     "start": "nodemon",
     "build": "tsc",
     "test": "jest",
-    "lint": "eslint --fix --ext .js,.ts,.tsx src",
+    "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix",
     "format": "prettier --write src"
   },
   "dependencies": {

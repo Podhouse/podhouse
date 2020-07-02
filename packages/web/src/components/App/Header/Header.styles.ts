@@ -1,6 +1,8 @@
-import { styled } from "../../../system/theme";
+import styled from "@emotion/styled";
 
-export const HeaderContainer = styled.header`
+import { StyleProps } from "src/system/styles.types";
+
+export const HeaderContainer = styled.header<StyleProps>`
   display: none;
 
   @media screen and (min-width: 800px) {
@@ -12,7 +14,7 @@ export const HeaderContainer = styled.header`
     grid-template-rows: 1fr;
     grid-template-areas: "logo search settings";
     grid-column-gap: 30px;
-    background: ${({ theme }) => theme.colors.white};
+    background: ${({ theme }) => theme.backgroundTertiary};
     box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.05);
     padding-left: 30px;
     padding-right: 30px;

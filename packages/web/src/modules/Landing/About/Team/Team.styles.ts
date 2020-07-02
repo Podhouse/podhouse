@@ -1,4 +1,6 @@
-import { styled } from "../../../../system/theme";
+import styled from "@emotion/styled";
+
+import { StyleProps } from "src/system/styles.types";
 
 export const TeamContainer = styled.div`
   width: 100%;
@@ -47,7 +49,7 @@ export const TeamUserPicture = styled.picture`
   }
 `;
 
-export const TeamUserNameTitle = styled.h3`
+export const TeamUserNameTitle = styled.h3<StyleProps>`
   font-family: Inter;
   font-style: normal;
   font-weight: 600;
@@ -55,10 +57,10 @@ export const TeamUserNameTitle = styled.h3`
   line-height: 17px;
   text-align: center;
   letter-spacing: -0.03em;
-  color: ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.primary};
 `;
 
-export const TeamUserHandleTitle = styled.a`
+export const TeamUserHandleTitle = styled.a<StyleProps>`
   font-family: Inter;
   font-style: normal;
   font-weight: 500;
@@ -66,16 +68,16 @@ export const TeamUserHandleTitle = styled.a`
   line-height: 17px;
   text-align: center;
   letter-spacing: -0.03em;
-  color: ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.primary};
   text-decoration: none;
 `;
 
-export const TeamTextParagraph = styled.p`
+export const TeamTextParagraph = styled.p<StyleProps>`
   font-family: Inter;
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
   line-height: 25px;
-  color: ${({ theme }) => theme.colors.grayFour};
+  color: ${({ theme }) => theme.backgroundSecondary};
   text-align: start;
 `;

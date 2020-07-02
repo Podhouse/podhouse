@@ -1,4 +1,6 @@
-import { styled } from "../../system/theme";
+import styled from "@emotion/styled";
+
+import { StyleProps } from "src/system/styles.types";
 
 export const RowContainer = styled.div`
   width: 100%;
@@ -20,21 +22,21 @@ export const RowHeader = styled.div`
   grid-template-rows: max-content max-content;
 `;
 
-export const RowHeaderTitle = styled.h1`
+export const RowHeaderTitle = styled.h1<StyleProps>`
   font-family: Inter;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
-  color: ${({ theme }) => theme.colors.grayThree};
+  color: ${({ theme }) => theme.tertiary};
   align-self: center;
   justify-self: flex-start;
 `;
 
-export const RowBreakLine = styled.hr`
+export const RowBreakLine = styled.hr<StyleProps>`
   width: 100%;
   height: 1px;
-  background-color: ${({ theme }) => theme.colors.grayOne};
+  background-color: ${({ theme }) => theme.backgroundSecondary};
   margin: 0;
   border: none;
 `;

@@ -1,10 +1,12 @@
-import { css } from "styled-components";
+import styled from "@emotion/styled";
 
-import { styled } from "src/system/theme";
+import { StyleProps } from "src/system/styles.types";
 
 interface LabelProps {
   disabled?: boolean;
 }
+
+type Props = LabelProps & StyleProps;
 
 export const CheckboxContainer = styled.div`
   width: auto;
@@ -14,7 +16,7 @@ export const CheckboxContainer = styled.div`
   align-items: center;
 `;
 
-export const StyledCheckbox = styled.input`
+export const StyledCheckbox = styled.input<Props>`
   --active: #000000;
   --active-inner: #ffffff;
   --focus: 2px rgba(52, 93, 238, 0.3);
@@ -47,7 +49,7 @@ export const StyledCheckbox = styled.input`
       opacity var(--d-o, 0.2s);
     width: 5px;
     height: 9px;
-    border: ${({ theme }) => `2px solid ${theme.colors.white}`};
+    border: ${({ theme }) => `2px solid ${theme.secondary}`};
     border-top: 0;
     border-left: 0;
     left: 5px;
@@ -56,21 +58,21 @@ export const StyledCheckbox = styled.input`
   }
 
   &:checked {
-    background: ${({ theme }) => theme.colors.black};
+    background: ${({ theme }) => theme.primary};
     --d-o: 0.3s;
     --d-t: 0.6s;
     --d-t-e: cubic-bezier(0.2, 0.85, 0.32, 1.2);
   }
 
   &:disabled {
-    background: ${({ theme }) => theme.colors.lighestGray};
-    border: ${({ theme }) => `1px solid ${theme.colors.midGray}`};
+    background: ${({ theme }) => theme.tertiary};
+    border: ${({ theme }) => `1px solid ${theme.tertiary}`};
     cursor: not-allowed;
     opacity: 0.9;
 
     &:checked {
-      background: ${({ theme }) => theme.colors.lighestGray};
-      border: ${({ theme }) => `1px solid ${theme.colors.midGray}`};
+      background: ${({ theme }) => theme.tertiary};
+      border: ${({ theme }) => `1px solid ${theme.tertiary}`};
     }
 
     & + label {
@@ -100,19 +102,12 @@ export const StyledCheckbox = styled.input`
   }
 `;
 
-export const StyledLabel = styled.label<LabelProps>`
+export const StyledLabel = styled.label<Props>`
   font-family: Inter;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
-  color: ${({ theme }) => theme.colors.strongestGray};
+  color: ${({ theme }) => theme.tertiary};
   margin-left: 5px;
-
-  ${({ disabled }) =>
-    disabled &&
-    css`
-      color: #eaeaea;
-      cursor: not-allowed;
-    `};
 `;

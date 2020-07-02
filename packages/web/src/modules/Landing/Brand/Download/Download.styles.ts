@@ -1,4 +1,6 @@
-import { styled } from "../../../../system/theme";
+import styled from "@emotion/styled";
+
+import { StyleProps } from "src/system/styles.types";
 
 interface AssetsContainerProps {
   color: string;
@@ -34,7 +36,7 @@ export const DownloadHeaderContainer = styled.div`
   align-items: flex-end;
 `;
 
-export const DownloadTitle = styled.h1`
+export const DownloadTitle = styled.h1<StyleProps>`
   text-align: center;
   font-family: Inter;
   font-style: normal;
@@ -42,7 +44,7 @@ export const DownloadTitle = styled.h1`
   font-size: 24px;
   line-height: 40px;
   letter-spacing: -0.03em;
-  color: ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.primary};
   justify-self: flex-start;
 
   @media screen and (min-width: 800px) {
@@ -50,7 +52,7 @@ export const DownloadTitle = styled.h1`
   }
 `;
 
-export const DownloadLink = styled.a`
+export const DownloadLink = styled.a<StyleProps>`
   font-family: Inter;
   font-style: normal;
   font-weight: 500;
@@ -58,17 +60,19 @@ export const DownloadLink = styled.a`
   line-height: 17px;
   text-align: center;
   letter-spacing: -0.03em;
-  color: ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.primary};
   text-decoration: none;
 `;
 
-export const DownloadAssetsContainer = styled.div<AssetsContainerProps>`
+type Props = StyleProps & AssetsContainerProps;
+
+export const DownloadAssetsContainer = styled.div<Props>`
   width: 100%;
   height: 200px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: ${({ theme }) => `1px solid ${theme.colors.grayOne}`};
+  border: ${({ theme }) => `1px solid ${theme.backgroundSecondary}`};
   box-sizing: border-box;
   border-radius: 5px;
   background-color: ${({ color }) => color};

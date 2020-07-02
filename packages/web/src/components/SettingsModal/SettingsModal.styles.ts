@@ -1,6 +1,8 @@
-import { styled } from "../../system/theme";
+import styled from "@emotion/styled";
 
-export const SettingsModalContainer = styled.div`
+import { StyleProps } from "src/system/styles.types";
+
+export const SettingsModalContainer = styled.div<StyleProps>`
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(3, 35px);
@@ -12,7 +14,7 @@ export const SettingsModalContainer = styled.div`
   height: auto;
   padding-top: 5px;
   padding-bottom: 5px;
-  background: ${({ theme }) => theme.colors.white};
+  background: ${({ theme }) => theme.backgroundPrimary};
   border-radius: 5px;
   right: 30px;
   position: absolute;
@@ -23,12 +25,12 @@ export const SettingsModalContainer = styled.div`
   -moz-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.05);
 `;
 
-export const SettingsModalLinkContainer = styled.div`
+export const SettingsModalLinkContainer = styled.div<StyleProps>`
   display: flex;
   align-items: center;
   width: 100%;
   height: 100%;
-  background: ${({ theme }) => theme.colors.white};
+  background: ${({ theme }) => theme.backgroundPrimary};
   padding-left: 20px;
   cursor: pointer;
 
@@ -37,20 +39,20 @@ export const SettingsModalLinkContainer = styled.div`
   }
 
   &:hover {
-    background: ${({ theme }) => theme.colors.grayOne};
+    background: ${({ theme }) => theme.backgroundSecondary};
 
     a {
-      color: ${({ theme }) => theme.colors.grayFour};
+      color: ${({ theme }) => theme.tertiary};
     }
   }
 `;
 
-export const SettingsModalLink = styled.a`
+export const SettingsModalLink = styled.a<StyleProps>`
   font-family: Inter;
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
   line-height: 17px;
-  color: ${({ theme }) => theme.colors.grayThree};
+  color: ${({ theme }) => theme.tertiary};
   text-decoration: none;
 `;

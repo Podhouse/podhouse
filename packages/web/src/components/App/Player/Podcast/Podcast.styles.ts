@@ -1,4 +1,6 @@
-import { styled } from "../../../../system/theme";
+import styled from "@emotion/styled";
+
+import { StyleProps } from "src/system/styles.types";
 
 interface PodcastAvatarProps {
   avatar: string;
@@ -59,23 +61,23 @@ export const PodcastDetails = styled.div`
   }
 `;
 
-export const PodcastEpisode = styled.h3`
+export const PodcastEpisode = styled.h3<StyleProps>`
   font-family: Inter;
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
   line-height: 17px;
-  color: ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.primary};
   cursor: pointer;
 `;
 
-export const PodcastName = styled.h1`
+export const PodcastName = styled.h1<StyleProps>`
   display: flex;
   font-family: Inter;
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
   line-height: 17px;
-  color: ${({ theme }) => theme.colors.grayFour};
+  color: ${({ theme }) => theme.tertiary};
   cursor: pointer;
 `;

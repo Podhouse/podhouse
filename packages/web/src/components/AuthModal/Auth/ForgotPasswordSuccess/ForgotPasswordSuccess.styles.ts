@@ -1,4 +1,4 @@
-import { styled } from "../../../../system/theme";
+import styled from "@emotion/styled";
 
 export const HeaderIconTextContainer = styled.div`
   width: 100%;

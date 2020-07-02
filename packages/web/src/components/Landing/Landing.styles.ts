@@ -1,4 +1,6 @@
-import { styled } from "../../system/theme";
+import styled from "@emotion/styled";
+
+import { StyleProps } from "src/system/styles.types";
 
 export const LandingContainer = styled.div`
   width: 100%;
@@ -44,7 +46,7 @@ export const LandingGridContentContainer = styled.div`
   grid-row-gap: 20px;
 `;
 
-export const LandingTitle = styled.h1`
+export const LandingTitle = styled.h1<StyleProps>`
   max-width: 600px;
   text-align: center;
   font-family: Inter;
@@ -53,14 +55,14 @@ export const LandingTitle = styled.h1`
   font-size: 36px;
   line-height: 55px;
   letter-spacing: -0.03em;
-  color: ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.primary};
 
   @media screen and (min-width: 800px) {
     font-size: 48px;
   }
 `;
 
-export const LandingSubTitle = styled.h3`
+export const LandingSubTitle = styled.h3<StyleProps>`
   max-width: 600px;
   text-align: center;
   font-family: Inter;
@@ -69,14 +71,14 @@ export const LandingSubTitle = styled.h3`
   font-size: 24px;
   line-height: 40px;
   letter-spacing: -0.03em;
-  color: ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.primary};
 
   @media screen and (min-width: 800px) {
     font-size: 36px;
   }
 `;
 
-export const LandingParagraph = styled.p`
+export const LandingParagraph = styled.p<StyleProps>`
   max-width: 600px;
   text-align: center;
   font-family: Inter;
@@ -84,5 +86,5 @@ export const LandingParagraph = styled.p`
   font-weight: normal;
   font-size: 14px;
   line-height: 25px;
-  color: ${({ theme }) => theme.colors.grayFour};
+  color: ${({ theme }) => theme.tertiary};
 `;

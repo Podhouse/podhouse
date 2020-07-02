@@ -1,17 +1,21 @@
-import { styled } from "src/system/theme";
+import styled from "@emotion/styled";
+
+import { StyleProps } from "src/system/styles.types";
 
 interface LabelProps {
   mb?: number;
 }
 
-export const StyledLabel = styled.label<LabelProps>`
+type Props = LabelProps & StyleProps;
+
+export const StyledLabel = styled.label<Props>`
   font-family: Inter;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
   text-align: center;
-  color: ${({ theme }) => theme.colors.grayFour};
+  color: ${({ theme }) => theme.tertiary};
   margin-bottom: ${({ mb }) => mb}px;
   outline: none;
 `;

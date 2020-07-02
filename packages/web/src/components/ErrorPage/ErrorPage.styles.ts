@@ -1,4 +1,6 @@
-import { styled } from "../../system/theme";
+import styled from "@emotion/styled";
+
+import { StyleProps } from "src/system/styles.types";
 
 export const ErrorPageContainer = styled.div`
   width: 100%;
@@ -19,26 +21,26 @@ export const ErrorPageInnerContainer = styled.div`
   justify-content: center;
 `;
 
-export const ErrorPageTitle = styled.h1`
+export const ErrorPageTitle = styled.h1<StyleProps>`
   font-family: Inter;
   font-style: normal;
   font-weight: 700;
   font-size: 48px;
   line-height: 55px;
   letter-spacing: -0.03em;
-  color: ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.primary};
   text-align: center;
   align-self: center;
   justify-self: center;
 `;
 
-export const ErrorPageText = styled.h1`
+export const ErrorPageText = styled.h1<StyleProps>`
   font-family: Inter;
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
   line-height: 29px;
-  color: ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.primary};
   text-align: center;
   align-self: center;
   justify-self: center;

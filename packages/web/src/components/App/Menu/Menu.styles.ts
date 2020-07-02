@@ -1,11 +1,13 @@
-import { styled } from "../../../system/theme";
+import styled from "@emotion/styled";
 
-export const MenuContainer = styled.aside`
+import { StyleProps } from "src/system/styles.types";
+
+export const MenuContainer = styled.aside<StyleProps>`
   width: 100%;
   height: 70px;
   bottom: 0px;
   position: fixed;
-  background: ${({ theme }) => theme.colors.white};
+  background: ${({ theme }) => theme.backgroundPrimary};
   z-index: 100;
 
   @media screen and (min-width: 800px) {

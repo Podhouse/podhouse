@@ -1,6 +1,8 @@
-import { styled } from "src/system/theme";
+import styled from "@emotion/styled";
 
-export const StyledSelect = styled.select`
+import { StyleProps } from "src/system/styles.types";
+
+export const StyledSelect = styled.select<StyleProps>`
   width: 100%;
   height: 40px;
   font-family: Inter;
@@ -8,9 +10,9 @@ export const StyledSelect = styled.select`
   font-weight: 400;
   font-size: 14px;
   line-height: 19px;
-  color: ${({ theme }) => theme.colors.midGray};
-  background: ${({ theme }) => theme.colors.white};
-  border: ${({ theme }) => `1px solid ${theme.colors.lightGray}`};
+  color: ${({ theme }) => theme.tertiary};
+  background: ${({ theme }) => theme.backgroundPrimary};
+  border: ${({ theme }) => `1px solid ${theme.tertiary}`};
   box-sizing: border-box;
   border-radius: 5px;
   text-indent: 20px;
@@ -27,8 +29,8 @@ export const StyledSelect = styled.select`
     font-weight: 400;
     font-size: 14px;
     line-height: 19px;
-    color: ${({ theme }) => theme.colors.midGray};
-    background: ${({ theme }) => theme.colors.white};
+    color: ${({ theme }) => theme.tertiary};
+    background: ${({ theme }) => theme.backgroundPrimary};
     display: flex;
     white-space: pre;
     min-height: 20px;

@@ -1,4 +1,6 @@
-import { styled } from "../../system/theme";
+import styled from "@emotion/styled";
+
+import { StyleProps } from "src/system/styles.types";
 
 export const AuthModalContainer = styled.div`
   width: 100%;
@@ -20,31 +22,31 @@ export const AutoModalInsideContainer = styled.div`
   position: absolute;
 `;
 
-export const AuthModalLinkContainer = styled.div`
+export const AuthModalLinkContainer = styled.div<StyleProps>`
   display: flex;
   align-items: center;
   width: 100%;
   height: 100%;
-  background: ${({ theme }) => theme.colors.white};
+  background: ${({ theme }) => theme.secondary};
   padding-left: 20px;
   cursor: pointer;
 
   &:hover {
-    background: ${({ theme }) => theme.colors.lighestGray};
+    background: ${({ theme }) => theme.tertiary};
 
     a {
-      color: ${({ theme }) => theme.colors.black};
+      color: ${({ theme }) => theme.primary};
       cursor: pointer;
     }
   }
 `;
 
-export const AuthModalLink = styled.a`
+export const AuthModalLink = styled.a<StyleProps>`
   font-family: Inter;
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
   line-height: 17px;
-  color: ${({ theme }) => theme.colors.strongestGray};
+  color: ${({ theme }) => theme.tertiary};
   text-decoration: none;
 `;

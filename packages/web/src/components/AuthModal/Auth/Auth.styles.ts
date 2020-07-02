@@ -1,9 +1,11 @@
-import { styled } from "../../../system/theme";
+import styled from "@emotion/styled";
 
-export const AuthContainer = styled.div`
+import { StyleProps } from "src/system/styles.types";
+
+export const AuthContainer = styled.div<StyleProps>`
   width: 100%;
   height: 100%;
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.backgroundPrimary};
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: max-content max-content;
@@ -39,7 +41,7 @@ export const AuthTextContainer = styled.div`
   justify-content: flex-center;
 `;
 
-export const AuthText = styled.h3`
+export const AuthText = styled.h3<StyleProps>`
   font-family: Inter;
   font-style: normal;
   font-weight: 400;
@@ -47,13 +49,13 @@ export const AuthText = styled.h3`
   line-height: 20px;
   text-align: center;
   letter-spacing: -0.004em;
-  color: ${({ theme }) => theme.colors.grayFour};
+  color: ${({ theme }) => theme.tertiary};
 `;
 
-export const AuthFormContainer = styled.form`
+export const AuthFormContainer = styled.form<StyleProps>`
   width: 100%;
   height: 100%;
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.backgroundPrimary};
   display: grid;
   grid-template-rows: repeat(auto-fill, max-content);
   grid-template-columns: 1fr;
@@ -64,13 +66,13 @@ export const AuthFormContainer = styled.form`
   justify-self: center;
 `;
 
-export const AuthParagraphLink = styled.p`
+export const AuthParagraphLink = styled.p<StyleProps>`
   font-family: Inter;
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
   line-height: 17px;
-  color: ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.primary};
 
   &:hover {
     text-decoration: underline;

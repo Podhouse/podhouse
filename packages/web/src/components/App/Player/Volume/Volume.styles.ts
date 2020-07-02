@@ -1,6 +1,8 @@
-import { styled } from "../../../../system/theme";
+import styled from "@emotion/styled";
 
-export const VolumeContainer = styled.div`
+import { StyleProps } from "src/system/styles.types";
+
+export const VolumeContainer = styled.div<StyleProps>`
   display: none;
 
   @media screen and (min-width: 800px) {
@@ -15,6 +17,5 @@ export const VolumeContainer = styled.div`
     align-items: center;
     justify-content: space-evenly;
     justify-self: flex-end;
-    background-color: ${({ theme }) => theme.colors.white};
   }
 `;

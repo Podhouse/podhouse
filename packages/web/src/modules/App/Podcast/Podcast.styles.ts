@@ -1,4 +1,6 @@
-import { styled } from "../../../system/theme";
+import styled from "@emotion/styled";
+
+import { StyleProps } from "src/system/styles.types";
 
 export const PodcastContainer = styled.div`
   width: 100%;
@@ -68,25 +70,25 @@ export const PodcastDetailsContainer = styled.div`
   }
 `;
 
-export const PodcastName = styled.h1`
+export const PodcastName = styled.h1<StyleProps>`
   font-family: Inter;
   font-style: normal;
   font-weight: 600;
   font-size: 24px;
   line-height: 29px;
-  color: ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.primary};
 `;
 
-export const PodcastAuthor = styled.h3`
+export const PodcastAuthor = styled.h3<StyleProps>`
   font-family: Inter;
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
   line-height: 19px;
-  color: ${({ theme }) => theme.colors.strongestGray};
+  color: ${({ theme }) => theme.tertiary};
 `;
 
-export const PodcastDescription = styled.p`
+export const PodcastDescription = styled.p<StyleProps>`
   display: none;
 
   @media screen and (min-width: 800px) {
@@ -96,7 +98,7 @@ export const PodcastDescription = styled.p`
     font-weight: normal;
     font-size: 14px;
     line-height: 25px;
-    color: ${({ theme }) => theme.colors.midGray};
+    color: ${({ theme }) => theme.tertiary};
     display: -webkit-box;
     -webkit-line-clamp: 5;
     -webkit-box-orient: vertical;
@@ -122,7 +124,7 @@ export const PodcastSubscribeButtonContainer = styled.div`
   }
 `;
 
-export const PodcastShareButton = styled.button`
+export const PodcastShareButton = styled.button<StyleProps>`
   display: none;
 
   @media screen and (min-width: 800px) {
@@ -135,7 +137,7 @@ export const PodcastShareButton = styled.button`
     padding: 0;
     width: 70px;
     height: auto;
-    color: ${({ theme }) => theme.colors.midGray};
+    color: ${({ theme }) => theme.tertiary};
     font-family: Inter;
     font-style: normal;
     font-weight: normal;
