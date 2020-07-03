@@ -38,6 +38,10 @@ const SettingsModal = ({ logoutAuth, handleSettings }: SettingsModalProps) => {
       </SettingsModalLinkContainer>
 
       <SettingsModalLinkContainer>
+        <SettingsModalLink>Theme</SettingsModalLink>
+      </SettingsModalLinkContainer>
+
+      <SettingsModalLinkContainer>
         <SettingsModalLink onClick={logoutAuth}>Log out</SettingsModalLink>
       </SettingsModalLinkContainer>
     </SettingsModalContainer>

@@ -10,26 +10,16 @@ export const HeaderContainer = styled.header<StyleProps>`
     height: 100%;
     display: grid;
     grid-area: header;
-    grid-template-columns: 200px 1fr max-content;
+    grid-template-columns: 400px 1fr;
     grid-template-rows: 1fr;
-    grid-template-areas: "logo search settings";
+    grid-template-areas: "search settings";
     grid-column-gap: 30px;
     background: ${({ theme }) => theme.backgroundTertiary};
-    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.05);
+    border-bottom: ${({ theme }) => `1px solid ${theme.backgroundSecondary}`};
     padding-left: 30px;
     padding-right: 30px;
     z-index: 1;
-    grid-column: 1 / 3;
+    grid-column: 2 / 3;
     grid-row: 1 / 2;
   }
-`;
-
-export const LogoContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  grid-column: 1 / 2;
-  grid-row: 1 / 2;
 `;

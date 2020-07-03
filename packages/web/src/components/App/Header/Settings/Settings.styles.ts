@@ -5,10 +5,10 @@ import { StyleProps } from "src/system/styles.types";
 export const SettingsContainer = styled.div`
   width: 100%;
   height: 100%;
-  grid-column: 3 / 4;
+  grid-column: 2 / 3;
   grid-row: 1 / 2;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
 
   svg {
@@ -24,7 +24,7 @@ export const SettingsLoginLink = styled.a<StyleProps>`
   font-weight: 600;
   font-size: 14px;
   line-height: 19px;
-  color: ${({ theme }) => theme.primary};
+  color: ${({ theme }) => theme.tertiary};
   text-transform: uppercase;
   text-decoration: none;
   cursor: pointer;

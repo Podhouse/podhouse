@@ -10,13 +10,16 @@ import {
   MenuAvatarContainer,
 } from "./Menu.styles";
 
+const avatar =
+  "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg";
+
 const Menu = () => (
   <MenuContainer>
     <Scrollbars universal autoHide autoHideTimeout={100} autoHideDuration={100}>
       <MenuInsideContainer>
-        <MenuLogoContainer />
+        <MenuLogoContainer>Podhouse</MenuLogoContainer>
         <Navigation />
-        <MenuAvatarContainer />
+        <MenuAvatarContainer src={avatar} />
       </MenuInsideContainer>
     </Scrollbars>
   </MenuContainer>

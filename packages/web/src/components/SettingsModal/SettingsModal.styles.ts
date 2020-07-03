@@ -5,7 +5,7 @@ import { StyleProps } from "src/system/styles.types";
 export const SettingsModalContainer = styled.div<StyleProps>`
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: repeat(3, 35px);
+  grid-template-rows: repeat(4, 35px);
   grid-row-gap: 5px;
   align-items: center;
   justify-content: center;
@@ -42,7 +42,7 @@ export const SettingsModalLinkContainer = styled.div<StyleProps>`
     background: ${({ theme }) => theme.backgroundSecondary};
 
     a {
-      color: ${({ theme }) => theme.tertiary};
+      color: ${({ theme }) => theme.primary};
     }
   }
 `;

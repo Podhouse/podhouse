@@ -9,9 +9,8 @@ type Props = ButtonProps & StyleProps;
 const StyledButton = styled.button<Props>`
   width: ${({ width }) => (width ? `${width}px` : "100%")};
   height: ${({ height }) => height || 50}px;
-  background-color: ${({ theme, bgColor }) =>
-    bgColor || theme.backgroundSecondary};
-  color: ${({ theme, color }) => color || theme.primary};
+  background-color: ${({ theme, bgColor }) => bgColor || theme.primary};
+  color: ${({ theme, color }) => color || theme.backgroundPrimary};
   border: none;
   border-radius: 5px;
   cursor: pointer;

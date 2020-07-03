@@ -33,7 +33,7 @@ export const MenuInsideContainer = styled.div`
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 80px 1fr 210px;
-    grid-row-gap: 50px;
+    grid-row-gap: 30px;
   }
 `;
 
@@ -48,12 +48,12 @@ export const MenuLogoContainer = styled.div`
   }
 `;
 
-export const MenuAvatarContainer = styled.div`
+export const MenuAvatarContainer = styled.img`
   display: none;
 
   @media screen and (min-width: 800px) {
     display: block;
-    background: red;
+    cursor: pointer;
     grid-column: 1 / 2;
     grid-row: 3 / 4;
   }
