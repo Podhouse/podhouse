@@ -21,7 +21,7 @@ export const NavigationContainer = styled.div`
     grid-template-columns: 1fr;
     grid-template-rows: repeat(3, max-content);
     grid-row-gap: 30px;
-    padding: 0 30px 0 30px;
+    padding: 0 20px 0 20px;
 
     .favorites {
       display: grid;

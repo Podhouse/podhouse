@@ -6,9 +6,9 @@ export const PlayerContainer = styled.div<StyleProps>`
   width: 100%;
   height: 70px;
   position: fixed;
-  bottom: 70px;
+  bottom: 60px;
   display: grid;
-  grid-template-columns: 50px 1fr;
+  grid-template-columns: max-content 1fr;
   grid-template-rows: 14px 1fr;
   grid-column-gap: 20px;
   grid-area: "player";
@@ -24,7 +24,7 @@ export const PlayerContainer = styled.div<StyleProps>`
     max-height: 140px;
     grid-row: 3 / 4;
     grid-column: 1 / 3;
-    grid-template-columns: 0.5fr 1fr 0.5fr;
+    grid-template-columns: 1fr 390px 1fr;
     grid-template-rows: 1fr;
     grid-area: "player";
     padding: 20px 30px;

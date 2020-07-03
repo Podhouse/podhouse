@@ -8,9 +8,11 @@ import {
   ControlsTime,
 } from "./Controls.styles";
 
-import Slider from "../../../Slider/Slider";
+import useTheme from "src/system/useTheme";
 
-import formatTime from "../../../../utils/formatTime";
+import Slider from "src/components/Slider/Slider";
+
+import formatTime from "src/utils/formatTime";
 
 interface ControlsProps {
   ready: boolean;
@@ -37,12 +39,16 @@ const Controls = ({
   onBackward,
   onForward,
 }: ControlsProps) => {
+  const themeState = useTheme();
+
+  const iconColor = themeState.dark ? "#FFFFFF" : "#101010";
+
   const onPlaying = () => {
     if (playing) {
       return (
         <Pause
           size={28}
-          color="#000"
+          color={iconColor}
           strokeWidth={1}
           style={iconStyle}
           onClick={onPause}
@@ -53,7 +59,7 @@ const Controls = ({
     return (
       <Play
         size={28}
-        color="#000"
+        color={iconColor}
         strokeWidth={1}
         style={iconStyle}
         onClick={onPlay}
@@ -69,7 +75,7 @@ const Controls = ({
         <ControlsButtonsContainer>
           <RotateCcw
             size={18}
-            color="#000"
+            color={iconColor}
             style={iconStyle}
             strokeWidth={1.5}
             onClick={() => onBackward(15)}
@@ -79,7 +85,7 @@ const Controls = ({
 
           <RotateCw
             size={18}
-            color="#000"
+            color={iconColor}
             style={iconStyle}
             strokeWidth={1.5}
             onClick={() => onForward(15)}

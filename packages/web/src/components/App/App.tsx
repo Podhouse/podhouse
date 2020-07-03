@@ -3,7 +3,7 @@ import Head from "next/head";
 
 import Header from "./Header/Header";
 import Menu from "./Menu/Menu";
-// import Player from "./Player/Player";
+import Player from "./Player/Player";
 import Dashboard from "./Dashboard/Dashboard";
 
 import AuthModal from "../AuthModal/AuthModal";
@@ -59,6 +59,7 @@ const App = ({ children }: AppProps) => {
         <AppContainer>
           <Dashboard>{children}</Dashboard>
           <Header />
+          <Player />
           <Menu />
         </AppContainer>
       </>

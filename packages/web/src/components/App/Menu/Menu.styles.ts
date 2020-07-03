@@ -41,8 +41,11 @@ export const MenuLogoContainer = styled.div`
   display: none;
 
   @media screen and (min-width: 800px) {
-    display: block;
-    background: blue;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 20px;
+    padding-right: 20px;
     grid-column: 1 / 2;
     grid-row: 1 / 2;
   }

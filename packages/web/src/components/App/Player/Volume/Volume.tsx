@@ -8,7 +8,9 @@ import {
 
 import { VolumeContainer } from "./Volume.styles";
 
-import Slider from "../../../Slider/Slider";
+import Slider from "src/components/Slider/Slider";
+
+import useTheme from "src/system/useTheme";
 
 const iconStyle = { cursor: "pointer" };
 
@@ -21,13 +23,17 @@ interface VolumeProps {
 }
 
 const Volume = ({ ready, volume, muted, onVolume, onMute }: VolumeProps) => {
+  const themeState = useTheme();
+
+  const iconColor = themeState.dark ? "#FFFFFF" : "#101010";
+
   const renderVolume = () => {
     if (volume === 0 || muted) {
       return (
         <VolumeX
           size={20}
-          strokeWidth={1.5}
-          color="#000"
+          strokeWidth={1}
+          color={iconColor}
           style={iconStyle}
           onClick={onMute}
         />
@@ -37,8 +43,8 @@ const Volume = ({ ready, volume, muted, onVolume, onMute }: VolumeProps) => {
       return (
         <VolumeFirst
           size={20}
-          strokeWidth={1.5}
-          color="#000"
+          strokeWidth={1}
+          color={iconColor}
           style={iconStyle}
           onClick={onMute}
         />
@@ -48,8 +54,8 @@ const Volume = ({ ready, volume, muted, onVolume, onMute }: VolumeProps) => {
       return (
         <Volume1
           size={20}
-          strokeWidth={1.5}
-          color="#000"
+          strokeWidth={1}
+          color={iconColor}
           style={iconStyle}
           onClick={onMute}
         />
@@ -59,8 +65,8 @@ const Volume = ({ ready, volume, muted, onVolume, onMute }: VolumeProps) => {
       return (
         <Volume2
           size={20}
-          strokeWidth={1.5}
-          color="#000"
+          strokeWidth={1}
+          color={iconColor}
           style={iconStyle}
           onClick={onMute}
         />
@@ -69,8 +75,8 @@ const Volume = ({ ready, volume, muted, onVolume, onMute }: VolumeProps) => {
     return (
       <Volume2
         size={20}
-        strokeWidth={1.5}
-        color="#000"
+        strokeWidth={1}
+        color={iconColor}
         style={iconStyle}
         onClick={onMute}
       />

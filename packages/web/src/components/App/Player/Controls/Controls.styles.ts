@@ -20,7 +20,7 @@ export const ControlsContainer = styled.div`
 `;
 
 export const ControlsButtonsContainer = styled.div`
-  grid-column: 2 / 3;
+  grid-column: 1 / 3;
   grid-row: 2 / 3;
   width: auto;
   height: auto;

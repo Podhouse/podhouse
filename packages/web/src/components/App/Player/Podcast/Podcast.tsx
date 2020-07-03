@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Heart } from "react-feather";
 
 import {
   PodcastContainer,
@@ -7,6 +8,8 @@ import {
   PodcastEpisode,
   PodcastName,
 } from "./Podcast.styles";
+
+import useTheme from "src/system/useTheme";
 
 interface PodcastProps {
   ready: boolean;
@@ -17,11 +20,16 @@ interface PodcastProps {
   };
 }
 
+const iconStyle = { cursor: "pointer" };
+
 const Podcast = ({ ready, currentPodcast }: PodcastProps) => {
+  const themeState = useTheme();
+
+  const iconColor = themeState.dark ? "#FFFFFF" : "#101010";
+
   const { avatar, name, episode } = currentPodcast;
 
   const redirectPodcast = () => {};
-
   const redirectEpisode = () => {};
 
   const onReady = () => {
@@ -34,6 +42,14 @@ const Podcast = ({ ready, currentPodcast }: PodcastProps) => {
         <PodcastDetails>
           <PodcastEpisode onClick={redirectEpisode}>{episode}</PodcastEpisode>
           <PodcastName onClick={redirectPodcast}>{name}</PodcastName>
+          <Heart
+            className="like-button"
+            size={16}
+            strokeWidth={1}
+            color={iconColor}
+            style={iconStyle}
+            onClick={() => {}}
+          />
         </PodcastDetails>
       </PodcastContainer>
     );
