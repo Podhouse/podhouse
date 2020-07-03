@@ -44,8 +44,7 @@ export const MenuLogoContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding: 0 30px 0 30px;
     grid-column: 1 / 2;
     grid-row: 1 / 2;
   }

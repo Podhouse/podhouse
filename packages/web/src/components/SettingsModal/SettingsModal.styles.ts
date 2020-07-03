@@ -56,3 +56,27 @@ export const SettingsModalLink = styled.a<StyleProps>`
   color: ${({ theme }) => theme.tertiary};
   text-decoration: none;
 `;
+
+export const SettingsThemeContainer = styled.div<StyleProps>`
+  display: grid;
+  grid-template-columns: max-content max-content;
+  grid-template-rows: 1fr;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background: ${({ theme }) => theme.backgroundPrimary};
+  padding-left: 20px;
+  cursor: pointer;
+
+  a {
+    text-decoration: none;
+  }
+
+  &:hover {
+    background: ${({ theme }) => theme.backgroundSecondary};
+
+    a {
+      color: ${({ theme }) => theme.primary};
+    }
+  }
+`;
