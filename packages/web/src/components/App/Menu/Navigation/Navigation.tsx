@@ -12,7 +12,7 @@ const Navigation = () => (
   <NavigationContainer>
     <NavigationItemContainer className="browse">
       <Link href="/app" passHref>
-        <Home size={16} color="#B7B7B7" strokeWidth={1} />
+        <Home size={16} color="#B7B7B7" strokeWidth={1.5} />
       </Link>
 
       <Link href="/app" passHref>
@@ -22,7 +22,7 @@ const Navigation = () => (
 
     <NavigationItemContainer className="podcasts">
       <Link href="/app/podcasts" passHref>
-        <Headphones size={16} color="#B7B7B7" strokeWidth={1} />
+        <Headphones size={16} color="#B7B7B7" strokeWidth={1.5} />
       </Link>
 
       <Link href="/app/podcasts" passHref>
@@ -32,7 +32,7 @@ const Navigation = () => (
 
     <NavigationItemContainer className="favorites">
       <Link href="/app/favorites" passHref>
-        <Heart size={16} color="#B7B7B7" strokeWidth={1} />
+        <Heart size={16} color="#B7B7B7" strokeWidth={1.5} />
       </Link>
 
       <Link href="/app/favorites" passHref>
@@ -42,7 +42,7 @@ const Navigation = () => (
 
     <NavigationItemContainer className="search">
       <Link href="/app/search" passHref>
-        <Search size={16} color="#B7B7B7" strokeWidth={1} />
+        <Search size={16} color="#B7B7B7" strokeWidth={1.5} />
       </Link>
 
       <Link href="/app/search" passHref>
@@ -52,7 +52,7 @@ const Navigation = () => (
 
     <NavigationItemContainer className="settings">
       <Link href="/app/settings" passHref>
-        <User size={16} color="#B7B7B7" strokeWidth={1} />
+        <User size={16} color="#B7B7B7" strokeWidth={1.5} />
       </Link>
 
       <Link href="/app/settings" passHref>

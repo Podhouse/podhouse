@@ -49,7 +49,7 @@ const Controls = ({
         <Pause
           size={28}
           color={iconColor}
-          strokeWidth={1}
+          strokeWidth={1.5}
           style={iconStyle}
           onClick={onPause}
         />
@@ -60,7 +60,7 @@ const Controls = ({
       <Play
         size={28}
         color={iconColor}
-        strokeWidth={1}
+        strokeWidth={1.5}
         style={iconStyle}
         onClick={onPlay}
       />
@@ -77,7 +77,7 @@ const Controls = ({
             size={18}
             color={iconColor}
             style={iconStyle}
-            strokeWidth={1.5}
+            strokeWidth={2}
             onClick={() => onBackward(15)}
           />
 
@@ -87,7 +87,7 @@ const Controls = ({
             size={18}
             color={iconColor}
             style={iconStyle}
-            strokeWidth={1.5}
+            strokeWidth={2}
             onClick={() => onForward(15)}
           />
         </ControlsButtonsContainer>
