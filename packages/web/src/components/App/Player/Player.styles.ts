@@ -23,7 +23,7 @@ export const PlayerContainer = styled.div<StyleProps>`
     max-height: 140px;
     grid-row: 3 / 4;
     grid-column: 1 / 3;
-    grid-template-columns: 1fr 390px 1fr;
+    grid-template-columns: 1fr minmax(auto, 390px) 1fr;
     grid-template-rows: 1fr;
     grid-area: "player";
     padding: 15px 30px;
@@ -35,7 +35,7 @@ export const PlayerContainer = styled.div<StyleProps>`
   }
 
   @media screen and (min-width: 1020px) {
-    grid-template-columns: 0.9fr 1fr 0.9fr;
+    grid-template-columns: 1fr minmax(auto, 390px) 1fr;
     grid-template-rows: 1fr;
     position: inherit;
   }

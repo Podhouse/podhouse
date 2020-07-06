@@ -7,6 +7,7 @@ import {
   PodcastDetails,
   PodcastEpisode,
   PodcastName,
+  PodcastFavoriteContainer,
 } from "./Podcast.styles";
 
 import useTheme from "src/system/useTheme";
@@ -29,9 +30,6 @@ const Podcast = ({ ready, currentPodcast }: PodcastProps) => {
 
   const { avatar, name, episode } = currentPodcast;
 
-  const redirectPodcast = () => {};
-  const redirectEpisode = () => {};
-
   const onReady = () => {
     if (!ready) return null;
 
@@ -40,16 +38,19 @@ const Podcast = ({ ready, currentPodcast }: PodcastProps) => {
         <PodcastAvatar avatar={avatar} />
 
         <PodcastDetails>
-          <PodcastEpisode onClick={redirectEpisode}>{episode}</PodcastEpisode>
-          <PodcastName onClick={redirectPodcast}>{name}</PodcastName>
-          <Heart
-            className="like-button"
-            size={16}
-            strokeWidth={1}
-            color={iconColor}
-            style={iconStyle}
-            onClick={() => {}}
-          />
+          <PodcastEpisode onClick={() => {}}>{episode}</PodcastEpisode>
+          <PodcastName onClick={() => {}}>{name}</PodcastName>
+
+          <PodcastFavoriteContainer>
+            <Heart
+              className="like-button"
+              size={16}
+              strokeWidth={1.5}
+              color={iconColor}
+              style={iconStyle}
+              onClick={() => {}}
+            />
+          </PodcastFavoriteContainer>
         </PodcastDetails>
       </PodcastContainer>
     );

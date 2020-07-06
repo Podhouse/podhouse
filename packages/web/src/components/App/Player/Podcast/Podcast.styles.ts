@@ -52,10 +52,13 @@ export const PodcastDetails = styled.div`
     width: 100%;
     height: 50px;
     display: grid;
-    grid-template-columns: max-content max-content;
+    grid-template-columns: max-content 20px;
     grid-template-rows: max-content max-content;
-    grid-column-gap: 20px;
-    grid-row-gap: 10px;
+    grid-gap: 10px;
+
+    .like-button {
+      display: block;
+    }
   }
 `;
 
@@ -88,4 +91,12 @@ export const PodcastName = styled.h1<StyleProps>`
     grid-row: 2 / 3;
     grid-column: 1 / 2;
   }
+`;
+
+export const PodcastFavoriteContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  grid-row: 1 / 2;
+  grid-column: 2 / 3;
 `;

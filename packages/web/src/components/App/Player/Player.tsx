@@ -14,7 +14,8 @@ const currentPodcast = {
   avatar:
     "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
   name: "WTF with Marc Maron",
-  episode: "EP 928 - Trying to redesign this app",
+  episode:
+    "EP 928 - Trying to redesign this app, EP 928 - Trying to redesign this app",
 };
 
 const Player = () => {
