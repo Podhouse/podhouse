@@ -62,7 +62,7 @@ export const NavigationItemContainer = styled.div<StyleProps>`
   }
 `;
 
-export const NavigationItemLink = styled.a<StyleProps>`
+export const NavigationItemLink = styled.a<StyleProps & { active: boolean }>`
   display: none;
 
   @media screen and (min-width: 800px) {
@@ -73,7 +73,7 @@ export const NavigationItemLink = styled.a<StyleProps>`
     font-weight: 400;
     font-size: 14px;
     line-height: 19px;
-    color: ${({ theme }) => theme.tertiary};
+    color: ${({ active, theme }) => (active ? theme.primary : theme.tertiary)};
     text-decoration: none;
     cursor: pointer;
   }
