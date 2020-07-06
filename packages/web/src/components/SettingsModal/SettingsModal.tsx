@@ -6,11 +6,14 @@ import {
   SettingsModalLinkContainer,
   SettingsModalLink,
   SettingsThemeContainer,
+  SettingsThemeIconContainer,
 } from "./SettingsModal.styles";
 
 import useOnClickOutside from "src/hooks/useOnClickOutside";
 
 import useTheme from "src/system/useTheme";
+
+import ThemeToggle from "src/components/ThemeToggle/ThemeToggle";
 
 interface SettingsModalProps {
   logoutAuth: () => any;
@@ -44,6 +47,12 @@ const SettingsModal = ({ logoutAuth, handleSettings }: SettingsModalProps) => {
 
       <SettingsThemeContainer onClick={() => themeState.toggle()}>
         <SettingsModalLink>Theme</SettingsModalLink>
+        <SettingsThemeIconContainer>
+          <ThemeToggle
+            dark={themeState.dark}
+            onClick={() => themeState.toggle()}
+          />
+        </SettingsThemeIconContainer>
       </SettingsThemeContainer>
 
       <SettingsModalLinkContainer>

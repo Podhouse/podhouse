@@ -22,7 +22,7 @@ export const SearchInputStyled = styled.input<StyleProps>`
   font-size: 14px;
   line-height: 17px;
   background: ${({ theme }) => theme.backgroundSecondary};
-  color: ${({ theme }) => theme.tertiary};
+  color: ${({ theme }) => theme.primary};
   border: none;
   border-radius: 5px;
   outline: none;

@@ -59,13 +59,13 @@ export const SettingsModalLink = styled.a<StyleProps>`
 
 export const SettingsThemeContainer = styled.div<StyleProps>`
   display: grid;
-  grid-template-columns: max-content max-content;
+  grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr;
   align-items: center;
   width: 100%;
   height: 100%;
   background: ${({ theme }) => theme.backgroundPrimary};
-  padding-left: 20px;
+  padding: 0 20px 0 20px;
   cursor: pointer;
 
   a {
@@ -77,6 +77,24 @@ export const SettingsThemeContainer = styled.div<StyleProps>`
 
     a {
       color: ${({ theme }) => theme.primary};
+    }
+  }
+`;
+
+export const SettingsThemeIconContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+
+  .settings-theme-sun {
+    &:hover {
+      svg {
+        color: red;
+      }
     }
   }
 `;

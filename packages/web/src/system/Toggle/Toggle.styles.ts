@@ -10,10 +10,10 @@ export const ToggleLabel = styled.label<StyleProps>`
   position: absolute;
   top: 0;
   left: 0;
-  width: 45px;
+  width: 35px;
   height: 20px;
   border-radius: 15px;
-  background: ${({ theme }) => theme.tertiary};
+  background: ${({ theme }) => theme.backgroundSecondary};
   cursor: pointer;
 
   &::after {
@@ -23,7 +23,7 @@ export const ToggleLabel = styled.label<StyleProps>`
     width: 14px;
     height: 14px;
     margin: 3px;
-    background: ${({ theme }) => theme.backgroundPrimary};
+    background: ${({ theme }) => theme.backgroundSecondary};
     box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
     transition: 0.3s;
   }
@@ -35,6 +35,7 @@ export const ToggleContainer = styled.input<StyleProps>`
   border-radius: 15px;
   width: 42px;
   height: 26px;
+  background: white;
 
   &:checked + ${ToggleLabel} {
     background: ${({ theme }) => theme.primary};

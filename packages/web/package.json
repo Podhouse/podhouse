@@ -53,6 +53,7 @@
     "@typescript-eslint/eslint-plugin": "^3.5.0",
     "@typescript-eslint/parser": "^3.5.0",
     "babel-jest": "^26.0.1",
+    "babel-plugin-emotion": "^10.0.33",
     "babel-plugin-inline-react-svg": "^1.1.1",
     "dotenv": "^8.2.0",
     "eslint": "^7.3.1",
