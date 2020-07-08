@@ -11,7 +11,9 @@ import {
   AuthTextContainer,
   AuthText,
   AuthFormContainer,
+  AuthLinksContainer,
   AuthParagraphLink,
+  AuthCircle,
 } from "../Auth.styles";
 
 interface ForgotPasswordFormProps {
@@ -69,9 +71,17 @@ const ForgotPassword = () => {
           Send reset link
         </Button>
 
-        <AuthParagraphLink onClick={() => send("SIGNIN")}>
-          Back to Sign In
-        </AuthParagraphLink>
+        <AuthLinksContainer>
+          <AuthParagraphLink onClick={() => send("SIGNIN")}>
+            Already have an account?
+          </AuthParagraphLink>
+
+          <AuthCircle />
+
+          <AuthParagraphLink onClick={() => send("SIGNUP")}>
+            Don't have an account?
+          </AuthParagraphLink>
+        </AuthLinksContainer>
       </AuthFormContainer>
     </>
   );

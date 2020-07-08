@@ -11,7 +11,9 @@ import {
   AuthTextContainer,
   AuthText,
   AuthFormContainer,
+  AuthLinksContainer,
   AuthParagraphLink,
+  AuthCircle,
 } from "../Auth.styles";
 
 interface SignUpFormProps {
@@ -78,9 +80,17 @@ const SignUp = () => {
           Sign up
         </Button>
 
-        <AuthParagraphLink onClick={() => send("SIGNIN")}>
-          Already have an account? Sign in
-        </AuthParagraphLink>
+        <AuthLinksContainer>
+          <AuthParagraphLink onClick={() => send("SIGNIN")}>
+            Already have an account?
+          </AuthParagraphLink>
+
+          <AuthCircle />
+
+          <AuthParagraphLink onClick={() => send("FORGOT")}>
+            Forgot your password?
+          </AuthParagraphLink>
+        </AuthLinksContainer>
       </AuthFormContainer>
     </>
   );

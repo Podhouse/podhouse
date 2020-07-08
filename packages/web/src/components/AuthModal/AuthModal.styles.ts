@@ -15,7 +15,7 @@ export const AutoModalInsideContainer = styled.div<StyleProps>`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 600px;
+  width: 500px;
   height: auto;
   background: ${({ theme }) => theme.backgroundPrimary};
   border-radius: 5px;

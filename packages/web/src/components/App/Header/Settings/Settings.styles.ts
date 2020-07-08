@@ -21,10 +21,10 @@ export const SettingsContainer = styled.div`
 export const SettingsLoginLink = styled.a<StyleProps>`
   font-family: Inter;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 14px;
   line-height: 19px;
-  color: ${({ theme }) => theme.tertiary};
+  color: ${({ theme }) => theme.primary};
   text-transform: uppercase;
   text-decoration: none;
   cursor: pointer;

@@ -2,16 +2,18 @@ import * as React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
-import Button from "../../../../system/Button/Button";
-import Input from "../../../../system/Input/Input";
+import Button from "src/system/Button/Button";
+import Input from "src/system/Input/Input";
 
-import { useAuthContext } from "../../../../context/Auth/Auth";
+import { useAuthContext } from "src/context/Auth/Auth";
 
 import {
   AuthTextContainer,
   AuthText,
   AuthFormContainer,
+  AuthLinksContainer,
   AuthParagraphLink,
+  AuthCircle,
 } from "../Auth.styles";
 
 interface SignInFormProps {
@@ -78,13 +80,17 @@ const SignIn = () => {
           Sign in
         </Button>
 
-        <AuthParagraphLink onClick={() => send("SIGNUP")}>
-          Don't have an account? Create account
-        </AuthParagraphLink>
+        <AuthLinksContainer>
+          <AuthParagraphLink onClick={() => send("SIGNUP")}>
+            Don't have an account?
+          </AuthParagraphLink>
 
-        <AuthParagraphLink onClick={() => send("FORGOT")}>
-          Forgot your password?
-        </AuthParagraphLink>
+          <AuthCircle />
+
+          <AuthParagraphLink onClick={() => send("FORGOT")}>
+            Forgot your password?
+          </AuthParagraphLink>
+        </AuthLinksContainer>
       </AuthFormContainer>
     </>
   );

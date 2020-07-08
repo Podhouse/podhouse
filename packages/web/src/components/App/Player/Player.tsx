@@ -13,10 +13,8 @@ const src =
 const currentPodcast = {
   avatar:
     "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
-  name:
-    "WTF with Marc Maron WTF with Marc Maron WTF with Marc Maron WTF with Marc Maron",
-  episode:
-    "EP 928 - Trying to redesign this app, EP 928 - Trying to redesign this app",
+  name: "WTF with Marc Maron Podcast",
+  episode: "Episode 1137 - John Legend",
 };
 
 const Player = () => {

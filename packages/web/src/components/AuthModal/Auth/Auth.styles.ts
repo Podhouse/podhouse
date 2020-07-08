@@ -67,16 +67,41 @@ export const AuthFormContainer = styled.form<StyleProps>`
   justify-self: center;
 `;
 
+export const AuthLinksContainer = styled.div`
+  display: grid;
+  grid-template-columns: max-content max-content max-content;
+  grid-template-rows: 1fr;
+  grid-column-gap: 10px;
+  justify-self: center;
+`;
+
+export const AuthCircle = styled.div<StyleProps>`
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: ${({ theme }) => theme.tertiary};
+  align-self: center;
+`;
+
 export const AuthParagraphLink = styled.p<StyleProps>`
   font-family: Inter;
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
   line-height: 17px;
-  color: ${({ theme }) => theme.primary};
+  color: ${({ theme }) => theme.secondary};
+  justify-self: center;
 
   &:hover {
+    color: ${({ theme }) => theme.primary};
     text-decoration: underline;
     cursor: pointer;
   }
+`;
+
+export const AuthGetStartedButtonsContainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: max-content max-content max-content;
+  grid-row-gap: 10px;
 `;

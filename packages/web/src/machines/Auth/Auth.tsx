@@ -4,7 +4,7 @@ import { AuthContext, AuthStateSchema, AuthEvent } from "./Auth.types";
 
 const Auth = Machine<AuthContext, AuthStateSchema, AuthEvent>({
   id: "auth",
-  initial: "loggedIn",
+  initial: "idle",
   states: {
     idle: {
       on: {
@@ -15,25 +15,31 @@ const Auth = Machine<AuthContext, AuthStateSchema, AuthEvent>({
       on: {
         CLOSE: "idle",
       },
-      initial: "signin",
+      initial: "getstarted",
       states: {
+        getstarted: {
+          on: {
+            SIGNIN: "signin",
+            SIGNUP: "signup",
+            FORGOT: "forgot",
+          },
+        },
         signin: {
           on: {
             SIGNUP: "signup",
             FORGOT: "forgot",
-            SUBMITTING: "submitting",
           },
         },
         signup: {
           on: {
             SIGNIN: "signin",
-            SUBMITTING: "submitting",
+            FORGOT: "forgot",
           },
         },
         forgot: {
           on: {
             SIGNIN: "signin",
-            SUBMITTING: "submitting",
+            SIGNUP: "signup",
           },
         },
         reset: {

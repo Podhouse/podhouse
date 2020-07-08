@@ -5,6 +5,7 @@ export type AuthStateSchema = {
     idle: {};
     open: {
       states: {
+        getstarted: {};
         signin: {};
         signup: {};
         forgot: {};

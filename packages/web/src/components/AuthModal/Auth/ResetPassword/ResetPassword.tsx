@@ -81,7 +81,7 @@ const ResetPassword = () => {
           onClick={() => send("SUCCESS")}
           height={40}
         >
-          Set new password
+          Confirm new password
         </Button>
       </AuthFormContainer>
     </>
