@@ -23,9 +23,9 @@ export const InputStyled = styled.input<FieldProps>`
   font-weight: 400;
   font-size: 14px;
   line-height: 19px;
-  color: ${({ theme }) => theme.tertiary};
-  background: ${({ theme }) => theme.backgroundPrimary};
-  border: ${({ theme }) => `1px solid ${theme.tertiary}`};
+  color: ${({ theme }) => theme.primary};
+  background: ${({ theme }) => theme.backgroundSecondary};
+  border: ${({ theme }) => `1px solid ${theme.backgroundSecondary}`};
   box-sizing: border-box;
   border-radius: 5px;
   text-indent: 20px;
@@ -33,15 +33,8 @@ export const InputStyled = styled.input<FieldProps>`
   letter-spacing: normal;
   word-spacing: normal;
 
-  &:focus {
-    border: ${({ theme }) => `1px solid ${theme.primary}`};
-  }
-
-  ::-webkit-input-placeholder,
-  ::-moz-placeholder,
-  :-ms-input-placeholder,
-  :-moz-placeholder,
-  ::placeholder {
+  ::placeholder,
+  :-moz-placeholder {
     font-family: Inter;
     font-style: normal;
     font-weight: 400;

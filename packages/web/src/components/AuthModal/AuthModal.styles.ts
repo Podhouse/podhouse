@@ -11,13 +11,13 @@ export const AuthModalContainer = styled.div`
   padding: 30px;
 `;
 
-export const AutoModalInsideContainer = styled.div`
+export const AutoModalInsideContainer = styled.div<StyleProps>`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 600px;
   height: auto;
-  background: white;
+  background: ${({ theme }) => theme.backgroundPrimary};
   border-radius: 5px;
   position: absolute;
 `;
@@ -27,7 +27,7 @@ export const AuthModalLinkContainer = styled.div<StyleProps>`
   align-items: center;
   width: 100%;
   height: 100%;
-  background: ${({ theme }) => theme.secondary};
+  background: ${({ theme }) => theme.backgroundPrimary};
   padding-left: 20px;
   cursor: pointer;
 

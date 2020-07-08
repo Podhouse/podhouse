@@ -16,13 +16,14 @@ export const AuthContainer = styled.div<StyleProps>`
   border-radius: 5px;
 `;
 
-export const AuthInsideContainer = styled.div`
+export const AuthInsideContainer = styled.div<StyleProps>`
   width: 100%;
   height: 100%;
   max-width: 440px;
   max-height: 100%;
   box-shadow: none;
   display: grid;
+  background-color: ${({ theme }) => theme.backgroundPrimary};
   grid-template-columns: 1fr;
   grid-template-rows: repeat(2, minmax(min-content, max-content));
   grid-row-gap: 20px;
@@ -49,7 +50,7 @@ export const AuthText = styled.h3<StyleProps>`
   line-height: 20px;
   text-align: center;
   letter-spacing: -0.004em;
-  color: ${({ theme }) => theme.tertiary};
+  color: ${({ theme }) => theme.secondary};
 `;
 
 export const AuthFormContainer = styled.form<StyleProps>`

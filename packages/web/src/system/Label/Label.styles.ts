@@ -15,7 +15,7 @@ export const StyledLabel = styled.label<Props>`
   font-size: 14px;
   line-height: 17px;
   text-align: center;
-  color: ${({ theme }) => theme.tertiary};
+  color: ${({ theme }) => theme.secondary};
   margin-bottom: ${({ mb }) => mb}px;
   outline: none;
 `;
