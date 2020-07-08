@@ -63,6 +63,11 @@ export const PodcastDetails = styled.div`
 `;
 
 export const PodcastEpisode = styled.h3<StyleProps>`
+  width: 100%;
+  max-width: 300px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   font-family: Inter;
   font-style: normal;
   font-weight: normal;
@@ -78,7 +83,11 @@ export const PodcastEpisode = styled.h3<StyleProps>`
 `;
 
 export const PodcastName = styled.h1<StyleProps>`
-  display: flex;
+  width: 100%;
+  max-width: 300px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   font-family: Inter;
   font-style: normal;
   font-weight: normal;
