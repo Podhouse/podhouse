@@ -3,7 +3,7 @@ import { useRehawk } from "rehawk";
 
 import Podcast from "./Podcast/Podcast";
 import Controls from "./Controls/Controls";
-import Volume from "./Volume/Volume";
+import RightControls from "./RightControls/RightControls";
 
 import { PlayerContainer } from "./Player.styles";
 
@@ -56,7 +56,7 @@ const Player = () => {
         onBackward={onBackward}
         onForward={onForward}
       />
-      <Volume
+      <RightControls
         ready={ready}
         volume={volume}
         muted={muted}
