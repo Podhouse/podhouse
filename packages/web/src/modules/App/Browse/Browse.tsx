@@ -1,7 +1,7 @@
 import * as React from "react";
 import Scrollbars from "react-custom-scrollbars";
 
-import Row from "../../../components/Row/Row";
+import Row from "src/components/Row/Row";
 
 import { BrowseContainer } from "./Browse.styles";
 
@@ -29,6 +29,41 @@ const items = [
   },
   {
     id: 4,
+    name: "99% Invisible",
+    author: "Roman Mars",
+    avatar:
+      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
+  },
+  {
+    id: 5,
+    name: "99% Invisible",
+    author: "Roman Mars",
+    avatar:
+      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
+  },
+  {
+    id: 6,
+    name: "99% Invisible",
+    author: "Roman Mars",
+    avatar:
+      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
+  },
+  {
+    id: 7,
+    name: "99% Invisible",
+    author: "Roman Mars",
+    avatar:
+      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
+  },
+  {
+    id: 8,
+    name: "99% Invisible",
+    author: "Roman Mars",
+    avatar:
+      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
+  },
+  {
+    id: 9,
     name: "99% Invisible",
     author: "Roman Mars",
     avatar:

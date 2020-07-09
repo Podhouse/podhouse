@@ -23,6 +23,7 @@
     "emotion-theming": "^10.0.27",
     "formik": "^2.1.4",
     "graphql": "^15.0.0",
+    "keen-slider": "^5.0.5",
     "lint-staged": "^10.2.6",
     "next": "^9.4.4",
     "next-compose-plugins": "^2.2.0",

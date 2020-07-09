@@ -47,11 +47,21 @@ export const RowSection = styled.div`
   grid-column: 1 / 2;
   grid-row: 2 / 3;
   display: grid;
-  grid-template-columns: repeat(auto-fill, 140px);
-  grid-gap: 20px;
-  justify-content: center;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(auto-fill, max-content);
+  grid-row-gap: 20px;
+
+  @media screen and (min-width: 500px) {
+    justify-content: flex-start;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, max-content);
+    grid-gap: 20px;
+  }
 
   @media screen and (min-width: 800px) {
     justify-content: flex-start;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, max-content);
+    grid-gap: 20px;
   }
 `;

@@ -23,7 +23,9 @@ const PodcastItem = ({ podcast }: PodcastItemProps) => {
 
   return (
     <PodcastItemContainer>
-      <PodcastItemAvatar src={avatar} alt={imageAlt} />
+      <Link href="/app/podcast/[podcast]" as="/app/podcast/123">
+        <PodcastItemAvatar src={avatar} alt={imageAlt} />
+      </Link>
       <Link href="/app/podcast/[podcast]" as="/app/podcast/123">
         <PodcastItemName href="/app/podcast/123">{name}</PodcastItemName>
       </Link>

@@ -7167,6 +7167,11 @@ kareem@2.3.1:
   resolved "https://registry.yarnpkg.com/kareem/-/kareem-2.3.1.tgz#def12d9c941017fabfb00f873af95e9c99e1be87"
   integrity sha512-l3hLhffs9zqoDe8zjmb/mAN4B8VT3L56EUvKNqLFVs9YlFA+zx7ke1DO8STAdDyYNkeSo1nKmjuvQeI12So8Xw==
 
+keen-slider@^5.0.5:
+  version "5.0.5"
+  resolved "https://registry.yarnpkg.com/keen-slider/-/keen-slider-5.0.5.tgz#452631050f7dd9d7f8c9174eceef7309acf8e545"
+  integrity sha512-5b373h8VVJURYE2gTn6WRn41vFl6Tyslr9UnJPuBirrLC6UwJs8HfFwG1NRom9cdT002dQtU3HCaqLTS+rldzQ==
+
 keygrip@~1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/keygrip/-/keygrip-1.1.0.tgz#871b1681d5e159c62a445b0c74b615e0917e7226"
