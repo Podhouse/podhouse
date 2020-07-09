@@ -1,7 +1,7 @@
 import * as React from "react";
 import Scrollbars from "react-custom-scrollbars";
 
-import Row from "../../../components/Row/Row";
+import PodcastsWithDetails from "src/components/Lists/PodcastsWithDetails/PodcastsWithDetails";
 
 import { SearchContainer } from "./Search.styles";
 
@@ -39,7 +39,7 @@ const items = [
 const Search = () => (
   <Scrollbars universal autoHide autoHideTimeout={100} autoHideDuration={100}>
     <SearchContainer>
-      <Row title="Search" items={items} />
+      <PodcastsWithDetails title="Search" items={items} />
     </SearchContainer>
   </Scrollbars>
 );

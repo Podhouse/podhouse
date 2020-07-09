@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 import { StyleProps } from "src/system/styles.types";
 
-export const PodcastItemContainer = styled.div`
+export const PodcastItemWithDetailsContainer = styled.div`
   width: 100%;
   max-width: 300px;
   height: 60px;
@@ -12,7 +12,7 @@ export const PodcastItemContainer = styled.div`
   grid-gap: 10px;
 `;
 
-export const PodcastItemAvatar = styled.img`
+export const PodcastItemWithDetailsAvatar = styled.img`
   grid-row: 1 / 3;
   grid-column: 1 / 2;
   width: 60px;
@@ -21,7 +21,7 @@ export const PodcastItemAvatar = styled.img`
   cursor: pointer;
 `;
 
-export const PodcastItemName = styled.a<StyleProps>`
+export const PodcastItemWithDetailsName = styled.a<StyleProps>`
   grid-row: 1 / 2;
   grid-column: 2 / 3;
   font-family: Inter;
@@ -42,7 +42,7 @@ export const PodcastItemName = styled.a<StyleProps>`
   }
 `;
 
-export const PodcastItemAuthor = styled.p<StyleProps>`
+export const PodcastItemWithDetailsAuthor = styled.p<StyleProps>`
   grid-row: 2 / 3;
   grid-column: 2 / 3;
   font-family: Inter;

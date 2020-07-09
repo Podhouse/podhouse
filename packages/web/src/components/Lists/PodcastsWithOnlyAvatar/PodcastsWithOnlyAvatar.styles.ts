@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 import { StyleProps } from "src/system/styles.types";
 
-export const RowContainer = styled.div`
+export const PodcastsWithOnlyAvatarContainer = styled.div`
   width: 100%;
   height: 100%;
   display: grid;
@@ -11,7 +11,7 @@ export const RowContainer = styled.div`
   grid-row-gap: 20px;
 `;
 
-export const RowHeader = styled.div`
+export const PodcastsWithOnlyAvatarHeader = styled.div`
   width: 100%;
   height: auto;
   grid-column: 1 / 2;
@@ -22,7 +22,7 @@ export const RowHeader = styled.div`
   grid-template-rows: max-content max-content;
 `;
 
-export const RowHeaderTitle = styled.h1<StyleProps>`
+export const PodcastsWithOnlyAvatarHeaderTitle = styled.h1<StyleProps>`
   font-family: Inter;
   font-style: normal;
   font-weight: 400;
@@ -33,7 +33,7 @@ export const RowHeaderTitle = styled.h1<StyleProps>`
   justify-self: flex-start;
 `;
 
-export const RowBreakLine = styled.hr<StyleProps>`
+export const PodcastsWithOnlyAvatarBreakLine = styled.hr<StyleProps>`
   width: 100%;
   height: 1px;
   background-color: ${({ theme }) => theme.backgroundSecondary};
@@ -41,27 +41,22 @@ export const RowBreakLine = styled.hr<StyleProps>`
   border: none;
 `;
 
-export const RowSection = styled.div`
+export const PodcastsWithOnlyAvatarSection = styled.div`
   width: 100%;
   height: auto;
   grid-column: 1 / 2;
   grid-row: 2 / 3;
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: repeat(auto-fill, max-content);
-  grid-row-gap: 20px;
+  grid-template-columns: repeat(auto-fill, 140px);
+  grid-gap: 20px;
 
   @media screen and (min-width: 500px) {
     justify-content: flex-start;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(3, max-content);
-    grid-gap: 20px;
+    grid-template-columns: repeat(auto-fill, 140px);
   }
 
   @media screen and (min-width: 800px) {
     justify-content: flex-start;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, max-content);
-    grid-gap: 20px;
+    grid-template-columns: repeat(auto-fill, 140px);
   }
 `;

@@ -1,7 +1,7 @@
 import * as React from "react";
 import Scrollbars from "react-custom-scrollbars";
 
-import Row from "src/components/Row/Row";
+import PodcastsWithDetails from "src/components/Lists/PodcastsWithDetails/PodcastsWithDetails";
 
 import { BrowseContainer } from "./Browse.styles";
 
@@ -74,7 +74,7 @@ const items = [
 const Browse = () => (
   <Scrollbars universal autoHide autoHideTimeout={100} autoHideDuration={100}>
     <BrowseContainer>
-      <Row title="Trending" items={items} />
+      <PodcastsWithDetails title="Trending" items={items} />
     </BrowseContainer>
   </Scrollbars>
 );

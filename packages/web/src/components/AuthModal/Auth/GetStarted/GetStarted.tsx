@@ -36,8 +36,8 @@ const GetStarted = () => {
       </AuthGetStartedButtonsContainer>
 
       <AuthLinksContainer>
-        <AuthParagraphLink onClick={() => send("SIGNUP")}>
-          Don't have an account?
+        <AuthParagraphLink onClick={() => send("SIGNIN")}>
+          Already have an account?
         </AuthParagraphLink>
 
         <AuthCircle />

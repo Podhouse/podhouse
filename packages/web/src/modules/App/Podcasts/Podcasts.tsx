@@ -1,7 +1,7 @@
 import * as React from "react";
 import Scrollbars from "react-custom-scrollbars";
 
-import Row from "../../../components/Row/Row";
+import PodcastsWithOnlyAvatar from "src/components/Lists/PodcastsWithOnlyAvatar/PodcastsWithOnlyAvatar";
 
 import { PodcastsContainer } from "./Podcasts.styles";
 
@@ -34,12 +34,110 @@ const items = [
     avatar:
       "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
   },
+  {
+    id: 5,
+    name: "99% Invisible",
+    author: "Roman Mars",
+    avatar:
+      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
+  },
+  {
+    id: 6,
+    name: "99% Invisible",
+    author: "Roman Mars",
+    avatar:
+      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
+  },
+  {
+    id: 7,
+    name: "99% Invisible",
+    author: "Roman Mars",
+    avatar:
+      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
+  },
+  {
+    id: 8,
+    name: "99% Invisible",
+    author: "Roman Mars",
+    avatar:
+      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
+  },
+  {
+    id: 9,
+    name: "99% Invisible",
+    author: "Roman Mars",
+    avatar:
+      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
+  },
+  {
+    id: 10,
+    name: "99% Invisible",
+    author: "Roman Mars",
+    avatar:
+      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
+  },
+  {
+    id: 11,
+    name: "99% Invisible",
+    author: "Roman Mars",
+    avatar:
+      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
+  },
+  {
+    id: 12,
+    name: "99% Invisible",
+    author: "Roman Mars",
+    avatar:
+      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
+  },
+  {
+    id: 13,
+    name: "99% Invisible",
+    author: "Roman Mars",
+    avatar:
+      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
+  },
+  {
+    id: 14,
+    name: "99% Invisible",
+    author: "Roman Mars",
+    avatar:
+      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
+  },
+  {
+    id: 15,
+    name: "99% Invisible",
+    author: "Roman Mars",
+    avatar:
+      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
+  },
+  {
+    id: 16,
+    name: "99% Invisible",
+    author: "Roman Mars",
+    avatar:
+      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
+  },
+  {
+    id: 17,
+    name: "99% Invisible",
+    author: "Roman Mars",
+    avatar:
+      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
+  },
+  {
+    id: 18,
+    name: "99% Invisible",
+    author: "Roman Mars",
+    avatar:
+      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
+  },
 ];
 
 const Podcasts = () => (
   <Scrollbars universal autoHide autoHideTimeout={100} autoHideDuration={100}>
     <PodcastsContainer>
-      <Row title="Podcasts" items={items} />
+      <PodcastsWithOnlyAvatar title="Podcasts" items={items} />
     </PodcastsContainer>
   </Scrollbars>
 );
