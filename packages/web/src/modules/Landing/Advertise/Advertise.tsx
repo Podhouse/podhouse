@@ -1,10 +1,10 @@
 import * as React from "react";
 
-import FAQ from "src/components/Landing/FAQ/FAQ";
-import CallToAction from "src/components/Landing/CallToAction/CallToAction";
-
 import Main from "./Main/Main";
 import Pricing from "./Pricing/Pricing";
+
+import FAQ from "src/components/Landing/FAQ/FAQ";
+import CallToAction from "src/components/Landing/CallToAction/CallToAction";
 
 const items = [
   {

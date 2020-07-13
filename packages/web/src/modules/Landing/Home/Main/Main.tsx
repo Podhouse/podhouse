@@ -1,14 +1,14 @@
 import * as React from "react";
 import { useRouter } from "next/router";
 
-import Button from "../../../../system/Button/Button";
+import Button from "src/system/Button/Button";
 
 import {
   LandingGridContainer,
   LandingGridContentContainer,
   LandingTitle,
   LandingParagraph,
-} from "../../../../components/Landing/Landing.styles";
+} from "src/components/Landing/Landing.styles";
 
 const Main = () => {
   const router = useRouter();

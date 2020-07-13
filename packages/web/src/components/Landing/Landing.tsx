@@ -1,10 +1,10 @@
 import React, { Fragment } from "react";
 import { Global } from "@emotion/core";
 
+import { LandingContainer } from "./Landing.styles";
+
 import Header from "src/components/Landing/Header/Header";
 import Footer from "src/components/Landing/Footer/Footer";
-
-import { LandingContainer } from "./Landing.styles";
 
 import ThemeProvider from "src/system/ThemeProvider";
 import reset from "src/system/reset";

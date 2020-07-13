@@ -10,10 +10,10 @@ import {
   MenuAvatarContainer,
 } from "./Menu.styles";
 
+import useTheme from "src/system/useTheme";
+
 import PodhouseDark from "../../../../public/logo/logo-medium-dark.svg";
 import PodhouseWhite from "../../../../public/logo/logo-medium-white.svg";
-
-import useTheme from "src/system/useTheme";
 
 const avatar =
   "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg";

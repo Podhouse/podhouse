@@ -54,7 +54,7 @@ export const HeaderLink = styled.a<StyleProps>`
   font-size: 14px;
   line-height: 17px;
   text-align: center;
-  color: ${({ theme }) => theme.tertiary};
+  color: ${({ theme }) => theme.secondary};
   text-decoration: none;
   outline: none;
   cursor: pointer;

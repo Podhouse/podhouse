@@ -1,7 +1,5 @@
 import * as React from "react";
 
-import { LandingSubTitle } from "src/components/Landing/Landing.styles";
-
 import {
   TeamContainer,
   TeamInnerContainer,
@@ -12,6 +10,8 @@ import {
   TeamUserHandleTitle,
   TeamTextParagraph,
 } from "./Team.styles";
+
+import { LandingSubTitle } from "src/components/Landing/Landing.styles";
 
 const Team = () => (
   <TeamContainer>

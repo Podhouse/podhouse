@@ -1,14 +1,14 @@
 import * as React from "react";
 import { Check } from "react-feather";
 
-import Button from "src/system/Button/Button";
-
 import {
   LandingGridContainer,
   LandingGridContentContainer,
   LandingSubTitle,
   LandingParagraph,
 } from "src/components/Landing/Landing.styles";
+
+import Button from "src/system/Button/Button";
 
 import {
   PricingContainer,

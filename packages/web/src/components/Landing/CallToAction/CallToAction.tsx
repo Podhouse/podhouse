@@ -1,14 +1,14 @@
 import * as React from "react";
 import { useRouter } from "next/router";
 
-import Button from "../../../system/Button/Button";
-
 import {
   LandingGridContainer,
   LandingGridContentContainer,
   LandingSubTitle,
   LandingParagraph,
 } from "../Landing.styles";
+
+import Button from "src/system/Button/Button";
 
 const CallToAction = () => {
   const router = useRouter();

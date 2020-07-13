@@ -86,5 +86,5 @@ export const LandingParagraph = styled.p<StyleProps>`
   font-weight: normal;
   font-size: 14px;
   line-height: 25px;
-  color: ${({ theme }) => theme.tertiary};
+  color: ${({ theme }) => theme.secondary};
 `;
