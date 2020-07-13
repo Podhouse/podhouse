@@ -1,8 +1,8 @@
 export interface InputProps {
+  ref: any;
   type: string;
   name: string;
   placeholder: string;
-  value: string;
   label?: string;
   onChange?: any;
   onBlur?: any;

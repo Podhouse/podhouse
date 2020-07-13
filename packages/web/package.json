@@ -17,11 +17,11 @@
   "dependencies": {
     "@emotion/core": "^10.0.28",
     "@emotion/styled": "^10.0.27",
+    "@hookform/resolvers": "^0.0.6",
     "@xstate/react": "^0.8.1",
     "@xstate/test": "^0.4.0",
     "@zeit/next-source-maps": "^0.0.3",
     "emotion-theming": "^10.0.27",
-    "formik": "^2.1.4",
     "graphql": "^15.3.0",
     "keen-slider": "^5.0.5",
     "lint-staged": "^10.2.11",

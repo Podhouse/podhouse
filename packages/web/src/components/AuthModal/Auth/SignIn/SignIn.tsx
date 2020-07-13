@@ -1,11 +1,7 @@
 import * as React from "react";
-import { useFormik } from "formik";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers";
 import * as Yup from "yup";
-
-import Button from "src/system/Button/Button";
-import Input from "src/system/Input/Input";
-
-import { useAuthContext } from "src/context/Auth/Auth";
 
 import {
   AuthTextContainer,
@@ -15,6 +11,11 @@ import {
   AuthParagraphLink,
   AuthCircle,
 } from "../Auth.styles";
+
+import Button from "src/system/Button/Button";
+import Input from "src/system/Input/Input";
+
+import { useAuthContext } from "src/context/Auth/Auth";
 
 interface SignInFormProps {
   email: string;
@@ -29,21 +30,11 @@ const validationSchema = Yup.object().shape({
 const SignIn = () => {
   const [, , , send] = useAuthContext();
 
-  const {
-    handleBlur,
-    handleChange,
-    handleSubmit,
-    values,
-    errors,
-    isSubmitting,
-  } = useFormik<SignInFormProps>({
-    initialValues: {
-      email: "",
-      password: "",
-    },
-    validationSchema,
-    onSubmit: () => {},
+  const { register, handleSubmit, errors } = useForm<SignInFormProps>({
+    resolver: yupResolver(validationSchema),
   });
+
+  const onSubmit = (data) => console.log(data);
 
   return (
     <>
@@ -51,17 +42,15 @@ const SignIn = () => {
         <AuthText>The best way to listen to your favorite podcasts</AuthText>
       </AuthTextContainer>
 
-      <AuthFormContainer onSubmit={handleSubmit}>
+      <AuthFormContainer onSubmit={handleSubmit(onSubmit)}>
         <Input
           type="email"
           name="email"
           label="Email"
           placeholder="Email"
           height={40}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          value={values.email}
-          error={errors.email}
+          ref={register}
+          error={errors.email?.message}
         />
 
         <Input
@@ -70,13 +59,11 @@ const SignIn = () => {
           label="Password"
           placeholder="Password"
           height={40}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          value={values.password}
-          error={errors.password}
+          ref={register}
+          error={errors.password?.message}
         />
 
-        <Button type="submit" submitting={isSubmitting} height={40}>
+        <Button type="submit" height={40}>
           Sign in
         </Button>
 

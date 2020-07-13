@@ -7,42 +7,38 @@ import { InputContainer, InputStyled } from "./Input.styles";
 
 import { InputProps } from "./Input.types";
 
-const Input = ({
-  type,
-  name,
-  placeholder,
-  value,
-  label,
-  onChange,
-  onBlur,
-  onClick,
-  error,
-  width,
-  height,
-  autoComplete = "off",
-  dataTestId,
-  ...props
-}: InputProps) => (
-  <InputContainer width={width}>
-    {label ? <Label label={label} mb={10} /> : null}
+const Input = React.forwardRef(
+  (
+    {
+      type,
+      name,
+      placeholder,
+      label,
+      error,
+      width,
+      height,
+      autoComplete = "off",
+      ...props
+    }: InputProps,
+    ref,
+  ) => (
+    <InputContainer width={width}>
+      {label ? <Label label={label} mb={10} /> : null}
 
-    <InputStyled
-      height={height}
-      type={type}
-      name={name}
-      placeholder={placeholder}
-      value={value}
-      onChange={onChange}
-      onBlur={onBlur}
-      onClick={onClick}
-      error={error}
-      autoComplete={autoComplete}
-      {...props}
-      data-testid={dataTestId}
-    />
+      <InputStyled
+        ref={ref}
+        height={height}
+        type={type}
+        name={name}
+        placeholder={placeholder}
+        error={error}
+        autoComplete={autoComplete}
+        {...props}
+      />
 
-    {error ? <Error error={error} mt={10} /> : null}
-  </InputContainer>
+      {error ? <Error error={error} mt={10} /> : null}
+    </InputContainer>
+  ),
 );
 
 export default Input;

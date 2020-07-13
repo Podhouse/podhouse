@@ -1,10 +1,5 @@
 import React from "react";
 
-import Button from "src/system/Button/Button";
-import GoogleButton from "src/system/GoogleButton/GoogleButton";
-
-import { useAuthContext } from "src/context/Auth/Auth";
-
 import {
   AuthGetStartedButtonsContainer,
   AuthTextContainer,
@@ -13,6 +8,11 @@ import {
   AuthCircle,
   AuthParagraphLink,
 } from "../Auth.styles";
+
+import Button from "src/system/Button/Button";
+import GoogleButton from "src/system/GoogleButton/GoogleButton";
+
+import { useAuthContext } from "src/context/Auth/Auth";
 
 const GetStarted = () => {
   const [, , , send] = useAuthContext();
