@@ -1,9 +1,6 @@
 import * as React from "react";
 import Scrollbars from "react-custom-scrollbars";
-
-import Button from "../../../system/Button/Button";
-
-import EpisodeItem from "../../../components/Podcast/EpisodeItem/EpisodeItem";
+import { ExternalLink, Rss } from "react-feather";
 
 import {
   PodcastContainer,
@@ -13,9 +10,17 @@ import {
   PodcastName,
   PodcastAuthor,
   PodcastDescription,
-  PodcastSubscribeButtonContainer,
+  PodcastButtonsContainer,
   PodcastEpisodesContainer,
+  PodcastLinksContainer,
+  PodcastLinkContainer,
+  PodcastLink,
 } from "./Podcast.styles";
+
+import EpisodeItem from "src/components/Podcast/EpisodeItem/EpisodeItem";
+
+import Button from "src/system/Button/Button";
+import useTheme from "src/system/useTheme";
 
 const avatar =
   "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg";
@@ -29,44 +34,74 @@ const episode = {
   publishedDate: "May 12, 2020",
 };
 
-const Podcast = () => (
-  <Scrollbars universal autoHide autoHideTimeout={100} autoHideDuration={100}>
-    <PodcastContainer>
-      <PodcastHeader>
-        <PodcastAvatar src={avatar} />
+const Podcast = () => {
+  const themeState = useTheme();
 
-        <PodcastDetailsContainer>
-          <PodcastName>99% Invisible</PodcastName>
-          <PodcastAuthor>Roman Mars</PodcastAuthor>
-          <PodcastDescription>
-            Design is everywhere in our lives, perhaps most importantly in the
-            places where we've just stopped noticing. 99% Invisible is a weekly
-            exploration of the process and power of design and architecture.
-            From award winning producer Roman Mars. Learn more at
-            99percentinvisible.org. A proud member of Radiotopia, from PRX.
-            Learn more at radiotopia.fm.
-          </PodcastDescription>
-        </PodcastDetailsContainer>
+  const iconColor = themeState.dark ? "#FFF" : "#B7B7B7";
 
-        <PodcastSubscribeButtonContainer>
-          <Button type="button" width={200} height={40}>
-            Subscribe
-          </Button>
-        </PodcastSubscribeButtonContainer>
-      </PodcastHeader>
+  return (
+    <Scrollbars universal autoHide autoHideTimeout={100} autoHideDuration={100}>
+      <PodcastContainer>
+        <PodcastHeader>
+          <PodcastAvatar src={avatar} />
 
-      <PodcastEpisodesContainer>
-        <EpisodeItem episode={episode} />
-        <EpisodeItem episode={episode} />
-        <EpisodeItem episode={episode} />
-        <EpisodeItem episode={episode} />
-        <EpisodeItem episode={episode} />
-        <EpisodeItem episode={episode} />
-        <EpisodeItem episode={episode} />
-        <EpisodeItem episode={episode} />
-      </PodcastEpisodesContainer>
-    </PodcastContainer>
-  </Scrollbars>
-);
+          <PodcastDetailsContainer>
+            <PodcastName>99% Invisible</PodcastName>
+            <PodcastAuthor>Roman Mars</PodcastAuthor>
+            <PodcastDescription>
+              Design is everywhere in our lives, perhaps most importantly in the
+              places where we've just stopped noticing. 99% Invisible is a
+              weekly exploration of the process and power of design and
+              architecture. From award winning producer Roman Mars. Learn more
+              at 99percentinvisible.org. A proud member of Radiotopia, from PRX.
+              Learn more at radiotopia.fm.
+            </PodcastDescription>
+          </PodcastDetailsContainer>
+
+          <PodcastButtonsContainer>
+            <Button type="button" width={200} height={40}>
+              Subscribe
+            </Button>
+          </PodcastButtonsContainer>
+
+          <PodcastLinksContainer>
+            <PodcastLinkContainer>
+              <ExternalLink size={16} strokeWidth={1} color={iconColor} />
+              <PodcastLink
+                href="mailto:leonardomso11@gmail.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Website
+              </PodcastLink>
+            </PodcastLinkContainer>
+
+            <PodcastLinkContainer>
+              <Rss size={16} strokeWidth={1} color={iconColor} />
+              <PodcastLink
+                href="mailto:leonardomso11@gmail.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                RSS
+              </PodcastLink>
+            </PodcastLinkContainer>
+          </PodcastLinksContainer>
+        </PodcastHeader>
+
+        <PodcastEpisodesContainer>
+          <EpisodeItem episode={episode} />
+          <EpisodeItem episode={episode} />
+          <EpisodeItem episode={episode} />
+          <EpisodeItem episode={episode} />
+          <EpisodeItem episode={episode} />
+          <EpisodeItem episode={episode} />
+          <EpisodeItem episode={episode} />
+          <EpisodeItem episode={episode} />
+        </PodcastEpisodesContainer>
+      </PodcastContainer>
+    </Scrollbars>
+  );
+};
 
 export default Podcast;
