@@ -4,16 +4,23 @@ import { StyleProps } from "src/system/styles.types";
 
 export const FeaturedContainer = styled.div`
   width: 100%;
-  height: 100%;
+  height: 100px;
+
+  @media screen and (min-width: 800px) {
+    height: 200px;
+  }
+`;
+
+export const FeaturedItemContainer = styled.div`
   display: grid;
-  grid-template-columns: 140px 1fr;
-  grid-template-rows: 140px;
+  grid-template-columns: 100px 1fr;
+  grid-template-rows: 1fr;
   grid-column-gap: 20px;
 
   @media screen and (min-width: 800px) {
     display: grid;
     grid-template-columns: 200px 1fr;
-    grid-template-rows: 200px;
+    grid-template-rows: 1fr;
     grid-column-gap: 20px;
   }
 `;
@@ -66,7 +73,7 @@ export const FeaturedAuthor = styled.h4<StyleProps>`
   font-weight: 500;
   font-size: 14px;
   line-height: 19px;
-  color: ${({ theme }) => theme.backgroundSecondary};
+  color: ${({ theme }) => theme.tertiary};
 `;
 
 export const FeaturedDescription = styled.p<StyleProps>`
@@ -79,7 +86,7 @@ export const FeaturedDescription = styled.p<StyleProps>`
     font-weight: normal;
     font-size: 14px;
     line-height: 25px;
-    color: ${({ theme }) => theme.backgroundSecondary};
+    color: ${({ theme }) => theme.tertiary};
     display: -webkit-box;
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
@@ -89,10 +96,9 @@ export const FeaturedDescription = styled.p<StyleProps>`
 
 export const FeaturedBadge = styled.a<StyleProps>`
   width: fit-content;
-  padding: 10px;
-  height: 25px;
+  padding: 5px;
   border-radius: 3px;
-  background-color: ${({ theme }) => theme.tertiary};
+  background-color: ${({ theme }) => theme.info};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -102,6 +108,6 @@ export const FeaturedBadge = styled.a<StyleProps>`
   font-size: 12px;
   line-height: 15px;
   text-align: center;
-  color: ${({ theme }) => theme.tertiary};
+  color: white;
   text-decoration: none;
 `;

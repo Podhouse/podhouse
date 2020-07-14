@@ -2,6 +2,7 @@ import * as React from "react";
 import Scrollbars from "react-custom-scrollbars";
 
 import PodcastsWithDetails from "src/components/Lists/PodcastsWithDetails/PodcastsWithDetails";
+import Featured from "src/components/Featured/Featured";
 
 import { BrowseContainer } from "./Browse.styles";
 
@@ -74,6 +75,7 @@ const items = [
 const Browse = () => (
   <Scrollbars universal autoHide autoHideTimeout={100} autoHideDuration={100}>
     <BrowseContainer>
+      <Featured />
       <PodcastsWithDetails title="Trending" items={items} />
     </BrowseContainer>
   </Scrollbars>
