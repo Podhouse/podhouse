@@ -1,9 +1,6 @@
 import styled from "@emotion/styled";
 
 export const PodcastAvatarItemContainer = styled.div`
-  width: 100%;
-  max-width: 300px;
-  height: 60px;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;

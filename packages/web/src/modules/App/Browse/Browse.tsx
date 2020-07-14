@@ -77,6 +77,7 @@ const Browse = () => (
     <BrowseContainer>
       <Featured />
       <PodcastsWithDetails title="Trending" items={items} />
+      <PodcastsWithDetails title="Recommended" items={items} />
     </BrowseContainer>
   </Scrollbars>
 );

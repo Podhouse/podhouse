@@ -132,6 +132,27 @@ const items = [
     avatar:
       "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
   },
+  {
+    id: 19,
+    name: "99% Invisible",
+    author: "Roman Mars",
+    avatar:
+      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
+  },
+  {
+    id: 20,
+    name: "99% Invisible",
+    author: "Roman Mars",
+    avatar:
+      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
+  },
+  {
+    id: 21,
+    name: "99% Invisible",
+    author: "Roman Mars",
+    avatar:
+      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
+  },
 ];
 
 const Podcasts = () => (
