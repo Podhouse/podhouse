@@ -28,10 +28,10 @@ const avatar =
 const episode = {
   avatar,
   name: "A Fantasy of Fashion: Articles of Interest #7",
-  author: "99% Invisible",
   description:
     "In the wake of World War II, the government of France commissioned its most prominent designers to create a collection of miniature fashion dolls. It might seem like an odd thing to fund, but the fantasy of high fashion inspired hope in postwar Paris. These dolls also...",
   publishedDate: "May 12, 2020",
+  duration: "39min",
 };
 
 const Podcast = () => {

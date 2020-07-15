@@ -170,9 +170,9 @@ export const PodcastEpisodesContainer = styled.div`
   width: 100%;
   height: auto;
   display: grid;
-  grid-template-columns: repeat(auto-fill, 140px);
+  grid-template-columns: repeat(auto-fill, 100%);
   grid-template-rows: repeat(auto-fill, max-content);
-  grid-gap: 20px;
+  grid-row-gap: 20px;
 `;
 
 export const PodcastLinksContainer = styled.div<StyleProps>`
@@ -207,4 +207,15 @@ export const PodcastLink = styled.a<StyleProps>`
   line-height: 17px;
   color: ${({ theme }) => theme.tertiary};
   text-decoration: none;
+`;
+
+export const PodcastSearchInputContainer = styled.div<StyleProps>`
+  display: none;
+
+  @media screen and (min-width: 800px) {
+    display: block;
+    width: fit-content;
+    height: 100%;
+    align-self: flex-end;
+  }
 `;

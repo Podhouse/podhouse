@@ -105,8 +105,8 @@ export const FeaturedBadge = styled.a<StyleProps>`
   font-family: Inter;
   font-style: normal;
   font-weight: 600;
-  font-size: 12px;
-  line-height: 15px;
+  font-size: 10px;
+  line-height: 10px;
   text-align: center;
   color: white;
   text-decoration: none;
