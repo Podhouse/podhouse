@@ -14,7 +14,8 @@ export const EpisodeItemContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, max-content);
-  grid-gap: 20px;
+  grid-column-gap: 20px;
+  grid-row-gap: 10px;
 
   @media screen and (min-width: 800px) {
     grid-template-columns:
