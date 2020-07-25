@@ -1,11 +1,7 @@
 import * as React from "react";
-import { useFormik } from "formik";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers";
 import * as Yup from "yup";
-
-import Button from "../../../../system/Button/Button";
-import Input from "../../../../system/Input/Input";
-
-import { PasswordFormContainer } from "./Password.styles";
 
 import {
   SettingsItemContainer,
@@ -14,6 +10,11 @@ import {
   SettingsItemHeaderDescription,
   SettingsItemContentContainer,
 } from "../Settings.styles";
+
+import { PasswordFormContainer } from "./Password.styles";
+
+import Button from "src/system/Button/Button";
+import Input from "src/system/Input/Input";
 
 interface PasswordFormProps {
   currentPassword: string;
@@ -26,21 +27,11 @@ const validationSchema = Yup.object().shape({
 });
 
 const Password = () => {
-  const {
-    handleBlur,
-    handleChange,
-    handleSubmit,
-    values,
-    errors,
-    isSubmitting,
-  } = useFormik<PasswordFormProps>({
-    initialValues: {
-      currentPassword: "",
-      newPassword: "",
-    },
-    validationSchema,
-    onSubmit: () => {},
+  const { register, handleSubmit, errors } = useForm<PasswordFormProps>({
+    resolver: yupResolver(validationSchema),
   });
+
+  const onSubmit = (data) => console.log(data);
 
   return (
     <SettingsItemContainer>
@@ -52,32 +43,28 @@ const Password = () => {
       </SettingsItemHeader>
 
       <SettingsItemContentContainer>
-        <PasswordFormContainer onSubmit={handleSubmit}>
+        <PasswordFormContainer onSubmit={handleSubmit(onSubmit)}>
           <Input
             type="password"
             name="currentPassword"
-            label="Current password"
-            placeholder="Current password"
+            label="Password"
+            placeholder="Password"
             height={40}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.currentPassword}
-            error={errors.currentPassword}
+            ref={register}
+            error={errors.currentPassword?.message}
           />
 
           <Input
             type="password"
             name="newPassword"
-            label="New password"
-            placeholder="New password"
+            label="Password"
+            placeholder="Password"
             height={40}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.newPassword}
-            error={errors.newPassword}
+            ref={register}
+            error={errors.newPassword?.message}
           />
 
-          <Button type="submit" submitting={isSubmitting} height={40}>
+          <Button type="submit" height={40}>
             Save
           </Button>
         </PasswordFormContainer>

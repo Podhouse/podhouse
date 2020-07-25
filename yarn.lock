@@ -7129,10 +7129,10 @@ kareem@2.3.1:
   resolved "https://registry.yarnpkg.com/kareem/-/kareem-2.3.1.tgz#def12d9c941017fabfb00f873af95e9c99e1be87"
   integrity sha512-l3hLhffs9zqoDe8zjmb/mAN4B8VT3L56EUvKNqLFVs9YlFA+zx7ke1DO8STAdDyYNkeSo1nKmjuvQeI12So8Xw==
 
-keen-slider@^5.0.5:
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/keen-slider/-/keen-slider-5.1.0.tgz#95ac457e45bf522e35d54294faf71d9a13b75715"
-  integrity sha512-3eZ/CUedRaV+4Yk8VphXo7BFcCcSqZW1sZIo8EWDioB1eP8YoAlC/L5M4hS+Bn44WHWCRaNo+gfAqLdf7bvQyw==
+keen-slider@^5.2.2:
+  version "5.2.2"
+  resolved "https://registry.yarnpkg.com/keen-slider/-/keen-slider-5.2.2.tgz#4aab87540af4bd04bab05be6139839364e900776"
+  integrity sha512-u/DsU/pfzYBQ12K+SB8jGEsZz6lRlZw5/QykDhi91gctL0oPmgVFxqgSgX6slfmcYxcyNAVNyqR7z6xmt3JU6A==
 
 keygrip@~1.1.0:
   version "1.1.0"
@@ -8004,10 +8004,10 @@ next-images@^1.4.0:
     file-loader "^6.0.0"
     url-loader "^4.0.0"
 
-next-pwa@^3.0.2:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/next-pwa/-/next-pwa-3.0.2.tgz#cf9a733d55d8ec31c8408b725c531475a1387b7b"
-  integrity sha512-Ih2HEhTouG2oFDQoc++4ZjOAx1tUUie8ZcO4XkFTDVzjDe3gEtobmgja1Dw6ydPP/HAqzljZgRqjET94R6kGOA==
+next-pwa@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/next-pwa/-/next-pwa-3.1.0.tgz#44eacd2680704b65afc085a15df2d37476a4283f"
+  integrity sha512-59W1mWQ8pTNAzMZIgaUZHQjUXwcTaf1nEfgYKvzG2bl8H2SmC4iYcJAG7gMFEW3lUTdjzT7rA3274+CrdrdM0g==
   dependencies:
     clean-webpack-plugin "^3.0.0"
     globby "^11.0.0"
@@ -9601,10 +9601,10 @@ react-ga@^2.5.3:
   resolved "https://registry.yarnpkg.com/react-ga/-/react-ga-2.7.0.tgz#24328f157f31e8cffbf4de74a3396536679d8d7c"
   integrity sha512-AjC7UOZMvygrWTc2hKxTDvlMXEtbmA0IgJjmkhgmQQ3RkXrWR11xEagLGFGaNyaPnmg24oaIiaNPnEoftUhfXA==
 
-react-hook-form@^6.0.3:
-  version "6.0.4"
-  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-6.0.4.tgz#c5fc36886f0b4cadd8a2b3bb83a3dbde01ab52a3"
-  integrity sha512-LQIQBenTkSLtwes2tiFzqkOlAaa/ppbiaAFnpngufS8eM139cl76h7YybJso96i6VOSIhlfRpUbDPc+VoA/bog==
+react-hook-form@^6.0.8:
+  version "6.0.8"
+  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-6.0.8.tgz#29319df417c8ba68ee7ce497426c53a69df07aa5"
+  integrity sha512-lf1TTuRuqHkYJqDtNIgDu9Rk7euKWkFaG2+XZ3FSkngiFWR72Lj96/FeSGF+ZMylCLdCFq2F059kzucVKWvDiQ==
 
 react-is@16.13.1, react-is@^16.12.0, react-is@^16.7.0, react-is@^16.8.1:
   version "16.13.1"
@@ -11439,7 +11439,7 @@ typescript@3.9.3:
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.9.3.tgz#d3ac8883a97c26139e42df5e93eeece33d610b8a"
   integrity sha512-D/wqnB2xzNFIcoBG9FG8cXRDjiqSTbG2wd8DMZeQyJlP1vfTkIxH4GKveWaEBYySKIg+USu+E+EDIR47SqnaMQ==
 
-typescript@^3.9.3, typescript@^3.9.5, typescript@^3.9.6:
+typescript@^3.9.3, typescript@^3.9.5:
   version "3.9.6"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.9.6.tgz#8f3e0198a34c3ae17091b35571d3afd31999365a"
   integrity sha512-Pspx3oKAPJtjNwE92YS05HQoY7z2SFyOpHo9MqJor3BXAGNaPUs83CuVp9VISFkSjyRfiTpmKuAYGJB7S7hOxw==
