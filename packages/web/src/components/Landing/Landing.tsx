@@ -1,31 +1,29 @@
-import * as React from "react";
-import { createGlobalStyle, ThemeProvider } from "styled-components";
+import React, { Fragment } from "react";
+import { Global } from "@emotion/core";
 
-import { theme } from "src/system/theme";
-import reset from "src/system/reset";
+import { LandingContainer } from "./Landing.styles";
 
 import Header from "src/components/Landing/Header/Header";
 import Footer from "src/components/Landing/Footer/Footer";
 
-import { LandingContainer } from "./Landing.styles";
-
-const GlobalStyle = createGlobalStyle`${reset}`;
+import ThemeProvider from "src/system/ThemeProvider";
+import reset from "src/system/reset";
 
 interface LandingProps {
   children: React.ReactNode;
 }
 
 const Landing = ({ children }: LandingProps) => (
-  <>
-    <ThemeProvider theme={theme}>
+  <Fragment>
+    <ThemeProvider>
       <LandingContainer>
         <Header />
         {children}
         <Footer />
       </LandingContainer>
     </ThemeProvider>
-    <GlobalStyle />
-  </>
+    <Global styles={reset} />
+  </Fragment>
 );
 
 export const getLayout = (page) => <Landing>{page}</Landing>;

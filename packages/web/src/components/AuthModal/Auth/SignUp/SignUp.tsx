@@ -1,18 +1,21 @@
 import * as React from "react";
-import { useFormik } from "formik";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers";
 import * as Yup from "yup";
-
-import Input from "../../../../system/Input/Input";
-import Button from "../../../../system/Button/Button";
-
-import { useAuthContext } from "../../../../context/Auth/Auth";
 
 import {
   AuthTextContainer,
   AuthText,
   AuthFormContainer,
+  AuthLinksContainer,
   AuthParagraphLink,
+  AuthCircle,
 } from "../Auth.styles";
+
+import Input from "src/system/Input/Input";
+import Button from "src/system/Button/Button";
+
+import { useAuthContext } from "src/context/Auth/Auth";
 
 interface SignUpFormProps {
   email: string;
@@ -27,21 +30,11 @@ const validationSchema = Yup.object().shape({
 const SignUp = () => {
   const [, , , send] = useAuthContext();
 
-  const {
-    handleBlur,
-    handleChange,
-    handleSubmit,
-    values,
-    errors,
-    isSubmitting,
-  } = useFormik<SignUpFormProps>({
-    initialValues: {
-      email: "",
-      password: "",
-    },
-    validationSchema,
-    onSubmit: () => {},
+  const { register, handleSubmit, errors } = useForm<SignUpFormProps>({
+    resolver: yupResolver(validationSchema),
   });
+
+  const onSubmit = (data) => console.log(data);
 
   return (
     <>
@@ -49,17 +42,15 @@ const SignUp = () => {
         <AuthText>The best way to listen to your favorite podcasts</AuthText>
       </AuthTextContainer>
 
-      <AuthFormContainer onSubmit={handleSubmit}>
+      <AuthFormContainer onSubmit={handleSubmit(onSubmit)}>
         <Input
           type="email"
           name="email"
           label="Email"
           placeholder="Email"
           height={40}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          value={values.email}
-          error={errors.email}
+          ref={register}
+          error={errors.email?.message}
         />
 
         <Input
@@ -68,19 +59,25 @@ const SignUp = () => {
           label="Password"
           placeholder="Password"
           height={40}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          value={values.password}
-          error={errors.password}
+          ref={register}
+          error={errors.password?.message}
         />
 
-        <Button type="submit" submitting={isSubmitting} height={40}>
+        <Button type="submit" height={40}>
           Sign up
         </Button>
 
-        <AuthParagraphLink onClick={() => send("SIGNIN")}>
-          Already have an account? Sign in
-        </AuthParagraphLink>
+        <AuthLinksContainer>
+          <AuthParagraphLink onClick={() => send("SIGNIN")}>
+            Already have an account?
+          </AuthParagraphLink>
+
+          <AuthCircle />
+
+          <AuthParagraphLink onClick={() => send("FORGOT")}>
+            Forgot your password?
+          </AuthParagraphLink>
+        </AuthLinksContainer>
       </AuthFormContainer>
     </>
   );

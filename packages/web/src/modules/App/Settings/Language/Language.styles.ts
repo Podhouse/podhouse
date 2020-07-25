@@ -1,4 +1,4 @@
-import { styled } from "../../../../system/theme";
+import styled from "@emotion/styled";
 
 export const LanguageContainer = styled.div`
   width: 100%;

@@ -1,4 +1,6 @@
-import { styled } from "../../../../system/theme";
+import styled from "@emotion/styled";
+
+import { StyleProps } from "src/system/styles.types";
 
 export const NotificationsItemContainer = styled.div`
   width: 100%;
@@ -27,22 +29,22 @@ export const NotificationsTextContainer = styled.div`
   grid-row-gap: 10px;
 `;
 
-export const NotificationsItemTitle = styled.h3`
+export const NotificationsItemTitle = styled.h3<StyleProps>`
   font-family: Inter;
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
   line-height: 20px;
-  color: ${({ theme }) => theme.colors.strongestGray};
+  color: ${({ theme }) => theme.tertiary};
 `;
 
-export const NotificationsItemText = styled.p`
+export const NotificationsItemText = styled.p<StyleProps>`
   font-family: Inter;
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
   line-height: 20px;
-  color: ${({ theme }) => theme.colors.midGray};
+  color: ${({ theme }) => theme.tertiary};
 `;
 
 export const NotificationsToggleContainer = styled.div`

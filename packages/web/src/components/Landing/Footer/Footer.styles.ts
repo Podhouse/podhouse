@@ -1,4 +1,6 @@
-import { styled } from "../../../system/theme";
+import styled from "@emotion/styled";
+
+import { StyleProps } from "src/system/styles.types";
 
 export const FooterContainer = styled.footer`
   width: 100%;
@@ -30,20 +32,20 @@ export const FooterLinksContainer = styled.div`
   }
 `;
 
-export const FooterLink = styled.a`
+export const FooterLink = styled.a<StyleProps>`
   font-family: Inter;
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
   line-height: 17px;
   text-align: center;
-  color: ${({ theme }) => theme.colors.grayFour};
+  color: ${({ theme }) => theme.secondary};
   text-decoration: none;
   outline: none;
   cursor: pointer;
 
   :hover {
-    color: ${({ theme }) => theme.colors.black};
+    color: ${({ theme }) => theme.primary};
   }
 `;
 
@@ -66,13 +68,13 @@ export const FooterBrandsContainer = styled.div`
   }
 `;
 
-export const FooterBottomText = styled.p`
+export const FooterBottomText = styled.p<StyleProps>`
   font-family: Inter;
   font-style: normal;
   font-weight: normal;
   font-size: 12px;
   line-height: 17px;
   text-align: center;
-  color: ${({ theme }) => theme.colors.grayFour};
+  color: ${({ theme }) => theme.tertiary};
   justify-self: center;
 `;

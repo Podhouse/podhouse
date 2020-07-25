@@ -1,0 +1,20 @@
+{
+  "version": 2,
+  "alias": ["podhouse.now.sh"],
+  "builds": [
+    {
+      "src": "packages/web/package.json",
+      "use": "@now/next"
+    },
+    {
+      "src": "packages/server/src/index.ts",
+      "use": "@now/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "^/graphql",
+      "dest": "/packages/server/src/index.ts"
+    }
+  ]
+}

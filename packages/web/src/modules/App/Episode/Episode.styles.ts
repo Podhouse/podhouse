@@ -1,4 +1,6 @@
-import { styled } from "../../../system/theme";
+import styled from "@emotion/styled";
+
+import { StyleProps } from "src/system/styles.types";
 
 export const EpisodeContainer = styled.div`
   width: 100%;
@@ -68,26 +70,26 @@ export const EpisodeDetailsContainer = styled.div`
   }
 `;
 
-export const EpisodeName = styled.h1`
+export const EpisodeName = styled.h1<StyleProps>`
   font-family: Inter;
   font-style: normal;
   font-weight: 600;
   font-size: 24px;
   line-height: 29px;
-  color: ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.primary};
 `;
 
-export const EpisodeAuthor = styled.a`
+export const EpisodeAuthor = styled.a<StyleProps>`
   font-family: Inter;
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
   line-height: 19px;
-  color: ${({ theme }) => theme.colors.strongestGray};
+  color: ${({ theme }) => theme.tertiary};
   text-decoration: none;
 `;
 
-export const EpisodeDescription = styled.p`
+export const EpisodeDescription = styled.p<StyleProps>`
   display: none;
 
   @media screen and (min-width: 800px) {
@@ -97,7 +99,7 @@ export const EpisodeDescription = styled.p`
     font-weight: normal;
     font-size: 14px;
     line-height: 25px;
-    color: ${({ theme }) => theme.colors.midGray};
+    color: ${({ theme }) => theme.tertiary};
     display: -webkit-box;
     -webkit-line-clamp: 5;
     -webkit-box-orient: vertical;
@@ -123,7 +125,7 @@ export const EpisodeListenButtonContainer = styled.div`
   }
 `;
 
-export const EpisodeShareButton = styled.button`
+export const EpisodeShareButton = styled.button<StyleProps>`
   display: none;
 
   @media screen and (min-width: 800px) {
@@ -136,7 +138,7 @@ export const EpisodeShareButton = styled.button`
     padding: 0;
     width: 70px;
     height: auto;
-    color: ${({ theme }) => theme.colors.midGray};
+    color: ${({ theme }) => theme.tertiary};
     font-family: Inter;
     font-style: normal;
     font-weight: normal;

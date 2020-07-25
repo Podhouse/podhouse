@@ -1,4 +1,6 @@
-import { styled } from "../../../../system/theme";
+import styled from "@emotion/styled";
+
+import { StyleProps } from "src/system/styles.types";
 
 export const NavigationContainer = styled.div`
   width: 100%;
@@ -11,10 +13,19 @@ export const NavigationContainer = styled.div`
   justify-content: center;
   justify-self: center;
 
+  .favorites {
+    display: none;
+  }
+
   @media screen and (min-width: 800px) {
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(2, max-content);
+    grid-template-rows: repeat(3, max-content);
     grid-row-gap: 30px;
+    padding: 0 30px 0 30px;
+
+    .favorites {
+      display: grid;
+    }
 
     .search,
     .settings {
@@ -23,7 +34,7 @@ export const NavigationContainer = styled.div`
   }
 `;
 
-export const NavigationItemContainer = styled.div`
+export const NavigationItemContainer = styled.div<StyleProps>`
   width: 100%;
   height: 100%;
   display: flex;
@@ -41,17 +52,17 @@ export const NavigationItemContainer = styled.div`
 
     :hover {
       svg {
-        stroke: ${({ theme }) => theme.colors.black};
+        stroke: ${({ theme }) => theme.primary};
       }
 
       a {
-        color: ${({ theme }) => theme.colors.black};
+        color: ${({ theme }) => theme.primary};
       }
     }
   }
 `;
 
-export const NavigationItemLink = styled.a`
+export const NavigationItemLink = styled.a<StyleProps & { active: boolean }>`
   display: none;
 
   @media screen and (min-width: 800px) {
@@ -62,7 +73,7 @@ export const NavigationItemLink = styled.a`
     font-weight: 400;
     font-size: 14px;
     line-height: 19px;
-    color: ${({ theme }) => theme.colors.grayThree};
+    color: ${({ active, theme }) => (active ? theme.primary : theme.tertiary)};
     text-decoration: none;
     cursor: pointer;
   }

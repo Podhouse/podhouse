@@ -1,17 +1,26 @@
-import { styled } from "../../system/theme";
+import styled from "@emotion/styled";
+
+import { StyleProps } from "src/system/styles.types";
 
 export const FeaturedContainer = styled.div`
   width: 100%;
-  height: 100%;
+  height: 100px;
+
+  @media screen and (min-width: 800px) {
+    height: 200px;
+  }
+`;
+
+export const FeaturedItemContainer = styled.div`
   display: grid;
-  grid-template-columns: 140px 1fr;
-  grid-template-rows: 140px;
+  grid-template-columns: 100px 1fr;
+  grid-template-rows: 1fr;
   grid-column-gap: 20px;
 
   @media screen and (min-width: 800px) {
     display: grid;
     grid-template-columns: 200px 1fr;
-    grid-template-rows: 200px;
+    grid-template-rows: 1fr;
     grid-column-gap: 20px;
   }
 `;
@@ -48,26 +57,26 @@ export const FeaturedDetailsContainer = styled.div`
   }
 `;
 
-export const FeaturedName = styled.a`
+export const FeaturedName = styled.a<StyleProps>`
   font-family: Inter;
   font-style: normal;
   font-weight: 600;
   font-size: 24px;
   line-height: 29px;
-  color: ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.primary};
   text-decoration: none;
 `;
 
-export const FeaturedAuthor = styled.h4`
+export const FeaturedAuthor = styled.h4<StyleProps>`
   font-family: Inter;
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
   line-height: 19px;
-  color: ${({ theme }) => theme.colors.strongestGray};
+  color: ${({ theme }) => theme.tertiary};
 `;
 
-export const FeaturedDescription = styled.p`
+export const FeaturedDescription = styled.p<StyleProps>`
   display: none;
 
   @media screen and (min-width: 800px) {
@@ -77,7 +86,7 @@ export const FeaturedDescription = styled.p`
     font-weight: normal;
     font-size: 14px;
     line-height: 25px;
-    color: ${({ theme }) => theme.colors.midGray};
+    color: ${({ theme }) => theme.tertiary};
     display: -webkit-box;
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
@@ -85,21 +94,20 @@ export const FeaturedDescription = styled.p`
   }
 `;
 
-export const FeaturedBadge = styled.a`
+export const FeaturedBadge = styled.a<StyleProps>`
   width: fit-content;
-  padding: 10px;
-  height: 25px;
+  padding: 5px;
   border-radius: 3px;
-  background-color: ${({ theme }) => theme.colors.lightGray};
+  background-color: ${({ theme }) => theme.info};
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: Inter;
   font-style: normal;
   font-weight: 600;
-  font-size: 12px;
-  line-height: 15px;
+  font-size: 10px;
+  line-height: 10px;
   text-align: center;
-  color: ${({ theme }) => theme.colors.strongestGray};
+  color: white;
   text-decoration: none;
 `;

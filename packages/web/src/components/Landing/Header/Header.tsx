@@ -1,8 +1,5 @@
 import * as React from "react";
 import Link from "next/link";
-import { useRouter } from "next/router";
-
-import LogoPodhouseDark from "../../../../public/logo/logo-podhouse-medium-dark.svg";
 
 import {
   HeaderContainer,
@@ -12,23 +9,28 @@ import {
   HeaderSignInContainer,
 } from "./Header.styles";
 
+import useTheme from "src/system/useTheme";
+
+import PodhouseDark from "../../../../public/logo/logo-medium-dark.svg";
+import PodhouseWhite from "../../../../public/logo/logo-medium-white.svg";
+
 const Header = () => {
-  const router = useRouter();
+  const themeState = useTheme();
 
-  const handleStart = (e: any) => {
-    e.preventDefault();
-    router.push("/app");
-  };
+  const onRenderLogo = () => {
+    if (themeState.dark) {
+      return <PodhouseWhite />;
+    }
 
-  const handleHome = (e: any) => {
-    e.preventDefault();
-    router.push("/");
+    return <PodhouseDark />;
   };
 
   return (
     <HeaderContainer>
       <HeaderLogoContainer>
-        <LogoPodhouseDark onClick={handleHome} />
+        <Link href="/" as="/">
+          {onRenderLogo()}
+        </Link>
       </HeaderLogoContainer>
 
       <HeaderLinksContainer>
@@ -51,7 +53,9 @@ const Header = () => {
       </HeaderLinksContainer>
 
       <HeaderSignInContainer>
-        <HeaderLink onClick={handleStart}>Get started</HeaderLink>
+        <Link href="/app" as="/app">
+          <HeaderLink href="/app">Get started</HeaderLink>
+        </Link>
       </HeaderSignInContainer>
     </HeaderContainer>
   );

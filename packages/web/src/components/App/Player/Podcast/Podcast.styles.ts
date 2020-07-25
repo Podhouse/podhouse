@@ -1,4 +1,6 @@
-import { styled } from "../../../../system/theme";
+import styled from "@emotion/styled";
+
+import { StyleProps } from "src/system/styles.types";
 
 interface PodcastAvatarProps {
   avatar: string;
@@ -7,6 +9,7 @@ interface PodcastAvatarProps {
 export const PodcastContainer = styled.div`
   width: 50px;
   height: 50px;
+  display: flex;
   align-self: center;
   justify-self: center;
   grid-column: 1 / 2;
@@ -19,9 +22,9 @@ export const PodcastContainer = styled.div`
     grid-column: 1 / 2;
     grid-row: 1 / 2;
     display: grid;
-    grid-template-columns: 75px 1fr;
+    grid-template-columns: 1fr;
     grid-template-rows: 1fr;
-    grid-column-gap: 10px;
+    align-items: center;
   }
 `;
 
@@ -31,51 +34,78 @@ export const PodcastAvatar = styled.div<PodcastAvatarProps>`
   background-image: url(${({ avatar }) => avatar});
   background-size: cover;
   border-radius: 5px;
+  align-self: center;
 
   @media screen and (min-width: 800px) {
-    width: 60px;
-    height: 60px;
-    grid-column: 1 / 2;
-    grid-row: 1 / 2;
-    align-self: center;
-    justify-self: center;
+    display: none;
   }
 `;
 
 export const PodcastDetails = styled.div`
   display: none;
 
-  @media screen and (min-width: 1020px) {
+  .like-button {
+    display: none;
+  }
+
+  @media screen and (min-width: 800px) {
     width: 100%;
     height: 50px;
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-around;
-    flex-direction: column;
-    align-self: center;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    display: grid;
+    grid-template-columns: max-content 20px;
+    grid-template-rows: max-content max-content;
+    grid-gap: 10px;
+
+    .like-button {
+      display: block;
+    }
   }
 `;
 
-export const PodcastEpisode = styled.h3`
+export const PodcastEpisode = styled.h3<StyleProps>`
+  width: 100%;
+  max-width: 300px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   font-family: Inter;
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
   line-height: 17px;
-  color: ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.primary};
   cursor: pointer;
+
+  @media screen and (min-width: 800px) {
+    grid-row: 1 / 2;
+    grid-column: 1 / 2;
+  }
 `;
 
-export const PodcastName = styled.h1`
-  display: flex;
+export const PodcastName = styled.h1<StyleProps>`
+  width: 100%;
+  max-width: 300px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   font-family: Inter;
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
   line-height: 17px;
-  color: ${({ theme }) => theme.colors.grayFour};
+  color: ${({ theme }) => theme.tertiary};
   cursor: pointer;
+
+  @media screen and (min-width: 800px) {
+    grid-row: 2 / 3;
+    grid-column: 1 / 2;
+  }
+`;
+
+export const PodcastFavoriteContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  grid-row: 1 / 2;
+  grid-column: 2 / 3;
 `;

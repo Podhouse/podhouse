@@ -1,7 +1,5 @@
 import * as React from "react";
 
-import Select from "../../../../system/Select/Select";
-
 import {
   SettingsItemContainer,
   SettingsItemHeader,
@@ -9,6 +7,8 @@ import {
   SettingsItemHeaderDescription,
   SettingsItemContentContainer,
 } from "../Settings.styles";
+
+import Select from "src/system/Select/Select";
 
 const options = [
   {

@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Heart } from "react-feather";
 
 import {
   PodcastContainer,
@@ -6,7 +7,10 @@ import {
   PodcastDetails,
   PodcastEpisode,
   PodcastName,
+  PodcastFavoriteContainer,
 } from "./Podcast.styles";
+
+import useTheme from "src/system/useTheme";
 
 interface PodcastProps {
   ready: boolean;
@@ -17,12 +21,14 @@ interface PodcastProps {
   };
 }
 
+const iconStyle = { cursor: "pointer" };
+
 const Podcast = ({ ready, currentPodcast }: PodcastProps) => {
+  const themeState = useTheme();
+
+  const iconColor = themeState.dark ? "#FFFFFF" : "#101010";
+
   const { avatar, name, episode } = currentPodcast;
-
-  const redirectPodcast = () => {};
-
-  const redirectEpisode = () => {};
 
   const onReady = () => {
     if (!ready) return null;
@@ -32,8 +38,19 @@ const Podcast = ({ ready, currentPodcast }: PodcastProps) => {
         <PodcastAvatar avatar={avatar} />
 
         <PodcastDetails>
-          <PodcastEpisode onClick={redirectEpisode}>{episode}</PodcastEpisode>
-          <PodcastName onClick={redirectPodcast}>{name}</PodcastName>
+          <PodcastEpisode onClick={() => {}}>{episode}</PodcastEpisode>
+          <PodcastName onClick={() => {}}>{name}</PodcastName>
+
+          <PodcastFavoriteContainer>
+            <Heart
+              className="like-button"
+              size={16}
+              strokeWidth={1.5}
+              color={iconColor}
+              style={iconStyle}
+              onClick={() => {}}
+            />
+          </PodcastFavoriteContainer>
         </PodcastDetails>
       </PodcastContainer>
     );

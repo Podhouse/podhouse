@@ -1,13 +1,14 @@
 import * as React from "react";
-import { useFormik } from "formik";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers";
 import * as Yup from "yup";
 
-import Input from "../../../../system/Input/Input";
-import Button from "../../../../system/Button/Button";
-
-import { useAuthContext } from "../../../../context/Auth/Auth";
-
 import { AuthTextContainer, AuthText, AuthFormContainer } from "../Auth.styles";
+
+import Input from "src/system/Input/Input";
+import Button from "src/system/Button/Button";
+
+import { useAuthContext } from "src/context/Auth/Auth";
 
 interface ResetPasswordFormProps {
   newPassword: string;
@@ -25,21 +26,11 @@ const validationSchema = Yup.object().shape({
 const ResetPassword = () => {
   const [, , , send] = useAuthContext();
 
-  const {
-    handleBlur,
-    handleChange,
-    handleSubmit,
-    values,
-    errors,
-    isSubmitting,
-  } = useFormik<ResetPasswordFormProps>({
-    initialValues: {
-      newPassword: "",
-      confirmNewPassword: "",
-    },
-    validationSchema,
-    onSubmit: () => {},
+  const { register, handleSubmit, errors } = useForm<ResetPasswordFormProps>({
+    resolver: yupResolver(validationSchema),
   });
+
+  const onSubmit = (data) => console.log(data);
 
   return (
     <>
@@ -50,38 +41,29 @@ const ResetPassword = () => {
         </AuthText>
       </AuthTextContainer>
 
-      <AuthFormContainer onSubmit={handleSubmit}>
+      <AuthFormContainer onSubmit={handleSubmit(onSubmit)}>
         <Input
           type="password"
           name="newPassword"
           label="New password"
           placeholder="New password"
           height={40}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          value={values.newPassword}
-          error={errors.newPassword}
+          ref={register}
+          error={errors.newPassword?.message}
         />
 
         <Input
           type="password"
           name="confirmNewPassword"
-          label="Confirm new password"
-          placeholder="Confirm new password"
+          label="New password"
+          placeholder="New password"
           height={40}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          value={values.confirmNewPassword}
-          error={errors.confirmNewPassword}
+          ref={register}
+          error={errors.confirmNewPassword?.message}
         />
 
-        <Button
-          type="submit"
-          submitting={isSubmitting}
-          onClick={() => send("SUCCESS")}
-          height={40}
-        >
-          Set new password
+        <Button type="submit" onClick={() => send("SUCCESS")} height={40}>
+          Confirm new password
         </Button>
       </AuthFormContainer>
     </>

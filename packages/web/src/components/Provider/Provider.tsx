@@ -1,5 +1,5 @@
-import * as React from "react";
-import { createGlobalStyle, ThemeProvider } from "styled-components";
+import React, { Fragment } from "react";
+import { Global } from "@emotion/core";
 import { RehawkProvider } from "rehawk";
 
 import App from "src/components/App/App";
@@ -7,18 +7,16 @@ import App from "src/components/App/App";
 import { AuthProvider } from "src/context/Auth/Auth";
 import { SettingsProvider } from "src/context/Settings/Settings";
 
-import { theme } from "src/system/theme";
+import ThemeProvider from "src/system/ThemeProvider";
 import reset from "src/system/reset";
-
-const GlobalStyle = createGlobalStyle`${reset}`;
 
 interface ProviderProps {
   children: React.ReactNode;
 }
 
 const Provider = ({ children }: ProviderProps) => (
-  <>
-    <ThemeProvider theme={theme}>
+  <Fragment>
+    <ThemeProvider>
       <RehawkProvider>
         <AuthProvider>
           <SettingsProvider>
@@ -27,8 +25,8 @@ const Provider = ({ children }: ProviderProps) => (
         </AuthProvider>
       </RehawkProvider>
     </ThemeProvider>
-    <GlobalStyle />
-  </>
+    <Global styles={reset} />
+  </Fragment>
 );
 
 export const getLayout = (page) => <Provider>{page}</Provider>;

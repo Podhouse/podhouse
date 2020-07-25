@@ -3,7 +3,7 @@ import { useRehawk } from "rehawk";
 
 import Podcast from "./Podcast/Podcast";
 import Controls from "./Controls/Controls";
-import Volume from "./Volume/Volume";
+import RightControls from "./RightControls/RightControls";
 
 import { PlayerContainer } from "./Player.styles";
 
@@ -13,8 +13,8 @@ const src =
 const currentPodcast = {
   avatar:
     "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
-  name: "WTF with Marc Maron",
-  episode: "EP 928 - Trying to redesign this app",
+  name: "WTF with Marc Maron Podcast",
+  episode: "Episode 1137 - John Legend",
 };
 
 const Player = () => {
@@ -54,7 +54,7 @@ const Player = () => {
         onBackward={onBackward}
         onForward={onForward}
       />
-      <Volume
+      <RightControls
         ready={ready}
         volume={volume}
         muted={muted}

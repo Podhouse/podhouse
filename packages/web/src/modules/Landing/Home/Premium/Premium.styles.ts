@@ -1,10 +1,12 @@
-import { styled } from "../../../../system/theme";
+import styled from "@emotion/styled";
 
-export const PremiumContainer = styled.div`
+import { StyleProps } from "src/system/styles.types";
+
+export const PremiumContainer = styled.div<StyleProps>`
   width: auto;
   max-width: 800px;
   height: auto;
-  background: ${({ theme }) => theme.colors.white};
+  background: ${({ theme }) => theme.backgroundPrimary};
   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.05);
   border-radius: 5px;
   display: grid;
@@ -15,30 +17,30 @@ export const PremiumContainer = styled.div`
   justify-items: flex-start;
 `;
 
-export const PremiumAvailableContainer = styled.div`
+export const PremiumAvailableContainer = styled.div<StyleProps>`
   width: fit-content;
   padding: 10px;
   height: 35px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: ${({ theme }) => theme.colors.grayOne};
+  background: ${({ theme }) => theme.backgroundSecondary};
   border-radius: 5px;
   grid-column: 1 / 2;
   grid-row: 1 / 2;
 `;
 
-export const PremiumAvailableText = styled.p`
+export const PremiumAvailableText = styled.p<StyleProps>`
   font-family: Inter;
   font-style: normal;
   font-weight: 600;
   font-size: 12px;
   line-height: 15px;
   text-align: center;
-  color: ${({ theme }) => theme.colors.grayThree};
+  color: ${({ theme }) => theme.secondary};
 `;
 
-export const PremiumTitle = styled.h1`
+export const PremiumTitle = styled.h1<StyleProps>`
   font-family: Inter;
   font-style: normal;
   font-weight: 600;
@@ -46,7 +48,7 @@ export const PremiumTitle = styled.h1`
   line-height: 24px;
   text-align: center;
   letter-spacing: -0.03em;
-  color: ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.primary};
   text-align: start;
 `;
 
@@ -74,21 +76,21 @@ export const PremiumItemContainer = styled.div`
   grid-row-gap: 10px;
 `;
 
-export const PremiumItemTitle = styled.h3`
+export const PremiumItemTitle = styled.h3<StyleProps>`
   font-family: Inter;
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
   line-height: 17px;
   letter-spacing: -0.03em;
-  color: ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.primary};
 `;
 
-export const PremiumItemText = styled.p`
+export const PremiumItemText = styled.p<StyleProps>`
   font-family: Inter;
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
   line-height: 25px;
-  color: ${({ theme }) => theme.colors.grayFour};
+  color: ${({ theme }) => theme.tertiary};
 `;

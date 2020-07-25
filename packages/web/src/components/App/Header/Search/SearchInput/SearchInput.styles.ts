@@ -1,4 +1,6 @@
-import { styled } from "../../../../../system/theme";
+import styled from "@emotion/styled";
+
+import { StyleProps } from "src/system/styles.types";
 
 export const SearchInputContainer = styled.div`
   width: 100%;
@@ -8,7 +10,7 @@ export const SearchInputContainer = styled.div`
   position: relative;
 `;
 
-export const SearchInputStyled = styled.input`
+export const SearchInputStyled = styled.input<StyleProps>`
   width: 100%;
   max-width: 345px;
   height: 40px;
@@ -19,8 +21,8 @@ export const SearchInputStyled = styled.input`
   font-weight: normal;
   font-size: 14px;
   line-height: 17px;
-  background: ${({ theme }) => theme.colors.grayOne};
-  color: ${({ theme }) => theme.colors.grayFour};
+  background: ${({ theme }) => theme.backgroundSecondary};
+  color: ${({ theme }) => theme.primary};
   border: none;
   border-radius: 5px;
   outline: none;
@@ -32,6 +34,6 @@ export const SearchInputStyled = styled.input`
     font-weight: normal;
     font-size: 14px;
     line-height: 17px;
-    color: ${({ theme }) => theme.colors.grayThree};
+    color: ${({ theme }) => theme.tertiary};
   }
 `;

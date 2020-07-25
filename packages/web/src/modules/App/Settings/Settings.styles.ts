@@ -1,4 +1,6 @@
-import { styled } from "../../../system/theme";
+import styled from "@emotion/styled";
+
+import { StyleProps } from "src/system/styles.types";
 
 export const SettingsContainer = styled.div`
   width: 100%;
@@ -37,24 +39,24 @@ export const SettingsItemHeader = styled.div`
   grid-row-gap: 10px;
 `;
 
-export const SettingsItemHeaderTitle = styled.h1`
+export const SettingsItemHeaderTitle = styled.h1<StyleProps>`
   font-family: Inter;
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
   line-height: 19px;
-  color: ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.primary};
   align-self: center;
   justify-self: flex-start;
 `;
 
-export const SettingsItemHeaderDescription = styled.p`
+export const SettingsItemHeaderDescription = styled.p<StyleProps>`
   font-family: Inter;
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
   line-height: 25px;
-  color: ${({ theme }) => theme.colors.midGray};
+  color: ${({ theme }) => theme.tertiary};
   align-self: center;
   justify-self: flex-start;
 `;

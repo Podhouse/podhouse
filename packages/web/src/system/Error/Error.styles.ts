@@ -1,10 +1,14 @@
-import { styled } from "src/system/theme";
+import styled from "@emotion/styled";
+
+import { StyleProps } from "src/system/styles.types";
 
 interface ErrorProps {
   mt?: number;
 }
 
-export const ErrorContainer = styled.div<ErrorProps>`
+type Props = ErrorProps & StyleProps;
+
+export const ErrorContainer = styled.div<Props>`
   width: auto;
   height: auto;
   display: grid;
@@ -16,12 +20,12 @@ export const ErrorContainer = styled.div<ErrorProps>`
   margin-top: ${({ mt }) => mt || 0}px;
 `;
 
-export const ErrorText = styled.p<ErrorProps>`
+export const ErrorText = styled.p<Props>`
   font-family: Inter;
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
   line-height: 17px;
-  color: ${({ theme }) => theme.colors.error};
+  color: ${({ theme }) => theme.error};
   outline: none;
 `;

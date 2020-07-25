@@ -9,9 +9,6 @@ import {
   DownloadAssetsContainer,
 } from "./Download.styles";
 
-import LogoDark from "../../../../../public/logo/logo-medium-dark.svg";
-import LogoWhite from "../../../../../public/logo/logo-medium-white.svg";
-
 const Download = () => (
   <DownloadContainer>
     <DownloadItemContainer>
@@ -26,9 +23,7 @@ const Download = () => (
         </DownloadLink>
       </DownloadHeaderContainer>
 
-      <DownloadAssetsContainer color="#FFF">
-        <LogoDark />
-      </DownloadAssetsContainer>
+      <DownloadAssetsContainer color="#FFF">Dark</DownloadAssetsContainer>
     </DownloadItemContainer>
 
     <DownloadItemContainer>
@@ -43,9 +38,7 @@ const Download = () => (
         </DownloadLink>
       </DownloadHeaderContainer>
 
-      <DownloadAssetsContainer color="#000">
-        <LogoWhite />
-      </DownloadAssetsContainer>
+      <DownloadAssetsContainer color="#000">white</DownloadAssetsContainer>
     </DownloadItemContainer>
   </DownloadContainer>
 );

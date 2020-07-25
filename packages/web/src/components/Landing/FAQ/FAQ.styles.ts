@@ -1,4 +1,6 @@
-import { styled } from "../../../system/theme";
+import styled from "@emotion/styled";
+
+import { StyleProps } from "src/system/styles.types";
 
 export const FAQItemsContainer = styled.div`
   width: 100%;
@@ -19,20 +21,20 @@ export const FAQItemContainer = styled.div`
   grid-row-gap: 10px;
 `;
 
-export const FAQItemTitle = styled.h2`
+export const FAQItemTitle = styled.h2<StyleProps>`
   font-family: Inter;
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
   line-height: 17px;
-  color: ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.primary};
 `;
 
-export const FAQItemBody = styled.p`
+export const FAQItemBody = styled.p<StyleProps>`
   font-family: Inter;
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
   line-height: 25px;
-  color: ${({ theme }) => theme.colors.grayFour};
+  color: ${({ theme }) => theme.tertiary};
 `;

@@ -1,7 +1,8 @@
 import * as React from "react";
 import Scrollbars from "react-custom-scrollbars";
 
-import Row from "../../../components/Row/Row";
+import PodcastsWithDetails from "src/components/Lists/PodcastsWithDetails/PodcastsWithDetails";
+import Featured from "src/components/Featured/Featured";
 
 import { BrowseContainer } from "./Browse.styles";
 
@@ -34,12 +35,49 @@ const items = [
     avatar:
       "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
   },
+  {
+    id: 5,
+    name: "99% Invisible",
+    author: "Roman Mars",
+    avatar:
+      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
+  },
+  {
+    id: 6,
+    name: "99% Invisible",
+    author: "Roman Mars",
+    avatar:
+      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
+  },
+  {
+    id: 7,
+    name: "99% Invisible",
+    author: "Roman Mars",
+    avatar:
+      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
+  },
+  {
+    id: 8,
+    name: "99% Invisible",
+    author: "Roman Mars",
+    avatar:
+      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
+  },
+  {
+    id: 9,
+    name: "99% Invisible",
+    author: "Roman Mars",
+    avatar:
+      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
+  },
 ];
 
 const Browse = () => (
   <Scrollbars universal autoHide autoHideTimeout={100} autoHideDuration={100}>
     <BrowseContainer>
-      <Row title="Trending" items={items} />
+      <Featured />
+      <PodcastsWithDetails title="Trending" items={items} />
+      <PodcastsWithDetails title="Recommended" items={items} />
     </BrowseContainer>
   </Scrollbars>
 );

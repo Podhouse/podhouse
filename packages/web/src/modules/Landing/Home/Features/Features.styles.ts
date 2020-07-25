@@ -1,4 +1,6 @@
-import { styled } from "../../../../system/theme";
+import styled from "@emotion/styled";
+
+import { StyleProps } from "src/system/styles.types";
 
 export const FeaturesContainer = styled.div`
   width: 100%;
@@ -26,7 +28,7 @@ export const FeaturesItemContainer = styled.div`
   grid-column-gap: 20px;
 `;
 
-export const FeaturesItemIconContainer = styled.div`
+export const FeaturesItemIconContainer = styled.div<StyleProps>`
   width: 40px;
   height: 40px;
   grid-column: 1 / 2;
@@ -34,7 +36,7 @@ export const FeaturesItemIconContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: ${({ theme }) => theme.colors.black};
+  background: ${({ theme }) => theme.primary};
   border-radius: 5px;
 `;
 
@@ -50,24 +52,24 @@ export const FeaturesItemTextContainer = styled.div`
   justify-items: flex-start;
 `;
 
-export const FeaturesItemTitle = styled.h3`
+export const FeaturesItemTitle = styled.h3<StyleProps>`
   font-family: Inter;
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
   line-height: 17px;
   text-align: center;
-  color: ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.primary};
   text-align: start;
 `;
 
-export const FeaturesItemText = styled.p`
+export const FeaturesItemText = styled.p<StyleProps>`
   font-family: Inter;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 25px;
   text-align: center;
-  color: ${({ theme }) => theme.colors.grayFour};
+  color: ${({ theme }) => theme.tertiary};
   text-align: start;
 `;

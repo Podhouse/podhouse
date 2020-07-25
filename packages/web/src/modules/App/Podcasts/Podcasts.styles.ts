@@ -1,4 +1,4 @@
-import { styled } from "../../../system/theme";
+import styled from "@emotion/styled";
 
 export const PodcastsContainer = styled.div`
   width: 100%;
@@ -6,6 +6,6 @@ export const PodcastsContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(auto-fill, max-content);
-  grid-row-gap: 50px;
+  grid-row-gap: 20px;
   padding: 30px 30px 0px 30px;
 `;

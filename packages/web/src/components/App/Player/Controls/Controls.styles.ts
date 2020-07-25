@@ -1,4 +1,6 @@
-import { styled } from "../../../../system/theme";
+import styled from "@emotion/styled";
+
+import { StyleProps } from "src/system/styles.types";
 
 export const ControlsContainer = styled.div`
   grid-row: 1 / 3;
@@ -18,7 +20,7 @@ export const ControlsContainer = styled.div`
 `;
 
 export const ControlsButtonsContainer = styled.div`
-  grid-column: 2 / 3;
+  grid-column: 1 / 3;
   grid-row: 2 / 3;
   width: auto;
   height: auto;
@@ -58,7 +60,7 @@ export const ControlsSliderContainer = styled.div`
   }
 `;
 
-export const ControlsTime = styled.p`
+export const ControlsTime = styled.p<StyleProps>`
   display: none;
 
   @media screen and (min-width: 800px) {
@@ -68,7 +70,7 @@ export const ControlsTime = styled.p`
     font-weight: normal;
     font-size: 12px;
     line-height: 15px;
-    color: ${({ theme }) => theme.colors.black};
+    color: ${({ theme }) => theme.primary};
     text-transform: uppercase;
     justify-self: center;
   }

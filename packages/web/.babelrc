@@ -1,10 +1,4 @@
 {
   "presets": ["next/babel"],
-  "plugins": [
-    "inline-react-svg",
-    [
-      "styled-components",
-      { "ssr": true }
-    ]
-  ]
+  "plugins": ["inline-react-svg", "emotion"]
 }

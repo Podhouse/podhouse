@@ -1,10 +1,9 @@
 import * as React from "react";
 import { render } from "@testing-library/react";
-import { ThemeProvider } from "styled-components";
 
 import FAQ from "./FAQ";
 
-import { theme } from "../../../system/theme";
+import ThemeProvider from "src/system/ThemeProvider";
 
 const items = [
   {
@@ -30,7 +29,7 @@ const items = [
 ];
 
 const withTheme = render(
-  <ThemeProvider theme={theme}>
+  <ThemeProvider>
     <FAQ
       description="Here's some questions that you might have about us."
       items={items}

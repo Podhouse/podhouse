@@ -1,16 +1,16 @@
 import * as React from "react";
 import { Check } from "react-feather";
 
-import Button from "../../../../system/Button/Button";
-
-import { useAuthContext } from "../../../../context/Auth/Auth";
+import { AuthText } from "../Auth.styles";
 
 import {
   HeaderIconTextContainer,
   CheckContainer,
 } from "./ForgotPasswordSuccess.styles";
 
-import { AuthText } from "../Auth.styles";
+import Button from "src/system/Button/Button";
+
+import { useAuthContext } from "src/context/Auth/Auth";
 
 const ForgotPasswordSuccess = () => {
   const [, , , send] = useAuthContext();

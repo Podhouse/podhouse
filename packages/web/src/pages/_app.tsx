@@ -1,5 +1,6 @@
 import * as React from "react";
 import App from "next/app";
+import "keen-slider/keen-slider.min.css";
 
 import Provider from "src/components/Provider/Provider";
 

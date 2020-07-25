@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 
 import Auth from "./Auth/Auth";
 
+import GetStarted from "./Auth/GetStarted/GetStarted";
 import SignIn from "./Auth/SignIn/SignIn";
 import SignUp from "./Auth/SignUp/SignUp";
 import ForgotPassword from "./Auth/ForgotPassword/ForgotPassword";
@@ -26,6 +27,9 @@ const AuthModal = ({ auth, handleAuth }: AuthModalProps) => {
   useOnClickOutside(ref, () => handleAuth());
 
   const renderAuth = () => {
+    if (auth.matches("open.getstarted")) {
+      return <GetStarted />;
+    }
     if (auth.matches("open.signin")) {
       return <SignIn />;
     }

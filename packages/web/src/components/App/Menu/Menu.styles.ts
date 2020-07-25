@@ -1,21 +1,24 @@
-import { styled } from "../../../system/theme";
+import styled from "@emotion/styled";
 
-export const MenuContainer = styled.aside`
+import { StyleProps } from "src/system/styles.types";
+
+export const MenuContainer = styled.aside<StyleProps>`
   width: 100%;
-  height: 70px;
+  height: 60px;
   bottom: 0px;
   position: fixed;
-  background: ${({ theme }) => theme.colors.white};
+  background: ${({ theme }) => theme.backgroundPrimary};
   z-index: 100;
 
   @media screen and (min-width: 800px) {
     grid-column: 1 / 2;
-    grid-row: 2 / 3;
+    grid-row: 1 / 3;
     width: 100%;
     height: 100%;
     position: inherit;
     z-index: 0;
-    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.05);
+    background: ${({ theme }) => theme.backgroundPrimary};
+    border-right: ${({ theme }) => `1px solid ${theme.backgroundSecondary}`};
   }
 `;
 
@@ -25,14 +28,35 @@ export const MenuInsideContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
-  padding-left: 30px;
-  padding-right: 30px;
 
   @media screen and (min-width: 800px) {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(2, max-content);
+    grid-template-rows: 80px 1fr 210px;
     grid-row-gap: 30px;
-    padding: 30px 30px 0px 30px;
+  }
+`;
+
+export const MenuLogoContainer = styled.div`
+  display: none;
+
+  @media screen and (min-width: 800px) {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 30px 0 30px;
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+  }
+`;
+
+export const MenuAvatarContainer = styled.img`
+  display: none;
+
+  @media screen and (min-width: 800px) {
+    display: block;
+    cursor: pointer;
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
   }
 `;
