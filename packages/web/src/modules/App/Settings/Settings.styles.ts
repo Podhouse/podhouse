@@ -4,7 +4,7 @@ import { StyleProps } from "src/system/styles.types";
 
 export const SettingsContainer = styled.div`
   width: 100%;
-  max-width: 530px;
+  max-width: 500px;
   height: 100%;
   align-self: center;
   justify-self: center;
@@ -24,48 +24,45 @@ export const SettingsItemContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: max-content 1fr;
-  grid-row-gap: 30px;
-  padding-bottom: 20px;
+  grid-row-gap: 20px;
 `;
 
-export const SettingsItemHeader = styled.div`
+export const SettingsItemHeaderContainer = styled.div`
   width: 100%;
   height: auto;
   grid-column: 1 / 2;
   grid-row: 1 / 2;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: max-content max-content;
   grid-row-gap: 10px;
+  grid-template-rows: max-content max-content;
 `;
 
 export const SettingsItemHeaderTitle = styled.h1<StyleProps>`
   font-family: Inter;
   font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 19px;
-  color: ${({ theme }) => theme.primary};
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: ${({ theme }) => theme.tertiary};
   align-self: center;
   justify-self: flex-start;
 `;
 
-export const SettingsItemHeaderDescription = styled.p<StyleProps>`
-  font-family: Inter;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 25px;
-  color: ${({ theme }) => theme.tertiary};
-  align-self: center;
-  justify-self: flex-start;
+export const SettingsItemHeaderBreakLine = styled.hr<StyleProps>`
+  width: 100%;
+  height: 1px;
+  background-color: ${({ theme }) => theme.backgroundSecondary};
+  margin: 0;
+  border: none;
 `;
 
 export const SettingsItemContentContainer = styled.div`
   width: 100%;
   height: auto;
   display: grid;
-  grid-template-columns: 1fr;
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
   grid-template-rows: repeat(auto-fill, max-content);
-  grid-row-gap: 30px;
+  grid-row-gap: 20px;
 `;

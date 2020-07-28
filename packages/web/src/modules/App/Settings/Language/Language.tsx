@@ -2,9 +2,9 @@ import * as React from "react";
 
 import {
   SettingsItemContainer,
-  SettingsItemHeader,
+  SettingsItemHeaderContainer,
   SettingsItemHeaderTitle,
-  SettingsItemHeaderDescription,
+  SettingsItemHeaderBreakLine,
   SettingsItemContentContainer,
 } from "../Settings.styles";
 
@@ -28,12 +28,10 @@ const options = [
 const Language = () => {
   return (
     <SettingsItemContainer>
-      <SettingsItemHeader>
+      <SettingsItemHeaderContainer>
         <SettingsItemHeaderTitle>Language</SettingsItemHeaderTitle>
-        <SettingsItemHeaderDescription>
-          You can choose the language of your preference here.
-        </SettingsItemHeaderDescription>
-      </SettingsItemHeader>
+        <SettingsItemHeaderBreakLine />
+      </SettingsItemHeaderContainer>
 
       <SettingsItemContentContainer>
         <Select options={options} />

@@ -10,7 +10,7 @@ export const HeaderContainer = styled.header<StyleProps>`
     height: 100%;
     display: grid;
     grid-area: header;
-    grid-template-columns: 400px 1fr;
+    grid-template-columns: 500px 1fr;
     grid-template-rows: 1fr;
     grid-template-areas: "search settings";
     grid-column-gap: 30px;

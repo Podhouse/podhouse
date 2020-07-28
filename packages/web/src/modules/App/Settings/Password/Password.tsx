@@ -5,9 +5,9 @@ import * as Yup from "yup";
 
 import {
   SettingsItemContainer,
-  SettingsItemHeader,
+  SettingsItemHeaderContainer,
   SettingsItemHeaderTitle,
-  SettingsItemHeaderDescription,
+  SettingsItemHeaderBreakLine,
   SettingsItemContentContainer,
 } from "../Settings.styles";
 
@@ -35,20 +35,18 @@ const Password = () => {
 
   return (
     <SettingsItemContainer>
-      <SettingsItemHeader>
+      <SettingsItemHeaderContainer>
         <SettingsItemHeaderTitle>Password</SettingsItemHeaderTitle>
-        <SettingsItemHeaderDescription>
-          You can change your password here.
-        </SettingsItemHeaderDescription>
-      </SettingsItemHeader>
+        <SettingsItemHeaderBreakLine />
+      </SettingsItemHeaderContainer>
 
       <SettingsItemContentContainer>
         <PasswordFormContainer onSubmit={handleSubmit(onSubmit)}>
           <Input
             type="password"
             name="currentPassword"
-            label="Password"
-            placeholder="Password"
+            label="Current password"
+            placeholder="Current password"
             height={40}
             ref={register}
             error={errors.currentPassword?.message}
@@ -57,8 +55,8 @@ const Password = () => {
           <Input
             type="password"
             name="newPassword"
-            label="Password"
-            placeholder="Password"
+            label="New password"
+            placeholder="New password"
             height={40}
             ref={register}
             error={errors.newPassword?.message}

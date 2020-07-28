@@ -1,6 +1,6 @@
 import { useMachine } from "@xstate/react";
 
-import Settings from "../machines/Settings/Settings";
+import Settings from "src/machines/Settings/Settings";
 
 const useSettings = () => {
   const [current, send] = useMachine(Settings);

@@ -18,27 +18,7 @@ export const NotificationsItemContainer = styled.div`
   }
 `;
 
-export const NotificationsTextContainer = styled.div`
-  grid-row: 1 / 2;
-  grid-column: 1 / 2;
-  width: 100%;
-  height: 100%;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: max-content max-content;
-  grid-row-gap: 10px;
-`;
-
 export const NotificationsItemTitle = styled.h3<StyleProps>`
-  font-family: Inter;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 20px;
-  color: ${({ theme }) => theme.tertiary};
-`;
-
-export const NotificationsItemText = styled.p<StyleProps>`
   font-family: Inter;
   font-style: normal;
   font-weight: normal;

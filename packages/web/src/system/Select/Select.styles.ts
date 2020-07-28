@@ -10,9 +10,9 @@ export const StyledSelect = styled.select<StyleProps>`
   font-weight: 400;
   font-size: 14px;
   line-height: 19px;
-  color: ${({ theme }) => theme.tertiary};
-  background: ${({ theme }) => theme.backgroundPrimary};
-  border: ${({ theme }) => `1px solid ${theme.tertiary}`};
+  color: ${({ theme }) => theme.primary};
+  background: ${({ theme }) => theme.backgroundSecondary};
+  border: ${({ theme }) => `1px solid ${theme.backgroundSecondary}`};
   box-sizing: border-box;
   border-radius: 5px;
   text-indent: 20px;
@@ -23,18 +23,13 @@ export const StyledSelect = styled.select<StyleProps>`
   -moz-appearance: none;
   appearance: none;
 
-  option {
+  :-moz-placeholder {
     font-family: Inter;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
-    line-height: 19px;
+    line-height: 17px;
     color: ${({ theme }) => theme.tertiary};
-    background: ${({ theme }) => theme.backgroundPrimary};
-    display: flex;
-    white-space: pre;
-    min-height: 20px;
-    padding: 0px 2px 1px;
     text-indent: 20px;
   }
 `;

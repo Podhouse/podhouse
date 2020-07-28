@@ -1,6 +1,6 @@
 import { useMachine } from "@xstate/react";
 
-import Auth from "../machines/Auth/Auth";
+import Auth from "src/machines/Auth/Auth";
 
 const useAuth = () => {
   const [current, send] = useMachine(Auth);

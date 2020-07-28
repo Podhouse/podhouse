@@ -1,22 +1,24 @@
 import * as React from "react";
 
-import { ToggleWrapper, ToggleLabel, ToggleContainer } from "./Toggle.styles";
+import { ToggleWrapper } from "./Toggle.styles";
 
 interface ToggleProps {
+  id: string;
   checked: boolean;
   disabled?: boolean;
   onChange: () => void;
 }
 
-const Toggle = ({ checked, onChange }: ToggleProps) => (
+const Toggle = ({ id, checked, onChange, disabled }: ToggleProps) => (
   <ToggleWrapper>
-    <ToggleContainer
-      id="checkbox"
+    <input
+      id={id}
       type="checkbox"
+      className="switch"
       onChange={onChange}
       checked={checked}
+      disabled={disabled}
     />
-    <ToggleLabel htmlFor="checkbox" />
   </ToggleWrapper>
 );
 

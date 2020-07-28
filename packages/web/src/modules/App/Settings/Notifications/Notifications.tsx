@@ -1,61 +1,63 @@
-import * as React from "react";
-
-import Toggle from "../../../../system/Toggle/Toggle";
+import React from "react";
 
 import {
   SettingsItemContainer,
-  SettingsItemHeader,
+  SettingsItemHeaderContainer,
   SettingsItemHeaderTitle,
-  SettingsItemHeaderDescription,
+  SettingsItemHeaderBreakLine,
   SettingsItemContentContainer,
 } from "../Settings.styles";
 
 import {
   NotificationsItemContainer,
-  NotificationsTextContainer,
   NotificationsItemTitle,
-  NotificationsItemText,
   NotificationsToggleContainer,
 } from "./Notifications.styles";
 
+import Toggle from "src/system/Toggle/Toggle";
+
+import useToggle from "src/hooks/useToggle";
+
 const Notifications = () => {
+  const {
+    toggle: toggleWeekly,
+    handleToggle: handleToggleWeekly,
+  } = useToggle();
+  const { toggle: toggleNews, handleToggle: handleToggleNews } = useToggle();
+
   return (
     <SettingsItemContainer>
-      <SettingsItemHeader>
+      <SettingsItemHeaderContainer>
         <SettingsItemHeaderTitle>Notifications</SettingsItemHeaderTitle>
-        <SettingsItemHeaderDescription>
-          You can set to receive updates about us.
-        </SettingsItemHeaderDescription>
-      </SettingsItemHeader>
+        <SettingsItemHeaderBreakLine />
+      </SettingsItemHeaderContainer>
 
       <SettingsItemContentContainer>
         <NotificationsItemContainer>
-          <NotificationsTextContainer>
-            <NotificationsItemTitle>
-              Weekly recomendations
-            </NotificationsItemTitle>
-            <NotificationsItemText>
-              Receive weekly recommendations about what's trending and discover
-              new podcasts.
-            </NotificationsItemText>
-          </NotificationsTextContainer>
+          <NotificationsItemTitle>
+            Weekly recomendations about trending podcasts
+          </NotificationsItemTitle>
 
           <NotificationsToggleContainer>
-            <Toggle checked onChange={() => console.log("clicked")} />
+            <Toggle
+              id="weekly"
+              checked={toggleWeekly}
+              onChange={handleToggleWeekly}
+            />
           </NotificationsToggleContainer>
         </NotificationsItemContainer>
 
         <NotificationsItemContainer>
-          <NotificationsTextContainer>
-            <NotificationsItemTitle>Product news</NotificationsItemTitle>
-            <NotificationsItemText>
-              Receive notifications about upcoming updates and new product
-              features on Podhouse.
-            </NotificationsItemText>
-          </NotificationsTextContainer>
+          <NotificationsItemTitle>
+            Product news, upcoming updates and features
+          </NotificationsItemTitle>
 
           <NotificationsToggleContainer>
-            <Toggle checked onChange={() => console.log("clicked")} />
+            <Toggle
+              id="news"
+              checked={toggleNews}
+              onChange={handleToggleNews}
+            />
           </NotificationsToggleContainer>
         </NotificationsItemContainer>
       </SettingsItemContentContainer>

@@ -18,9 +18,14 @@ import ThemeToggle from "src/components/ThemeToggle/ThemeToggle";
 interface SettingsModalProps {
   logoutAuth: () => any;
   handleSettings: () => any;
+  handleShortcuts: () => any;
 }
 
-const SettingsModal = ({ logoutAuth, handleSettings }: SettingsModalProps) => {
+const SettingsModal = ({
+  logoutAuth,
+  handleSettings,
+  handleShortcuts,
+}: SettingsModalProps) => {
   const themeState = useTheme();
 
   const ref = useRef<any>();
@@ -37,6 +42,12 @@ const SettingsModal = ({ logoutAuth, handleSettings }: SettingsModalProps) => {
         >
           <SettingsModalLink>Feedback</SettingsModalLink>
         </a>
+      </SettingsModalLinkContainer>
+
+      <SettingsModalLinkContainer>
+        <SettingsModalLink onClick={handleShortcuts}>
+          Shortcuts
+        </SettingsModalLink>
       </SettingsModalLinkContainer>
 
       <SettingsModalLinkContainer>

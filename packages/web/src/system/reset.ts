@@ -22,7 +22,6 @@ const reset = css`
     min-height: fill-available;
     margin: 0;
     padding: 0;
-    padding: 0;
     border: 0;
     vertical-align: baseline;
     box-sizing: border-box;
@@ -30,6 +29,10 @@ const reset = css`
     -webkit-scroll-padding-top: 0;
     -moz-scroll-padding-top: 0;
     -ms-scroll-padding-top: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
 
     focus:not(:focus-visible) {
       outline: none;

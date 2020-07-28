@@ -33,7 +33,6 @@ export const InputStyled = styled.input<FieldProps>`
   letter-spacing: normal;
   word-spacing: normal;
 
-  ::placeholder,
   :-moz-placeholder {
     font-family: Inter;
     font-style: normal;
