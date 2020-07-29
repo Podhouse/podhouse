@@ -15,6 +15,7 @@ export const PodcastContainer = styled.div`
   grid-column: 1 / 2;
   grid-row: 2 / 3;
   z-index: 10;
+  margin-left: 30px;
 
   @media screen and (min-width: 800px) {
     width: 100%;
@@ -25,6 +26,7 @@ export const PodcastContainer = styled.div`
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
     align-items: center;
+    margin: 0;
   }
 `;
 

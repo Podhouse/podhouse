@@ -25,7 +25,7 @@ export const ControlsButtonsContainer = styled.div`
   width: auto;
   height: auto;
   display: grid;
-  grid-template-columns: 40px 40px 40px;
+  grid-template-columns: max-content max-content max-content;
   grid-template-rows: 1fr;
   grid-column-gap: 20px;
   background: none;

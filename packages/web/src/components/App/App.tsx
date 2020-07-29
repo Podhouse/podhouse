@@ -9,6 +9,7 @@ import Dashboard from "./Dashboard/Dashboard";
 import AuthModal from "src/components/AuthModal/AuthModal";
 import SettingsModal from "src/components/SettingsModal/SettingsModal";
 import ShortcutsModal from "src/components/ShortcutsModal/ShortcutsModal";
+import QueueModal from "src/components/QueueModal/QueueModal";
 
 import { useAuthContext } from "src/context/Auth/Auth";
 import { useSettingsContext } from "src/context/Settings/Settings";
@@ -30,15 +31,15 @@ const App = ({ children }: AppProps) => {
     if (auth.matches("open")) {
       return <AuthModal auth={auth} handleAuth={handleAuth} />;
     }
-
     return null;
   };
 
   const renderShortcutsModal = () => {
-    if (shortcuts.matches("open")) {
-      return <ShortcutsModal handleShortcuts={handleShortcuts} />;
+    if (auth.matches("loggedIn")) {
+      if (shortcuts.matches("open")) {
+        return <ShortcutsModal handleShortcuts={handleShortcuts} />;
+      }
     }
-
     return null;
   };
 
@@ -54,9 +55,22 @@ const App = ({ children }: AppProps) => {
         );
       }
     }
-
     return null;
   };
+
+  const renderQueueModal = () => {
+    if (auth.matches("loggedIn")) {
+      if (settings.matches("open")) {
+        return (
+          <QueueModal
+            handleQueue={() => { }}
+          />
+        );
+      }
+    }
+    return null;
+  };
+
 
   return (
     <div>
@@ -69,6 +83,7 @@ const App = ({ children }: AppProps) => {
         {renderAuthModal()}
         {renderSettingsModal()}
         {renderShortcutsModal()}
+        {renderQueueModal()}
 
         <AppContainer>
           <Dashboard>{children}</Dashboard>
