@@ -74,7 +74,7 @@ export const ShortcutItemText = styled.p<StyleProps>`
 export const ShortcutItemKey = styled.div<StyleProps>`
   width: fit-content;
   height: fit-content;
-  padding: 2px 10px;
+  padding: 3px 10px;
   color: ${({ theme }) => theme.tertiary};
   background: ${({ theme }) => theme.backgroundSecondary};
   border: ${({ theme }) => `1px solid ${theme.backgroundSecondary}`};
