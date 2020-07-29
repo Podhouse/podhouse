@@ -8,6 +8,7 @@ import Volume from "./Volume/Volume";
 import useTheme from "src/system/useTheme";
 
 import { useQueueContext } from "src/context/Queue/Queue";
+import { useRateContext } from "src/context/Rate/Rate";
 
 const iconStyle = { cursor: "pointer" };
 
@@ -27,6 +28,7 @@ const RightControls = ({
   onMute,
 }: RightControlsProps) => {
   const [, handleQueue] = useQueueContext();
+  const [, handleRate] = useRateContext();
 
   const themeState = useTheme();
 
@@ -47,7 +49,7 @@ const RightControls = ({
         strokeWidth={1.5}
         color={iconColor}
         style={iconStyle}
-        onClick={() => {}}
+        onClick={handleRate}
       />
 
       <Volume

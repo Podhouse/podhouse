@@ -7,6 +7,7 @@ import App from "src/components/App/App";
 import { AuthProvider } from "src/context/Auth/Auth";
 import { SettingsProvider } from "src/context/Settings/Settings";
 import { QueueProvider } from "src/context/Queue/Queue";
+import { RateProvider } from "src/context/Rate/Rate";
 
 import ThemeProvider from "src/system/ThemeProvider";
 import reset from "src/system/reset";
@@ -22,7 +23,9 @@ const Provider = ({ children }: ProviderProps) => (
         <AuthProvider>
           <SettingsProvider>
             <QueueProvider>
-              <App>{children}</App>
+              <RateProvider>
+                <App>{children}</App>
+              </RateProvider>
             </QueueProvider>
           </SettingsProvider>
         </AuthProvider>

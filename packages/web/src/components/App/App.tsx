@@ -10,10 +10,12 @@ import AuthModal from "src/components/AuthModal/AuthModal";
 import SettingsModal from "src/components/SettingsModal/SettingsModal";
 import ShortcutsModal from "src/components/ShortcutsModal/ShortcutsModal";
 import QueueModal from "src/components/QueueModal/QueueModal";
+import RateModal from "src/components/RateModal/RateModal";
 
 import { useAuthContext } from "src/context/Auth/Auth";
 import { useSettingsContext } from "src/context/Settings/Settings";
 import { useQueueContext } from "src/context/Queue/Queue";
+import { useRateContext } from "src/context/Rate/Rate";
 
 import useShortcuts from "src/hooks/useShortcuts";
 
@@ -27,6 +29,7 @@ const App = ({ children }: AppProps) => {
   const [auth, handleAuth, logoutAuth] = useAuthContext();
   const [settings, handleSettings] = useSettingsContext();
   const [queue, handleQueue] = useQueueContext();
+  const [rate, handleRate] = useRateContext();
   const { shortcuts, handleShortcuts } = useShortcuts();
 
   const renderAuthModal = () => {
@@ -68,6 +71,14 @@ const App = ({ children }: AppProps) => {
     return null;
   };
 
+  const renderRateModal = () => {
+    if (rate.matches("open")) {
+      return <RateModal handleRate={handleRate} />;
+    }
+
+    return null;
+  };
+
   return (
     <div>
       <Head>
@@ -80,6 +91,7 @@ const App = ({ children }: AppProps) => {
         {renderSettingsModal()}
         {renderShortcutsModal()}
         {renderQueueModal()}
+        {renderRateModal()}
 
         <AppContainer>
           <Dashboard>{children}</Dashboard>
