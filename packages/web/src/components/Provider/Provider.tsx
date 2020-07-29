@@ -6,6 +6,7 @@ import App from "src/components/App/App";
 
 import { AuthProvider } from "src/context/Auth/Auth";
 import { SettingsProvider } from "src/context/Settings/Settings";
+import { QueueProvider } from "src/context/Queue/Queue";
 
 import ThemeProvider from "src/system/ThemeProvider";
 import reset from "src/system/reset";
@@ -20,7 +21,9 @@ const Provider = ({ children }: ProviderProps) => (
       <RehawkProvider>
         <AuthProvider>
           <SettingsProvider>
-            <App>{children}</App>
+            <QueueProvider>
+              <App>{children}</App>
+            </QueueProvider>
           </SettingsProvider>
         </AuthProvider>
       </RehawkProvider>

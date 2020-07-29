@@ -1,11 +1,13 @@
 import * as React from "react";
 import { Clock, List } from "react-feather";
 
-import Volume from "./Volume/Volume";
-
 import { RightControlsContainer } from "./RightControls.styles";
 
+import Volume from "./Volume/Volume";
+
 import useTheme from "src/system/useTheme";
+
+import { useQueueContext } from "src/context/Queue/Queue";
 
 const iconStyle = { cursor: "pointer" };
 
@@ -24,6 +26,8 @@ const RightControls = ({
   onVolume,
   onMute,
 }: RightControlsProps) => {
+  const [, handleQueue] = useQueueContext();
+
   const themeState = useTheme();
 
   const iconColor = themeState.dark ? "#FFFFFF" : "#101010";
@@ -35,7 +39,7 @@ const RightControls = ({
         strokeWidth={1.5}
         color={iconColor}
         style={iconStyle}
-        onClick={() => {}}
+        onClick={handleQueue}
       />
 
       <Clock

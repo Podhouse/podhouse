@@ -13,6 +13,7 @@ import QueueModal from "src/components/QueueModal/QueueModal";
 
 import { useAuthContext } from "src/context/Auth/Auth";
 import { useSettingsContext } from "src/context/Settings/Settings";
+import { useQueueContext } from "src/context/Queue/Queue";
 
 import useShortcuts from "src/hooks/useShortcuts";
 
@@ -25,6 +26,7 @@ interface AppProps {
 const App = ({ children }: AppProps) => {
   const [auth, handleAuth, logoutAuth] = useAuthContext();
   const [settings, handleSettings] = useSettingsContext();
+  const [queue, handleQueue] = useQueueContext();
   const { shortcuts, handleShortcuts } = useShortcuts();
 
   const renderAuthModal = () => {
@@ -59,18 +61,12 @@ const App = ({ children }: AppProps) => {
   };
 
   const renderQueueModal = () => {
-    if (auth.matches("loggedIn")) {
-      if (settings.matches("open")) {
-        return (
-          <QueueModal
-            handleQueue={() => { }}
-          />
-        );
-      }
+    if (queue.matches("open")) {
+      return <QueueModal handleQueue={handleQueue} />;
     }
+
     return null;
   };
-
 
   return (
     <div>
