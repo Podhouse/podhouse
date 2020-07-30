@@ -1,11 +1,11 @@
-import * as React from "react";
-
-import Label from "../Label/Label";
-import Error from "../Error/Error";
+import React from "react";
 
 import { InputContainer, InputStyled } from "./Input.styles";
 
 import { InputProps } from "./Input.types";
+
+import Label from "src/system/Label/Label";
+import Error from "src/system/Error/Error";
 
 const Input = React.forwardRef(
   (

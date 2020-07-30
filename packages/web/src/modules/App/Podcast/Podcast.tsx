@@ -1,6 +1,9 @@
 import * as React from "react";
 import Scrollbars from "react-custom-scrollbars";
 import { ExternalLink, Rss } from "react-feather";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers";
+import * as Yup from "yup";
 
 import {
   PodcastContainer,
@@ -15,11 +18,13 @@ import {
   PodcastLinksContainer,
   PodcastLinkContainer,
   PodcastLink,
+  PodcastSearchInputContainer,
 } from "./Podcast.styles";
 
 import EpisodeItem from "src/components/Podcast/EpisodeItem/EpisodeItem";
 
 import Button from "src/system/Button/Button";
+import InputWithLeftIcon from "src/system/InputWithLeftIcon/InputWithLeftIcon";
 import useTheme from "src/system/useTheme";
 
 const avatar =
@@ -34,10 +39,24 @@ const episode = {
   duration: "39min",
 };
 
+interface SearchPodcastProps {
+  podcast: string;
+}
+
+const validationSchema = Yup.object().shape({
+  email: Yup.string(),
+});
+
 const Podcast = () => {
   const themeState = useTheme();
 
   const iconColor = themeState.dark ? "#FFF" : "#B7B7B7";
+
+  const { register, handleSubmit, errors } = useForm<SearchPodcastProps>({
+    resolver: yupResolver(validationSchema),
+  });
+
+  const onSubmit = (data) => console.log(data);
 
   return (
     <Scrollbars universal autoHide autoHideTimeout={100} autoHideDuration={100}>
@@ -86,6 +105,15 @@ const Podcast = () => {
                 RSS
               </PodcastLink>
             </PodcastLinkContainer>
+
+            <PodcastSearchInputContainer onSubmit={handleSubmit(onSubmit)}>
+              <InputWithLeftIcon
+                type="text"
+                name="podcast"
+                placeholder="Search episode"
+                ref={register}
+              />
+            </PodcastSearchInputContainer>
           </PodcastLinksContainer>
         </PodcastHeader>
 

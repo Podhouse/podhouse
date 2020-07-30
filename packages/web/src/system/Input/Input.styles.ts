@@ -1,11 +1,6 @@
 import styled from "@emotion/styled";
 
-import { StyleProps } from "src/system/styles.types";
-
-import { InputContainerProps, InputFieldProps } from "./Input.types";
-
-type ContainerProps = InputContainerProps & StyleProps;
-type FieldProps = InputFieldProps & StyleProps;
+import { ContainerProps, FieldProps } from "./Input.types";
 
 export const InputContainer = styled.div<ContainerProps>`
   width: ${({ width }) => (width ? `${width}px` : "100%")};

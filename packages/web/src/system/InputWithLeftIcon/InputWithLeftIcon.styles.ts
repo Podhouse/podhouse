@@ -12,7 +12,7 @@ export const InputWithLeftIconContainer = styled.div`
 
 export const InputWithLeftIconStyled = styled.input<StyleProps>`
   width: 100%;
-  max-width: 345px;
+  max-width: 500px;
   height: 40px;
   box-sizing: border-box;
   padding-left: 45px;
