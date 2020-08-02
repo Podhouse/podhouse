@@ -11,8 +11,7 @@
     "test:watch": "jest --watchAll",
     "test:coverage": "jest --coverage",
     "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix",
-    "format": "prettier --write src",
-    "upgrade": "yarn upgrade-interactive --latest"
+    "format": "prettier --write src"
   },
   "dependencies": {
     "@emotion/core": "^10.0.28",
