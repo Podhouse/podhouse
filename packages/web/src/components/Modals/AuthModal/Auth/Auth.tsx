@@ -2,8 +2,8 @@ import * as React from "react";
 
 import { AuthContainer, AuthInsideContainer } from "./Auth.styles";
 
-import PodhouseDark from "../../../../public/logo/logo-medium-dark.svg";
-import PodhouseWhite from "../../../../public/logo/logo-medium-white.svg";
+import PodhouseDark from "../../../../../public/logo/logo-medium-dark.svg";
+import PodhouseWhite from "../../../../../public/logo/logo-medium-white.svg";
 
 import useTheme from "src/system/useTheme";
 

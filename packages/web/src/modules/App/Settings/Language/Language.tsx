@@ -1,4 +1,5 @@
-import * as React from "react";
+import React from "react";
+import { i18n } from "i18n";
 
 import {
   SettingsItemContainer,
@@ -12,20 +13,30 @@ import Select from "src/system/Select/Select";
 
 const options = [
   {
-    name: "English",
-    value: "English",
+    name: "English (US)",
+    value: "en",
   },
   {
-    name: "Portuguese",
-    value: "Portuguese",
+    name: "Portuguese (Brasil)",
+    value: "pt-br",
   },
-  {
-    name: "Español",
-    value: "Español",
-  },
+  // {
+  //   name: "Español",
+  //   value: "Español",
+  // },
+  // {
+  //   name: "Deustch",
+  //   value: "Deustch",
+  // },
+  // {
+  //   name: "Français",
+  //   value: "Français",
+  // },
 ];
 
 const Language = () => {
+  const handleChange = (event) => i18n.changeLanguage(event.target.value);
+
   return (
     <SettingsItemContainer>
       <SettingsItemHeaderContainer>
@@ -34,7 +45,7 @@ const Language = () => {
       </SettingsItemHeaderContainer>
 
       <SettingsItemContentContainer>
-        <Select options={options} />
+        <Select options={options} onChange={handleChange} />
       </SettingsItemContentContainer>
     </SettingsItemContainer>
   );

@@ -1,4 +1,5 @@
 import * as React from "react";
+import { withTranslation } from "i18n";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { Home, Headphones, Search, User, Heart } from "react-feather";
@@ -11,7 +12,7 @@ import {
 
 import useTheme from "src/system/useTheme";
 
-const Navigation = () => {
+const Navigation = ({ t }: any) => {
   const themeState = useTheme();
   const router = useRouter();
 
@@ -36,7 +37,7 @@ const Navigation = () => {
 
         <Link href="/app" passHref>
           <NavigationItemLink active={onActiveRouteLink("/app")}>
-            Browse
+            {t("browse")}
           </NavigationItemLink>
         </Link>
       </NavigationItemContainer>
@@ -52,7 +53,7 @@ const Navigation = () => {
 
         <Link href="/app/podcasts" passHref>
           <NavigationItemLink active={onActiveRouteLink("/app/podcasts")}>
-            Podcasts
+            {t("podcasts")}
           </NavigationItemLink>
         </Link>
       </NavigationItemContainer>
@@ -68,7 +69,7 @@ const Navigation = () => {
 
         <Link href="/app/favorites" passHref>
           <NavigationItemLink active={onActiveRouteLink("/app/favorites")}>
-            Favorites
+            {t("favorites")}
           </NavigationItemLink>
         </Link>
       </NavigationItemContainer>
@@ -84,7 +85,7 @@ const Navigation = () => {
 
         <Link href="/app/search" passHref>
           <NavigationItemLink active={onActiveRouteLink("/app/search")}>
-            Search
+            {t("search")}
           </NavigationItemLink>
         </Link>
       </NavigationItemContainer>
@@ -100,7 +101,7 @@ const Navigation = () => {
 
         <Link href="/app/settings" passHref>
           <NavigationItemLink active={onActiveRouteLink("/app/settings")}>
-            User
+            {t("user")}
           </NavigationItemLink>
         </Link>
       </NavigationItemContainer>
@@ -108,4 +109,4 @@ const Navigation = () => {
   );
 };
 
-export default Navigation;
+export default withTranslation("common")(Navigation);

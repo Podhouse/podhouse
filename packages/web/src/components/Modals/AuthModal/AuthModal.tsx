@@ -1,5 +1,10 @@
 import React, { useRef } from "react";
 
+import {
+  AuthModalContainer,
+  AutoModalInsideContainer,
+} from "./AuthModal.styles";
+
 import Auth from "./Auth/Auth";
 
 import GetStarted from "./Auth/GetStarted/GetStarted";
@@ -9,12 +14,7 @@ import ForgotPassword from "./Auth/ForgotPassword/ForgotPassword";
 import ResetPassword from "./Auth/ResetPassword/ResetPassword";
 import ForgotPasswordSuccess from "./Auth/ForgotPasswordSuccess/ForgotPasswordSuccess";
 
-import {
-  AuthModalContainer,
-  AutoModalInsideContainer,
-} from "./AuthModal.styles";
-
-import useOnClickOutside from "../../hooks/useOnClickOutside";
+import useOnClickOutside from "src/hooks/useOnClickOutside";
 
 interface AuthModalProps {
   auth: any;

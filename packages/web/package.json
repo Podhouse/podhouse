@@ -27,6 +27,7 @@
     "next": "^9.4.4",
     "next-compose-plugins": "^2.2.0",
     "next-ga": "^2.3.4",
+    "next-i18next": "^6.0.2",
     "next-images": "^1.4.0",
     "next-pwa": "^3.1.0",
     "react": "^16.13.1",

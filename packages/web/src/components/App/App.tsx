@@ -6,11 +6,11 @@ import Menu from "./Menu/Menu";
 import Player from "./Player/Player";
 import Dashboard from "./Dashboard/Dashboard";
 
-import AuthModal from "src/components/AuthModal/AuthModal";
-import SettingsModal from "src/components/SettingsModal/SettingsModal";
-import ShortcutsModal from "src/components/ShortcutsModal/ShortcutsModal";
-import QueueModal from "src/components/QueueModal/QueueModal";
-import RateModal from "src/components/RateModal/RateModal";
+import AuthModal from "src/components/Modals/AuthModal/AuthModal";
+import SettingsModal from "src/components/Modals/SettingsModal/SettingsModal";
+import ShortcutsModal from "src/components/Modals/ShortcutsModal/ShortcutsModal";
+import QueueModal from "src/components/Modals/QueueModal/QueueModal";
+import RateModal from "src/components/Modals/RateModal/RateModal";
 
 import { useAuthContext } from "src/context/Auth/Auth";
 import { useSettingsContext } from "src/context/Settings/Settings";
