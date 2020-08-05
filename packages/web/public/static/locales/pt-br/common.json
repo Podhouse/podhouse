@@ -1,8 +1,4 @@
 {
-  "browse": "Descobrir",
-  "podcasts": "Podcasts",
-  "subscriptions": "Inscrições",
-  "favorites": "testing",
-  "search": "Pesquisar",
-  "user": "Usuário"
+  "featured": "Destaque",
+  "favorites": "Favoritos"
 }

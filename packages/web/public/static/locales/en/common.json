@@ -1,8 +1,4 @@
 {
-  "browse": "Browse",
-  "podcasts": "Podcasts",
-  "subscriptions": "Subscriptions",
-  "favorites": "Favorites",
-  "search": "Search",
-  "user": "User"
+  "featured": "Featured",
+  "favorites": "Favorites"
 }
