@@ -1,9 +1,10 @@
-import * as React from "react";
+import React from "react";
+import { withTranslation } from "i18n";
 import Scrollbars from "react-custom-scrollbars";
 
-import PodcastsWithDetails from "src/components/Lists/PodcastsWithDetails/PodcastsWithDetails";
-
 import { SearchContainer } from "./Search.styles";
+
+import PodcastsWithDetails from "src/components/Lists/PodcastsWithDetails/PodcastsWithDetails";
 
 const items = [
   {
@@ -36,12 +37,14 @@ const items = [
   },
 ];
 
-const Search = () => (
+const Search = ({ t }: any) => (
   <Scrollbars universal autoHide autoHideTimeout={100} autoHideDuration={100}>
     <SearchContainer>
-      <PodcastsWithDetails title="Search" items={items} />
+      <PodcastsWithDetails title={t("search")} items={items} />
     </SearchContainer>
   </Scrollbars>
 );
 
-export default Search;
+Search.getInitialProps = async () => ({ namespacesRequired: ["common"] });
+
+export default withTranslation("common")(Search);

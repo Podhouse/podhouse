@@ -1,9 +1,10 @@
-import * as React from "react";
+import React from "react";
+import { withTranslation } from "i18n";
 import Scrollbars from "react-custom-scrollbars";
 
-import PodcastsWithOnlyAvatar from "src/components/Lists/PodcastsWithOnlyAvatar/PodcastsWithOnlyAvatar";
-
 import { FavoritesContainer } from "./Favorites.styles";
+
+import PodcastsWithOnlyAvatar from "src/components/Lists/PodcastsWithOnlyAvatar/PodcastsWithOnlyAvatar";
 
 const items = [
   {
@@ -155,12 +156,14 @@ const items = [
   },
 ];
 
-const Favorites = () => (
+const Favorites = ({ t }: any) => (
   <Scrollbars universal autoHide autoHideTimeout={100} autoHideDuration={100}>
     <FavoritesContainer>
-      <PodcastsWithOnlyAvatar title="Favorites" items={items} />
+      <PodcastsWithOnlyAvatar title={t("favorites")} items={items} />
     </FavoritesContainer>
   </Scrollbars>
 );
 
-export default Favorites;
+Favorites.getInitialProps = async () => ({ namespacesRequired: ["common"] });
+
+export default withTranslation("common")(Favorites);

@@ -24,7 +24,9 @@ const ForgotPasswordSuccess = ({ t }: any) => {
         </CheckContainer>
 
         <AuthText>
-          {t("thanks,-please-check-your-email,-we've-sent-you-an-email-with instructions-to-reset-your-password")}
+          {t(
+            "thanks,-please-check-your-email,-we've-sent-you-an-email-with instructions-to-reset-your-password",
+          )}
         </AuthText>
       </HeaderIconTextContainer>
 
@@ -35,6 +37,8 @@ const ForgotPasswordSuccess = ({ t }: any) => {
   );
 };
 
-ForgotPasswordSuccess.getInitialProps = async () => ({ namespacesRequired: ['getstarted'] })
+ForgotPasswordSuccess.getInitialProps = async () => ({
+  namespacesRequired: ["getstarted"],
+});
 
-export default withTranslation('getstarted')(ForgotPasswordSuccess);
+export default withTranslation("getstarted")(ForgotPasswordSuccess);

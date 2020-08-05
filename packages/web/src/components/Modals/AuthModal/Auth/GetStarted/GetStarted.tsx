@@ -21,7 +21,9 @@ const GetStarted = ({ t }: any) => {
   return (
     <>
       <AuthTextContainer>
-        <AuthText>{t("the-best-way-to-listen-to-your-favorite-podcasts")}</AuthText>
+        <AuthText>
+          {t("the-best-way-to-listen-to-your-favorite-podcasts")}
+        </AuthText>
       </AuthTextContainer>
 
       <AuthGetStartedButtonsContainer>
@@ -51,6 +53,8 @@ const GetStarted = ({ t }: any) => {
   );
 };
 
-GetStarted.getInitialProps = async () => ({ namespacesRequired: ['getstarted'] })
+GetStarted.getInitialProps = async () => ({
+  namespacesRequired: ["getstarted"],
+});
 
-export default withTranslation('getstarted')(GetStarted);
+export default withTranslation("getstarted")(GetStarted);

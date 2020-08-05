@@ -1,4 +1,5 @@
-import * as React from "react";
+import React from "react";
+import { withTranslation } from "i18n";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers";
 import * as Yup from "yup";
@@ -26,7 +27,7 @@ const validationSchema = Yup.object().shape({
   newPassword: Yup.string().required("New password is required"),
 });
 
-const Password = () => {
+const Password = ({ t }: any) => {
   const { register, handleSubmit, errors } = useForm<PasswordFormProps>({
     resolver: yupResolver(validationSchema),
   });
@@ -36,7 +37,7 @@ const Password = () => {
   return (
     <SettingsItemContainer>
       <SettingsItemHeaderContainer>
-        <SettingsItemHeaderTitle>Password</SettingsItemHeaderTitle>
+        <SettingsItemHeaderTitle>{t("password")}</SettingsItemHeaderTitle>
         <SettingsItemHeaderBreakLine />
       </SettingsItemHeaderContainer>
 
@@ -45,8 +46,8 @@ const Password = () => {
           <Input
             type="password"
             name="currentPassword"
-            label="Current password"
-            placeholder="Current password"
+            label={t("current-password")}
+            placeholder={t("current-password")}
             height={40}
             ref={register}
             error={errors.currentPassword?.message}
@@ -55,15 +56,15 @@ const Password = () => {
           <Input
             type="password"
             name="newPassword"
-            label="New password"
-            placeholder="New password"
+            label={t("new-password")}
+            placeholder={t("new-password")}
             height={40}
             ref={register}
             error={errors.newPassword?.message}
           />
 
           <Button type="submit" height={40}>
-            Save
+            {t("save")}
           </Button>
         </PasswordFormContainer>
       </SettingsItemContentContainer>
@@ -71,4 +72,6 @@ const Password = () => {
   );
 };
 
-export default Password;
+Password.getInitialProps = async () => ({ namespacesRequired: ["settings"] });
+
+export default withTranslation("settings")(Password);

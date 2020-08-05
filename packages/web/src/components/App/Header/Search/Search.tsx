@@ -1,11 +1,12 @@
 import React, { useState } from "react";
+import { withTranslation } from "i18n";
 import { useRouter } from "next/router";
 
 import SearchInput from "./SearchInput/SearchInput";
 
 import { SearchContainer } from "./Search.styles";
 
-const Search = () => {
+const Search = ({ t }: any) => {
   const [search, setSearch] = useState<string>("");
 
   const onSearch = (e: any) => {
@@ -24,7 +25,7 @@ const Search = () => {
       <SearchInput
         type="text"
         name="search"
-        placeholder="Search"
+        placeholder={t("search")}
         onChange={onSearch}
         onClick={pushSearch}
         value={search}
@@ -33,4 +34,6 @@ const Search = () => {
   );
 };
 
-export default Search;
+Search.getInitialProps = async () => ({ namespacesRequired: ["header"] });
+
+export default withTranslation("header")(Search);

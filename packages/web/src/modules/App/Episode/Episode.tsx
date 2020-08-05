@@ -1,7 +1,6 @@
-import * as React from "react";
+import React from "react";
+import { withTranslation } from "i18n";
 import Scrollbars from "react-custom-scrollbars";
-
-import Button from "../../../system/Button/Button";
 
 import {
   EpisodeContainer,
@@ -14,10 +13,12 @@ import {
   EpisodeListenButtonContainer,
 } from "./Episode.styles";
 
+import Button from "src/system/Button/Button";
+
 const avatar =
   "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg";
 
-const Episode = () => (
+const Episode = ({ t }: any) => (
   <Scrollbars universal autoHide autoHideTimeout={100} autoHideDuration={100}>
     <EpisodeContainer>
       <EpisodeHeader>
@@ -42,7 +43,7 @@ const Episode = () => (
 
         <EpisodeListenButtonContainer>
           <Button type="button" width={200} height={40}>
-            Listen
+            {t("listen")}
           </Button>
         </EpisodeListenButtonContainer>
       </EpisodeHeader>
@@ -50,4 +51,6 @@ const Episode = () => (
   </Scrollbars>
 );
 
-export default Episode;
+Episode.getInitialProps = async () => ({ namespacesRequired: ["podcast"] });
+
+export default withTranslation("podcast")(Episode);

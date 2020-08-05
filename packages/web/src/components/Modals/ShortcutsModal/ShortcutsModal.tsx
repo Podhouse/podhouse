@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import { withTranslation } from "i18n";
 
 import {
   ShortcutsModalContainer,
@@ -13,11 +14,7 @@ import {
 
 import useOnClickOutside from "src/hooks/useOnClickOutside";
 
-interface ShortcutsModalProps {
-  handleShortcuts: () => any;
-}
-
-const ShortcutsModal = ({ handleShortcuts }: ShortcutsModalProps) => {
+const ShortcutsModal = ({ handleShortcuts, t }: any) => {
   const ref = useRef<any>();
 
   useOnClickOutside(ref, () => handleShortcuts());
@@ -25,26 +22,26 @@ const ShortcutsModal = ({ handleShortcuts }: ShortcutsModalProps) => {
   return (
     <ShortcutsModalContainer>
       <ShortcutsModalInsideContainer ref={ref}>
-        <ShortcutsModalTitle>Keyboard shortcuts</ShortcutsModalTitle>
+        <ShortcutsModalTitle>{t("keyboard-shortcuts")}</ShortcutsModalTitle>
 
         <ShortcutItemsContainer>
           <ShortcutItemContainer>
-            <ShortcutItemText>Play / Pause</ShortcutItemText>
+            <ShortcutItemText>{t("play-pause")}</ShortcutItemText>
             <ShortcutItemKey>space</ShortcutItemKey>
           </ShortcutItemContainer>
 
           <ShortcutItemContainer>
-            <ShortcutItemText>Forward 15 seconds</ShortcutItemText>
+            <ShortcutItemText>{t("forward-15-seconds")}</ShortcutItemText>
             <ShortcutItemKey>→</ShortcutItemKey>
           </ShortcutItemContainer>
 
           <ShortcutItemContainer>
-            <ShortcutItemText>Back 15 seconds</ShortcutItemText>
+            <ShortcutItemText>{t("back-15-seconds")}</ShortcutItemText>
             <ShortcutItemKey>←</ShortcutItemKey>
           </ShortcutItemContainer>
 
           <ShortcutItemContainer>
-            <ShortcutItemText>Play next in queue</ShortcutItemText>
+            <ShortcutItemText>{t("play-next-in-queue")}</ShortcutItemText>
             <ShortcutKeysContainer>
               <ShortcutItemKey>shift</ShortcutItemKey>
               <ShortcutItemText>+</ShortcutItemText>
@@ -53,7 +50,7 @@ const ShortcutsModal = ({ handleShortcuts }: ShortcutsModalProps) => {
           </ShortcutItemContainer>
 
           <ShortcutItemContainer>
-            <ShortcutItemText>Play previous in queue</ShortcutItemText>
+            <ShortcutItemText>{t("play-previous-in-queue")}</ShortcutItemText>
             <ShortcutKeysContainer>
               <ShortcutItemKey>shift</ShortcutItemKey>
               <ShortcutItemText>+</ShortcutItemText>
@@ -66,4 +63,8 @@ const ShortcutsModal = ({ handleShortcuts }: ShortcutsModalProps) => {
   );
 };
 
-export default ShortcutsModal;
+ShortcutsModal.getInitialProps = async () => ({
+  namespacesRequired: ["shortcuts"],
+});
+
+export default withTranslation("shortcuts")(ShortcutsModal);

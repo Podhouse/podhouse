@@ -105,6 +105,6 @@ const Navigation = ({ t }: any) => {
   );
 };
 
-Navigation.getInitialProps = async () => ({ namespacesRequired: ['menu'] })
+Navigation.getInitialProps = async () => ({ namespacesRequired: ["menu"] });
 
-export default withTranslation('menu')(Navigation);
+export default withTranslation("menu")(Navigation);

@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import { withTranslation } from "i18n";
 import Link from "next/link";
 
 import {
@@ -15,17 +16,12 @@ import useTheme from "src/system/useTheme";
 
 import ThemeToggle from "src/components/ThemeToggle/ThemeToggle";
 
-interface SettingsModalProps {
-  logoutAuth: () => any;
-  handleSettings: () => any;
-  handleShortcuts: () => any;
-}
-
 const SettingsModal = ({
   logoutAuth,
   handleSettings,
   handleShortcuts,
-}: SettingsModalProps) => {
+  t,
+}: any) => {
   const themeState = useTheme();
 
   const ref = useRef<any>();
@@ -40,24 +36,24 @@ const SettingsModal = ({
           target="_blank"
           rel="noopener noreferrer"
         >
-          <SettingsModalLink>Feedback</SettingsModalLink>
+          <SettingsModalLink>{t("feedback")}</SettingsModalLink>
         </a>
       </SettingsModalLinkContainer>
 
       <SettingsModalLinkContainer>
         <SettingsModalLink onClick={handleShortcuts}>
-          Shortcuts
+          {t("shortcuts")}
         </SettingsModalLink>
       </SettingsModalLinkContainer>
 
       <SettingsModalLinkContainer>
         <Link href="/app/settings" passHref>
-          <SettingsModalLink>Settings</SettingsModalLink>
+          <SettingsModalLink>{t("settings")}</SettingsModalLink>
         </Link>
       </SettingsModalLinkContainer>
 
       <SettingsThemeContainer onClick={() => themeState.toggle()}>
-        <SettingsModalLink>Theme</SettingsModalLink>
+        <SettingsModalLink>{t("theme")}</SettingsModalLink>
         <SettingsThemeIconContainer>
           <ThemeToggle
             dark={themeState.dark}
@@ -67,10 +63,16 @@ const SettingsModal = ({
       </SettingsThemeContainer>
 
       <SettingsModalLinkContainer>
-        <SettingsModalLink onClick={logoutAuth}>Log out</SettingsModalLink>
+        <SettingsModalLink onClick={logoutAuth}>
+          {t("logout")}
+        </SettingsModalLink>
       </SettingsModalLinkContainer>
     </SettingsModalContainer>
   );
 };
 
-export default SettingsModal;
+SettingsModal.getInitialProps = async () => ({
+  namespacesRequired: ["header"],
+});
+
+export default withTranslation("header")(SettingsModal);

@@ -39,7 +39,9 @@ const ForgotPassword = ({ t }: any) => {
     <>
       <AuthTextContainer>
         <AuthText>
-          {t("enter-your-email-address-and-we'll-send-you-an-email-with-a-password-reset-link")}
+          {t(
+            "enter-your-email-address-and-we'll-send-you-an-email-with-a-password-reset-link",
+          )}
         </AuthText>
       </AuthTextContainer>
 
@@ -74,6 +76,8 @@ const ForgotPassword = ({ t }: any) => {
   );
 };
 
-ForgotPassword.getInitialProps = async () => ({ namespacesRequired: ['getstarted'] })
+ForgotPassword.getInitialProps = async () => ({
+  namespacesRequired: ["getstarted"],
+});
 
-export default withTranslation('getstarted')(ForgotPassword);
+export default withTranslation("getstarted")(ForgotPassword);

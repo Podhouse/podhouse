@@ -1,10 +1,11 @@
 import React from "react";
+import { withTranslation } from "i18n";
 import Scrollbars from "react-custom-scrollbars";
+
+import { BrowseContainer } from "./Browse.styles";
 
 import PodcastsWithDetails from "src/components/Lists/PodcastsWithDetails/PodcastsWithDetails";
 import Featured from "src/components/Featured/Featured";
-
-import { BrowseContainer } from "./Browse.styles";
 
 const items = [
   {
@@ -72,14 +73,16 @@ const items = [
   },
 ];
 
-const Browse = () => (
+const Browse = ({ t }: any) => (
   <Scrollbars universal autoHide autoHideTimeout={100} autoHideDuration={100}>
     <BrowseContainer>
       <Featured />
-      <PodcastsWithDetails title="Trending" items={items} />
-      <PodcastsWithDetails title="Recommended" items={items} />
+      <PodcastsWithDetails title={t("trending")} items={items} />
+      <PodcastsWithDetails title={t("recommended")} items={items} />
     </BrowseContainer>
   </Scrollbars>
 );
 
-export default Browse;
+Browse.getInitialProps = async () => ({ namespacesRequired: ["common"] });
+
+export default withTranslation("common")(Browse);

@@ -37,7 +37,9 @@ const ResetPassword = ({ t }: any) => {
     <>
       <AuthTextContainer>
         <AuthText>
-          {t("enter-your-email-address-and-we'll-send-you-an-email-with-a-password-reset-link")}
+          {t(
+            "enter-your-email-address-and-we'll-send-you-an-email-with-a-password-reset-link",
+          )}
         </AuthText>
       </AuthTextContainer>
 
@@ -70,6 +72,8 @@ const ResetPassword = ({ t }: any) => {
   );
 };
 
-ResetPassword.getInitialProps = async () => ({ namespacesRequired: ['getstarted'] })
+ResetPassword.getInitialProps = async () => ({
+  namespacesRequired: ["getstarted"],
+});
 
-export default withTranslation('getstarted')(ResetPassword);
+export default withTranslation("getstarted")(ResetPassword);

@@ -1,4 +1,5 @@
-import * as React from "react";
+import React from "react";
+import { withTranslation } from "i18n";
 import Scrollbars from "react-custom-scrollbars";
 import { ExternalLink, Rss } from "react-feather";
 import { useForm } from "react-hook-form";
@@ -47,12 +48,12 @@ const validationSchema = Yup.object().shape({
   email: Yup.string(),
 });
 
-const Podcast = () => {
+const Podcast = ({ t }: any) => {
   const themeState = useTheme();
 
   const iconColor = themeState.dark ? "#FFF" : "#B7B7B7";
 
-  const { register, handleSubmit, errors } = useForm<SearchPodcastProps>({
+  const { register, handleSubmit } = useForm<SearchPodcastProps>({
     resolver: yupResolver(validationSchema),
   });
 
@@ -79,7 +80,7 @@ const Podcast = () => {
 
           <PodcastButtonsContainer>
             <Button type="button" width={200} height={40}>
-              Subscribe
+              {t("subscribe")}
             </Button>
           </PodcastButtonsContainer>
 
@@ -91,7 +92,7 @@ const Podcast = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Website
+                {t("website")}
               </PodcastLink>
             </PodcastLinkContainer>
 
@@ -110,7 +111,7 @@ const Podcast = () => {
               <InputWithLeftIcon
                 type="text"
                 name="podcast"
-                placeholder="Search episode"
+                placeholder={t("search-episode")}
                 ref={register}
               />
             </PodcastSearchInputContainer>
@@ -132,4 +133,6 @@ const Podcast = () => {
   );
 };
 
-export default Podcast;
+Podcast.getInitialProps = async () => ({ namespacesRequired: ["podcast"] });
+
+export default withTranslation("podcast")(Podcast);

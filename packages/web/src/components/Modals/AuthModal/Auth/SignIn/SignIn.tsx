@@ -40,7 +40,9 @@ const SignIn = ({ t }: any) => {
   return (
     <>
       <AuthTextContainer>
-        <AuthText>{t("the-best-way-to-listen-to-your-favorite-podcasts")}</AuthText>
+        <AuthText>
+          {t("the-best-way-to-listen-to-your-favorite-podcasts")}
+        </AuthText>
       </AuthTextContainer>
 
       <AuthFormContainer onSubmit={handleSubmit(onSubmit)}>
@@ -84,6 +86,6 @@ const SignIn = ({ t }: any) => {
   );
 };
 
-SignIn.getInitialProps = async () => ({ namespacesRequired: ['getstarted'] })
+SignIn.getInitialProps = async () => ({ namespacesRequired: ["getstarted"] });
 
-export default withTranslation('getstarted')(SignIn);
+export default withTranslation("getstarted")(SignIn);

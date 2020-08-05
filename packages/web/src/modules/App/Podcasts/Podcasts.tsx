@@ -1,9 +1,9 @@
-import * as React from "react";
+import React from "react";
 import Scrollbars from "react-custom-scrollbars";
 
-import PodcastsWithOnlyAvatar from "src/components/Lists/PodcastsWithOnlyAvatar/PodcastsWithOnlyAvatar";
-
 import { PodcastsContainer } from "./Podcasts.styles";
+
+import PodcastsWithOnlyAvatar from "src/components/Lists/PodcastsWithOnlyAvatar/PodcastsWithOnlyAvatar";
 
 const items = [
   {

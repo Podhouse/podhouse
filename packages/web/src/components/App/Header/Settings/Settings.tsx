@@ -1,4 +1,5 @@
-import * as React from "react";
+import React from "react";
+import { withTranslation } from "i18n";
 import { User } from "react-feather";
 
 import { useAuthContext } from "../../../../context/Auth/Auth";
@@ -6,7 +7,7 @@ import { useSettingsContext } from "../../../../context/Settings/Settings";
 
 import { SettingsContainer, SettingsLoginLink } from "./Settings.styles";
 
-const Settings = () => {
+const Settings = ({ t }: any) => {
   const [auth, handleAuth] = useAuthContext();
   const [, handleSettings] = useSettingsContext();
 
@@ -21,10 +22,14 @@ const Settings = () => {
         />
       );
     }
-    return <SettingsLoginLink onClick={handleAuth}>Login</SettingsLoginLink>;
+    return (
+      <SettingsLoginLink onClick={handleAuth}>{t("login")}</SettingsLoginLink>
+    );
   };
 
   return <SettingsContainer>{renderSettings()}</SettingsContainer>;
 };
 
-export default Settings;
+Settings.getInitialProps = async () => ({ namespacesRequired: ["header"] });
+
+export default withTranslation("header")(Settings);

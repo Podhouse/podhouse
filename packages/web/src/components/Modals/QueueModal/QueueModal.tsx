@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import { withTranslation } from "i18n";
 import { Menu, X } from "react-feather";
 import Scrollbars from "react-custom-scrollbars";
 
@@ -20,11 +21,7 @@ import useOnClickOutside from "src/hooks/useOnClickOutside";
 const avatar =
   "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg";
 
-interface QueueModalProps {
-  handleQueue: () => any;
-}
-
-const QueueModal = ({ handleQueue }: QueueModalProps) => {
+const QueueModal = ({ handleQueue, t }: any) => {
   const ref = useRef<any>();
 
   useOnClickOutside(ref, () => handleQueue());
@@ -32,9 +29,9 @@ const QueueModal = ({ handleQueue }: QueueModalProps) => {
   return (
     <QueueModalContainer ref={ref}>
       <QueueModalHeaderContainer>
-        <QueueModalHeaderText>Up Next</QueueModalHeaderText>
+        <QueueModalHeaderText>{t("up-next")}</QueueModalHeaderText>
         <QueueModalHeaderButton type="button" onClick={() => {}}>
-          Clear all
+          {t("clear-all")}
         </QueueModalHeaderButton>
       </QueueModalHeaderContainer>
 
@@ -170,4 +167,6 @@ const QueueModal = ({ handleQueue }: QueueModalProps) => {
   );
 };
 
-export default QueueModal;
+QueueModal.getInitialProps = async () => ({ namespacesRequired: ["player"] });
+
+export default withTranslation("player")(QueueModal);

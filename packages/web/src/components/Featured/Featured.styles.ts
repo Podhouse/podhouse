@@ -110,4 +110,5 @@ export const FeaturedBadge = styled.a<StyleProps>`
   text-align: center;
   color: white;
   text-decoration: none;
+  text-transform: uppercase;
 `;
