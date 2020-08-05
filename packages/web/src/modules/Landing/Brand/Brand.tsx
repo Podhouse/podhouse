@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 
 import Main from "./Main/Main";
 import Download from "./Download/Download";

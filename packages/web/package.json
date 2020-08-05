@@ -24,7 +24,7 @@
     "graphql": "^15.3.0",
     "keen-slider": "^5.2.2",
     "lint-staged": "^10.2.11",
-    "next": "^9.4.4",
+    "next": "^9.5.1",
     "next-compose-plugins": "^2.2.0",
     "next-ga": "^2.3.4",
     "next-i18next": "^6.0.2",
@@ -36,7 +36,8 @@
     "react-feather": "^2.0.8",
     "react-hook-form": "^6.0.8",
     "react-scroll-section": "^2.0.0",
-    "rehawk": "^0.1.5",
+    "rehawk": "^0.1.8",
+    "typescript": "^3.9.7",
     "xstate": "^4.11.0",
     "yup": "^0.29.1"
   },

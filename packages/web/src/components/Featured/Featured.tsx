@@ -20,7 +20,7 @@ const avatar =
 const Featured = ({ t }: any) => {
   const [pause, setPause] = React.useState(false);
   const timer = React.useRef<any>();
-  const [sliderRef, slider] = useKeenSlider({
+  const [sliderRef, slider] = useKeenSlider<HTMLDivElement>({
     loop: true,
     duration: 7000,
     dragStart: () => {

@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 
 import {
   DownloadContainer,
@@ -23,7 +23,7 @@ const Download = () => (
         </DownloadLink>
       </DownloadHeaderContainer>
 
-      <DownloadAssetsContainer color="#FFF">Dark</DownloadAssetsContainer>
+      <DownloadAssetsContainer color="#FFF" />
     </DownloadItemContainer>
 
     <DownloadItemContainer>
@@ -38,7 +38,7 @@ const Download = () => (
         </DownloadLink>
       </DownloadHeaderContainer>
 
-      <DownloadAssetsContainer color="#000">white</DownloadAssetsContainer>
+      <DownloadAssetsContainer color="#000" />
     </DownloadItemContainer>
   </DownloadContainer>
 );

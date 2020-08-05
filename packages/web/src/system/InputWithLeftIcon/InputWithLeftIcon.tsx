@@ -9,17 +9,7 @@ import {
 import { InputWithLeftIconProps } from "./InputWithLeftIcon.types";
 
 const InputWithLeftIcon = React.forwardRef(
-  (
-    {
-      type,
-      name,
-      value,
-      placeholder,
-      onChange,
-      ...props
-    }: InputWithLeftIconProps,
-    ref,
-  ) => (
+  ({ type, name, placeholder, ...props }: InputWithLeftIconProps, ref) => (
     <InputWithLeftIconContainer>
       <Search
         color="#B7B7B7"
@@ -33,10 +23,10 @@ const InputWithLeftIcon = React.forwardRef(
       />
 
       <InputWithLeftIconStyled
-        ref={ref}
         type={type}
         name={name}
         placeholder={placeholder}
+        ref={ref}
         autoComplete="off"
         {...props}
       />
