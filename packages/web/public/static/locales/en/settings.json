@@ -3,5 +3,11 @@
   "language": "Language",
   "change-language": "Change language",
   "password": "Password",
-  "change-password": "Change password"
+  "change-password": "Change password",
+  "weekly-recomendations-about-trending-podcasts": "Weekly recomendations about trending podcasts",
+  "product-news,-upcoming-updates-and-features": "Product news, upcoming updates and features",
+  "current-password": "Current password",
+  "new-password": "New password",
+  "save": "Save",
+  "select": "Select"
 }

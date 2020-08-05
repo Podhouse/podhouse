@@ -1,4 +1,5 @@
 import React from "react";
+import { withTranslation } from "i18n";
 
 import {
   AuthGetStartedButtonsContainer,
@@ -14,40 +15,42 @@ import GoogleButton from "src/system/GoogleButton/GoogleButton";
 
 import { useAuthContext } from "src/context/Auth/Auth";
 
-const GetStarted = () => {
+const GetStarted = ({ t }: any) => {
   const [, , , send] = useAuthContext();
 
   return (
     <>
       <AuthTextContainer>
-        <AuthText>The best way to listen to your favorite podcasts</AuthText>
+        <AuthText>{t("the-best-way-to-listen-to-your-favorite-podcasts")}</AuthText>
       </AuthTextContainer>
 
       <AuthGetStartedButtonsContainer>
         <Button type="button" height={40} onClick={() => send("SIGNUP")}>
-          Sign up with email
+          {t("sign-up-with-email")}
         </Button>
 
         <AuthTextContainer>
-          <AuthText>or</AuthText>
+          <AuthText>{t("or")}</AuthText>
         </AuthTextContainer>
 
-        <GoogleButton>Sign up with Google</GoogleButton>
+        <GoogleButton>{t("sign-up-with-google")}</GoogleButton>
       </AuthGetStartedButtonsContainer>
 
       <AuthLinksContainer>
         <AuthParagraphLink onClick={() => send("SIGNIN")}>
-          Already have an account?
+          {t("already-have-an-account?")}
         </AuthParagraphLink>
 
         <AuthCircle />
 
         <AuthParagraphLink onClick={() => send("FORGOT")}>
-          Forgot your password?
+          {t("forgot-your-password?")}
         </AuthParagraphLink>
       </AuthLinksContainer>
     </>
   );
 };
 
-export default GetStarted;
+GetStarted.getInitialProps = async () => ({ namespacesRequired: ['getstarted'] })
+
+export default withTranslation('getstarted')(GetStarted);

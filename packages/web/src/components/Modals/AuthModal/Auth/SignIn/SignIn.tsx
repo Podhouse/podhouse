@@ -1,4 +1,5 @@
 import * as React from "react";
+import { withTranslation } from "i18n";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers";
 import * as Yup from "yup";
@@ -27,7 +28,7 @@ const validationSchema = Yup.object().shape({
   password: Yup.string().required("Password is required"),
 });
 
-const SignIn = () => {
+const SignIn = ({ t }: any) => {
   const [, , , send] = useAuthContext();
 
   const { register, handleSubmit, errors } = useForm<SignInFormProps>({
@@ -39,15 +40,15 @@ const SignIn = () => {
   return (
     <>
       <AuthTextContainer>
-        <AuthText>The best way to listen to your favorite podcasts</AuthText>
+        <AuthText>{t("the-best-way-to-listen-to-your-favorite-podcasts")}</AuthText>
       </AuthTextContainer>
 
       <AuthFormContainer onSubmit={handleSubmit(onSubmit)}>
         <Input
           type="email"
           name="email"
-          label="Email"
-          placeholder="Email"
+          label={t("email")}
+          placeholder={t("email")}
           height={40}
           ref={register}
           error={errors.email?.message}
@@ -56,26 +57,26 @@ const SignIn = () => {
         <Input
           type="password"
           name="password"
-          label="Password"
-          placeholder="Password"
+          label={t("password")}
+          placeholder={t("password")}
           height={40}
           ref={register}
           error={errors.password?.message}
         />
 
         <Button type="submit" height={40}>
-          Sign in
+          {t("sign-in")}
         </Button>
 
         <AuthLinksContainer>
           <AuthParagraphLink onClick={() => send("SIGNUP")}>
-            Don't have an account?
+            {t("don't-have-an-account?")}
           </AuthParagraphLink>
 
           <AuthCircle />
 
           <AuthParagraphLink onClick={() => send("FORGOT")}>
-            Forgot your password?
+            {t("forgot-your-password?")}
           </AuthParagraphLink>
         </AuthLinksContainer>
       </AuthFormContainer>
@@ -83,4 +84,6 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+SignIn.getInitialProps = async () => ({ namespacesRequired: ['getstarted'] })
+
+export default withTranslation('getstarted')(SignIn);

@@ -1,4 +1,5 @@
 import * as React from "react";
+import { withTranslation } from "i18n";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers";
 import * as Yup from "yup";
@@ -23,7 +24,7 @@ const validationSchema = Yup.object().shape({
     .required("Confirm password is required"),
 });
 
-const ResetPassword = () => {
+const ResetPassword = ({ t }: any) => {
   const [, , , send] = useAuthContext();
 
   const { register, handleSubmit, errors } = useForm<ResetPasswordFormProps>({
@@ -36,8 +37,7 @@ const ResetPassword = () => {
     <>
       <AuthTextContainer>
         <AuthText>
-          Enter your new password and confirm, we will redirect after you set
-          your new password.
+          {t("enter-your-email-address-and-we'll-send-you-an-email-with-a-password-reset-link")}
         </AuthText>
       </AuthTextContainer>
 
@@ -45,8 +45,8 @@ const ResetPassword = () => {
         <Input
           type="password"
           name="newPassword"
-          label="New password"
-          placeholder="New password"
+          label={t("new-password")}
+          placeholder={t("new-password")}
           height={40}
           ref={register}
           error={errors.newPassword?.message}
@@ -55,19 +55,21 @@ const ResetPassword = () => {
         <Input
           type="password"
           name="confirmNewPassword"
-          label="New password"
-          placeholder="New password"
+          label={t("confirm-new-password")}
+          placeholder={t("confirm-new-password")}
           height={40}
           ref={register}
           error={errors.confirmNewPassword?.message}
         />
 
         <Button type="submit" onClick={() => send("SUCCESS")} height={40}>
-          Confirm new password
+          {t("confirm-new-password")}
         </Button>
       </AuthFormContainer>
     </>
   );
 };
 
-export default ResetPassword;
+ResetPassword.getInitialProps = async () => ({ namespacesRequired: ['getstarted'] })
+
+export default withTranslation('getstarted')(ResetPassword);

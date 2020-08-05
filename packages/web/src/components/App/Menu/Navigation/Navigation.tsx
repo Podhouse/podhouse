@@ -84,9 +84,7 @@ const Navigation = ({ t }: any) => {
         </Link>
 
         <Link href="/app/search" passHref>
-          <NavigationItemLink active={onActiveRouteLink("/app/search")}>
-            {t("search")}
-          </NavigationItemLink>
+          <NavigationItemLink active={onActiveRouteLink("/app/search")} />
         </Link>
       </NavigationItemContainer>
 
@@ -100,13 +98,13 @@ const Navigation = ({ t }: any) => {
         </Link>
 
         <Link href="/app/settings" passHref>
-          <NavigationItemLink active={onActiveRouteLink("/app/settings")}>
-            {t("user")}
-          </NavigationItemLink>
+          <NavigationItemLink active={onActiveRouteLink("/app/settings")} />
         </Link>
       </NavigationItemContainer>
     </NavigationContainer>
   );
 };
 
-export default withTranslation("common")(Navigation);
+Navigation.getInitialProps = async () => ({ namespacesRequired: ['menu'] })
+
+export default withTranslation('menu')(Navigation);

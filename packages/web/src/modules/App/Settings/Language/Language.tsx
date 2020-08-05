@@ -13,25 +13,65 @@ import Select from "src/system/Select/Select";
 
 const options = [
   {
+    name: "Dansk",
+    value: "da",
+  },
+  {
+    name: "Deustch",
+    value: "de",
+  },
+  {
     name: "English (US)",
     value: "en",
   },
   {
-    name: "Portuguese (Brasil)",
-    value: "pt-br",
+    name: "Español",
+    value: "es",
   },
-  // {
-  //   name: "Español",
-  //   value: "Español",
-  // },
-  // {
-  //   name: "Deustch",
-  //   value: "Deustch",
-  // },
-  // {
-  //   name: "Français",
-  //   value: "Français",
-  // },
+  {
+    name: "Français",
+    value: "fr",
+  },
+  {
+    name: "Italian",
+    value: "it",
+  },
+  {
+    name: "Norsk",
+    value: "no",
+  },
+  {
+    name: "Polski",
+    value: "pl",
+  },
+  {
+    name: "Português (Brasil)",
+    value: "pt",
+  },
+  {
+    name: "Pyccĸий",
+    value: "ru",
+  },
+  {
+    name: "Swedish",
+    value: "swe",
+  },
+  {
+    name: "Türkçe",
+    value: "tr",
+  },
+  {
+    name: "Ελληνικά",
+    value: "el",
+  },
+  {
+    name: "日本人",
+    value: "ja",
+  },
+  {
+    name: "한국어",
+    value: "ko",
+  },
 ];
 
 const Language = () => {

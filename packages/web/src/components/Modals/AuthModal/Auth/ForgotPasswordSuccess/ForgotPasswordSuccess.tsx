@@ -1,4 +1,5 @@
-import * as React from "react";
+import React from "react";
+import { withTranslation } from "i18n";
 import { Check } from "react-feather";
 
 import { AuthText } from "../Auth.styles";
@@ -12,7 +13,7 @@ import Button from "src/system/Button/Button";
 
 import { useAuthContext } from "src/context/Auth/Auth";
 
-const ForgotPasswordSuccess = () => {
+const ForgotPasswordSuccess = ({ t }: any) => {
   const [, , , send] = useAuthContext();
 
   return (
@@ -23,16 +24,17 @@ const ForgotPasswordSuccess = () => {
         </CheckContainer>
 
         <AuthText>
-          Thanks, please check your email, we've sent you an email with
-          instructions to reset your password
+          {t("thanks,-please-check-your-email,-we've-sent-you-an-email-with instructions-to-reset-your-password")}
         </AuthText>
       </HeaderIconTextContainer>
 
       <Button type="button" onClick={() => send("SIGNIN")} height={40}>
-        OK
+        {t("done")}
       </Button>
     </>
   );
 };
 
-export default ForgotPasswordSuccess;
+ForgotPasswordSuccess.getInitialProps = async () => ({ namespacesRequired: ['getstarted'] })
+
+export default withTranslation('getstarted')(ForgotPasswordSuccess);

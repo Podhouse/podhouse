@@ -1,4 +1,5 @@
 import * as React from "react";
+import { withTranslation } from "i18n";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers";
 import * as Yup from "yup";
@@ -25,7 +26,7 @@ const validationSchema = Yup.object().shape({
   email: Yup.string().email("Email is invalid").required("Email is required"),
 });
 
-const ForgotPassword = () => {
+const ForgotPassword = ({ t }: any) => {
   const [, , , send] = useAuthContext();
 
   const { register, handleSubmit, errors } = useForm<ForgotPasswordFormProps>({
@@ -38,8 +39,7 @@ const ForgotPassword = () => {
     <>
       <AuthTextContainer>
         <AuthText>
-          Enter your email address and we'll send you an email with a password
-          reset link
+          {t("enter-your-email-address-and-we'll-send-you-an-email-with-a-password-reset-link")}
         </AuthText>
       </AuthTextContainer>
 
@@ -47,26 +47,26 @@ const ForgotPassword = () => {
         <Input
           type="email"
           name="email"
-          label="Email"
-          placeholder="Email"
+          label={t("email")}
+          placeholder={t("email")}
           height={40}
           ref={register}
           error={errors.email?.message}
         />
 
         <Button type="submit" height={40}>
-          Send reset link
+          {t("send-reset-link")}
         </Button>
 
         <AuthLinksContainer>
           <AuthParagraphLink onClick={() => send("SIGNIN")}>
-            Already have an account?
+            {t("already-have-an-account?")}
           </AuthParagraphLink>
 
           <AuthCircle />
 
           <AuthParagraphLink onClick={() => send("SIGNUP")}>
-            Don't have an account?
+            {t("don't-have-an-account?")}
           </AuthParagraphLink>
         </AuthLinksContainer>
       </AuthFormContainer>
@@ -74,4 +74,6 @@ const ForgotPassword = () => {
   );
 };
 
-export default ForgotPassword;
+ForgotPassword.getInitialProps = async () => ({ namespacesRequired: ['getstarted'] })
+
+export default withTranslation('getstarted')(ForgotPassword);
