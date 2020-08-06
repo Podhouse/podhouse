@@ -8,7 +8,8 @@
 		"experimentalDecorators": true,
 		"emitDecoratorMetadata": true,
 		"esModuleInterop": true,
-		"resolveJsonModule": true
+		"resolveJsonModule": true,
+		"baseUrl": "."
 	},
 	"include": ["src/**/*"],
 	"exclude": ["node_modules", "dist", "**/*.spec.ts"]
