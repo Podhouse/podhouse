@@ -12,22 +12,22 @@ import {
 import Select from "src/system/Select/Select";
 
 const options = [
-  // {
-  //   name: "Dansk",
-  //   value: "da",
-  // },
-  // {
-  //   name: "Deustch",
-  //   value: "de",
-  // },
+  {
+    name: "Dansk",
+    value: "da",
+  },
+  {
+    name: "Deustch",
+    value: "de",
+  },
   {
     name: "English (US)",
     value: "en",
   },
-  // {
-  //   name: "Español",
-  //   value: "es",
-  // },
+  {
+    name: "Español",
+    value: "es",
+  },
   // {
   //   name: "Français",
   //   value: "fr",
