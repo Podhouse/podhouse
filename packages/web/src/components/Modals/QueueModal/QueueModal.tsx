@@ -7,7 +7,7 @@ import {
   QueueModalHeaderContainer,
   QueueModalHeaderText,
   QueueModalHeaderButton,
-  QueueModalItemsContainer
+  QueueModalItemsContainer,
 } from "./QueueModal.styles";
 
 import QueueModalItem from "./QueueModalItem/QueueModalItem";
@@ -18,12 +18,14 @@ const episodes = [
   {
     episode: "403 - Return of Yokai",
     name: "99% Invisible",
-    avatar: "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg"
+    avatar:
+      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
   },
   {
     episode: "403 - Return of Yokai",
     name: "99% Invisible",
-    avatar: "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg"
+    avatar:
+      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
   },
   // {
   //   episode: "403 - Return of Yokai",
@@ -35,7 +37,7 @@ const episodes = [
   //   name: "99% Invisible",
   //   avatar: "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg"
   // }
-]
+];
 
 const QueueModal = ({ handleQueue, t }: any) => {
   const ref = useRef<any>();
@@ -46,7 +48,7 @@ const QueueModal = ({ handleQueue, t }: any) => {
     <QueueModalContainer ref={ref}>
       <QueueModalHeaderContainer>
         <QueueModalHeaderText>{t("up-next")}</QueueModalHeaderText>
-        <QueueModalHeaderButton type="button" onClick={() => { }}>
+        <QueueModalHeaderButton type="button" onClick={() => {}}>
           {t("clear-all")}
         </QueueModalHeaderButton>
       </QueueModalHeaderContainer>
@@ -58,7 +60,14 @@ const QueueModal = ({ handleQueue, t }: any) => {
         autoHideDuration={100}
       >
         <QueueModalItemsContainer>
-          {episodes.map(({ episode, name, avatar }) => <QueueModalItem episode={episode} name={name} avatar={avatar} />)}
+          {episodes.map(({ episode, name, avatar }) => (
+            <QueueModalItem
+              key={episode}
+              episode={episode}
+              name={name}
+              avatar={avatar}
+            />
+          ))}
         </QueueModalItemsContainer>
       </Scrollbars>
     </QueueModalContainer>

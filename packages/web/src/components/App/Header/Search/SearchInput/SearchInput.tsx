@@ -21,29 +21,29 @@ const SearchInput = ({
   onClick,
   ...props
 }: SearchInputProps) => (
-    <SearchInputContainer>
-      <Search
-        color="#B7B7B7"
-        strokeWidth={1.5}
-        size={16}
-        style={{
-          position: "absolute",
-          left: 20,
-          alignSelf: "center",
-        }}
-      />
+  <SearchInputContainer>
+    <Search
+      color="#B7B7B7"
+      strokeWidth={1.5}
+      size={16}
+      style={{
+        position: "absolute",
+        left: 20,
+        alignSelf: "center",
+      }}
+    />
 
-      <SearchInputStyled
-        {...props}
-        type={type}
-        name={name}
-        value={value}
-        placeholder={placeholder}
-        onChange={onChange}
-        onClick={onClick}
-        autoComplete="off"
-      />
-    </SearchInputContainer>
-  );
+    <SearchInputStyled
+      {...props}
+      type={type}
+      name={name}
+      value={value}
+      placeholder={placeholder}
+      onChange={onChange}
+      onClick={onClick}
+      autoComplete="off"
+    />
+  </SearchInputContainer>
+);
 
 export default SearchInput;

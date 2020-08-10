@@ -23,7 +23,9 @@ const QueueModalItem = ({ avatar, episode, name }: QueueModalItemProps) => {
 
       <QueueModalItemsDetails>
         <Link href="/app/episode/[episode]" as="/app/episode/123">
-          <QueueModalItemEpisode href="/app/episode/123">{episode}</QueueModalItemEpisode>
+          <QueueModalItemEpisode href="/app/episode/123">
+            {episode}
+          </QueueModalItemEpisode>
         </Link>
         <QueueModalItemPodcast>{name}</QueueModalItemPodcast>
       </QueueModalItemsDetails>
@@ -36,6 +38,6 @@ const QueueModalItem = ({ avatar, episode, name }: QueueModalItemProps) => {
       />
     </QueueModalItemContainer>
   );
-}
+};
 
 export default QueueModalItem;
