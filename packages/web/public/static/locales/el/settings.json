@@ -1,13 +1,13 @@
 {
-  "notifications": "Notifications",
-  "language": "Language",
-  "change-language": "Change language",
-  "password": "Password",
-  "change-password": "Change password",
-  "weekly-recomendations-about-trending-podcasts": "Weekly recommendations about trending podcasts",
-  "product-news,-upcoming-updates-and-features": "Product news, upcoming updates, and features",
-  "current-password": "Current password",
-  "new-password": "New password",
-  "save": "Save",
-  "select": "Select"
+  "notifications": "Ειδοποιήσεις",
+  "language": "Γλώσσα",
+  "change-language": "Αλλαξε γλώσσα",
+  "password": "Κωδικός πρόσβασης",
+  "change-password": "Αλλαξε κωδικό",
+  "weekly-recomendations-about-trending-podcasts": "Εβδομαδιαίες προτάσεις σχετικά με τα δημοφιλή podcast",
+  "product-news,-upcoming-updates-and-features": "Ειδήσεις προϊόντων, επερχόμενες ενημερώσεις και δυνατότητες",
+  "current-password": "Τρέχων κωδικός πρόσβασης",
+  "new-password": "Νέος Κωδικός",
+  "save": "Αποθηκεύσετε",
+  "select": "Επιλέγω"
 }

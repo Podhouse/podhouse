@@ -1,9 +1,9 @@
 {
-  "login": "Login",
-  "search": "Search",
-  "feedback": "Feedback",
-  "shortcuts": "Shortcuts",
-  "settings": "Settings",
-  "theme": "Theme",
-  "logout": "Log out"
+  "login": "Σύνδεση",
+  "search": "Αναζήτηση",
+  "feedback": "Ανατροφοδότηση",
+  "shortcuts": "Συντομεύσεις",
+  "settings": "Ρυθμίσεις",
+  "theme": "Θέμα",
+  "logout": "Αποσύνδεση"
 }
