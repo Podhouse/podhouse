@@ -94,6 +94,7 @@ const Controls = ({
 
         <ControlsSliderContainer>
           <ControlsTime>{formatTime(seek)}</ControlsTime>
+
           <Slider
             min={0}
             max={duration}
@@ -101,6 +102,7 @@ const Controls = ({
             step={0.1}
             onChange={onSeek}
           />
+
           <ControlsTime>{formatTime(duration)}</ControlsTime>
         </ControlsSliderContainer>
       </ControlsContainer>

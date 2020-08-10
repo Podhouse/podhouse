@@ -43,6 +43,7 @@ const Player = () => {
   return (
     <PlayerContainer>
       <Podcast ready={ready} currentPodcast={currentPodcast} />
+
       <Controls
         ready={ready}
         playing={playing}
@@ -54,6 +55,7 @@ const Player = () => {
         onBackward={onBackward}
         onForward={onForward}
       />
+
       <RightControls
         ready={ready}
         volume={volume}
