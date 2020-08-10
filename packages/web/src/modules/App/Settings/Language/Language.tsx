@@ -72,6 +72,10 @@ const options = [
     name: "한국어",
     value: "ko",
   },
+  {
+    name: "中文",
+    value: "zh",
+  },
 ];
 
 const Language = ({ t }: any) => {

@@ -20,6 +20,7 @@ module.exports = new NextI18Next({
     "el",
     "ja",
     "ko",
+    "zh",
   ],
   localePath: path.resolve("./public/static/locales"),
 });
