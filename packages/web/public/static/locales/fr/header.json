@@ -1,9 +1,9 @@
 {
-  "login": "Login",
-  "search": "Search",
+  "login": "Connexion",
+  "search": "Recherchez",
   "feedback": "Feedback",
-  "shortcuts": "Shortcuts",
-  "settings": "Settings",
-  "theme": "Theme",
-  "logout": "Log out"
+  "shortcuts": "Raccourcis",
+  "settings": "Paramètres",
+  "theme": "Thème",
+  "logout": "Déconnexion"
 }

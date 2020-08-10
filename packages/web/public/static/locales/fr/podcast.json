@@ -1,9 +1,9 @@
 {
-  "subscribe": "Subscribe",
-  "unsubscribe": "Unsubscribe",
+  "subscribe": "S'abonner",
+  "unsubscribe": "Se désabonner",
   "website": "Website",
-  "search-episode": "Search episode",
+  "search-episode": "Rechercher un épisode",
   "play": "Play",
   "pause": "Pause",
-  "listen": "Listen"
+  "listen": "Écouter"
 }
