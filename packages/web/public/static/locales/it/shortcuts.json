@@ -1,8 +1,8 @@
 {
-  "keyboard-shortcuts": "Keyboard shortcuts",
-  "play-pause": "Play / Pause",
-  "forward-15-seconds": "Forward 15 seconds",
-  "back-15-seconds": "Back 15 seconds",
-  "play-next-in-queue": "Play next in the queue",
-  "play-previous-in-queue": "Play previous in the queue"
+  "keyboard-shortcuts": "Scorciatoie da tastiera",
+  "play-pause": "Gioca / Pausa",
+  "forward-15-seconds": "Avanti 15 secondi",
+  "back-15-seconds": "Indietro 15 secondi",
+  "play-next-in-queue": "Gioca il prossimo nella coda",
+  "play-previous-in-queue": "Gioca il precedente nella coda"
 }

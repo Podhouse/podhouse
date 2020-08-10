@@ -1,13 +1,13 @@
 {
-  "notifications": "Notifications",
-  "language": "Language",
-  "change-language": "Change language",
+  "notifications": "Notifiche",
+  "language": "Lingua",
+  "change-language": "Cambia lingua",
   "password": "Password",
-  "change-password": "Change password",
-  "weekly-recomendations-about-trending-podcasts": "Weekly recommendations about trending podcasts",
-  "product-news,-upcoming-updates-and-features": "Product news, upcoming updates, and features",
-  "current-password": "Current password",
-  "new-password": "New password",
-  "save": "Save",
-  "select": "Select"
+  "change-password": "Cambiare la password",
+  "weekly-recomendations-about-trending-podcasts": "Raccomandazioni settimanali sui podcast di tendenza",
+  "product-news,-upcoming-updates-and-features": "Novità sui prodotti, prossimi aggiornamenti e caratteristiche",
+  "current-password": "Password attuale",
+  "new-password": "Nuova password",
+  "save": "Salva",
+  "select": "Selezionare"
 }

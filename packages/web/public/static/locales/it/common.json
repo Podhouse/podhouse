@@ -1,7 +1,7 @@
 {
-  "featured": "Featured",
-  "favorites": "Favorites",
+  "featured": "In primo piano",
+  "favorites": "Preferiti",
   "trending": "Trending",
-  "recommended": "Recommended",
-  "search": "Search"
+  "recommended": "Consigliato",
+  "search": "Ricerca"
 }

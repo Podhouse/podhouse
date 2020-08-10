@@ -1,9 +1,9 @@
 {
-  "subscribe": "Subscribe",
-  "unsubscribe": "Unsubscribe",
-  "website": "Website",
-  "search-episode": "Search episode",
-  "play": "Play",
-  "pause": "Pause",
-  "listen": "Listen"
+  "subscribe": "Abbonarsi",
+  "unsubscribe": "Annulla l'iscrizione",
+  "website": "Sito web",
+  "search-episode": "Ricerca episodio",
+  "play": "Gioca",
+  "pause": "Pausa",
+  "listen": "Ascolta"
 }
