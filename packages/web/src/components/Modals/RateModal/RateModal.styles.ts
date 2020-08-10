@@ -2,6 +2,10 @@ import styled from "@emotion/styled";
 
 import { StyleProps } from "src/system/styles.types";
 
+type Props = StyleProps & {
+  active: boolean;
+};
+
 export const RateModalContainer = styled.div<StyleProps>`
   display: grid;
   grid-template-columns: 1fr;
@@ -25,25 +29,20 @@ export const RateModalContainer = styled.div<StyleProps>`
   -moz-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.05);
 `;
 
-export const RateModalLinkContainer = styled.div<StyleProps>`
+export const RateModalLinkContainer = styled.div<Props>`
   display: flex;
   align-items: center;
   width: 100%;
   height: 100%;
-  background: ${({ theme }) => theme.backgroundPrimary};
+  background: ${({ active, theme }) =>
+    active ? theme.backgroundSecondary : theme.backgroundPrimary};
+  color: ${({ active, theme }) => (active ? theme.primary : theme.secondary)};
   padding-left: 20px;
   cursor: pointer;
 
-  a {
-    text-decoration: none;
-  }
-
   &:hover {
     background: ${({ theme }) => theme.backgroundSecondary};
-
-    a {
-      color: ${({ theme }) => theme.primary};
-    }
+    color: ${({ theme }) => theme.primary};
   }
 `;
 
@@ -53,48 +52,5 @@ export const RateModalLink = styled.a<StyleProps>`
   font-weight: normal;
   font-size: 14px;
   line-height: 17px;
-  color: ${({ theme }) => theme.tertiary};
   text-decoration: none;
-`;
-
-export const RateThemeContainer = styled.div<StyleProps>`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  background: ${({ theme }) => theme.backgroundPrimary};
-  padding: 0 20px 0 20px;
-  cursor: pointer;
-
-  a {
-    text-decoration: none;
-  }
-
-  &:hover {
-    background: ${({ theme }) => theme.backgroundSecondary};
-
-    a {
-      color: ${({ theme }) => theme.primary};
-    }
-  }
-`;
-
-export const RateThemeIconContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  grid-column: 2 / 3;
-  grid-row: 1 / 2;
-
-  .settings-theme-sun {
-    &:hover {
-      svg {
-        color: red;
-      }
-    }
-  }
 `;

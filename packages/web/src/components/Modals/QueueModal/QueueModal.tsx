@@ -27,16 +27,6 @@ const episodes = [
     avatar:
       "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
   },
-  // {
-  //   episode: "403 - Return of Yokai",
-  //   name: "99% Invisible",
-  //   avatar: "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg"
-  // },
-  // {
-  //   episode: "403 - Return of Yokai",
-  //   name: "99% Invisible",
-  //   avatar: "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg"
-  // }
 ];
 
 const QueueModal = ({ handleQueue, t }: any) => {

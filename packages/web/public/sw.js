@@ -51,22 +51,14 @@ define("./sw.js", ["./workbox-a61ac24a"], function (e) {
     e.precacheAndRoute(
       [
         {
-          url: "/_next/static/J0a6Xue6HqvJjaIkW3FOY/_buildManifest.js",
-          revision: "4016a594436510e3d24b7c0f9bafd0c5",
-        },
-        {
-          url: "/_next/static/J0a6Xue6HqvJjaIkW3FOY/_ssgManifest.js",
-          revision: "abee47769bf307639ace4945f9cfd4ff",
-        },
-        {
           url:
             "/_next/static/chunks/10bcc3a9640e60da2ea530fc39f92e7c1e1c9c1b.df4fbbac930167c3ce18.js",
           revision: "eb7d58598446f2aa18764d413dab7bfa",
         },
         {
           url:
-            "/_next/static/chunks/57b36b2fd634502919b0857536d9a70da4d67a76.f03f70980a6c7b8eab21.js",
-          revision: "fe5cf04c845be99b05ef1473bf9b22e2",
+            "/_next/static/chunks/57b36b2fd634502919b0857536d9a70da4d67a76.ada75713f0b0e7b2b379.js",
+          revision: "a54e8f979877189b2b40327db4b52967",
         },
         {
           url:
@@ -172,6 +164,14 @@ define("./sw.js", ["./workbox-a61ac24a"], function (e) {
         {
           url: "/_next/static/css/db6b0e72da824dce1c7f.css",
           revision: "1a676a991411d1368aee17e516f63cae",
+        },
+        {
+          url: "/_next/static/naBrssR4RrX8ZNWkhR4jS/_buildManifest.js",
+          revision: "4016a594436510e3d24b7c0f9bafd0c5",
+        },
+        {
+          url: "/_next/static/naBrssR4RrX8ZNWkhR4jS/_ssgManifest.js",
+          revision: "abee47769bf307639ace4945f9cfd4ff",
         },
         {
           url: "/android-icon-144x144.png",

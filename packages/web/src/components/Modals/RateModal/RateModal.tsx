@@ -14,7 +14,7 @@ interface RateModalProps {
 }
 
 const RateModal = ({ handleRate }: RateModalProps) => {
-  const { onRate } = useRehawk({});
+  const { rate, onRate } = useRehawk({});
 
   const ref = useRef<any>();
 
@@ -22,24 +22,39 @@ const RateModal = ({ handleRate }: RateModalProps) => {
 
   return (
     <RateModalContainer ref={ref}>
-      <RateModalLinkContainer>
-        <RateModalLink onClick={() => onRate(0.5)}>0.5x</RateModalLink>
+      <RateModalLinkContainer
+        onClick={() => onRate(0.5)}
+        active={rate === 0.5 ? true : false}
+      >
+        <RateModalLink>0.5x</RateModalLink>
       </RateModalLinkContainer>
 
-      <RateModalLinkContainer>
-        <RateModalLink onClick={() => onRate(1.0)}>1.0x</RateModalLink>
+      <RateModalLinkContainer
+        onClick={() => onRate(1.0)}
+        active={rate === 1.0 ? true : false}
+      >
+        <RateModalLink>1.0x</RateModalLink>
       </RateModalLinkContainer>
 
-      <RateModalLinkContainer>
-        <RateModalLink onClick={() => onRate(1.5)}>1.5x</RateModalLink>
+      <RateModalLinkContainer
+        onClick={() => onRate(1.5)}
+        active={rate === 1.5 ? true : false}
+      >
+        <RateModalLink>1.5x</RateModalLink>
       </RateModalLinkContainer>
 
-      <RateModalLinkContainer>
-        <RateModalLink onClick={() => onRate(2.0)}>2.0x</RateModalLink>
+      <RateModalLinkContainer
+        onClick={() => onRate(2.0)}
+        active={rate === 2.0 ? true : false}
+      >
+        <RateModalLink>2.0x</RateModalLink>
       </RateModalLinkContainer>
 
-      <RateModalLinkContainer>
-        <RateModalLink onClick={() => onRate(3.0)}>3.0x</RateModalLink>
+      <RateModalLinkContainer
+        onClick={() => onRate(3.0)}
+        active={rate === 3.0 ? true : false}
+      >
+        <RateModalLink>3.0x</RateModalLink>
       </RateModalLinkContainer>
     </RateModalContainer>
   );
