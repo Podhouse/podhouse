@@ -64,7 +64,7 @@ export const PodcastDetails = styled.div`
   }
 `;
 
-export const PodcastEpisode = styled.h3<StyleProps>`
+export const PodcastEpisode = styled.a<StyleProps>`
   width: 100%;
   max-width: 300px;
   white-space: nowrap;
@@ -77,6 +77,7 @@ export const PodcastEpisode = styled.h3<StyleProps>`
   line-height: 17px;
   color: ${({ theme }) => theme.primary};
   cursor: pointer;
+  text-decoration: none;
 
   @media screen and (min-width: 800px) {
     grid-row: 1 / 2;

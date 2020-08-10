@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { withTranslation } from "i18n";
 import Link from "next/link";
 import { useRouter } from "next/router";

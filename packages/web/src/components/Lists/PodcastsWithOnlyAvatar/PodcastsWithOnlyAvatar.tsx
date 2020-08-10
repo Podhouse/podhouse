@@ -1,6 +1,4 @@
-import * as React from "react";
-
-import PodcastItemWithAvatar from "src/components/Podcast/PodcastItemWithAvatar/PodcastItemWithAvatar";
+import React from "react";
 
 import {
   PodcastsWithOnlyAvatarContainer,
@@ -9,6 +7,8 @@ import {
   PodcastsWithOnlyAvatarHeaderTitle,
   PodcastsWithOnlyAvatarBreakLine,
 } from "./PodcastsWithOnlyAvatar.styles";
+
+import PodcastItemWithAvatar from "src/components/Podcast/PodcastItemWithAvatar/PodcastItemWithAvatar";
 
 interface Podcast {
   id: number;

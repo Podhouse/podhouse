@@ -1,6 +1,4 @@
-import * as React from "react";
-
-import PodcastItemWithDetails from "../../Podcast/PodcastItemWithDetails/PodcastItemWithDetails";
+import React from "react";
 
 import {
   PodcastsWithDetailsContainer,
@@ -9,6 +7,8 @@ import {
   PodcastsWithDetailsHeaderTitle,
   PodcastsWithDetailsBreakLine,
 } from "./PodcastsWithDetails.styles";
+
+import PodcastItemWithDetails from "src/components/Podcast/PodcastItemWithDetails/PodcastItemWithDetails";
 
 interface Podcast {
   id: number;

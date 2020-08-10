@@ -1,4 +1,5 @@
-import * as React from "react";
+import React from "react";
+import Link from "next/link";
 import { Heart } from "react-feather";
 
 import {
@@ -38,8 +39,10 @@ const Podcast = ({ ready, currentPodcast }: PodcastProps) => {
         <PodcastAvatar avatar={avatar} />
 
         <PodcastDetails>
-          <PodcastEpisode onClick={() => {}}>{episode}</PodcastEpisode>
-          <PodcastName onClick={() => {}}>{name}</PodcastName>
+          <Link href="/app/episode/[episode]" as="/app/episode/123">
+            <PodcastEpisode href="/app/episode/123">{episode}</PodcastEpisode>
+          </Link>
+          <PodcastName onClick={() => { }}>{name}</PodcastName>
 
           <PodcastFavoriteContainer>
             <Heart
@@ -48,7 +51,7 @@ const Podcast = ({ ready, currentPodcast }: PodcastProps) => {
               strokeWidth={1.5}
               color={iconColor}
               style={iconStyle}
-              onClick={() => {}}
+              onClick={() => { }}
             />
           </PodcastFavoriteContainer>
         </PodcastDetails>

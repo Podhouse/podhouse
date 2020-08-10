@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { Clock, List } from "react-feather";
 
 import { RightControlsContainer } from "./RightControls.styles";

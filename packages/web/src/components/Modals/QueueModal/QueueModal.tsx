@@ -1,6 +1,5 @@
 import React, { useRef } from "react";
 import { withTranslation } from "i18n";
-import { Menu, X } from "react-feather";
 import Scrollbars from "react-custom-scrollbars";
 
 import {
@@ -8,18 +7,35 @@ import {
   QueueModalHeaderContainer,
   QueueModalHeaderText,
   QueueModalHeaderButton,
-  QueueModalItemsContainer,
-  QueueModalItemContainer,
-  QueueModalItemAvatar,
-  QueueModalItemsDetails,
-  QueueModalItemEpisode,
-  QueueModalItemPodcast,
+  QueueModalItemsContainer
 } from "./QueueModal.styles";
+
+import QueueModalItem from "./QueueModalItem/QueueModalItem";
 
 import useOnClickOutside from "src/hooks/useOnClickOutside";
 
-const avatar =
-  "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg";
+const episodes = [
+  {
+    episode: "403 - Return of Yokai",
+    name: "99% Invisible",
+    avatar: "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg"
+  },
+  {
+    episode: "403 - Return of Yokai",
+    name: "99% Invisible",
+    avatar: "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg"
+  },
+  // {
+  //   episode: "403 - Return of Yokai",
+  //   name: "99% Invisible",
+  //   avatar: "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg"
+  // },
+  // {
+  //   episode: "403 - Return of Yokai",
+  //   name: "99% Invisible",
+  //   avatar: "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg"
+  // }
+]
 
 const QueueModal = ({ handleQueue, t }: any) => {
   const ref = useRef<any>();
@@ -30,7 +46,7 @@ const QueueModal = ({ handleQueue, t }: any) => {
     <QueueModalContainer ref={ref}>
       <QueueModalHeaderContainer>
         <QueueModalHeaderText>{t("up-next")}</QueueModalHeaderText>
-        <QueueModalHeaderButton type="button" onClick={() => {}}>
+        <QueueModalHeaderButton type="button" onClick={() => { }}>
           {t("clear-all")}
         </QueueModalHeaderButton>
       </QueueModalHeaderContainer>
@@ -42,125 +58,7 @@ const QueueModal = ({ handleQueue, t }: any) => {
         autoHideDuration={100}
       >
         <QueueModalItemsContainer>
-          <QueueModalItemContainer>
-            <QueueModalItemAvatar src={avatar} />
-
-            <QueueModalItemsDetails>
-              <QueueModalItemEpisode>
-                403 - Return of Yokai
-              </QueueModalItemEpisode>
-              <QueueModalItemPodcast>99% Invisible</QueueModalItemPodcast>
-            </QueueModalItemsDetails>
-
-            <Menu
-              size={16}
-              strokeWidth={1.5}
-              color="#B7B7B7"
-              onClick={() => console.log("menu clicked")}
-            />
-            <X
-              size={16}
-              strokeWidth={1.5}
-              color="#B7B7B7"
-              onClick={() => console.log("X clicked")}
-            />
-          </QueueModalItemContainer>
-
-          <QueueModalItemContainer>
-            <QueueModalItemAvatar src={avatar} />
-
-            <QueueModalItemsDetails>
-              <QueueModalItemEpisode>
-                403 - Return of Yokai
-              </QueueModalItemEpisode>
-              <QueueModalItemPodcast>99% Invisible</QueueModalItemPodcast>
-            </QueueModalItemsDetails>
-
-            <Menu
-              size={16}
-              strokeWidth={1.5}
-              color="#B7B7B7"
-              onClick={() => console.log("menu clicked")}
-            />
-            <X
-              size={16}
-              strokeWidth={1.5}
-              color="#B7B7B7"
-              onClick={() => console.log("X clicked")}
-            />
-          </QueueModalItemContainer>
-
-          <QueueModalItemContainer>
-            <QueueModalItemAvatar src={avatar} />
-
-            <QueueModalItemsDetails>
-              <QueueModalItemEpisode>
-                403 - Return of Yokai
-              </QueueModalItemEpisode>
-              <QueueModalItemPodcast>99% Invisible</QueueModalItemPodcast>
-            </QueueModalItemsDetails>
-
-            <Menu
-              size={16}
-              strokeWidth={1.5}
-              color="#B7B7B7"
-              onClick={() => console.log("menu clicked")}
-            />
-            <X
-              size={16}
-              strokeWidth={1.5}
-              color="#B7B7B7"
-              onClick={() => console.log("X clicked")}
-            />
-          </QueueModalItemContainer>
-
-          <QueueModalItemContainer>
-            <QueueModalItemAvatar src={avatar} />
-
-            <QueueModalItemsDetails>
-              <QueueModalItemEpisode>
-                403 - Return of Yokai
-              </QueueModalItemEpisode>
-              <QueueModalItemPodcast>99% Invisible</QueueModalItemPodcast>
-            </QueueModalItemsDetails>
-
-            <Menu
-              size={16}
-              strokeWidth={1.5}
-              color="#B7B7B7"
-              onClick={() => console.log("menu clicked")}
-            />
-            <X
-              size={16}
-              strokeWidth={1.5}
-              color="#B7B7B7"
-              onClick={() => console.log("X clicked")}
-            />
-          </QueueModalItemContainer>
-
-          <QueueModalItemContainer>
-            <QueueModalItemAvatar src={avatar} />
-
-            <QueueModalItemsDetails>
-              <QueueModalItemEpisode>
-                403 - Return of Yokai
-              </QueueModalItemEpisode>
-              <QueueModalItemPodcast>99% Invisible</QueueModalItemPodcast>
-            </QueueModalItemsDetails>
-
-            <Menu
-              size={16}
-              strokeWidth={1.5}
-              color="#B7B7B7"
-              onClick={() => console.log("menu clicked")}
-            />
-            <X
-              size={16}
-              strokeWidth={1.5}
-              color="#B7B7B7"
-              onClick={() => console.log("X clicked")}
-            />
-          </QueueModalItemContainer>
+          {episodes.map(({ episode, name, avatar }) => <QueueModalItem episode={episode} name={name} avatar={avatar} />)}
         </QueueModalItemsContainer>
       </Scrollbars>
     </QueueModalContainer>
