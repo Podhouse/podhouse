@@ -1,5 +1,6 @@
 import React from "react";
 import Head from "next/head";
+import { useRehawk } from "rehawk";
 
 import Header from "./Header/Header";
 import Menu from "./Menu/Menu";
@@ -18,6 +19,7 @@ import { useQueueContext } from "src/context/Queue/Queue";
 import { useRateContext } from "src/context/Rate/Rate";
 
 import useShortcuts from "src/hooks/useShortcuts";
+import useKeyPress from "src/hooks/useKeyPress";
 
 import { AppContainer } from "./App.styles";
 
@@ -31,6 +33,12 @@ const App = ({ children }: AppProps) => {
   const [queue, handleQueue] = useQueueContext();
   const [rate, handleRate] = useRateContext();
   const { shortcuts, handleShortcuts } = useShortcuts();
+
+  const { onToggle, onForward, onBackward } = useRehawk({});
+
+  useKeyPress(" ", () => onToggle());
+  useKeyPress("ArrowLeft", () => onBackward(15));
+  useKeyPress("ArrowRight", () => onForward(15));
 
   const renderAuthModal = () => {
     if (auth.matches("open")) {
@@ -67,7 +75,6 @@ const App = ({ children }: AppProps) => {
     if (queue.matches("open")) {
       return <QueueModal handleQueue={handleQueue} />;
     }
-
     return null;
   };
 
@@ -75,7 +82,6 @@ const App = ({ children }: AppProps) => {
     if (rate.matches("open")) {
       return <RateModal handleRate={handleRate} />;
     }
-
     return null;
   };
 

@@ -40,17 +40,15 @@ const SettingsModal = ({
         </a>
       </SettingsModalLinkContainer>
 
-      <SettingsModalLinkContainer>
-        <SettingsModalLink onClick={handleShortcuts}>
-          {t("shortcuts")}
-        </SettingsModalLink>
+      <SettingsModalLinkContainer onClick={handleShortcuts}>
+        <SettingsModalLink>{t("shortcuts")}</SettingsModalLink>
       </SettingsModalLinkContainer>
 
-      <SettingsModalLinkContainer>
-        <Link href="/app/settings" passHref>
+      <Link href="/app/settings">
+        <SettingsModalLinkContainer>
           <SettingsModalLink>{t("settings")}</SettingsModalLink>
-        </Link>
-      </SettingsModalLinkContainer>
+        </SettingsModalLinkContainer>
+      </Link>
 
       <SettingsThemeContainer onClick={() => themeState.toggle()}>
         <SettingsModalLink>{t("theme")}</SettingsModalLink>
@@ -62,10 +60,8 @@ const SettingsModal = ({
         </SettingsThemeIconContainer>
       </SettingsThemeContainer>
 
-      <SettingsModalLinkContainer>
-        <SettingsModalLink onClick={logoutAuth}>
-          {t("logout")}
-        </SettingsModalLink>
+      <SettingsModalLinkContainer onClick={logoutAuth}>
+        <SettingsModalLink>{t("logout")}</SettingsModalLink>
       </SettingsModalLinkContainer>
     </SettingsModalContainer>
   );

@@ -1625,6 +1625,16 @@
     estree-walker "^1.0.1"
     picomatch "^2.2.2"
 
+"@rooks/use-key@^3.6.0":
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/@rooks/use-key/-/use-key-3.6.0.tgz#be73018aca6d966aceeecfc70405ec9947ffba99"
+  integrity sha512-EHbSGLaA/150+rMZD2PVBCi1VC/ulre/7j/GZhQCcGjao+684c8YFfpZ1n8KccrnISzJQhzFboBZQ7JlEtge6A==
+
+"@rooks/use-keys@^3.6.0":
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/@rooks/use-keys/-/use-keys-3.6.0.tgz#7f30a3b41b68fd5506e2a39ff47015f04bb2e835"
+  integrity sha512-XjbmbHdwGnNX5GkopdBmWtiXlXAipN2SaTXK5DIT5orDTGCFREC+xINe9ApIKbJjndhCluRz6DJaPrI8/8pMMQ==
+
 "@sindresorhus/is@^0.14.0":
   version "0.14.0"
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.14.0.tgz#9fb3a3cf3132328151f353de4632e01e52102bea"

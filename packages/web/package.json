@@ -17,6 +17,8 @@
     "@emotion/core": "^10.0.28",
     "@emotion/styled": "^10.0.27",
     "@hookform/resolvers": "^0.0.6",
+    "@rooks/use-key": "^3.6.0",
+    "@rooks/use-keys": "^3.6.0",
     "@xstate/react": "^0.8.1",
     "@xstate/test": "^0.4.0",
     "@zeit/next-source-maps": "^0.0.3",

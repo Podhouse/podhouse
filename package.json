@@ -43,8 +43,6 @@
   "lint-staged": {
     "*.{js,ts,tsx}": [
       "yarn lint",
-      "yarn test",
-      "yarn build",
       "git add"
     ]
   }
