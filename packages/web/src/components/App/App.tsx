@@ -1,6 +1,9 @@
 import React from "react";
 import Head from "next/head";
 import { useRehawk } from "rehawk";
+import useKey from "@rooks/use-key";
+
+import { AppContainer } from "./App.styles";
 
 import Header from "./Header/Header";
 import Menu from "./Menu/Menu";
@@ -19,9 +22,6 @@ import { useQueueContext } from "src/context/Queue/Queue";
 import { useRateContext } from "src/context/Rate/Rate";
 
 import useShortcuts from "src/hooks/useShortcuts";
-import useKeyPress from "src/hooks/useKeyPress";
-
-import { AppContainer } from "./App.styles";
 
 interface AppProps {
   children: React.ReactNode;
@@ -36,9 +36,9 @@ const App = ({ children }: AppProps) => {
 
   const { onToggle, onForward, onBackward } = useRehawk({});
 
-  useKeyPress(" ", () => onToggle());
-  useKeyPress("ArrowLeft", () => onBackward(15));
-  useKeyPress("ArrowRight", () => onForward(15));
+  useKey([" "], onToggle);
+  useKey(["ArrowRight"], () => onForward(15));
+  useKey(["ArrowLeft"], () => onBackward(15));
 
   const renderAuthModal = () => {
     if (auth.matches("open")) {

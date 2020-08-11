@@ -57,8 +57,8 @@ define("./sw.js", ["./workbox-a61ac24a"], function (e) {
         },
         {
           url:
-            "/_next/static/chunks/57b36b2fd634502919b0857536d9a70da4d67a76.0cc778fb4cdb6ce2efef.js",
-          revision: "9938267c1f468013c899a1358d31f036",
+            "/_next/static/chunks/57b36b2fd634502919b0857536d9a70da4d67a76.63f2ae2919dba043309c.js",
+          revision: "c0eaf2c1a0366b220426738683eac576",
         },
         {
           url:
@@ -166,11 +166,11 @@ define("./sw.js", ["./workbox-a61ac24a"], function (e) {
           revision: "1a676a991411d1368aee17e516f63cae",
         },
         {
-          url: "/_next/static/zHBANBvJedEJ9q4hdazMC/_buildManifest.js",
+          url: "/_next/static/fqvwv0i_hGfnK9ex456tO/_buildManifest.js",
           revision: "4016a594436510e3d24b7c0f9bafd0c5",
         },
         {
-          url: "/_next/static/zHBANBvJedEJ9q4hdazMC/_ssgManifest.js",
+          url: "/_next/static/fqvwv0i_hGfnK9ex456tO/_ssgManifest.js",
           revision: "abee47769bf307639ace4945f9cfd4ff",
         },
         {
