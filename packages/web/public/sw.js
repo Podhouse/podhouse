@@ -166,11 +166,11 @@ define("./sw.js", ["./workbox-a61ac24a"], function (e) {
           revision: "1a676a991411d1368aee17e516f63cae",
         },
         {
-          url: "/_next/static/fqvwv0i_hGfnK9ex456tO/_buildManifest.js",
+          url: "/_next/static/hLgbWzRdsCeUJ7LZibwH-/_buildManifest.js",
           revision: "4016a594436510e3d24b7c0f9bafd0c5",
         },
         {
-          url: "/_next/static/fqvwv0i_hGfnK9ex456tO/_ssgManifest.js",
+          url: "/_next/static/hLgbWzRdsCeUJ7LZibwH-/_ssgManifest.js",
           revision: "abee47769bf307639ace4945f9cfd4ff",
         },
         {
