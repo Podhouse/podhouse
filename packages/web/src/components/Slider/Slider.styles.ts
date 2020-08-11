@@ -1,6 +1,8 @@
 import styled from "@emotion/styled";
 
-export const SliderContainer = styled.div`
+import { StyleProps } from "src/system/styles.types";
+
+export const SliderContainer = styled.div<StyleProps>`
   width: 100%;
   height: auto;
   display: flex;
@@ -13,17 +15,20 @@ export const SliderContainer = styled.div`
     background-color: transparent;
     -webkit-appearance: none;
   }
+
   input[type="range"]:focus {
     outline: none;
   }
+
   input[type="range"]::-webkit-slider-runnable-track {
-    background: #000000;
+    background: ${({ theme }) => theme.primary};
     border: 0;
     border-radius: 10px;
     width: 100%;
     height: 5px;
     cursor: pointer;
   }
+
   input[type="range"]::-webkit-slider-thumb {
     margin-top: -5px;
     width: 15px;
@@ -34,16 +39,19 @@ export const SliderContainer = styled.div`
     cursor: pointer;
     -webkit-appearance: none;
   }
+
   input[type="range"]:focus::-webkit-slider-runnable-track {
     background: #050505;
   }
+
   input[type="range"]::-moz-range-track {
-    background: #000000;
+    background: ${({ theme }) => theme.primary};
     border: 0;
     width: 100%;
     height: 3px;
     cursor: pointer;
   }
+
   input[type="range"]::-moz-range-thumb {
     width: 15px;
     height: 15px;
@@ -52,6 +60,7 @@ export const SliderContainer = styled.div`
     border-radius: 15px;
     cursor: pointer;
   }
+
   input[type="range"]::-ms-track {
     background: transparent;
     border-color: transparent;
@@ -61,14 +70,17 @@ export const SliderContainer = styled.div`
     height: 5px;
     cursor: pointer;
   }
+
   input[type="range"]::-ms-fill-lower {
-    background: #000000;
+    background: ${({ theme }) => theme.primary};
     border: 0;
   }
+
   input[type="range"]::-ms-fill-upper {
-    background: #000000;
+    background: ${({ theme }) => theme.primary};
     border: 0;
   }
+
   input[type="range"]::-ms-thumb {
     width: 15px;
     height: 15px;
@@ -79,12 +91,15 @@ export const SliderContainer = styled.div`
     margin-top: 0px;
     /*Needed to keep the Edge thumb centred*/
   }
+
   input[type="range"]:focus::-ms-fill-lower {
-    background: #000000;
+    background: ${({ theme }) => theme.primary};
   }
+
   input[type="range"]:focus::-ms-fill-upper {
     background: #050505;
   }
+
   /*TODO: Use one of the selectors from https://stackoverflow.com/a/20541859/7077589 and figure out
   how to remove the virtical space around the range input in IE*/
   @supports (-ms-ime-align: auto) {

@@ -1,0 +1,19 @@
+{
+  "the-best-way-to-listen-to-your-favorite-podcasts": "좋아하는 팟 캐스트를 듣는 가장 좋은 방법",
+  "sign-up-with-email": "이메일로 가입",
+  "or": "또는",
+  "sign-up-with-google": "Google에 가입",
+  "already-have-an-account?": "이미 계정이 있습니까?",
+  "don't-have-an-account?": "계정이 없으십니까?",
+  "forgot-your-password?": "비밀번호를 잊어 버렸습니까?",
+  "email": "이메일",
+  "password": "암호",
+  "sign-up": "가입하기",
+  "sign-in": "로그인",
+  "enter-your-email-address-and-we'll-send-you-an-email-with-a-password-reset-link": "이메일 주소를 입력하시면 비밀번호 재설정 링크가 포함 된 이메일을 보내드립니다.",
+  "send-reset-link": "재설정 링크 보내기",
+  "new-password": "새 비밀번호",
+  "confirm-new-password": "새 암호를 확인합니다",
+  "thanks,-please-check-your-email,-we've-sent-you-an-email-with instructions-to-reset-your-password": "감사합니다. 이메일을 확인하십시오. 비밀번호 재설정 지침이 포함 된 이메일을 보내 드렸습니다.",
+  "done": "끝난"
+}

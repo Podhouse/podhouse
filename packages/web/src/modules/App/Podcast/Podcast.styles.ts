@@ -26,7 +26,7 @@ export const PodcastHeader = styled.div`
   grid-row: 1 / 2;
   grid-column: 1 / 2;
   display: grid;
-  grid-template-rows: 200px max-content 40px;
+  grid-template-rows: 200px max-content 40px 40px;
   grid-template-columns: 1fr;
   grid-row-gap: 20px;
 
@@ -176,27 +176,35 @@ export const PodcastEpisodesContainer = styled.div`
 `;
 
 export const PodcastLinksContainer = styled.div<StyleProps>`
-  display: none;
+  grid-row: 4 / 5;
+  grid-column: 1 / 2;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
 
   @media screen and (min-width: 800px) {
-    width: fit-content;
-    height: 100%;
     display: grid;
-    grid-template-columns: max-content max-content;
+    grid-row: 2 / 3;
+    grid-column: 2 / 3;
+    display: grid;
+    grid-template-columns: max-content max-content 1fr;
     grid-template-rows: 1fr;
-    grid-column-gap: 10px;
-    align-items: center;
+    grid-column-gap: 20px;
   }
 `;
 
 export const PodcastLinkContainer = styled.div`
-  width: auto;
-  height: auto;
-  display: grid;
-  grid-template-columns: max-content max-content;
-  grid-template-rows: 1fr;
-  grid-column-gap: 5px;
-  align-items: center;
+  display: none;
+
+  @media screen and (min-width: 800px) {
+    width: auto;
+    height: auto;
+    display: grid;
+    grid-template-columns: max-content max-content;
+    grid-template-rows: 1fr;
+    grid-column-gap: 5px;
+    align-items: center;
+  }
 `;
 
 export const PodcastLink = styled.a<StyleProps>`
@@ -209,13 +217,15 @@ export const PodcastLink = styled.a<StyleProps>`
   text-decoration: none;
 `;
 
-export const PodcastSearchInputContainer = styled.div<StyleProps>`
-  display: none;
+export const PodcastSearchInputContainer = styled.form<StyleProps>`
+  grid-row: 1 / 2;
+  grid-column: 1 / 2;
 
   @media screen and (min-width: 800px) {
-    display: block;
-    width: fit-content;
-    height: 100%;
-    align-self: flex-end;
+    grid-row: 1 / 2;
+    grid-column: 3 / 4;
+    width: 100%;
+    max-width: 400px;
+    justify-self: end;
   }
 `;

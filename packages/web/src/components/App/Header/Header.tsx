@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 
 import Search from "./Search/Search";
 import Settings from "./Settings/Settings";

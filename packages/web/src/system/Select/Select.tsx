@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 
 import { StyledSelect } from "./Select.styles";
 
@@ -9,9 +9,10 @@ interface Option {
 
 interface SelectProps {
   options: Array<Option>;
+  onChange: (event: any) => any;
 }
 
-const Select = ({ options }: SelectProps) => {
+const Select = ({ options, onChange }: SelectProps) => {
   const renderOptions = () =>
     options.map(({ name, value }: Option) => (
       <option key={value} value={value}>
@@ -20,7 +21,7 @@ const Select = ({ options }: SelectProps) => {
     ));
 
   return (
-    <StyledSelect>
+    <StyledSelect onChange={onChange}>
       <option value="" hidden>
         Select
       </option>

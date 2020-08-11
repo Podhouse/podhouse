@@ -1,4 +1,5 @@
 import React from "react";
+import { withTranslation } from "i18n";
 import { useKeenSlider } from "keen-slider/react";
 import Link from "next/link";
 
@@ -16,10 +17,10 @@ import {
 const avatar =
   "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg";
 
-const Featured = () => {
+const Featured = ({ t }: any) => {
   const [pause, setPause] = React.useState(false);
   const timer = React.useRef<any>();
-  const [sliderRef, slider] = useKeenSlider({
+  const [sliderRef, slider] = useKeenSlider<HTMLDivElement>({
     loop: true,
     duration: 7000,
     dragStart: () => {
@@ -64,7 +65,7 @@ const Featured = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              FEATURED
+              {t("featured")}
             </FeaturedBadge>
 
             <Link href="/app/podcast/[podcast]" as="/app/podcast/invisible">
@@ -98,7 +99,7 @@ const Featured = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              FEATURED
+              {t("featured")}
             </FeaturedBadge>
 
             <Link href="/app/podcast/[podcast]" as="/app/podcast/invisible">
@@ -132,7 +133,7 @@ const Featured = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              FEATURED
+              {t("featured")}
             </FeaturedBadge>
 
             <Link href="/app/podcast/[podcast]" as="/app/podcast/invisible">
@@ -159,4 +160,6 @@ const Featured = () => {
   );
 };
 
-export default Featured;
+Featured.getInitialProps = async () => ({ namespacesRequired: ["common"] });
+
+export default withTranslation("common")(Featured);

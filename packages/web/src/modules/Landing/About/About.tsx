@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 
 import Main from "./Main/Main";
 import Team from "./Team/Team";

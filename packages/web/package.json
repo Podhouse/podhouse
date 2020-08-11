@@ -11,13 +11,14 @@
     "test:watch": "jest --watchAll",
     "test:coverage": "jest --coverage",
     "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix",
-    "format": "prettier --write src",
-    "upgrade": "yarn upgrade-interactive --latest"
+    "format": "prettier --write src"
   },
   "dependencies": {
     "@emotion/core": "^10.0.28",
     "@emotion/styled": "^10.0.27",
     "@hookform/resolvers": "^0.0.6",
+    "@rooks/use-key": "^3.6.0",
+    "@rooks/use-keys": "^3.6.0",
     "@xstate/react": "^0.8.1",
     "@xstate/test": "^0.4.0",
     "@zeit/next-source-maps": "^0.0.3",
@@ -25,9 +26,10 @@
     "graphql": "^15.3.0",
     "keen-slider": "^5.2.2",
     "lint-staged": "^10.2.11",
-    "next": "^9.4.4",
+    "next": "^9.5.1",
     "next-compose-plugins": "^2.2.0",
     "next-ga": "^2.3.4",
+    "next-i18next": "^6.0.2",
     "next-images": "^1.4.0",
     "next-pwa": "^3.1.0",
     "react": "^16.13.1",
@@ -36,7 +38,8 @@
     "react-feather": "^2.0.8",
     "react-hook-form": "^6.0.8",
     "react-scroll-section": "^2.0.0",
-    "rehawk": "^0.1.5",
+    "rehawk": "^0.1.8",
+    "typescript": "^3.9.7",
     "xstate": "^4.11.0",
     "yup": "^0.29.1"
   },

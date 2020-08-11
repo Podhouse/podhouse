@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 
 import {
   DownloadContainer,
@@ -8,6 +8,9 @@ import {
   DownloadLink,
   DownloadAssetsContainer,
 } from "./Download.styles";
+
+import PodhouseDark from "../../../../../public/logo/logo-medium-dark.svg";
+import PodhouseWhite from "../../../../../public/logo/logo-medium-white.svg";
 
 const Download = () => (
   <DownloadContainer>
@@ -23,7 +26,9 @@ const Download = () => (
         </DownloadLink>
       </DownloadHeaderContainer>
 
-      <DownloadAssetsContainer color="#FFF">Dark</DownloadAssetsContainer>
+      <DownloadAssetsContainer color="#FFF">
+        <PodhouseDark />
+      </DownloadAssetsContainer>
     </DownloadItemContainer>
 
     <DownloadItemContainer>
@@ -38,7 +43,9 @@ const Download = () => (
         </DownloadLink>
       </DownloadHeaderContainer>
 
-      <DownloadAssetsContainer color="#000">white</DownloadAssetsContainer>
+      <DownloadAssetsContainer color="#000">
+        <PodhouseWhite />
+      </DownloadAssetsContainer>
     </DownloadItemContainer>
   </DownloadContainer>
 );

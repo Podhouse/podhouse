@@ -1,0 +1,19 @@
+{
+  "the-best-way-to-listen-to-your-favorite-podcasts": "お気に入りのポッドキャストを聴くのに最適な方法",
+  "sign-up-with-email": "メールで登録する",
+  "or": "或いは",
+  "sign-up-with-google": "Googleに登録する",
+  "already-have-an-account?": "すでにアカウントを持っていますか？",
+  "don't-have-an-account?": "アカウントを持っていませんか？",
+  "forgot-your-password?": "パスワードをお忘れですか？",
+  "email": "電子メール",
+  "password": "パスワード",
+  "sign-up": "サインアップ",
+  "sign-in": "サインイン",
+  "enter-your-email-address-and-we'll-send-you-an-email-with-a-password-reset-link": "メールアドレスを入力すると、パスワードリセットのリンクが記載されたメールを送信します。",
+  "send-reset-link": "リセットリンクを送信",
+  "new-password": "新しいパスワード",
+  "confirm-new-password": "新しいパスワードの確認",
+  "thanks,-please-check-your-email,-we've-sent-you-an-email-with instructions-to-reset-your-password": "パスワードの再設定方法を記載したメールをお送りしましたので、メールをご確認ください。",
+  "done": "了"
+}

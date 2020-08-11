@@ -1,5 +1,6 @@
-import * as React from "react";
+import React from "react";
 import Scrollbars from "react-custom-scrollbars";
+import Link from "next/link";
 
 import Navigation from "./Navigation/Navigation";
 
@@ -40,7 +41,9 @@ const Menu = () => {
         <MenuInsideContainer>
           <MenuLogoContainer>{onRenderLogo()}</MenuLogoContainer>
           <Navigation />
-          <MenuAvatarContainer src={avatar} />
+          <Link href="/app/episode/[episode]" as="/app/episode/123">
+            <MenuAvatarContainer src={avatar} />
+          </Link>
         </MenuInsideContainer>
       </Scrollbars>
     </MenuContainer>

@@ -6,7 +6,7 @@ export const PlayerContainer = styled.div<StyleProps>`
   width: 100%;
   height: 70px;
   position: fixed;
-  bottom: 60px;
+  bottom: 59px;
   display: grid;
   grid-template-columns: max-content 1fr;
   grid-template-rows: 14px 1fr;
@@ -15,7 +15,7 @@ export const PlayerContainer = styled.div<StyleProps>`
   background: ${({ theme }) => theme.backgroundPrimary};
   box-sizing: border-box;
   cursor: pointer;
-  padding: 0 30px 0 30px;
+  padding: 0;
 
   @media screen and (min-width: 800px) {
     width: 100%;

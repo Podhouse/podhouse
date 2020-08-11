@@ -96,7 +96,8 @@ export const FeaturedDescription = styled.p<StyleProps>`
 
 export const FeaturedBadge = styled.a<StyleProps>`
   width: fit-content;
-  padding: 5px;
+  height: fit-content;
+  padding: 3px 10px;
   border-radius: 3px;
   background-color: ${({ theme }) => theme.info};
   display: flex;
@@ -104,10 +105,10 @@ export const FeaturedBadge = styled.a<StyleProps>`
   justify-content: center;
   font-family: Inter;
   font-style: normal;
-  font-weight: 600;
-  font-size: 10px;
-  line-height: 10px;
+  font-weight: 500;
+  font-size: 12px;
   text-align: center;
   color: white;
   text-decoration: none;
+  text-transform: uppercase;
 `;

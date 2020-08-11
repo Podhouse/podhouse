@@ -1,11 +1,11 @@
-import * as React from "react";
+import React from "react";
 import { useRehawk } from "rehawk";
+
+import { PlayerContainer } from "./Player.styles";
 
 import Podcast from "./Podcast/Podcast";
 import Controls from "./Controls/Controls";
 import RightControls from "./RightControls/RightControls";
-
-import { PlayerContainer } from "./Player.styles";
 
 const src =
   "https://storage.googleapis.com/media-session/elephants-dream/the-wires.mp3";
@@ -43,6 +43,7 @@ const Player = () => {
   return (
     <PlayerContainer>
       <Podcast ready={ready} currentPodcast={currentPodcast} />
+
       <Controls
         ready={ready}
         playing={playing}
@@ -54,6 +55,7 @@ const Player = () => {
         onBackward={onBackward}
         onForward={onForward}
       />
+
       <RightControls
         ready={ready}
         volume={volume}

@@ -78,6 +78,6 @@ export const TeamTextParagraph = styled.p<StyleProps>`
   font-weight: normal;
   font-size: 14px;
   line-height: 25px;
-  color: ${({ theme }) => theme.backgroundSecondary};
+  color: ${({ theme }) => theme.secondary};
   text-align: start;
 `;

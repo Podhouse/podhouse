@@ -1,4 +1,5 @@
 import React from "react";
+import { withTranslation } from "i18n";
 
 import {
   SettingsItemContainer,
@@ -18,7 +19,7 @@ import Toggle from "src/system/Toggle/Toggle";
 
 import useToggle from "src/hooks/useToggle";
 
-const Notifications = () => {
+const Notifications = ({ t }: any) => {
   const {
     toggle: toggleWeekly,
     handleToggle: handleToggleWeekly,
@@ -28,14 +29,14 @@ const Notifications = () => {
   return (
     <SettingsItemContainer>
       <SettingsItemHeaderContainer>
-        <SettingsItemHeaderTitle>Notifications</SettingsItemHeaderTitle>
+        <SettingsItemHeaderTitle>{t("notifications")}</SettingsItemHeaderTitle>
         <SettingsItemHeaderBreakLine />
       </SettingsItemHeaderContainer>
 
       <SettingsItemContentContainer>
         <NotificationsItemContainer>
           <NotificationsItemTitle>
-            Weekly recomendations about trending podcasts
+            {t("weekly-recomendations-about-trending-podcasts")}
           </NotificationsItemTitle>
 
           <NotificationsToggleContainer>
@@ -49,7 +50,7 @@ const Notifications = () => {
 
         <NotificationsItemContainer>
           <NotificationsItemTitle>
-            Product news, upcoming updates and features
+            {t("product-news,-upcoming-updates-and-features")}
           </NotificationsItemTitle>
 
           <NotificationsToggleContainer>
@@ -65,4 +66,8 @@ const Notifications = () => {
   );
 };
 
-export default Notifications;
+Notifications.getInitialProps = async () => ({
+  namespacesRequired: ["settings"],
+});
+
+export default withTranslation("settings")(Notifications);

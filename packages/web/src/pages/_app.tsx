@@ -1,5 +1,7 @@
 import * as React from "react";
 import App from "next/app";
+import { appWithTranslation } from "i18n";
+
 import "keen-slider/keen-slider.min.css";
 
 import Provider from "src/components/Provider/Provider";
@@ -15,4 +17,4 @@ class MyApp extends App<{ Component: any }, any> {
   }
 }
 
-export default MyApp;
+export default appWithTranslation(MyApp);

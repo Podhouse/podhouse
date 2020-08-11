@@ -2,16 +2,16 @@ import styled from "@emotion/styled";
 
 import { StyleProps } from "src/system/styles.types";
 
-export const ToggleWrapper = styled.div`
+export const ToggleWrapper = styled.div<StyleProps>`
   input[type="checkbox"],
   input[type="radio"] {
-    --active: #275efe;
-    --active-inner: #fff;
-    --focus: 2px rgba(39, 94, 254, 0.3);
-    --border: #bbc1e1;
-    --border-hover: #275efe;
-    --background: #fff;
-    --disabled: #f6f8ff;
+    --active: ${({ theme }) => theme.primary};
+    --active-inner: ${({ theme }) => theme.backgroundPrimary};
+    --focus: 2px rgba(0, 0, 0, 0.1);
+    --border: ${({ theme }) => theme.tertiary};
+    --border-hover: ${({ theme }) => theme.primary};
+    --background: ${({ theme }) => theme.backgroundPrimary};
+    --disabled: ${({ theme }) => theme.backgroundSecondary};
     --disabled-inner: #e1e6f9;
     -webkit-appearance: none;
     -moz-appearance: none;

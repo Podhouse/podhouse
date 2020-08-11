@@ -15,6 +15,7 @@ export const PodcastContainer = styled.div`
   grid-column: 1 / 2;
   grid-row: 2 / 3;
   z-index: 10;
+  margin-left: 30px;
 
   @media screen and (min-width: 800px) {
     width: 100%;
@@ -25,6 +26,7 @@ export const PodcastContainer = styled.div`
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
     align-items: center;
+    margin: 0;
   }
 `;
 
@@ -62,7 +64,7 @@ export const PodcastDetails = styled.div`
   }
 `;
 
-export const PodcastEpisode = styled.h3<StyleProps>`
+export const PodcastEpisode = styled.a<StyleProps>`
   width: 100%;
   max-width: 300px;
   white-space: nowrap;
@@ -75,6 +77,7 @@ export const PodcastEpisode = styled.h3<StyleProps>`
   line-height: 17px;
   color: ${({ theme }) => theme.primary};
   cursor: pointer;
+  text-decoration: none;
 
   @media screen and (min-width: 800px) {
     grid-row: 1 / 2;

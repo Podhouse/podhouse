@@ -1,3 +1,5 @@
+import { StyleProps } from "src/system/styles.types";
+
 export interface InputProps {
   ref: any;
   type: string;
@@ -14,11 +16,15 @@ export interface InputProps {
   autoComplete?: "on" | "off";
 }
 
-export interface InputContainerProps {
+interface InputContainerProps {
   width?: number;
 }
 
-export interface InputFieldProps extends InputContainerProps {
+interface InputFieldProps extends InputContainerProps {
   height?: number;
   error?: string | undefined;
 }
+
+export type ContainerProps = InputContainerProps & StyleProps;
+
+export type FieldProps = InputFieldProps & StyleProps;

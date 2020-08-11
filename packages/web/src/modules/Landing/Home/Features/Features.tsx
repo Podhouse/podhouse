@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { Layers, Volume2, Activity, Smile } from "react-feather";
 
 import {
