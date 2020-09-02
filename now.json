@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "alias": ["podhouse.now.sh"],
+  "alias": ["podhouse.app"],
   "builds": [
     {
       "src": "packages/web/package.json",
