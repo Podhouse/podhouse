@@ -1,0 +1,127 @@
+"""The root of all... queries"""
+type Query {
+  """Fetches an object given its ID"""
+  node(
+    """The ID of an object"""
+    id: ID!
+  ): Node
+  currentUser: User
+  getUsers(after: String, first: Int, before: String, last: Int, search: String): UserConnection
+}
+
+"""An object with an ID"""
+interface Node {
+  """The id of the object."""
+  id: ID!
+}
+
+"""User data"""
+type User implements Node {
+  """The ID of an object"""
+  id: ID!
+  _id: String!
+  email: String!
+  notifications: Notifications
+  providers: [Provider]
+}
+
+"""Notifications"""
+type Notifications {
+  weekly: Boolean!
+  news: Boolean!
+}
+
+"""Provider"""
+type Provider {
+  id: String
+  provider: String
+}
+
+"""A connection to a list of items."""
+type UserConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [UserEdge]
+  count: Int
+}
+
+"""Information about pagination in a connection."""
+type PageInfo {
+  """When paginating forwards, are there more items?"""
+  hasNextPage: Boolean!
+
+  """When paginating backwards, are there more items?"""
+  hasPreviousPage: Boolean!
+
+  """When paginating backwards, the cursor to continue."""
+  startCursor: String
+
+  """When paginating forwards, the cursor to continue."""
+  endCursor: String
+}
+
+"""An edge in a connection."""
+type UserEdge {
+  """The item at the end of the edge"""
+  node: User
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type Mutation {
+  UserSignInWithEmail(input: UserSignInWithEmailInput!): UserSignInWithEmailPayload
+  UserSignUpWithEmail(input: UserSignUpWithEmailInput!): UserSignUpWithEmailPayload
+  UserChangePassword(input: UserChangePasswordInput!): UserChangePasswordPayload
+  UserChangeNotifications(input: UserChangeNotificationsInput!): UserChangeNotificationsPayload
+}
+
+type UserSignInWithEmailPayload {
+  token: String
+  error: String
+  clientMutationId: String
+}
+
+input UserSignInWithEmailInput {
+  email: String!
+  password: String!
+  clientMutationId: String
+}
+
+type UserSignUpWithEmailPayload {
+  token: String
+  error: String
+  clientMutationId: String
+}
+
+input UserSignUpWithEmailInput {
+  email: String!
+  password: String!
+  clientMutationId: String
+}
+
+type UserChangePasswordPayload {
+  message: String
+  error: String
+  clientMutationId: String
+}
+
+input UserChangePasswordInput {
+  oldPassword: String!
+  newPassword: String!
+  clientMutationId: String
+}
+
+type UserChangeNotificationsPayload {
+  message: String
+  error: String
+  clientMutationId: String
+}
+
+input UserChangeNotificationsInput {
+  weekly: Boolean!
+  news: Boolean!
+  clientMutationId: String
+}

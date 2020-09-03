@@ -21,10 +21,12 @@
     "server:test": "yarn workspace @podhouse/server test",
     "server:lint": "yarn workspace @podhouse/server lint",
     "server:format": "yarn workspace @podhouse/server format",
+    "server:update-schema": "yarn workspace @podhouse/server update-schema",
     "lint:staged": "lint-staged",
     "build": "yarn workspace @podhouse/web build",
     "lint": "yarn workspace @podhouse/web lint & yarn workspace @podhouse/server lint",
-    "test": "yarn workspace @podhouse/web test & yarn workspace @podhouse/server test"
+    "test": "yarn workspace @podhouse/web test & yarn workspace @podhouse/server test",
+    "relay": "yarn workspace @podhouse/web relay"
   },
   "devDependencies": {
     "husky": "^4.2.5",

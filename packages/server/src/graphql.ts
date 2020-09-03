@@ -1,6 +1,6 @@
 import { Request, Response } from "koa";
 
-import schema from "./graphql/schema";
+import { schema } from "./graphql/schema";
 import * as loaders from "./loaders";
 import { getUser } from "./utils/auth";
 
