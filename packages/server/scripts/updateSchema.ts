@@ -1,29 +1,38 @@
 import fs from "fs";
+import { graphql } from "graphql";
+import { getIntrospectionQuery, printSchema } from "graphql/utilities";
 import path from "path";
-import { promisify } from "util";
 
-import { printSchema } from "graphql/utilities";
+import { schema } from "../src/graphql/schema";
 
-import { schema as schemaConfig } from "../src/graphql/schema";
-
-const writeFileAsync = promisify(fs.writeFile);
-
+// Save JSON of full schema introspection for Babel Relay Plugin to use
 (async () => {
-  const configs = [
-    {
-      schema: schemaConfig,
-      path: "../schema",
-    },
-  ];
+  const result = await graphql(schema, getIntrospectionQuery());
+  if (result.errors) {
+    console.error(
+      "ERROR introspecting schema: ",
+      JSON.stringify(result.errors, null, 2),
+    ); //eslint-disable-line no-console
+  } else {
+    fs.writeFileSync(
+      path.join(__dirname, "../schema/schema.json"),
+      JSON.stringify(result, null, 2),
+    );
+    fs.writeFileSync(
+      path.join(__dirname, "../../web/schema/schema.json"),
+      JSON.stringify(result, null, 2),
+    );
 
-  await Promise.all([
-    ...configs.map(async (config) => {
-      await writeFileAsync(
-        path.join(__dirname, `${config.path}/schema.graphql`),
-        printSchema(config.schema),
-      );
-    }),
-  ]);
-
-  process.exit(0);
+    process.exit(0);
+  }
 })();
+
+// Save user readable type system shorthand of schema
+fs.writeFileSync(
+  path.join(__dirname, "../schema/schema.graphql"),
+  printSchema(schema),
+);
+fs.writeFileSync(
+  path.join(__dirname, "../../web/schema/schema.graphql"),
+  printSchema(schema),
+);

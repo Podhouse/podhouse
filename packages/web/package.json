@@ -11,7 +11,8 @@
     "test:watch": "jest --watchAll",
     "test:coverage": "jest --coverage",
     "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix",
-    "format": "prettier --write src"
+    "format": "prettier --write src",
+    "relay": "relay-compiler"
   },
   "dependencies": {
     "@emotion/core": "^10.0.35",
@@ -22,6 +23,8 @@
     "@xstate/react": "^0.8.1",
     "@xstate/test": "^0.4.1",
     "@zeit/next-source-maps": "^0.0.3",
+    "babel-loader": "^8.1.0",
+    "babel-plugin-relay": "^10.0.1",
     "emotion-theming": "^10.0.27",
     "graphql": "^15.3.0",
     "keen-slider": "^5.2.3",
@@ -37,9 +40,14 @@
     "react-dom": "^16.13.1",
     "react-feather": "^2.0.8",
     "react-hook-form": "^6.7.0",
+    "react-relay": "^10.0.1",
     "react-scroll-section": "^2.1.0",
     "reakit": "^1.2.3",
     "rehawk": "^0.1.8",
+    "relay-compiler": "^10.0.1",
+    "relay-compiler-language-typescript": "^13.0.1",
+    "relay-config": "^10.0.1",
+    "relay-runtime": "^10.0.1",
     "typescript": "^4.0.2",
     "xstate": "^4.13.0",
     "yup": "^0.29.3"
