@@ -51,14 +51,22 @@ define("./sw.js", ["./workbox-a61ac24a"], function (e) {
     e.precacheAndRoute(
       [
         {
+          url: "/_next/static/XIy72DGUO2WX-us9I55fY/_buildManifest.js",
+          revision: "3d4bc53f29b60737e00f3823b946694c",
+        },
+        {
+          url: "/_next/static/XIy72DGUO2WX-us9I55fY/_ssgManifest.js",
+          revision: "abee47769bf307639ace4945f9cfd4ff",
+        },
+        {
           url:
             "/_next/static/chunks/10bcc3a9640e60da2ea530fc39f92e7c1e1c9c1b.1d30d72d1c6d296bfa6e.js",
           revision: "64bf8558aaf92447bf6ec5e3c606eae9",
         },
         {
           url:
-            "/_next/static/chunks/57b36b2fd634502919b0857536d9a70da4d67a76.83bfa62f323954e4064d.js",
-          revision: "0cf0857ffbf275d659ce2837fb4b2fa5",
+            "/_next/static/chunks/57b36b2fd634502919b0857536d9a70da4d67a76.11dc9f4118407532451a.js",
+          revision: "9220a322bf439aec5c32803add1983c4",
         },
         {
           url:
@@ -77,12 +85,12 @@ define("./sw.js", ["./workbox-a61ac24a"], function (e) {
         },
         {
           url:
-            "/_next/static/chunks/c1d33481a1436d4ca709db0f4123d3d2b01a1a7e.0e2ead62fddff22b7ac8.js",
-          revision: "06468f4aea19b7cc3ad7ad1203dd4aa2",
+            "/_next/static/chunks/c1d33481a1436d4ca709db0f4123d3d2b01a1a7e.ec93dcfd2251918842c7.js",
+          revision: "c746a1b87bcb99c5fa0975a9a26fba78",
         },
         {
-          url: "/_next/static/chunks/commons.6404a39571e3a3a3a141.js",
-          revision: "7228d3c6a978350e40c0b5eb3f706b63",
+          url: "/_next/static/chunks/commons.209436ba40ffd603eb44.js",
+          revision: "463682f7efc17f4f245bb0959f8db901",
         },
         {
           url: "/_next/static/chunks/framework.ad819eb1a9164e76d2b7.js",
@@ -142,8 +150,8 @@ define("./sw.js", ["./workbox-a61ac24a"], function (e) {
         },
         {
           url:
-            "/_next/static/chunks/pages/app/settings-83fe84634415ad5748f8.js",
-          revision: "47f43527f5aab4a34f13a4ca57fd6c56",
+            "/_next/static/chunks/pages/app/settings-195f5915dd8cee0a71dd.js",
+          revision: "c3531f1cf1227223eb302d64d4ddeae1",
         },
         {
           url: "/_next/static/chunks/pages/brand-139854e99070691ba0e1.js",
@@ -164,14 +172,6 @@ define("./sw.js", ["./workbox-a61ac24a"], function (e) {
         {
           url: "/_next/static/css/ab9a708e1ec0548bbb89.css",
           revision: "81a28ab6b9ed4cc459d8009afef903e9",
-        },
-        {
-          url: "/_next/static/qjTYmGeZC-5hWWYhXqE4S/_buildManifest.js",
-          revision: "45ae033baee41748bb619394dea84e52",
-        },
-        {
-          url: "/_next/static/qjTYmGeZC-5hWWYhXqE4S/_ssgManifest.js",
-          revision: "abee47769bf307639ace4945f9cfd4ff",
         },
         {
           url: "/android-icon-144x144.png",

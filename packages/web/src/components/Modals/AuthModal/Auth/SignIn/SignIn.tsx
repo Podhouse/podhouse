@@ -51,7 +51,9 @@ const SignIn = ({ t }: any) => {
           name="email"
           label={t("email")}
           placeholder={t("email")}
-          height={40}
+          variant="primary"
+          scale="normal"
+          ariaLabel="email"
           ref={register}
           error={errors.email?.message}
         />
@@ -61,7 +63,9 @@ const SignIn = ({ t }: any) => {
           name="password"
           label={t("password")}
           placeholder={t("password")}
-          height={40}
+          variant="primary"
+          scale="normal"
+          ariaLabel="password"
           ref={register}
           error={errors.password?.message}
         />

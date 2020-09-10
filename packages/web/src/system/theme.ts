@@ -9,6 +9,22 @@ const light = {
   warning: "#FFBC05",
   success: "#2BC454",
   error: "#F93650",
+  inputs: {
+    primary: {
+      color: "#6F6F6F",
+      backgroundColor: "#F3F3F3",
+    },
+    secondary: {
+      color: "#101010",
+      backgroundColor: "#FFFFFF",
+      border: "1px solid #101010",
+    },
+    disabled: {
+      color: "#B7B7B7",
+      backgroundColor: "#F3F3F3",
+      cursor: "not-allowed",
+    },
+  },
   labels: {
     primary: {
       color: "#6F6F6F",
@@ -64,6 +80,22 @@ const dark = {
   warning: "#FFBC05",
   success: "#2BC454",
   error: "#F93650",
+  inputs: {
+    primary: {
+      color: "#B7B7B7",
+      backgroundColor: "#212128",
+    },
+    secondary: {
+      color: "#B7B7B7",
+      backgroundColor: "#151419",
+      border: "1px solid #FFFFFF",
+    },
+    disabled: {
+      color: "#B7B7B7",
+      backgroundColor: "#212128",
+      cursor: "not-allowed",
+    },
+  },
   labels: {
     primary: {
       color: "#B7B7B7",

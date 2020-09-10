@@ -48,7 +48,9 @@ const Password = ({ t }: any) => {
             name="currentPassword"
             label={t("current-password")}
             placeholder={t("current-password")}
-            height={40}
+            variant="primary"
+            scale="normal"
+            ariaLabel="current password"
             ref={register}
             error={errors.currentPassword?.message}
           />
@@ -58,7 +60,9 @@ const Password = ({ t }: any) => {
             name="newPassword"
             label={t("new-password")}
             placeholder={t("new-password")}
-            height={40}
+            variant="primary"
+            scale="normal"
+            ariaLabel="new password"
             ref={register}
             error={errors.newPassword?.message}
           />

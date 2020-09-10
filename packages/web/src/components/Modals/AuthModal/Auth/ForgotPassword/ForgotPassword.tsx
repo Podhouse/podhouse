@@ -51,7 +51,9 @@ const ForgotPassword = ({ t }: any) => {
           name="email"
           label={t("email")}
           placeholder={t("email")}
-          height={40}
+          variant="primary"
+          scale="normal"
+          ariaLabel="email"
           ref={register}
           error={errors.email?.message}
         />

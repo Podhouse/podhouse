@@ -49,7 +49,9 @@ const ResetPassword = ({ t }: any) => {
           name="newPassword"
           label={t("new-password")}
           placeholder={t("new-password")}
-          height={40}
+          variant="primary"
+          scale="normal"
+          ariaLabel="new password"
           ref={register}
           error={errors.newPassword?.message}
         />
@@ -59,7 +61,9 @@ const ResetPassword = ({ t }: any) => {
           name="confirmNewPassword"
           label={t("confirm-new-password")}
           placeholder={t("confirm-new-password")}
-          height={40}
+          variant="primary"
+          scale="normal"
+          ariaLabel="confirm new password"
           ref={register}
           error={errors.confirmNewPassword?.message}
         />

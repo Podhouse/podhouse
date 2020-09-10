@@ -43,7 +43,7 @@ const StyledButton = styled("button")<Props>(
       small: {
         height: 30,
         fontWeight: 400,
-        fontSize: 14,
+        fontSize: 12,
       },
       normal: {
         height: 40,

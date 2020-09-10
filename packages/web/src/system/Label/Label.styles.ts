@@ -38,11 +38,11 @@ const StyledLabel = styled("label")<Props>(
       },
       normal: {
         fontSize: 14,
-        fontWeight: 500,
+        fontWeight: 400,
       },
       big: {
         fontSize: 16,
-        fontWeight: 600,
+        fontWeight: 500,
       },
     },
   }),
