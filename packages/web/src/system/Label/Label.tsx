@@ -8,10 +8,15 @@ import { LabelProps } from "./Label.types";
 const Label = (props: LabelProps) => {
   const { labelProps } = useLabel(props);
 
-  const { label, variant, size } = props;
+  const { label, variant, size, disabled } = props;
 
   return (
-    <StyledLabel {...labelProps} variant={variant} size={size}>
+    <StyledLabel
+      {...labelProps}
+      variant={variant}
+      size={size}
+      disabled={disabled}
+    >
       {label}
     </StyledLabel>
   );

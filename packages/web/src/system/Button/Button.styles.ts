@@ -10,8 +10,8 @@ type Props = ButtonProps & StyleProps;
 const StyledButton = styled("button")<Props>(
   {
     width: "auto",
-    paddingRight: 10,
-    paddingLeft: 10,
+    paddingRight: 15,
+    paddingLeft: 15,
     border: "none",
     borderRadius: 5,
     cursor: "pointer",

@@ -4,4 +4,5 @@ export interface LinkProps {
   size: "small" | "normal" | "big";
   target?: "_blank" | "_self" | "_parent" | "_top" | "framename";
   children: any;
+  disabled?: boolean;
 }

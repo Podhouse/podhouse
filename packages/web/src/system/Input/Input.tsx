@@ -25,12 +25,19 @@ const Input = React.forwardRef((props: InputProps, ref) => {
     variant,
     scale,
     ariaLabel,
+    disabled,
   } = props;
 
   return (
     <InputContainer>
       {label ? (
-        <Label {...labelProps} label={label} variant="primary" size="normal" />
+        <Label
+          {...labelProps}
+          label={label}
+          variant="primary"
+          size="normal"
+          disabled={disabled}
+        />
       ) : null}
 
       <StyledInput
@@ -47,6 +54,7 @@ const Input = React.forwardRef((props: InputProps, ref) => {
         variant={variant}
         scale={scale}
         ariaLabel={ariaLabel}
+        disabled={disabled}
         autoComplete="off"
       />
 

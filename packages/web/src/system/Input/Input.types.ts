@@ -11,4 +11,5 @@ export interface InputProps {
   variant: "primary" | "secondary" | "disabled";
   scale: "small" | "normal" | "big";
   ariaLabel: string;
+  disabled?: boolean;
 }
