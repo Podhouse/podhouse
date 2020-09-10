@@ -21,14 +21,19 @@ const StyledButton = styled("button")<Props>(
   },
   variant({
     prop: "variant",
+    scale: "buttons",
     variants: {
       primary: {
-        color: "#FFFFFF",
-        backgroundColor: "#101010",
+        color: "primary",
+        backgroundColor: "primary",
       },
       secondary: {
-        color: "#B7B7B7",
-        backgroundColor: "#F3F3F3",
+        color: "secondary",
+        backgroundColor: "secondary",
+      },
+      disabled: {
+        color: "disabled",
+        backgroundColor: "disabled",
       },
     },
   }),

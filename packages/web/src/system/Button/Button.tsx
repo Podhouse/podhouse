@@ -9,15 +9,7 @@ const Button = (props: ButtonProps) => {
   const ref = useRef();
   const { buttonProps } = useButton(props, ref);
 
-  const {
-    type,
-    variant,
-    size,
-    onClick,
-    submitting,
-    disabled,
-    children,
-  } = props;
+  const { type, variant, size, onClick, disabled, children } = props;
 
   return (
     <StyledButton
@@ -25,8 +17,7 @@ const Button = (props: ButtonProps) => {
       variant={variant}
       size={size}
       onClick={onClick}
-      submitting={submitting}
-      disabled={submitting || disabled}
+      disabled={disabled}
       ref={ref}
       {...buttonProps}
     >

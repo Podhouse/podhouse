@@ -23,7 +23,7 @@ const Input = React.forwardRef(
     ref,
   ) => (
     <InputContainer width={width}>
-      {label ? <Label label={label} mb={10} /> : null}
+      {label ? <Label label={label} variant="primary" size="normal" /> : null}
 
       <InputStyled
         ref={ref}
