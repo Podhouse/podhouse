@@ -42,7 +42,7 @@ const Episode = ({ t }: any) => (
         </EpisodeDetailsContainer>
 
         <EpisodeListenButtonContainer>
-          <Button type="button" width={200} height={40}>
+          <Button type="button" variant="primary" size="normal">
             {t("listen")}
           </Button>
         </EpisodeListenButtonContainer>

@@ -30,7 +30,12 @@ const ForgotPasswordSuccess = ({ t }: any) => {
         </AuthText>
       </HeaderIconTextContainer>
 
-      <Button type="button" onClick={() => send("SIGNIN")} height={40}>
+      <Button
+        type="button"
+        onClick={() => send("SIGNIN")}
+        variant="primary"
+        size="normal"
+      >
         {t("done")}
       </Button>
     </>

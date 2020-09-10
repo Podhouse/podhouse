@@ -1,11 +1,9 @@
 export interface ButtonProps {
   type: "button" | "submit" | "reset";
+  variant: "primary" | "secondary";
+  size: "small" | "normal" | "big";
   onClick?: any;
   submitting?: boolean;
   disabled?: boolean;
-  width?: number;
-  height?: number;
-  bgColor?: string;
-  color?: string;
-  children?: any;
+  children: any;
 }

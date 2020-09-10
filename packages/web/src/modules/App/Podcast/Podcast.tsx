@@ -79,7 +79,7 @@ const Podcast = ({ t }: any) => {
           </PodcastDetailsContainer>
 
           <PodcastButtonsContainer>
-            <Button type="button" width={200} height={40}>
+            <Button type="button" variant="primary" size="normal">
               {t("subscribe")}
             </Button>
           </PodcastButtonsContainer>

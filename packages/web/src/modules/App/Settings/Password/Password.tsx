@@ -63,7 +63,7 @@ const Password = ({ t }: any) => {
             error={errors.newPassword?.message}
           />
 
-          <Button type="submit" height={40}>
+          <Button type="submit" variant="primary" size="normal">
             {t("save")}
           </Button>
         </PasswordFormContainer>

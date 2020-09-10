@@ -56,7 +56,7 @@ const ForgotPassword = ({ t }: any) => {
           error={errors.email?.message}
         />
 
-        <Button type="submit" height={40}>
+        <Button type="submit" variant="primary" size="normal">
           {t("send-reset-link")}
         </Button>
 

@@ -24,7 +24,7 @@ const ErrorPage = ({ title, description }: ErrorPageProps) => (
       <ErrorPageButtonContainer>
         <Link href="/app">
           <a>
-            <Button width={160} height={40} type="button">
+            <Button type="button" variant="primary" size="big">
               Back to home
             </Button>
           </a>

@@ -27,7 +27,12 @@ const GetStarted = ({ t }: any) => {
       </AuthTextContainer>
 
       <AuthGetStartedButtonsContainer>
-        <Button type="button" height={40} onClick={() => send("SIGNUP")}>
+        <Button
+          type="button"
+          variant="primary"
+          size="normal"
+          onClick={() => send("SIGNUP")}
+        >
           {t("sign-up-with-email")}
         </Button>
 

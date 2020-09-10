@@ -71,7 +71,9 @@ const Pricing = () => (
         target="_blank"
         rel="noopener noreferrer"
       >
-        <Button type="button">Contact us</Button>
+        <Button type="button" variant="primary" size="normal">
+          Contact us
+        </Button>
       </a>
     </PricingContainer>
   </LandingGridContainer>

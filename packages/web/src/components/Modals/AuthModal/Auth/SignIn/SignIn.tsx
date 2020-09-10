@@ -66,7 +66,7 @@ const SignIn = ({ t }: any) => {
           error={errors.password?.message}
         />
 
-        <Button type="submit" height={40}>
+        <Button type="submit" variant="primary" size="normal">
           {t("sign-in")}
         </Button>
 

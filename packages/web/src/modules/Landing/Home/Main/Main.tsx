@@ -31,8 +31,8 @@ const Main = () => {
         </LandingParagraph>
       </LandingGridContentContainer>
 
-      <Button type="button" width={160} onClick={handleStart}>
-        Get started
+      <Button type="button" variant="primary" size="big" onClick={handleStart}>
+        Listen now for free
       </Button>
     </LandingGridContainer>
   );

@@ -30,7 +30,12 @@ const CallToAction = () => {
         </LandingParagraph>
       </LandingGridContentContainer>
 
-      <Button type="button" width={160} onClick={handleStart}>
+      <Button
+        type="button"
+        variant="primary"
+        size="normal"
+        onClick={handleStart}
+      >
         Get started
       </Button>
     </LandingGridContainer>

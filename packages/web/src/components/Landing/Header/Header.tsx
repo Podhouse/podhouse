@@ -17,13 +17,8 @@ import PodhouseWhite from "../../../../public/logo/logo-medium-white.svg";
 const Header = () => {
   const themeState = useTheme();
 
-  const onRenderLogo = () => {
-    if (themeState.dark) {
-      return <PodhouseWhite />;
-    }
-
-    return <PodhouseDark />;
-  };
+  const onRenderLogo = () =>
+    themeState.dark ? <PodhouseWhite /> : <PodhouseDark />;
 
   return (
     <HeaderContainer>

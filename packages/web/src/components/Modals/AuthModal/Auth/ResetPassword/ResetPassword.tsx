@@ -64,7 +64,12 @@ const ResetPassword = ({ t }: any) => {
           error={errors.confirmNewPassword?.message}
         />
 
-        <Button type="submit" onClick={() => send("SUCCESS")} height={40}>
+        <Button
+          type="submit"
+          onClick={() => send("SUCCESS")}
+          variant="primary"
+          size="normal"
+        >
           {t("confirm-new-password")}
         </Button>
       </AuthFormContainer>
