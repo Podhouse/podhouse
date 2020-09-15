@@ -38,6 +38,10 @@ const light: StyleProps = {
       color: "#101010",
       backgroundColor: "rgba(0, 0, 0, 0.1)",
     },
+    info: {
+      color: "#FFFFFF",
+      backgroundColor: "#2B60FF",
+    },
     success: {
       color: "#FFFFFF",
       backgroundColor: "#2BC454",

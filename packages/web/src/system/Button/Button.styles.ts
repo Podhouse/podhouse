@@ -15,6 +15,22 @@ const variants = variant({
       color: "secondary",
       backgroundColor: "secondary",
     },
+    info: {
+      color: "info",
+      backgroundColor: "info",
+    },
+    success: {
+      color: "success",
+      backgroundColor: "success",
+    },
+    warning: {
+      color: "warning",
+      backgroundColor: "warning",
+    },
+    error: {
+      color: "error",
+      backgroundColor: "error",
+    },
     disabled: {
       color: "disabled",
       backgroundColor: "disabled",
