@@ -51,14 +51,15 @@ export const LandingTitle = styled.h1<StyleProps>`
   text-align: center;
   font-family: Inter;
   font-style: normal;
-  font-weight: 600;
-  font-size: 36px;
-  line-height: 55px;
-  letter-spacing: -0.03em;
+  font-weight: bold;
+  font-size: 64px;
+  line-height: 77px;
+  text-align: center;
+  letter-spacing: -0.05em;
   color: ${({ theme }) => theme.primary};
 
   @media screen and (min-width: 800px) {
-    font-size: 48px;
+    font-size: 64px;
   }
 `;
 
@@ -67,15 +68,11 @@ export const LandingSubTitle = styled.h3<StyleProps>`
   text-align: center;
   font-family: Inter;
   font-style: normal;
-  font-weight: 600;
-  font-size: 24px;
-  line-height: 40px;
-  letter-spacing: -0.03em;
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 44px;
+  letter-spacing: -0.05em;
   color: ${({ theme }) => theme.primary};
-
-  @media screen and (min-width: 800px) {
-    font-size: 36px;
-  }
 `;
 
 export const LandingParagraph = styled.p<StyleProps>`

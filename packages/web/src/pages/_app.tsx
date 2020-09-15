@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import App from "next/app";
 import { appWithTranslation } from "i18n";
 

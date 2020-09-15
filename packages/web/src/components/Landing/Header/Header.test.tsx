@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { render } from "@testing-library/react";
 
 import Header from "./Header";
@@ -17,7 +17,6 @@ describe("Header", () => {
 
     expect(getByText(/About/i)).toBeInTheDocument();
     expect(getByText(/Advertise/i)).toBeInTheDocument();
-    expect(getByText(/Brand/i)).toBeInTheDocument();
     expect(getByText(/Contact/i)).toBeInTheDocument();
     expect(getByText(/Get started/i)).toBeInTheDocument();
   });

@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { useRouter } from "next/router";
 
 import {
@@ -21,12 +21,11 @@ const CallToAction = () => {
   return (
     <LandingGridContainer>
       <LandingGridContentContainer>
-        <LandingSubTitle>
-          Start listen to your favorite podcasts now
-        </LandingSubTitle>
+        <LandingSubTitle>Totally yours</LandingSubTitle>
         <LandingParagraph>
-          Try Podhouse now and listen to your podcasts freely, without having
-          annoying ads, everywhere and anytime
+          Although there are some premium features planned,
+          <strong>we will always be free</strong>. You won't need to pay
+          anything in order to listen to your favorite podcasts with us.
         </LandingParagraph>
       </LandingGridContentContainer>
 
@@ -35,6 +34,7 @@ const CallToAction = () => {
         variant="primary"
         size="normal"
         onClick={handleStart}
+        width={120}
       >
         Get started
       </Button>

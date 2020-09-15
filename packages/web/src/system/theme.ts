@@ -135,8 +135,14 @@ const light: StyleProps = {
       cursor: "pointer",
     },
     secondary: {
-      color: "#B7B7B7",
+      color: "#6F6F6F",
       cursor: "pointer",
+      "&:hover": {
+        color: "#101010",
+      },
+      "&:focus": {
+        color: "#101010",
+      },
     },
     disabled: {
       color: "#B7B7B7",

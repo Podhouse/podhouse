@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import Document, { Head, Main, NextScript } from "next/document";
 
 class MyDocument extends Document {
@@ -21,10 +21,6 @@ class MyDocument extends Document {
           <meta name="format-detection" content="telephone=no" />
           <meta name="mobile-web-app-capable" content="yes" />
           <meta name="theme-color" content="#000" />
-          <meta
-            name="viewport"
-            content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover"
-          />
 
           <link
             rel="apple-touch-icon"
@@ -104,7 +100,6 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/css?family=Inter:100,200,300,400,500,600,700,800,900&display=swap"
             rel="stylesheet"
           />
-          <title>Podhouse</title>
         </Head>
         <body>
           <Main />

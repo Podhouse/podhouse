@@ -20,7 +20,7 @@ import {
 const Features = () => (
   <LandingGridContainer>
     <LandingGridContentContainer>
-      <LandingSubTitle>A better podcast experience</LandingSubTitle>
+      <LandingSubTitle>The best podcast experience</LandingSubTitle>
 
       <LandingParagraph>
         We provide a ton of features so you can listen to your podcasts without

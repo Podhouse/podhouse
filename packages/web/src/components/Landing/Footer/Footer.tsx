@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { Twitter, Linkedin, Instagram, Facebook } from "react-feather";
 
 import {

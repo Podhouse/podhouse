@@ -5,4 +5,5 @@ export interface LinkProps {
   target?: "_blank" | "_self" | "_parent" | "_top" | "framename";
   children: any;
   disabled?: boolean;
+  rel?: string;
 }

@@ -9,7 +9,7 @@ const Link = (props: LinkProps) => {
   const ref = React.useRef();
   const { linkProps } = useLink(props, ref);
 
-  const { href, target, variant, size, disabled, children } = props;
+  const { href, target, variant, size, disabled, rel, children } = props;
 
   return (
     <StyledLink
@@ -20,6 +20,8 @@ const Link = (props: LinkProps) => {
       size={size}
       target={target}
       disabled={disabled}
+      rel={rel}
+      {...props}
     >
       {children}
     </StyledLink>
