@@ -5,6 +5,8 @@ import StyledButton from "./Button.styles";
 
 import { ButtonProps } from "./Button.types";
 
+import Loader from "./Loader";
+
 const Button = (props: ButtonProps) => {
   const ref = useRef() as React.MutableRefObject<HTMLButtonElement>;
   const { buttonProps } = useButton(props, ref);
@@ -17,22 +19,28 @@ const Button = (props: ButtonProps) => {
     disabled = false,
     loading = false,
     className,
+    width,
+    height,
     children,
   } = props;
+
+  const checkVariant = loading || disabled ? "disabled" : variant;
 
   return (
     <StyledButton
       type={type}
-      variant={variant}
+      variant={checkVariant}
       size={size}
       onClick={onClick}
       disabled={disabled || loading}
       aria-disabled={disabled}
       className={className}
+      width={width}
+      height={height}
       ref={ref}
       {...buttonProps}
     >
-      {children}
+      {loading ? <Loader /> : children}
     </StyledButton>
   );
 };

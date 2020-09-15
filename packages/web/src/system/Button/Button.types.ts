@@ -14,4 +14,6 @@ export interface ButtonProps {
   disabled?: boolean;
   loading?: boolean;
   children: any;
+  width?: any;
+  height?: any;
 }

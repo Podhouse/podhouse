@@ -44,7 +44,10 @@ const sizes = variant({
 });
 
 const StyledButton = styled.button<ButtonProps>`
-  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
   padding-left: 15px;
   padding-right: 15px;
   border: none;
@@ -60,6 +63,28 @@ const StyledButton = styled.button<ButtonProps>`
   ${space};
   ${variants};
   ${sizes};
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+
+  @keyframes load {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  .loader {
+    border: 2px solid #6f6f6f;
+    border-left: 2px solid;
+    animation: load 1s infinite linear;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+  }
 `;
 
 export default StyledButton;

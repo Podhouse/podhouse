@@ -51,11 +51,11 @@ define("./sw.js", ["./workbox-a61ac24a"], function (e) {
     e.precacheAndRoute(
       [
         {
-          url: "/_next/static/6dYaq9UrovnZkF0_lOmpK/_buildManifest.js",
+          url: "/_next/static/2ZwZ6zAuh5vKARlGZsef8/_buildManifest.js",
           revision: "6c68627c237187646fb5c2feae831496",
         },
         {
-          url: "/_next/static/6dYaq9UrovnZkF0_lOmpK/_ssgManifest.js",
+          url: "/_next/static/2ZwZ6zAuh5vKARlGZsef8/_ssgManifest.js",
           revision: "abee47769bf307639ace4945f9cfd4ff",
         },
         {
@@ -89,8 +89,8 @@ define("./sw.js", ["./workbox-a61ac24a"], function (e) {
           revision: "32cb9235283695bb0d6db0f6f0c87160",
         },
         {
-          url: "/_next/static/chunks/commons.c1331a18c647e34eaea2.js",
-          revision: "a902c3bd1e0c40cffc0a9b2cf1003178",
+          url: "/_next/static/chunks/commons.9652651e6ed8f3480655.js",
+          revision: "10d776add4dfae1fb6550f02c1fe78bf",
         },
         {
           url: "/_next/static/chunks/framework.ad819eb1a9164e76d2b7.js",
