@@ -52,7 +52,7 @@ export const SettingsItemHeaderTitle = styled.h1<StyleProps>`
 export const SettingsItemHeaderBreakLine = styled.hr<StyleProps>`
   width: 100%;
   height: 1px;
-  background-color: ${({ theme }) => theme.backgroundSecondary};
+  background-color: ${({ theme }) => theme.bgSecondary};
   margin: 0;
   border: none;
 `;

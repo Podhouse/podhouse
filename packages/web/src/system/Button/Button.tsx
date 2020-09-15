@@ -6,10 +6,19 @@ import StyledButton from "./Button.styles";
 import { ButtonProps } from "./Button.types";
 
 const Button = (props: ButtonProps) => {
-  const ref = useRef();
+  const ref = useRef() as React.MutableRefObject<HTMLButtonElement>;
   const { buttonProps } = useButton(props, ref);
 
-  const { type, variant, size, onClick, disabled, children } = props;
+  const {
+    type = "button",
+    variant = "primary",
+    size = "normal",
+    onClick,
+    disabled = false,
+    loading = false,
+    className,
+    children,
+  } = props;
 
   return (
     <StyledButton
@@ -17,7 +26,9 @@ const Button = (props: ButtonProps) => {
       variant={variant}
       size={size}
       onClick={onClick}
-      disabled={disabled}
+      disabled={disabled || loading}
+      aria-disabled={disabled}
+      className={className}
       ref={ref}
       {...buttonProps}
     >

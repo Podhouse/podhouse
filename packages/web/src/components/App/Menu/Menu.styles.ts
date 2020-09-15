@@ -7,7 +7,7 @@ export const MenuContainer = styled.aside<StyleProps>`
   height: 60px;
   bottom: 0px;
   position: fixed;
-  background: ${({ theme }) => theme.backgroundPrimary};
+  background: ${({ theme }) => theme.bgPrimary};
   z-index: 100;
 
   @media screen and (min-width: 800px) {
@@ -17,8 +17,8 @@ export const MenuContainer = styled.aside<StyleProps>`
     height: 100%;
     position: inherit;
     z-index: 0;
-    background: ${({ theme }) => theme.backgroundPrimary};
-    border-right: ${({ theme }) => `1px solid ${theme.backgroundSecondary}`};
+    background: ${({ theme }) => theme.bgPrimary};
+    border-right: ${({ theme }) => `1px solid ${theme.bgSecondary}`};
   }
 `;
 

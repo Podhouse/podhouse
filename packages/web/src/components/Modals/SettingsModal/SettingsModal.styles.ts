@@ -14,7 +14,7 @@ export const SettingsModalContainer = styled.div<StyleProps>`
   height: auto;
   padding-top: 5px;
   padding-bottom: 5px;
-  background: ${({ theme }) => theme.backgroundPrimary};
+  background: ${({ theme }) => theme.bgPrimary};
   border-radius: 5px;
   right: 30px;
   position: absolute;
@@ -30,7 +30,7 @@ export const SettingsModalLinkContainer = styled.div<StyleProps>`
   align-items: center;
   width: 100%;
   height: 100%;
-  background: ${({ theme }) => theme.backgroundPrimary};
+  background: ${({ theme }) => theme.bgPrimary};
   padding-left: 20px;
   cursor: pointer;
 
@@ -39,7 +39,7 @@ export const SettingsModalLinkContainer = styled.div<StyleProps>`
   }
 
   &:hover {
-    background: ${({ theme }) => theme.backgroundSecondary};
+    background: ${({ theme }) => theme.bgSecondary};
 
     a {
       color: ${({ theme }) => theme.primary};
@@ -64,7 +64,7 @@ export const SettingsThemeContainer = styled.div<StyleProps>`
   align-items: center;
   width: 100%;
   height: 100%;
-  background: ${({ theme }) => theme.backgroundPrimary};
+  background: ${({ theme }) => theme.bgPrimary};
   padding: 0 20px 0 20px;
   cursor: pointer;
 
@@ -73,7 +73,7 @@ export const SettingsThemeContainer = styled.div<StyleProps>`
   }
 
   &:hover {
-    background: ${({ theme }) => theme.backgroundSecondary};
+    background: ${({ theme }) => theme.bgSecondary};
 
     a {
       color: ${({ theme }) => theme.primary};

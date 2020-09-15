@@ -146,7 +146,7 @@ export const EpisodeItemButtonContainer = styled.div`
 export const EpisodeItemButton = styled.button<ButtonStyleProps>`
   width: 80px;
   height: 30px;
-  background: ${({ theme }) => theme.backgroundSecondary};
+  background: ${({ theme }) => theme.bgSecondary};
   color: ${({ theme }) => theme.tertiary};
   border: none;
   border-radius: 5px;

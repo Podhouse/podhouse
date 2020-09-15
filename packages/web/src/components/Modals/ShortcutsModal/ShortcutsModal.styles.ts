@@ -17,7 +17,7 @@ export const ShortcutsModalInsideContainer = styled.div<StyleProps>`
   transform: translate(-50%, -50%);
   width: 500px;
   height: auto;
-  background: ${({ theme }) => theme.backgroundPrimary};
+  background: ${({ theme }) => theme.bgPrimary};
   border-radius: 5px;
   position: absolute;
   padding: 20px;
@@ -76,8 +76,8 @@ export const ShortcutItemKey = styled.div<StyleProps>`
   height: fit-content;
   padding: 3px 10px;
   color: ${({ theme }) => theme.tertiary};
-  background: ${({ theme }) => theme.backgroundSecondary};
-  border: ${({ theme }) => `1px solid ${theme.backgroundSecondary}`};
+  background: ${({ theme }) => theme.bgSecondary};
+  border: ${({ theme }) => `1px solid ${theme.bgSecondary}`};
   font-family: Inter;
   font-style: normal;
   font-weight: normal;

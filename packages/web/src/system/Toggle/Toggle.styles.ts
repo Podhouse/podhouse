@@ -6,12 +6,12 @@ export const ToggleWrapper = styled.div<StyleProps>`
   input[type="checkbox"],
   input[type="radio"] {
     --active: ${({ theme }) => theme.primary};
-    --active-inner: ${({ theme }) => theme.backgroundPrimary};
+    --active-inner: ${({ theme }) => theme.bgPrimary};
     --focus: 2px rgba(0, 0, 0, 0.1);
     --border: ${({ theme }) => theme.tertiary};
     --border-hover: ${({ theme }) => theme.primary};
-    --background: ${({ theme }) => theme.backgroundPrimary};
-    --disabled: ${({ theme }) => theme.backgroundSecondary};
+    --background: ${({ theme }) => theme.bgPrimary};
+    --disabled: ${({ theme }) => theme.bgSecondary};
     --disabled-inner: #e1e6f9;
     -webkit-appearance: none;
     -moz-appearance: none;

@@ -5,7 +5,7 @@ import { StyleProps } from "src/system/styles.types";
 export const AuthContainer = styled.div<StyleProps>`
   width: 100%;
   height: 100%;
-  background-color: ${({ theme }) => theme.backgroundPrimary};
+  background-color: ${({ theme }) => theme.bgPrimary};
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: max-content max-content;
@@ -23,7 +23,7 @@ export const AuthInsideContainer = styled.div<StyleProps>`
   max-height: 100%;
   box-shadow: none;
   display: grid;
-  background-color: ${({ theme }) => theme.backgroundPrimary};
+  background-color: ${({ theme }) => theme.bgPrimary};
   grid-template-columns: 1fr;
   grid-template-rows: repeat(2, minmax(min-content, max-content));
   grid-row-gap: 20px;
@@ -56,7 +56,7 @@ export const AuthText = styled.h3<StyleProps>`
 export const AuthFormContainer = styled.form<StyleProps>`
   width: 100%;
   height: 100%;
-  background-color: ${({ theme }) => theme.backgroundPrimary};
+  background-color: ${({ theme }) => theme.bgPrimary};
   display: grid;
   grid-template-rows: repeat(auto-fill, max-content);
   grid-template-columns: 1fr;

@@ -5,27 +5,33 @@ import { InputContainer, StyledInput } from "./Input.styles";
 
 import { InputProps } from "./Input.types";
 
-import Label from "src/system/Label/Label";
-import Error from "src/system/Error/Error";
+import Label from "../Label/Label";
+import Error from "../Error/Error";
 
 const Input = React.forwardRef((props: InputProps, ref) => {
   // React Aria does not have support for forwardRef yet.
   // https://github.com/adobe/react-spectrum/issues/834
+  const fallbackRef = React.useRef();
+  const domRef: any = ref || fallbackRef;
+
   const { labelProps, inputProps } = useTextField(props, ref as any);
 
   const {
-    type,
+    variant = "primary",
+    scale = "normal",
+    type = "text",
     name,
     placeholder,
     label,
+    value,
     onChange,
     onBlur,
     onClick,
     error,
-    variant,
-    scale,
     ariaLabel,
-    disabled,
+    disabled = false,
+    required = false,
+    autoFocus = false,
   } = props;
 
   return (
@@ -34,31 +40,36 @@ const Input = React.forwardRef((props: InputProps, ref) => {
         <Label
           {...labelProps}
           label={label}
-          variant="primary"
-          size="normal"
+          variant={variant}
+          size={scale}
           disabled={disabled}
         />
       ) : null}
 
       <StyledInput
         {...inputProps}
-        ref={ref as any}
+        ref={domRef}
+        variant={variant}
+        scale={scale}
         type={type}
         name={name}
         placeholder={placeholder}
         label={label}
+        value={value}
         onChange={onChange}
         onBlur={onBlur}
         onClick={onClick}
         error={error}
-        variant={variant}
-        scale={scale}
         ariaLabel={ariaLabel}
         disabled={disabled}
+        required={required}
+        autoFocus={autoFocus}
         autoComplete="off"
+        aria-autocomplete="none"
+        aria-errormessage={error}
       />
 
-      {error ? <Error error={error} mt={10} /> : null}
+      {error ? <Error error={error} variant="primary" size={scale} /> : null}
     </InputContainer>
   );
 });

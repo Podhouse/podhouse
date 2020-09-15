@@ -8,7 +8,7 @@ export const StyledGoogleButton = styled.button<StyleProps>`
   justify-content: center;
   width: 100%;
   height: 40px;
-  background-color: ${({ theme }) => theme.backgroundSecondary};
+  background-color: ${({ theme }) => theme.bgSecondary};
   border: none;
   box-sizing: border-box;
   border-radius: 5px;

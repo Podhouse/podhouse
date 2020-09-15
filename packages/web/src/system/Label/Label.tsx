@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { useLabel } from "@react-aria/label";
 
 import StyledLabel from "./Label.styles";
@@ -16,6 +16,8 @@ const Label = (props: LabelProps) => {
       variant={variant}
       size={size}
       disabled={disabled}
+      aria-label={label}
+      aria-disabled={disabled}
     >
       {label}
     </StyledLabel>

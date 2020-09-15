@@ -3,12 +3,19 @@ export interface StyleProps {
     primary: string;
     secondary: string;
     tertiary: string;
-    backgroundPrimary: string;
-    backgroundSecondary: string;
-    backgroundTertiary: string;
+    bgPrimary: string;
+    bgSecondary: string;
+    bgTertiary: string;
+    success: string;
     info: string;
     warning: string;
-    success: string;
     error: string;
+    buttons: {};
+    inputs: {};
+    labels: {};
+    errors: {};
+    select: {};
+    selectvalues: {};
+    links: {};
   };
 }

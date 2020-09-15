@@ -1,6 +1,11 @@
 import { createContext } from "react";
 
-const defaultContextData = {
+interface ContextData {
+  dark: boolean;
+  toggle: () => void;
+}
+
+const defaultContextData: ContextData = {
   dark: false,
   toggle: () => {},
 };

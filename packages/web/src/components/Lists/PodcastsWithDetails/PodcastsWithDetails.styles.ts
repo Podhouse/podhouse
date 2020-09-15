@@ -36,7 +36,7 @@ export const PodcastsWithDetailsHeaderTitle = styled.h1<StyleProps>`
 export const PodcastsWithDetailsBreakLine = styled.hr<StyleProps>`
   width: 100%;
   height: 1px;
-  background-color: ${({ theme }) => theme.backgroundSecondary};
+  background-color: ${({ theme }) => theme.bgSecondary};
   margin: 0;
   border: none;
 `;

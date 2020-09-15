@@ -6,7 +6,7 @@ export const PremiumContainer = styled.div<StyleProps>`
   width: auto;
   max-width: 800px;
   height: auto;
-  background: ${({ theme }) => theme.backgroundPrimary};
+  background: ${({ theme }) => theme.bgPrimary};
   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.05);
   border-radius: 5px;
   display: grid;
@@ -24,7 +24,7 @@ export const PremiumAvailableContainer = styled.div<StyleProps>`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: ${({ theme }) => theme.backgroundSecondary};
+  background: ${({ theme }) => theme.bgSecondary};
   border-radius: 5px;
   grid-column: 1 / 2;
   grid-row: 1 / 2;

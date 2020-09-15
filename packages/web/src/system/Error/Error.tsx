@@ -3,16 +3,15 @@ import { AlertTriangle } from "react-feather";
 
 import { ErrorContainer, ErrorText } from "./Error.styles";
 
-interface ErrorProps {
-  error: string | undefined;
-  mt?: number;
-}
+import { ErrorProps } from "./Error.types";
 
-const Error = ({ error, mt }: ErrorProps) => (
-  <ErrorContainer mt={mt}>
-    <AlertTriangle size={16} color="#fc3d28" />
+const Error = ({ error, variant = "primary", size = "normal" }: ErrorProps) => (
+  <ErrorContainer>
+    <AlertTriangle size={16} color="#DD0426" strokeWidth={1.5} />
 
-    <ErrorText mt={mt}>{error}</ErrorText>
+    <ErrorText variant={variant} size={size}>
+      {error}
+    </ErrorText>
   </ErrorContainer>
 );
 

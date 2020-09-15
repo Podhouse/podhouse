@@ -72,7 +72,7 @@ export const DownloadAssetsContainer = styled.div<Props>`
   display: flex;
   align-items: center;
   justify-content: center;
-  border: ${({ theme }) => `1px solid ${theme.backgroundSecondary}`};
+  border: ${({ theme }) => `1px solid ${theme.bgSecondary}`};
   box-sizing: border-box;
   border-radius: 5px;
   background-color: ${({ color }) => color};
