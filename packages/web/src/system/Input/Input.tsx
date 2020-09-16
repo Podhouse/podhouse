@@ -38,11 +38,11 @@ const Input = React.forwardRef((props: InputProps, ref) => {
     <InputContainer>
       {label ? (
         <Label
-          {...labelProps}
           label={label}
           variant={variant}
           size={scale}
           disabled={disabled}
+          {...labelProps}
         />
       ) : null}
 

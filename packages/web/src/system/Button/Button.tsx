@@ -16,15 +16,15 @@ const Button = (props: ButtonProps) => {
     variant = "primary",
     size = "normal",
     onClick,
-    disabled = false,
-    loading = false,
+    isDisabled = false,
+    isLoading = false,
     className,
     width,
     height,
     children,
   } = props;
 
-  const checkVariant = loading || disabled ? "disabled" : variant;
+  const checkVariant = isLoading || isDisabled ? "disabled" : variant;
 
   return (
     <StyledButton
@@ -32,15 +32,14 @@ const Button = (props: ButtonProps) => {
       variant={checkVariant}
       size={size}
       onClick={onClick}
-      disabled={disabled || loading}
-      aria-disabled={disabled}
+      disabled={isDisabled || isLoading}
       className={className}
       width={width}
       height={height}
       ref={ref}
       {...buttonProps}
     >
-      {loading ? <Loader /> : children}
+      {isLoading ? <Loader /> : children}
     </StyledButton>
   );
 };

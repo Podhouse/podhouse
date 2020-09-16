@@ -7,8 +7,9 @@ import {
   LandingGridContainer,
   LandingGridContentContainer,
   LandingTitle,
-  LandingParagraph,
 } from "src/components/Landing/Landing.styles";
+
+import Paragraph from "src/system/Paragraph/Paragraph";
 
 const Main = () => {
   const router = useRouter();
@@ -22,10 +23,10 @@ const Main = () => {
     <LandingGridContainer>
       <LandingGridContentContainer>
         <LandingTitle>Listen to your favorite podcasts</LandingTitle>
-        <LandingParagraph>
+        <Paragraph variant="secondary" size="normal">
           A powerful, clean, and intuitive app for you to discover and explore
           podcasts everywhere, anytime with the best podcast experience.
-        </LandingParagraph>
+        </Paragraph>
       </LandingGridContentContainer>
 
       <Button

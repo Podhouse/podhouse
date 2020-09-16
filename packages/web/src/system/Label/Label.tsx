@@ -12,12 +12,12 @@ const Label = (props: LabelProps) => {
 
   return (
     <StyledLabel
-      {...labelProps}
       variant={variant}
       size={size}
       disabled={disabled}
       aria-label={label}
       aria-disabled={disabled}
+      {...labelProps}
     >
       {label}
     </StyledLabel>

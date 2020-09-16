@@ -5,10 +5,10 @@ import {
   LandingGridContainer,
   LandingGridContentContainer,
   LandingSubTitle,
-  LandingParagraph,
 } from "../Landing.styles";
 
 import Button from "src/system/Button/Button";
+import Paragraph from "src/system/Paragraph/Paragraph";
 
 const CallToAction = () => {
   const router = useRouter();
@@ -22,11 +22,11 @@ const CallToAction = () => {
     <LandingGridContainer>
       <LandingGridContentContainer>
         <LandingSubTitle>Totally yours</LandingSubTitle>
-        <LandingParagraph>
+        <Paragraph variant="secondary" size="normal">
           Although there are some premium features planned,
           <strong>we will always be free</strong>. You won't need to pay
           anything in order to listen to your favorite podcasts with us.
-        </LandingParagraph>
+        </Paragraph>
       </LandingGridContentContainer>
 
       <Button

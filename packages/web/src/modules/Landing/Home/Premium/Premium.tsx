@@ -1,6 +1,12 @@
 import React from "react";
 
 import {
+  LandingGridContainer,
+  LandingGridContentContainer,
+  LandingSubTitle,
+} from "src/components/Landing/Landing.styles";
+
+import {
   PremiumContainer,
   PremiumAvailableContainer,
   PremiumAvailableText,
@@ -11,12 +17,7 @@ import {
   PremiumItemText,
 } from "./Premium.styles";
 
-import {
-  LandingGridContainer,
-  LandingGridContentContainer,
-  LandingSubTitle,
-  LandingParagraph,
-} from "src/components/Landing/Landing.styles";
+import Paragraph from "src/system/Paragraph/Paragraph";
 
 const Premium = () => (
   <LandingGridContainer>
@@ -25,10 +26,10 @@ const Premium = () => (
         Listen to your favorite podcasts for free
       </LandingSubTitle>
 
-      <LandingParagraph>
+      <Paragraph variant="secondary" size="normal">
         We're a free podcast app, but in the future will provide some premium
         features to improve your experience.
-      </LandingParagraph>
+      </Paragraph>
     </LandingGridContentContainer>
 
     <PremiumContainer>

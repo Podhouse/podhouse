@@ -1,14 +1,18 @@
 import React from "react";
 
 import Main from "./Main/Main";
-import Team from "./Team/Team";
+import MeetTheFounder from "./MeetTheFounder/MeetTheFounder";
+import Mission from "./Mission/Mission";
+import Independent from "./Independent/Independent";
 
 import CallToAction from "src/components/Landing/CallToAction/CallToAction";
 
 const About = () => (
   <>
     <Main />
-    <Team />
+    <MeetTheFounder />
+    <Mission />
+    <Independent />
     <CallToAction />
   </>
 );

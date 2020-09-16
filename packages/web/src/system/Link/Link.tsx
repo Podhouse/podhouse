@@ -9,19 +9,28 @@ const Link = (props: LinkProps) => {
   const ref = React.useRef();
   const { linkProps } = useLink(props, ref);
 
-  const { href, target, variant, size, disabled, rel, children } = props;
+  const {
+    href,
+    target = "_self",
+    variant = "secondary",
+    size = "normal",
+    isDisabled = false,
+    rel,
+    children,
+  } = props;
+
+  const checkVariant = isDisabled ? "disabled" : variant;
 
   return (
     <StyledLink
-      {...linkProps}
-      ref={ref}
       href={href}
-      variant={variant}
+      variant={checkVariant}
       size={size}
       target={target}
-      disabled={disabled}
+      isDisabled={isDisabled}
       rel={rel}
-      {...props}
+      ref={ref}
+      {...linkProps}
     >
       {children}
     </StyledLink>

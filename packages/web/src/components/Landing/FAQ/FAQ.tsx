@@ -11,8 +11,9 @@ import {
   LandingGridContainer,
   LandingGridContentContainer,
   LandingSubTitle,
-  LandingParagraph,
 } from "../Landing.styles";
+
+import Paragraph from "src/system/Paragraph/Paragraph";
 
 interface FAQItem {
   title: string;
@@ -28,7 +29,9 @@ const FAQ = ({ description, items }: FAQProps) => (
   <LandingGridContainer>
     <LandingGridContentContainer>
       <LandingSubTitle>Frequently asked questions</LandingSubTitle>
-      <LandingParagraph>{description}</LandingParagraph>
+      <Paragraph variant="secondary" size="normal">
+        {description}
+      </Paragraph>
     </LandingGridContentContainer>
 
     <FAQItemsContainer>

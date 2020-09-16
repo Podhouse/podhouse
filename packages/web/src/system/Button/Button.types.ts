@@ -11,8 +11,8 @@ export interface ButtonProps {
   size: "small" | "normal" | "big";
   className?: string;
   onClick?: any;
-  disabled?: boolean;
-  loading?: boolean;
+  isDisabled?: boolean;
+  isLoading?: boolean;
   children: any;
   width?: any;
   height?: any;

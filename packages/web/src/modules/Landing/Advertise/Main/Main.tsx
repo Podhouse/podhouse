@@ -4,8 +4,9 @@ import {
   LandingGridContainer,
   LandingGridContentContainer,
   LandingTitle,
-  LandingParagraph,
 } from "src/components/Landing/Landing.styles";
+
+import Paragraph from "src/system/Paragraph/Paragraph";
 
 const Main = () => (
   <LandingGridContainer>
@@ -13,10 +14,10 @@ const Main = () => (
       <LandingTitle>
         Reach highly engaged podcast listeners with us
       </LandingTitle>
-      <LandingParagraph>
+      <Paragraph variant="secondary" size="normal">
         Podcast listeners are very highly engaged, you can grow your audience by
         advertising with us
-      </LandingParagraph>
+      </Paragraph>
     </LandingGridContentContainer>
   </LandingGridContainer>
 );

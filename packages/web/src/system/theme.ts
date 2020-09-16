@@ -16,6 +16,7 @@ export interface StyleProps {
   select: {};
   selectvalues: {};
   links: {};
+  paragraph: {};
 }
 
 const light: StyleProps = {
@@ -149,6 +150,17 @@ const light: StyleProps = {
       cursor: "not-allowed",
     },
   },
+  paragraph: {
+    primary: {
+      color: "#101010",
+    },
+    secondary: {
+      color: "#6F6F6F",
+    },
+    disabled: {
+      color: "#B7B7B7",
+    },
+  },
 };
 
 const dark: StyleProps = {
@@ -270,6 +282,17 @@ const dark: StyleProps = {
     disabled: {
       color: "#B7B7B7",
       cursor: "not-allowed",
+    },
+  },
+  paragraph: {
+    primary: {
+      color: "#FFFFFF",
+    },
+    secondary: {
+      color: "#B7B7B7",
+    },
+    disabled: {
+      color: "#B7B7B7",
     },
   },
 };

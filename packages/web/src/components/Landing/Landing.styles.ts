@@ -74,14 +74,3 @@ export const LandingSubTitle = styled.h3<StyleProps>`
   letter-spacing: -0.05em;
   color: ${({ theme }) => theme.primary};
 `;
-
-export const LandingParagraph = styled.p<StyleProps>`
-  max-width: 600px;
-  text-align: center;
-  font-family: Inter;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 25px;
-  color: ${({ theme }) => theme.secondary};
-`;

@@ -5,10 +5,10 @@ import {
   LandingGridContainer,
   LandingGridContentContainer,
   LandingSubTitle,
-  LandingParagraph,
 } from "src/components/Landing/Landing.styles";
 
 import Button from "src/system/Button/Button";
+import Paragraph from "src/system/Paragraph/Paragraph";
 
 import {
   PricingContainer,
@@ -27,9 +27,9 @@ const Pricing = () => (
   <LandingGridContainer>
     <LandingGridContentContainer>
       <LandingSubTitle>Our unique advertising plan</LandingSubTitle>
-      <LandingParagraph>
+      <Paragraph variant="secondary" size="normal">
         Now that you know our monthly stats, check our unique advertising plan
-      </LandingParagraph>
+      </Paragraph>
     </LandingGridContentContainer>
 
     <PricingContainer>

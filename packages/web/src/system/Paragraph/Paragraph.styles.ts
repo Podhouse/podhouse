@@ -1,11 +1,11 @@
 import styled from "@emotion/styled";
 import { padding, color, margin, layout, space, variant } from "styled-system";
 
-import { LinkProps } from "./Link.types";
+import { ParagraphProps } from "./Paragraph.types";
 
 const variants = variant({
   prop: "variant",
-  scale: "links",
+  scale: "paragraph",
   variants: {
     primary: {
       color: "primary",
@@ -23,21 +23,21 @@ const sizes = variant({
   prop: "size",
   variants: {
     small: {
+      fontWeight: 300,
       fontSize: 12,
-      fontWeight: 400,
     },
     normal: {
+      fontWeight: 400,
       fontSize: 14,
-      fontWeight: 500,
     },
     big: {
+      fontWeight: 500,
       fontSize: 16,
-      fontWeight: 600,
     },
   },
 });
 
-const StyledLink = styled.a<LinkProps>`
+const StyledParagraph = styled.p<ParagraphProps>`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -49,7 +49,8 @@ const StyledLink = styled.a<LinkProps>`
   font-family: Inter;
   text-align: center;
   outline: 0;
-  text-decoration: none;
+  line-height: 25px;
+  cursor: default;
   ${padding};
   ${color};
   ${margin};
@@ -63,4 +64,4 @@ const StyledLink = styled.a<LinkProps>`
   }
 `;
 
-export default StyledLink;
+export default StyledParagraph;

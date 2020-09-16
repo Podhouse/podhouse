@@ -3,7 +3,7 @@ export interface LinkProps {
   variant: "primary" | "secondary" | "disabled";
   size: "small" | "normal" | "big";
   target?: "_blank" | "_self" | "_parent" | "_top" | "framename";
-  children: any;
-  disabled?: boolean;
+  children: React.ReactNode;
   rel?: string;
+  isDisabled?: boolean;
 }
