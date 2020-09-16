@@ -11,9 +11,7 @@ import Paragraph from "src/system/Paragraph/Paragraph";
 const Main = () => (
   <LandingGridContainer>
     <LandingGridContentContainer>
-      <LandingTitle>
-        Reach highly engaged podcast listeners with us
-      </LandingTitle>
+      <LandingTitle>Reach highly engaged listeners</LandingTitle>
       <Paragraph variant="secondary" size="normal">
         Podcast listeners are very highly engaged, you can grow your audience by
         advertising with us

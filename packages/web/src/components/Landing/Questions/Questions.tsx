@@ -12,7 +12,7 @@ const Questions = () => (
   <LandingGridContainer>
     <LandingGridContentContainer>
       <LandingSubTitle>Got more questions?</LandingSubTitle>
-      <Paragraph variant="secondary" size="normal">
+      <Paragraph variant="secondary" size="normal" textAlign="center">
         Reach out via email and we will be happy to help you.
       </Paragraph>
     </LandingGridContentContainer>

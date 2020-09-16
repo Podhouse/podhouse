@@ -47,9 +47,9 @@ const Header = () => {
           </Link>
         </NextLink>
 
-        <NextLink href="/advertise" as="/advertise">
-          <Link href="/advertise" variant="secondary" size="normal">
-            Advertise
+        <NextLink href="/sponsorship" as="/sponsorship">
+          <Link href="/sponsorship" variant="secondary" size="normal">
+            Sponsorship
           </Link>
         </NextLink>
 

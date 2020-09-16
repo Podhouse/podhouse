@@ -4,7 +4,6 @@ import {
   FAQItemsContainer,
   FAQItemContainer,
   FAQItemTitle,
-  FAQItemBody,
 } from "./FAQ.styles";
 
 import {
@@ -38,7 +37,9 @@ const FAQ = ({ description, items }: FAQProps) => (
       {items.map(({ title, body }: FAQItem) => (
         <FAQItemContainer key={title}>
           <FAQItemTitle>{title}</FAQItemTitle>
-          <FAQItemBody>{body}</FAQItemBody>
+          <Paragraph variant="secondary" size="normal" textAlign="start">
+            {body}
+          </Paragraph>
         </FAQItemContainer>
       ))}
     </FAQItemsContainer>
