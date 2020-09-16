@@ -1,8 +1,6 @@
 import styled from "@emotion/styled";
 
-import { StyleProps } from "src/system/styles.types";
-
-export const MeetTheFounderContainer = styled.div<StyleProps>`
+export const MeetTheFounderContainer = styled.div`
   width: 100%;
   height: auto;
   max-width: 800px;
@@ -46,25 +44,4 @@ export const MeetTheFounderDetailsContainer = styled.div`
     align-items: start;
     align-self: center;
   }
-`;
-
-export const MeetTheFounderName = styled.h5<StyleProps>`
-  font-family: Inter;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 24px;
-  line-height: 29px;
-  text-align: start;
-  letter-spacing: -0.05em;
-  color: ${({ theme }) => theme.primary};
-`;
-
-export const MeetTheFounderParagraph = styled.p<StyleProps>`
-  text-align: start;
-  font-family: Inter;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 25px;
-  color: ${({ theme }) => theme.secondary};
 `;

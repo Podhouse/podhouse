@@ -2,16 +2,18 @@ import React from "react";
 
 import {
   LandingGridContainer,
-  LandingSubTitle,
   LandingGridContentContainer,
 } from "src/components/Landing/Landing.styles";
 
+import Heading from "src/system/Heading/Heading";
 import Paragraph from "src/system/Paragraph/Paragraph";
 
 const Independent = () => (
   <LandingGridContainer>
     <LandingGridContentContainer>
-      <LandingSubTitle>Independent</LandingSubTitle>
+      <Heading variant="primary" size="normal" as="h2" fontSize={36}>
+        Independent
+      </Heading>
 
       <Paragraph variant="secondary" size="normal">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Rhoncus rutrum

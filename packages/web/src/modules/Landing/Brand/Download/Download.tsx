@@ -7,18 +7,19 @@ import {
   DownloadAssetsContainer,
 } from "./Download.styles";
 
-import { LandingSubTitle } from "src/components/Landing/Landing.styles";
-
 import PodhouseDark from "../../../../../public/logo/logo-medium-dark.svg";
 import PodhouseWhite from "../../../../../public/logo/logo-medium-white.svg";
 
+import Heading from "src/system/Heading/Heading";
 import Link from "src/system/Link/Link";
 
 const Download = () => (
   <DownloadContainer>
     <DownloadItemContainer>
       <DownloadHeaderContainer>
-        <LandingSubTitle>Dark</LandingSubTitle>
+        <Heading variant="primary" size="normal" as="h2" fontSize={36}>
+          Dark
+        </Heading>
 
         <Link
           href="/logo/Dark/svg.zip"
@@ -45,7 +46,9 @@ const Download = () => (
 
     <DownloadItemContainer>
       <DownloadHeaderContainer>
-        <LandingSubTitle>White</LandingSubTitle>
+        <Heading variant="primary" size="normal" as="h2" fontSize={36}>
+          Light
+        </Heading>
 
         <Link
           href="/logo/White/svg.zip"

@@ -9,9 +9,9 @@ import {
 import {
   LandingGridContainer,
   LandingGridContentContainer,
-  LandingSubTitle,
 } from "../Landing.styles";
 
+import Heading from "src/system/Heading/Heading";
 import Paragraph from "src/system/Paragraph/Paragraph";
 
 interface FAQItem {
@@ -27,7 +27,9 @@ interface FAQProps {
 const FAQ = ({ description, items }: FAQProps) => (
   <LandingGridContainer>
     <LandingGridContentContainer>
-      <LandingSubTitle>Frequently asked questions</LandingSubTitle>
+      <Heading variant="primary" size="normal" as="h2" fontSize={36}>
+        Frequently asked questions
+      </Heading>
       <Paragraph variant="secondary" size="normal">
         {description}
       </Paragraph>

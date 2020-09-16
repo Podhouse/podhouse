@@ -13,15 +13,17 @@ import {
 import {
   LandingGridContainer,
   LandingGridContentContainer,
-  LandingSubTitle,
 } from "src/components/Landing/Landing.styles";
 
+import Heading from "src/system/Heading/Heading";
 import Paragraph from "src/system/Paragraph/Paragraph";
 
 const Features = () => (
   <LandingGridContainer>
     <LandingGridContentContainer>
-      <LandingSubTitle>The best podcast experience</LandingSubTitle>
+      <Heading variant="primary" size="normal" as="h2" fontSize={36}>
+        The best podcast experience
+      </Heading>
 
       <Paragraph variant="secondary" size="normal">
         We provide a ton of features so you can listen to your podcasts without

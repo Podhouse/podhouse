@@ -1,32 +1,34 @@
 import React from "react";
 
-import {
-  LandingGridContainer,
-  LandingSubTitle,
-} from "src/components/Landing/Landing.styles";
+import { LandingGridContainer } from "src/components/Landing/Landing.styles";
 
 import {
   MeetTheFounderContainer,
   MeetTheFounderImage,
   MeetTheFounderDetailsContainer,
-  MeetTheFounderName,
-  MeetTheFounderParagraph,
 } from "./MeetTheFounder.styles";
+
+import Heading from "src/system/Heading/Heading";
+import Paragraph from "src/system/Paragraph/Paragraph";
 
 const MeetTheFounder = () => (
   <LandingGridContainer>
-    <LandingSubTitle>Meet the founder</LandingSubTitle>
+    <Heading variant="primary" size="normal" as="h2" fontSize={36}>
+      Meet the founder
+    </Heading>
 
     <MeetTheFounderContainer>
       <MeetTheFounderImage />
 
       <MeetTheFounderDetailsContainer>
-        <MeetTheFounderName>Leonardo Maldonado</MeetTheFounderName>
-        <MeetTheFounderParagraph>
+        <Heading variant="primary" size="small" as="h3" fontSize={24}>
+          Leonardo Maldonado
+        </Heading>
+        <Paragraph variant="secondary" size="normal" textAlign="start">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Rhoncus
           rutrum sollicitudin placerat id nisl, sed turpis. Viverra aliquam nibh
           consectetur sed turpis urna.
-        </MeetTheFounderParagraph>
+        </Paragraph>
       </MeetTheFounderDetailsContainer>
     </MeetTheFounderContainer>
   </LandingGridContainer>

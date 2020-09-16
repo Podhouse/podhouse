@@ -6,9 +6,9 @@ import Button from "src/system/Button/Button";
 import {
   LandingGridContainer,
   LandingGridContentContainer,
-  LandingTitle,
 } from "src/components/Landing/Landing.styles";
 
+import Heading from "src/system/Heading/Heading";
 import Paragraph from "src/system/Paragraph/Paragraph";
 
 const Main = () => {
@@ -22,7 +22,9 @@ const Main = () => {
   return (
     <LandingGridContainer>
       <LandingGridContentContainer>
-        <LandingTitle>Listen to your favorite podcasts</LandingTitle>
+        <Heading variant="primary" size="normal" as="h1" fontSize={64}>
+          Listen to your favorite podcasts
+        </Heading>
         <Paragraph variant="secondary" size="normal">
           A powerful, clean, and intuitive app for you to discover and explore
           podcasts everywhere, anytime with the best podcast experience.

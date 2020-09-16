@@ -1,7 +1,5 @@
 import styled from "@emotion/styled";
 
-import { StyleProps } from "src/system/styles.types";
-
 export const LandingContainer = styled.div`
   width: 100%;
   max-width: 1200px;
@@ -44,33 +42,6 @@ export const LandingGridContentContainer = styled.div`
   grid-template-columns: 1fr;
   grid-template-rows: max-content max-content;
   grid-row-gap: 20px;
-`;
-
-export const LandingTitle = styled.h1<StyleProps>`
-  max-width: 600px;
-  text-align: center;
-  font-family: Inter;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 64px;
-  line-height: 77px;
-  text-align: center;
-  letter-spacing: -0.05em;
-  color: ${({ theme }) => theme.primary};
-
-  @media screen and (min-width: 800px) {
-    font-size: 64px;
-  }
-`;
-
-export const LandingSubTitle = styled.h3<StyleProps>`
-  max-width: 600px;
-  text-align: center;
-  font-family: Inter;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 36px;
-  line-height: 44px;
-  letter-spacing: -0.05em;
-  color: ${({ theme }) => theme.primary};
+  align-items: center;
+  justify-items: center;
 `;
