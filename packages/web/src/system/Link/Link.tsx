@@ -16,6 +16,7 @@ const Link = (props: LinkProps) => {
     size = "normal",
     isDisabled = false,
     rel,
+    download = false,
     children,
   } = props;
 
@@ -29,6 +30,7 @@ const Link = (props: LinkProps) => {
       target={target}
       isDisabled={isDisabled}
       rel={rel}
+      download={download}
       ref={ref}
       {...linkProps}
     >

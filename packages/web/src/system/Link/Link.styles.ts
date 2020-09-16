@@ -1,5 +1,13 @@
 import styled from "@emotion/styled";
-import { padding, color, margin, layout, space, variant } from "styled-system";
+import {
+  padding,
+  color,
+  margin,
+  typography,
+  layout,
+  space,
+  variant,
+} from "styled-system";
 
 import { LinkProps } from "./Link.types";
 
@@ -41,11 +49,7 @@ const StyledLink = styled.a<LinkProps>`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  padding-left: 15px;
-  padding-right: 15px;
-  border: none;
-  border-radius: 5px;
+  width: fit-content;
   font-family: Inter;
   text-align: center;
   outline: 0;
@@ -55,6 +59,7 @@ const StyledLink = styled.a<LinkProps>`
   ${margin};
   ${layout};
   ${space};
+  ${typography};
   ${variants};
   ${sizes};
 

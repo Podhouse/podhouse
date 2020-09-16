@@ -6,4 +6,5 @@ export interface LinkProps {
   children: React.ReactNode;
   rel?: string;
   isDisabled?: boolean;
+  download?: boolean;
 }

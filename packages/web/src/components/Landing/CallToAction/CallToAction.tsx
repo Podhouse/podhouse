@@ -23,9 +23,9 @@ const CallToAction = () => {
       <LandingGridContentContainer>
         <LandingSubTitle>Totally yours</LandingSubTitle>
         <Paragraph variant="secondary" size="normal">
-          Although there are some premium features planned,
-          <strong>we will always be free</strong>. You won't need to pay
-          anything in order to listen to your favorite podcasts with us.
+          Although there are some premium features planned, we will always be
+          free. You won't need to pay anything in order to listen to your
+          favorite podcasts with us.
         </Paragraph>
       </LandingGridContentContainer>
 

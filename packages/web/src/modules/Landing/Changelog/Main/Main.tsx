@@ -11,11 +11,10 @@ import Paragraph from "src/system/Paragraph/Paragraph";
 const Main = () => (
   <LandingGridContainer>
     <LandingGridContentContainer>
-      <LandingTitle>Our design assets</LandingTitle>
+      <LandingTitle>Changelog</LandingTitle>
       <Paragraph variant="secondary" size="normal">
-        We take our design experience very seriously, our main goal is to
-        provide a clean, beautiful, and simple experience. You can download our
-        design assets here
+        A powerful, clean, and intuitive app for you to discover and explore
+        podcasts everywhere, anytime with the best podcast experience.
       </Paragraph>
     </LandingGridContentContainer>
   </LandingGridContainer>

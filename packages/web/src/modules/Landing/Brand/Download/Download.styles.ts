@@ -34,6 +34,7 @@ export const DownloadHeaderContainer = styled.div`
   grid-template-rows: 1fr;
   grid-column-gap: 30px;
   align-items: flex-end;
+  justify-items: flex-start;
 `;
 
 export const DownloadTitle = styled.h1<StyleProps>`

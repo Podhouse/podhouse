@@ -4,4 +4,5 @@ export interface ParagraphProps {
   children: React.ReactNode;
   className?: string;
   disabled?: boolean;
+  textAlign?: "start" | "center" | "end";
 }

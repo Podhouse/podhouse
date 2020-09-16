@@ -3,22 +3,20 @@ import React from "react";
 import {
   LandingGridContainer,
   LandingGridContentContainer,
-  LandingTitle,
-} from "src/components/Landing/Landing.styles";
+  LandingSubTitle,
+} from "../Landing.styles";
 
 import Paragraph from "src/system/Paragraph/Paragraph";
 
-const Main = () => (
+const Questions = () => (
   <LandingGridContainer>
     <LandingGridContentContainer>
-      <LandingTitle>Our design assets</LandingTitle>
+      <LandingSubTitle>Got more questions?</LandingSubTitle>
       <Paragraph variant="secondary" size="normal">
-        We take our design experience very seriously, our main goal is to
-        provide a clean, beautiful, and simple experience. You can download our
-        design assets here
+        Reach out via email and we will be happy to help you.
       </Paragraph>
     </LandingGridContentContainer>
   </LandingGridContainer>
 );
 
-export default Main;
+export default Questions;

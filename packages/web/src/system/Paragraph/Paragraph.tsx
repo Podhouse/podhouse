@@ -11,6 +11,7 @@ const Paragraph = (props: ParagraphProps) => {
     children,
     className,
     disabled = false,
+    textAlign = "center",
   } = props;
 
   return (
@@ -19,6 +20,7 @@ const Paragraph = (props: ParagraphProps) => {
       size={size}
       className={className}
       disabled={disabled}
+      textAlign={textAlign}
     >
       {children}
     </StyledParagraph>

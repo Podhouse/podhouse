@@ -4,26 +4,38 @@ import {
   DownloadContainer,
   DownloadItemContainer,
   DownloadHeaderContainer,
-  DownloadTitle,
-  DownloadLink,
   DownloadAssetsContainer,
 } from "./Download.styles";
 
+import { LandingSubTitle } from "src/components/Landing/Landing.styles";
+
 import PodhouseDark from "../../../../../public/logo/logo-medium-dark.svg";
 import PodhouseWhite from "../../../../../public/logo/logo-medium-white.svg";
+
+import Link from "src/system/Link/Link";
 
 const Download = () => (
   <DownloadContainer>
     <DownloadItemContainer>
       <DownloadHeaderContainer>
-        <DownloadTitle>Dark</DownloadTitle>
+        <LandingSubTitle>Dark</LandingSubTitle>
 
-        <DownloadLink href="/logo/Dark/svg.zip" download>
+        <Link
+          href="/logo/Dark/svg.zip"
+          variant="primary"
+          size="normal"
+          download
+        >
           .svg
-        </DownloadLink>
-        <DownloadLink href="/logo/Dark/png.zip" download>
+        </Link>
+        <Link
+          href="/logo/Dark/png.zip"
+          variant="primary"
+          size="normal"
+          download
+        >
           .png
-        </DownloadLink>
+        </Link>
       </DownloadHeaderContainer>
 
       <DownloadAssetsContainer color="#FFF">
@@ -33,14 +45,24 @@ const Download = () => (
 
     <DownloadItemContainer>
       <DownloadHeaderContainer>
-        <DownloadTitle>White</DownloadTitle>
+        <LandingSubTitle>White</LandingSubTitle>
 
-        <DownloadLink href="/logo/White/svg.zip" download>
+        <Link
+          href="/logo/White/svg.zip"
+          variant="primary"
+          size="normal"
+          download
+        >
           .svg
-        </DownloadLink>
-        <DownloadLink href="/logo/White/png.zip" download>
+        </Link>
+        <Link
+          href="/logo/White/png.zip"
+          variant="primary"
+          size="normal"
+          download
+        >
           .png
-        </DownloadLink>
+        </Link>
       </DownloadHeaderContainer>
 
       <DownloadAssetsContainer color="#000">
