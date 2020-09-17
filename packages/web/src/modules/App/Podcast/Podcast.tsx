@@ -1,4 +1,5 @@
 import React from "react";
+import Head from "next/head";
 import { withTranslation } from "i18n";
 import Scrollbars from "react-custom-scrollbars";
 import { ExternalLink, Rss } from "react-feather";
@@ -61,6 +62,10 @@ const Podcast = ({ t }: any) => {
 
   return (
     <Scrollbars universal autoHide autoHideTimeout={100} autoHideDuration={100}>
+      <Head>
+        <title>99% Invisible</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <PodcastContainer>
         <PodcastHeader>
           <PodcastAvatar src={avatar} />
