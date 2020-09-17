@@ -17,10 +17,11 @@ export const MeetTheFounderContainer = styled.div`
   }
 `;
 
-export const MeetTheFounderImage = styled.div`
-  width: 300px;
-  height: 300px;
-  background: red;
+export const MeetTheFounderImage = styled.picture`
+  img,
+  source {
+    border-radius: 5px;
+  }
 
   @media screen and (min-width: 800px) {
     width: 100%;

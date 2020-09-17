@@ -7,6 +7,7 @@ import { LinkProps } from "./Link.types";
 
 const Link = (props: LinkProps) => {
   const ref = React.useRef();
+
   const { linkProps } = useLink(props, ref);
 
   const {

@@ -9,9 +9,9 @@ const reset = css`
   }
 
   *,
-  *:before,
-  *:after {
-    box-sizing: inherit;
+  *::before,
+  *::after {
+    box-sizing: border-box;
   }
 
   body {

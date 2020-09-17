@@ -18,7 +18,14 @@ const MeetTheFounder = () => (
     </Heading>
 
     <MeetTheFounderContainer>
-      <MeetTheFounderImage />
+      <MeetTheFounderImage>
+        <source srcSet="/images/leo.webp" type="image/webp" />
+        <source srcSet="/images/leo.jpg" type="image/jpeg" />
+        <img
+          src="/images/leo.jpg"
+          alt="Leonardo Maldonado founder of Podhouse"
+        />
+      </MeetTheFounderImage>
 
       <MeetTheFounderDetailsContainer>
         <Heading variant="primary" size="small" as="h3" fontSize={24}>

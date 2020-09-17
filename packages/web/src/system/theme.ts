@@ -71,12 +71,17 @@ const light: StyleProps = {
     primary: {
       color: "#6F6F6F",
       backgroundColor: "#F3F3F3",
-      lineHeight: "129.02%",
+      "&:focus": {
+        border: "1px solid rgba(16, 16, 16, 0.05)",
+      },
     },
     secondary: {
       color: "#6F6F6F",
       backgroundColor: "#FFFFFF",
-      border: "1px solid #101010",
+      border: "1px solid rgba(16, 16, 16, 0.1)",
+      "&:focus": {
+        border: "1px solid rgba(16, 16, 16, 0.2)",
+      },
     },
     disabled: {
       color: "#6F6F6F",
@@ -89,7 +94,7 @@ const light: StyleProps = {
       color: "#6F6F6F",
     },
     secondary: {
-      color: "#B7B7B7",
+      color: "#6F6F6F",
     },
     disabled: {
       color: "#B7B7B7",

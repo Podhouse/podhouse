@@ -1,61 +1,93 @@
 import React from "react";
+import NextLink from "next/link";
 import { Twitter, Linkedin, Instagram, Facebook } from "react-feather";
 
 import {
   FooterContainer,
   FooterLinksContainer,
-  FooterLink,
   FooterBrandsContainer,
-  FooterBottomText,
 } from "./Footer.styles";
+
+import Paragraph from "src/system/Paragraph/Paragraph";
+import Link from "src/system/Link/Link";
 
 const Footer = () => (
   <FooterContainer>
     <FooterLinksContainer>
-      <FooterLink href="/about">About</FooterLink>
-      <FooterLink href="/advertisers">Advertisers</FooterLink>
-      <FooterLink href="/brand">Brand</FooterLink>
-      <FooterLink
+      <NextLink href="/about" as="/about">
+        <Link href="/about" variant="secondary" size="normal">
+          About
+        </Link>
+      </NextLink>
+
+      <NextLink href="/sponsorship" as="/sponsorship">
+        <Link href="/sponsorship" variant="secondary" size="normal">
+          Sponsorship
+        </Link>
+      </NextLink>
+
+      <NextLink href="/brand" as="/brand">
+        <Link href="/brand" variant="secondary" size="normal">
+          Brand
+        </Link>
+      </NextLink>
+
+      <Link
         href="mailto:leonardomso11@gmail.com"
         target="_blank"
         rel="noopener noreferrer"
+        variant="secondary"
+        size="normal"
       >
         Contact
-      </FooterLink>
+      </Link>
     </FooterLinksContainer>
 
     <FooterBrandsContainer>
-      <a
+      <Link
         href="https://twitter.com/leonardomso"
         target="_blank"
         rel="noopener noreferrer"
+        variant="secondary"
+        size="normal"
       >
         <Twitter cursor="pointer" color="#666" />
-      </a>
-      <a
+      </Link>
+
+      <Link
         href="https://twitter.com/leonardomso"
         target="_blank"
         rel="noopener noreferrer"
+        variant="secondary"
+        size="normal"
       >
         <Linkedin cursor="pointer" color="#666" />
-      </a>
-      <a
+      </Link>
+
+      <Link
         href="https://twitter.com/leonardomso"
         target="_blank"
         rel="noopener noreferrer"
+        variant="secondary"
+        size="normal"
       >
         <Instagram cursor="pointer" color="#666" />
-      </a>
-      <a
+      </Link>
+
+      <Link
         href="https://twitter.com/leonardomso"
         target="_blank"
         rel="noopener noreferrer"
+        variant="secondary"
+        size="normal"
       >
         <Facebook cursor="pointer" color="#666" />
-      </a>
+      </Link>
     </FooterBrandsContainer>
 
-    <FooterBottomText>2020 Podhouse. All rights reserved</FooterBottomText>
+    <Paragraph variant="secondary" size="normal">
+      2020 Podhouse. All rights reserved
+    </Paragraph>
   </FooterContainer>
 );
 
