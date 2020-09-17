@@ -14,7 +14,7 @@ const Screen = () => {
 
   return (
     <ScreenContainer>
-      <img src={onRenderLogo} />
+      <img src={onRenderLogo} alt="Podhouse app screenshot" />
     </ScreenContainer>
   );
 };
