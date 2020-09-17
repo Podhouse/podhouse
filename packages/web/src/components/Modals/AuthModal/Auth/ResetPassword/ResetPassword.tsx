@@ -1,11 +1,12 @@
-import * as React from "react";
+import React from "react";
 import { withTranslation } from "i18n";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers";
 import * as Yup from "yup";
 
-import { AuthTextContainer, AuthText, AuthFormContainer } from "../Auth.styles";
+import { AuthTextContainer, AuthFormContainer } from "../Auth.styles";
 
+import Paragraph from "src/system/Paragraph/Paragraph";
 import Input from "src/system/Input/Input";
 import Button from "src/system/Button/Button";
 
@@ -36,11 +37,11 @@ const ResetPassword = ({ t }: any) => {
   return (
     <>
       <AuthTextContainer>
-        <AuthText>
+        <Paragraph variant="secondary" size="normal">
           {t(
             "enter-your-email-address-and-we'll-send-you-an-email-with-a-password-reset-link",
           )}
-        </AuthText>
+        </Paragraph>
       </AuthTextContainer>
 
       <AuthFormContainer onSubmit={handleSubmit(onSubmit)}>
@@ -51,7 +52,6 @@ const ResetPassword = ({ t }: any) => {
           placeholder={t("new-password")}
           variant="primary"
           scale="normal"
-          ariaLabel="new password"
           ref={register}
           error={errors.newPassword?.message}
         />
@@ -63,7 +63,6 @@ const ResetPassword = ({ t }: any) => {
           placeholder={t("confirm-new-password")}
           variant="primary"
           scale="normal"
-          ariaLabel="confirm new password"
           ref={register}
           error={errors.confirmNewPassword?.message}
         />

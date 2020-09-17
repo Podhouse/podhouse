@@ -1,10 +1,6 @@
 import styled from "@emotion/styled";
 
-import { StyleProps } from "src/system/styles.types";
-
-interface PodcastAvatarProps {
-  avatar: string;
-}
+import { PodcastAvatarProps } from "./Podcast.types";
 
 export const PodcastContainer = styled.div`
   width: 50px;
@@ -61,47 +57,6 @@ export const PodcastDetails = styled.div`
     .like-button {
       display: block;
     }
-  }
-`;
-
-export const PodcastEpisode = styled.a<StyleProps>`
-  width: 100%;
-  max-width: 300px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  font-family: Inter;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 17px;
-  color: ${({ theme }) => theme.primary};
-  cursor: pointer;
-  text-decoration: none;
-
-  @media screen and (min-width: 800px) {
-    grid-row: 1 / 2;
-    grid-column: 1 / 2;
-  }
-`;
-
-export const PodcastName = styled.h1<StyleProps>`
-  width: 100%;
-  max-width: 300px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  font-family: Inter;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 17px;
-  color: ${({ theme }) => theme.tertiary};
-  cursor: pointer;
-
-  @media screen and (min-width: 800px) {
-    grid-row: 2 / 3;
-    grid-column: 1 / 2;
   }
 `;
 

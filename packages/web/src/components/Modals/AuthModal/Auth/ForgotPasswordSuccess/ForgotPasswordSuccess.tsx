@@ -2,13 +2,12 @@ import React from "react";
 import { withTranslation } from "i18n";
 import { Check } from "react-feather";
 
-import { AuthText } from "../Auth.styles";
-
 import {
   HeaderIconTextContainer,
   CheckContainer,
 } from "./ForgotPasswordSuccess.styles";
 
+import Paragraph from "src/system/Paragraph/Paragraph";
 import Button from "src/system/Button/Button";
 
 import { useAuthContext } from "src/context/Auth/Auth";
@@ -23,11 +22,11 @@ const ForgotPasswordSuccess = ({ t }: any) => {
           <Check size={20} color="#27AE60" />
         </CheckContainer>
 
-        <AuthText>
+        <Paragraph variant="secondary" size="normal">
           {t(
             "thanks,-please-check-your-email,-we've-sent-you-an-email-with instructions-to-reset-your-password",
           )}
-        </AuthText>
+        </Paragraph>
       </HeaderIconTextContainer>
 
       <Button

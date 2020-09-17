@@ -5,11 +5,11 @@ import {
   SettingsItemContainer,
   SettingsItemHeaderContainer,
   SettingsItemHeaderTitle,
-  SettingsItemHeaderBreakLine,
   SettingsItemContentContainer,
 } from "../Settings.styles";
 
 import Select from "src/system/Select/Select";
+import Separator from "src/system/Separator/Separator";
 
 const options = [
   {
@@ -85,7 +85,7 @@ const Language = ({ t }: any) => {
     <SettingsItemContainer>
       <SettingsItemHeaderContainer>
         <SettingsItemHeaderTitle>{t("language")}</SettingsItemHeaderTitle>
-        <SettingsItemHeaderBreakLine />
+        <Separator variant="secondary" orientation="horizontal" />
       </SettingsItemHeaderContainer>
 
       <SettingsItemContentContainer>

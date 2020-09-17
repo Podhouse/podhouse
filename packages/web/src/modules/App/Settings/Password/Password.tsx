@@ -8,7 +8,6 @@ import {
   SettingsItemContainer,
   SettingsItemHeaderContainer,
   SettingsItemHeaderTitle,
-  SettingsItemHeaderBreakLine,
   SettingsItemContentContainer,
 } from "../Settings.styles";
 
@@ -16,6 +15,7 @@ import { PasswordFormContainer } from "./Password.styles";
 
 import Button from "src/system/Button/Button";
 import Input from "src/system/Input/Input";
+import Separator from "src/system/Separator/Separator";
 
 interface PasswordFormProps {
   currentPassword: string;
@@ -38,7 +38,7 @@ const Password = ({ t }: any) => {
     <SettingsItemContainer>
       <SettingsItemHeaderContainer>
         <SettingsItemHeaderTitle>{t("password")}</SettingsItemHeaderTitle>
-        <SettingsItemHeaderBreakLine />
+        <Separator variant="secondary" orientation="horizontal" />
       </SettingsItemHeaderContainer>
 
       <SettingsItemContentContainer>
@@ -50,7 +50,6 @@ const Password = ({ t }: any) => {
             placeholder={t("current-password")}
             variant="primary"
             scale="normal"
-            ariaLabel="current password"
             ref={register}
             error={errors.currentPassword?.message}
           />
@@ -62,7 +61,6 @@ const Password = ({ t }: any) => {
             placeholder={t("new-password")}
             variant="primary"
             scale="normal"
-            ariaLabel="new password"
             ref={register}
             error={errors.newPassword?.message}
           />

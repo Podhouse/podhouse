@@ -1,20 +1,16 @@
 import React from "react";
-import Link from "next/link";
+import NextLink from "next/link";
 
 import {
   PodcastItemWithDetailsContainer,
   PodcastItemWithDetailsAvatar,
-  PodcastItemWithDetailsName,
-  PodcastItemWithDetailsAuthor,
+  PodcastItemWithDetailsTextContainer,
 } from "./PodcastItemWithDetails.styles";
 
-interface PodcastItemWithDetailsProps {
-  podcast: {
-    name: string;
-    author: string;
-    avatar: string;
-  };
-}
+import { PodcastItemWithDetailsProps } from "./PodcastItemWithDetails.types";
+
+import Link from "src/system/Link/Link";
+import Paragraph from "src/system/Paragraph/Paragraph";
 
 const PodcastItemWithDetails = ({ podcast }: PodcastItemWithDetailsProps) => {
   const { name, author, avatar } = podcast;
@@ -23,15 +19,23 @@ const PodcastItemWithDetails = ({ podcast }: PodcastItemWithDetailsProps) => {
 
   return (
     <PodcastItemWithDetailsContainer>
-      <Link href="/app/podcast/[podcast]" as="/app/podcast/123">
-        <PodcastItemWithDetailsAvatar src={avatar} alt={imageAlt} />
-      </Link>
-      <Link href="/app/podcast/[podcast]" as="/app/podcast/123">
-        <PodcastItemWithDetailsName href="/app/podcast/123">
-          {name}
-        </PodcastItemWithDetailsName>
-      </Link>
-      <PodcastItemWithDetailsAuthor>{author}</PodcastItemWithDetailsAuthor>
+      <NextLink href="/app/podcast/[podcast]" as="/app/podcast/123">
+        <Link variant="secondary" size="normal" href="/app/podcast/[podcast]">
+          <PodcastItemWithDetailsAvatar src={avatar} alt={imageAlt} />
+        </Link>
+      </NextLink>
+
+      <PodcastItemWithDetailsTextContainer>
+        <NextLink href="/app/podcast/[podcast]" as="/app/podcast/123">
+          <Link variant="secondary" size="normal" href="/app/podcast/123">
+            {name}
+          </Link>
+        </NextLink>
+
+        <Paragraph variant="secondary" size="normal">
+          {author}
+        </Paragraph>
+      </PodcastItemWithDetailsTextContainer>
     </PodcastItemWithDetailsContainer>
   );
 };

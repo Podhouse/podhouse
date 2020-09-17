@@ -28,7 +28,6 @@ const Input = React.forwardRef((props: InputProps, ref) => {
     onBlur,
     onClick,
     error,
-    ariaLabel,
     disabled = false,
     required = false,
     autoFocus = false,
@@ -60,7 +59,6 @@ const Input = React.forwardRef((props: InputProps, ref) => {
         onBlur={onBlur}
         onClick={onClick}
         error={error}
-        ariaLabel={ariaLabel}
         disabled={disabled}
         required={required}
         autoFocus={autoFocus}

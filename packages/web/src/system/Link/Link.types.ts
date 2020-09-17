@@ -22,6 +22,7 @@ export interface LinkProps {
     | "tag";
   isDisabled?: boolean;
   download?: boolean;
-  fontSize?: number;
+  fontSize?: any;
   fontWeight?: number;
+  onClick?: any;
 }

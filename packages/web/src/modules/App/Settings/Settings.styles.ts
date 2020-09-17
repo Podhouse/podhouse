@@ -49,14 +49,6 @@ export const SettingsItemHeaderTitle = styled.h1<StyleProps>`
   justify-self: flex-start;
 `;
 
-export const SettingsItemHeaderBreakLine = styled.hr<StyleProps>`
-  width: 100%;
-  height: 1px;
-  background-color: ${({ theme }) => theme.bgSecondary};
-  margin: 0;
-  border: none;
-`;
-
 export const SettingsItemContentContainer = styled.div`
   width: 100%;
   height: auto;

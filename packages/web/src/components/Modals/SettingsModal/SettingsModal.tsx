@@ -1,11 +1,10 @@
 import React, { useRef } from "react";
 import { withTranslation } from "i18n";
-import Link from "next/link";
+import NextLink from "next/link";
 
 import {
   SettingsModalContainer,
   SettingsModalLinkContainer,
-  SettingsModalLink,
   SettingsThemeContainer,
   SettingsThemeIconContainer,
 } from "./SettingsModal.styles";
@@ -14,6 +13,7 @@ import useOnClickOutside from "src/hooks/useOnClickOutside";
 
 import useTheme from "src/system/useTheme";
 
+import Link from "src/system/Link/Link";
 import ThemeToggle from "src/components/ThemeToggle/ThemeToggle";
 
 const SettingsModal = ({
@@ -31,27 +31,35 @@ const SettingsModal = ({
   return (
     <SettingsModalContainer ref={ref}>
       <SettingsModalLinkContainer>
-        <a
+        <Link
+          variant="secondary"
+          size="light"
           href="mailto:leonardomso11@gmail.com"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <SettingsModalLink>{t("feedback")}</SettingsModalLink>
-        </a>
+          {t("feedback")}
+        </Link>
       </SettingsModalLinkContainer>
 
       <SettingsModalLinkContainer onClick={handleShortcuts}>
-        <SettingsModalLink>{t("shortcuts")}</SettingsModalLink>
+        <Link href="#" variant="secondary" size="light">
+          {t("shortcuts")}
+        </Link>
       </SettingsModalLinkContainer>
 
-      <Link href="/app/settings">
-        <SettingsModalLinkContainer>
-          <SettingsModalLink>{t("settings")}</SettingsModalLink>
-        </SettingsModalLinkContainer>
-      </Link>
+      <SettingsModalLinkContainer>
+        <NextLink href="/app/settings" as="/app/settings">
+          <Link href="/app/settings" variant="secondary" size="light">
+            {t("settings")}
+          </Link>
+        </NextLink>
+      </SettingsModalLinkContainer>
 
       <SettingsThemeContainer onClick={() => themeState.toggle()}>
-        <SettingsModalLink>{t("theme")}</SettingsModalLink>
+        <Link href="#" variant="secondary" size="light">
+          {t("theme")}
+        </Link>
         <SettingsThemeIconContainer>
           <ThemeToggle
             dark={themeState.dark}
@@ -61,7 +69,9 @@ const SettingsModal = ({
       </SettingsThemeContainer>
 
       <SettingsModalLinkContainer onClick={logoutAuth}>
-        <SettingsModalLink>{t("logout")}</SettingsModalLink>
+        <Link href="#" variant="secondary" size="light">
+          {t("logout")}
+        </Link>
       </SettingsModalLinkContainer>
     </SettingsModalContainer>
   );

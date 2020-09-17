@@ -5,7 +5,6 @@ import {
   SettingsItemContainer,
   SettingsItemHeaderContainer,
   SettingsItemHeaderTitle,
-  SettingsItemHeaderBreakLine,
   SettingsItemContentContainer,
 } from "../Settings.styles";
 
@@ -16,6 +15,7 @@ import {
 } from "./Notifications.styles";
 
 import Toggle from "src/system/Toggle/Toggle";
+import Separator from "src/system/Separator/Separator";
 
 import useToggle from "src/hooks/useToggle";
 
@@ -30,7 +30,7 @@ const Notifications = ({ t }: any) => {
     <SettingsItemContainer>
       <SettingsItemHeaderContainer>
         <SettingsItemHeaderTitle>{t("notifications")}</SettingsItemHeaderTitle>
-        <SettingsItemHeaderBreakLine />
+        <Separator variant="secondary" orientation="horizontal" />
       </SettingsItemHeaderContainer>
 
       <SettingsItemContentContainer>

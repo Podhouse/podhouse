@@ -57,43 +57,6 @@ export const FeaturedDetailsContainer = styled.div`
   }
 `;
 
-export const FeaturedName = styled.a<StyleProps>`
-  font-family: Inter;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 24px;
-  line-height: 29px;
-  color: ${({ theme }) => theme.primary};
-  text-decoration: none;
-`;
-
-export const FeaturedAuthor = styled.h4<StyleProps>`
-  font-family: Inter;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 19px;
-  color: ${({ theme }) => theme.tertiary};
-`;
-
-export const FeaturedDescription = styled.p<StyleProps>`
-  display: none;
-
-  @media screen and (min-width: 800px) {
-    display: block;
-    font-family: Inter;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 25px;
-    color: ${({ theme }) => theme.tertiary};
-    display: -webkit-box;
-    -webkit-line-clamp: 4;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-`;
-
 export const FeaturedBadge = styled.a<StyleProps>`
   width: fit-content;
   height: fit-content;

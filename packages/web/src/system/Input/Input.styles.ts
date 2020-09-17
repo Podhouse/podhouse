@@ -62,10 +62,9 @@ export const StyledInput = styled.input<InputProps>`
   text-indent: 20px;
   outline: 0;
   box-sizing: border-box;
-  border: none;
   border-radius: 5px;
   line-height: 17px;
-  letter-spacing: 0.01em;
+  font-family: Inter;
   ${padding};
   ${color};
   ${margin};
@@ -82,17 +81,12 @@ export const StyledInput = styled.input<InputProps>`
     border-radius: 5px;
   `};
 
-  &:focus {
-    border: 2px solid blue;
-  }
-
   &:disabled {
     cursor: not-allowed;
   }
 
   :-moz-placeholder {
     font-family: Inter;
-    letter-spacing: 0.01em;
     line-height: 17px;
     text-indent: 20px;
   }

@@ -42,17 +42,6 @@ export const AuthTextContainer = styled.div`
   justify-content: flex-center;
 `;
 
-export const AuthText = styled.h3<StyleProps>`
-  font-family: Inter;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 20px;
-  text-align: center;
-  letter-spacing: -0.004em;
-  color: ${({ theme }) => theme.secondary};
-`;
-
 export const AuthFormContainer = styled.form<StyleProps>`
   width: 100%;
   height: 100%;
@@ -81,22 +70,6 @@ export const AuthCircle = styled.div<StyleProps>`
   border-radius: 50%;
   background: ${({ theme }) => theme.tertiary};
   align-self: center;
-`;
-
-export const AuthParagraphLink = styled.p<StyleProps>`
-  font-family: Inter;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 17px;
-  color: ${({ theme }) => theme.secondary};
-  justify-self: center;
-
-  &:hover {
-    color: ${({ theme }) => theme.primary};
-    text-decoration: underline;
-    cursor: pointer;
-  }
 `;
 
 export const AuthGetStartedButtonsContainer = styled.div`

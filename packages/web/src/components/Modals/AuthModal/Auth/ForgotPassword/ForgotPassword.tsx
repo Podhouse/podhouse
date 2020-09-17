@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { withTranslation } from "i18n";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers";
@@ -6,15 +6,15 @@ import * as Yup from "yup";
 
 import {
   AuthTextContainer,
-  AuthText,
   AuthFormContainer,
   AuthLinksContainer,
-  AuthParagraphLink,
   AuthCircle,
 } from "../Auth.styles";
 
+import Paragraph from "src/system/Paragraph/Paragraph";
 import Input from "src/system/Input/Input";
 import Button from "src/system/Button/Button";
+import Link from "src/system/Link/Link";
 
 import { useAuthContext } from "src/context/Auth/Auth";
 
@@ -38,11 +38,11 @@ const ForgotPassword = ({ t }: any) => {
   return (
     <>
       <AuthTextContainer>
-        <AuthText>
+        <Paragraph variant="secondary" size="normal">
           {t(
             "enter-your-email-address-and-we'll-send-you-an-email-with-a-password-reset-link",
           )}
-        </AuthText>
+        </Paragraph>
       </AuthTextContainer>
 
       <AuthFormContainer onSubmit={handleSubmit(onSubmit)}>
@@ -53,7 +53,6 @@ const ForgotPassword = ({ t }: any) => {
           placeholder={t("email")}
           variant="primary"
           scale="normal"
-          ariaLabel="email"
           ref={register}
           error={errors.email?.message}
         />
@@ -63,15 +62,25 @@ const ForgotPassword = ({ t }: any) => {
         </Button>
 
         <AuthLinksContainer>
-          <AuthParagraphLink onClick={() => send("SIGNIN")}>
+          <Link
+            href="#"
+            variant="secondary"
+            size="normal"
+            onClick={() => send("SIGNIN")}
+          >
             {t("already-have-an-account?")}
-          </AuthParagraphLink>
+          </Link>
 
           <AuthCircle />
 
-          <AuthParagraphLink onClick={() => send("SIGNUP")}>
+          <Link
+            href="#"
+            variant="secondary"
+            size="normal"
+            onClick={() => send("SIGNUP")}
+          >
             {t("don't-have-an-account?")}
-          </AuthParagraphLink>
+          </Link>
         </AuthLinksContainer>
       </AuthFormContainer>
     </>

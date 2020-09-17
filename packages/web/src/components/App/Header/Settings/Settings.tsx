@@ -5,7 +5,9 @@ import { User } from "react-feather";
 import { useAuthContext } from "../../../../context/Auth/Auth";
 import { useSettingsContext } from "../../../../context/Settings/Settings";
 
-import { SettingsContainer, SettingsLoginLink } from "./Settings.styles";
+import { SettingsContainer } from "./Settings.styles";
+
+import Button from "src/system/Button/Button";
 
 const Settings = ({ t }: any) => {
   const [auth, handleAuth] = useAuthContext();
@@ -23,7 +25,15 @@ const Settings = ({ t }: any) => {
       );
     }
     return (
-      <SettingsLoginLink onClick={handleAuth}>{t("login")}</SettingsLoginLink>
+      <Button
+        type="button"
+        onClick={handleAuth}
+        variant="ghost"
+        size="normal"
+        width="auto"
+      >
+        {t("login")}
+      </Button>
     );
   };
 

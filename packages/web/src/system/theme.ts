@@ -18,6 +18,7 @@ export interface StyleProps {
   links: {};
   heading: {};
   paragraph: {};
+  separator: {};
 }
 
 const light: StyleProps = {
@@ -71,8 +72,9 @@ const light: StyleProps = {
     primary: {
       color: "#6F6F6F",
       backgroundColor: "#F3F3F3",
+      border: "1px solid #F3F3F3",
       "&:focus": {
-        border: "1px solid rgba(16, 16, 16, 0.05)",
+        border: "1px solid rgba(16, 16, 16, 0.1)",
       },
     },
     secondary: {
@@ -144,13 +146,7 @@ const light: StyleProps = {
     secondary: {
       color: "#6F6F6F",
       cursor: "pointer",
-      "&:active": {
-        color: "#101010",
-      },
       "&:hover": {
-        color: "#101010",
-      },
-      "&:focus": {
         color: "#101010",
       },
     },
@@ -179,6 +175,18 @@ const light: StyleProps = {
     },
     disabled: {
       color: "#B7B7B7",
+    },
+  },
+  separator: {
+    primary: {
+      backgroundColor: "#B7B7B7",
+    },
+    secondary: {
+      backgroundColor: "#F3F3F3",
+    },
+    disabled: {
+      backgroundColor: "#F3F3F3",
+      cursor: "not-allowed",
     },
   },
 };
@@ -231,6 +239,10 @@ const dark: StyleProps = {
     primary: {
       color: "#B7B7B7",
       backgroundColor: "#212128",
+      border: "1px solid #212128",
+      "&:focus": {
+        border: "1px solid rgba(255, 255, 255, 0.1)",
+      },
     },
     secondary: {
       color: "#B7B7B7",
@@ -298,13 +310,7 @@ const dark: StyleProps = {
     secondary: {
       color: "#B7B7B7",
       cursor: "pointer",
-      "&:active": {
-        color: "#FFFFFF",
-      },
       "&:hover": {
-        color: "#FFFFFF",
-      },
-      "&:focus": {
         color: "#FFFFFF",
       },
     },
@@ -333,6 +339,18 @@ const dark: StyleProps = {
     },
     disabled: {
       color: "#B7B7B7",
+    },
+  },
+  separator: {
+    primary: {
+      backgroundColor: "#B7B7B7",
+    },
+    secondary: {
+      backgroundColor: "#212128",
+    },
+    disabled: {
+      backgroundColor: "#212128",
+      cursor: "not-allowed",
     },
   },
 };

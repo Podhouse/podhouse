@@ -1,11 +1,10 @@
 import React from "react";
-import Link from "next/link";
+import NextLink from "next/link";
 import { MoreHorizontal } from "react-feather";
 
 import {
   EpisodeItemContainer,
   EpisodeItemAvatar,
-  EpisodeItemName,
   EpisodeItemDescription,
   EpisodeItemPublishedDate,
   EpisodeItemDuration,
@@ -13,15 +12,9 @@ import {
   EpisodeItemButton,
 } from "./EpisodeItem.styles";
 
-interface EpisodeItemProps {
-  episode: {
-    name: string;
-    description: string;
-    avatar: string;
-    publishedDate: string;
-    duration: string;
-  };
-}
+import Link from "src/system/Link/Link";
+
+import { EpisodeItemProps } from "./EpisodeItem.types";
 
 const EpisodeItem = ({ episode }: EpisodeItemProps) => {
   const { avatar, name, description, publishedDate, duration } = episode;
@@ -31,9 +24,11 @@ const EpisodeItem = ({ episode }: EpisodeItemProps) => {
   return (
     <EpisodeItemContainer>
       <EpisodeItemAvatar src={avatar} alt={imageAlt} />
-      <Link href="/app/episode/[episode]" as="/app/episode/123">
-        <EpisodeItemName href="/app/episode/123">{name}</EpisodeItemName>
-      </Link>
+      <NextLink href="/app/episode/[episode]" as="/app/episode/123">
+        <Link variant="secondary" size="normal" href="/app/episode/123">
+          {name}
+        </Link>
+      </NextLink>
       <EpisodeItemDescription>{description}</EpisodeItemDescription>
       <EpisodeItemPublishedDate>{publishedDate}</EpisodeItemPublishedDate>
       <EpisodeItemDuration>{duration}</EpisodeItemDuration>

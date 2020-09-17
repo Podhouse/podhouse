@@ -31,6 +31,10 @@ const variants = variant({
       color: "error",
       backgroundColor: "error",
     },
+    ghost: {
+      color: "ghost",
+      backgroundColor: "ghost",
+    },
     disabled: {
       color: "disabled",
       backgroundColor: "disabled",

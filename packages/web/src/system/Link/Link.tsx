@@ -22,6 +22,7 @@ const Link = forwardRef((props: LinkProps, ref) => {
     download = false,
     fontSize,
     fontWeight,
+    onClick,
     children,
   } = props;
 
@@ -39,6 +40,7 @@ const Link = forwardRef((props: LinkProps, ref) => {
       download={download}
       fontSize={fontSize}
       fontWeight={fontWeight}
+      onClick={onClick}
       ref={domRef}
       {...linkProps}
     >

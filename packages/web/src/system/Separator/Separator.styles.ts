@@ -9,11 +9,11 @@ import {
   variant,
 } from "styled-system";
 
-import { LinkProps } from "./Link.types";
+import { SeparatorProps } from "./Separator.types";
 
 const variants = variant({
   prop: "variant",
-  scale: "links",
+  scale: "separator",
   variants: {
     primary: {
       color: "primary",
@@ -27,35 +27,22 @@ const variants = variant({
   },
 });
 
-const sizes = variant({
-  prop: "size",
+const orientations = variant({
+  prop: "orientation",
   variants: {
-    small: {
-      fontSize: 12,
-      fontWeight: 400,
+    horizontal: {
+      width: "100%",
+      height: "1px",
     },
-    light: {
-      fontSize: 14,
-      fontWeight: 400,
-    },
-    normal: {
-      fontSize: 14,
-      fontWeight: 500,
-    },
-    big: {
-      fontSize: 24,
-      fontWeight: 600,
-      letterSpacing: "-0.03em",
+    vertical: {
+      width: "1px",
+      height: "100%",
     },
   },
 });
 
-const StyledLink = styled.a<LinkProps>`
-  width: fit-content;
-  font-family: Inter;
-  text-align: center;
+const StyledSeparator = styled.div<SeparatorProps>`
   outline: 0;
-  text-decoration: none;
   ${padding};
   ${color};
   ${margin};
@@ -63,11 +50,11 @@ const StyledLink = styled.a<LinkProps>`
   ${space};
   ${typography};
   ${variants};
-  ${sizes};
+  ${orientations};
 
   &:disabled {
     cursor: not-allowed;
   }
 `;
 
-export default StyledLink;
+export default StyledSeparator;

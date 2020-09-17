@@ -3,15 +3,15 @@ import { withTranslation } from "i18n";
 
 import {
   AuthGetStartedButtonsContainer,
-  AuthTextContainer,
-  AuthText,
   AuthLinksContainer,
+  AuthTextContainer,
   AuthCircle,
-  AuthParagraphLink,
 } from "../Auth.styles";
 
+import Paragraph from "src/system/Paragraph/Paragraph";
 import Button from "src/system/Button/Button";
 import GoogleButton from "src/system/GoogleButton/GoogleButton";
+import Link from "src/system/Link/Link";
 
 import { useAuthContext } from "src/context/Auth/Auth";
 
@@ -21,9 +21,9 @@ const GetStarted = ({ t }: any) => {
   return (
     <>
       <AuthTextContainer>
-        <AuthText>
+        <Paragraph variant="secondary" size="normal">
           {t("the-best-way-to-listen-to-your-favorite-podcasts")}
-        </AuthText>
+        </Paragraph>
       </AuthTextContainer>
 
       <AuthGetStartedButtonsContainer>
@@ -37,22 +37,34 @@ const GetStarted = ({ t }: any) => {
         </Button>
 
         <AuthTextContainer>
-          <AuthText>{t("or")}</AuthText>
+          <Paragraph variant="secondary" size="normal">
+            {t("or")}
+          </Paragraph>
         </AuthTextContainer>
 
         <GoogleButton>{t("sign-up-with-google")}</GoogleButton>
       </AuthGetStartedButtonsContainer>
 
       <AuthLinksContainer>
-        <AuthParagraphLink onClick={() => send("SIGNIN")}>
+        <Link
+          href="#"
+          variant="secondary"
+          size="normal"
+          onClick={() => send("SIGNIN")}
+        >
           {t("already-have-an-account?")}
-        </AuthParagraphLink>
+        </Link>
 
         <AuthCircle />
 
-        <AuthParagraphLink onClick={() => send("FORGOT")}>
+        <Link
+          href="#"
+          variant="secondary"
+          size="normal"
+          onClick={() => send("FORGOT")}
+        >
           {t("forgot-your-password?")}
-        </AuthParagraphLink>
+        </Link>
       </AuthLinksContainer>
     </>
   );

@@ -10,7 +10,6 @@ export interface InputProps {
   onBlur?: any;
   onClick?: any;
   error: string | undefined;
-  ariaLabel: string;
   disabled?: boolean;
   required?: boolean;
   autoFocus?: boolean;

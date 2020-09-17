@@ -7,13 +7,13 @@ export const DashboardContainer = styled.main<StyleProps>`
   height: 100%;
   grid-row: 1 / 2;
   grid-column: 1 / 2;
-  background: ${({ theme }) => theme.bgTertiary};
+  background: ${({ theme }) => theme.bgPrimary};
 
   @media screen and (min-width: 800px) {
     width: 100%;
     height: 100%;
     grid-row: 2 / 3;
     grid-column: 2 / 3;
-    background: ${({ theme }) => theme.bgTertiary};
+    background: ${({ theme }) => theme.bgPrimary};
   }
 `;

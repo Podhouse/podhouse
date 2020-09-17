@@ -116,8 +116,11 @@ const Podcast = ({ t }: any) => {
               <InputWithLeftIcon
                 type="text"
                 name="podcast"
+                variant="primary"
+                scale="normal"
                 placeholder={t("search-episode")}
                 ref={register}
+                error=""
               />
             </PodcastSearchInputContainer>
           </PodcastLinksContainer>

@@ -1,25 +1,25 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { withTranslation } from "i18n";
 import { useKeenSlider } from "keen-slider/react";
-import Link from "next/link";
+import NextLink from "next/link";
 
 import {
   FeaturedContainer,
   FeaturedItemContainer,
   FeaturedAvatar,
   FeaturedDetailsContainer,
-  FeaturedName,
-  FeaturedAuthor,
-  FeaturedDescription,
   FeaturedBadge,
 } from "./Featured.styles";
+
+import Link from "src/system/Link/Link";
+import Paragraph from "src/system/Paragraph/Paragraph";
 
 const avatar =
   "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg";
 
 const Featured = ({ t }: any) => {
-  const [pause, setPause] = React.useState(false);
-  const timer = React.useRef<any>();
+  const [pause, setPause] = useState(false);
+  const timer = useRef<any>();
   const [sliderRef, slider] = useKeenSlider<HTMLDivElement>({
     loop: true,
     duration: 7000,
@@ -31,7 +31,7 @@ const Featured = ({ t }: any) => {
     },
   });
 
-  React.useEffect(() => {
+  useEffect(() => {
     sliderRef.current.addEventListener("mouseover", () => {
       setPause(true);
     });
@@ -40,7 +40,7 @@ const Featured = ({ t }: any) => {
     });
   }, [sliderRef]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     timer.current = setInterval(() => {
       if (!pause && slider) {
         slider.next();
@@ -55,9 +55,9 @@ const Featured = ({ t }: any) => {
     <>
       <FeaturedContainer ref={sliderRef} className="keen-slider">
         <FeaturedItemContainer className="keen-slider__slide number-slide1">
-          <Link href="/app/podcast/[podcast]" as="/app/podcast/invisible">
+          <NextLink href="/app/podcast/[podcast]" as="/app/podcast/invisible">
             <FeaturedAvatar src={avatar} />
-          </Link>
+          </NextLink>
 
           <FeaturedDetailsContainer>
             <FeaturedBadge
@@ -68,13 +68,15 @@ const Featured = ({ t }: any) => {
               {t("featured")}
             </FeaturedBadge>
 
-            <Link href="/app/podcast/[podcast]" as="/app/podcast/invisible">
-              <FeaturedName href="/app/podcast/invisible">
+            <NextLink href="/app/podcast/[podcast]" as="/app/podcast/invisible">
+              <Link variant="primary" size="big" href="/app/podcast/invisible">
                 99% Invisible
-              </FeaturedName>
-            </Link>
-            <FeaturedAuthor>Roman Mars</FeaturedAuthor>
-            <FeaturedDescription>
+              </Link>
+            </NextLink>
+            <Paragraph variant="primary" size="normal" textAlign="start">
+              Roman Mars
+            </Paragraph>
+            <Paragraph variant="secondary" size="normal" textAlign="start">
               Design is everywhere in our lives, perhaps most importantly in the
               places where we've just stopped noticing. 99% Invisible is a
               weekly exploration of the process and power of design and
@@ -84,14 +86,14 @@ const Featured = ({ t }: any) => {
               perhaps most importantly in the places where we've just stopped
               noticing. 99% Invisible is a weekly exploration of the process and
               power of design and architecture.
-            </FeaturedDescription>
+            </Paragraph>
           </FeaturedDetailsContainer>
         </FeaturedItemContainer>
 
         <FeaturedItemContainer className="keen-slider__slide number-slide2">
-          <Link href="/app/podcast/[podcast]" as="/app/podcast/invisible">
+          <NextLink href="/app/podcast/[podcast]" as="/app/podcast/invisible">
             <FeaturedAvatar src={avatar} />
-          </Link>
+          </NextLink>
 
           <FeaturedDetailsContainer>
             <FeaturedBadge
@@ -102,13 +104,15 @@ const Featured = ({ t }: any) => {
               {t("featured")}
             </FeaturedBadge>
 
-            <Link href="/app/podcast/[podcast]" as="/app/podcast/invisible">
-              <FeaturedName href="/app/podcast/invisible">
+            <NextLink href="/app/podcast/[podcast]" as="/app/podcast/invisible">
+              <Link variant="primary" size="big" href="/app/podcast/invisible">
                 99% Invisible
-              </FeaturedName>
-            </Link>
-            <FeaturedAuthor>Roman Mars</FeaturedAuthor>
-            <FeaturedDescription>
+              </Link>
+            </NextLink>
+            <Paragraph variant="primary" size="normal" textAlign="start">
+              Roman Mars
+            </Paragraph>
+            <Paragraph variant="secondary" size="normal" textAlign="start">
               Design is everywhere in our lives, perhaps most importantly in the
               places where we've just stopped noticing. 99% Invisible is a
               weekly exploration of the process and power of design and
@@ -118,14 +122,14 @@ const Featured = ({ t }: any) => {
               perhaps most importantly in the places where we've just stopped
               noticing. 99% Invisible is a weekly exploration of the process and
               power of design and architecture.
-            </FeaturedDescription>
+            </Paragraph>
           </FeaturedDetailsContainer>
         </FeaturedItemContainer>
 
         <FeaturedItemContainer className="keen-slider__slide number-slide3">
-          <Link href="/app/podcast/[podcast]" as="/app/podcast/invisible">
+          <NextLink href="/app/podcast/[podcast]" as="/app/podcast/invisible">
             <FeaturedAvatar src={avatar} />
-          </Link>
+          </NextLink>
 
           <FeaturedDetailsContainer>
             <FeaturedBadge
@@ -136,13 +140,15 @@ const Featured = ({ t }: any) => {
               {t("featured")}
             </FeaturedBadge>
 
-            <Link href="/app/podcast/[podcast]" as="/app/podcast/invisible">
-              <FeaturedName href="/app/podcast/invisible">
+            <NextLink href="/app/podcast/[podcast]" as="/app/podcast/invisible">
+              <Link variant="primary" size="big" href="/app/podcast/invisible">
                 99% Invisible
-              </FeaturedName>
-            </Link>
-            <FeaturedAuthor>Roman Mars</FeaturedAuthor>
-            <FeaturedDescription>
+              </Link>
+            </NextLink>
+            <Paragraph variant="primary" size="normal" textAlign="start">
+              Roman Mars
+            </Paragraph>
+            <Paragraph variant="secondary" size="normal" textAlign="start">
               Design is everywhere in our lives, perhaps most importantly in the
               places where we've just stopped noticing. 99% Invisible is a
               weekly exploration of the process and power of design and
@@ -152,7 +158,7 @@ const Featured = ({ t }: any) => {
               perhaps most importantly in the places where we've just stopped
               noticing. 99% Invisible is a weekly exploration of the process and
               power of design and architecture.
-            </FeaturedDescription>
+            </Paragraph>
           </FeaturedDetailsContainer>
         </FeaturedItemContainer>
       </FeaturedContainer>

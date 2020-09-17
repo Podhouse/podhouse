@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { withTranslation } from "i18n";
 import { useRouter } from "next/router";
 
-import SearchInput from "./SearchInput/SearchInput";
-
 import { SearchContainer } from "./Search.styles";
+
+import InputWithLeftIcon from "src/system/InputWithLeftIcon/InputWithLeftIcon";
 
 const Search = ({ t }: any) => {
   const [search, setSearch] = useState<string>("");
@@ -22,13 +22,16 @@ const Search = ({ t }: any) => {
 
   return (
     <SearchContainer>
-      <SearchInput
+      <InputWithLeftIcon
+        variant="primary"
+        scale="normal"
         type="text"
         name="search"
         placeholder={t("search")}
         onChange={onSearch}
         onClick={pushSearch}
         value={search}
+        error=""
       />
     </SearchContainer>
   );
