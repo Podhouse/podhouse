@@ -34,6 +34,10 @@ const sizes = variant({
       fontSize: 12,
       fontWeight: 400,
     },
+    light: {
+      fontSize: 14,
+      fontWeight: 400,
+    },
     normal: {
       fontSize: 14,
       fontWeight: 500,

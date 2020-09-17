@@ -13,12 +13,15 @@ const Link = forwardRef((props: LinkProps, ref) => {
 
   const {
     href,
+    id,
     target = "_self",
     variant = "secondary",
     size = "normal",
     isDisabled = false,
     rel,
     download = false,
+    fontSize,
+    fontWeight,
     children,
   } = props;
 
@@ -27,12 +30,15 @@ const Link = forwardRef((props: LinkProps, ref) => {
   return (
     <StyledLink
       href={href}
+      id={id}
       variant={checkVariant}
       size={size}
       target={target}
       isDisabled={isDisabled}
       rel={rel}
       download={download}
+      fontSize={fontSize}
+      fontWeight={fontWeight}
       ref={domRef}
       {...linkProps}
     >

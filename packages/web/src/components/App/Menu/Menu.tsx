@@ -1,6 +1,6 @@
 import React from "react";
 import Scrollbars from "react-custom-scrollbars";
-import Link from "next/link";
+import NextLink from "next/link";
 
 import Navigation from "./Navigation/Navigation";
 
@@ -12,6 +12,7 @@ import {
 } from "./Menu.styles";
 
 import useTheme from "src/system/useTheme";
+import Link from "src/system/Link/Link";
 
 import PodhouseDark from "../../../../public/logo/logo-medium-dark.svg";
 import PodhouseWhite from "../../../../public/logo/logo-medium-white.svg";
@@ -39,11 +40,25 @@ const Menu = () => {
         autoHideDuration={100}
       >
         <MenuInsideContainer>
-          <MenuLogoContainer>{onRenderLogo()}</MenuLogoContainer>
+          <MenuLogoContainer>
+            <NextLink href="/app" as="/app">
+              <Link href="/app" variant="secondary" size="normal">
+                {onRenderLogo()}
+              </Link>
+            </NextLink>
+          </MenuLogoContainer>
+
           <Navigation />
-          <Link href="/app/episode/[episode]" as="/app/episode/123">
-            <MenuAvatarContainer src={avatar} />
-          </Link>
+
+          <NextLink href="/app/episode/[episode]" as="/app/episode/[episode]">
+            <Link
+              href="/app/episode/[episode]"
+              variant="secondary"
+              size="normal"
+            >
+              <MenuAvatarContainer src={avatar} alt="Podcast logo" />
+            </Link>
+          </NextLink>
         </MenuInsideContainer>
       </Scrollbars>
     </MenuContainer>

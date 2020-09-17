@@ -144,6 +144,9 @@ const light: StyleProps = {
     secondary: {
       color: "#6F6F6F",
       cursor: "pointer",
+      "&:active": {
+        color: "#101010",
+      },
       "&:hover": {
         color: "#101010",
       },
@@ -295,6 +298,15 @@ const dark: StyleProps = {
     secondary: {
       color: "#B7B7B7",
       cursor: "pointer",
+      "&:active": {
+        color: "#FFFFFF",
+      },
+      "&:hover": {
+        color: "#FFFFFF",
+      },
+      "&:focus": {
+        color: "#FFFFFF",
+      },
     },
     disabled: {
       color: "#B7B7B7",

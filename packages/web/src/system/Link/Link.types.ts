@@ -1,7 +1,8 @@
 export interface LinkProps {
   href: string;
+  id?: string;
   variant: "primary" | "secondary" | "disabled";
-  size: "small" | "normal" | "big";
+  size: "small" | "light" | "normal" | "big";
   target?: "_blank" | "_self" | "_parent" | "_top" | "framename";
   children: React.ReactNode;
   rel?:
@@ -21,4 +22,6 @@ export interface LinkProps {
     | "tag";
   isDisabled?: boolean;
   download?: boolean;
+  fontSize?: number;
+  fontWeight?: number;
 }
