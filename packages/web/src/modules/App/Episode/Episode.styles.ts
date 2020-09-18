@@ -70,43 +70,6 @@ export const EpisodeDetailsContainer = styled.div`
   }
 `;
 
-export const EpisodeName = styled.h1<StyleProps>`
-  font-family: Inter;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 24px;
-  line-height: 29px;
-  color: ${({ theme }) => theme.primary};
-`;
-
-export const EpisodeAuthor = styled.a<StyleProps>`
-  font-family: Inter;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 19px;
-  color: ${({ theme }) => theme.tertiary};
-  text-decoration: none;
-`;
-
-export const EpisodeDescription = styled.p<StyleProps>`
-  display: none;
-
-  @media screen and (min-width: 800px) {
-    display: block;
-    font-family: Inter;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 25px;
-    color: ${({ theme }) => theme.tertiary};
-    display: -webkit-box;
-    -webkit-line-clamp: 5;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-`;
-
 export const EpisodeListenButtonContainer = styled.div`
   width: 100%;
   height: 100%;

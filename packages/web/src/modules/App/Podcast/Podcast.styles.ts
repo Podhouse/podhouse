@@ -70,42 +70,6 @@ export const PodcastDetailsContainer = styled.div`
   }
 `;
 
-export const PodcastName = styled.h1<StyleProps>`
-  font-family: Inter;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 24px;
-  line-height: 29px;
-  color: ${({ theme }) => theme.primary};
-`;
-
-export const PodcastAuthor = styled.h3<StyleProps>`
-  font-family: Inter;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 19px;
-  color: ${({ theme }) => theme.tertiary};
-`;
-
-export const PodcastDescription = styled.p<StyleProps>`
-  display: none;
-
-  @media screen and (min-width: 800px) {
-    display: block;
-    font-family: Inter;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 25px;
-    color: ${({ theme }) => theme.tertiary};
-    display: -webkit-box;
-    -webkit-line-clamp: 5;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-`;
-
 export const PodcastButtonsContainer = styled.div`
   width: 100%;
   height: 100%;

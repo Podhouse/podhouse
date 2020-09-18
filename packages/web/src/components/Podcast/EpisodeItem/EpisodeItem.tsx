@@ -1,18 +1,15 @@
 import React from "react";
 import NextLink from "next/link";
-import { MoreHorizontal } from "react-feather";
 
 import {
   EpisodeItemContainer,
   EpisodeItemAvatar,
+  EpisodeItemName,
   EpisodeItemDescription,
   EpisodeItemPublishedDate,
   EpisodeItemDuration,
-  EpisodeItemButtonContainer,
   EpisodeItemButton,
 } from "./EpisodeItem.styles";
-
-import Link from "src/system/Link/Link";
 
 import { EpisodeItemProps } from "./EpisodeItem.types";
 
@@ -24,18 +21,34 @@ const EpisodeItem = ({ episode }: EpisodeItemProps) => {
   return (
     <EpisodeItemContainer>
       <EpisodeItemAvatar src={avatar} alt={imageAlt} />
+
       <NextLink href="/app/episode/[episode]" as="/app/episode/123">
-        <Link variant="secondary" size="normal" href="/app/episode/123">
-          {name}
-        </Link>
+        <EpisodeItemName href="/app/episode/123">{name}</EpisodeItemName>
       </NextLink>
-      <EpisodeItemDescription>{description}</EpisodeItemDescription>
-      <EpisodeItemPublishedDate>{publishedDate}</EpisodeItemPublishedDate>
-      <EpisodeItemDuration>{duration}</EpisodeItemDuration>
-      <EpisodeItemButtonContainer>
-        <MoreHorizontal size={16} strokeWidth={1} color="#B7B7B7" />
-        <EpisodeItemButton type="button">Play</EpisodeItemButton>
-      </EpisodeItemButtonContainer>
+
+      <EpisodeItemDescription
+        variant="secondary"
+        size="normal"
+        textAlign="start"
+      >
+        {description}
+      </EpisodeItemDescription>
+
+      <EpisodeItemPublishedDate
+        variant="secondary"
+        size="normal"
+        textAlign="start"
+      >
+        {publishedDate}
+      </EpisodeItemPublishedDate>
+
+      <EpisodeItemDuration variant="secondary" size="normal" textAlign="start">
+        {duration}
+      </EpisodeItemDuration>
+
+      <EpisodeItemButton type="button" variant="secondary" size="normal">
+        Play
+      </EpisodeItemButton>
     </EpisodeItemContainer>
   );
 };

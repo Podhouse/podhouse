@@ -2,7 +2,6 @@ import React from "react";
 import Head from "next/head";
 import { withTranslation } from "i18n";
 import Scrollbars from "react-custom-scrollbars";
-import { ExternalLink, Rss } from "react-feather";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers";
 import * as Yup from "yup";
@@ -12,14 +11,10 @@ import {
   PodcastHeader,
   PodcastAvatar,
   PodcastDetailsContainer,
-  PodcastName,
-  PodcastAuthor,
-  PodcastDescription,
   PodcastButtonsContainer,
   PodcastEpisodesContainer,
   PodcastLinksContainer,
   PodcastLinkContainer,
-  PodcastLink,
   PodcastSearchInputContainer,
 } from "./Podcast.styles";
 
@@ -27,7 +22,9 @@ import EpisodeItem from "src/components/Podcast/EpisodeItem/EpisodeItem";
 
 import Button from "src/system/Button/Button";
 import InputWithLeftIcon from "src/system/InputWithLeftIcon/InputWithLeftIcon";
-import useTheme from "src/system/useTheme";
+import Heading from "src/system/Heading/Heading";
+import Link from "src/system/Link/Link";
+import Paragraph from "src/system/Paragraph/Paragraph";
 
 const avatar =
   "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg";
@@ -50,10 +47,6 @@ const validationSchema = Yup.object().shape({
 });
 
 const Podcast = ({ t }: any) => {
-  const themeState = useTheme();
-
-  const iconColor = themeState.dark ? "#FFF" : "#B7B7B7";
-
   const { register, handleSubmit } = useForm<SearchPodcastProps>({
     resolver: yupResolver(validationSchema),
   });
@@ -71,16 +64,20 @@ const Podcast = ({ t }: any) => {
           <PodcastAvatar src={avatar} />
 
           <PodcastDetailsContainer>
-            <PodcastName>99% Invisible</PodcastName>
-            <PodcastAuthor>Roman Mars</PodcastAuthor>
-            <PodcastDescription>
+            <Heading as="h1" variant="primary" size="normal">
+              99% Invisible
+            </Heading>
+            <Heading as="h2" variant="primary" size="small" fontSize={16}>
+              Roman Mars
+            </Heading>
+            <Paragraph variant="secondary" size="normal" textAlign="start">
               Design is everywhere in our lives, perhaps most importantly in the
               places where we've just stopped noticing. 99% Invisible is a
               weekly exploration of the process and power of design and
               architecture. From award winning producer Roman Mars. Learn more
               at 99percentinvisible.org. A proud member of Radiotopia, from PRX.
               Learn more at radiotopia.fm.
-            </PodcastDescription>
+            </Paragraph>
           </PodcastDetailsContainer>
 
           <PodcastButtonsContainer>
@@ -91,25 +88,27 @@ const Podcast = ({ t }: any) => {
 
           <PodcastLinksContainer>
             <PodcastLinkContainer>
-              <ExternalLink size={16} strokeWidth={1} color={iconColor} />
-              <PodcastLink
+              <Link
+                variant="secondary"
+                size="normal"
                 href="mailto:leonardomso11@gmail.com"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 {t("website")}
-              </PodcastLink>
+              </Link>
             </PodcastLinkContainer>
 
             <PodcastLinkContainer>
-              <Rss size={16} strokeWidth={1} color={iconColor} />
-              <PodcastLink
+              <Link
+                variant="secondary"
+                size="normal"
                 href="mailto:leonardomso11@gmail.com"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 RSS
-              </PodcastLink>
+              </Link>
             </PodcastLinkContainer>
 
             <PodcastSearchInputContainer onSubmit={handleSubmit(onSubmit)}>

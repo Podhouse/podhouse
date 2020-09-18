@@ -51,7 +51,6 @@ const sizes = variant({
 });
 
 const StyledLink = styled.a<LinkProps>`
-  width: fit-content;
   font-family: Inter;
   text-align: center;
   outline: 0;
