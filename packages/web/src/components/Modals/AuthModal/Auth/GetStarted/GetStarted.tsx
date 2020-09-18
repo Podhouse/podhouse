@@ -47,7 +47,7 @@ const GetStarted = ({ t }: any) => {
 
       <AuthLinksContainer>
         <Link
-          href="#"
+          href=""
           variant="secondary"
           size="normal"
           onClick={() => send("SIGNIN")}
@@ -58,7 +58,7 @@ const GetStarted = ({ t }: any) => {
         <AuthCircle />
 
         <Link
-          href="#"
+          href=""
           variant="secondary"
           size="normal"
           onClick={() => send("FORGOT")}

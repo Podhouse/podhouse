@@ -38,7 +38,7 @@ const RightControls = ({
     <RightControlsContainer>
       <List
         size={20}
-        strokeWidth={1.5}
+        strokeWidth={1.7}
         color={iconColor}
         style={iconStyle}
         onClick={handleQueue}
@@ -46,7 +46,7 @@ const RightControls = ({
 
       <Clock
         size={20}
-        strokeWidth={1.5}
+        strokeWidth={1.7}
         color={iconColor}
         style={iconStyle}
         onClick={handleRate}

@@ -43,7 +43,7 @@ const SettingsModal = ({
       </SettingsModalLinkContainer>
 
       <SettingsModalLinkContainer onClick={handleShortcuts}>
-        <Link href="#" variant="secondary" size="light">
+        <Link href="" variant="secondary" size="light">
           {t("shortcuts")}
         </Link>
       </SettingsModalLinkContainer>
@@ -57,7 +57,7 @@ const SettingsModal = ({
       </SettingsModalLinkContainer>
 
       <SettingsThemeContainer onClick={() => themeState.toggle()}>
-        <Link href="#" variant="secondary" size="light">
+        <Link href="" variant="secondary" size="light">
           {t("theme")}
         </Link>
         <SettingsThemeIconContainer>
@@ -69,7 +69,7 @@ const SettingsModal = ({
       </SettingsThemeContainer>
 
       <SettingsModalLinkContainer onClick={logoutAuth}>
-        <Link href="#" variant="secondary" size="light">
+        <Link href="" variant="secondary" size="light">
           {t("logout")}
         </Link>
       </SettingsModalLinkContainer>

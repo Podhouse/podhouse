@@ -63,7 +63,7 @@ const ForgotPassword = ({ t }: any) => {
 
         <AuthLinksContainer>
           <Link
-            href="#"
+            href=""
             variant="secondary"
             size="normal"
             onClick={() => send("SIGNIN")}
@@ -74,7 +74,7 @@ const ForgotPassword = ({ t }: any) => {
           <AuthCircle />
 
           <Link
-            href="#"
+            href=""
             variant="secondary"
             size="normal"
             onClick={() => send("SIGNUP")}

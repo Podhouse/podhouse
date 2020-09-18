@@ -7,7 +7,7 @@ import { useSettingsContext } from "../../../../context/Settings/Settings";
 
 import { SettingsContainer } from "./Settings.styles";
 
-import Button from "src/system/Button/Button";
+import Link from "src/system/Link/Link";
 
 const Settings = ({ t }: any) => {
   const [auth, handleAuth] = useAuthContext();
@@ -20,20 +20,15 @@ const Settings = ({ t }: any) => {
           onClick={handleSettings}
           size={16}
           color="#B7B7B7"
-          strokeWidth={1.5}
+          strokeWidth={1.7}
         />
       );
     }
+
     return (
-      <Button
-        type="button"
-        onClick={handleAuth}
-        variant="ghost"
-        size="normal"
-        width="auto"
-      >
+      <Link href="" onClick={handleAuth} variant="primary" size="normal">
         {t("login")}
-      </Button>
+      </Link>
     );
   };
 

@@ -32,7 +32,7 @@ const QueueModalItem = ({ avatar, episode, name }: QueueModalItemProps) => {
 
       <X
         size={16}
-        strokeWidth={1.5}
+        strokeWidth={1.7}
         color="#B7B7B7"
         onClick={() => console.log("X clicked")}
       />

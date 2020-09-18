@@ -7,7 +7,7 @@ import { ErrorProps } from "./Error.types";
 
 const Error = ({ error, variant = "primary", size = "normal" }: ErrorProps) => (
   <ErrorContainer>
-    <AlertTriangle size={16} color="#DD0426" strokeWidth={1.5} />
+    <AlertTriangle size={16} color="#DD0426" strokeWidth={1.7} />
 
     <ErrorText variant={variant} size={size}>
       {error}

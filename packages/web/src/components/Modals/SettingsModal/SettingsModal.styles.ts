@@ -69,7 +69,8 @@ export const SettingsThemeContainer = styled.div<StyleProps>`
   cursor: pointer;
 
   a {
-    text-decoration: none;
+    align-self: center;
+    justify-self: start;
   }
 
   &:hover {

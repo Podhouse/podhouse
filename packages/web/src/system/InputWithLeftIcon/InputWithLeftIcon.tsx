@@ -40,7 +40,7 @@ const InputWithLeftIcon = React.forwardRef(
       <InputWithLeftIconContainer>
         <Search
           color="#B7B7B7"
-          strokeWidth={1.5}
+          strokeWidth={1.7}
           size={16}
           style={{
             position: "absolute",

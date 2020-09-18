@@ -47,7 +47,7 @@ const Podcast = ({ ready, currentPodcast }: PodcastProps) => {
             <Heart
               className="like-button"
               size={16}
-              strokeWidth={1.5}
+              strokeWidth={1.7}
               color={iconColor}
               style={iconStyle}
               onClick={() => {}}
