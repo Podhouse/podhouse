@@ -1,5 +1,6 @@
 import React from "react";
 import { i18n, withTranslation } from "i18n";
+import { WithTranslation } from "next-i18next";
 
 import {
   SettingsItemContainer,
@@ -78,7 +79,7 @@ const options = [
   },
 ];
 
-const Language = ({ t }: any) => {
+const Language = ({ t }: WithTranslation) => {
   const handleChange = (event) => i18n.changeLanguage(event.target.value);
 
   return (

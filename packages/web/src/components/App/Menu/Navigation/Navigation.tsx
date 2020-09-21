@@ -1,5 +1,6 @@
 import React from "react";
 import { withTranslation } from "i18n";
+import { WithTranslation } from "next-i18next";
 import NextLink from "next/link";
 import { Home, Headphones, Search, User, Heart } from "react-feather";
 
@@ -10,7 +11,7 @@ import {
 
 import Link from "src/system/Link/Link";
 
-const Navigation = ({ t }: any) => (
+const Navigation = ({ t }: WithTranslation) => (
   <NavigationContainer>
     <NavigationItemContainer className="browse">
       <NextLink href="/app">

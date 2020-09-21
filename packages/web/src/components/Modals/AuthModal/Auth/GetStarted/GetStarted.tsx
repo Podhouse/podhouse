@@ -1,28 +1,27 @@
 import React from "react";
 import { withTranslation } from "i18n";
+import { WithTranslation } from "next-i18next";
 
 import {
   AuthGetStartedButtonsContainer,
   AuthLinksContainer,
   AuthTextContainer,
-  AuthCircle,
 } from "../Auth.styles";
 
 import Paragraph from "src/system/Paragraph/Paragraph";
 import Button from "src/system/Button/Button";
-import GoogleButton from "src/system/GoogleButton/GoogleButton";
 import Link from "src/system/Link/Link";
 
 import { useAuthContext } from "src/context/Auth/Auth";
 
-const GetStarted = ({ t }: any) => {
+const GetStarted = ({ t }: WithTranslation) => {
   const [, , , send] = useAuthContext();
 
   return (
     <>
       <AuthTextContainer>
         <Paragraph variant="secondary" size="normal">
-          {t("the-best-way-to-listen-to-your-favorite-podcasts")}
+          {t("listen-to-your-favorite-podcasts")}
         </Paragraph>
       </AuthTextContainer>
 
@@ -42,21 +41,17 @@ const GetStarted = ({ t }: any) => {
           </Paragraph>
         </AuthTextContainer>
 
-        <GoogleButton>{t("sign-up-with-google")}</GoogleButton>
-      </AuthGetStartedButtonsContainer>
-
-      <AuthLinksContainer>
-        <Link
-          href=""
-          variant="secondary"
+        <Button
+          type="button"
+          variant="primary"
           size="normal"
           onClick={() => send("SIGNIN")}
         >
-          {t("already-have-an-account?")}
-        </Link>
+          {t("sign-in-with-email")}
+        </Button>
+      </AuthGetStartedButtonsContainer>
 
-        <AuthCircle />
-
+      <AuthLinksContainer>
         <Link
           href=""
           variant="secondary"

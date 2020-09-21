@@ -1,5 +1,6 @@
 import React from "react";
 import { withTranslation } from "i18n";
+import { WithTranslation } from "next-i18next";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers";
 import * as Yup from "yup";
@@ -28,7 +29,7 @@ const validationSchema = Yup.object().shape({
   password: Yup.string().required("Password is required"),
 });
 
-const SignIn = ({ t }: any) => {
+const SignIn = ({ t }: WithTranslation) => {
   const [, , , send] = useAuthContext();
 
   const { register, handleSubmit, errors } = useForm<SignInFormProps>({
@@ -41,7 +42,7 @@ const SignIn = ({ t }: any) => {
     <>
       <AuthTextContainer>
         <Paragraph variant="secondary" size="normal">
-          {t("the-best-way-to-listen-to-your-favorite-podcasts")}
+          {t("listen-to-your-favorite-podcasts")}
         </Paragraph>
       </AuthTextContainer>
 

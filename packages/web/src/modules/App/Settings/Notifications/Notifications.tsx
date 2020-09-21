@@ -1,5 +1,6 @@
 import React from "react";
 import { withTranslation } from "i18n";
+import { WithTranslation } from "next-i18next";
 
 import {
   SettingsItemContainer,
@@ -19,7 +20,7 @@ import Separator from "src/system/Separator/Separator";
 
 import useToggle from "src/hooks/useToggle";
 
-const Notifications = ({ t }: any) => {
+const Notifications = ({ t }: WithTranslation) => {
   const {
     toggle: toggleWeekly,
     handleToggle: handleToggleWeekly,

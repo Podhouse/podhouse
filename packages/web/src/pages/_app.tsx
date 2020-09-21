@@ -17,4 +17,8 @@ class MyApp extends App<{ Component: any }, any> {
   }
 }
 
+MyApp.getInitialProps = async (appContext) => ({
+  ...(await App.getInitialProps(appContext)),
+});
+
 export default appWithTranslation(MyApp);

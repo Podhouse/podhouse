@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { withTranslation } from "i18n";
+import { WithTranslation } from "next-i18next";
 import { useKeenSlider } from "keen-slider/react";
 import NextLink from "next/link";
 
@@ -17,7 +18,7 @@ import Badge from "src/system/Badge/Badge";
 const avatar =
   "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg";
 
-const Featured = ({ t }: any) => {
+const Featured = ({ t }: WithTranslation) => {
   const [pause, setPause] = useState(false);
   const timer = useRef<any>();
   const [sliderRef, slider] = useKeenSlider<HTMLDivElement>({

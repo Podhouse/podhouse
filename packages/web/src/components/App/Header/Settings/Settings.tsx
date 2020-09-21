@@ -1,5 +1,6 @@
 import React from "react";
 import { withTranslation } from "i18n";
+import { WithTranslation } from "next-i18next";
 import { User } from "react-feather";
 
 import { useAuthContext } from "../../../../context/Auth/Auth";
@@ -9,7 +10,7 @@ import { SettingsContainer } from "./Settings.styles";
 
 import Link from "src/system/Link/Link";
 
-const Settings = ({ t }: any) => {
+const Settings = ({ t }: WithTranslation) => {
   const [auth, handleAuth] = useAuthContext();
   const [, handleSettings] = useSettingsContext();
 

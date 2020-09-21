@@ -1,5 +1,6 @@
 import React from "react";
 import { withTranslation } from "i18n";
+import { WithTranslation } from "next-i18next";
 import Scrollbars from "react-custom-scrollbars";
 
 import { SearchContainer } from "./Search.styles";
@@ -37,7 +38,7 @@ const items = [
   },
 ];
 
-const Search = ({ t }: any) => (
+const Search = ({ t }: WithTranslation) => (
   <Scrollbars universal autoHide autoHideTimeout={100} autoHideDuration={100}>
     <SearchContainer>
       <PodcastsWithDetails title={t("search")} items={items} />

@@ -1,7 +1,7 @@
 {
   "name": "Podhouse",
   "short_name": "Podhouse",
-  "description": "The best way to listen to your favorite podcasts",
+  "description": "Listen to your favorite podcasts",
   "theme_color": "#000000",
   "background_color": "#ffffff",
   "display": "standalone",
