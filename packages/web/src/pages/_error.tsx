@@ -1,7 +1,7 @@
 import React from "react";
 import Head from "next/head";
 
-import ErrorPage from "../components/ErrorPage/ErrorPage";
+import ErrorPage from "src/components/ErrorPage/ErrorPage";
 
 const Home = () => (
   <div className="container">

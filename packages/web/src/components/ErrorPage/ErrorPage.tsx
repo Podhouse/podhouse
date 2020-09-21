@@ -1,7 +1,5 @@
-import * as React from "react";
-import Link from "next/link";
-
-import Button from "../../system/Button/Button";
+import React from "react";
+import NextLink from "next/link";
 
 import {
   ErrorPageContainer,
@@ -10,6 +8,8 @@ import {
   ErrorPageText,
   ErrorPageButtonContainer,
 } from "./ErrorPage.styles";
+
+import Link from "src/system/Link/Link";
 
 interface ErrorPageProps {
   title: string;
@@ -22,13 +22,11 @@ const ErrorPage = ({ title, description }: ErrorPageProps) => (
       <ErrorPageTitle>{title}</ErrorPageTitle>
       <ErrorPageText>{description}</ErrorPageText>
       <ErrorPageButtonContainer>
-        <Link href="/app">
-          <a>
-            <Button type="button" variant="primary" size="big">
-              Back to home
-            </Button>
-          </a>
-        </Link>
+        <NextLink href="/app">
+          <Link href="" variant="primary" size="big">
+            Back to home
+          </Link>
+        </NextLink>
       </ErrorPageButtonContainer>
     </ErrorPageInnerContainer>
   </ErrorPageContainer>

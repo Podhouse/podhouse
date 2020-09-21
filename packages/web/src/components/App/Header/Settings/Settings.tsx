@@ -3,8 +3,8 @@ import { withTranslation } from "i18n";
 import { WithTranslation } from "next-i18next";
 import { User } from "react-feather";
 
-import { useAuthContext } from "../../../../context/Auth/Auth";
-import { useSettingsContext } from "../../../../context/Settings/Settings";
+import { useAuthContext } from "src/context/Auth/Auth";
+import { useSettingsContext } from "src/context/Settings/Settings";
 
 import { SettingsContainer } from "./Settings.styles";
 
