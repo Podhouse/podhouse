@@ -1,7 +1,5 @@
 import React from "react";
 import Head from "next/head";
-import { useRehawk } from "rehawk";
-import useKey from "@rooks/use-key";
 
 import { AppContainer } from "./App.styles";
 
@@ -12,7 +10,6 @@ import Dashboard from "./Dashboard/Dashboard";
 
 import AuthModal from "src/components/Modals/AuthModal/AuthModal";
 import SettingsModal from "src/components/Modals/SettingsModal/SettingsModal";
-import ShortcutsModal from "src/components/Modals/ShortcutsModal/ShortcutsModal";
 import QueueModal from "src/components/Modals/QueueModal/QueueModal";
 import RateModal from "src/components/Modals/RateModal/RateModal";
 
@@ -20,8 +17,6 @@ import { useAuthContext } from "src/context/Auth/Auth";
 import { useSettingsContext } from "src/context/Settings/Settings";
 import { useQueueContext } from "src/context/Queue/Queue";
 import { useRateContext } from "src/context/Rate/Rate";
-
-import useShortcuts from "src/hooks/useShortcuts";
 
 interface AppProps {
   children: React.ReactNode;
@@ -32,26 +27,10 @@ const App = ({ children }: AppProps) => {
   const [settings, handleSettings] = useSettingsContext();
   const [queue, handleQueue] = useQueueContext();
   const [rate, handleRate] = useRateContext();
-  const { shortcuts, handleShortcuts } = useShortcuts();
-
-  const { onToggle, onForward, onBackward } = useRehawk({});
-
-  useKey([" "], onToggle);
-  useKey(["ArrowRight"], () => onForward(15));
-  useKey(["ArrowLeft"], () => onBackward(15));
 
   const renderAuthModal = () => {
     if (auth.matches("open")) {
       return <AuthModal auth={auth} handleAuth={handleAuth} />;
-    }
-    return null;
-  };
-
-  const renderShortcutsModal = () => {
-    if (auth.matches("loggedIn")) {
-      if (shortcuts.matches("open")) {
-        return <ShortcutsModal handleShortcuts={handleShortcuts} />;
-      }
     }
     return null;
   };
@@ -63,7 +42,6 @@ const App = ({ children }: AppProps) => {
           <SettingsModal
             logoutAuth={logoutAuth}
             handleSettings={handleSettings}
-            handleShortcuts={handleShortcuts}
           />
         );
       }
@@ -95,7 +73,6 @@ const App = ({ children }: AppProps) => {
       <>
         {renderAuthModal()}
         {renderSettingsModal()}
-        {renderShortcutsModal()}
         {renderQueueModal()}
         {renderRateModal()}
 

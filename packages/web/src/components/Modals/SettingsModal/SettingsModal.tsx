@@ -16,12 +16,7 @@ import useTheme from "src/system/useTheme";
 import Link from "src/system/Link/Link";
 import ThemeToggle from "src/components/ThemeToggle/ThemeToggle";
 
-const SettingsModal = ({
-  logoutAuth,
-  handleSettings,
-  handleShortcuts,
-  t,
-}: any) => {
+const SettingsModal = ({ logoutAuth, handleSettings, t }: any) => {
   const themeState = useTheme();
 
   const ref = useRef<any>();
@@ -39,12 +34,6 @@ const SettingsModal = ({
           rel="noopener"
         >
           {t("feedback")}
-        </Link>
-      </SettingsModalLinkContainer>
-
-      <SettingsModalLinkContainer onClick={handleShortcuts}>
-        <Link href="" variant="secondary" size="light">
-          {t("shortcuts")}
         </Link>
       </SettingsModalLinkContainer>
 
