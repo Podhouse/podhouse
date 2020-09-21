@@ -21,6 +21,7 @@ export const PodcastItemWithDetailsAvatar = styled.img`
   height: 60px;
   border-radius: 5px;
   cursor: pointer;
+  object-fit: cover;
 `;
 
 export const PodcastItemName = styled(Link)`

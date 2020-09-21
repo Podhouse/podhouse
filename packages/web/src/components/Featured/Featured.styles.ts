@@ -18,14 +18,13 @@ export const FeaturedItemContainer = styled.div`
   @media screen and (min-width: 800px) {
     display: grid;
     grid-template-columns: 200px 1fr;
-    grid-template-rows: 1fr;
+    grid-template-rows: 200px;
     grid-column-gap: 20px;
   }
 `;
 
 export const FeaturedAvatar = styled.img`
-  width: 100%;
-  height: 100%;
+  object-fit: cover;
   border-radius: 5px;
   cursor: pointer;
   grid-row: 1 / 2;

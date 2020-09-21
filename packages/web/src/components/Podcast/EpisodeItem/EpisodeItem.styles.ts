@@ -32,6 +32,7 @@ export const EpisodeItemAvatar = styled.img`
     grid-row: 1 / 3;
     width: 80px;
     height: 80px;
+    object-fit: cover;
     border-radius: 5px;
     cursor: pointer;
   }
