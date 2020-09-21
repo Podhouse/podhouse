@@ -1,7 +1,5 @@
 import styled from "@emotion/styled";
 
-import { StyleProps } from "src/system/styles.types";
-
 export const FeaturedContainer = styled.div`
   width: 100%;
   height: 100px;
@@ -55,23 +53,4 @@ export const FeaturedDetailsContainer = styled.div`
     align-items: flex-start;
     justify-items: flex-start;
   }
-`;
-
-export const FeaturedBadge = styled.a<StyleProps>`
-  width: fit-content;
-  height: fit-content;
-  padding: 3px 10px;
-  border-radius: 3px;
-  background-color: ${({ theme }) => theme.info};
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: Inter;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 12px;
-  text-align: center;
-  color: white;
-  text-decoration: none;
-  text-transform: uppercase;
 `;
