@@ -4,13 +4,13 @@ import NextLink from "next/link";
 import {
   PodcastItemWithDetailsContainer,
   PodcastItemWithDetailsAvatar,
-  PodcastItemWithDetailsTextContainer,
+  PodcastItemName,
+  PodcastItemAuthor,
 } from "./PodcastItemWithDetails.styles";
 
 import { PodcastItemWithDetailsProps } from "./PodcastItemWithDetails.types";
 
 import Link from "src/system/Link/Link";
-import Paragraph from "src/system/Paragraph/Paragraph";
 
 const PodcastItemWithDetails = ({ podcast }: PodcastItemWithDetailsProps) => {
   const { name, author, avatar } = podcast;
@@ -25,17 +25,19 @@ const PodcastItemWithDetails = ({ podcast }: PodcastItemWithDetailsProps) => {
         </Link>
       </NextLink>
 
-      <PodcastItemWithDetailsTextContainer>
-        <NextLink href="/app/podcast/[podcast]" as="/app/podcast/123">
-          <Link variant="secondary" size="normal" href="/app/podcast/123">
-            {name}
-          </Link>
-        </NextLink>
+      <NextLink href="/app/podcast/[podcast]" as="/app/podcast/123">
+        <PodcastItemName
+          variant="secondary"
+          size="normal"
+          href="/app/podcast/123"
+        >
+          {name}
+        </PodcastItemName>
+      </NextLink>
 
-        <Paragraph variant="secondary" size="normal">
-          {author}
-        </Paragraph>
-      </PodcastItemWithDetailsTextContainer>
+      <PodcastItemAuthor variant="secondary" size="normal">
+        {author}
+      </PodcastItemAuthor>
     </PodcastItemWithDetailsContainer>
   );
 };
