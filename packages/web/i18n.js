@@ -6,7 +6,6 @@ module.exports = new NextI18Next({
   otherLanguages: [
     "da",
     "de",
-    "en",
     "es",
     "fr",
     "it",

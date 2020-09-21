@@ -4,11 +4,10 @@ import NextLink from "next/link";
 import {
   ErrorPageContainer,
   ErrorPageInnerContainer,
-  ErrorPageTitle,
-  ErrorPageText,
-  ErrorPageButtonContainer,
 } from "./ErrorPage.styles";
 
+import Heading from "src/system/Heading/Heading";
+import Paragraph from "src/system/Paragraph/Paragraph";
 import Link from "src/system/Link/Link";
 
 interface ErrorPageProps {
@@ -19,15 +18,18 @@ interface ErrorPageProps {
 const ErrorPage = ({ title, description }: ErrorPageProps) => (
   <ErrorPageContainer>
     <ErrorPageInnerContainer>
-      <ErrorPageTitle>{title}</ErrorPageTitle>
-      <ErrorPageText>{description}</ErrorPageText>
-      <ErrorPageButtonContainer>
-        <NextLink href="/app">
-          <Link href="" variant="primary" size="big">
-            Back to home
-          </Link>
-        </NextLink>
-      </ErrorPageButtonContainer>
+      <Heading as="h1" variant="primary" size="big">
+        {title}
+      </Heading>
+      <Paragraph variant="primary" size="normal">
+        {description}
+      </Paragraph>
+
+      <NextLink href="/app">
+        <Link href="" variant="primary" size="big">
+          Back to home
+        </Link>
+      </NextLink>
     </ErrorPageInnerContainer>
   </ErrorPageContainer>
 );
