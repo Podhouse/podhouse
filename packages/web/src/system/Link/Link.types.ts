@@ -16,7 +16,6 @@ export interface LinkProps {
     | "nofollow"
     | "noreferrer"
     | "noopener"
-    | "noopener noreferrer"
     | "prev"
     | "search"
     | "tag";

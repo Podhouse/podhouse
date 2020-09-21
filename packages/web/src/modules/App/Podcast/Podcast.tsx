@@ -93,7 +93,7 @@ const Podcast = ({ t }: any) => {
                 size="normal"
                 href="mailto:leonardomso11@gmail.com"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener"
               >
                 {t("website")}
               </Link>
@@ -105,7 +105,7 @@ const Podcast = ({ t }: any) => {
                 size="normal"
                 href="mailto:leonardomso11@gmail.com"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener"
               >
                 RSS
               </Link>

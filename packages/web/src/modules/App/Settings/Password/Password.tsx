@@ -37,7 +37,16 @@ const Password = ({ t }: any) => {
   return (
     <SettingsItemContainer>
       <SettingsItemHeaderContainer>
-        <SettingsItemHeaderTitle>{t("password")}</SettingsItemHeaderTitle>
+        <SettingsItemHeaderTitle
+          as="h1"
+          variant="secondary"
+          size="normal"
+          fontSize={14}
+          fontWeight={500}
+          textAlign="start"
+        >
+          {t("password")}
+        </SettingsItemHeaderTitle>
         <Separator variant="secondary" orientation="horizontal" />
       </SettingsItemHeaderContainer>
 

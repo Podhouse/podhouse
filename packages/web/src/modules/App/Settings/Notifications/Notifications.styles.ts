@@ -1,7 +1,5 @@
 import styled from "@emotion/styled";
 
-import { StyleProps } from "src/system/styles.types";
-
 export const NotificationsItemContainer = styled.div`
   width: 100%;
   height: auto;
@@ -16,15 +14,6 @@ export const NotificationsItemContainer = styled.div`
     grid-template-rows: max-content;
     grid-column-gap: 20px;
   }
-`;
-
-export const NotificationsItemTitle = styled.h3<StyleProps>`
-  font-family: Inter;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 20px;
-  color: ${({ theme }) => theme.tertiary};
 `;
 
 export const NotificationsToggleContainer = styled.div`

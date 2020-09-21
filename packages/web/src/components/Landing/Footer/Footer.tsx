@@ -35,7 +35,7 @@ const Footer = () => (
       <Link
         href="mailto:leonardomso11@gmail.com"
         target="_blank"
-        rel="noopener noreferrer"
+        rel="noopener"
         variant="secondary"
         size="normal"
       >
@@ -47,7 +47,7 @@ const Footer = () => (
       <Link
         href="https://twitter.com/leonardomso"
         target="_blank"
-        rel="noopener noreferrer"
+        rel="noopener"
         variant="secondary"
         size="normal"
       >
@@ -57,7 +57,7 @@ const Footer = () => (
       <Link
         href="https://twitter.com/leonardomso"
         target="_blank"
-        rel="noopener noreferrer"
+        rel="noopener"
         variant="secondary"
         size="normal"
       >
@@ -67,7 +67,7 @@ const Footer = () => (
       <Link
         href="https://twitter.com/leonardomso"
         target="_blank"
-        rel="noopener noreferrer"
+        rel="noopener"
         variant="secondary"
         size="normal"
       >
@@ -77,7 +77,7 @@ const Footer = () => (
       <Link
         href="https://twitter.com/leonardomso"
         target="_blank"
-        rel="noopener noreferrer"
+        rel="noopener"
         variant="secondary"
         size="normal"
       >

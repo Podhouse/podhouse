@@ -84,7 +84,16 @@ const Language = ({ t }: any) => {
   return (
     <SettingsItemContainer>
       <SettingsItemHeaderContainer>
-        <SettingsItemHeaderTitle>{t("language")}</SettingsItemHeaderTitle>
+        <SettingsItemHeaderTitle
+          as="h1"
+          variant="secondary"
+          size="normal"
+          fontSize={14}
+          fontWeight={500}
+          textAlign="start"
+        >
+          {t("language")}
+        </SettingsItemHeaderTitle>
         <Separator variant="secondary" orientation="horizontal" />
       </SettingsItemHeaderContainer>
 
