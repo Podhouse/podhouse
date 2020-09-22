@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import { withTranslation } from "i18n";
+import { WithTranslation } from "next-i18next";
 import Scrollbars from "react-custom-scrollbars";
 
 import {
@@ -9,6 +10,8 @@ import {
 } from "./QueueModal.styles";
 
 import QueueModalItem from "./QueueModalItem/QueueModalItem";
+
+import { useQueueContext } from "src/context/Queue/Queue";
 
 import useOnClickOutside from "src/hooks/useOnClickOutside";
 
@@ -30,7 +33,9 @@ const episodes = [
   },
 ];
 
-const QueueModal = ({ handleQueue, t }: any) => {
+const QueueModal = ({ t }: WithTranslation) => {
+  const [, handleQueue] = useQueueContext();
+
   const ref = useRef<any>();
 
   useOnClickOutside(ref, () => handleQueue());

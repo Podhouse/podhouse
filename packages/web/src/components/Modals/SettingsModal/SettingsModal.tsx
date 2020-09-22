@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import { withTranslation } from "i18n";
+import { WithTranslation } from "next-i18next";
 import NextLink from "next/link";
 
 import {
@@ -9,6 +10,9 @@ import {
   SettingsThemeIconContainer,
 } from "./SettingsModal.styles";
 
+import { useAuthContext } from "src/context/Auth/Auth";
+import { useSettingsContext } from "src/context/Settings/Settings";
+
 import useOnClickOutside from "src/hooks/useOnClickOutside";
 
 import useTheme from "src/system/useTheme";
@@ -16,7 +20,10 @@ import useTheme from "src/system/useTheme";
 import Link from "src/system/Link/Link";
 import ThemeToggle from "src/components/ThemeToggle/ThemeToggle";
 
-const SettingsModal = ({ logoutAuth, handleSettings, t }: any) => {
+const SettingsModal = ({ t }: WithTranslation) => {
+  const [, , logoutAuth] = useAuthContext();
+  const [, handleSettings] = useSettingsContext();
+
   const themeState = useTheme();
 
   const ref = useRef<any>();

@@ -23,9 +23,9 @@ interface AppProps {
 }
 
 const App = ({ children }: AppProps) => {
-  const [auth, handleAuth, logoutAuth] = useAuthContext();
-  const [settings, handleSettings] = useSettingsContext();
-  const [queue, handleQueue] = useQueueContext();
+  const [auth, handleAuth] = useAuthContext();
+  const [settings] = useSettingsContext();
+  const [queue] = useQueueContext();
   const [rate, handleRate] = useRateContext();
 
   const renderAuthModal = () => {
@@ -38,12 +38,7 @@ const App = ({ children }: AppProps) => {
   const renderSettingsModal = () => {
     if (auth.matches("loggedIn")) {
       if (settings.matches("open")) {
-        return (
-          <SettingsModal
-            logoutAuth={logoutAuth}
-            handleSettings={handleSettings}
-          />
-        );
+        return <SettingsModal />;
       }
     }
     return null;
@@ -51,7 +46,7 @@ const App = ({ children }: AppProps) => {
 
   const renderQueueModal = () => {
     if (queue.matches("open")) {
-      return <QueueModal handleQueue={handleQueue} />;
+      return <QueueModal />;
     }
     return null;
   };

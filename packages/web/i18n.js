@@ -21,4 +21,5 @@ module.exports = new NextI18Next({
     "zh",
   ],
   localePath: path.resolve("./public/static/locales"),
+  browserLanguageDetection: true,
 });
