@@ -56,7 +56,7 @@ const Header = () => {
         <Link
           href="mailto:leonardomso11@gmail.com"
           target="_blank"
-          rel="noopener noreferrer"
+          rel="noopener"
           variant="secondary"
           size="normal"
         >

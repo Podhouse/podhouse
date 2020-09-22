@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-import { StyleProps } from "src/system/styles.types";
+import Heading from "src/system/Heading/Heading";
 
 export const SettingsContainer = styled.div`
   width: 100%;
@@ -38,13 +38,7 @@ export const SettingsItemHeaderContainer = styled.div`
   grid-template-rows: max-content max-content;
 `;
 
-export const SettingsItemHeaderTitle = styled.h1<StyleProps>`
-  font-family: Inter;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 17px;
-  color: ${({ theme }) => theme.tertiary};
+export const SettingsItemHeaderTitle = styled(Heading)`
   align-self: center;
   justify-self: flex-start;
 `;

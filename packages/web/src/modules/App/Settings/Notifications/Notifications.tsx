@@ -10,12 +10,12 @@ import {
 
 import {
   NotificationsItemContainer,
-  NotificationsItemTitle,
   NotificationsToggleContainer,
 } from "./Notifications.styles";
 
 import Toggle from "src/system/Toggle/Toggle";
 import Separator from "src/system/Separator/Separator";
+import Paragraph from "src/system/Paragraph/Paragraph";
 
 import useToggle from "src/hooks/useToggle";
 
@@ -29,15 +29,24 @@ const Notifications = ({ t }: any) => {
   return (
     <SettingsItemContainer>
       <SettingsItemHeaderContainer>
-        <SettingsItemHeaderTitle>{t("notifications")}</SettingsItemHeaderTitle>
+        <SettingsItemHeaderTitle
+          as="h1"
+          variant="secondary"
+          size="normal"
+          fontSize={14}
+          fontWeight={500}
+          textAlign="start"
+        >
+          {t("notifications")}
+        </SettingsItemHeaderTitle>
         <Separator variant="secondary" orientation="horizontal" />
       </SettingsItemHeaderContainer>
 
       <SettingsItemContentContainer>
         <NotificationsItemContainer>
-          <NotificationsItemTitle>
+          <Paragraph variant="secondary" size="normal" textAlign="start">
             {t("weekly-recomendations-about-trending-podcasts")}
-          </NotificationsItemTitle>
+          </Paragraph>
 
           <NotificationsToggleContainer>
             <Toggle
@@ -49,9 +58,9 @@ const Notifications = ({ t }: any) => {
         </NotificationsItemContainer>
 
         <NotificationsItemContainer>
-          <NotificationsItemTitle>
+          <Paragraph variant="secondary" size="normal" textAlign="start">
             {t("product-news,-upcoming-updates-and-features")}
-          </NotificationsItemTitle>
+          </Paragraph>
 
           <NotificationsToggleContainer>
             <Toggle
