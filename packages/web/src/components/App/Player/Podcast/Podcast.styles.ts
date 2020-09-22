@@ -53,6 +53,7 @@ export const PodcastDetails = styled.div`
     grid-template-columns: max-content 20px;
     grid-template-rows: max-content max-content;
     grid-gap: 10px;
+    justify-items: flex-start;
 
     .like-button {
       display: block;
