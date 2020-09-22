@@ -16,13 +16,13 @@ const Mission = () => (
       </Heading>
 
       <Paragraph variant="secondary" size="normal">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Rhoncus rutrum
-        sollicitudin placerat id nisl, sed turpis. Viverra aliquam nibh
-        consectetur sed turpis urna. Pellentesque vestibulum at et etiam etiam
-        malesuada. Molestie risus mauris elit mus ut varius pulvinar viverra.
-        Pellentesque pulvinar metus, maecenas non tempor consectetur imperdiet
-        nulla faucibus. Feugiat sem ut quam aliquet est blandit. Nunc posuere
-        quisque sagittis eu.
+        One of the most awesome things about podcasts is that anyone can start
+        to listen or create their own podcast. People can literally listen to
+        podcasts in any specific situation in their daily-basis, and we have a
+        mission to improve it. We believe that podcasts should be accessible to
+        anyone anywhere, and our mission is to provide an app where people can
+        discover what's a podcast and listen to the most amazing shows in the
+        world.
       </Paragraph>
     </LandingGridContentContainer>
   </LandingGridContainer>

@@ -16,13 +16,13 @@ const Independent = () => (
       </Heading>
 
       <Paragraph variant="secondary" size="normal">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Rhoncus rutrum
-        sollicitudin placerat id nisl, sed turpis. Viverra aliquam nibh
-        consectetur sed turpis urna. Pellentesque vestibulum at et etiam etiam
-        malesuada. Molestie risus mauris elit mus ut varius pulvinar viverra.
-        Pellentesque pulvinar metus, maecenas non tempor consectetur imperdiet
-        nulla faucibus. Feugiat sem ut quam aliquet est blandit. Nunc posuere
-        quisque sagittis eu.
+        Podhouse has a mission to deliver podcasts for everyone, and a part of
+        this goal is that we are not currently interested in raising funds or
+        taking any investment. We believe that an independent startup can grow
+        faster and focused in the long-time. Working independently, we can be a
+        more open startup in the future, share our revenue, talk more with users
+        about what should be improved, and to our advertisers as how we can
+        deliver more targeted-ads.
       </Paragraph>
     </LandingGridContentContainer>
   </LandingGridContainer>

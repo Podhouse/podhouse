@@ -32,9 +32,9 @@ const MeetTheFounder = () => (
           Leonardo Maldonado
         </Heading>
         <Paragraph variant="secondary" size="normal" textAlign="start">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Rhoncus
-          rutrum sollicitudin placerat id nisl, sed turpis. Viverra aliquam nibh
-          consectetur sed turpis urna.
+          A software engineer living in Brazil, currently building the best app
+          for you to listen your podcasts. When discovered that are not too many
+          good apps to listen to podcasts on the Web, started to build Podhouse.
         </Paragraph>
       </MeetTheFounderDetailsContainer>
     </MeetTheFounderContainer>
