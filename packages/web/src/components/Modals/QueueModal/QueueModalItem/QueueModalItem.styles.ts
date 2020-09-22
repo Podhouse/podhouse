@@ -1,7 +1,5 @@
 import styled from "@emotion/styled";
 
-import { StyleProps } from "src/system/styles.types";
-
 export const QueueModalItemContainer = styled.div`
   width: 100%;
   height: 50px;
@@ -19,6 +17,7 @@ export const QueueModalItemAvatar = styled.img`
   height: 50px;
   border-radius: 5px;
   cursor: pointer;
+  object-fit: cover;
 `;
 
 export const QueueModalItemsDetails = styled.div`
@@ -29,24 +28,6 @@ export const QueueModalItemsDetails = styled.div`
   display: grid;
   grid-template-rows: max-content max-content;
   grid-template-columns: 1fr;
-  grid-row-gap: 10px;
-`;
-
-export const QueueModalItemEpisode = styled.a<StyleProps>`
-  font-family: Inter;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 17px;
-  color: ${({ theme }) => theme.secondary};
-  text-decoration: none;
-`;
-
-export const QueueModalItemPodcast = styled.h5<StyleProps>`
-  font-family: Inter;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 17px;
-  color: ${({ theme }) => theme.tertiary};
+  grid-row-gap: 5px;
+  justify-items: flex-start;
 `;

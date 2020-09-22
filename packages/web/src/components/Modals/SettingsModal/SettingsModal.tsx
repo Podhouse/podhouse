@@ -63,7 +63,7 @@ const SettingsModal = ({ logoutAuth, handleSettings, t }: any) => {
       </SettingsThemeContainer>
 
       <SettingsModalLinkContainer onClick={logoutAuth}>
-        <Link href="" variant="secondary" size="light">
+        <Link href="" onClick={logoutAuth} variant="secondary" size="light">
           {t("logout")}
         </Link>
       </SettingsModalLinkContainer>

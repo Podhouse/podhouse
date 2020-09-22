@@ -6,16 +6,12 @@ import "keen-slider/keen-slider.min.css";
 
 import Provider from "src/components/Provider/Provider";
 
-class MyApp extends App<{ Component: any }, any> {
-  render() {
-    const { Component, pageProps } = this.props;
+const MyApp = ({ Component, pageProps }: any) => {
+  const getLayout =
+    Component.getLayout || ((page) => <Provider>{page}</Provider>);
 
-    const getLayout =
-      Component.getLayout || ((page) => <Provider>{page}</Provider>);
-
-    return getLayout(<Component {...pageProps} />);
-  }
-}
+  return getLayout(<Component {...pageProps} />);
+};
 
 MyApp.getInitialProps = async (appContext) => ({
   ...(await App.getInitialProps(appContext)),

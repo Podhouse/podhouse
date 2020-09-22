@@ -34,35 +34,6 @@ export const QueueModalHeaderContainer = styled.div`
   align-items: center;
 `;
 
-export const QueueModalHeaderText = styled.h3<StyleProps>`
-  grid-column: 1 / 2;
-  grid-row: 1 / 2;
-  font-family: Inter;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 17px;
-  color: ${({ theme }) => theme.tertiary};
-  justify-self: start;
-`;
-
-export const QueueModalHeaderButton = styled.button<StyleProps>`
-  width: fit-content;
-  height: fit-content;
-  background: none;
-  color: ${({ theme }) => theme.tertiary};
-  border: none;
-  cursor: pointer;
-  font-family: Inter;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 17px;
-  text-align: center;
-  outline: none;
-  justify-self: end;
-`;
-
 export const QueueModalItemsContainer = styled.div`
   width: 100%;
   height: 100%;
