@@ -27,7 +27,7 @@ const Settings = ({ t }: WithTranslation) => {
     }
 
     return (
-      <Link href="" onClick={handleAuth} variant="primary" size="normal">
+      <Link onClick={handleAuth} variant="primary" size="normal">
         {t("login")}
       </Link>
     );

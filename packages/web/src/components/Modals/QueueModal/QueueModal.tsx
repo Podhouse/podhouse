@@ -53,7 +53,7 @@ const QueueModal = ({ t }: WithTranslation) => {
         >
           {t("up-next")}
         </Heading>
-        <Link href="" onClick={() => {}} variant="secondary" size="normal">
+        <Link onClick={() => {}} variant="secondary" size="normal">
           {t("clear-all")}
         </Link>
       </QueueModalHeaderContainer>

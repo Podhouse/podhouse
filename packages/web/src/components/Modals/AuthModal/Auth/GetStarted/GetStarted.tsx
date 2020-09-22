@@ -52,12 +52,7 @@ const GetStarted = ({ t }: WithTranslation) => {
       </AuthGetStartedButtonsContainer>
 
       <AuthLinksContainer>
-        <Link
-          href=""
-          variant="secondary"
-          size="normal"
-          onClick={() => send("FORGOT")}
-        >
+        <Link variant="secondary" size="normal" onClick={() => send("FORGOT")}>
           {t("forgot-your-password?")}
         </Link>
       </AuthLinksContainer>

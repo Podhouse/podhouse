@@ -26,7 +26,7 @@ const ErrorPage = ({ title, description }: ErrorPageProps) => (
       </Paragraph>
 
       <NextLink href="/app">
-        <Link href="" variant="primary" size="big">
+        <Link href="/app" variant="primary" size="big">
           Back to home
         </Link>
       </NextLink>

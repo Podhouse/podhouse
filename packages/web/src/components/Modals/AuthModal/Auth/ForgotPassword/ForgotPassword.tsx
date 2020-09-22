@@ -64,7 +64,6 @@ const ForgotPassword = ({ t }: WithTranslation) => {
 
         <AuthLinksContainer>
           <Link
-            href=""
             variant="secondary"
             size="normal"
             onClick={() => send("SIGNIN")}
@@ -75,7 +74,6 @@ const ForgotPassword = ({ t }: WithTranslation) => {
           <AuthCircle />
 
           <Link
-            href=""
             variant="secondary"
             size="normal"
             onClick={() => send("SIGNUP")}

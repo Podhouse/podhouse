@@ -1,5 +1,5 @@
 export interface LinkProps {
-  href: string;
+  href?: string;
   id?: string;
   variant: "primary" | "secondary" | "disabled";
   size: "small" | "light" | "normal" | "big";

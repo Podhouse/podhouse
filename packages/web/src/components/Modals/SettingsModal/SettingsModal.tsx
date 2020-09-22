@@ -54,7 +54,6 @@ const SettingsModal = ({ t }: WithTranslation) => {
 
       <SettingsThemeContainer onClick={() => themeState.toggle()}>
         <Link
-          href=""
           onClick={() => themeState.toggle()}
           variant="secondary"
           size="light"
@@ -70,7 +69,7 @@ const SettingsModal = ({ t }: WithTranslation) => {
       </SettingsThemeContainer>
 
       <SettingsModalLinkContainer onClick={logoutAuth}>
-        <Link href="" onClick={logoutAuth} variant="secondary" size="light">
+        <Link onClick={logoutAuth} variant="secondary" size="light">
           {t("logout")}
         </Link>
       </SettingsModalLinkContainer>

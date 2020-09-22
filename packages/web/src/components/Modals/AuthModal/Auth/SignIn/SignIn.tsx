@@ -75,7 +75,6 @@ const SignIn = ({ t }: WithTranslation) => {
 
         <AuthLinksContainer>
           <Link
-            href=""
             variant="secondary"
             size="normal"
             onClick={() => send("SIGNUP")}
@@ -86,7 +85,6 @@ const SignIn = ({ t }: WithTranslation) => {
           <AuthCircle />
 
           <Link
-            href=""
             variant="secondary"
             size="normal"
             onClick={() => send("FORGOT")}
