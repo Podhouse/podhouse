@@ -19,6 +19,7 @@ export interface StyleProps {
   heading: {};
   paragraph: {};
   separator: {};
+  badge: {};
 }
 
 const light: StyleProps = {
@@ -189,6 +190,37 @@ const light: StyleProps = {
       cursor: "not-allowed",
     },
   },
+  badge: {
+    primary: {
+      color: "#FFFFFF",
+      backgroundColor: "#101010",
+    },
+    secondary: {
+      color: "#101010",
+      backgroundColor: "rgba(0, 0, 0, 0.1)",
+    },
+    info: {
+      color: "#FFFFFF",
+      backgroundColor: "#2B60FF",
+    },
+    success: {
+      color: "#FFFFFF",
+      backgroundColor: "#2BC454",
+    },
+    warning: {
+      color: "#FFFFFF",
+      backgroundColor: "#FF9F1C",
+    },
+    error: {
+      color: "#FFFFFF",
+      backgroundColor: "#DD0426",
+    },
+    disabled: {
+      color: "#B7B7B7",
+      backgroundColor: "#F3F3F3",
+      cursor: "not-allowed",
+    },
+  },
 };
 
 const dark: StyleProps = {
@@ -350,6 +382,39 @@ const dark: StyleProps = {
     },
     disabled: {
       backgroundColor: "#212128",
+      cursor: "not-allowed",
+    },
+  },
+  badge: {
+    primary: {
+      color: "#101010",
+      backgroundColor: "#FFFFFF",
+    },
+    secondary: {
+      color: "#FFFFFF",
+      backgroundColor: "0F0E15",
+      border: "1px solid #FFFFFF",
+    },
+    success: {
+      color: "#FFFFFF",
+      backgroundColor: "#2BC454",
+    },
+    warning: {
+      color: "#FFFFFF",
+      backgroundColor: "#FF9F1C",
+    },
+    error: {
+      color: "#FFFFFF",
+      backgroundColor: "#DD0426",
+    },
+    ghost: {
+      color: "#FFFFFF",
+      background: "none",
+      backgroundColor: "none",
+    },
+    disabled: {
+      color: "#B7B7B7",
+      backgroundColor: "#F3F3F3",
       cursor: "not-allowed",
     },
   },

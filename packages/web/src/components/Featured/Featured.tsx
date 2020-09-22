@@ -8,11 +8,11 @@ import {
   FeaturedItemContainer,
   FeaturedAvatar,
   FeaturedDetailsContainer,
-  FeaturedBadge,
 } from "./Featured.styles";
 
 import Link from "src/system/Link/Link";
 import Paragraph from "src/system/Paragraph/Paragraph";
+import Badge from "src/system/Badge/Badge";
 
 const avatar =
   "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg";
@@ -60,13 +60,9 @@ const Featured = ({ t }: any) => {
           </NextLink>
 
           <FeaturedDetailsContainer>
-            <FeaturedBadge
-              href="/advertisers"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <Badge variant="info" size="normal">
               {t("featured")}
-            </FeaturedBadge>
+            </Badge>
 
             <NextLink href="/app/podcast/[podcast]" as="/app/podcast/invisible">
               <Link variant="primary" size="big" href="/app/podcast/invisible">
@@ -96,13 +92,9 @@ const Featured = ({ t }: any) => {
           </NextLink>
 
           <FeaturedDetailsContainer>
-            <FeaturedBadge
-              href="/advertisers"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <Badge variant="info" size="normal">
               {t("featured")}
-            </FeaturedBadge>
+            </Badge>
 
             <NextLink href="/app/podcast/[podcast]" as="/app/podcast/invisible">
               <Link variant="primary" size="big" href="/app/podcast/invisible">
@@ -132,13 +124,9 @@ const Featured = ({ t }: any) => {
           </NextLink>
 
           <FeaturedDetailsContainer>
-            <FeaturedBadge
-              href="/advertisers"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <Badge variant="info" size="normal">
               {t("featured")}
-            </FeaturedBadge>
+            </Badge>
 
             <NextLink href="/app/podcast/[podcast]" as="/app/podcast/invisible">
               <Link variant="primary" size="big" href="/app/podcast/invisible">

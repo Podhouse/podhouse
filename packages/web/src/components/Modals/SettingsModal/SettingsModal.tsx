@@ -36,7 +36,7 @@ const SettingsModal = ({
           size="light"
           href="mailto:leonardomso11@gmail.com"
           target="_blank"
-          rel="noopener noreferrer"
+          rel="noopener"
         >
           {t("feedback")}
         </Link>
