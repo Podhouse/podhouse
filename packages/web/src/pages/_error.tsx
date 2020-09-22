@@ -15,6 +15,16 @@ const Home = () => (
   </>
 );
 
-Home.getInitialProps = async () => ({ namespacesRequired: ["common"] });
+Home.getInitialProps = async () => ({
+  namespacesRequired: [
+    "common",
+    "getstarted",
+    "header",
+    "menu",
+    "player",
+    "podcast",
+    "settings",
+  ],
+});
 
 export default withTranslation("common")(Home);
