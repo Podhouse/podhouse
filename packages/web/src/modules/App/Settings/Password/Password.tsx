@@ -1,5 +1,6 @@
 import React from "react";
 import { withTranslation } from "i18n";
+import { WithTranslation } from "next-i18next";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers";
 import * as Yup from "yup";
@@ -27,7 +28,7 @@ const validationSchema = Yup.object().shape({
   newPassword: Yup.string().required("New password is required"),
 });
 
-const Password = ({ t }: any) => {
+const Password = ({ t }: WithTranslation) => {
   const { register, handleSubmit, errors } = useForm<PasswordFormProps>({
     resolver: yupResolver(validationSchema),
   });

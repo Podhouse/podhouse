@@ -1,5 +1,6 @@
 import React from "react";
 import { withTranslation } from "i18n";
+import { WithTranslation } from "next-i18next";
 import Scrollbars from "react-custom-scrollbars";
 
 import { BrowseContainer } from "./Browse.styles";
@@ -73,7 +74,7 @@ const items = [
   },
 ];
 
-const Browse = ({ t }: any) => (
+const Browse = ({ t }: WithTranslation) => (
   <Scrollbars universal autoHide autoHideTimeout={100} autoHideDuration={100}>
     <BrowseContainer>
       <Featured />

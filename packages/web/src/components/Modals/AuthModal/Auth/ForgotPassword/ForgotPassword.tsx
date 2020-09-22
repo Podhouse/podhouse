@@ -1,5 +1,6 @@
 import React from "react";
 import { withTranslation } from "i18n";
+import { WithTranslation } from "next-i18next";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers";
 import * as Yup from "yup";
@@ -26,7 +27,7 @@ const validationSchema = Yup.object().shape({
   email: Yup.string().email("Email is invalid").required("Email is required"),
 });
 
-const ForgotPassword = ({ t }: any) => {
+const ForgotPassword = ({ t }: WithTranslation) => {
   const [, , , send] = useAuthContext();
 
   const { register, handleSubmit, errors } = useForm<ForgotPasswordFormProps>({
@@ -63,7 +64,7 @@ const ForgotPassword = ({ t }: any) => {
 
         <AuthLinksContainer>
           <Link
-            href="#"
+            href=""
             variant="secondary"
             size="normal"
             onClick={() => send("SIGNIN")}
@@ -74,7 +75,7 @@ const ForgotPassword = ({ t }: any) => {
           <AuthCircle />
 
           <Link
-            href="#"
+            href=""
             variant="secondary"
             size="normal"
             onClick={() => send("SIGNUP")}

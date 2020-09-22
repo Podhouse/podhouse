@@ -1,5 +1,6 @@
 import React from "react";
 import { withTranslation } from "i18n";
+import { WithTranslation } from "next-i18next";
 
 import {
   AuthGetStartedButtonsContainer,
@@ -10,12 +11,11 @@ import {
 
 import Paragraph from "src/system/Paragraph/Paragraph";
 import Button from "src/system/Button/Button";
-import GoogleButton from "src/system/GoogleButton/GoogleButton";
 import Link from "src/system/Link/Link";
 
 import { useAuthContext } from "src/context/Auth/Auth";
 
-const GetStarted = ({ t }: any) => {
+const GetStarted = ({ t }: WithTranslation) => {
   const [, , , send] = useAuthContext();
 
   return (
@@ -42,12 +42,19 @@ const GetStarted = ({ t }: any) => {
           </Paragraph>
         </AuthTextContainer>
 
-        <GoogleButton>{t("sign-up-with-google")}</GoogleButton>
+        <Button
+          type="button"
+          variant="primary"
+          size="normal"
+          onClick={() => send("SIGNIN")}
+        >
+          {t("sign-up-with-email")}
+        </Button>
       </AuthGetStartedButtonsContainer>
 
       <AuthLinksContainer>
         <Link
-          href="#"
+          href=""
           variant="secondary"
           size="normal"
           onClick={() => send("SIGNIN")}
@@ -58,7 +65,7 @@ const GetStarted = ({ t }: any) => {
         <AuthCircle />
 
         <Link
-          href="#"
+          href=""
           variant="secondary"
           size="normal"
           onClick={() => send("FORGOT")}

@@ -18,20 +18,19 @@ export const FeaturedItemContainer = styled.div`
   @media screen and (min-width: 800px) {
     display: grid;
     grid-template-columns: 200px 1fr;
-    grid-template-rows: 1fr;
+    grid-template-rows: 200px;
     grid-column-gap: 20px;
   }
 `;
 
 export const FeaturedAvatar = styled.img`
-  width: 100%;
-  height: 100%;
   border-radius: 5px;
   cursor: pointer;
   grid-row: 1 / 2;
   grid-column: 1 / 2;
   align-self: center;
   justify-self: center;
+  object-fit: cover;
 `;
 
 export const FeaturedDetailsContainer = styled.div`

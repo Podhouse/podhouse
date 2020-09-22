@@ -1,5 +1,6 @@
 import React from "react";
 import { withTranslation } from "i18n";
+import { WithTranslation } from "next-i18next";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers";
 import * as Yup from "yup";
@@ -25,7 +26,7 @@ const validationSchema = Yup.object().shape({
     .required("Confirm password is required"),
 });
 
-const ResetPassword = ({ t }: any) => {
+const ResetPassword = ({ t }: WithTranslation) => {
   const [, , , send] = useAuthContext();
 
   const { register, handleSubmit, errors } = useForm<ResetPasswordFormProps>({

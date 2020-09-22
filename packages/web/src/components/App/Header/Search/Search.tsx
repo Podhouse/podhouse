@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { withTranslation } from "i18n";
+import { WithTranslation } from "next-i18next";
 import { useRouter } from "next/router";
 
 import { SearchContainer } from "./Search.styles";
 
 import InputWithLeftIcon from "src/system/InputWithLeftIcon/InputWithLeftIcon";
 
-const Search = ({ t }: any) => {
+const Search = ({ t }: WithTranslation) => {
   const [search, setSearch] = useState<string>("");
 
   const onSearch = (e: any) => {

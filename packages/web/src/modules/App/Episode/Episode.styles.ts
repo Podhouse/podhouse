@@ -47,6 +47,7 @@ export const EpisodeAvatar = styled.img`
   grid-column: 1 / 2;
   align-self: center;
   justify-self: center;
+  object-fit: cover;
 `;
 
 export const EpisodeDetailsContainer = styled.div`

@@ -58,5 +58,6 @@ export const MenuAvatarContainer = styled.img`
     cursor: pointer;
     grid-column: 1 / 2;
     grid-row: 3 / 4;
+    object-fit: cover;
   }
 `;

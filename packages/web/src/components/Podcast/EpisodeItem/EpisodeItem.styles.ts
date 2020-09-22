@@ -34,6 +34,7 @@ export const EpisodeItemAvatar = styled.img`
     height: 80px;
     border-radius: 5px;
     cursor: pointer;
+    object-fit: cover;
   }
 `;
 

@@ -1,5 +1,6 @@
 import React from "react";
 import { withTranslation } from "i18n";
+import { WithTranslation } from "next-i18next";
 import { Check } from "react-feather";
 
 import {
@@ -12,7 +13,7 @@ import Button from "src/system/Button/Button";
 
 import { useAuthContext } from "src/context/Auth/Auth";
 
-const ForgotPasswordSuccess = ({ t }: any) => {
+const ForgotPasswordSuccess = ({ t }: WithTranslation) => {
   const [, , , send] = useAuthContext();
 
   return (

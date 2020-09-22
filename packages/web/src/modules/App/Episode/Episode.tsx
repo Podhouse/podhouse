@@ -1,5 +1,6 @@
 import React from "react";
 import { withTranslation } from "i18n";
+import { WithTranslation } from "next-i18next";
 import Scrollbars from "react-custom-scrollbars";
 
 import {
@@ -18,7 +19,7 @@ import Paragraph from "src/system/Paragraph/Paragraph";
 const avatar =
   "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg";
 
-const Episode = ({ t }: any) => (
+const Episode = ({ t }: WithTranslation) => (
   <Scrollbars universal autoHide autoHideTimeout={100} autoHideDuration={100}>
     <EpisodeContainer>
       <EpisodeHeader>

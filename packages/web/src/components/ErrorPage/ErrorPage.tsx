@@ -1,15 +1,14 @@
-import * as React from "react";
-import Link from "next/link";
-
-import Button from "../../system/Button/Button";
+import React from "react";
+import NextLink from "next/link";
 
 import {
   ErrorPageContainer,
   ErrorPageInnerContainer,
-  ErrorPageTitle,
-  ErrorPageText,
-  ErrorPageButtonContainer,
 } from "./ErrorPage.styles";
+
+import Heading from "src/system/Heading/Heading";
+import Paragraph from "src/system/Paragraph/Paragraph";
+import Link from "src/system/Link/Link";
 
 interface ErrorPageProps {
   title: string;
@@ -19,17 +18,18 @@ interface ErrorPageProps {
 const ErrorPage = ({ title, description }: ErrorPageProps) => (
   <ErrorPageContainer>
     <ErrorPageInnerContainer>
-      <ErrorPageTitle>{title}</ErrorPageTitle>
-      <ErrorPageText>{description}</ErrorPageText>
-      <ErrorPageButtonContainer>
-        <Link href="/app">
-          <a>
-            <Button type="button" variant="primary" size="big">
-              Back to home
-            </Button>
-          </a>
+      <Heading as="h1" variant="primary" size="big">
+        {title}
+      </Heading>
+      <Paragraph variant="primary" size="normal">
+        {description}
+      </Paragraph>
+
+      <NextLink href="/app">
+        <Link href="/app" variant="primary" size="big">
+          Back to home
         </Link>
-      </ErrorPageButtonContainer>
+      </NextLink>
     </ErrorPageInnerContainer>
   </ErrorPageContainer>
 );

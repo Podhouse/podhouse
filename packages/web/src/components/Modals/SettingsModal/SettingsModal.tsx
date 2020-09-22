@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import { withTranslation } from "i18n";
+import { WithTranslation } from "next-i18next";
 import NextLink from "next/link";
 
 import {
@@ -9,6 +10,9 @@ import {
   SettingsThemeIconContainer,
 } from "./SettingsModal.styles";
 
+import { useAuthContext } from "src/context/Auth/Auth";
+import { useSettingsContext } from "src/context/Settings/Settings";
+
 import useOnClickOutside from "src/hooks/useOnClickOutside";
 
 import useTheme from "src/system/useTheme";
@@ -16,12 +20,10 @@ import useTheme from "src/system/useTheme";
 import Link from "src/system/Link/Link";
 import ThemeToggle from "src/components/ThemeToggle/ThemeToggle";
 
-const SettingsModal = ({
-  logoutAuth,
-  handleSettings,
-  handleShortcuts,
-  t,
-}: any) => {
+const SettingsModal = ({ t }: WithTranslation) => {
+  const [, , logoutAuth] = useAuthContext();
+  const [, handleSettings] = useSettingsContext();
+
   const themeState = useTheme();
 
   const ref = useRef<any>();
@@ -42,12 +44,6 @@ const SettingsModal = ({
         </Link>
       </SettingsModalLinkContainer>
 
-      <SettingsModalLinkContainer onClick={handleShortcuts}>
-        <Link href="#" variant="secondary" size="light">
-          {t("shortcuts")}
-        </Link>
-      </SettingsModalLinkContainer>
-
       <SettingsModalLinkContainer>
         <NextLink href="/app/settings" as="/app/settings">
           <Link href="/app/settings" variant="secondary" size="light">
@@ -57,7 +53,12 @@ const SettingsModal = ({
       </SettingsModalLinkContainer>
 
       <SettingsThemeContainer onClick={() => themeState.toggle()}>
-        <Link href="#" variant="secondary" size="light">
+        <Link
+          href=""
+          onClick={() => themeState.toggle()}
+          variant="secondary"
+          size="light"
+        >
           {t("theme")}
         </Link>
         <SettingsThemeIconContainer>
@@ -69,7 +70,7 @@ const SettingsModal = ({
       </SettingsThemeContainer>
 
       <SettingsModalLinkContainer onClick={logoutAuth}>
-        <Link href="#" onClick={logoutAuth} variant="secondary" size="light">
+        <Link href="" onClick={logoutAuth} variant="secondary" size="light">
           {t("logout")}
         </Link>
       </SettingsModalLinkContainer>

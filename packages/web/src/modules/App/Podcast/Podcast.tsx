@@ -1,6 +1,7 @@
 import React from "react";
 import Head from "next/head";
 import { withTranslation } from "i18n";
+import { WithTranslation } from "next-i18next";
 import Scrollbars from "react-custom-scrollbars";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers";
@@ -46,7 +47,7 @@ const validationSchema = Yup.object().shape({
   email: Yup.string(),
 });
 
-const Podcast = ({ t }: any) => {
+const Podcast = ({ t }: WithTranslation) => {
   const { register, handleSubmit } = useForm<SearchPodcastProps>({
     resolver: yupResolver(validationSchema),
   });

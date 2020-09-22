@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { AlertTriangle } from "react-feather";
 
 import { ErrorContainer, ErrorText } from "./Error.styles";
