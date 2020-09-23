@@ -1,7 +1,7 @@
 import React from "react";
 
 import Main from "./Main/Main";
-import Plan from "./Plan/Plan";
+import Plans from "./Plans/Plans";
 
 import FAQ from "src/components/Landing/FAQ/FAQ";
 
@@ -40,7 +40,7 @@ const items = [
 const Sponsorship = () => (
   <>
     <Main />
-    <Plan />
+    <Plans />
     <FAQ
       description="Here's some questions about advertising in Podhouse that you might have"
       items={items}
