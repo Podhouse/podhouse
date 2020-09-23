@@ -6,6 +6,16 @@ type Props = StyleProps & {
   selected: boolean;
 };
 
+export const PlansWholeContainer = styled.div<Props>`
+  width: 100%;
+  max-width: 800px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: ${({ selected }) =>
+    selected ? "max-content max-content" : "max-content"};
+  grid-row-gap: 50px;
+`;
+
 export const PlansContainer = styled.div<StyleProps>`
   width: 100%;
   max-width: 800px;
@@ -63,4 +73,30 @@ export const PlanRow = styled.div<Props>`
   align-items: center;
   justify-items: flex-start;
   cursor: pointer;
+`;
+
+export const PlansPodcastSection = styled.div<Props>`
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: max-content max-content max-content max-content;
+  grid-row-gap: 50px;
+  align-items: center;
+  justify-items: center;
+  display: ${({ selected }) => (selected ? "grid" : "none")};
+  justify-self: center;
+`;
+
+export const PlansPodcastInnerSection = styled.div`
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: max-content max-content max-content;
+  grid-row-gap: 20px;
+  align-items: center;
+  justify-items: center;
 `;

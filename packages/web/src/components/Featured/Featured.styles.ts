@@ -1,5 +1,7 @@
 import styled from "@emotion/styled";
 
+import { StyleProps } from "src/system/styles.types";
+
 export const FeaturedContainer = styled.div`
   width: 100%;
   height: 100px;
@@ -23,7 +25,7 @@ export const FeaturedItemContainer = styled.div`
   }
 `;
 
-export const FeaturedAvatar = styled.img`
+export const FeaturedAvatar = styled.img<StyleProps>`
   object-fit: cover;
   border-radius: 5px;
   cursor: pointer;
@@ -31,6 +33,19 @@ export const FeaturedAvatar = styled.img`
   grid-column: 1 / 2;
   align-self: center;
   justify-self: center;
+  background-color: ${({ theme }) => theme.bgPrimary};
+`;
+
+export const FeaturedEmptyAvatar = styled.div<StyleProps>`
+  width: 200px;
+  height: 200px;
+  border-radius: 5px;
+  cursor: pointer;
+  grid-row: 1 / 2;
+  grid-column: 1 / 2;
+  align-self: center;
+  justify-self: center;
+  background-color: ${({ theme }) => theme.bgSecondary};
 `;
 
 export const FeaturedDetailsContainer = styled.div`

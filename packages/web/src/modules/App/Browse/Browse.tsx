@@ -10,6 +10,8 @@ import PodcastsWithDetails from "src/components/Lists/PodcastsWithDetails/Podcas
 import Featured from "src/components/Featured/Featured";
 import Genres from "src/components/Genres/Genres";
 
+import featured from "src/utils/featured";
+
 const Browse = ({ t }: WithTranslation) => {
   const genres = [
     {
@@ -197,7 +199,7 @@ const Browse = ({ t }: WithTranslation) => {
   return (
     <Scrollbars universal autoHide autoHideTimeout={100} autoHideDuration={100}>
       <BrowseContainer>
-        <Featured />
+        <Featured featured={featured} />
         <PodcastsWithDetails title={t("trending")} items={items} />
         <PodcastsWithDetails title={t("recommended")} items={items} />
         <Genres title="Categories" genres={genres} />

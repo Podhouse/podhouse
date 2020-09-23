@@ -6,6 +6,8 @@ import { GenresContainer } from "../Genres.styles";
 import Featured from "src/components/Featured/Featured";
 import PodcastsWithOnlyAvatar from "src/components/Lists/PodcastsWithOnlyAvatar/PodcastsWithOnlyAvatar";
 
+import featured from "src/utils/featured";
+
 const items = [
   {
     id: 1,
@@ -159,7 +161,7 @@ const items = [
 const Health = () => (
   <Scrollbars universal autoHide autoHideTimeout={100} autoHideDuration={100}>
     <GenresContainer>
-      <Featured />
+      <Featured featured={featured} />
       <PodcastsWithOnlyAvatar title="Health" items={items} />
     </GenresContainer>
   </Scrollbars>
