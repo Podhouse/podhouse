@@ -179,7 +179,68 @@ const plans: IPlans = [
 const Plans = () => {
   const { current, handleSelect } = usePlans();
 
-  console.log("context: ", current.context);
+  const selected = current.context.selected;
+  const currentPlan = current.context.plan;
+
+  const renderPlans = () => {
+    if (selected) {
+      const plan: IPlan = plans.find((plan) => plan === currentPlan);
+
+      return (
+        <PlanRow
+          selected={selected}
+          key={plan.category}
+          onClick={() => handleSelect(plan)}
+        >
+          <Paragraph variant="primary" size="normal">
+            {plan.category}
+          </Paragraph>
+          <Paragraph variant="primary" size="normal">
+            ${plan.price}
+          </Paragraph>
+          <Paragraph variant="primary" size="normal">
+            {plan.available}
+          </Paragraph>
+          <Paragraph variant="primary" size="normal">
+            {plan.views}k
+          </Paragraph>
+          <Paragraph variant="primary" size="normal">
+            {plan.taps}k
+          </Paragraph>
+          <Paragraph variant="primary" size="normal">
+            {plan.subscriptions}k
+          </Paragraph>
+        </PlanRow>
+      );
+    } else {
+      return plans.map((plan: IPlan) => (
+        <PlanRow
+          selected={selected}
+          key={plan.category}
+          onClick={() => handleSelect(plan)}
+        >
+          <Paragraph variant="secondary" size="normal">
+            {plan.category}
+          </Paragraph>
+          <Paragraph variant="secondary" size="normal">
+            ${plan.price}
+          </Paragraph>
+          <Paragraph variant="secondary" size="normal">
+            {plan.available}
+          </Paragraph>
+          <Paragraph variant="secondary" size="normal">
+            {plan.views}k
+          </Paragraph>
+          <Paragraph variant="secondary" size="normal">
+            {plan.taps}k
+          </Paragraph>
+          <Paragraph variant="secondary" size="normal">
+            {plan.subscriptions}k
+          </Paragraph>
+        </PlanRow>
+      ));
+    }
+  };
 
   return (
     <PlansContainer>
@@ -204,30 +265,7 @@ const Plans = () => {
         </Paragraph>
       </PlansHeader>
 
-      <PlansContent>
-        {plans.map((plan: IPlan) => (
-          <PlanRow key={plan.category} onClick={() => handleSelect(plan)}>
-            <Paragraph variant="secondary" size="normal">
-              {plan.category}
-            </Paragraph>
-            <Paragraph variant="secondary" size="normal">
-              ${plan.price}
-            </Paragraph>
-            <Paragraph variant="secondary" size="normal">
-              {plan.available}
-            </Paragraph>
-            <Paragraph variant="secondary" size="normal">
-              {plan.views}k
-            </Paragraph>
-            <Paragraph variant="secondary" size="normal">
-              {plan.taps}k
-            </Paragraph>
-            <Paragraph variant="secondary" size="normal">
-              {plan.subscriptions}k
-            </Paragraph>
-          </PlanRow>
-        ))}
-      </PlansContent>
+      <PlansContent selected={selected}>{renderPlans()}</PlansContent>
     </PlansContainer>
   );
 };

@@ -2,6 +2,10 @@ import styled from "@emotion/styled";
 
 import { StyleProps } from "src/system/styles.types";
 
+type Props = StyleProps & {
+  selected: boolean;
+};
+
 export const PlansContainer = styled.div<StyleProps>`
   width: 100%;
   max-width: 800px;
@@ -34,18 +38,19 @@ export const PlansHeader = styled.div<StyleProps>`
   justify-items: flex-start;
 `;
 
-export const PlansContent = styled.div<StyleProps>`
+export const PlansContent = styled.div<Props>`
   grid-row: 2 / 3;
   grid-column: 1 / 7;
   width: 100%;
   height: 100%;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: repeat(auto-fill, max-content);
+  grid-template-rows: ${({ selected }) =>
+    selected ? "max-content" : "repeat(auto-fill, max-content"};
   grid-column-gap: 10px;
 `;
 
-export const PlanRow = styled.div<StyleProps>`
+export const PlanRow = styled.div<Props>`
   width: 100%;
   height: 60px;
   background-color: ${({ theme }) => theme.bgPrimary};
@@ -57,13 +62,5 @@ export const PlanRow = styled.div<StyleProps>`
   padding-right: 25px;
   align-items: center;
   justify-items: flex-start;
-
-  &:hover {
-    cursor: pointer;
-    background-color: ${({ theme }) => theme.bgSecondary};
-
-    p {
-      color: ${({ theme }) => theme.primary};
-    }
-  }
+  cursor: pointer;
 `;
