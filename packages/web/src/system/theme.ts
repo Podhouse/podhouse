@@ -395,6 +395,10 @@ const dark: StyleProps = {
       backgroundColor: "0F0E15",
       border: "1px solid #FFFFFF",
     },
+    info: {
+      color: "#FFFFFF",
+      backgroundColor: "#2B60FF",
+    },
     success: {
       color: "#FFFFFF",
       backgroundColor: "#2BC454",

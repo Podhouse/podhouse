@@ -41,10 +41,4 @@ export const FooterBrandsContainer = styled.div`
   grid-column-gap: 30px;
   align-items: center;
   justify-content: center;
-
-  svg {
-    :hover {
-      stroke: black;
-    }
-  }
 `;

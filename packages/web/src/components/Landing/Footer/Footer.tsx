@@ -51,7 +51,7 @@ const Footer = () => (
         variant="secondary"
         size="normal"
       >
-        <Twitter cursor="pointer" color="#666" />
+        <Twitter cursor="pointer" color="#B7B7B7" />
       </Link>
 
       <Link
@@ -61,7 +61,7 @@ const Footer = () => (
         variant="secondary"
         size="normal"
       >
-        <Linkedin cursor="pointer" color="#666" />
+        <Linkedin cursor="pointer" color="#B7B7B7" />
       </Link>
 
       <Link
@@ -71,7 +71,7 @@ const Footer = () => (
         variant="secondary"
         size="normal"
       >
-        <Instagram cursor="pointer" color="#666" />
+        <Instagram cursor="pointer" color="#B7B7B7" />
       </Link>
 
       <Link
@@ -81,7 +81,7 @@ const Footer = () => (
         variant="secondary"
         size="normal"
       >
-        <Facebook cursor="pointer" color="#666" />
+        <Facebook cursor="pointer" color="#B7B7B7" />
       </Link>
     </FooterBrandsContainer>
 

@@ -1,6 +1,15 @@
 import styled from "@emotion/styled";
 
-export const LandingContainer = styled.div`
+import { StyleProps } from "src/system/styles.types";
+
+export const LandingContainer = styled.div<StyleProps>`
+  width: 100%;
+  height: auto;
+  display: grid;
+  background-color: ${({ theme }) => theme.bgPrimary};
+`;
+
+export const LandingInnerContainer = styled.div<StyleProps>`
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
@@ -12,6 +21,7 @@ export const LandingContainer = styled.div`
   align-items: center;
   justify-items: center;
   padding: 30px;
+  background-color: ${({ theme }) => theme.bgPrimary};
 `;
 
 export const LandingChildrenContainer = styled.div`

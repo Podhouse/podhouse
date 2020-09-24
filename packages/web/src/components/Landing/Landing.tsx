@@ -1,8 +1,8 @@
-import React, { Fragment } from "react";
+import React from "react";
 import Head from "next/head";
 import { Global } from "@emotion/core";
 
-import { LandingContainer } from "./Landing.styles";
+import { LandingContainer, LandingInnerContainer } from "./Landing.styles";
 
 import Header from "src/components/Landing/Header/Header";
 import Footer from "src/components/Landing/Footer/Footer";
@@ -15,23 +15,25 @@ interface LandingProps {
 }
 
 const Landing = ({ children }: LandingProps) => (
-  <Fragment>
+  <>
     <ThemeProvider>
       <LandingContainer>
-        <Head>
-          <title>Podhouse</title>
-          <meta
-            name="viewport"
-            content="initial-scale=1.0, width=device-width"
-          />
-        </Head>
-        <Header />
-        {children}
-        <Footer />
+        <LandingInnerContainer>
+          <Head>
+            <title>Podhouse</title>
+            <meta
+              name="viewport"
+              content="initial-scale=1.0, width=device-width"
+            />
+          </Head>
+          <Header />
+          {children}
+          <Footer />
+        </LandingInnerContainer>
       </LandingContainer>
     </ThemeProvider>
     <Global styles={reset} />
-  </Fragment>
+  </>
 );
 
 export const getLayout = (page) => <Landing>{page}</Landing>;
