@@ -2,13 +2,11 @@ import React from "react";
 
 import {
   PlansWholeContainer,
-  PlansContainer,
-  PlansHeader,
-  PlansContent,
-  PlanRow,
   PlansPodcastSection,
   PlansPodcastInnerSection,
 } from "./Plans.styles";
+
+import PlansTable from "./PlansTable";
 
 import Featured from "src/components/Featured/Featured";
 
@@ -20,7 +18,7 @@ import Input from "src/system/Input/Input";
 import Textarea from "src/system/Textarea/Textarea";
 import Button from "src/system/Button/Button";
 
-import { IPlan, IPlans } from "./Plans.types";
+import { IPlans } from "./Plans.types";
 
 const plans: IPlans = [
   {
@@ -171,60 +169,6 @@ const Plans = () => {
   const selected = current.context.selected;
   const currentPlan = current.context.plan;
 
-  const renderPlans = () => {
-    if (selected) {
-      const plan: IPlan = plans.find((plan) => plan === currentPlan);
-
-      return (
-        <PlanRow
-          selected={selected}
-          key={plan.category}
-          onClick={() => handleSelect(plan)}
-        >
-          <Paragraph variant="primary" size="normal">
-            {plan.category}
-          </Paragraph>
-          <Paragraph variant="primary" size="normal">
-            ${plan.price}
-          </Paragraph>
-          <Paragraph variant="primary" size="normal">
-            {plan.available}
-          </Paragraph>
-          <Paragraph variant="primary" size="normal">
-            {plan.taps}
-          </Paragraph>
-          <Paragraph variant="primary" size="normal">
-            {plan.subscriptions}
-          </Paragraph>
-        </PlanRow>
-      );
-    } else {
-      return plans.map((plan: IPlan) => (
-        <PlanRow
-          selected={selected}
-          key={plan.category}
-          onClick={() => handleSelect(plan)}
-        >
-          <Paragraph variant="secondary" size="normal">
-            {plan.category}
-          </Paragraph>
-          <Paragraph variant="secondary" size="normal">
-            ${plan.price}
-          </Paragraph>
-          <Paragraph variant="secondary" size="normal">
-            {plan.available}
-          </Paragraph>
-          <Paragraph variant="secondary" size="normal">
-            {plan.taps}
-          </Paragraph>
-          <Paragraph variant="secondary" size="normal">
-            {plan.subscriptions}
-          </Paragraph>
-        </PlanRow>
-      ));
-    }
-  };
-
   const featuredPodcast = {
     avatar:
       "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
@@ -236,27 +180,12 @@ const Plans = () => {
 
   return (
     <PlansWholeContainer selected={selected}>
-      <PlansContainer>
-        <PlansHeader>
-          <Paragraph variant="secondary" size="normal">
-            Category
-          </Paragraph>
-          <Paragraph variant="secondary" size="normal">
-            Price
-          </Paragraph>
-          <Paragraph variant="secondary" size="normal">
-            Available
-          </Paragraph>
-          <Paragraph variant="secondary" size="normal">
-            Taps
-          </Paragraph>
-          <Paragraph variant="secondary" size="normal">
-            Subscriptions
-          </Paragraph>
-        </PlansHeader>
-
-        <PlansContent selected={selected}>{renderPlans()}</PlansContent>
-      </PlansContainer>
+      <PlansTable
+        selected={selected}
+        plans={plans}
+        currentPlan={currentPlan}
+        handleSelect={handleSelect}
+      />
 
       <PlansPodcastSection selected={selected}>
         <PlansPodcastInnerSection>

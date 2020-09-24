@@ -73,6 +73,14 @@ export const PlanRow = styled.div<Props>`
   align-items: center;
   justify-items: flex-start;
   cursor: pointer;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.bgSecondary};
+
+    p {
+      color: ${({ theme }) => theme.primary};
+    }
+  }
 `;
 
 export const PlansPodcastSection = styled.div<Props>`
