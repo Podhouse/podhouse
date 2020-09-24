@@ -25,163 +25,143 @@ import { IPlan, IPlans } from "./Plans.types";
 const plans: IPlans = [
   {
     category: "All",
-    price: 1500,
+    price: 499,
     available: 5,
-    views: 12000,
-    taps: 400,
-    subscriptions: 250,
+    taps: 1800,
+    subscriptions: 200,
   },
   {
     category: "Arts",
-    price: 1500,
+    price: 250,
     available: 5,
-    views: 12000,
-    taps: 400,
-    subscriptions: 250,
+    taps: 900,
+    subscriptions: 100,
   },
   {
     category: "Business",
-    price: 1500,
+    price: 499,
     available: 5,
-    views: 12000,
-    taps: 400,
-    subscriptions: 250,
+    taps: 1600,
+    subscriptions: 200,
   },
   {
     category: "Comedy",
-    price: 1500,
+    price: 250,
     available: 5,
-    views: 12000,
-    taps: 400,
-    subscriptions: 250,
+    taps: 730,
+    subscriptions: 60,
   },
   {
     category: "Education",
-    price: 1500,
+    price: 200,
     available: 5,
-    views: 12000,
     taps: 400,
-    subscriptions: 250,
+    subscriptions: 55,
   },
   {
     category: "Fiction",
-    price: 1500,
+    price: 150,
     available: 5,
-    views: 12000,
-    taps: 400,
-    subscriptions: 250,
+    taps: 230,
+    subscriptions: 25,
   },
   {
     category: "Government",
-    price: 1500,
+    price: 120,
     available: 5,
-    views: 12000,
-    taps: 400,
-    subscriptions: 250,
+    taps: 160,
+    subscriptions: 30,
   },
   {
     category: "Health & Fitness",
-    price: 1500,
+    price: 320,
     available: 5,
-    views: 12000,
-    taps: 400,
-    subscriptions: 250,
+    taps: 820,
+    subscriptions: 90,
   },
   {
     category: "History",
-    price: 1500,
+    price: 300,
     available: 5,
-    views: 12000,
-    taps: 400,
-    subscriptions: 250,
+    taps: 690,
+    subscriptions: 65,
   },
   {
     category: "Kids & Family",
-    price: 1500,
+    price: 120,
     available: 5,
-    views: 12000,
-    taps: 400,
-    subscriptions: 250,
+    taps: 210,
+    subscriptions: 35,
   },
   {
     category: "Leisure",
-    price: 1500,
+    price: 150,
     available: 5,
-    views: 12000,
-    taps: 400,
-    subscriptions: 250,
+    taps: 350,
+    subscriptions: 45,
   },
   {
     category: "Music",
-    price: 1500,
+    price: 150,
     available: 5,
-    views: 12000,
-    taps: 400,
-    subscriptions: 250,
+    taps: 430,
+    subscriptions: 50,
   },
   {
     category: "News",
-    price: 1500,
+    price: 499,
     available: 5,
-    views: 12000,
-    taps: 400,
-    subscriptions: 250,
+    taps: 1600,
+    subscriptions: 170,
   },
   {
     category: "Religion & Spirituality",
-    price: 1500,
+    price: 250,
     available: 5,
-    views: 12000,
-    taps: 400,
-    subscriptions: 250,
+    taps: 450,
+    subscriptions: 35,
   },
   {
     category: "Science",
-    price: 1500,
+    price: 250,
     available: 5,
-    views: 12000,
-    taps: 400,
-    subscriptions: 250,
+    taps: 920,
+    subscriptions: 85,
   },
   {
     category: "Society & Culture",
-    price: 1500,
+    price: 499,
     available: 5,
-    views: 12000,
-    taps: 400,
-    subscriptions: 250,
+    taps: 1600,
+    subscriptions: 155,
   },
   {
     category: "Sports",
-    price: 1500,
+    price: 150,
     available: 5,
-    views: 12000,
-    taps: 400,
-    subscriptions: 250,
+    taps: 880,
+    subscriptions: 75,
   },
   {
     category: "TV & Film",
-    price: 1500,
+    price: 300,
     available: 5,
-    views: 12000,
-    taps: 400,
-    subscriptions: 250,
+    taps: 500,
+    subscriptions: 45,
   },
   {
     category: "Technology",
-    price: 1500,
+    price: 3500,
     available: 5,
-    views: 12000,
-    taps: 400,
-    subscriptions: 250,
+    taps: 900,
+    subscriptions: 75,
   },
   {
     category: "True Crime",
-    price: 1500,
+    price: 150,
     available: 5,
-    views: 12000,
-    taps: 400,
-    subscriptions: 250,
+    taps: 650,
+    subscriptions: 55,
   },
 ];
 
@@ -211,13 +191,10 @@ const Plans = () => {
             {plan.available}
           </Paragraph>
           <Paragraph variant="primary" size="normal">
-            {plan.views}k
+            {plan.taps}
           </Paragraph>
           <Paragraph variant="primary" size="normal">
-            {plan.taps}k
-          </Paragraph>
-          <Paragraph variant="primary" size="normal">
-            {plan.subscriptions}k
+            {plan.subscriptions}
           </Paragraph>
         </PlanRow>
       );
@@ -238,13 +215,10 @@ const Plans = () => {
             {plan.available}
           </Paragraph>
           <Paragraph variant="secondary" size="normal">
-            {plan.views}k
+            {plan.taps}
           </Paragraph>
           <Paragraph variant="secondary" size="normal">
-            {plan.taps}k
-          </Paragraph>
-          <Paragraph variant="secondary" size="normal">
-            {plan.subscriptions}k
+            {plan.subscriptions}
           </Paragraph>
         </PlanRow>
       ));
@@ -272,9 +246,6 @@ const Plans = () => {
           </Paragraph>
           <Paragraph variant="secondary" size="normal">
             Available
-          </Paragraph>
-          <Paragraph variant="secondary" size="normal">
-            Views
           </Paragraph>
           <Paragraph variant="secondary" size="normal">
             Taps

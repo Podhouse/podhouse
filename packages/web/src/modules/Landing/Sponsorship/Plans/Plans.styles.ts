@@ -39,7 +39,7 @@ export const PlansHeader = styled.div<StyleProps>`
   background: ${({ theme }) => theme.bgSecondary};
   border-radius: 5px 5px 0px 0px;
   display: grid;
-  grid-template-columns: minmax(min-content, 180px) repeat(5, 1fr);
+  grid-template-columns: minmax(min-content, 180px) repeat(4, 1fr);
   grid-template-rows: 1fr;
   grid-column-gap: 10px;
   padding-left: 25px;
@@ -65,7 +65,7 @@ export const PlanRow = styled.div<Props>`
   height: 60px;
   background-color: ${({ theme }) => theme.bgPrimary};
   display: grid;
-  grid-template-columns: minmax(min-content, 180px) repeat(5, 1fr);
+  grid-template-columns: minmax(min-content, 180px) repeat(4, 1fr);
   grid-template-rows: 1fr;
   grid-column-gap: 10px;
   padding-left: 25px;

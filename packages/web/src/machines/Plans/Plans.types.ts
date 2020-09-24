@@ -2,7 +2,6 @@ export interface Plan {
   category: string;
   price: number;
   available: number;
-  views: number;
   taps: number;
   subscriptions: number;
 }
