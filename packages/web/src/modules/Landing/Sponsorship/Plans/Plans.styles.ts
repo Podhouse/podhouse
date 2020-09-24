@@ -107,4 +107,143 @@ export const PlansPodcastInnerSection = styled.div`
   grid-row-gap: 20px;
   align-items: center;
   justify-items: center;
+
+  .react-autosuggest__container {
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .react-autosuggest__input {
+    width: 100%;
+    max-width: 400px;
+    height: 40px;
+    text-indent: 20px;
+    outline: 0;
+    box-sizing: border-box;
+    color: #6f6f6f;
+    background-color: #f3f3f3;
+    border: 1px solid #f3f3f3;
+    border-radius: 5px;
+    line-height: 17px;
+    font-family: Inter;
+    font-style: "normal";
+    font-weight: "normal";
+    font-size: 14px;
+
+    &:focus {
+      border: 1px solid rgba(16, 16, 16, 0.1);
+    }
+
+    :-moz-placeholder {
+      font-family: Inter;
+      line-height: 17px;
+      text-indent: 20px;
+    }
+  }
+
+  .react-autosuggest__suggestions-container {
+    display: none;
+  }
+
+  .react-autosuggest__container--open
+    .react-autosuggest__suggestions-container {
+    display: block;
+    position: absolute;
+    top: 45px;
+    width: 100%;
+    max-width: 400px;
+    outline: 0;
+    box-sizing: border-box;
+    color: #6f6f6f;
+    background-color: #f3f3f3;
+    border: 1px solid #f3f3f3;
+    border-radius: 5px;
+    line-height: 17px;
+    font-family: Inter;
+    font-style: "normal";
+    font-weight: "normal";
+    font-size: 14px;
+    z-index: 2;
+
+    &:focus {
+      border: 1px solid rgba(16, 16, 16, 0.1);
+    }
+  }
+
+  .react-autosuggest__suggestions-list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+
+  .react-autosuggest__suggestion {
+    cursor: pointer;
+    padding: 10px 20px;
+  }
+
+  .react-autosuggest__suggestion:not(:first-child) {
+    border-top: 1px solid #ddd;
+  }
+
+  .react-autosuggest__suggestion--focused {
+    background-color: red;
+    color: #fff;
+  }
+
+  .suggestion-content {
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 10px;
+  }
+
+  .name {
+    margin-left: 68px;
+    line-height: 45px;
+  }
+
+  .highlight {
+    color: #000000;
+    font-weight: bold;
+  }
+
+  .react-autosuggest__suggestion--focused .highlight {
+    color: #120000;
+  }
+`;
+
+export const SuggestionContent = styled.div`
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  grid-template-rows: 1fr;
+  grid-column-gap: 10px;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:focus {
+    background: red;
+  }
+`;
+
+export const SuggestionImage = styled.img`
+  object-fit: cover;
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  cursor: pointer;
+`;
+
+export const SuggestText = styled.p`
+  font-family: Inter;
+  font-weight: 500;
+  font-size: 14px;
+  outline: 0;
+  line-height: 25px;
 `;

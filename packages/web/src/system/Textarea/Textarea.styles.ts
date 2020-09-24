@@ -45,7 +45,7 @@ const scales = variant({
 });
 
 export const TextareaContainer = styled.div`
-  width: 100%;
+  width: auto;
   height: fit-content;
   display: grid;
   grid-template-columns: 1fr;

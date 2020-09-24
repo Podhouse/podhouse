@@ -38,6 +38,7 @@
     "@xstate/react": "^0.8.1",
     "@xstate/test": "^0.4.1",
     "@zeit/next-source-maps": "^0.0.3",
+    "autosuggest-highlight": "^3.1.1",
     "babel-loader": "^8.1.0",
     "babel-plugin-relay": "^10.0.1",
     "emotion-theming": "^10.0.27",

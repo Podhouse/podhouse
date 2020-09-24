@@ -7,3 +7,13 @@ export interface IPlan {
 }
 
 export type IPlans = Array<IPlan>;
+
+export interface Podcast {
+  id: number;
+  name: string;
+  author: string;
+  avatar: string;
+  description: string;
+}
+
+export type Podcasts = Array<Podcast>;
