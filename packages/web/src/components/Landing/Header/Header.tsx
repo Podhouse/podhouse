@@ -49,7 +49,7 @@ const Header = () => {
 
         <NextLink href="/sponsorship" as="/sponsorship">
           <Link href="/sponsorship" variant="secondary" size="normal">
-            Sponsorship
+            Ads
           </Link>
         </NextLink>
 
