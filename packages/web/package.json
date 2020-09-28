@@ -52,6 +52,7 @@
     "next": "^9.5.3",
     "next-compose-plugins": "^2.2.0",
     "next-ga": "^2.3.4",
+    "next-google-fonts": "^1.2.1",
     "next-i18next": "^6.0.2",
     "next-images": "^1.4.1",
     "next-optimized-images": "^2.6.2",
