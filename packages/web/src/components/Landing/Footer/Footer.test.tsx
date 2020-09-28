@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { render } from "@testing-library/react";
 
 import Footer from "./Footer";
@@ -16,7 +16,7 @@ describe("Footer", () => {
     const { getByText } = withTheme;
 
     expect(getByText(/About/i)).toBeInTheDocument();
-    expect(getByText(/Sponsorship/i)).toBeInTheDocument();
+    expect(getByText(/Ads/i)).toBeInTheDocument();
     expect(getByText(/Brand/i)).toBeInTheDocument();
     expect(getByText(/Contact/i)).toBeInTheDocument();
     expect(

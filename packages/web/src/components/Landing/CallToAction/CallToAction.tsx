@@ -27,7 +27,7 @@ const CallToAction = () => {
         <Paragraph variant="secondary" size="normal">
           Although there are some premium features planned, we will always be
           free. You won't need to pay anything in order to listen to your
-          favorite podcasts with us.
+          favorite podcasts with us
         </Paragraph>
       </LandingGridContentContainer>
 
