@@ -26,7 +26,7 @@ export default class User {
     provider: string;
   }>;
 
-  constructor(data: IUser) {
+  constructor(data) {
     this.id = data._id;
     this._id = data._id;
     this.email = data.email;
