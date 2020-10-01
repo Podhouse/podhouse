@@ -15,6 +15,7 @@ import PlansTable from "./PlansTable";
 import Featured from "src/components/Featured/Featured";
 
 import usePlans from "src/hooks/usePlans";
+import useItunesPodcast from "src/hooks/useItunesPodcast";
 
 import Heading from "src/system/Heading/Heading";
 import Paragraph from "src/system/Paragraph/Paragraph";
@@ -24,47 +25,9 @@ import Button from "src/system/Button/Button";
 import plans from "src/utils/plans";
 import escapeRegexCharacters from "src/utils/escapeRegexCharacters";
 
-import { Podcast, Podcasts } from "./Plans.types";
+import { PodcastResults, PodcastResult } from "./Plans.types";
 
-const podcasts: Podcasts = [
-  {
-    id: 1,
-    name: "99% Invisible",
-    author: "Roman Mars",
-    avatar:
-      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
-    description:
-      "Design is everywhere in our lives, perhaps most importantly in the places where we've just stopped noticing. 99% Invisible is a weekly exploration of the process and power of design and architecture. From award winning producer Roman Mars. Learn more at 99percentinvisible.org.  A proud member of Radiotopia, from PRX. Learn more at radiotopia.fm.",
-  },
-  {
-    id: 2,
-    name: "Nerdcast",
-    author: "Nerdcast",
-    avatar:
-      "https://imgsvr.radiocut.site/get/thumb/900/900/shows_logos/6d/3c/6d3c0fda-9667-4802-97e4-6dceed4171e8.jpg",
-    description:
-      "Design is everywhere in our lives, perhaps most importantly in the places where we've just stopped noticing. 99% Invisible is a weekly exploration of the process and power of design and architecture. From award winning producer Roman Mars. Learn more at 99percentinvisible.org.  A proud member of Radiotopia, from PRX. Learn more at radiotopia.fm.",
-  },
-  {
-    id: 3,
-    name: "The Joe Rogan Experience",
-    author: "Joe Rogan",
-    avatar:
-      "https://www.meetinleeds.co.uk/wp-content/uploads/2017/02/Joe-Rogan.jpg",
-    description:
-      "Design is everywhere in our lives, perhaps most importantly in the places where we've just stopped noticing. 99% Invisible is a weekly exploration of the process and power of design and architecture. From award winning producer Roman Mars. Learn more at 99percentinvisible.org.  A proud member of Radiotopia, from PRX. Learn more at radiotopia.fm.",
-  },
-  {
-    id: 4,
-    name: "All Ears English Podcast",
-    author: "Lindsay McMahon",
-    avatar: "https://pbcdn1.podbean.com/imglogo/dir-logo/213729/213729.jpg",
-    description:
-      "Design is everywhere in our lives, perhaps most importantly in the places where we've just stopped noticing. 99% Invisible is a weekly exploration of the process and power of design and architecture. From award winning producer Roman Mars. Learn more at 99percentinvisible.org.  A proud member of Radiotopia, from PRX. Learn more at radiotopia.fm.",
-  },
-];
-
-const getSuggestions = (value, podcasts: Podcasts) => {
+const getSuggestions = (value, { results }: PodcastResults) => {
   const escapedValue = escapeRegexCharacters(value.trim());
 
   if (escapedValue === "") {
@@ -73,35 +36,64 @@ const getSuggestions = (value, podcasts: Podcasts) => {
 
   const regex = new RegExp("\\b" + escapedValue, "i");
 
-  return podcasts.filter((podcast: Podcast) =>
+  return results.filter((podcast: PodcastResult) =>
     regex.test(getSuggestionValue(podcast)),
   );
 };
 
-const getSuggestionValue = ({ name }: Podcast) => `${name}`;
+const getSuggestionValue = ({ artistName }: PodcastResult) => `${artistName}`;
 
-const renderSuggestion = ({ name, avatar }: Podcast) => (
+const renderSuggestion = ({ artistName, artworkUrl600 }: PodcastResult) => (
   <SuggestionContent>
-    <SuggestionImage src={avatar} />
-    <SuggestText>{name}</SuggestText>
+    <SuggestionImage src={artworkUrl600} />
+    <SuggestText>{artistName}</SuggestText>
   </SuggestionContent>
 );
 
 const Plans = () => {
-  const [suggestions, setSuggestions] = useState([]);
+  const [suggestions, setSuggestions] = useState<Array<PodcastResult>>([]);
   const [value, setValue] = useState<string>("");
-  const [featuredPodcast, setFeaturedPodcast] = useState<Podcast | undefined>({
-    id: 0,
-    avatar: "",
-    name: "",
-    author: "",
-    description: "",
+  const [featuredPodcast, setFeaturedPodcast] = useState<PodcastResult | undefined>({
+    wrapperType: "",
+    kind: "",
+    collectionId: null,
+    trackId: null,
+    artistName: "",
+    collectionName: "",
+    trackName: "",
+    collectionCensoredName: "",
+    trackCensoredName: "",
+    collectionViewUrl: "",
+    feedUrl: "",
+    trackViewUrl: "",
+    artworkUrl30: "",
+    artworkUrl60: "",
+    artworkUrl100: "",
+    collectionPrice: "",
+    trackPrice: "",
+    trackRentalPrice: "",
+    collectionHdPrice: "",
+    trackHdPrice: "",
+    trackHdRentalPrice: "",
+    releaseDate: "",
+    collectionExplicitness: "",
+    trackExplicitness: "",
+    trackCount: null,
+    country: "",
+    currency: "",
+    primaryGenreName: "",
+    contentAdvisoryRating: "",
+    artworkUrl600: "",
+    genreIds: [],
+    genres: []
   });
+
+  const { data } = useItunesPodcast(value);
 
   const onChange = (_, { newValue }) => setValue(newValue);
 
   const onSuggestionsFetchRequested = ({ value }) => {
-    setSuggestions(getSuggestions(value, podcasts));
+    setSuggestions(getSuggestions(value, data));
   };
 
   const onSuggestionsClearRequested = () => setSuggestions([]);
@@ -119,6 +111,10 @@ const Plans = () => {
   };
 
   const hasPodcastSelected = checkProperties(featuredPodcast);
+
+  const shouldRenderSuggestions = (value) => {
+    return value.trim().length > 3;
+  }
 
   return (
     <PlansWholeContainer selected={selected}>
@@ -155,6 +151,7 @@ const Plans = () => {
               value,
               onChange,
             }}
+            shouldRenderSuggestions={shouldRenderSuggestions}
           />
         </PlansPodcastInnerSection>
 
@@ -179,7 +176,12 @@ const Plans = () => {
           />
         </PlansPodcastInnerSection>
 
-        <Featured featured={[featuredPodcast]} />
+        <Featured featured={[{
+          avatar: featuredPodcast.artworkUrl600,
+          name: featuredPodcast.collectionName,
+          author: featuredPodcast.artistName,
+          description: featuredPodcast.artistName
+        }]} />
 
         <PlansPodcastInnerSection>
           <Button
