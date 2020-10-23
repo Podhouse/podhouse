@@ -94,7 +94,6 @@ class MyDocument extends Document {
           <meta name="msapplication-TileColor" content="#ffffff" />
           <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
           <meta name="theme-color" content="#ffffff" />
-          <link rel="manifest" href="/manifest.json" />
           <GoogleAnalytics id={process.env.GA_TRACKING_ID} />
           <GoogleFonts href="https://fonts.googleapis.com/css?family=Inter:100,200,300,400,500,600,700,800,900&display=swap" />
         </Head>
