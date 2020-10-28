@@ -13,7 +13,7 @@ import {
 
 import { IPodcast } from "./PodcastModel";
 
-import { EpisodeConnection } from "../Episode/EpisodeType";
+import EpisodeType, { EpisodeConnection } from "../Episode/EpisodeType";
 
 import { nodeInterface } from "../Node/TypeRegister";
 
@@ -59,10 +59,7 @@ const PodcastType: GraphQLObjectType = new GraphQLObjectType<
       resolve: ({ image }) => image,
     },
     episodes: {
-      type: GraphQLNonNull(EpisodeConnection.connectionType),
-      args: {
-        ...connectionArgs,
-      },
+      type: GraphQLList(EpisodeType),
       resolve: ({ episodes }) => episodes,
     },
     genres: {

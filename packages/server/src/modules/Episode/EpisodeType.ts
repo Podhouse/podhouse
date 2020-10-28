@@ -15,10 +15,6 @@ const EpisodeType: GraphQLObjectType = new GraphQLObjectType<
   description: "EpisodeType",
   fields: () => ({
     id: globalIdField("Episode"),
-    _id: {
-      type: GraphQLNonNull(GraphQLString),
-      resolve: ({ _id }) => _id,
-    },
     title: {
       type: GraphQLNonNull(GraphQLString),
       resolve: ({ title }) => title,

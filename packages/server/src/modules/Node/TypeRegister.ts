@@ -7,9 +7,6 @@ import UserType from "../User/UserType";
 import Podcast, * as PodcastLoader from "../Podcast/PodcastLoader";
 import PodcastType from "../Podcast/PodcastType";
 
-import Episode, * as EpisodeLoader from "../Episode/EpisodeLoader";
-import EpisodeType from "../Episode/EpisodeType";
-
 import { GraphQLContext } from "../../types";
 
 type Load = (context: GraphQLContext, id: string) => any;
@@ -40,13 +37,11 @@ const getTypeRegister = () => {
       const { id, type } = fromGlobalId(globalId);
       if (type === "User") return await UserLoader.load(context, id);
       if (type === "Podcast") return await PodcastLoader.load(context, id);
-      if (type === "Episode") return await EpisodeLoader.load(context, id);
       return null;
     },
     (obj) => {
       if (obj instanceof User) return UserType;
       if (obj instanceof Podcast) return PodcastType;
-      if (obj instanceof Episode) return EpisodeType;
       return null;
     },
   );
