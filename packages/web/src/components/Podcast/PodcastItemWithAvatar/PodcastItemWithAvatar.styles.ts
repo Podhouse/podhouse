@@ -14,4 +14,5 @@ export const PodcastAvatarItemAvatar = styled.img`
   height: 140px;
   border-radius: 5px;
   cursor: pointer;
+  object-fit: cover;
 `;

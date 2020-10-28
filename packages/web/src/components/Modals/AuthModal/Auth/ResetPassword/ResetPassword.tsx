@@ -1,11 +1,13 @@
-import * as React from "react";
+import React from "react";
 import { withTranslation } from "i18n";
+import { WithTranslation } from "next-i18next";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers";
 import * as Yup from "yup";
 
-import { AuthTextContainer, AuthText, AuthFormContainer } from "../Auth.styles";
+import { AuthTextContainer, AuthFormContainer } from "../Auth.styles";
 
+import Paragraph from "src/system/Paragraph/Paragraph";
 import Input from "src/system/Input/Input";
 import Button from "src/system/Button/Button";
 
@@ -24,7 +26,7 @@ const validationSchema = Yup.object().shape({
     .required("Confirm password is required"),
 });
 
-const ResetPassword = ({ t }: any) => {
+const ResetPassword = ({ t }: WithTranslation) => {
   const [, , , send] = useAuthContext();
 
   const { register, handleSubmit, errors } = useForm<ResetPasswordFormProps>({
@@ -36,11 +38,11 @@ const ResetPassword = ({ t }: any) => {
   return (
     <>
       <AuthTextContainer>
-        <AuthText>
+        <Paragraph variant="secondary" size="normal">
           {t(
             "enter-your-email-address-and-we'll-send-you-an-email-with-a-password-reset-link",
           )}
-        </AuthText>
+        </Paragraph>
       </AuthTextContainer>
 
       <AuthFormContainer onSubmit={handleSubmit(onSubmit)}>
@@ -49,7 +51,8 @@ const ResetPassword = ({ t }: any) => {
           name="newPassword"
           label={t("new-password")}
           placeholder={t("new-password")}
-          height={40}
+          variant="primary"
+          scale="normal"
           ref={register}
           error={errors.newPassword?.message}
         />
@@ -59,12 +62,18 @@ const ResetPassword = ({ t }: any) => {
           name="confirmNewPassword"
           label={t("confirm-new-password")}
           placeholder={t("confirm-new-password")}
-          height={40}
+          variant="primary"
+          scale="normal"
           ref={register}
           error={errors.confirmNewPassword?.message}
         />
 
-        <Button type="submit" onClick={() => send("SUCCESS")} height={40}>
+        <Button
+          type="submit"
+          onClick={() => send("SUCCESS")}
+          variant="primary"
+          size="normal"
+        >
           {t("confirm-new-password")}
         </Button>
       </AuthFormContainer>

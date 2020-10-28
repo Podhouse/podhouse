@@ -1,6 +1,5 @@
 import React from "react";
-import Link from "next/link";
-import { MoreHorizontal } from "react-feather";
+import NextLink from "next/link";
 
 import {
   EpisodeItemContainer,
@@ -9,19 +8,10 @@ import {
   EpisodeItemDescription,
   EpisodeItemPublishedDate,
   EpisodeItemDuration,
-  EpisodeItemButtonContainer,
   EpisodeItemButton,
 } from "./EpisodeItem.styles";
 
-interface EpisodeItemProps {
-  episode: {
-    name: string;
-    description: string;
-    avatar: string;
-    publishedDate: string;
-    duration: string;
-  };
-}
+import { EpisodeItemProps } from "./EpisodeItem.types";
 
 const EpisodeItem = ({ episode }: EpisodeItemProps) => {
   const { avatar, name, description, publishedDate, duration } = episode;
@@ -31,16 +21,34 @@ const EpisodeItem = ({ episode }: EpisodeItemProps) => {
   return (
     <EpisodeItemContainer>
       <EpisodeItemAvatar src={avatar} alt={imageAlt} />
-      <Link href="/app/episode/[episode]" as="/app/episode/123">
+
+      <NextLink href="/app/episode/[episode]" as="/app/episode/123">
         <EpisodeItemName href="/app/episode/123">{name}</EpisodeItemName>
-      </Link>
-      <EpisodeItemDescription>{description}</EpisodeItemDescription>
-      <EpisodeItemPublishedDate>{publishedDate}</EpisodeItemPublishedDate>
-      <EpisodeItemDuration>{duration}</EpisodeItemDuration>
-      <EpisodeItemButtonContainer>
-        <MoreHorizontal size={16} strokeWidth={1} color="#B7B7B7" />
-        <EpisodeItemButton type="button">Play</EpisodeItemButton>
-      </EpisodeItemButtonContainer>
+      </NextLink>
+
+      <EpisodeItemDescription
+        variant="secondary"
+        size="normal"
+        textAlign="start"
+      >
+        {description}
+      </EpisodeItemDescription>
+
+      <EpisodeItemPublishedDate
+        variant="secondary"
+        size="normal"
+        textAlign="start"
+      >
+        {publishedDate}
+      </EpisodeItemPublishedDate>
+
+      <EpisodeItemDuration variant="secondary" size="normal" textAlign="start">
+        {duration}
+      </EpisodeItemDuration>
+
+      <EpisodeItemButton type="button" variant="secondary" size="normal">
+        Play
+      </EpisodeItemButton>
     </EpisodeItemContainer>
   );
 };

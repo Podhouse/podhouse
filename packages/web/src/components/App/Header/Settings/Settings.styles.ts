@@ -1,13 +1,12 @@
 import styled from "@emotion/styled";
 
-import { StyleProps } from "src/system/styles.types";
-
 export const SettingsContainer = styled.div`
-  width: 100%;
+  width: fit-content;
   height: 100%;
   grid-column: 2 / 3;
   grid-row: 1 / 2;
   display: flex;
+  justify-self: flex-end;
   justify-content: flex-end;
   align-items: center;
 
@@ -16,16 +15,4 @@ export const SettingsContainer = styled.div`
       cursor: pointer;
     }
   }
-`;
-
-export const SettingsLoginLink = styled.a<StyleProps>`
-  font-family: Inter;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 19px;
-  color: ${({ theme }) => theme.primary};
-  text-transform: uppercase;
-  text-decoration: none;
-  cursor: pointer;
 `;

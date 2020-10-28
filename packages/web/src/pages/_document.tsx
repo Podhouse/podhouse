@@ -1,5 +1,7 @@
-import * as React from "react";
+import React from "react";
 import Document, { Head, Main, NextScript } from "next/document";
+import GoogleAnalytics from "next-simple-google-analytics";
+import GoogleFonts from "next-google-fonts";
 
 class MyDocument extends Document {
   render() {
@@ -14,17 +16,10 @@ class MyDocument extends Document {
             content="default"
           />
           <meta name="apple-mobile-web-app-title" content="Podhouse" />
-          <meta
-            name="description"
-            content="The best way to listen to your favorite podcasts"
-          />
+          <meta name="description" content="Listen to your favorite podcasts" />
           <meta name="format-detection" content="telephone=no" />
           <meta name="mobile-web-app-capable" content="yes" />
           <meta name="theme-color" content="#000" />
-          <meta
-            name="viewport"
-            content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover"
-          />
 
           <link
             rel="apple-touch-icon"
@@ -99,11 +94,8 @@ class MyDocument extends Document {
           <meta name="msapplication-TileColor" content="#ffffff" />
           <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
           <meta name="theme-color" content="#ffffff" />
-          <link rel="manifest" href="/manifest.json" />
-          <link
-            href="https://fonts.googleapis.com/css?family=Inter:100,200,300,400,500,600,700,800,900&display=swap"
-            rel="stylesheet"
-          />
+          <GoogleAnalytics id={process.env.GA_TRACKING_ID} />
+          <GoogleFonts href="https://fonts.googleapis.com/css?family=Inter:100,200,300,400,500,600,700,800,900&display=swap" />
         </Head>
         <body>
           <Main />

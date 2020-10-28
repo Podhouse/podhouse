@@ -18,7 +18,7 @@ export const RateModalContainer = styled.div<StyleProps>`
   height: auto;
   padding-top: 5px;
   padding-bottom: 5px;
-  background: ${({ theme }) => theme.backgroundPrimary};
+  background: ${({ theme }) => theme.bgPrimary};
   border-radius: 5px;
   right: 135px;
   position: absolute;
@@ -35,13 +35,13 @@ export const RateModalLinkContainer = styled.div<Props>`
   width: 100%;
   height: 100%;
   background: ${({ active, theme }) =>
-    active ? theme.backgroundSecondary : theme.backgroundPrimary};
+    active ? theme.bgSecondary : theme.bgPrimary};
   color: ${({ active, theme }) => (active ? theme.primary : theme.secondary)};
   padding-left: 20px;
   cursor: pointer;
 
   &:hover {
-    background: ${({ theme }) => theme.backgroundSecondary};
+    background: ${({ theme }) => theme.bgSecondary};
     color: ${({ theme }) => theme.primary};
   }
 `;

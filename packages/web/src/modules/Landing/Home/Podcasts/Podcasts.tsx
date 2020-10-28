@@ -5,18 +5,21 @@ import { PodcastsContainer, PodcastPictureContainer } from "./Podcast.styles";
 import {
   LandingGridContainer,
   LandingGridContentContainer,
-  LandingSubTitle,
-  LandingParagraph,
 } from "src/components/Landing/Landing.styles";
+
+import Heading from "src/system/Heading/Heading";
+import Paragraph from "src/system/Paragraph/Paragraph";
 
 const Podcasts = () => (
   <LandingGridContainer>
     <LandingGridContentContainer>
-      <LandingSubTitle>Listen to your favorite podcasts</LandingSubTitle>
-      <LandingParagraph>
+      <Heading variant="primary" size="normal" as="h2" fontSize={36}>
+        Listen to your favorite podcasts
+      </Heading>
+      <Paragraph variant="secondary" size="normal">
         Get started now and listen to the best podcasts, without having to pay
         anything for it.
-      </LandingParagraph>
+      </Paragraph>
     </LandingGridContentContainer>
 
     <PodcastsContainer>

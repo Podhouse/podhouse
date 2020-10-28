@@ -34,6 +34,7 @@ export const DownloadHeaderContainer = styled.div`
   grid-template-rows: 1fr;
   grid-column-gap: 30px;
   align-items: flex-end;
+  justify-items: flex-start;
 `;
 
 export const DownloadTitle = styled.h1<StyleProps>`
@@ -72,7 +73,7 @@ export const DownloadAssetsContainer = styled.div<Props>`
   display: flex;
   align-items: center;
   justify-content: center;
-  border: ${({ theme }) => `1px solid ${theme.backgroundSecondary}`};
+  border: ${({ theme }) => `1px solid ${theme.bgSecondary}`};
   box-sizing: border-box;
   border-radius: 5px;
   background-color: ${({ color }) => color};

@@ -20,20 +20,32 @@ export const FeaturedItemContainer = styled.div`
   @media screen and (min-width: 800px) {
     display: grid;
     grid-template-columns: 200px 1fr;
-    grid-template-rows: 1fr;
+    grid-template-rows: 200px;
     grid-column-gap: 20px;
   }
 `;
 
-export const FeaturedAvatar = styled.img`
-  width: 100%;
-  height: 100%;
+export const FeaturedAvatar = styled.img<StyleProps>`
+  object-fit: cover;
   border-radius: 5px;
   cursor: pointer;
   grid-row: 1 / 2;
   grid-column: 1 / 2;
   align-self: center;
   justify-self: center;
+  background-color: ${({ theme }) => theme.bgPrimary};
+`;
+
+export const FeaturedEmptyAvatar = styled.div<StyleProps>`
+  width: 200px;
+  height: 200px;
+  border-radius: 5px;
+  cursor: pointer;
+  grid-row: 1 / 2;
+  grid-column: 1 / 2;
+  align-self: center;
+  justify-self: center;
+  background-color: ${({ theme }) => theme.bgSecondary};
 `;
 
 export const FeaturedDetailsContainer = styled.div`
@@ -55,60 +67,4 @@ export const FeaturedDetailsContainer = styled.div`
     align-items: flex-start;
     justify-items: flex-start;
   }
-`;
-
-export const FeaturedName = styled.a<StyleProps>`
-  font-family: Inter;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 24px;
-  line-height: 29px;
-  color: ${({ theme }) => theme.primary};
-  text-decoration: none;
-`;
-
-export const FeaturedAuthor = styled.h4<StyleProps>`
-  font-family: Inter;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 19px;
-  color: ${({ theme }) => theme.tertiary};
-`;
-
-export const FeaturedDescription = styled.p<StyleProps>`
-  display: none;
-
-  @media screen and (min-width: 800px) {
-    display: block;
-    font-family: Inter;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 25px;
-    color: ${({ theme }) => theme.tertiary};
-    display: -webkit-box;
-    -webkit-line-clamp: 4;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-`;
-
-export const FeaturedBadge = styled.a<StyleProps>`
-  width: fit-content;
-  height: fit-content;
-  padding: 3px 10px;
-  border-radius: 3px;
-  background-color: ${({ theme }) => theme.info};
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: Inter;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 12px;
-  text-align: center;
-  color: white;
-  text-decoration: none;
-  text-transform: uppercase;
 `;

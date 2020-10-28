@@ -1,15 +1,16 @@
 import React from "react";
 import { i18n, withTranslation } from "i18n";
+import { WithTranslation } from "next-i18next";
 
 import {
   SettingsItemContainer,
   SettingsItemHeaderContainer,
   SettingsItemHeaderTitle,
-  SettingsItemHeaderBreakLine,
   SettingsItemContentContainer,
 } from "../Settings.styles";
 
 import Select from "src/system/Select/Select";
+import Separator from "src/system/Separator/Separator";
 
 const options = [
   {
@@ -78,14 +79,23 @@ const options = [
   },
 ];
 
-const Language = ({ t }: any) => {
+const Language = ({ t }: WithTranslation) => {
   const handleChange = (event) => i18n.changeLanguage(event.target.value);
 
   return (
     <SettingsItemContainer>
       <SettingsItemHeaderContainer>
-        <SettingsItemHeaderTitle>{t("language")}</SettingsItemHeaderTitle>
-        <SettingsItemHeaderBreakLine />
+        <SettingsItemHeaderTitle
+          as="h1"
+          variant="secondary"
+          size="normal"
+          fontSize={14}
+          fontWeight={500}
+          textAlign="start"
+        >
+          {t("language")}
+        </SettingsItemHeaderTitle>
+        <Separator variant="secondary" orientation="horizontal" />
       </SettingsItemHeaderContainer>
 
       <SettingsItemContentContainer>

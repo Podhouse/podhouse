@@ -1,44 +1,75 @@
 import React from "react";
+import { useTextField } from "@react-aria/textfield";
 
-import { InputContainer, InputStyled } from "./Input.styles";
+import { InputContainer, StyledInput } from "./Input.styles";
 
 import { InputProps } from "./Input.types";
 
-import Label from "src/system/Label/Label";
-import Error from "src/system/Error/Error";
+import Label from "../Label/Label";
+import Error from "../Error/Error";
 
-const Input = React.forwardRef(
-  (
-    {
-      type,
-      name,
-      placeholder,
-      label,
-      error,
-      width,
-      height,
-      autoComplete = "off",
-      ...props
-    }: InputProps,
-    ref,
-  ) => (
-    <InputContainer width={width}>
-      {label ? <Label label={label} mb={10} /> : null}
+const Input = React.forwardRef((props: InputProps, ref) => {
+  // React Aria does not have support for forwardRef yet.
+  // https://github.com/adobe/react-spectrum/issues/834
+  const fallbackRef = React.useRef();
+  const domRef: any = ref || fallbackRef;
 
-      <InputStyled
-        ref={ref}
-        height={height}
+  const { labelProps, inputProps } = useTextField(props, ref as any);
+
+  const {
+    variant = "primary",
+    scale = "normal",
+    type = "text",
+    name,
+    placeholder,
+    label,
+    value,
+    onChange,
+    onBlur,
+    onClick,
+    error,
+    disabled = false,
+    required = false,
+    autoFocus = false,
+  } = props;
+
+  return (
+    <InputContainer>
+      {label ? (
+        <Label
+          label={label}
+          variant={variant}
+          size={scale}
+          disabled={disabled}
+          {...labelProps}
+        />
+      ) : null}
+
+      <StyledInput
+        {...inputProps}
+        ref={domRef}
+        variant={variant}
+        scale={scale}
         type={type}
         name={name}
         placeholder={placeholder}
+        label={label}
+        value={value}
+        onChange={onChange}
+        onBlur={onBlur}
+        onClick={onClick}
         error={error}
-        autoComplete={autoComplete}
-        {...props}
+        disabled={disabled}
+        required={required}
+        autoFocus={autoFocus}
+        autoComplete="off"
+        aria-autocomplete="none"
+        aria-errormessage={error}
       />
 
-      {error ? <Error error={error} mt={10} /> : null}
+      {error ? <Error error={error} variant="primary" size={scale} /> : null}
     </InputContainer>
-  ),
-);
+  );
+});
 
 export default Input;

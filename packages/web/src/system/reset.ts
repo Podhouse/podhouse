@@ -3,18 +3,18 @@ import { css } from "@emotion/core";
 const reset = css`
   html {
     box-sizing: border-box;
-    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
-      "Roboto", sans-serif;
-    font-size: 16px;
   }
 
   *,
-  *:before,
-  *:after {
-    box-sizing: inherit;
+  *::before,
+  *::after {
+    box-sizing: border-box;
   }
 
   body {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+      "Roboto", sans-serif;
+    font-size: 16px;
     min-height: 100vh;
     min-height: -webkit-fill-available;
     min-height: -moz-available;

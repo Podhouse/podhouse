@@ -21,7 +21,7 @@ export const SearchInputStyled = styled.input<StyleProps>`
   font-weight: normal;
   font-size: 14px;
   line-height: 17px;
-  background: ${({ theme }) => theme.backgroundSecondary};
+  background: ${({ theme }) => theme.bgSecondary};
   color: ${({ theme }) => theme.primary};
   border: none;
   border-radius: 5px;

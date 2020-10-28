@@ -1,7 +1,5 @@
 import styled from "@emotion/styled";
 
-import { StyleProps } from "src/system/styles.types";
-
 export const HeaderContainer = styled.header`
   width: 100%;
   height: auto;
@@ -44,23 +42,6 @@ export const HeaderLinksContainer = styled.div`
     align-items: center;
     justify-content: center;
     justify-self: center;
-  }
-`;
-
-export const HeaderLink = styled.a<StyleProps>`
-  font-family: Inter;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 17px;
-  text-align: center;
-  color: ${({ theme }) => theme.secondary};
-  text-decoration: none;
-  outline: none;
-  cursor: pointer;
-
-  :hover {
-    color: ${({ theme }) => theme.primary};
   }
 `;
 

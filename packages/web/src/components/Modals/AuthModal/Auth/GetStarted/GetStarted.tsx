@@ -1,53 +1,60 @@
 import React from "react";
 import { withTranslation } from "i18n";
+import { WithTranslation } from "next-i18next";
 
 import {
   AuthGetStartedButtonsContainer,
-  AuthTextContainer,
-  AuthText,
   AuthLinksContainer,
-  AuthCircle,
-  AuthParagraphLink,
+  AuthTextContainer,
 } from "../Auth.styles";
 
+import Paragraph from "src/system/Paragraph/Paragraph";
 import Button from "src/system/Button/Button";
-import GoogleButton from "src/system/GoogleButton/GoogleButton";
+import Link from "src/system/Link/Link";
 
 import { useAuthContext } from "src/context/Auth/Auth";
 
-const GetStarted = ({ t }: any) => {
+const GetStarted = ({ t }: WithTranslation) => {
   const [, , , send] = useAuthContext();
 
   return (
     <>
       <AuthTextContainer>
-        <AuthText>
-          {t("the-best-way-to-listen-to-your-favorite-podcasts")}
-        </AuthText>
+        <Paragraph variant="secondary" size="normal">
+          {t("listen-to-your-favorite-podcasts")}
+        </Paragraph>
       </AuthTextContainer>
 
       <AuthGetStartedButtonsContainer>
-        <Button type="button" height={40} onClick={() => send("SIGNUP")}>
+        <Button
+          type="button"
+          variant="primary"
+          size="normal"
+          onClick={() => send("SIGNUP")}
+        >
           {t("sign-up-with-email")}
         </Button>
 
         <AuthTextContainer>
-          <AuthText>{t("or")}</AuthText>
+          <Paragraph variant="secondary" size="normal">
+            {t("or")}
+          </Paragraph>
         </AuthTextContainer>
 
-        <GoogleButton>{t("sign-up-with-google")}</GoogleButton>
+        <Button
+          type="button"
+          variant="primary"
+          size="normal"
+          onClick={() => send("SIGNIN")}
+        >
+          {t("sign-in-with-email")}
+        </Button>
       </AuthGetStartedButtonsContainer>
 
       <AuthLinksContainer>
-        <AuthParagraphLink onClick={() => send("SIGNIN")}>
-          {t("already-have-an-account?")}
-        </AuthParagraphLink>
-
-        <AuthCircle />
-
-        <AuthParagraphLink onClick={() => send("FORGOT")}>
+        <Link variant="secondary" size="normal" onClick={() => send("FORGOT")}>
           {t("forgot-your-password?")}
-        </AuthParagraphLink>
+        </Link>
       </AuthLinksContainer>
     </>
   );

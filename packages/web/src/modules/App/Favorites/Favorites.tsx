@@ -1,5 +1,6 @@
 import React from "react";
 import { withTranslation } from "i18n";
+import { WithTranslation } from "next-i18next";
 import Scrollbars from "react-custom-scrollbars";
 
 import { FavoritesContainer } from "./Favorites.styles";
@@ -156,7 +157,7 @@ const items = [
   },
 ];
 
-const Favorites = ({ t }: any) => (
+const Favorites = ({ t }: WithTranslation) => (
   <Scrollbars universal autoHide autoHideTimeout={100} autoHideDuration={100}>
     <FavoritesContainer>
       <PodcastsWithOnlyAvatar title={t("favorites")} items={items} />

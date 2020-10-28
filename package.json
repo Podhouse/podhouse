@@ -30,13 +30,9 @@
     "relay": "yarn workspace @podhouse/web relay"
   },
   "devDependencies": {
-    "husky": "^4.2.5",
-    "lint-staged": "^10.2.13",
-    "now": "^20.1.0",
+    "husky": "^4.3.0",
+    "lint-staged": "^10.3.0",
     "prettier": "^2.1.1",
-    "tslint": "^6.1.3",
-    "tslint-config-prettier": "^1.18.0",
-    "tslint-react": "^5.0.0",
     "typescript": "^4.0.2"
   },
   "husky": {

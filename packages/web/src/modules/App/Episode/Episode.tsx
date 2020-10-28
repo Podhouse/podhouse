@@ -1,5 +1,6 @@
 import React from "react";
 import { withTranslation } from "i18n";
+import { WithTranslation } from "next-i18next";
 import Scrollbars from "react-custom-scrollbars";
 
 import {
@@ -7,42 +8,42 @@ import {
   EpisodeHeader,
   EpisodeAvatar,
   EpisodeDetailsContainer,
-  EpisodeName,
-  EpisodeAuthor,
-  EpisodeDescription,
   EpisodeListenButtonContainer,
 } from "./Episode.styles";
 
 import Button from "src/system/Button/Button";
+import Link from "src/system/Link/Link";
+import Heading from "src/system/Heading/Heading";
+import Paragraph from "src/system/Paragraph/Paragraph";
 
 const avatar =
   "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg";
 
-const Episode = ({ t }: any) => (
+const Episode = ({ t }: WithTranslation) => (
   <Scrollbars universal autoHide autoHideTimeout={100} autoHideDuration={100}>
     <EpisodeContainer>
       <EpisodeHeader>
         <EpisodeAvatar src={avatar} />
 
         <EpisodeDetailsContainer>
-          <EpisodeName>
+          <Heading as="h1" variant="primary" size="normal">
             A Fantasy of Fashion: Articles of Interest #7
-          </EpisodeName>
-          <EpisodeAuthor href="/app/podcast/invisible">
+          </Heading>
+          <Link href="/app/podcast/invisible" variant="secondary" size="normal">
             99% Invisible
-          </EpisodeAuthor>
-          <EpisodeDescription>
+          </Link>
+          <Paragraph variant="secondary" size="normal" textAlign="start">
             Design is everywhere in our lives, perhaps most importantly in the
             places where we've just stopped noticing. 99% Invisible is a weekly
             exploration of the process and power of design and architecture.
             From award winning producer Roman Mars. Learn more at
             99percentinvisible.org. A proud member of Radiotopia, from PRX.
             Learn more at radiotopia.fm.
-          </EpisodeDescription>
+          </Paragraph>
         </EpisodeDetailsContainer>
 
         <EpisodeListenButtonContainer>
-          <Button type="button" width={200} height={40}>
+          <Button type="button" variant="primary" size="normal">
             {t("listen")}
           </Button>
         </EpisodeListenButtonContainer>

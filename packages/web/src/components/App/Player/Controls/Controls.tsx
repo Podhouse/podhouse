@@ -49,7 +49,7 @@ const Controls = ({
         <Pause
           size={28}
           color={iconColor}
-          strokeWidth={1.5}
+          strokeWidth={1.7}
           style={iconStyle}
           onClick={onPause}
         />
@@ -60,7 +60,7 @@ const Controls = ({
       <Play
         size={28}
         color={iconColor}
-        strokeWidth={1.5}
+        strokeWidth={1.7}
         style={iconStyle}
         onClick={onPlay}
       />

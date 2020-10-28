@@ -1,13 +1,16 @@
 import React from "react";
 import { withTranslation } from "i18n";
+import { WithTranslation } from "next-i18next";
 import { User } from "react-feather";
 
-import { useAuthContext } from "../../../../context/Auth/Auth";
-import { useSettingsContext } from "../../../../context/Settings/Settings";
+import { useAuthContext } from "src/context/Auth/Auth";
+import { useSettingsContext } from "src/context/Settings/Settings";
 
-import { SettingsContainer, SettingsLoginLink } from "./Settings.styles";
+import { SettingsContainer } from "./Settings.styles";
 
-const Settings = ({ t }: any) => {
+import Link from "src/system/Link/Link";
+
+const Settings = ({ t }: WithTranslation) => {
   const [auth, handleAuth] = useAuthContext();
   const [, handleSettings] = useSettingsContext();
 
@@ -18,12 +21,15 @@ const Settings = ({ t }: any) => {
           onClick={handleSettings}
           size={16}
           color="#B7B7B7"
-          strokeWidth={1.5}
+          strokeWidth={1.7}
         />
       );
     }
+
     return (
-      <SettingsLoginLink onClick={handleAuth}>{t("login")}</SettingsLoginLink>
+      <Link onClick={handleAuth} variant="primary" size="normal">
+        {t("login")}
+      </Link>
     );
   };
 

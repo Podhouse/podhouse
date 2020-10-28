@@ -6,9 +6,10 @@ import Button from "src/system/Button/Button";
 import {
   LandingGridContainer,
   LandingGridContentContainer,
-  LandingTitle,
-  LandingParagraph,
 } from "src/components/Landing/Landing.styles";
+
+import Heading from "src/system/Heading/Heading";
+import Paragraph from "src/system/Paragraph/Paragraph";
 
 const Main = () => {
   const router = useRouter();
@@ -21,18 +22,23 @@ const Main = () => {
   return (
     <LandingGridContainer>
       <LandingGridContentContainer>
-        <LandingTitle>
-          The best way to listen to your favorite podcasts
-        </LandingTitle>
-        <LandingParagraph>
-          A powerful, clean, and intuitive app to listen to your favorite
-          podcasts. Listen anywhere and anytime, discover and explore new
-          podcasts all with an intuitive and cleaner podcast experience.
-        </LandingParagraph>
+        <Heading variant="primary" size="normal" as="h1" fontSize={64}>
+          Listen to your favorite podcasts
+        </Heading>
+        <Paragraph variant="secondary" size="normal">
+          A powerful, clean, and intuitive app for you to discover and explore
+          podcasts everywhere, anytime with the best podcast experience.
+        </Paragraph>
       </LandingGridContentContainer>
 
-      <Button type="button" width={160} onClick={handleStart}>
-        Get started
+      <Button
+        type="button"
+        variant="primary"
+        size="big"
+        onClick={handleStart}
+        width={200}
+      >
+        Listen now for free
       </Button>
     </LandingGridContainer>
   );

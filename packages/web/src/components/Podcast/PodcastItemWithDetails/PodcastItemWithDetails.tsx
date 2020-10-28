@@ -1,20 +1,16 @@
 import React from "react";
-import Link from "next/link";
+import NextLink from "next/link";
 
 import {
   PodcastItemWithDetailsContainer,
   PodcastItemWithDetailsAvatar,
-  PodcastItemWithDetailsName,
-  PodcastItemWithDetailsAuthor,
+  PodcastItemName,
+  PodcastItemAuthor,
 } from "./PodcastItemWithDetails.styles";
 
-interface PodcastItemWithDetailsProps {
-  podcast: {
-    name: string;
-    author: string;
-    avatar: string;
-  };
-}
+import { PodcastItemWithDetailsProps } from "./PodcastItemWithDetails.types";
+
+import Link from "src/system/Link/Link";
 
 const PodcastItemWithDetails = ({ podcast }: PodcastItemWithDetailsProps) => {
   const { name, author, avatar } = podcast;
@@ -23,15 +19,25 @@ const PodcastItemWithDetails = ({ podcast }: PodcastItemWithDetailsProps) => {
 
   return (
     <PodcastItemWithDetailsContainer>
-      <Link href="/app/podcast/[podcast]" as="/app/podcast/123">
-        <PodcastItemWithDetailsAvatar src={avatar} alt={imageAlt} />
-      </Link>
-      <Link href="/app/podcast/[podcast]" as="/app/podcast/123">
-        <PodcastItemWithDetailsName href="/app/podcast/123">
+      <NextLink href="/app/podcast/[podcast]" as="/app/podcast/123">
+        <Link variant="secondary" size="normal" href="/app/podcast/[podcast]">
+          <PodcastItemWithDetailsAvatar src={avatar} alt={imageAlt} />
+        </Link>
+      </NextLink>
+
+      <NextLink href="/app/podcast/[podcast]" as="/app/podcast/123">
+        <PodcastItemName
+          variant="secondary"
+          size="normal"
+          href="/app/podcast/123"
+        >
           {name}
-        </PodcastItemWithDetailsName>
-      </Link>
-      <PodcastItemWithDetailsAuthor>{author}</PodcastItemWithDetailsAuthor>
+        </PodcastItemName>
+      </NextLink>
+
+      <PodcastItemAuthor variant="secondary" size="normal">
+        {author}
+      </PodcastItemAuthor>
     </PodcastItemWithDetailsContainer>
   );
 };

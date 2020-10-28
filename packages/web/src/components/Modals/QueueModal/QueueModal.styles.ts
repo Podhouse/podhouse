@@ -13,7 +13,7 @@ export const QueueModalContainer = styled.div<StyleProps>`
   width: 400px;
   height: 280px;
   padding: 20px;
-  background: ${({ theme }) => theme.backgroundPrimary};
+  background: ${({ theme }) => theme.bgPrimary};
   border-radius: 5px;
   right: 30px;
   position: absolute;
@@ -32,35 +32,6 @@ export const QueueModalHeaderContainer = styled.div`
   grid-template-rows: 1fr;
   grid-column-gap: 20px;
   align-items: center;
-`;
-
-export const QueueModalHeaderText = styled.h3<StyleProps>`
-  grid-column: 1 / 2;
-  grid-row: 1 / 2;
-  font-family: Inter;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 17px;
-  color: ${({ theme }) => theme.tertiary};
-  justify-self: start;
-`;
-
-export const QueueModalHeaderButton = styled.button<StyleProps>`
-  width: fit-content;
-  height: fit-content;
-  background: none;
-  color: ${({ theme }) => theme.tertiary};
-  border: none;
-  cursor: pointer;
-  font-family: Inter;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 17px;
-  text-align: center;
-  outline: none;
-  justify-self: end;
 `;
 
 export const QueueModalItemsContainer = styled.div`

@@ -1,25 +1,26 @@
 import React from "react";
 import { withTranslation } from "i18n";
+import { WithTranslation } from "next-i18next";
 
 import {
   SettingsItemContainer,
   SettingsItemHeaderContainer,
   SettingsItemHeaderTitle,
-  SettingsItemHeaderBreakLine,
   SettingsItemContentContainer,
 } from "../Settings.styles";
 
 import {
   NotificationsItemContainer,
-  NotificationsItemTitle,
   NotificationsToggleContainer,
 } from "./Notifications.styles";
 
+import Paragraph from "src/system/Paragraph/Paragraph";
 import Toggle from "src/system/Toggle/Toggle";
+import Separator from "src/system/Separator/Separator";
 
 import useToggle from "src/hooks/useToggle";
 
-const Notifications = ({ t }: any) => {
+const Notifications = ({ t }: WithTranslation) => {
   const {
     toggle: toggleWeekly,
     handleToggle: handleToggleWeekly,
@@ -29,15 +30,24 @@ const Notifications = ({ t }: any) => {
   return (
     <SettingsItemContainer>
       <SettingsItemHeaderContainer>
-        <SettingsItemHeaderTitle>{t("notifications")}</SettingsItemHeaderTitle>
-        <SettingsItemHeaderBreakLine />
+        <SettingsItemHeaderTitle
+          as="h1"
+          variant="secondary"
+          size="normal"
+          fontSize={14}
+          fontWeight={500}
+          textAlign="start"
+        >
+          {t("notifications")}
+        </SettingsItemHeaderTitle>
+        <Separator variant="secondary" orientation="horizontal" />
       </SettingsItemHeaderContainer>
 
       <SettingsItemContentContainer>
         <NotificationsItemContainer>
-          <NotificationsItemTitle>
+          <Paragraph variant="secondary" size="normal" textAlign="start">
             {t("weekly-recomendations-about-trending-podcasts")}
-          </NotificationsItemTitle>
+          </Paragraph>
 
           <NotificationsToggleContainer>
             <Toggle
@@ -49,9 +59,9 @@ const Notifications = ({ t }: any) => {
         </NotificationsItemContainer>
 
         <NotificationsItemContainer>
-          <NotificationsItemTitle>
+          <Paragraph variant="secondary" size="normal" textAlign="start">
             {t("product-news,-upcoming-updates-and-features")}
-          </NotificationsItemTitle>
+          </Paragraph>
 
           <NotificationsToggleContainer>
             <Toggle

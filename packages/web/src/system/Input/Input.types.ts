@@ -1,30 +1,16 @@
-import { StyleProps } from "src/system/styles.types";
-
 export interface InputProps {
-  ref: any;
-  type: string;
+  variant: "primary" | "secondary" | "disabled";
+  scale: "small" | "normal" | "big";
+  type: "text" | "search" | "url" | "tel" | "email" | "password";
   name: string;
   placeholder: string;
   label?: string;
+  value?: string;
   onChange?: any;
   onBlur?: any;
   onClick?: any;
   error: string | undefined;
-  width?: number;
-  height?: number;
-  dataTestId?: string;
-  autoComplete?: "on" | "off";
+  disabled?: boolean;
+  required?: boolean;
+  autoFocus?: boolean;
 }
-
-interface InputContainerProps {
-  width?: number;
-}
-
-interface InputFieldProps extends InputContainerProps {
-  height?: number;
-  error?: string | undefined;
-}
-
-export type ContainerProps = InputContainerProps & StyleProps;
-
-export type FieldProps = InputFieldProps & StyleProps;

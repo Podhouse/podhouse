@@ -4,23 +4,14 @@ import {
   PodcastsWithDetailsContainer,
   PodcastsWithDetailsSection,
   PodcastsWithDetailsHeader,
-  PodcastsWithDetailsHeaderTitle,
-  PodcastsWithDetailsBreakLine,
 } from "./PodcastsWithDetails.styles";
 
 import PodcastItemWithDetails from "src/components/Podcast/PodcastItemWithDetails/PodcastItemWithDetails";
 
-interface Podcast {
-  id: number;
-  name: string;
-  author: string;
-  avatar: string;
-}
+import Heading from "src/system/Heading/Heading";
+import Separator from "src/system/Separator/Separator";
 
-interface PodcastsWithDetailsProps {
-  title: string;
-  items: Array<Podcast>;
-}
+import { Podcast, PodcastsWithDetailsProps } from "./PodcastsWithDetails.types";
 
 const PodcastsWithDetails = ({ title, items }: PodcastsWithDetailsProps) => {
   const renderItems = () =>
@@ -31,8 +22,17 @@ const PodcastsWithDetails = ({ title, items }: PodcastsWithDetailsProps) => {
   return (
     <PodcastsWithDetailsContainer>
       <PodcastsWithDetailsHeader>
-        <PodcastsWithDetailsHeaderTitle>{title}</PodcastsWithDetailsHeaderTitle>
-        <PodcastsWithDetailsBreakLine />
+        <Heading
+          as="h1"
+          variant="secondary"
+          size="normal"
+          fontSize={14}
+          fontWeight={500}
+          textAlign="start"
+        >
+          {title}
+        </Heading>
+        <Separator variant="secondary" orientation="horizontal" />
       </PodcastsWithDetailsHeader>
 
       <PodcastsWithDetailsSection>{renderItems()}</PodcastsWithDetailsSection>

@@ -60,21 +60,13 @@ export const NavigationItemContainer = styled.div<StyleProps>`
       }
     }
   }
-`;
 
-export const NavigationItemLink = styled.a<StyleProps & { active: boolean }>`
-  display: none;
+  #link-desktop {
+    display: none;
 
-  @media screen and (min-width: 800px) {
-    display: block;
-    justify-self: flex-start;
-    font-family: Inter;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 19px;
-    color: ${({ active, theme }) => (active ? theme.primary : theme.tertiary)};
-    text-decoration: none;
-    cursor: pointer;
+    @media screen and (min-width: 800px) {
+      display: block;
+      justify-self: flex-start;
+    }
   }
 `;

@@ -1,5 +1,6 @@
 import React from "react";
 import { withTranslation } from "i18n";
+import { WithTranslation } from "next-i18next";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers";
 import * as Yup from "yup";
@@ -8,7 +9,6 @@ import {
   SettingsItemContainer,
   SettingsItemHeaderContainer,
   SettingsItemHeaderTitle,
-  SettingsItemHeaderBreakLine,
   SettingsItemContentContainer,
 } from "../Settings.styles";
 
@@ -16,6 +16,7 @@ import { PasswordFormContainer } from "./Password.styles";
 
 import Button from "src/system/Button/Button";
 import Input from "src/system/Input/Input";
+import Separator from "src/system/Separator/Separator";
 
 interface PasswordFormProps {
   currentPassword: string;
@@ -27,7 +28,7 @@ const validationSchema = Yup.object().shape({
   newPassword: Yup.string().required("New password is required"),
 });
 
-const Password = ({ t }: any) => {
+const Password = ({ t }: WithTranslation) => {
   const { register, handleSubmit, errors } = useForm<PasswordFormProps>({
     resolver: yupResolver(validationSchema),
   });
@@ -37,8 +38,17 @@ const Password = ({ t }: any) => {
   return (
     <SettingsItemContainer>
       <SettingsItemHeaderContainer>
-        <SettingsItemHeaderTitle>{t("password")}</SettingsItemHeaderTitle>
-        <SettingsItemHeaderBreakLine />
+        <SettingsItemHeaderTitle
+          as="h1"
+          variant="secondary"
+          size="normal"
+          fontSize={14}
+          fontWeight={500}
+          textAlign="start"
+        >
+          {t("password")}
+        </SettingsItemHeaderTitle>
+        <Separator variant="secondary" orientation="horizontal" />
       </SettingsItemHeaderContainer>
 
       <SettingsItemContentContainer>
@@ -48,7 +58,8 @@ const Password = ({ t }: any) => {
             name="currentPassword"
             label={t("current-password")}
             placeholder={t("current-password")}
-            height={40}
+            variant="primary"
+            scale="normal"
             ref={register}
             error={errors.currentPassword?.message}
           />
@@ -58,12 +69,13 @@ const Password = ({ t }: any) => {
             name="newPassword"
             label={t("new-password")}
             placeholder={t("new-password")}
-            height={40}
+            variant="primary"
+            scale="normal"
             ref={register}
             error={errors.newPassword?.message}
           />
 
-          <Button type="submit" height={40}>
+          <Button type="submit" variant="primary" size="normal">
             {t("save")}
           </Button>
         </PasswordFormContainer>

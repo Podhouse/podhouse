@@ -3,19 +3,22 @@ import React from "react";
 import {
   LandingGridContainer,
   LandingGridContentContainer,
-  LandingTitle,
-  LandingParagraph,
 } from "src/components/Landing/Landing.styles";
+
+import Heading from "src/system/Heading/Heading";
+import Paragraph from "src/system/Paragraph/Paragraph";
 
 const Main = () => (
   <LandingGridContainer>
     <LandingGridContentContainer>
-      <LandingTitle>Here you can find the Podhouse design assets</LandingTitle>
-      <LandingParagraph>
-        We take our design experience very seriously, our idea is to be a
-        podcast app with a clean, beautiful, and simple experience. You can
-        download our logo and badges here
-      </LandingParagraph>
+      <Heading variant="primary" size="normal" as="h1" fontSize={64}>
+        Our design assets
+      </Heading>
+      <Paragraph variant="secondary" size="normal">
+        We take our design experience very seriously, our main goal is to
+        provide a clean, beautiful, and simple experience. You can download our
+        design assets here
+      </Paragraph>
     </LandingGridContentContainer>
   </LandingGridContainer>
 );

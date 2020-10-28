@@ -11,8 +11,8 @@ export const StyledSelect = styled.select<StyleProps>`
   font-size: 14px;
   line-height: 19px;
   color: ${({ theme }) => theme.primary};
-  background: ${({ theme }) => theme.backgroundSecondary};
-  border: ${({ theme }) => `1px solid ${theme.backgroundSecondary}`};
+  background: ${({ theme }) => theme.bgSecondary};
+  border: ${({ theme }) => `1px solid ${theme.bgSecondary}`};
   box-sizing: border-box;
   border-radius: 5px;
   text-indent: 20px;

@@ -1,13 +1,16 @@
-import * as React from "react";
-import Link from "next/link";
+import React from "react";
+import NextLink from "next/link";
+import { useRouter } from "next/router";
 
 import {
   HeaderContainer,
   HeaderLogoContainer,
   HeaderLinksContainer,
-  HeaderLink,
   HeaderSignInContainer,
 } from "./Header.styles";
+
+import Link from "src/system/Link/Link";
+import Button from "src/system/Button/Button";
 
 import useTheme from "src/system/useTheme";
 
@@ -15,47 +18,62 @@ import PodhouseDark from "../../../../public/logo/logo-medium-dark.svg";
 import PodhouseWhite from "../../../../public/logo/logo-medium-white.svg";
 
 const Header = () => {
+  const router = useRouter();
+
+  const handleStart = (e) => {
+    e.preventDefault();
+    router.push("/app");
+  };
+
   const themeState = useTheme();
 
-  const onRenderLogo = () => {
-    if (themeState.dark) {
-      return <PodhouseWhite />;
-    }
-
-    return <PodhouseDark />;
-  };
+  const onRenderLogo = () =>
+    themeState.dark ? <PodhouseWhite /> : <PodhouseDark />;
 
   return (
     <HeaderContainer>
       <HeaderLogoContainer>
-        <Link href="/" as="/">
-          {onRenderLogo()}
-        </Link>
+        <NextLink href="/" as="/">
+          <Link href="/" variant="secondary" size="normal">
+            {onRenderLogo()}
+          </Link>
+        </NextLink>
       </HeaderLogoContainer>
 
       <HeaderLinksContainer>
-        <Link href="/about" as="/about">
-          <HeaderLink href="/about">About</HeaderLink>
-        </Link>
-        <Link href="/advertise" as="/advertise">
-          <HeaderLink href="/advertise">Advertise</HeaderLink>
-        </Link>
-        <Link href="/brand" as="/brand">
-          <HeaderLink href="/brand">Brand</HeaderLink>
-        </Link>
-        <HeaderLink
+        <NextLink href="/about" as="/about">
+          <Link href="/about" variant="secondary" size="normal">
+            About
+          </Link>
+        </NextLink>
+
+        <NextLink href="/sponsorship" as="/sponsorship">
+          <Link href="/sponsorship" variant="secondary" size="normal">
+            Ads
+          </Link>
+        </NextLink>
+
+        <Link
           href="mailto:leonardomso11@gmail.com"
           target="_blank"
-          rel="noopener noreferrer"
+          rel="noopener"
+          variant="secondary"
+          size="normal"
         >
           Contact
-        </HeaderLink>
+        </Link>
       </HeaderLinksContainer>
 
       <HeaderSignInContainer>
-        <Link href="/app" as="/app">
-          <HeaderLink href="/app">Get started</HeaderLink>
-        </Link>
+        <Button
+          type="button"
+          variant="primary"
+          size="normal"
+          onClick={handleStart}
+          width={120}
+        >
+          Get started
+        </Button>
       </HeaderSignInContainer>
     </HeaderContainer>
   );

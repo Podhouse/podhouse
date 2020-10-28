@@ -1,19 +1,71 @@
 import styled from "@emotion/styled";
+import {
+  padding,
+  color,
+  margin,
+  typography,
+  layout,
+  space,
+  variant,
+} from "styled-system";
 
-import { StyleProps } from "src/system/styles.types";
+import { LinkProps } from "./Link.types";
 
-const StyledLink = styled.a<StyleProps>`
+const variants = variant({
+  prop: "variant",
+  scale: "links",
+  variants: {
+    primary: {
+      color: "primary",
+    },
+    secondary: {
+      color: "secondary",
+    },
+    disabled: {
+      color: "disabled",
+    },
+  },
+});
+
+const sizes = variant({
+  prop: "size",
+  variants: {
+    small: {
+      fontSize: 12,
+      fontWeight: 400,
+    },
+    light: {
+      fontSize: 14,
+      fontWeight: 400,
+    },
+    normal: {
+      fontSize: 14,
+      fontWeight: 500,
+    },
+    big: {
+      fontSize: 24,
+      fontWeight: 600,
+      letterSpacing: "-0.03em",
+    },
+  },
+});
+
+const StyledLink = styled.a<LinkProps>`
   font-family: Inter;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 17px;
-  color: ${({ theme }) => theme.primary};
+  text-align: center;
+  outline: 0;
   text-decoration: none;
-  outline: none;
+  ${padding};
+  ${color};
+  ${margin};
+  ${layout};
+  ${space};
+  ${typography};
+  ${variants};
+  ${sizes};
 
-  &:hover {
-    text-decoration: underline;
+  &:disabled {
+    cursor: not-allowed;
   }
 `;
 

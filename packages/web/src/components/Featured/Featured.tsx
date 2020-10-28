@@ -1,25 +1,25 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { withTranslation } from "i18n";
 import { useKeenSlider } from "keen-slider/react";
-import Link from "next/link";
+import NextLink from "next/link";
 
 import {
   FeaturedContainer,
   FeaturedItemContainer,
   FeaturedAvatar,
   FeaturedDetailsContainer,
-  FeaturedName,
-  FeaturedAuthor,
-  FeaturedDescription,
-  FeaturedBadge,
+  FeaturedEmptyAvatar,
 } from "./Featured.styles";
 
-const avatar =
-  "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg";
+import { FeaturedProps, FeaturedPodcast } from "./Featured.types";
 
-const Featured = ({ t }: any) => {
-  const [pause, setPause] = React.useState(false);
-  const timer = React.useRef<any>();
+import Link from "src/system/Link/Link";
+import Paragraph from "src/system/Paragraph/Paragraph";
+import Badge from "src/system/Badge/Badge";
+
+const Featured = ({ featured, t }: FeaturedProps) => {
+  const [pause, setPause] = useState<boolean>(false);
+  const timer = useRef<any>();
   const [sliderRef, slider] = useKeenSlider<HTMLDivElement>({
     loop: true,
     duration: 7000,
@@ -31,7 +31,7 @@ const Featured = ({ t }: any) => {
     },
   });
 
-  React.useEffect(() => {
+  useEffect(() => {
     sliderRef.current.addEventListener("mouseover", () => {
       setPause(true);
     });
@@ -40,7 +40,7 @@ const Featured = ({ t }: any) => {
     });
   }, [sliderRef]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     timer.current = setInterval(() => {
       if (!pause && slider) {
         slider.next();
@@ -51,110 +51,57 @@ const Featured = ({ t }: any) => {
     };
   }, [pause, slider]);
 
+  const renderAvatar = (avatar: string) => {
+    if (avatar === "") {
+      return <FeaturedEmptyAvatar />;
+    } else {
+      return <FeaturedAvatar src={avatar} />;
+    }
+  };
+
   return (
     <>
       <FeaturedContainer ref={sliderRef} className="keen-slider">
-        <FeaturedItemContainer className="keen-slider__slide number-slide1">
-          <Link href="/app/podcast/[podcast]" as="/app/podcast/invisible">
-            <FeaturedAvatar src={avatar} />
-          </Link>
-
-          <FeaturedDetailsContainer>
-            <FeaturedBadge
-              href="/advertisers"
-              target="_blank"
-              rel="noopener noreferrer"
+        {featured.map(
+          ({ avatar, name, author, description }: FeaturedPodcast) => (
+            <FeaturedItemContainer
+              key={name}
+              className="keen-slider__slide number-slide1"
             >
-              {t("featured")}
-            </FeaturedBadge>
+              <NextLink
+                href="/app/podcast/[podcast]"
+                as="/app/podcast/invisible"
+              >
+                {renderAvatar(avatar)}
+              </NextLink>
 
-            <Link href="/app/podcast/[podcast]" as="/app/podcast/invisible">
-              <FeaturedName href="/app/podcast/invisible">
-                99% Invisible
-              </FeaturedName>
-            </Link>
-            <FeaturedAuthor>Roman Mars</FeaturedAuthor>
-            <FeaturedDescription>
-              Design is everywhere in our lives, perhaps most importantly in the
-              places where we've just stopped noticing. 99% Invisible is a
-              weekly exploration of the process and power of design and
-              architecture. From award winning producer Roman Mars. Learn more
-              at 99percentinvisible.org. A proud member of Radiotopia, from PRX.
-              Learn more at radiotopia.fm. Design is everywhere in our lives,
-              perhaps most importantly in the places where we've just stopped
-              noticing. 99% Invisible is a weekly exploration of the process and
-              power of design and architecture.
-            </FeaturedDescription>
-          </FeaturedDetailsContainer>
-        </FeaturedItemContainer>
+              <FeaturedDetailsContainer>
+                <Badge variant="info" size="normal">
+                  {t("featured")}
+                </Badge>
 
-        <FeaturedItemContainer className="keen-slider__slide number-slide2">
-          <Link href="/app/podcast/[podcast]" as="/app/podcast/invisible">
-            <FeaturedAvatar src={avatar} />
-          </Link>
-
-          <FeaturedDetailsContainer>
-            <FeaturedBadge
-              href="/advertisers"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {t("featured")}
-            </FeaturedBadge>
-
-            <Link href="/app/podcast/[podcast]" as="/app/podcast/invisible">
-              <FeaturedName href="/app/podcast/invisible">
-                99% Invisible
-              </FeaturedName>
-            </Link>
-            <FeaturedAuthor>Roman Mars</FeaturedAuthor>
-            <FeaturedDescription>
-              Design is everywhere in our lives, perhaps most importantly in the
-              places where we've just stopped noticing. 99% Invisible is a
-              weekly exploration of the process and power of design and
-              architecture. From award winning producer Roman Mars. Learn more
-              at 99percentinvisible.org. A proud member of Radiotopia, from PRX.
-              Learn more at radiotopia.fm. Design is everywhere in our lives,
-              perhaps most importantly in the places where we've just stopped
-              noticing. 99% Invisible is a weekly exploration of the process and
-              power of design and architecture.
-            </FeaturedDescription>
-          </FeaturedDetailsContainer>
-        </FeaturedItemContainer>
-
-        <FeaturedItemContainer className="keen-slider__slide number-slide3">
-          <Link href="/app/podcast/[podcast]" as="/app/podcast/invisible">
-            <FeaturedAvatar src={avatar} />
-          </Link>
-
-          <FeaturedDetailsContainer>
-            <FeaturedBadge
-              href="/advertisers"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {t("featured")}
-            </FeaturedBadge>
-
-            <Link href="/app/podcast/[podcast]" as="/app/podcast/invisible">
-              <FeaturedName href="/app/podcast/invisible">
-                99% Invisible
-              </FeaturedName>
-            </Link>
-            <FeaturedAuthor>Roman Mars</FeaturedAuthor>
-            <FeaturedDescription>
-              Design is everywhere in our lives, perhaps most importantly in the
-              places where we've just stopped noticing. 99% Invisible is a
-              weekly exploration of the process and power of design and
-              architecture. From award winning producer Roman Mars. Learn more
-              at 99percentinvisible.org. A proud member of Radiotopia, from PRX.
-              Learn more at radiotopia.fm. Design is everywhere in our lives,
-              perhaps most importantly in the places where we've just stopped
-              noticing. 99% Invisible is a weekly exploration of the process and
-              power of design and architecture.
-            </FeaturedDescription>
-          </FeaturedDetailsContainer>
-        </FeaturedItemContainer>
+                <NextLink
+                  href="/app/podcast/[podcast]"
+                  as="/app/podcast/invisible"
+                >
+                  <Link
+                    variant="primary"
+                    size="big"
+                    href="/app/podcast/invisible"
+                  >
+                    {name}
+                  </Link>
+                </NextLink>
+                <Paragraph variant="primary" size="normal" textAlign="start">
+                  {author}
+                </Paragraph>
+                <Paragraph variant="secondary" size="normal" textAlign="start">
+                  {description}
+                </Paragraph>
+              </FeaturedDetailsContainer>
+            </FeaturedItemContainer>
+          ),
+        )}
       </FeaturedContainer>
     </>
   );

@@ -4,6 +4,10 @@ import { ThemeProvider as EmotionThemeProvider } from "emotion-theming";
 import ThemeContext from "./ThemeContext";
 import theme from "./theme";
 
+interface ThemeProviderProps {
+  children: React.ReactNode;
+}
+
 const useEffectDarkMode = () => {
   const [themeState, setThemeState] = useState<any>({
     dark: false,
@@ -17,7 +21,7 @@ const useEffectDarkMode = () => {
   return [themeState, setThemeState];
 };
 
-const ThemeProvider = ({ children }) => {
+const ThemeProvider = ({ children }: ThemeProviderProps) => {
   const [themeState, setThemeState] = useEffectDarkMode();
 
   if (!themeState.hasThemeMounted) {

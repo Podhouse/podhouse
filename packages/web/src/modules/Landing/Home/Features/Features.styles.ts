@@ -11,7 +11,8 @@ export const FeaturesContainer = styled.div`
   grid-row-gap: 20px;
 
   @media screen and (min-width: 800px) {
-    width: 800px;
+    width: 100%;
+    max-width: 800px;
     height: auto;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: max-content max-content;
@@ -53,6 +54,7 @@ export const FeaturesItemTextContainer = styled.div`
 `;
 
 export const FeaturesItemTitle = styled.h3<StyleProps>`
+  max-width: 350px;
   font-family: Inter;
   font-style: normal;
   font-weight: 500;
@@ -64,12 +66,13 @@ export const FeaturesItemTitle = styled.h3<StyleProps>`
 `;
 
 export const FeaturesItemText = styled.p<StyleProps>`
+  max-width: 350px;
   font-family: Inter;
   font-style: normal;
-  font-weight: 400;
+  font-weight: normal;
   font-size: 14px;
   line-height: 25px;
   text-align: center;
-  color: ${({ theme }) => theme.tertiary};
+  color: ${({ theme }) => theme.secondary};
   text-align: start;
 `;

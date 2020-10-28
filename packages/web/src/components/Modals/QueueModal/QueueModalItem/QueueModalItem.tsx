@@ -1,20 +1,17 @@
 import React from "react";
-import Link from "next/link";
+import NextLink from "next/link";
 import { X } from "react-feather";
 
 import {
   QueueModalItemContainer,
   QueueModalItemAvatar,
   QueueModalItemsDetails,
-  QueueModalItemEpisode,
-  QueueModalItemPodcast,
 } from "./QueueModalItem.styles";
 
-interface QueueModalItemProps {
-  avatar: string;
-  episode: string;
-  name: string;
-}
+import { QueueModalItemProps } from "./QueueModalItem.types";
+
+import Link from "src/system/Link/Link";
+import Paragraph from "src/system/Paragraph/Paragraph";
 
 const QueueModalItem = ({ avatar, episode, name }: QueueModalItemProps) => {
   return (
@@ -22,17 +19,19 @@ const QueueModalItem = ({ avatar, episode, name }: QueueModalItemProps) => {
       <QueueModalItemAvatar src={avatar} />
 
       <QueueModalItemsDetails>
-        <Link href="/app/episode/[episode]" as="/app/episode/123">
-          <QueueModalItemEpisode href="/app/episode/123">
+        <NextLink href="/app/episode/[episode]" as="/app/episode/123">
+          <Link href="/app/episode/123" variant="secondary" size="normal">
             {episode}
-          </QueueModalItemEpisode>
-        </Link>
-        <QueueModalItemPodcast>{name}</QueueModalItemPodcast>
+          </Link>
+        </NextLink>
+        <Paragraph variant="secondary" size="normal">
+          {name}
+        </Paragraph>
       </QueueModalItemsDetails>
 
       <X
         size={16}
-        strokeWidth={1.5}
+        strokeWidth={1.7}
         color="#B7B7B7"
         onClick={() => console.log("X clicked")}
       />

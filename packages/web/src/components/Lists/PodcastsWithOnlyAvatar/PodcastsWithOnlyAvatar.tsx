@@ -4,23 +4,17 @@ import {
   PodcastsWithOnlyAvatarContainer,
   PodcastsWithOnlyAvatarSection,
   PodcastsWithOnlyAvatarHeader,
-  PodcastsWithOnlyAvatarHeaderTitle,
-  PodcastsWithOnlyAvatarBreakLine,
 } from "./PodcastsWithOnlyAvatar.styles";
 
 import PodcastItemWithAvatar from "src/components/Podcast/PodcastItemWithAvatar/PodcastItemWithAvatar";
 
-interface Podcast {
-  id: number;
-  name: string;
-  author: string;
-  avatar: string;
-}
+import Heading from "src/system/Heading/Heading";
+import Separator from "src/system/Separator/Separator";
 
-interface PodcastsWithOnlyAvatarProps {
-  title: string;
-  items: Array<Podcast>;
-}
+import {
+  Podcast,
+  PodcastsWithOnlyAvatarProps,
+} from "./PodcastsWithOnlyAvatar.types";
 
 const PodcastsWithOnlyAvatar = ({
   title,
@@ -34,10 +28,17 @@ const PodcastsWithOnlyAvatar = ({
   return (
     <PodcastsWithOnlyAvatarContainer>
       <PodcastsWithOnlyAvatarHeader>
-        <PodcastsWithOnlyAvatarHeaderTitle>
+        <Heading
+          as="h1"
+          variant="secondary"
+          size="normal"
+          fontSize={14}
+          fontWeight={500}
+          textAlign="start"
+        >
           {title}
-        </PodcastsWithOnlyAvatarHeaderTitle>
-        <PodcastsWithOnlyAvatarBreakLine />
+        </Heading>
+        <Separator variant="secondary" orientation="horizontal" />
       </PodcastsWithOnlyAvatarHeader>
 
       <PodcastsWithOnlyAvatarSection>

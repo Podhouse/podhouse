@@ -1,5 +1,4 @@
 const NextI18Next = require("next-i18next").default;
-
 const path = require("path");
 
 module.exports = new NextI18Next({
@@ -7,7 +6,6 @@ module.exports = new NextI18Next({
   otherLanguages: [
     "da",
     "de",
-    "en",
     "es",
     "fr",
     "it",
@@ -23,4 +21,5 @@ module.exports = new NextI18Next({
     "zh",
   ],
   localePath: path.resolve("./public/static/locales"),
+  browserLanguageDetection: true,
 });

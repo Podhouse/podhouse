@@ -1,20 +1,21 @@
-import * as React from "react";
+import React from "react";
 import { withTranslation } from "i18n";
+import { WithTranslation } from "next-i18next";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers";
 import * as Yup from "yup";
 
 import {
   AuthTextContainer,
-  AuthText,
   AuthFormContainer,
   AuthLinksContainer,
-  AuthParagraphLink,
   AuthCircle,
 } from "../Auth.styles";
 
+import Paragraph from "src/system/Paragraph/Paragraph";
 import Input from "src/system/Input/Input";
 import Button from "src/system/Button/Button";
+import Link from "src/system/Link/Link";
 
 import { useAuthContext } from "src/context/Auth/Auth";
 
@@ -28,7 +29,7 @@ const validationSchema = Yup.object().shape({
   password: Yup.string().required("Password is required"),
 });
 
-const SignUp = ({ t }: any) => {
+const SignUp = ({ t }: WithTranslation) => {
   const [, , , send] = useAuthContext();
 
   const { register, handleSubmit, errors } = useForm<SignUpFormProps>({
@@ -40,9 +41,9 @@ const SignUp = ({ t }: any) => {
   return (
     <>
       <AuthTextContainer>
-        <AuthText>
-          {t("the-best-way-to-listen-to-your-favorite-podcasts")}
-        </AuthText>
+        <Paragraph variant="secondary" size="normal">
+          {t("listen-to-your-favorite-podcasts")}
+        </Paragraph>
       </AuthTextContainer>
 
       <AuthFormContainer onSubmit={handleSubmit(onSubmit)}>
@@ -51,7 +52,8 @@ const SignUp = ({ t }: any) => {
           name="email"
           label={t("email")}
           placeholder={t("email")}
-          height={40}
+          variant="primary"
+          scale="normal"
           ref={register}
           error={errors.email?.message}
         />
@@ -61,25 +63,34 @@ const SignUp = ({ t }: any) => {
           name="password"
           label={t("password")}
           placeholder={t("password")}
-          height={40}
+          variant="primary"
+          scale="normal"
           ref={register}
           error={errors.password?.message}
         />
 
-        <Button type="submit" height={40}>
+        <Button type="submit" variant="primary" size="normal">
           {t("sign-up")}
         </Button>
 
         <AuthLinksContainer>
-          <AuthParagraphLink onClick={() => send("SIGNIN")}>
+          <Link
+            variant="secondary"
+            size="normal"
+            onClick={() => send("SIGNIN")}
+          >
             {t("already-have-an-account?")}
-          </AuthParagraphLink>
+          </Link>
 
           <AuthCircle />
 
-          <AuthParagraphLink onClick={() => send("FORGOT")}>
+          <Link
+            variant="secondary"
+            size="normal"
+            onClick={() => send("FORGOT")}
+          >
             {t("forgot-your-password?")}
-          </AuthParagraphLink>
+          </Link>
         </AuthLinksContainer>
       </AuthFormContainer>
     </>

@@ -3,20 +3,21 @@ import React from "react";
 import {
   LandingGridContainer,
   LandingGridContentContainer,
-  LandingTitle,
-  LandingParagraph,
 } from "src/components/Landing/Landing.styles";
+
+import Heading from "src/system/Heading/Heading";
+import Paragraph from "src/system/Paragraph/Paragraph";
 
 const Main = () => (
   <LandingGridContainer>
     <LandingGridContentContainer>
-      <LandingTitle>
-        Our mission is to provide the best podcast experience
-      </LandingTitle>
-      <LandingParagraph>
+      <Heading variant="primary" size="normal" as="h1" fontSize={64}>
+        About Podhouse
+      </Heading>
+      <Paragraph variant="secondary" size="normal">
         We aim to provide the best podcast experience, that's why we created
         Podhouse, from podcast listeners for podcast listeners
-      </LandingParagraph>
+      </Paragraph>
     </LandingGridContentContainer>
   </LandingGridContainer>
 );

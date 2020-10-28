@@ -1,18 +1,14 @@
 import React from "react";
-import Link from "next/link";
+import NextLink from "next/link";
 
 import {
   PodcastAvatarItemContainer,
   PodcastAvatarItemAvatar,
 } from "./PodcastItemWithAvatar.styles";
 
-interface PodcastAvatarItemProps {
-  podcast: {
-    name: string;
-    author: string;
-    avatar: string;
-  };
-}
+import { PodcastAvatarItemProps } from "./PodcastItemWithAvatar.types";
+
+import Link from "src/system/Link/Link";
 
 const PodcastAvatarItem = ({ podcast }: PodcastAvatarItemProps) => {
   const { name, avatar } = podcast;
@@ -21,9 +17,11 @@ const PodcastAvatarItem = ({ podcast }: PodcastAvatarItemProps) => {
 
   return (
     <PodcastAvatarItemContainer>
-      <Link href="/app/podcast/[podcast]" as="/app/podcast/123">
-        <PodcastAvatarItemAvatar src={avatar} alt={imageAlt} />
-      </Link>
+      <NextLink href="/app/podcast/[podcast]" as="/app/podcast/123">
+        <Link variant="secondary" size="normal" href="/app/podcast/[podcast]">
+          <PodcastAvatarItemAvatar src={avatar} alt={imageAlt} />
+        </Link>
+      </NextLink>
     </PodcastAvatarItemContainer>
   );
 };

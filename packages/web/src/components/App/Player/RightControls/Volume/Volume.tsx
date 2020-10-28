@@ -32,7 +32,7 @@ const Volume = ({ ready, volume, muted, onVolume, onMute }: VolumeProps) => {
       return (
         <VolumeX
           size={20}
-          strokeWidth={1.5}
+          strokeWidth={1.7}
           color={iconColor}
           style={iconStyle}
           onClick={onMute}
@@ -43,7 +43,7 @@ const Volume = ({ ready, volume, muted, onVolume, onMute }: VolumeProps) => {
       return (
         <VolumeFirst
           size={20}
-          strokeWidth={1.5}
+          strokeWidth={1.7}
           color={iconColor}
           style={iconStyle}
           onClick={onMute}
@@ -54,7 +54,7 @@ const Volume = ({ ready, volume, muted, onVolume, onMute }: VolumeProps) => {
       return (
         <Volume1
           size={20}
-          strokeWidth={1.5}
+          strokeWidth={1.7}
           color={iconColor}
           style={iconStyle}
           onClick={onMute}
@@ -65,7 +65,7 @@ const Volume = ({ ready, volume, muted, onVolume, onMute }: VolumeProps) => {
       return (
         <Volume2
           size={20}
-          strokeWidth={1.5}
+          strokeWidth={1.7}
           color={iconColor}
           style={iconStyle}
           onClick={onMute}
@@ -75,7 +75,7 @@ const Volume = ({ ready, volume, muted, onVolume, onMute }: VolumeProps) => {
     return (
       <Volume2
         size={20}
-        strokeWidth={1.5}
+        strokeWidth={1.7}
         color={iconColor}
         style={iconStyle}
         onClick={onMute}

@@ -1,21 +1,60 @@
 import styled from "@emotion/styled";
+import { padding, color, margin, layout, space, variant } from "styled-system";
 
-import { StyleProps } from "src/system/styles.types";
+import { LabelProps } from "./Label.types";
 
-interface LabelProps {
-  mb?: number;
-}
+const variants = variant({
+  prop: "variant",
+  scale: "labels",
+  variants: {
+    primary: {
+      color: "primary",
+      backgroundColor: "primary",
+    },
+    secondary: {
+      color: "secondary",
+      backgroundColor: "secondary",
+    },
+    disabled: {
+      color: "disabled",
+      backgroundColor: "disabled",
+    },
+  },
+});
 
-type Props = LabelProps & StyleProps;
+const sizes = variant({
+  prop: "size",
+  variants: {
+    small: {
+      fontSize: 12,
+      fontWeight: 400,
+    },
+    normal: {
+      fontSize: 14,
+      fontWeight: 400,
+    },
+    big: {
+      fontSize: 16,
+      fontWeight: 500,
+    },
+  },
+});
 
-export const StyledLabel = styled.label<Props>`
-  font-family: Inter;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 17px;
-  text-align: center;
-  color: ${({ theme }) => theme.secondary};
-  margin-bottom: ${({ mb }) => mb}px;
+const StyledLabel = styled.label<LabelProps>`
+  margin: 0;
   outline: none;
+  font-family: Inter;
+  ${padding};
+  ${color};
+  ${margin};
+  ${layout};
+  ${space};
+  ${variants};
+  ${sizes};
+
+  &:disabled {
+    cursor: not-allowed;
+  }
 `;
+
+export default StyledLabel;

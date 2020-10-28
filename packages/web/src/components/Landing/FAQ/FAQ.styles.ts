@@ -21,20 +21,11 @@ export const FAQItemContainer = styled.div`
   grid-row-gap: 10px;
 `;
 
-export const FAQItemTitle = styled.h2<StyleProps>`
+export const FAQItemTitle = styled.h4<StyleProps>`
   font-family: Inter;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 14px;
   line-height: 17px;
   color: ${({ theme }) => theme.primary};
-`;
-
-export const FAQItemBody = styled.p<StyleProps>`
-  font-family: Inter;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 25px;
-  color: ${({ theme }) => theme.tertiary};
 `;

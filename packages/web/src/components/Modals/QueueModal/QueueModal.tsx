@@ -1,18 +1,22 @@
 import React, { useRef } from "react";
 import { withTranslation } from "i18n";
+import { WithTranslation } from "next-i18next";
 import Scrollbars from "react-custom-scrollbars";
 
 import {
   QueueModalContainer,
   QueueModalHeaderContainer,
-  QueueModalHeaderText,
-  QueueModalHeaderButton,
   QueueModalItemsContainer,
 } from "./QueueModal.styles";
 
 import QueueModalItem from "./QueueModalItem/QueueModalItem";
 
+import { useQueueContext } from "src/context/Queue/Queue";
+
 import useOnClickOutside from "src/hooks/useOnClickOutside";
+
+import Link from "src/system/Link/Link";
+import Heading from "src/system/Heading/Heading";
 
 const episodes = [
   {
@@ -29,7 +33,9 @@ const episodes = [
   },
 ];
 
-const QueueModal = ({ handleQueue, t }: any) => {
+const QueueModal = ({ t }: WithTranslation) => {
+  const [, handleQueue] = useQueueContext();
+
   const ref = useRef<any>();
 
   useOnClickOutside(ref, () => handleQueue());
@@ -37,10 +43,19 @@ const QueueModal = ({ handleQueue, t }: any) => {
   return (
     <QueueModalContainer ref={ref}>
       <QueueModalHeaderContainer>
-        <QueueModalHeaderText>{t("up-next")}</QueueModalHeaderText>
-        <QueueModalHeaderButton type="button" onClick={() => {}}>
+        <Heading
+          as="h1"
+          variant="secondary"
+          size="normal"
+          fontSize={14}
+          fontWeight={500}
+          textAlign="start"
+        >
+          {t("up-next")}
+        </Heading>
+        <Link onClick={() => {}} variant="secondary" size="normal">
           {t("clear-all")}
-        </QueueModalHeaderButton>
+        </Link>
       </QueueModalHeaderContainer>
 
       <Scrollbars

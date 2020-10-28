@@ -1,7 +1,5 @@
 import styled from "@emotion/styled";
 
-import { StyleProps } from "src/system/styles.types";
-
 export const PodcastsWithDetailsContainer = styled.div`
   width: 100%;
   height: 100%;
@@ -20,25 +18,6 @@ export const PodcastsWithDetailsHeader = styled.div`
   grid-template-columns: 1fr;
   grid-row-gap: 10px;
   grid-template-rows: max-content max-content;
-`;
-
-export const PodcastsWithDetailsHeaderTitle = styled.h1<StyleProps>`
-  font-family: Inter;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 17px;
-  color: ${({ theme }) => theme.tertiary};
-  align-self: center;
-  justify-self: flex-start;
-`;
-
-export const PodcastsWithDetailsBreakLine = styled.hr<StyleProps>`
-  width: 100%;
-  height: 1px;
-  background-color: ${({ theme }) => theme.backgroundSecondary};
-  margin: 0;
-  border: none;
 `;
 
 export const PodcastsWithDetailsSection = styled.div`
