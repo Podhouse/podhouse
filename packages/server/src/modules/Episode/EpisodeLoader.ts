@@ -6,7 +6,7 @@ import DataLoader from "dataloader";
 import { ConnectionArguments } from "graphql-relay";
 import { Schema } from "mongoose";
 
-import UserModel, { IUser } from "./UserModel";
+import EpisodeModel, { IEpisode } from "./EpisodeModel";
 
 import { GraphQLContext } from "../../types";
 
@@ -14,30 +14,41 @@ import { DataLoaderKey } from "../../loaders";
 
 import { escapeRegex } from "../../utils/escapeRegex";
 
-export default class User {
+export default class Episode {
   id: string;
   _id: string;
-  email: string;
-  password: string;
+  title: string;
+  description: string;
+  publishedDate: string;
+  link: string;
+  image: string;
+  audio: string;
+  duration: string;
 
   constructor(data) {
     this.id = data._id;
     this._id = data._id;
-    this.email = data.email;
+    this.title = data.title;
+    this.description = data.description;
+    this.publishedDate = data.publishedDate;
+    this.link = data.link;
+    this.image = data.image;
+    this.audio = data.audio;
+    this.duration = data.duration;
   }
 }
 
 export const getLoader = () =>
-  new DataLoader<DataLoaderKey, IUser>((ids) =>
-    mongooseLoader(UserModel, ids as string[]),
+  new DataLoader<DataLoaderKey, IEpisode>((ids) =>
+    mongooseLoader(EpisodeModel, ids as string[]),
   );
 
-const viewerCanSee = (context: GraphQLContext) => !!context.user;
+const viewerCanSee = () => true;
 
 export const load = async (
   context: GraphQLContext,
   id: DataLoaderKey,
-): Promise<User | null> => {
+): Promise<Episode | null> => {
   if (!id && typeof id !== "string") {
     return null;
   }
@@ -45,24 +56,24 @@ export const load = async (
   let data;
 
   try {
-    data = await context.dataloaders.UserLoader.load(id as string);
+    data = await context.dataloaders.EpisodeLoader.load(id as string);
   } catch (err) {
     return null;
   }
 
-  return viewerCanSee(context) ? new User(data) : null;
+  return viewerCanSee() ? new Episode(data) : null;
 };
 
 export const clearCache = (
   { dataloaders }: GraphQLContext,
   id: Schema.Types.ObjectId,
-) => dataloaders.UserLoader.clear(id.toString());
+) => dataloaders.EpisodeLoader.clear(id.toString());
 
-interface LoadUsersArgs extends ConnectionArguments {
+interface LoadEpisodesArgs extends ConnectionArguments {
   search?: string;
 }
 
-export const loadAll = async (context: any, args: LoadUsersArgs) => {
+export const loadAll = async (context: any, args: LoadEpisodesArgs) => {
   const defaultWhere = {
     removedAt: null,
   };
@@ -74,12 +85,12 @@ export const loadAll = async (context: any, args: LoadUsersArgs) => {
       }
     : defaultWhere;
 
-  const users = UserModel.find(where, { _id: 1 })
+  const episodes = EpisodeModel.find(where, { _id: 1 })
     .sort({ createdAt: -1 })
     .lean();
 
   return connectionFromMongoCursor({
-    cursor: users,
+    cursor: episodes,
     context,
     args,
     loader: load,

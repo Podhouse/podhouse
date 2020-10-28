@@ -7,6 +7,8 @@ import { IUser } from "./UserModel";
 
 import { GraphQLContext } from "../../types";
 
+import { mongooseIDResolver } from "../../common/mongooseIDResolver";
+
 const UserType: GraphQLObjectType = new GraphQLObjectType<
   IUser,
   GraphQLContext
@@ -15,10 +17,7 @@ const UserType: GraphQLObjectType = new GraphQLObjectType<
   description: "UserType",
   fields: () => ({
     id: globalIdField("User"),
-    _id: {
-      type: GraphQLNonNull(GraphQLString),
-      resolve: ({ _id }) => _id,
-    },
+    ...mongooseIDResolver,
     email: {
       type: GraphQLNonNull(GraphQLString),
       resolve: ({ email }) => email,
