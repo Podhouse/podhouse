@@ -4,6 +4,10 @@ import { IEpisode } from "../Episode/EpisodeModel";
 
 const PodcastSchema = new Schema(
   {
+    appleId: {
+      type: Number,
+      required: true,
+    },
     name: {
       type: String,
       required: true,
@@ -51,6 +55,7 @@ const PodcastSchema = new Schema(
 );
 
 export interface IPodcast extends Document {
+  appleId: number;
   name: string;
   author: string;
   description: string;

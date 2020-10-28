@@ -3,6 +3,7 @@ import {
   GraphQLString,
   GraphQLNonNull,
   GraphQLList,
+  GraphQLInt,
 } from "graphql";
 import {
   globalIdField,
@@ -29,6 +30,10 @@ const PodcastType: GraphQLObjectType = new GraphQLObjectType<
   fields: () => ({
     id: globalIdField("Podcast"),
     ...mongooseIDResolver,
+    appleId: {
+      type: GraphQLNonNull(GraphQLInt),
+      resolve: ({ appleId }) => appleId,
+    },
     name: {
       type: GraphQLNonNull(GraphQLString),
       resolve: ({ name }) => name,

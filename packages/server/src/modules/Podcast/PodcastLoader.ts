@@ -19,6 +19,7 @@ import { escapeRegex } from "../../utils/escapeRegex";
 export default class Podcast {
   id: string;
   _id: string;
+  appleId: number;
   name: string;
   author: string;
   description: string;
@@ -32,6 +33,7 @@ export default class Podcast {
   constructor(data) {
     this.id = data._id;
     this._id = data._id;
+    this.appleId = data.appleId;
     this.name = data.name;
     this.author = data.author;
     this.description = data.description;
