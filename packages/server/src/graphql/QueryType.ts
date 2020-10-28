@@ -1,4 +1,9 @@
-import { GraphQLObjectType, GraphQLNonNull, GraphQLID } from "graphql";
+import {
+  GraphQLObjectType,
+  GraphQLNonNull,
+  GraphQLString,
+  GraphQLID,
+} from "graphql";
 import { connectionArgs } from "graphql-relay";
 
 import UserType from "../modules/User/UserType";
@@ -27,6 +32,9 @@ const QueryType = new GraphQLObjectType({
       type: GraphQLNonNull(PodcastConnection.connectionType),
       args: {
         ...connectionArgs,
+        search: {
+          type: GraphQLNonNull(GraphQLString),
+        },
       },
       resolve: async (_, args, context) =>
         await PodcastLoader.loadAll(context, args),

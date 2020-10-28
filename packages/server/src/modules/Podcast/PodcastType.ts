@@ -9,6 +9,7 @@ import {
   globalIdField,
   connectionDefinitions,
   connectionArgs,
+  connectionFromArray,
 } from "graphql-relay";
 
 import { IPodcast } from "./PodcastModel";
@@ -59,8 +60,11 @@ const PodcastType: GraphQLObjectType = new GraphQLObjectType<
       resolve: ({ image }) => image,
     },
     episodes: {
-      type: GraphQLList(EpisodeType),
-      resolve: ({ episodes }) => episodes,
+      type: GraphQLNonNull(EpisodeConnection.connectionType),
+      args: {
+        ...connectionArgs,
+      },
+      resolve: ({ episodes }, args) => connectionFromArray(episodes, args),
     },
     genres: {
       type: GraphQLList(GraphQLString),
