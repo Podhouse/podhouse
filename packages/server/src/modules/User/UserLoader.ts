@@ -7,7 +7,9 @@ import { ConnectionArguments } from "graphql-relay";
 import { Schema } from "mongoose";
 
 import UserModel, { IUser } from "./UserModel";
+
 import { GraphQLContext } from "../../types";
+
 import { DataLoaderKey } from "../../loaders";
 
 import { escapeRegex } from "../../utils/escapeRegex";
@@ -17,21 +19,11 @@ export default class User {
   _id: string;
   email: string;
   password: string;
-  notifications: {
-    weekly: boolean;
-    news: boolean;
-  };
-  providers: Array<{
-    id: string;
-    provider: string;
-  }>;
 
   constructor(data) {
     this.id = data._id;
     this._id = data._id;
     this.email = data.email;
-    this.notifications = data.notifications;
-    this.providers = data.providers;
   }
 }
 
@@ -49,12 +41,15 @@ export const load = async (
   if (!id && typeof id !== "string") {
     return null;
   }
+
   let data;
+
   try {
     data = await context.dataloaders.UserLoader.load(id as string);
   } catch (err) {
     return null;
   }
+
   return viewerCanSee() ? new User(data) : null;
 };
 
@@ -71,15 +66,18 @@ export const loadUsers = async (context: any, args: LoadUsersArgs) => {
   const defaultWhere = {
     removedAt: null,
   };
+
   const where = args.search
     ? {
         ...defaultWhere,
         name: { $regex: new RegExp(`^${escapeRegex(args.search)}`, "ig") },
       }
     : defaultWhere;
+
   const users = UserModel.find(where, { _id: 1 })
     .sort({ createdAt: -1 })
     .lean();
+
   return connectionFromMongoCursor({
     cursor: users,
     context,

@@ -1245,6 +1245,13 @@
   resolved "https://registry.yarnpkg.com/@emotion/weak-memoize/-/weak-memoize-0.2.5.tgz#8eed982e2ee6f7f4e44c253e12962980791efd46"
   integrity sha512-6U71C2Wp7r5XtFtQzYrW5iKFT67OixrSxjI4MptCHzdSVlgabczzqLe0ZSgnub/5Kp4hSbpDB1tMytZY9pwxxA==
 
+"@entria/graphql-mongo-helpers@^0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@entria/graphql-mongo-helpers/-/graphql-mongo-helpers-0.0.1.tgz#28c9c2c1486496215dc507196bbdb6a2cf4de3ec"
+  integrity sha512-fSA0u1mBHFiQh5h4CFjBU581NXJCuW8gRn8EMuDZBFzWUnqa5MqfAiipRiRZrZ6pVg6IEhpBKsX2sO4FTkFpdA==
+  dependencies:
+    "@types/graphql" "0.13.4"
+
 "@entria/graphql-mongoose-loader@^4.3.2":
   version "4.3.2"
   resolved "https://registry.yarnpkg.com/@entria/graphql-mongoose-loader/-/graphql-mongoose-loader-4.3.2.tgz#1ccaf9cf8d6c80a974ff3154c45de5b12169b11c"
@@ -2291,6 +2298,11 @@
   integrity sha512-/o2GDW22mdggQ9PUSNMbYFJMrCMwwiX8uu1/xS1rbDEdcC6+OVBy9Uz5ePW2zLDzhOznh3Ozm5t09jHqaY8cuw==
   dependencies:
     graphql "^14.5.3 || ^15.0.0"
+
+"@types/graphql@0.13.4":
+  version "0.13.4"
+  resolved "https://registry.yarnpkg.com/@types/graphql/-/graphql-0.13.4.tgz#55ae9c29f0fd6b85ee536f5c72b4769d5c5e06b1"
+  integrity sha512-B4yel4ro2nTb3v0pYO8vO6SjgvFJSrwUY+IO6TUSLdOSB+gQFslylrhRCHxvXMIhxB71mv5PEE9dAX+24S8sew==
 
 "@types/helmet@*":
   version "0.0.48"
@@ -6717,6 +6729,11 @@ graphql-relay@^0.6.0:
   version "15.3.0"
   resolved "https://registry.yarnpkg.com/graphql/-/graphql-15.3.0.tgz#3ad2b0caab0d110e3be4a5a9b2aa281e362b5278"
   integrity sha512-GTCJtzJmkFLWRfFJuoo9RWWa/FfamUHgiFosxi/X1Ani4AVWbeyBenZTNX6dM+7WSbbFfTo/25eh0LLkwHMw2w==
+
+graphql@^15.4.0:
+  version "15.4.0"
+  resolved "https://registry.yarnpkg.com/graphql/-/graphql-15.4.0.tgz#e459dea1150da5a106486ba7276518b5295a4347"
+  integrity sha512-EB3zgGchcabbsU9cFe1j+yxdzKQKAbGUWRb13DsrsMN1yyfmmIq+2+L5MqVWcDCE4V89R5AyUOi7sMOGxdsYtA==
 
 growly@^1.3.0:
   version "1.3.0"

@@ -5,6 +5,11 @@ import UserModel from "../UserModel";
 
 import { generateToken } from "../../../utils/auth";
 
+type UserSignUpWithEmailArgs = {
+  email: string;
+  password: string;
+};
+
 export default mutationWithClientMutationId({
   name: "UserSignUpWithEmail",
   inputFields: {
@@ -15,7 +20,7 @@ export default mutationWithClientMutationId({
       type: new GraphQLNonNull(GraphQLString),
     },
   },
-  mutateAndGetPayload: async ({ email, password }) => {
+  mutateAndGetPayload: async ({ email, password }: UserSignUpWithEmailArgs) => {
     let user = await UserModel.findOne({ email });
 
     if (user) {
@@ -28,11 +33,6 @@ export default mutationWithClientMutationId({
     user = new UserModel({
       email,
       password,
-      notifications: {
-        weekly: false,
-        news: false,
-      },
-      providers: [],
     });
 
     await user.save();

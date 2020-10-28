@@ -1,32 +1,22 @@
-import { GraphQLObjectType, GraphQLString } from "graphql";
-import { connectionArgs } from "graphql-relay";
+import { GraphQLObjectType } from "graphql";
 
 import UserType from "../modules/User/UserType";
-import UserConnection from "../modules/User/UserConnection";
 import * as UserLoader from "../modules/User/UserLoader";
 
-import { NodeField, NodesField } from "../interface/NodeInterface";
+import { nodesField, nodeField } from "../modules/Node/TypeRegister";
+
+import { GraphQLContext } from "../types";
 
 const QueryType = new GraphQLObjectType({
   name: "Query",
-  description: "The root of all... queries",
+  description: "Query",
   fields: () => ({
-    node: NodeField,
-    nodes: NodesField,
+    node: nodeField,
+    nodes: nodesField,
     currentUser: {
       type: UserType,
-      resolve: (_, args, context) => context.user,
-    },
-    getUsers: {
-      type: UserConnection.connectionType,
-      args: {
-        ...connectionArgs,
-        search: {
-          type: GraphQLString,
-        },
-      },
-      resolve: async (_, args, context) =>
-        await UserLoader.loadUsers(context, args),
+      resolve: (root, args, context: GraphQLContext) =>
+        UserLoader.load(context, context.user?._id),
     },
   }),
 });

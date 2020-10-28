@@ -3,6 +3,11 @@ import { mutationWithClientMutationId } from "graphql-relay";
 
 import { GraphQLContext } from "../../../types";
 
+type UserChangePasswordArgs = {
+  oldPassword: string;
+  newPassword: string;
+};
+
 export default mutationWithClientMutationId({
   name: "UserChangePassword",
   inputFields: {
@@ -14,7 +19,7 @@ export default mutationWithClientMutationId({
     },
   },
   mutateAndGetPayload: async (
-    { oldPassword, newPassword },
+    { oldPassword, newPassword }: UserChangePasswordArgs,
     { user }: GraphQLContext,
   ) => {
     if (!user) {

@@ -5,6 +5,11 @@ import UserModel from "../UserModel";
 
 import { generateToken } from "../../../utils/auth";
 
+type UserSignInWithEmailArgs = {
+  email: string;
+  password: string;
+};
+
 export default mutationWithClientMutationId({
   name: "UserSignInWithEmail",
   inputFields: {
@@ -15,7 +20,7 @@ export default mutationWithClientMutationId({
       type: new GraphQLNonNull(GraphQLString),
     },
   },
-  mutateAndGetPayload: async ({ email, password }) => {
+  mutateAndGetPayload: async ({ email, password }: UserSignInWithEmailArgs) => {
     const user = await UserModel.findOne({ email: email.toLowerCase() });
 
     if (!user) {
