@@ -1,9 +1,16 @@
 import { GraphQLObjectType, GraphQLString, GraphQLNonNull } from "graphql";
-import { globalIdField, connectionDefinitions } from "graphql-relay";
+import {
+  globalIdField,
+  connectionDefinitions,
+  connectionArgs,
+} from "graphql-relay";
 
 import { nodeInterface } from "../Node/TypeRegister";
 
 import { IUser } from "./UserModel";
+
+import * as PodcastLoader from "../Podcast/PodcastLoader";
+import { PodcastConnection } from "../Podcast/PodcastType";
 
 import { GraphQLContext } from "../../types";
 
@@ -21,6 +28,14 @@ const UserType: GraphQLObjectType = new GraphQLObjectType<
     email: {
       type: GraphQLNonNull(GraphQLString),
       resolve: ({ email }) => email,
+    },
+    subscriptions: {
+      type: GraphQLNonNull(PodcastConnection.connectionType),
+      args: {
+        ...connectionArgs,
+      },
+      resolve: async ({ subscriptions }, _, context) =>
+        await PodcastLoader.loadAll(context, subscriptions),
     },
     createdAt: {
       type: GraphQLString,

@@ -1,6 +1,10 @@
 import mongoose, { Schema, Document, Model } from "mongoose";
 import bcrypt from "bcrypt";
 
+import { IPodcast } from "../Podcast/PodcastModel";
+
+const { ObjectId } = mongoose.Schema.Types;
+
 const UserSchema = new Schema(
   {
     email: {
@@ -15,6 +19,12 @@ const UserSchema = new Schema(
       required: true,
       minlength: 3,
     },
+    subscriptions: [
+      {
+        type: ObjectId,
+        ref: "Podcast",
+      },
+    ],
   },
   {
     timestamps: {
@@ -28,6 +38,7 @@ const UserSchema = new Schema(
 export interface IUser extends Document {
   email: string;
   password: string;
+  subscriptions: Array<IPodcast>;
   createdAt: Date;
   updatedAt: Date;
   authenticate: (plainTextPassword: string) => boolean;

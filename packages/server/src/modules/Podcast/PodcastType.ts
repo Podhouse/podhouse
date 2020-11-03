@@ -14,7 +14,7 @@ import {
 
 import { IPodcast } from "./PodcastModel";
 
-import EpisodeType, { EpisodeConnection } from "../Episode/EpisodeType";
+import { EpisodeConnection } from "../Episode/EpisodeType";
 
 import { nodeInterface } from "../Node/TypeRegister";
 
