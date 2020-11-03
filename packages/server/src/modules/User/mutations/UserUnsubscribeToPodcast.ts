@@ -8,7 +8,7 @@ type UserSubscribePodcastArgs = {
 };
 
 export default mutationWithClientMutationId({
-  name: "UserSubscribeToPodcast",
+  name: "UserUnsubscribeToPodcast",
   inputFields: {
     podcastId: {
       type: new GraphQLNonNull(GraphQLString),
@@ -27,17 +27,22 @@ export default mutationWithClientMutationId({
     const subscribedToPodcast = user.subscriptions.includes(podcastId as any);
 
     if (subscribedToPodcast === true) {
-      return {
-        message: null,
-        error: "Already subscribed to podcast",
-      };
-    } else {
-      user.subscriptions.push(podcastId as any);
+      const podcastIdIndex = user.subscriptions.indexOf(podcastId as any);
+      const subscriptions = user.subscriptions.filter(
+        (_, index) => index !== podcastIdIndex,
+      );
+
+      user.subscriptions = subscriptions;
       await user.save();
 
       return {
-        message: "Subscribed successfully",
-        error: null,
+        message: null,
+        error: "Unsubscribed successfully",
+      };
+    } else {
+      return {
+        message: null,
+        error: "Already unsubscribed to podcast",
       };
     }
   },

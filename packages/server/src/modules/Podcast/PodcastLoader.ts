@@ -5,10 +5,6 @@ import {
 import DataLoader from "dataloader";
 import { ConnectionArguments } from "graphql-relay";
 import { Schema } from "mongoose";
-import {
-  buildMongoConditionsFromFilters,
-  GraphQLFilter,
-} from "@entria/graphql-mongo-helpers";
 
 import PodcastModel, { IPodcast } from "./PodcastModel";
 
@@ -19,7 +15,6 @@ import { GraphQLContext } from "../../types";
 import { DataLoaderKey } from "../../loaders";
 
 import { escapeRegex } from "../../utils/escapeRegex";
-import { withConnectionCursor } from "../../utils/withConnectionCursor";
 
 export default class Podcast {
   id: string;

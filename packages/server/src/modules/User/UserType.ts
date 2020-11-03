@@ -3,6 +3,7 @@ import {
   globalIdField,
   connectionDefinitions,
   connectionArgs,
+  connectionFromArray,
 } from "graphql-relay";
 
 import { nodeInterface } from "../Node/TypeRegister";
@@ -15,7 +16,6 @@ import { PodcastConnection } from "../Podcast/PodcastType";
 import { GraphQLContext } from "../../types";
 
 import { mongooseIDResolver } from "../../utils/mongooseIDResolver";
-import { withFilter } from "../../utils/withFilter";
 
 const UserType: GraphQLObjectType = new GraphQLObjectType<
   IUser,
@@ -35,8 +35,12 @@ const UserType: GraphQLObjectType = new GraphQLObjectType<
       args: {
         ...connectionArgs,
       },
-      resolve: async (user, args, context) =>
-        await PodcastLoader.loadAll(context, args),
+      resolve: async (user, args, context) => {
+        const podcasts = await context.dataloaders.PodcastLoader.loadMany(
+          user.subscriptions.map((id) => id.toString()),
+        );
+        return connectionFromArray(podcasts, args);
+      },
     },
     createdAt: {
       type: GraphQLString,

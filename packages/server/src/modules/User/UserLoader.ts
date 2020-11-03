@@ -7,7 +7,6 @@ import { ConnectionArguments } from "graphql-relay";
 import { Schema } from "mongoose";
 
 import UserModel, { IUser } from "./UserModel";
-import { IPodcast } from "../Podcast/PodcastModel";
 
 import { GraphQLContext } from "../../types";
 
@@ -20,7 +19,7 @@ export default class User {
   _id: string;
   email: string;
   password: string;
-  subscriptions: Array<IPodcast>;
+  subscriptions: Array<Schema.Types.ObjectId>;
 
   constructor(data) {
     this.id = data._id;
