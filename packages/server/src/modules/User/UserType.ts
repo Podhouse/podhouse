@@ -14,7 +14,8 @@ import { PodcastConnection } from "../Podcast/PodcastType";
 
 import { GraphQLContext } from "../../types";
 
-import { mongooseIDResolver } from "../../common/mongooseIDResolver";
+import { mongooseIDResolver } from "../../utils/mongooseIDResolver";
+import { withFilter } from "../../utils/withFilter";
 
 const UserType: GraphQLObjectType = new GraphQLObjectType<
   IUser,
@@ -34,8 +35,8 @@ const UserType: GraphQLObjectType = new GraphQLObjectType<
       args: {
         ...connectionArgs,
       },
-      resolve: async ({ subscriptions }, _, context) =>
-        await PodcastLoader.loadAll(context, subscriptions),
+      resolve: async (user, args, context) =>
+        await PodcastLoader.loadAll(context, args),
     },
     createdAt: {
       type: GraphQLString,

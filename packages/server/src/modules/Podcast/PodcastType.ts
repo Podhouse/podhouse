@@ -20,7 +20,7 @@ import { nodeInterface } from "../Node/TypeRegister";
 
 import { GraphQLContext } from "../../types";
 
-import { mongooseIDResolver } from "../../common/mongooseIDResolver";
+import { mongooseIDResolver } from "../../utils/mongooseIDResolver";
 
 const PodcastType: GraphQLObjectType = new GraphQLObjectType<
   IPodcast,
