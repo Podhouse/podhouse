@@ -16,13 +16,14 @@
     "format": "prettier --write src"
   },
   "dependencies": {
+    "@entria/graphql-mongo-helpers": "^0.0.1",
     "@entria/graphql-mongoose-loader": "^4.3.2",
     "@koa/cors": "^3.1.0",
     "@koa/router": "^9.4.0",
     "bcrypt": "^5.0.0",
     "dataloader": "^2.0.0",
     "dotenv": "^8.2.0",
-    "graphql": "^15.3.0",
+    "graphql": "^15.4.0",
     "graphql-playground-middleware-koa": "^1.6.19",
     "graphql-relay": "^0.6.0",
     "jsonwebtoken": "^8.5.1",

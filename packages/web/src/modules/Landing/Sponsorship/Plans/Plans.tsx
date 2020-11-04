@@ -53,7 +53,9 @@ const renderSuggestion = ({ artistName, artworkUrl600 }: PodcastResult) => (
 const Plans = () => {
   const [suggestions, setSuggestions] = useState<Array<PodcastResult>>([]);
   const [value, setValue] = useState<string>("");
-  const [featuredPodcast, setFeaturedPodcast] = useState<PodcastResult | undefined>({
+  const [featuredPodcast, setFeaturedPodcast] = useState<
+    PodcastResult | undefined
+  >({
     wrapperType: "",
     kind: "",
     collectionId: null,
@@ -85,7 +87,7 @@ const Plans = () => {
     contentAdvisoryRating: "",
     artworkUrl600: "",
     genreIds: [],
-    genres: []
+    genres: [],
   });
 
   const { data } = useItunesPodcast(value);
@@ -114,7 +116,7 @@ const Plans = () => {
 
   const shouldRenderSuggestions = (value) => {
     return value.trim().length > 3;
-  }
+  };
 
   return (
     <PlansWholeContainer selected={selected}>
@@ -176,12 +178,16 @@ const Plans = () => {
           />
         </PlansPodcastInnerSection>
 
-        <Featured featured={[{
-          avatar: featuredPodcast.artworkUrl600,
-          name: featuredPodcast.collectionName,
-          author: featuredPodcast.artistName,
-          description: featuredPodcast.artistName
-        }]} />
+        <Featured
+          featured={[
+            {
+              avatar: featuredPodcast.artworkUrl600,
+              name: featuredPodcast.collectionName,
+              author: featuredPodcast.artistName,
+              description: featuredPodcast.artistName,
+            },
+          ]}
+        />
 
         <PlansPodcastInnerSection>
           <Button

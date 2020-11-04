@@ -1,39 +1,42 @@
-import {
-  GraphQLObjectType,
-  GraphQLString,
-  GraphQLNonNull,
-  GraphQLList,
-} from "graphql";
-import { globalIdField } from "graphql-relay";
+import { GraphQLObjectType, GraphQLString, GraphQLNonNull } from "graphql";
+import { globalIdField, connectionDefinitions } from "graphql-relay";
 
-import { NodeInterface } from "../../interface/NodeInterface";
+import { nodeInterface } from "../Node/TypeRegister";
 
-import NotificationsType from "../Notifications/NotificationsType";
-import ProviderType from "../Provider/ProviderType";
+import { IUser } from "./UserModel";
 
-const UserType: GraphQLObjectType = new GraphQLObjectType({
+import { GraphQLContext } from "../../types";
+
+import { mongooseIDResolver } from "../../common/mongooseIDResolver";
+
+const UserType: GraphQLObjectType = new GraphQLObjectType<
+  IUser,
+  GraphQLContext
+>({
   name: "User",
-  description: "User data",
+  description: "UserType",
   fields: () => ({
     id: globalIdField("User"),
-    _id: {
-      type: GraphQLNonNull(GraphQLString),
-      resolve: ({ _id }) => _id,
-    },
+    ...mongooseIDResolver,
     email: {
       type: GraphQLNonNull(GraphQLString),
       resolve: ({ email }) => email,
     },
-    notifications: {
-      type: NotificationsType,
-      resolve: ({ notifications }) => notifications,
+    createdAt: {
+      type: GraphQLString,
+      resolve: (obj) => (obj.createdAt ? obj.createdAt.toISOString() : null),
     },
-    providers: {
-      type: GraphQLList(ProviderType),
-      resolve: ({ providers }) => providers,
+    updatedAt: {
+      type: GraphQLString,
+      resolve: (obj) => (obj.updatedAt ? obj.updatedAt.toISOString() : null),
     },
   }),
-  interfaces: () => [NodeInterface],
+  interfaces: () => [nodeInterface],
 });
 
 export default UserType;
+
+export const UserConnection = connectionDefinitions({
+  name: "User",
+  nodeType: UserType,
+});

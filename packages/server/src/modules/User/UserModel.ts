@@ -6,7 +6,6 @@ const UserSchema = new Schema(
     email: {
       type: String,
       trim: true,
-      index: true,
       required: true,
       lowercase: true,
     },
@@ -14,33 +13,14 @@ const UserSchema = new Schema(
       type: String,
       hidden: true,
       required: true,
-      minlength: 6,
+      minlength: 3,
     },
-    notifications: {
-      weekly: {
-        type: Boolean,
-        required: false,
-        hidden: false,
-      },
-      news: {
-        type: Boolean,
-        required: false,
-        hidden: false,
-      },
-    },
-    providers: [
-      {
-        id: {
-          type: String,
-        },
-        provider: {
-          type: String,
-        },
-      },
-    ],
   },
   {
-    timestamps: true,
+    timestamps: {
+      createdAt: "createdAt",
+      updatedAt: "updatedAt",
+    },
     collection: "User",
   },
 );
@@ -48,23 +28,11 @@ const UserSchema = new Schema(
 export interface IUser extends Document {
   email: string;
   password: string;
-  notifications: {
-    weekly: boolean;
-    news: boolean;
-  };
-  providers: Array<{
-    id: string;
-    provider: string;
-  }>;
+  createdAt: Date;
+  updatedAt: Date;
   authenticate: (plainTextPassword: string) => boolean;
   encryptPassword: (password: string | undefined) => Promise<string>;
 }
-
-UserSchema.methods = {
-  authenticate: function (this: IUser, plainTextPassword: string) {
-    return bcrypt.compare(plainTextPassword, this.password);
-  },
-};
 
 UserSchema.pre<IUser>("save", function (next) {
   if (!this.isModified("password")) return next();
@@ -75,9 +43,14 @@ UserSchema.pre<IUser>("save", function (next) {
   });
 });
 
-// This line is only to fix "Cannot overwrite `User` model once compiled." error.
-// https://stackoverflow.com/questions/19051041/cannot-overwrite-model-once-compiled-mongoose
-mongoose.models = {};
+UserSchema.methods = {
+  authenticate(plainTextPassword: string) {
+    return bcrypt.compareSync(plainTextPassword, this.password);
+  },
+  encryptPassword(password: string) {
+    return bcrypt.hashSync(password, 8);
+  },
+};
 
 const UserModel: Model<IUser> = mongoose.model("User", UserSchema);
 

@@ -7,12 +7,10 @@ import { getUser } from "./utils/auth";
 const graphql = async (req: Request, res: Response) => {
   const { user } = await getUser(req.header.authorization);
 
-  const AllLoaders = loaders;
-
-  const dataloaders = Object.keys(AllLoaders).reduce(
+  const dataloaders = Object.keys(loaders).reduce(
     (acc, loaderKey) => ({
       ...acc,
-      [loaderKey]: AllLoaders[loaderKey].getLoader(),
+      [loaderKey]: loaders[loaderKey].getLoader(),
     }),
     {},
   );

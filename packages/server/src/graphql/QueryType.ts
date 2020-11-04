@@ -1,32 +1,53 @@
-import { GraphQLObjectType, GraphQLString } from "graphql";
+import {
+  GraphQLObjectType,
+  GraphQLNonNull,
+  GraphQLString,
+  GraphQLID,
+} from "graphql";
 import { connectionArgs } from "graphql-relay";
 
 import UserType from "../modules/User/UserType";
-import UserConnection from "../modules/User/UserConnection";
 import * as UserLoader from "../modules/User/UserLoader";
 
-import { NodeField, NodesField } from "../interface/NodeInterface";
+import PodcastType from "../modules/Podcast/PodcastType";
+import { PodcastConnection } from "../modules/Podcast/PodcastType";
+import * as PodcastLoader from "../modules/Podcast/PodcastLoader";
+
+import { nodesField, nodeField } from "../modules/Node/TypeRegister";
+
+import { GraphQLContext } from "../types";
 
 const QueryType = new GraphQLObjectType({
   name: "Query",
-  description: "The root of all... queries",
+  description: "Query",
   fields: () => ({
-    node: NodeField,
-    nodes: NodesField,
+    node: nodeField,
+    nodes: nodesField,
     currentUser: {
       type: UserType,
-      resolve: (_, args, context) => context.user,
+      resolve: (root, args, context: GraphQLContext) =>
+        UserLoader.load(context, context.user?._id),
     },
-    getUsers: {
-      type: UserConnection.connectionType,
+    podcasts: {
+      type: GraphQLNonNull(PodcastConnection.connectionType),
       args: {
         ...connectionArgs,
         search: {
-          type: GraphQLString,
+          type: GraphQLNonNull(GraphQLString),
         },
       },
       resolve: async (_, args, context) =>
-        await UserLoader.loadUsers(context, args),
+        await PodcastLoader.loadAll(context, args),
+    },
+    podcast: {
+      type: PodcastType,
+      args: {
+        _id: {
+          type: GraphQLNonNull(GraphQLID),
+        },
+      },
+      resolve: async (_, { _id }, context) =>
+        await PodcastLoader.load(context, _id),
     },
   }),
 });

@@ -30,7 +30,12 @@ router.all(
 app.listen(process.env.GRAPHQL_PORT);
 app.use(logger());
 app.use(cors());
-app.use(helmet());
+app.use(
+  helmet({
+    contentSecurityPolicy:
+      process.env.NODE_ENV === "production" ? undefined : false,
+  }),
+);
 app.use(router.routes()).use(router.allowedMethods());
 
 connectDB();
