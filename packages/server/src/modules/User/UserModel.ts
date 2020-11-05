@@ -15,6 +15,12 @@ const UserSchema = new Schema(
       required: true,
       minlength: 3,
     },
+    subscriptions: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Podcast",
+      },
+    ],
   },
   {
     timestamps: {
@@ -28,6 +34,7 @@ const UserSchema = new Schema(
 export interface IUser extends Document {
   email: string;
   password: string;
+  subscriptions: Array<Schema.Types.ObjectId>;
   createdAt: Date;
   updatedAt: Date;
   authenticate: (plainTextPassword: string) => boolean;

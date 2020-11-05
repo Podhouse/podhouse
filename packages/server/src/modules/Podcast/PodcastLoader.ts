@@ -81,7 +81,10 @@ interface LoadPodcastsArgs extends ConnectionArguments {
   search?: string;
 }
 
-export const loadAll = async (context: any, args: LoadPodcastsArgs) => {
+export const loadAll = async (
+  context: GraphQLContext,
+  args: LoadPodcastsArgs,
+) => {
   const defaultWhere = {
     removedAt: null,
   };
@@ -89,7 +92,9 @@ export const loadAll = async (context: any, args: LoadPodcastsArgs) => {
   const where = args.search
     ? {
         ...defaultWhere,
-        name: { $regex: new RegExp(`^${escapeRegex(args.search)}`, "ig") },
+        name: {
+          $regex: new RegExp(`^${escapeRegex(args.search)}`, "ig"),
+        },
       }
     : defaultWhere;
 

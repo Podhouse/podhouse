@@ -19,11 +19,13 @@ export default class User {
   _id: string;
   email: string;
   password: string;
+  subscriptions: Array<Schema.Types.ObjectId>;
 
   constructor(data) {
     this.id = data._id;
     this._id = data._id;
     this.email = data.email;
+    this.subscriptions = data.subscriptions;
   }
 }
 
@@ -62,7 +64,7 @@ interface LoadUsersArgs extends ConnectionArguments {
   search?: string;
 }
 
-export const loadAll = async (context: any, args: LoadUsersArgs) => {
+export const loadAll = async (context: GraphQLContext, args: LoadUsersArgs) => {
   const defaultWhere = {
     removedAt: null,
   };
