@@ -47,12 +47,6 @@ const Header = () => {
           </Link>
         </NextLink>
 
-        <NextLink href="/sponsorship" as="/sponsorship">
-          <Link href="/sponsorship" variant="secondary" size="normal">
-            Ads
-          </Link>
-        </NextLink>
-
         <Link
           href="mailto:leonardomso11@gmail.com"
           target="_blank"

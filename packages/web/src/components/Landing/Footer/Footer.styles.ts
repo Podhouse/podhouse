@@ -24,7 +24,7 @@ export const FooterLinksContainer = styled.div`
   justify-content: center;
 
   @media screen and (min-width: 400px) {
-    grid-template-columns: repeat(4, max-content);
+    grid-template-columns: repeat(3, max-content);
     grid-template-rows: 1fr;
     grid-column-gap: 30px;
   }

@@ -20,12 +20,6 @@ const Footer = () => (
         </Link>
       </NextLink>
 
-      <NextLink href="/sponsorship" as="/sponsorship">
-        <Link href="/sponsorship" variant="secondary" size="normal">
-          Ads
-        </Link>
-      </NextLink>
-
       <NextLink href="/brand" as="/brand">
         <Link href="/brand" variant="secondary" size="normal">
           Brand
