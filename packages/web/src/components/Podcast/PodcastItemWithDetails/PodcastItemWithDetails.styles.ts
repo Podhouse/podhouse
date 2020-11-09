@@ -1,15 +1,12 @@
 import styled from "@emotion/styled";
 
-import Link from "src/system/Link/Link";
-import Paragraph from "src/system/Paragraph/Paragraph";
-
 export const PodcastItemWithDetailsContainer = styled.div`
   width: 100%;
   max-width: 300px;
   height: 60px;
   display: grid;
   grid-template-columns: max-content 1fr;
-  grid-template-rows: 25px 25px;
+  grid-template-rows: 1fr;
   grid-gap: 10px;
   justify-items: flex-start;
 `;
@@ -24,12 +21,11 @@ export const PodcastItemWithDetailsAvatar = styled.img`
   object-fit: cover;
 `;
 
-export const PodcastItemName = styled(Link)`
+export const PodcastItemInnerContainer = styled.div`
   grid-row: 1 / 2;
   grid-column: 2 / 3;
-`;
-
-export const PodcastItemAuthor = styled(Paragraph)`
-  grid-row: 2 / 3;
-  grid-column: 2 / 3;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: max-content max-content;
+  grid-row-gap: 10px;
 `;
