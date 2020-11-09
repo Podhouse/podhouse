@@ -32,7 +32,10 @@ const validationSchema = Yup.object().shape({
 const SignIn = ({ t }: WithTranslation) => {
   const [, , , send] = useAuthContext();
 
-  const { register, handleSubmit, errors } = useForm<SignInFormProps>({
+  const { register, handleSubmit, errors, formState } = useForm<
+    SignInFormProps
+  >({
+    mode: "onChange",
     resolver: yupResolver(validationSchema),
   });
 
@@ -69,7 +72,12 @@ const SignIn = ({ t }: WithTranslation) => {
           error={errors.password?.message}
         />
 
-        <Button type="submit" variant="primary" size="normal">
+        <Button
+          type="submit"
+          variant="primary"
+          size="normal"
+          isDisabled={!formState.isValid || formState.isSubmitting}
+        >
           {t("sign-in")}
         </Button>
 

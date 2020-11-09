@@ -30,7 +30,10 @@ const validationSchema = Yup.object().shape({
 const ForgotPassword = ({ t }: WithTranslation) => {
   const [, , , send] = useAuthContext();
 
-  const { register, handleSubmit, errors } = useForm<ForgotPasswordFormProps>({
+  const { register, handleSubmit, errors, formState } = useForm<
+    ForgotPasswordFormProps
+  >({
+    mode: "onChange",
     resolver: yupResolver(validationSchema),
   });
 
@@ -58,7 +61,12 @@ const ForgotPassword = ({ t }: WithTranslation) => {
           error={errors.email?.message}
         />
 
-        <Button type="submit" variant="primary" size="normal">
+        <Button
+          type="submit"
+          variant="primary"
+          size="normal"
+          isDisabled={!formState.isValid || formState.isSubmitting}
+        >
           {t("send-reset-link")}
         </Button>
 

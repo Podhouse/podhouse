@@ -29,7 +29,10 @@ const validationSchema = Yup.object().shape({
 });
 
 const Password = ({ t }: WithTranslation) => {
-  const { register, handleSubmit, errors } = useForm<PasswordFormProps>({
+  const { register, handleSubmit, errors, formState } = useForm<
+    PasswordFormProps
+  >({
+    mode: "onChange",
     resolver: yupResolver(validationSchema),
   });
 
@@ -75,7 +78,12 @@ const Password = ({ t }: WithTranslation) => {
             error={errors.newPassword?.message}
           />
 
-          <Button type="submit" variant="primary" size="normal">
+          <Button
+            type="submit"
+            variant="primary"
+            size="normal"
+            isDisabled={!formState.isValid || formState.isSubmitting}
+          >
             {t("save")}
           </Button>
         </PasswordFormContainer>
