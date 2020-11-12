@@ -1,8 +1,9 @@
 import { fromGlobalId } from "graphql-relay";
 import { Types, Document } from "mongoose";
 
-const getObjectId = (
-  target: string | Document | Types.ObjectId,
+// returns an ObjectId given an param of unknown type
+export const getObjectId = (
+  target: string | Document | Types.ObjectId
 ): Types.ObjectId | null => {
   if (target instanceof Types.ObjectId) {
     return new Types.ObjectId(target.toString());
@@ -32,5 +33,3 @@ const getObjectId = (
 
   return null;
 };
-
-export default getObjectId;

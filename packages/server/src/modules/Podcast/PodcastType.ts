@@ -5,22 +5,25 @@ import {
   GraphQLList,
   GraphQLInt,
 } from "graphql";
+import { globalIdField } from "graphql-relay";
+
 import {
-  globalIdField,
-  connectionDefinitions,
   connectionArgs,
-  connectionFromArray,
-} from "graphql-relay";
+  connectionDefinitions,
+  mongooseIDResolver,
+  withFilter,
+} from "@podhouse/graphql";
+
+import { load } from "./PodcastLoader";
+
+import { nodeInterface, registerTypeLoader } from "../Node/TypeRegister";
 
 import { IPodcast } from "./PodcastModel";
 
+import * as EpisodeLoader from "../Episode/EpisodeLoader";
 import { EpisodeConnection } from "../Episode/EpisodeType";
 
-import { nodeInterface } from "../Node/TypeRegister";
-
 import { GraphQLContext } from "../../types";
-
-import { mongooseIDResolver } from "../../utils/mongooseIDResolver";
 
 const PodcastType: GraphQLObjectType = new GraphQLObjectType<
   IPodcast,
@@ -64,7 +67,19 @@ const PodcastType: GraphQLObjectType = new GraphQLObjectType<
       args: {
         ...connectionArgs,
       },
-      resolve: ({ episodes }, args) => connectionFromArray(episodes, args),
+      resolve: async (podcast, args, context) =>
+        await EpisodeLoader.loadAll(
+          context,
+          withFilter(args, { podcast: podcast._id }),
+        ),
+    },
+    country: {
+      type: GraphQLNonNull(GraphQLString),
+      resolve: ({ country }) => country,
+    },
+    primaryGenre: {
+      type: GraphQLNonNull(GraphQLString),
+      resolve: ({ primaryGenre }) => primaryGenre,
     },
     genres: {
       type: GraphQLList(GraphQLString),
@@ -79,6 +94,8 @@ const PodcastType: GraphQLObjectType = new GraphQLObjectType<
 });
 
 export default PodcastType;
+
+registerTypeLoader(PodcastType, load);
 
 export const PodcastConnection = connectionDefinitions({
   name: "Podcast",

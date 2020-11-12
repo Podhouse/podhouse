@@ -13,6 +13,10 @@ import PodcastType from "../modules/Podcast/PodcastType";
 import { PodcastConnection } from "../modules/Podcast/PodcastType";
 import * as PodcastLoader from "../modules/Podcast/PodcastLoader";
 
+import EpisodeType from "../modules/Episode/EpisodeType";
+import { EpisodeConnection } from "../modules/Episode/EpisodeType";
+import * as EpisodeLoader from "../modules/Episode/EpisodeLoader";
+
 import { nodesField, nodeField } from "../modules/Node/TypeRegister";
 
 import { GraphQLContext } from "../types";
@@ -32,9 +36,6 @@ const QueryType = new GraphQLObjectType({
       type: GraphQLNonNull(PodcastConnection.connectionType),
       args: {
         ...connectionArgs,
-        search: {
-          type: GraphQLNonNull(GraphQLString),
-        },
       },
       resolve: async (_, args, context) =>
         await PodcastLoader.loadAll(context, args),
@@ -48,6 +49,24 @@ const QueryType = new GraphQLObjectType({
       },
       resolve: async (_, { _id }, context) =>
         await PodcastLoader.load(context, _id),
+    },
+    episodes: {
+      type: GraphQLNonNull(EpisodeConnection.connectionType),
+      args: {
+        ...connectionArgs,
+      },
+      resolve: async (_, args, context) =>
+        await EpisodeLoader.loadAll(context, args),
+    },
+    episode: {
+      type: EpisodeType,
+      args: {
+        _id: {
+          type: GraphQLNonNull(GraphQLID),
+        },
+      },
+      resolve: async (_, { _id }, context) =>
+        await EpisodeLoader.load(context, _id),
     },
   }),
 });

@@ -1,111 +1,19 @@
-import {
-  connectionFromMongoCursor,
-  mongooseLoader,
-} from "@entria/graphql-mongoose-loader";
-import DataLoader from "dataloader";
-import { ConnectionArguments } from "graphql-relay";
-import { Schema } from "mongoose";
+import { createLoader } from "@podhouse/graphql";
 
-import PodcastModel, { IPodcast } from "./PodcastModel";
+import { registerLoader } from "../Loader/LoaderRegister";
 
-import { IEpisode } from "../Episode/EpisodeModel";
+import PodcastModel from "./PodcastModel";
+import { podcastFilterMapping } from "./PodcastFilterInputType";
 
-import { GraphQLContext } from "../../types";
+const { Wrapper: Podcast, getLoader, clearCache, load, loadAll } = createLoader(
+  {
+    model: PodcastModel,
+    loaderName: "PodcastLoader",
+    filterMapping: podcastFilterMapping,
+  },
+);
 
-import { DataLoaderKey } from "../../loaders";
+export { getLoader, clearCache, load, loadAll };
+export default Podcast;
 
-import { escapeRegex } from "../../utils/escapeRegex";
-
-export default class Podcast {
-  id: string;
-  _id: string;
-  appleId: number;
-  name: string;
-  author: string;
-  description: string;
-  website: string;
-  rss: string;
-  image: string;
-  episodes: Array<IEpisode>;
-  genres: Array<string>;
-  genreIds: Array<string>;
-
-  constructor(data) {
-    this.id = data._id;
-    this._id = data._id;
-    this.appleId = data.appleId;
-    this.name = data.name;
-    this.author = data.author;
-    this.description = data.description;
-    this.website = data.website;
-    this.rss = data.rss;
-    this.image = data.image;
-    this.episodes = data.episodes;
-    this.genres = data.genres;
-    this.genreIds = data.genreIds;
-  }
-}
-
-export const getLoader = () =>
-  new DataLoader<DataLoaderKey, IPodcast>((ids) =>
-    mongooseLoader(PodcastModel, ids as string[]),
-  );
-
-const viewerCanSee = () => true;
-
-export const load = async (
-  context: GraphQLContext,
-  id: DataLoaderKey,
-): Promise<Podcast | null> => {
-  if (!id && typeof id !== "string") {
-    return null;
-  }
-
-  let data;
-
-  try {
-    data = await context.dataloaders.PodcastLoader.load(id as string);
-  } catch (err) {
-    return null;
-  }
-
-  return viewerCanSee() ? new Podcast(data) : null;
-};
-
-export const clearCache = (
-  { dataloaders }: GraphQLContext,
-  id: Schema.Types.ObjectId,
-) => dataloaders.PodcastLoader.clear(id.toString());
-
-interface LoadPodcastsArgs extends ConnectionArguments {
-  search?: string;
-}
-
-export const loadAll = async (
-  context: GraphQLContext,
-  args: LoadPodcastsArgs,
-) => {
-  const defaultWhere = {
-    removedAt: null,
-  };
-
-  const where = args.search
-    ? {
-        ...defaultWhere,
-        name: {
-          $regex: new RegExp(`^${escapeRegex(args.search)}`, "ig"),
-        },
-      }
-    : defaultWhere;
-
-  const podcasts = PodcastModel.find(where, { _id: 1 })
-    .sort({ createdAt: -1 })
-    .lean();
-
-  return connectionFromMongoCursor({
-    cursor: podcasts,
-    context,
-    args,
-    loader: load,
-  });
-};
+registerLoader("PodcastLoader", getLoader);

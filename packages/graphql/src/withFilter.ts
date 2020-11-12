@@ -7,7 +7,7 @@ export type ArgsWithFilter = ConnectionArguments & {
 
 export const withFilter = (
   args: ArgsWithFilter | { [key: string]: any },
-  filters: object,
+  filters: object
 ) => ({
   ...args,
   filters: {

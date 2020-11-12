@@ -1,7 +1,11 @@
 import { GraphQLObjectType, GraphQLString, GraphQLNonNull } from "graphql";
-import { globalIdField, connectionDefinitions } from "graphql-relay";
+import { globalIdField } from "graphql-relay";
 
-import { nodeInterface } from "../Node/TypeRegister";
+import { connectionDefinitions, mongooseIDResolver } from "@podhouse/graphql";
+
+import { load } from "./EpisodeLoader";
+
+import { nodeInterface, registerTypeLoader } from "../Node/TypeRegister";
 
 import { IEpisode } from "./EpisodeModel";
 
@@ -15,6 +19,7 @@ const EpisodeType: GraphQLObjectType = new GraphQLObjectType<
   description: "EpisodeType",
   fields: () => ({
     id: globalIdField("Episode"),
+    ...mongooseIDResolver,
     title: {
       type: GraphQLNonNull(GraphQLString),
       resolve: ({ title }) => title,
@@ -48,6 +53,8 @@ const EpisodeType: GraphQLObjectType = new GraphQLObjectType<
 });
 
 export default EpisodeType;
+
+registerTypeLoader(EpisodeType, load);
 
 export const EpisodeConnection = connectionDefinitions({
   name: "Episode",

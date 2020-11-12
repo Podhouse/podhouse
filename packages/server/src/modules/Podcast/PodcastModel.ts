@@ -1,7 +1,5 @@
 import mongoose, { Schema, Document, Model } from "mongoose";
 
-import { IEpisode } from "../Episode/EpisodeModel";
-
 const PodcastSchema = new Schema(
   {
     appleId: {
@@ -22,7 +20,6 @@ const PodcastSchema = new Schema(
     },
     website: {
       type: String,
-      required: true,
     },
     rss: {
       type: String,
@@ -32,7 +29,11 @@ const PodcastSchema = new Schema(
       type: String,
       required: true,
     },
-    episode: {
+    country: {
+      type: String,
+      required: true,
+    },
+    primaryGenre: {
       type: String,
       required: true,
     },
@@ -42,7 +43,7 @@ const PodcastSchema = new Schema(
         required: true,
       },
     ],
-    genresIds: [
+    genreIds: [
       {
         type: String,
         required: true,
@@ -59,10 +60,11 @@ export interface IPodcast extends Document {
   name: string;
   author: string;
   description: string;
-  website: string;
+  website?: string;
   rss: string;
   image: string;
-  episodes: Array<IEpisode>;
+  country: string;
+  primaryGenre: string;
   genres: Array<string>;
   genreIds: Array<string>;
 }

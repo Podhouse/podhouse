@@ -1,6 +1,8 @@
 import { GraphQLString, GraphQLNonNull } from "graphql";
 import { mutationWithClientMutationId } from "graphql-relay";
 
+import { errorField, successField } from "@podhouse/graphql";
+
 import UserModel from "../UserModel";
 
 import { generateToken } from "../../../utils/auth";
@@ -21,24 +23,25 @@ export default mutationWithClientMutationId({
     },
   },
   mutateAndGetPayload: async ({ email, password }: UserSignUpWithEmailArgs) => {
-    let user = await UserModel.findOne({ email });
+    const userExists = await UserModel.findOne({
+      email: email.trim().toLowerCase(),
+    });
 
-    if (user) {
+    if (userExists) {
       return {
-        token: null,
         error: "Email is already in use",
       };
     }
 
-    user = new UserModel({
+    const user = await new UserModel({
       email,
       password,
-    });
-
-    await user.save();
+    }).save();
 
     return {
       token: generateToken(user),
+      success: "Signed up succcessfully",
+      error: null,
     };
   },
   outputFields: {
@@ -46,9 +49,7 @@ export default mutationWithClientMutationId({
       type: GraphQLString,
       resolve: ({ token }) => token,
     },
-    error: {
-      type: GraphQLString,
-      resolve: ({ error }) => error,
-    },
+    ...errorField,
+    ...successField,
   },
 });

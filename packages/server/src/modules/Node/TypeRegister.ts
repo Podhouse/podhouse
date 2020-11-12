@@ -1,16 +1,10 @@
 import { GraphQLObjectType } from "graphql";
+
 import { fromGlobalId, nodeDefinitions } from "graphql-relay";
-
-import User, * as UserLoader from "../User/UserLoader";
-import UserType from "../User/UserType";
-
-import Podcast, * as PodcastLoader from "../Podcast/PodcastLoader";
-import PodcastType from "../Podcast/PodcastType";
 
 import { GraphQLContext } from "../../types";
 
 type Load = (context: GraphQLContext, id: string) => any;
-
 type TypeLoaders = {
   [key: string]: {
     type: GraphQLObjectType;
@@ -33,16 +27,17 @@ const getTypeRegister = () => {
   };
 
   const { nodeField, nodesField, nodeInterface } = nodeDefinitions(
-    async (globalId, context: GraphQLContext) => {
-      const { id, type } = fromGlobalId(globalId);
-      if (type === "User") return await UserLoader.load(context, id);
-      if (type === "Podcast") return await PodcastLoader.load(context, id);
-      return null;
+    (globalId, context: GraphQLContext) => {
+      const { type, id } = fromGlobalId(globalId);
+
+      const { load } = typesLoaders[type] || { load: null };
+
+      return (load && load(context, id)) || null;
     },
     (obj) => {
-      if (obj instanceof User) return UserType;
-      if (obj instanceof Podcast) return PodcastType;
-      return null;
+      const { type } = typesLoaders[obj.constructor.name] || { type: null };
+
+      return type;
     },
   );
 

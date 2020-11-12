@@ -1,18 +1,14 @@
-import { Request, Response } from "koa";
+import mongoose from "mongoose";
 
-import Dataloader from "dataloader";
+import { IUser } from "../modules/user/UserModel";
 
-import { IUser } from "./modules/User/UserModel";
-import { IPodcast } from "./modules/Podcast/PodcastModel";
-
-export type Dataloaders = {
-  UserLoader: Dataloader<string, IUser>;
-  PodcastLoader: Dataloader<string, IPodcast>;
-};
+declare type ObjectId = mongoose.Schema.Types.ObjectId;
 
 export type GraphQLContext = {
-  req: Request;
-  res: Response;
   user?: IUser;
-  dataloaders: Dataloaders;
 };
+
+export type LoaderFn = (
+  ctx: GraphQLContext,
+  id: string | ObjectId | object,
+) => any;

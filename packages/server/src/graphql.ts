@@ -1,28 +1,32 @@
 import { Request, Response } from "koa";
 
 import { schema } from "./graphql/schema";
-import * as loaders from "./loaders";
 import { getUser } from "./utils/auth";
+import { getDataloaders } from "./modules/Loader/LoaderRegister";
 
 const graphql = async (req: Request, res: Response) => {
   const { user } = await getUser(req.header.authorization);
 
-  const dataloaders = Object.keys(loaders).reduce(
-    (acc, loaderKey) => ({
-      ...acc,
-      [loaderKey]: loaders[loaderKey].getLoader(),
-    }),
-    {},
-  );
+  const dataloaders = getDataloaders();
 
   return {
     graphiql: process.env.NODE_ENV !== "production",
     schema,
     context: {
-      req,
-      res,
       user,
+      req,
       dataloaders,
+    },
+    formatError: (error: GraphQLError) => {
+      console.log(error.message);
+      console.log(error.locations);
+      console.log(error.stack);
+
+      return {
+        message: error.message,
+        locations: error.locations,
+        stack: error.stack,
+      };
     },
   };
 };

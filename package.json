@@ -18,10 +18,11 @@
     "web:format": "yarn workspace @podhouse/web format",
     "web:relay": "yarn workspace @podhouse/web relay",
     "server:start": "yarn workspace @podhouse/server start",
-    "server:build": "yarn workspace @podhouse/server build",
+    "server:build": "yarn workspace @podhouse/graphql build && yarn workspace @podhouse/server build",
     "server:test": "yarn workspace @podhouse/server test",
     "server:lint": "yarn workspace @podhouse/server lint",
     "server:format": "yarn workspace @podhouse/server format",
+    "graphql:build": "yarn workspace @podhouse/graphql build",
     "lint:staged": "lint-staged",
     "build": "yarn workspace @podhouse/web build & yarn workspace @podhouse/server build",
     "lint": "yarn workspace @podhouse/web lint & yarn workspace @podhouse/server lint",
@@ -31,6 +32,7 @@
   },
   "devDependencies": {
     "husky": "^4.3.0",
+    "lerna": "^3.22.1",
     "lint-staged": "^10.3.0",
     "prettier": "^2.1.1",
     "typescript": "^4.0.2"
