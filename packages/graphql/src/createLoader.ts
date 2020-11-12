@@ -52,8 +52,6 @@ export const createLoader = <
   class Loader {
     [key: string]: any;
     constructor(data: Value) {
-      // TODO - improve this - get only model paths
-      // eslint-disable-next-line
       Object.keys(data).map((key) => {
         this[key] = (data as any)[key];
       });
@@ -92,8 +90,6 @@ export const createLoader = <
   const clearCache = ({ dataloaders }: Context, id: string) =>
     dataloaders[loaderName].clear(id.toString());
 
-  // disable validate to simpify workshop
-  // const loadAll = validateContextUser(
   const loadAll = withConnectionCursor(
     model,
     load,

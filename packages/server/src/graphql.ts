@@ -1,4 +1,5 @@
 import { Request, Response } from "koa";
+import { GraphQLError } from "graphql";
 
 import { schema } from "./graphql/schema";
 import { getUser } from "./utils/auth";
@@ -17,15 +18,15 @@ const graphql = async (req: Request, res: Response) => {
       req,
       dataloaders,
     },
-    formatError: (error: GraphQLError) => {
-      console.log(error.message);
-      console.log(error.locations);
-      console.log(error.stack);
+    formatError: ({ message, locations, stack }: GraphQLError) => {
+      console.log(message);
+      console.log(locations);
+      console.log(stack);
 
       return {
-        message: error.message,
-        locations: error.locations,
-        stack: error.stack,
+        message,
+        locations,
+        stack,
       };
     },
   };

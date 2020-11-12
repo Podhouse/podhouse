@@ -1,5 +1,7 @@
-import mongoose, { Schema, Document, Model } from "mongoose";
+import mongoose, { Schema, Document, Model, Types } from "mongoose";
 import bcrypt from "bcrypt";
+
+const { ObjectId } = mongoose.Schema.Types;
 
 const UserSchema = new Schema(
   {
@@ -17,8 +19,9 @@ const UserSchema = new Schema(
     },
     subscriptions: [
       {
-        type: Schema.Types.ObjectId,
+        type: ObjectId,
         ref: "Podcast",
+        description: "Podcast that user is subscribed",
       },
     ],
   },
@@ -34,7 +37,7 @@ const UserSchema = new Schema(
 export interface IUser extends Document {
   email: string;
   password: string;
-  subscriptions: Array<Schema.Types.ObjectId>;
+  subscriptions: Array<Types.ObjectId>;
   createdAt: Date;
   updatedAt: Date;
   authenticate: (plainTextPassword: string) => boolean;

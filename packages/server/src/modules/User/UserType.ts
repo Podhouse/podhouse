@@ -1,5 +1,5 @@
 import { GraphQLObjectType, GraphQLString, GraphQLNonNull } from "graphql";
-import { globalIdField, connectionFromArray } from "graphql-relay";
+import { globalIdField } from "graphql-relay";
 
 import {
   connectionArgs,
@@ -30,6 +30,14 @@ const UserType: GraphQLObjectType = new GraphQLObjectType<
     email: {
       type: GraphQLNonNull(GraphQLString),
       resolve: ({ email }) => email,
+    },
+    subscriptions: {
+      type: GraphQLNonNull(PodcastConnection.connectionType),
+      args: {
+        ...connectionArgs,
+      },
+      resolve: async ({ subscriptions }, args, context: GraphQLContext) =>
+        await PodcastLoader.loadAll(context, subscriptions),
     },
     createdAt: {
       type: GraphQLString,
