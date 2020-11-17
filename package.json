@@ -9,6 +9,9 @@
       "packages/*"
     ]
   },
+  "engines": {
+    "node": "14.x"
+  },
   "scripts": {
     "web:dev": "yarn workspace @podhouse/web dev",
     "web:start": "yarn workspace @podhouse/web start",
