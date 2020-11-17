@@ -9,9 +9,6 @@
       "packages/*"
     ]
   },
-  "engines": {
-    "node": "14.x"
-  },
   "scripts": {
     "web:dev": "yarn workspace @podhouse/web dev",
     "web:start": "yarn workspace @podhouse/web start",
@@ -23,10 +20,11 @@
     "server:start": "yarn workspace @podhouse/server start",
     "server:build": "yarn workspace @podhouse/server build",
     "server:test": "yarn workspace @podhouse/server test",
+    "server:serve": "yarn workspace @podhouse/server serve",
     "server:lint": "yarn workspace @podhouse/server lint",
     "server:format": "yarn workspace @podhouse/server format",
     "lint:staged": "lint-staged",
-    "build": "yarn workspace @podhouse/web build & yarn workspace @podhouse/server build",
+    "build": "yarn workspace @playground/web build & yarn workspace @playground/server build",
     "lint": "yarn workspace @podhouse/web lint & yarn workspace @podhouse/server lint",
     "test": "yarn workspace @podhouse/web test & yarn workspace @podhouse/server test",
     "update-schema": "yarn workspace @podhouse/server update-schema",
