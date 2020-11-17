@@ -1,3 +1,5 @@
+import "@emotion/react";
+
 export interface StyleProps {
   primary: string;
   secondary: string;
@@ -423,6 +425,10 @@ const dark: StyleProps = {
     },
   },
 };
+
+declare module "@emotion/react" {
+  export type Theme = StyleProps;
+}
 
 const theme = (mode: any) => (mode === "dark" ? dark : light);
 

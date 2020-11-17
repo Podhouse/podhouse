@@ -1,7 +1,5 @@
 import styled from "@emotion/styled";
 
-import { StyleProps } from "src/system/styles.types";
-
 export const FAQItemsContainer = styled.div`
   width: 100%;
   max-width: 600px;
@@ -21,7 +19,7 @@ export const FAQItemContainer = styled.div`
   grid-row-gap: 10px;
 `;
 
-export const FAQItemTitle = styled.h4<StyleProps>`
+export const FAQItemTitle = styled.h4`
   font-family: Inter;
   font-style: normal;
   font-weight: 600;

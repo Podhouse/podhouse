@@ -1,8 +1,6 @@
 import styled from "@emotion/styled";
 
-import { StyleProps } from "src/system/styles.types";
-
-export const QueueModalContainer = styled.div<StyleProps>`
+export const QueueModalContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: max-content 1fr;

@@ -1,4 +1,4 @@
 {
   "presets": ["next/babel"],
-  "plugins": ["relay", "inline-react-svg", "emotion"]
+  "plugins": ["relay", "inline-react-svg", "@emotion"]
 }

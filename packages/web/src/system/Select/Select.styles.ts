@@ -1,8 +1,6 @@
 import styled from "@emotion/styled";
 
-import { StyleProps } from "src/system/styles.types";
-
-export const StyledSelect = styled.select<StyleProps>`
+export const StyledSelect = styled.select`
   width: 100%;
   height: 40px;
   font-family: Inter;

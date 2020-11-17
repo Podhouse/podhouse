@@ -1,8 +1,6 @@
 import styled from "@emotion/styled";
 
-import { StyleProps } from "src/system/styles.types";
-
-export const DashboardContainer = styled.main<StyleProps>`
+export const DashboardContainer = styled.main`
   width: 100%;
   height: 100%;
   grid-row: 1 / 2;

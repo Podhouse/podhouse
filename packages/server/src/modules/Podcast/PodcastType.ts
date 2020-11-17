@@ -7,21 +7,20 @@ import {
 } from "graphql";
 import { globalIdField } from "graphql-relay";
 
+import { IPodcast } from "./PodcastModel";
+import { load } from "./PodcastLoader";
+
+import * as EpisodeLoader from "../Episode/EpisodeLoader";
+import { EpisodeConnection } from "../Episode/EpisodeType";
+
+import { nodeInterface, registerTypeLoader } from "../Node/TypeRegister";
+
 import {
   connectionArgs,
   connectionDefinitions,
   mongooseIDResolver,
   withFilter,
-} from "@podhouse/graphql";
-
-import { load } from "./PodcastLoader";
-
-import { nodeInterface, registerTypeLoader } from "../Node/TypeRegister";
-
-import { IPodcast } from "./PodcastModel";
-
-import * as EpisodeLoader from "../Episode/EpisodeLoader";
-import { EpisodeConnection } from "../Episode/EpisodeType";
+} from "../../common/";
 
 import { GraphQLContext } from "../../types";
 

@@ -1,8 +1,8 @@
-import { createLoader } from "@podhouse/graphql";
+import UserModel from "./UserModel";
 
 import { registerLoader } from "../Loader/LoaderRegister";
 
-import UserModel from "./UserModel";
+import { createLoader } from "../../common/";
 
 const { Wrapper: User, getLoader, clearCache, load, loadAll } = createLoader({
   model: UserModel,

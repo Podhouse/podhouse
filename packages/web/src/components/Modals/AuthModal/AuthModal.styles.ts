@@ -1,7 +1,5 @@
 import styled from "@emotion/styled";
 
-import { StyleProps } from "src/system/styles.types";
-
 export const AuthModalContainer = styled.div`
   width: 100%;
   height: 100%;
@@ -11,7 +9,7 @@ export const AuthModalContainer = styled.div`
   padding: 30px;
 `;
 
-export const AutoModalInsideContainer = styled.div<StyleProps>`
+export const AutoModalInsideContainer = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -22,7 +20,7 @@ export const AutoModalInsideContainer = styled.div<StyleProps>`
   position: absolute;
 `;
 
-export const AuthModalLinkContainer = styled.div<StyleProps>`
+export const AuthModalLinkContainer = styled.div`
   display: flex;
   align-items: center;
   width: 100%;
@@ -41,7 +39,7 @@ export const AuthModalLinkContainer = styled.div<StyleProps>`
   }
 `;
 
-export const AuthModalLink = styled.a<StyleProps>`
+export const AuthModalLink = styled.a`
   font-family: Inter;
   font-style: normal;
   font-weight: normal;

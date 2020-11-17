@@ -1,7 +1,7 @@
 import { GraphQLString, GraphQLNonNull } from "graphql";
 import { mutationWithClientMutationId } from "graphql-relay";
 
-import { errorField, successField } from "@podhouse/graphql";
+import { errorField, successField } from "../../../common/";
 
 import { GraphQLContext } from "../../../types";
 

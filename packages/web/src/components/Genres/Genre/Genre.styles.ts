@@ -2,8 +2,6 @@ import styled from "@emotion/styled";
 
 import Heading from "src/system/Heading/Heading";
 
-import { StyleProps } from "src/system/styles.types";
-
 export const GenreContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr;
@@ -11,7 +9,7 @@ export const GenreContainer = styled.div`
   grid-gap: 10px;
 `;
 
-export const GenreAvatar = styled.div<StyleProps>`
+export const GenreAvatar = styled.div`
   grid-row: 1 / 3;
   grid-column: 1 / 2;
   display: grid;

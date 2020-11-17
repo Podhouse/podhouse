@@ -1,8 +1,6 @@
 import styled from "@emotion/styled";
 
-import { StyleProps } from "src/system/styles.types";
-
-export const SettingsModalContainer = styled.div<StyleProps>`
+export const SettingsModalContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(4, 35px);
@@ -25,7 +23,7 @@ export const SettingsModalContainer = styled.div<StyleProps>`
   -moz-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.05);
 `;
 
-export const SettingsModalLinkContainer = styled.div<StyleProps>`
+export const SettingsModalLinkContainer = styled.div`
   display: flex;
   align-items: center;
   width: 100%;
@@ -47,7 +45,7 @@ export const SettingsModalLinkContainer = styled.div<StyleProps>`
   }
 `;
 
-export const SettingsModalLink = styled.a<StyleProps>`
+export const SettingsModalLink = styled.a`
   font-family: Inter;
   font-style: normal;
   font-weight: normal;
@@ -57,7 +55,7 @@ export const SettingsModalLink = styled.a<StyleProps>`
   text-decoration: none;
 `;
 
-export const SettingsThemeContainer = styled.div<StyleProps>`
+export const SettingsThemeContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr;

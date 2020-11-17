@@ -27,7 +27,7 @@ router.all(
   }),
 );
 
-app.listen(process.env.GRAPHQL_PORT);
+app.listen(process.env.PORT || 4000);
 app.use(logger());
 app.use(cors());
 app.use(

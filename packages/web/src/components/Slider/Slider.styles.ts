@@ -1,8 +1,6 @@
 import styled from "@emotion/styled";
 
-import { StyleProps } from "src/system/styles.types";
-
-export const SliderContainer = styled.div<StyleProps>`
+export const SliderContainer = styled.div`
   width: 100%;
   height: auto;
   display: flex;

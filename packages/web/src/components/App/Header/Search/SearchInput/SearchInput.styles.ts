@@ -1,7 +1,5 @@
 import styled from "@emotion/styled";
 
-import { StyleProps } from "src/system/styles.types";
-
 export const SearchInputContainer = styled.div`
   width: 100%;
   height: 100%;
@@ -10,7 +8,7 @@ export const SearchInputContainer = styled.div`
   position: relative;
 `;
 
-export const SearchInputStyled = styled.input<StyleProps>`
+export const SearchInputStyled = styled.input`
   width: 100%;
   max-width: 500px;
   height: 40px;

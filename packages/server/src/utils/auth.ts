@@ -2,8 +2,7 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 
-import { IUser } from "../modules/User/UserModel";
-import { User } from "../models";
+import UserModel, { IUser } from "../modules/User/UserModel";
 
 dotenv.config();
 
@@ -13,7 +12,7 @@ export async function getUser(token: string) {
   try {
     const decodedToken = jwt.verify(token.substring(4), process.env.JWT_SECRET);
 
-    const user = await User.findOne({
+    const user = await UserModel.findOne({
       _id: (decodedToken as { id: string }).id,
     });
 

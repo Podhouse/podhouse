@@ -3,8 +3,6 @@ import styled from "@emotion/styled";
 import Button from "src/system/Button/Button";
 import Paragraph from "src/system/Paragraph/Paragraph";
 
-import { StyleProps } from "src/system/styles.types";
-
 export const EpisodeItemContainer = styled.div`
   width: 100%;
   height: auto;
@@ -38,7 +36,7 @@ export const EpisodeItemAvatar = styled.img`
   }
 `;
 
-export const EpisodeItemName = styled.a<StyleProps>`
+export const EpisodeItemName = styled.a`
   grid-column: 1 / 4;
   grid-row: 1 / 2;
   font-family: Inter;

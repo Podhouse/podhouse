@@ -1,7 +1,5 @@
 import styled from "@emotion/styled";
 
-import { StyleProps } from "src/system/styles.types";
-
 export const FeaturedContainer = styled.div`
   width: 100%;
   height: 100px;
@@ -25,7 +23,7 @@ export const FeaturedItemContainer = styled.div`
   }
 `;
 
-export const FeaturedAvatar = styled.img<StyleProps>`
+export const FeaturedAvatar = styled.img`
   object-fit: cover;
   border-radius: 5px;
   cursor: pointer;
@@ -36,7 +34,7 @@ export const FeaturedAvatar = styled.img<StyleProps>`
   background-color: ${({ theme }) => theme.bgPrimary};
 `;
 
-export const FeaturedEmptyAvatar = styled.div<StyleProps>`
+export const FeaturedEmptyAvatar = styled.div`
   width: 200px;
   height: 200px;
   border-radius: 5px;

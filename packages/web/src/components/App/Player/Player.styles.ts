@@ -1,8 +1,6 @@
 import styled from "@emotion/styled";
 
-import { StyleProps } from "src/system/styles.types";
-
-export const PlayerContainer = styled.div<StyleProps>`
+export const PlayerContainer = styled.div`
   width: 100%;
   height: 70px;
   position: fixed;

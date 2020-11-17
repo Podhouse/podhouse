@@ -1,7 +1,5 @@
 import styled from "@emotion/styled";
 
-import { StyleProps } from "src/system/styles.types";
-
 export const PodcastContainer = styled.div`
   width: 100%;
   height: 100%;
@@ -88,7 +86,7 @@ export const PodcastButtonsContainer = styled.div`
   }
 `;
 
-export const PodcastShareButton = styled.button<StyleProps>`
+export const PodcastShareButton = styled.button`
   display: none;
 
   @media screen and (min-width: 800px) {
@@ -139,7 +137,7 @@ export const PodcastEpisodesContainer = styled.div`
   grid-row-gap: 20px;
 `;
 
-export const PodcastLinksContainer = styled.div<StyleProps>`
+export const PodcastLinksContainer = styled.div`
   grid-row: 4 / 5;
   grid-column: 1 / 2;
   display: grid;
@@ -171,7 +169,7 @@ export const PodcastLinkContainer = styled.div`
   }
 `;
 
-export const PodcastLink = styled.a<StyleProps>`
+export const PodcastLink = styled.a`
   font-family: Inter;
   font-style: normal;
   font-weight: normal;
@@ -181,7 +179,7 @@ export const PodcastLink = styled.a<StyleProps>`
   text-decoration: none;
 `;
 
-export const PodcastSearchInputContainer = styled.form<StyleProps>`
+export const PodcastSearchInputContainer = styled.form`
   grid-row: 1 / 2;
   grid-column: 1 / 2;
 

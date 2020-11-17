@@ -1,8 +1,6 @@
 import styled from "@emotion/styled";
 
-import { StyleProps } from "src/system/styles.types";
-
-type Props = StyleProps & {
+type Props = {
   selected: boolean;
 };
 
@@ -16,7 +14,7 @@ export const PlansWholeContainer = styled.div<Props>`
   grid-row-gap: 50px;
 `;
 
-export const PlansContainer = styled.div<StyleProps>`
+export const PlansContainer = styled.div`
   width: 100%;
   max-width: 800px;
   background: ${({ theme }) => theme.bgPrimary};
@@ -31,7 +29,7 @@ export const PlansContainer = styled.div<StyleProps>`
   grid-column-gap: 10px;
 `;
 
-export const PlansHeader = styled.div<StyleProps>`
+export const PlansHeader = styled.div`
   grid-row: 1 / 2;
   grid-column: 1 / 7;
   width: 100%;

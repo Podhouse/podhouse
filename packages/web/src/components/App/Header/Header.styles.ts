@@ -1,8 +1,6 @@
 import styled from "@emotion/styled";
 
-import { StyleProps } from "src/system/styles.types";
-
-export const HeaderContainer = styled.header<StyleProps>`
+export const HeaderContainer = styled.header`
   display: none;
 
   @media screen and (min-width: 800px) {

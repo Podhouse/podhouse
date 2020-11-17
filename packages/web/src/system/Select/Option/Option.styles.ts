@@ -1,12 +1,10 @@
 import styled from "@emotion/styled";
 import { variant } from "styled-system";
 
-import { StyleProps } from "src/system/styles.types";
-
 type Props = {
   variant: "primary" | "secondary" | "disabled";
   size: "small" | "normal" | "big";
-} & StyleProps;
+};
 
 const StyledOption = styled("li")<Props>(
   {

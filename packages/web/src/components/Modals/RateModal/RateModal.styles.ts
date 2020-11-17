@@ -1,12 +1,10 @@
 import styled from "@emotion/styled";
 
-import { StyleProps } from "src/system/styles.types";
-
-type Props = StyleProps & {
+type Props = {
   active: boolean;
 };
 
-export const RateModalContainer = styled.div<StyleProps>`
+export const RateModalContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(5, 35px);
@@ -46,7 +44,7 @@ export const RateModalLinkContainer = styled.div<Props>`
   }
 `;
 
-export const RateModalLink = styled.a<StyleProps>`
+export const RateModalLink = styled.a`
   font-family: Inter;
   font-style: normal;
   font-weight: normal;

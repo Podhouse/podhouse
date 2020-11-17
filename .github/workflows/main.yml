@@ -40,3 +40,8 @@ jobs:
         run: yarn build
         env:
           CI: true
+
+      - name: Update schema
+        run: yarn update-schema
+        env:
+          CI: true

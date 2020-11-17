@@ -1,13 +1,12 @@
 import { GraphQLObjectType, GraphQLString, GraphQLNonNull } from "graphql";
 import { globalIdField } from "graphql-relay";
 
-import { connectionDefinitions, mongooseIDResolver } from "@podhouse/graphql";
-
 import { load } from "./EpisodeLoader";
+import { IEpisode } from "./EpisodeModel";
 
 import { nodeInterface, registerTypeLoader } from "../Node/TypeRegister";
 
-import { IEpisode } from "./EpisodeModel";
+import { connectionDefinitions, mongooseIDResolver } from "../../common/";
 
 import { GraphQLContext } from "../../types";
 

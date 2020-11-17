@@ -1,8 +1,6 @@
 import styled from "@emotion/styled";
 
-import { StyleProps } from "src/system/styles.types";
-
-export const VolumeContainer = styled.div<StyleProps>`
+export const VolumeContainer = styled.div`
   display: none;
 
   @media screen and (min-width: 800px) {

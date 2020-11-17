@@ -1,12 +1,21 @@
-"""The root of all... queries"""
+"""Query"""
 type Query {
   """Fetches an object given its ID"""
   node(
     """The ID of an object"""
     id: ID!
   ): Node
+
+  """Fetches objects given their IDs"""
+  nodes(
+    """The IDs of objects"""
+    ids: [ID!]!
+  ): [Node]!
   currentUser: User
-  getUsers(after: String, first: Int, before: String, last: Int, search: String): UserConnection
+  podcasts(after: String, first: Int, before: String, last: Int): PodcastConnection!
+  podcast(_id: ID!): Podcast
+  episodes(after: String, first: Int, before: String, last: Int): EpisodeConnection!
+  episode(_id: ID!): Episode
 }
 
 """An object with an ID"""
@@ -15,40 +24,47 @@ interface Node {
   id: ID!
 }
 
-"""User data"""
+"""UserType"""
 type User implements Node {
   """The ID of an object"""
   id: ID!
+
+  """mongoose _id"""
   _id: String!
   email: String!
-  notifications: Notifications
-  providers: [Provider]
-}
-
-"""Notifications"""
-type Notifications {
-  weekly: Boolean!
-  news: Boolean!
-}
-
-"""Provider"""
-type Provider {
-  id: String
-  provider: String
+  subscriptions(after: String, first: Int, before: String, last: Int): PodcastConnection!
+  createdAt: String
+  updatedAt: String
 }
 
 """A connection to a list of items."""
-type UserConnection {
+type PodcastConnection {
+  """Number of items in this connection"""
+  count: Int
+
+  """
+  A count of the total number of objects in this connection, ignoring pagination.
+    This allows a client to fetch the first five objects by passing "5" as the
+    argument to "first", then fetch the total count so it could display "5 of 83",
+    for example.
+  """
+  totalCount: Int
+
+  """Offset from start"""
+  startCursorOffset: Int!
+
+  """Offset till end"""
+  endCursorOffset: Int!
+
   """Information to aid in pagination."""
-  pageInfo: PageInfo!
+  pageInfo: PageInfoExtended!
 
   """A list of edges."""
-  edges: [UserEdge]
-  count: Int
+  edges: [PodcastEdge]!
 }
 
 """Information about pagination in a connection."""
-type PageInfo {
+type PageInfoExtended {
   """When paginating forwards, are there more items?"""
   hasNextPage: Boolean!
 
@@ -63,24 +79,98 @@ type PageInfo {
 }
 
 """An edge in a connection."""
-type UserEdge {
+type PodcastEdge {
   """The item at the end of the edge"""
-  node: User
+  node: Podcast
 
   """A cursor for use in pagination"""
   cursor: String!
+}
+
+"""PodcastType"""
+type Podcast implements Node {
+  """The ID of an object"""
+  id: ID!
+
+  """mongoose _id"""
+  _id: String!
+  appleId: Int!
+  name: String!
+  author: String!
+  description: String!
+  website: String!
+  rss: String!
+  image: String!
+  episodes(after: String, first: Int, before: String, last: Int): EpisodeConnection!
+  country: String!
+  primaryGenre: String!
+  genres: [String]
+  genreIds: [String]
+}
+
+"""A connection to a list of items."""
+type EpisodeConnection {
+  """Number of items in this connection"""
+  count: Int
+
+  """
+  A count of the total number of objects in this connection, ignoring pagination.
+    This allows a client to fetch the first five objects by passing "5" as the
+    argument to "first", then fetch the total count so it could display "5 of 83",
+    for example.
+  """
+  totalCount: Int
+
+  """Offset from start"""
+  startCursorOffset: Int!
+
+  """Offset till end"""
+  endCursorOffset: Int!
+
+  """Information to aid in pagination."""
+  pageInfo: PageInfoExtended!
+
+  """A list of edges."""
+  edges: [EpisodeEdge]!
+}
+
+"""An edge in a connection."""
+type EpisodeEdge {
+  """The item at the end of the edge"""
+  node: Episode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+"""EpisodeType"""
+type Episode implements Node {
+  """The ID of an object"""
+  id: ID!
+
+  """mongoose _id"""
+  _id: String!
+  title: String!
+  description: String!
+  publishedDate: String!
+  link: String!
+  image: String!
+  audio: String!
+  duration: String!
 }
 
 type Mutation {
   UserSignInWithEmail(input: UserSignInWithEmailInput!): UserSignInWithEmailPayload
   UserSignUpWithEmail(input: UserSignUpWithEmailInput!): UserSignUpWithEmailPayload
   UserChangePassword(input: UserChangePasswordInput!): UserChangePasswordPayload
-  UserChangeNotifications(input: UserChangeNotificationsInput!): UserChangeNotificationsPayload
+  UserSubscribeToPodcast(input: UserSubscribeToPodcastInput!): UserSubscribeToPodcastPayload
+  UserUnsubscribeToPodcast(input: UserUnsubscribeToPodcastInput!): UserUnsubscribeToPodcastPayload
 }
 
 type UserSignInWithEmailPayload {
   token: String
   error: String
+  success: String
   clientMutationId: String
 }
 
@@ -93,6 +183,7 @@ input UserSignInWithEmailInput {
 type UserSignUpWithEmailPayload {
   token: String
   error: String
+  success: String
   clientMutationId: String
 }
 
@@ -103,8 +194,8 @@ input UserSignUpWithEmailInput {
 }
 
 type UserChangePasswordPayload {
-  message: String
   error: String
+  success: String
   clientMutationId: String
 }
 
@@ -114,14 +205,24 @@ input UserChangePasswordInput {
   clientMutationId: String
 }
 
-type UserChangeNotificationsPayload {
+type UserSubscribeToPodcastPayload {
   message: String
   error: String
   clientMutationId: String
 }
 
-input UserChangeNotificationsInput {
-  weekly: Boolean!
-  news: Boolean!
+input UserSubscribeToPodcastInput {
+  podcastId: String!
+  clientMutationId: String
+}
+
+type UserUnsubscribeToPodcastPayload {
+  message: String
+  error: String
+  clientMutationId: String
+}
+
+input UserUnsubscribeToPodcastInput {
+  podcastId: String!
   clientMutationId: String
 }

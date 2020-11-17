@@ -1,9 +1,9 @@
-import { createLoader } from "@podhouse/graphql";
+import PodcastModel from "./PodcastModel";
+import { podcastFilterMapping } from "./PodcastFilterInputType";
 
 import { registerLoader } from "../Loader/LoaderRegister";
 
-import PodcastModel from "./PodcastModel";
-import { podcastFilterMapping } from "./PodcastFilterInputType";
+import { createLoader } from "../../common/";
 
 const { Wrapper: Podcast, getLoader, clearCache, load, loadAll } = createLoader(
   {

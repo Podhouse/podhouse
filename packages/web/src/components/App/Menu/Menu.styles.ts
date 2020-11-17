@@ -1,8 +1,6 @@
 import styled from "@emotion/styled";
 
-import { StyleProps } from "src/system/styles.types";
-
-export const MenuContainer = styled.aside<StyleProps>`
+export const MenuContainer = styled.aside`
   width: 100%;
   height: 60px;
   bottom: 0px;

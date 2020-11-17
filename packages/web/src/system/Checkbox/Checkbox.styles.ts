@@ -1,12 +1,8 @@
 import styled from "@emotion/styled";
 
-import { StyleProps } from "src/system/styles.types";
-
 interface LabelProps {
   disabled?: boolean;
 }
-
-type Props = LabelProps & StyleProps;
 
 export const CheckboxContainer = styled.div`
   width: auto;
@@ -16,7 +12,7 @@ export const CheckboxContainer = styled.div`
   align-items: center;
 `;
 
-export const StyledCheckbox = styled.input<Props>`
+export const StyledCheckbox = styled.input<LabelProps>`
   --active: #000000;
   --active-inner: #ffffff;
   --focus: 2px rgba(52, 93, 238, 0.3);
@@ -102,7 +98,7 @@ export const StyledCheckbox = styled.input<Props>`
   }
 `;
 
-export const StyledLabel = styled.label<Props>`
+export const StyledLabel = styled.label<LabelProps>`
   font-family: Inter;
   font-style: normal;
   font-weight: 400;

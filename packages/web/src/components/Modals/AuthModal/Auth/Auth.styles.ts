@@ -1,8 +1,6 @@
 import styled from "@emotion/styled";
 
-import { StyleProps } from "src/system/styles.types";
-
-export const AuthContainer = styled.div<StyleProps>`
+export const AuthContainer = styled.div`
   width: 100%;
   height: 100%;
   background-color: ${({ theme }) => theme.bgPrimary};
@@ -16,7 +14,7 @@ export const AuthContainer = styled.div<StyleProps>`
   border-radius: 5px;
 `;
 
-export const AuthInsideContainer = styled.div<StyleProps>`
+export const AuthInsideContainer = styled.div`
   width: 100%;
   height: 100%;
   max-width: 440px;
@@ -42,7 +40,7 @@ export const AuthTextContainer = styled.div`
   justify-content: flex-center;
 `;
 
-export const AuthFormContainer = styled.form<StyleProps>`
+export const AuthFormContainer = styled.form`
   width: 100%;
   height: 100%;
   background-color: ${({ theme }) => theme.bgPrimary};
@@ -64,7 +62,7 @@ export const AuthLinksContainer = styled.div`
   justify-self: center;
 `;
 
-export const AuthCircle = styled.div<StyleProps>`
+export const AuthCircle = styled.div`
   width: 2px;
   height: 2px;
   border-radius: 50%;

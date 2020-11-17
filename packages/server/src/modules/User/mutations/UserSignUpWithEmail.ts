@@ -1,9 +1,9 @@
 import { GraphQLString, GraphQLNonNull } from "graphql";
 import { mutationWithClientMutationId } from "graphql-relay";
 
-import { errorField, successField } from "@podhouse/graphql";
-
 import UserModel from "../UserModel";
+
+import { errorField, successField } from "../../../common/";
 
 import { generateToken } from "../../../utils/auth";
 

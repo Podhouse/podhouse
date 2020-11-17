@@ -1,7 +1,5 @@
 import styled from "@emotion/styled";
 
-import { StyleProps } from "src/system/styles.types";
-
 export const EpisodeContainer = styled.div`
   width: 100%;
   height: 100%;
@@ -88,7 +86,7 @@ export const EpisodeListenButtonContainer = styled.div`
   }
 `;
 
-export const EpisodeShareButton = styled.button<StyleProps>`
+export const EpisodeShareButton = styled.button`
   display: none;
 
   @media screen and (min-width: 800px) {

@@ -1,7 +1,5 @@
 import styled from "@emotion/styled";
 
-import { StyleProps } from "src/system/styles.types";
-
 interface AssetsContainerProps {
   color: string;
 }
@@ -37,7 +35,7 @@ export const DownloadHeaderContainer = styled.div`
   justify-items: flex-start;
 `;
 
-export const DownloadTitle = styled.h1<StyleProps>`
+export const DownloadTitle = styled.h1`
   text-align: center;
   font-family: Inter;
   font-style: normal;
@@ -53,7 +51,7 @@ export const DownloadTitle = styled.h1<StyleProps>`
   }
 `;
 
-export const DownloadLink = styled.a<StyleProps>`
+export const DownloadLink = styled.a`
   font-family: Inter;
   font-style: normal;
   font-weight: 500;
@@ -65,9 +63,7 @@ export const DownloadLink = styled.a<StyleProps>`
   text-decoration: none;
 `;
 
-type Props = StyleProps & AssetsContainerProps;
-
-export const DownloadAssetsContainer = styled.div<Props>`
+export const DownloadAssetsContainer = styled.div<AssetsContainerProps>`
   width: 100%;
   height: 200px;
   display: flex;

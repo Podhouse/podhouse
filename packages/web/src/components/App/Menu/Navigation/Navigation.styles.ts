@@ -1,7 +1,5 @@
 import styled from "@emotion/styled";
 
-import { StyleProps } from "src/system/styles.types";
-
 export const NavigationContainer = styled.div`
   width: 100%;
   max-width: 500px;
@@ -34,7 +32,7 @@ export const NavigationContainer = styled.div`
   }
 `;
 
-export const NavigationItemContainer = styled.div<StyleProps>`
+export const NavigationItemContainer = styled.div`
   width: 100%;
   height: 100%;
   display: flex;

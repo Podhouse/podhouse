@@ -1,6 +1,3 @@
-import { DataLoaderKey } from "@podhouse/graphql";
-import DataLoader from "dataloader";
-
 export interface DataLoaders {
   UserLoader: ReturnType<typeof import("../User/UserLoader").getLoader>;
   PodcastLoader: ReturnType<

@@ -1,7 +1,5 @@
 import styled from "@emotion/styled";
 
-import { StyleProps } from "src/system/styles.types";
-
 export const FeaturesContainer = styled.div`
   width: 100%;
   height: auto;
@@ -29,7 +27,7 @@ export const FeaturesItemContainer = styled.div`
   grid-column-gap: 20px;
 `;
 
-export const FeaturesItemIconContainer = styled.div<StyleProps>`
+export const FeaturesItemIconContainer = styled.div`
   width: 40px;
   height: 40px;
   grid-column: 1 / 2;
@@ -53,7 +51,7 @@ export const FeaturesItemTextContainer = styled.div`
   justify-items: flex-start;
 `;
 
-export const FeaturesItemTitle = styled.h3<StyleProps>`
+export const FeaturesItemTitle = styled.h3`
   max-width: 350px;
   font-family: Inter;
   font-style: normal;
@@ -65,7 +63,7 @@ export const FeaturesItemTitle = styled.h3<StyleProps>`
   text-align: start;
 `;
 
-export const FeaturesItemText = styled.p<StyleProps>`
+export const FeaturesItemText = styled.p`
   max-width: 350px;
   font-family: Inter;
   font-style: normal;

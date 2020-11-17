@@ -1,7 +1,5 @@
 import styled from "@emotion/styled";
 
-import { StyleProps } from "src/system/styles.types";
-
 export const ControlsContainer = styled.div`
   grid-row: 1 / 3;
   grid-column: 1 / 3;
@@ -60,7 +58,7 @@ export const ControlsSliderContainer = styled.div`
   }
 `;
 
-export const ControlsTime = styled.p<StyleProps>`
+export const ControlsTime = styled.p`
   display: none;
 
   @media screen and (min-width: 800px) {

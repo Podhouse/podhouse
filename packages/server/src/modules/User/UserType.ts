@@ -1,20 +1,19 @@
 import { GraphQLObjectType, GraphQLString, GraphQLNonNull } from "graphql";
 import { globalIdField } from "graphql-relay";
 
+import { IUser } from "./UserModel";
+import { load } from "./UserLoader";
+
+import * as PodcastLoader from "../Podcast/PodcastLoader";
+import { PodcastConnection } from "../Podcast/PodcastType";
+
+import { nodeInterface, registerTypeLoader } from "../Node/TypeRegister";
+
 import {
   connectionArgs,
   connectionDefinitions,
   mongooseIDResolver,
-} from "@podhouse/graphql";
-
-import { load } from "./UserLoader";
-
-import { nodeInterface, registerTypeLoader } from "../Node/TypeRegister";
-
-import { IUser } from "./UserModel";
-
-import * as PodcastLoader from "../Podcast/PodcastLoader";
-import { PodcastConnection } from "../Podcast/PodcastType";
+} from "../../common/";
 
 import { GraphQLContext } from "../../types";
 

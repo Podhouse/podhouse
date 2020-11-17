@@ -1,15 +1,13 @@
 import styled from "@emotion/styled";
 
-import { StyleProps } from "src/system/styles.types";
-
-export const LandingContainer = styled.div<StyleProps>`
+export const LandingContainer = styled.div`
   width: 100%;
   height: auto;
   display: grid;
   background-color: ${({ theme }) => theme.bgPrimary};
 `;
 
-export const LandingInnerContainer = styled.div<StyleProps>`
+export const LandingInnerContainer = styled.div`
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;

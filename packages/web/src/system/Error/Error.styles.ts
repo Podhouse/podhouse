@@ -1,5 +1,8 @@
 import styled from "@emotion/styled";
+import { Theme } from "@emotion/react";
 import { padding, color, margin, layout, space, variant } from "styled-system";
+
+type Props = Theme & any;
 
 const variants = variant({
   prop: "variant",
@@ -13,6 +16,7 @@ const variants = variant({
 
 const sizes = variant({
   prop: "size",
+  scale: "errors",
   variants: {
     small: {
       fontSize: 12,
@@ -41,7 +45,7 @@ export const ErrorContainer = styled.div`
   justify-content: center;
 `;
 
-export const ErrorText = styled.p`
+export const ErrorText = styled.p<Props>`
   margin: 0;
   outline: none;
   font-family: Inter;
