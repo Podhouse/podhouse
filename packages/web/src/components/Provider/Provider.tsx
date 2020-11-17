@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { Global } from "@emotion/core";
+import { Global } from "@emotion/react";
 import { RehawkProvider } from "rehawk";
 
 import App from "src/components/App/App";
