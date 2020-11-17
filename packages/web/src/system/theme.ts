@@ -427,7 +427,7 @@ const dark: StyleProps = {
 };
 
 declare module "@emotion/react" {
-  export type Theme = StyleProps;
+  export interface Theme extends StyleProps {}
 }
 
 const theme = (mode: any) => (mode === "dark" ? dark : light);

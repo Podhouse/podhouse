@@ -1,6 +1,6 @@
 import React from "react";
 import Head from "next/head";
-import { Global } from "@emotion/core";
+import { Global } from "@emotion/react";
 
 import { LandingContainer, LandingInnerContainer } from "./Landing.styles";
 

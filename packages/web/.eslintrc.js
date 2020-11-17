@@ -30,6 +30,7 @@ module.exports = {
     "react/prop-types": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "@typescript-eslint/no-empty-function": "off",
+    "@typescript-eslint/no-empty-interface": 0,
     "@typescript-eslint/ban-types": "off",
     "react/display-name": "off",
   },

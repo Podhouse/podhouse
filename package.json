@@ -24,11 +24,10 @@
     "server:lint": "yarn workspace @podhouse/server lint",
     "server:format": "yarn workspace @podhouse/server format",
     "lint:staged": "lint-staged",
-    "build": "yarn workspace @playground/web build & yarn workspace @playground/server build",
+    "build": "yarn workspace @podhouse/web build & yarn workspace @podhouse/server build",
     "lint": "yarn workspace @podhouse/web lint & yarn workspace @podhouse/server lint",
     "test": "yarn workspace @podhouse/web test & yarn workspace @podhouse/server test",
-    "update-schema": "yarn workspace @podhouse/server update-schema",
-    "relay": "yarn workspace @podhouse/web relay"
+    "update-schema": "yarn workspace @podhouse/server update-schema"
   },
   "devDependencies": {
     "husky": "^4.3.0",
@@ -44,6 +43,7 @@
   },
   "lint-staged": {
     "*.{js,ts,tsx}": [
+      "yarn update-schema",
       "yarn lint",
       "git add"
     ]
