@@ -1,21 +1,21 @@
 import { GraphQLObjectType, GraphQLString, GraphQLNonNull } from "graphql";
-import { globalIdField } from "graphql-relay";
+import { globalIdField, connectionFromArray } from "graphql-relay";
 
 import { IUser } from "./UserModel";
 import { load } from "./UserLoader";
 
-import * as PodcastLoader from "../Podcast/PodcastLoader";
 import { PodcastConnection } from "../Podcast/PodcastType";
 
 import { nodeInterface, registerTypeLoader } from "../Node/TypeRegister";
 
 import {
-  connectionArgs,
   connectionDefinitions,
+  connectionArgs,
   mongooseIDResolver,
 } from "../../common/";
 
 import { GraphQLContext } from "../../types";
+import { IPodcast } from "../Podcast/PodcastModel";
 
 const UserType: GraphQLObjectType = new GraphQLObjectType<
   IUser,
@@ -35,15 +35,22 @@ const UserType: GraphQLObjectType = new GraphQLObjectType<
       args: {
         ...connectionArgs,
       },
-      resolve: async ({ subscriptions }, args, context: GraphQLContext) =>
-        await PodcastLoader.loadAll(context, subscriptions),
+      resolve: async (user, args, context) => {
+        const podcasts: Array<
+          IPodcast | Error
+        > = await context.dataloaders.PodcastLoader.loadMany(
+          user.subscriptions.map((id) => id.toString()),
+        );
+        console.log(connectionFromArray(podcasts, args));
+        return connectionFromArray(podcasts, args);
+      },
     },
     createdAt: {
-      type: GraphQLString,
+      type: GraphQLNonNull(GraphQLString),
       resolve: (obj) => (obj.createdAt ? obj.createdAt.toISOString() : null),
     },
     updatedAt: {
-      type: GraphQLString,
+      type: GraphQLNonNull(GraphQLString),
       resolve: (obj) => (obj.updatedAt ? obj.updatedAt.toISOString() : null),
     },
   }),
