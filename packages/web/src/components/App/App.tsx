@@ -1,5 +1,6 @@
 import React from "react";
 import Head from "next/head";
+import { RelayEnvironmentProvider } from "react-relay/hooks";
 
 import { AppContainer } from "./App.styles";
 
@@ -17,6 +18,8 @@ import { useAuthContext } from "src/context/Auth/Auth";
 import { useSettingsContext } from "src/context/Settings/Settings";
 import { useQueueContext } from "src/context/Queue/Queue";
 import { useRateContext } from "src/context/Rate/Rate";
+
+import RelayEnvironment from "src/relay/RelayEnvironment";
 
 interface AppProps {
   children: React.ReactNode;
@@ -65,7 +68,7 @@ const App = ({ children }: AppProps) => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
 
-      <>
+      <RelayEnvironmentProvider environment={RelayEnvironment()}>
         {renderAuthModal()}
         {renderSettingsModal()}
         {renderQueueModal()}
@@ -77,7 +80,7 @@ const App = ({ children }: AppProps) => {
           <Player />
           <Menu />
         </AppContainer>
-      </>
+      </RelayEnvironmentProvider>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import { useRouter } from "next/router";
 
-export const TOKEN_KEY = "reacteurope";
+export const TOKEN_KEY = "podhouse";
 
 export const getToken = () => {
   return localStorage.getItem(TOKEN_KEY);

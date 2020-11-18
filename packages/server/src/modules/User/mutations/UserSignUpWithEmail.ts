@@ -29,7 +29,7 @@ export default mutationWithClientMutationId({
 
     if (userExists) {
       return {
-        error: "Email is already in use",
+        error: "Email address is already in use",
       };
     }
 

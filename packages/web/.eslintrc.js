@@ -32,6 +32,7 @@ module.exports = {
     "@typescript-eslint/no-empty-function": "off",
     "@typescript-eslint/no-empty-interface": 0,
     "@typescript-eslint/ban-types": "off",
+    "@typescript-eslint/ban-ts-comment": 0,
     "react/display-name": "off",
   },
 };

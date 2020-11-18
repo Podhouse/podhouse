@@ -4,6 +4,7 @@ import { WithTranslation } from "next-i18next";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
+import { useMutation } from "react-relay/hooks";
 
 import {
   AuthTextContainer,
@@ -19,6 +20,14 @@ import Link from "src/system/Link/Link";
 
 import { useAuthContext } from "src/context/Auth/Auth";
 
+import UserSignUpWithEmail from "./UserSignUpWithEmail";
+import {
+  UserSignUpWithEmailMutation,
+  UserSignUpWithEmailMutationResponse,
+} from "./__generated__/UserSignUpWithEmailMutation.graphql";
+
+import { updateToken } from "src/utils/auth";
+
 interface SignUpFormProps {
   email: string;
   password: string;
@@ -30,16 +39,60 @@ const validationSchema = Yup.object().shape({
 });
 
 const SignUp = ({ t }: WithTranslation) => {
-  const [, , , send] = useAuthContext();
+  const [, handleAuth, , send] = useAuthContext();
+  const [userSignUpWithEmail, isPending] = useMutation<
+    UserSignUpWithEmailMutation
+  >(UserSignUpWithEmail);
 
-  const { register, handleSubmit, errors, formState } = useForm<
-    SignUpFormProps
-  >({
+  const {
+    register,
+    handleSubmit,
+    setError,
+    errors,
+    formState,
+    getValues,
+  } = useForm<SignUpFormProps>({
     mode: "onChange",
     resolver: yupResolver(validationSchema),
   });
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = () => {
+    userSignUpWithEmail({
+      variables: {
+        input: {
+          email: getValues().email,
+          password: getValues().password,
+        },
+      },
+      onCompleted: ({
+        UserSignUpWithEmail,
+      }: UserSignUpWithEmailMutationResponse) => {
+        if (UserSignUpWithEmail.error) {
+          const error = UserSignUpWithEmail.error;
+
+          if (error === "Email address is already in use") {
+            setError("email", {
+              type: "manual",
+              message: error,
+            });
+          } else {
+            setError("email", {
+              type: "manual",
+              message: error,
+            });
+            setError("password", {
+              type: "manual",
+              message: error,
+            });
+          }
+          return;
+        }
+
+        updateToken(UserSignUpWithEmail.token);
+        handleAuth();
+      },
+    });
+  };
 
   return (
     <>
@@ -76,7 +129,7 @@ const SignUp = ({ t }: WithTranslation) => {
           type="submit"
           variant="primary"
           size="normal"
-          isDisabled={!formState.isValid || formState.isSubmitting}
+          isDisabled={!formState.isValid || formState.isSubmitting || isPending}
         >
           {t("sign-up")}
         </Button>
