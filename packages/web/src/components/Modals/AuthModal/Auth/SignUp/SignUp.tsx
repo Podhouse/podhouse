@@ -52,6 +52,8 @@ const SignUp = ({ t }: WithTranslation) => {
     formState,
     getValues,
   } = useForm<SignUpFormProps>({
+    mode: "onChange",
+    reValidateMode: "onChange",
     resolver: yupResolver(validationSchema),
   });
 
@@ -68,22 +70,10 @@ const SignUp = ({ t }: WithTranslation) => {
       }: UserSignUpWithEmailMutationResponse) => {
         if (UserSignUpWithEmail.error) {
           const error = UserSignUpWithEmail.error;
-
-          if (error === "Email address is already in use") {
-            setError("email", {
-              type: "manual",
-              message: error,
-            });
-          } else {
-            setError("email", {
-              type: "manual",
-              message: error,
-            });
-            setError("password", {
-              type: "manual",
-              message: error,
-            });
-          }
+          setError("email", {
+            type: "manual",
+            message: error,
+          });
           return;
         }
 

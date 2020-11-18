@@ -45,6 +45,8 @@ const ChangePassword = ({ t }: WithTranslation) => {
     formState,
     getValues,
   } = useForm<ChangePasswordFormProps>({
+    mode: "onChange",
+    reValidateMode: "onChange",
     resolver: yupResolver(validationSchema),
   });
 

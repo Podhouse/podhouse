@@ -52,6 +52,8 @@ const SignIn = ({ t }: WithTranslation) => {
     formState,
     getValues,
   } = useForm<SignInFormProps>({
+    mode: "onChange",
+    reValidateMode: "onChange",
     resolver: yupResolver(validationSchema),
   });
 
@@ -139,7 +141,11 @@ const SignIn = ({ t }: WithTranslation) => {
         </Button>
 
         <AuthLinksContainer>
-          <Link variant="secondary" size="normal" onClick={() => send("RESET")}>
+          <Link
+            variant="secondary"
+            size="normal"
+            onClick={() => send("SIGNUP")}
+          >
             {t("don't-have-an-account?")}
           </Link>
 
