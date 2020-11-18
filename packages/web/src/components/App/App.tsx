@@ -1,6 +1,6 @@
 import React from "react";
 import Head from "next/head";
-import { RelayEnvironmentProvider } from "react-relay/hooks";
+import { RelayEnvironmentProvider } from "relay-hooks";
 
 import { AppContainer } from "./App.styles";
 
@@ -26,23 +26,21 @@ interface AppProps {
 }
 
 const App = ({ children }: AppProps) => {
-  const [auth, handleAuth] = useAuthContext();
+  const [, auth] = useAuthContext();
   const [settings] = useSettingsContext();
   const [queue] = useQueueContext();
   const [rate, handleRate] = useRateContext();
 
   const renderAuthModal = () => {
-    if (auth.matches("open")) {
-      return <AuthModal auth={auth} handleAuth={handleAuth} />;
+    if (auth === true) {
+      return <AuthModal />;
     }
     return null;
   };
 
   const renderSettingsModal = () => {
-    if (auth.matches("loggedIn")) {
-      if (settings.matches("open")) {
-        return <SettingsModal />;
-      }
+    if (settings.matches("open")) {
+      return <SettingsModal />;
     }
     return null;
   };

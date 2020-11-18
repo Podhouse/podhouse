@@ -39,7 +39,7 @@ const validationSchema = Yup.object().shape({
 });
 
 const SignUp = ({ t }: WithTranslation) => {
-  const [, handleAuth, , send] = useAuthContext();
+  const [, , handleAuth, send] = useAuthContext();
   const [userSignUpWithEmail, isPending] = useMutation<
     UserSignUpWithEmailMutation
   >(UserSignUpWithEmail);
@@ -52,7 +52,6 @@ const SignUp = ({ t }: WithTranslation) => {
     formState,
     getValues,
   } = useForm<SignUpFormProps>({
-    mode: "onChange",
     resolver: yupResolver(validationSchema),
   });
 

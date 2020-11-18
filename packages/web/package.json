@@ -60,6 +60,7 @@
     "imagemin-optipng": "^8.0.0",
     "imagemin-pngquant": "^9.0.1",
     "imagemin-svgo": "^8.0.0",
+    "isomorphic-unfetch": "^3.1.0",
     "keen-slider": "^5.3.5",
     "lint-staged": "^10.5.1",
     "next": "^10.0.1",

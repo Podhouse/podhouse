@@ -39,7 +39,7 @@ const validationSchema = Yup.object().shape({
 });
 
 const SignIn = ({ t }: WithTranslation) => {
-  const [, handleAuth, , send] = useAuthContext();
+  const [, , handleAuth, send] = useAuthContext();
   const [userSignInWithEmail, isPending] = useMutation<
     UserSignInWithEmailMutation
   >(UserSignInWithEmail);
@@ -52,7 +52,6 @@ const SignIn = ({ t }: WithTranslation) => {
     formState,
     getValues,
   } = useForm<SignInFormProps>({
-    mode: "onChange",
     resolver: yupResolver(validationSchema),
   });
 
@@ -140,11 +139,7 @@ const SignIn = ({ t }: WithTranslation) => {
         </Button>
 
         <AuthLinksContainer>
-          <Link
-            variant="secondary"
-            size="normal"
-            onClick={() => send("SIGNUP")}
-          >
+          <Link variant="secondary" size="normal" onClick={() => send("RESET")}>
             {t("don't-have-an-account?")}
           </Link>
 

@@ -4,6 +4,7 @@ import { WithTranslation } from "next-i18next";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
+import { useMutation } from "react-relay/hooks";
 
 import {
   SettingsItemContainer,
@@ -12,31 +13,72 @@ import {
   SettingsItemContentContainer,
 } from "../Settings.styles";
 
-import { PasswordFormContainer } from "./Password.styles";
+import { ChangePasswordFormContainer } from "./ChangePassword.styles";
 
 import Button from "src/system/Button/Button";
 import Input from "src/system/Input/Input";
 import Separator from "src/system/Separator/Separator";
 
-interface PasswordFormProps {
-  currentPassword: string;
+import UserChangePassword from "src/components/Modals/AuthModal/Auth/ChangePassword/UserChangePassword";
+
+interface ChangePasswordFormProps {
+  oldPassword: string;
   newPassword: string;
 }
 
 const validationSchema = Yup.object().shape({
-  currentPassword: Yup.string().required("Current password is required"),
+  oldPassword: Yup.string().required("Current password is required"),
   newPassword: Yup.string().required("New password is required"),
 });
 
-const Password = ({ t }: WithTranslation) => {
-  const { register, handleSubmit, errors, formState } = useForm<
-    PasswordFormProps
-  >({
-    mode: "onChange",
+const ChangePassword = ({ t }: WithTranslation) => {
+  const [userChangePassword, isPending] = useMutation(UserChangePassword);
+
+  const {
+    register,
+    handleSubmit,
+    setError,
+    errors,
+    formState,
+    getValues,
+  } = useForm<ChangePasswordFormProps>({
     resolver: yupResolver(validationSchema),
   });
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = () => {
+    userChangePassword({
+      variables: {
+        input: {
+          oldPassword: getValues().oldPassword,
+          newPassword: getValues().newPassword,
+        },
+      },
+      onCompleted: ({ UserChangePassword }: any) => {
+        if (UserChangePassword.error) {
+          const error = UserChangePassword.error;
+
+          if (error === "Invalid password") {
+            setError("oldPassword", {
+              type: "manual",
+              message: error,
+            });
+          } else {
+            setError("oldPassword", {
+              type: "manual",
+              message: error,
+            });
+            setError("newPassword", {
+              type: "manual",
+              message: error,
+            });
+          }
+          return;
+        }
+
+        console.log("success");
+      },
+    });
+  };
 
   return (
     <SettingsItemContainer>
@@ -55,16 +97,16 @@ const Password = ({ t }: WithTranslation) => {
       </SettingsItemHeaderContainer>
 
       <SettingsItemContentContainer>
-        <PasswordFormContainer onSubmit={handleSubmit(onSubmit)}>
+        <ChangePasswordFormContainer onSubmit={handleSubmit(onSubmit)}>
           <Input
             type="password"
-            name="currentPassword"
+            name="oldPassword"
             label={t("current-password")}
             placeholder={t("current-password")}
             variant="primary"
             scale="normal"
             ref={register}
-            error={errors.currentPassword?.message}
+            error={errors.oldPassword?.message}
           />
 
           <Input
@@ -82,16 +124,20 @@ const Password = ({ t }: WithTranslation) => {
             type="submit"
             variant="primary"
             size="normal"
-            isDisabled={!formState.isValid || formState.isSubmitting}
+            isDisabled={
+              !formState.isValid || formState.isSubmitting || isPending
+            }
           >
             {t("save")}
           </Button>
-        </PasswordFormContainer>
+        </ChangePasswordFormContainer>
       </SettingsItemContentContainer>
     </SettingsItemContainer>
   );
 };
 
-Password.getInitialProps = async () => ({ namespacesRequired: ["settings"] });
+ChangePassword.getInitialProps = async () => ({
+  namespacesRequired: ["settings"],
+});
 
-export default withTranslation("settings")(Password);
+export default withTranslation("settings")(ChangePassword);

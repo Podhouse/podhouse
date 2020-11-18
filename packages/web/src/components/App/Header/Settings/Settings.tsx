@@ -1,41 +1,70 @@
 import React from "react";
-import { withTranslation } from "i18n";
-import { WithTranslation } from "next-i18next";
 import { User } from "react-feather";
+import { useQuery, graphql, STORE_OR_NETWORK } from "relay-hooks";
+
+import withData from "src/relay/withData";
+
+import { SettingsContainer } from "./Settings.styles";
 
 import { useAuthContext } from "src/context/Auth/Auth";
 import { useSettingsContext } from "src/context/Settings/Settings";
 
-import { SettingsContainer } from "./Settings.styles";
-
 import Link from "src/system/Link/Link";
 
-const Settings = ({ t }: WithTranslation) => {
-  const [auth, handleAuth] = useAuthContext();
-  const [, handleSettings] = useSettingsContext();
+import useAuthUser from "src/hooks/useAuthUser";
 
-  const renderSettings = () => {
-    if (auth.matches("loggedIn")) {
+import { SettingsQuery } from "./__generated__/SettingsQuery.graphql";
+
+const query = graphql`
+  query SettingsQuery {
+    currentUser {
+      ...useAuthUser_user
+    }
+  }
+`;
+
+const variables = {};
+
+const Settings = () => {
+  const [, , handleAuth] = useAuthContext();
+  const [, handleSettings] = useSettingsContext();
+  const { props, error } = useQuery<SettingsQuery>(query, variables, {
+    fetchPolicy: STORE_OR_NETWORK,
+  });
+
+  if (props) {
+    const isAuthenticated = useAuthUser(props.currentUser);
+
+    console.log("isAuthenticated: ", isAuthenticated);
+    console.log("props.currentUser: ", props.currentUser);
+
+    if (!isAuthenticated) {
       return (
+        <SettingsContainer>
+          <Link onClick={handleAuth} variant="primary" size="normal">
+            Login
+          </Link>
+        </SettingsContainer>
+      );
+    }
+
+    return (
+      <SettingsContainer>
         <User
           onClick={handleSettings}
           size={16}
           color="#B7B7B7"
           strokeWidth={1.7}
         />
-      );
-    }
-
-    return (
-      <Link onClick={handleAuth} variant="primary" size="normal">
-        {t("login")}
-      </Link>
+      </SettingsContainer>
     );
-  };
-
-  return <SettingsContainer>{renderSettings()}</SettingsContainer>;
+  } else if (error) {
+    return <div>error</div>;
+  }
+  return <SettingsContainer>...</SettingsContainer>;
 };
 
-Settings.getInitialProps = async () => ({ namespacesRequired: ["header"] });
-
-export default withTranslation("header")(Settings);
+export default withData(Settings, {
+  query,
+  variables,
+});

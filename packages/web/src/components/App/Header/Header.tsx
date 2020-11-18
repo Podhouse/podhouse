@@ -1,9 +1,9 @@
 import React from "react";
 
+import { HeaderContainer } from "./Header.styles";
+
 import Search from "./Search/Search";
 import Settings from "./Settings/Settings";
-
-import { HeaderContainer } from "./Header.styles";
 
 const Header = () => (
   <HeaderContainer>
