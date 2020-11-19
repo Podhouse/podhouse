@@ -13,26 +13,23 @@ import {
 import { PodcastItemWithDetailsProps } from "./PodcastItemWithDetails.types";
 
 const PodcastItemWithDetails = ({ node }: PodcastItemWithDetailsProps) => {
-  const { name, author, image } = node;
+  const { _id, name, author, image } = node;
 
   const imageAlt = `${name} image`;
 
   return (
     <PodcastItemWithDetailsContainer>
-      <NextLink href="/app/podcast/[podcast]" as="/app/podcast/123">
-        <Link variant="secondary" size="normal" href="/app/podcast/[podcast]">
+      <NextLink href={{ pathname: `/app/podcast/${_id}`, query: { _id: _id } }}>
+        <Link variant="secondary" size="normal">
           <PodcastItemWithDetailsAvatar src={image} alt={imageAlt} />
         </Link>
       </NextLink>
 
       <PodcastItemInnerContainer>
-        <NextLink href="/app/podcast/[podcast]" as="/app/podcast/123">
-          <Link
-            textAlign="start"
-            variant="secondary"
-            size="normal"
-            href="/app/podcast/123"
-          >
+        <NextLink
+          href={{ pathname: `/app/podcast/${_id}`, query: { _id: _id } }}
+        >
+          <Link textAlign="start" variant="secondary" size="normal">
             {name}
           </Link>
         </NextLink>
