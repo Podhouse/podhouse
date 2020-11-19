@@ -11,7 +11,7 @@ type OptionsWithData = {
   variables: Variables;
 };
 
-export default (ComposedComponent: NextPage, options: OptionsWithData) => {
+const withData = (ComposedComponent: NextPage, options: OptionsWithData) => {
   function WithData(dataprops) {
     const environment =
       typeof window === "undefined"
@@ -56,3 +56,5 @@ export default (ComposedComponent: NextPage, options: OptionsWithData) => {
 
   return WithData;
 };
+
+export default withData;
