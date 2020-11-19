@@ -124,6 +124,6 @@
     "relay-compiler": "^10.1.0",
     "relay-compiler-language-typescript": "^13.0.2",
     "relay-config": "^10.1.0",
-    "webpack": "^4.44.1"
+    "webpack": "^5.5.1"
   }
 }
