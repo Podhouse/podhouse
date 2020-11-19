@@ -11,6 +11,7 @@ import {
   PodcastHeader,
   PodcastAvatar,
   PodcastDetailsContainer,
+  PodcastDescription,
   PodcastButtonsContainer,
   PodcastEpisodesContainer,
   PodcastLinksContainer,
@@ -24,7 +25,6 @@ import EpisodeItem from "src/components/Podcast/EpisodeItem/EpisodeItem";
 import Button from "src/system/Button/Button";
 import Heading from "src/system/Heading/Heading";
 import Link from "src/system/Link/Link";
-import Paragraph from "src/system/Paragraph/Paragraph";
 
 import { PodcastQuery } from "./__generated__/PodcastQuery.graphql";
 
@@ -102,14 +102,14 @@ const Podcast = () => {
       <PodcastContainer>
         <PodcastHeader>
           {props === null || props === undefined ? (
-            <Skeleton />
+            <Skeleton width={200} height={200} />
           ) : (
             <PodcastAvatar src={props.podcast.image} />
           )}
 
           <PodcastDetailsContainer>
             {props === null || props === undefined ? (
-              <Skeleton />
+              <Skeleton width={300} height={30} />
             ) : (
               <Heading as="h1" variant="primary" size="normal">
                 {props.podcast.name}
@@ -117,7 +117,7 @@ const Podcast = () => {
             )}
 
             {props === null || props === undefined ? (
-              <Skeleton />
+              <Skeleton width={300} height={20} />
             ) : (
               <Heading as="h2" variant="primary" size="small" fontSize={16}>
                 {props.podcast.author}
@@ -125,11 +125,15 @@ const Podcast = () => {
             )}
 
             {props === null || props === undefined ? (
-              <Skeleton />
+              <Skeleton width={300} height={100} />
             ) : (
-              <Paragraph variant="secondary" size="normal" textAlign="start">
+              <PodcastDescription
+                variant="secondary"
+                size="normal"
+                textAlign="start"
+              >
                 {props.podcast.description}
-              </Paragraph>
+              </PodcastDescription>
             )}
           </PodcastDetailsContainer>
 
@@ -173,11 +177,19 @@ const Podcast = () => {
         </PodcastHeader>
 
         <PodcastEpisodesContainer>
-          {props === null || props === undefined
-            ? null
-            : props.podcast.episodes.edges.map(({ node }) => (
-                <EpisodeItem key={node.id} episode={node} />
-              ))}
+          {props === null || props === undefined ? (
+            <>
+              <EpisodeItem episode={null} loading={true} />
+              <EpisodeItem episode={null} loading={true} />
+              <EpisodeItem episode={null} loading={true} />
+              <EpisodeItem episode={null} loading={true} />
+              <EpisodeItem episode={null} loading={true} />
+            </>
+          ) : (
+            props.podcast.episodes.edges.map(({ node }) => (
+              <EpisodeItem key={node.id} episode={node} loading={false} />
+            ))
+          )}
         </PodcastEpisodesContainer>
       </PodcastContainer>
     </Scrollbars>

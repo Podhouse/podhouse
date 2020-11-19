@@ -3,6 +3,8 @@ import NextLink from "next/link";
 import Skeleton from "react-loading-skeleton";
 
 import {
+  EpisodeLoadingContainer,
+  EpisodeLoadingDetailsContainer,
   EpisodeItemContainer,
   EpisodeItemAvatar,
   EpisodeItemName,
@@ -14,7 +16,19 @@ import {
 
 import { EpisodeItemProps } from "./EpisodeItem.types";
 
-const EpisodeItem = ({ episode }: EpisodeItemProps) => {
+const EpisodeItem = ({ episode, loading }: EpisodeItemProps) => {
+  if (!episode || loading) {
+    return (
+      <EpisodeLoadingContainer>
+        <Skeleton width={80} height={80} />
+        <EpisodeLoadingDetailsContainer>
+          <Skeleton width={300} height={20} />
+          <Skeleton width={300} height={50} />
+        </EpisodeLoadingDetailsContainer>
+      </EpisodeLoadingContainer>
+    );
+  }
+
   const { _id, title, description, publishedDate, image, duration } = episode;
 
   const imageAlt = `${name} avatar`;

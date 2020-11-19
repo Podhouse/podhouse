@@ -1,5 +1,7 @@
 import styled from "@emotion/styled";
 
+import Paragraph from "src/system/Paragraph/Paragraph";
+
 export const EpisodeContainer = styled.div`
   width: 100%;
   height: 100%;
@@ -66,6 +68,14 @@ export const EpisodeDetailsContainer = styled.div`
     align-items: flex-start;
     justify-items: flex-start;
   }
+`;
+
+export const EpisodeDescription = styled(Paragraph)`
+  width: 100%;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 `;
 
 export const EpisodeListenButtonContainer = styled.div`

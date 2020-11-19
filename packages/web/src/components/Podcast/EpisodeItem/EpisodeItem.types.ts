@@ -10,4 +10,5 @@ export interface EpisodeItemProps {
     readonly audio: string;
     readonly duration: string;
   } | null;
+  loading: boolean;
 }

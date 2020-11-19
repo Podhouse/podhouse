@@ -1,4 +1,5 @@
 import React from "react";
+import NextLink from "next/link";
 import router from "next/router";
 import Scrollbars from "react-custom-scrollbars";
 import { fetchQuery } from "relay-runtime";
@@ -10,6 +11,7 @@ import {
   EpisodeHeader,
   EpisodeAvatar,
   EpisodeDetailsContainer,
+  EpisodeDescription,
   EpisodeListenButtonContainer,
 } from "./Episode.styles";
 
@@ -18,7 +20,6 @@ import { RelayEnvironment } from "src/relay/RelayEnvironment";
 import Button from "src/system/Button/Button";
 import Link from "src/system/Link/Link";
 import Heading from "src/system/Heading/Heading";
-import Paragraph from "src/system/Paragraph/Paragraph";
 
 import { EpisodeQuery } from "./__generated__/EpisodeQuery.graphql";
 
@@ -34,6 +35,10 @@ const query = graphql`
       image
       audio
       duration
+      podcast {
+        _id
+        name
+      }
     }
   }
 `;
@@ -60,14 +65,14 @@ const Episode = () => {
       <EpisodeContainer>
         <EpisodeHeader>
           {props === null || props === undefined ? (
-            <Skeleton />
+            <Skeleton width={200} height={200} />
           ) : (
             <EpisodeAvatar src={props.episode.image} />
           )}
 
           <EpisodeDetailsContainer>
             {props === null || props === undefined ? (
-              <Skeleton />
+              <Skeleton width={300} height={30} />
             ) : (
               <Heading as="h1" variant="primary" size="normal">
                 {props.episode.title}
@@ -75,23 +80,30 @@ const Episode = () => {
             )}
 
             {props === null || props === undefined ? (
-              <Skeleton />
+              <Skeleton width={300} height={20} />
             ) : (
-              <Link
-                href="/app/podcast/invisible"
-                variant="secondary"
-                size="normal"
+              <NextLink
+                href={{
+                  pathname: `/app/podcast/${props.episode.podcast._id}`,
+                  query: { _id: props.episode.podcast._id },
+                }}
               >
-                {props.episode.title}
-              </Link>
+                <Link variant="secondary" size="normal">
+                  {props.episode.podcast.name}
+                </Link>
+              </NextLink>
             )}
 
             {props === null || props === undefined ? (
-              <Skeleton />
+              <Skeleton width={300} height={100} />
             ) : (
-              <Paragraph variant="secondary" size="normal" textAlign="start">
+              <EpisodeDescription
+                variant="secondary"
+                size="normal"
+                textAlign="start"
+              >
                 {props.episode.description}
-              </Paragraph>
+              </EpisodeDescription>
             )}
           </EpisodeDetailsContainer>
 
