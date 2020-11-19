@@ -2,12 +2,12 @@ import React from "react";
 import { User } from "react-feather";
 import { useQuery, graphql, STORE_OR_NETWORK } from "relay-hooks";
 
-import withData from "src/relay/withData";
-
 import { SettingsContainer } from "./Settings.styles";
 
 import { useAuthContext } from "src/context/Auth/Auth";
 import { useSettingsContext } from "src/context/Settings/Settings";
+
+import withData from "src/relay/withData";
 
 import Link from "src/system/Link/Link";
 
@@ -61,10 +61,8 @@ const Settings = () => {
   } else if (error) {
     return <div>error</div>;
   }
+
   return <SettingsContainer>...</SettingsContainer>;
 };
 
-export default withData(Settings, {
-  query,
-  variables,
-});
+export default withData(Settings, { query });

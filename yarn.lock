@@ -13189,7 +13189,7 @@ rehawk@^0.2.1:
   resolved "https://registry.yarnpkg.com/rehawk/-/rehawk-0.2.1.tgz#9e18d4c2ca2edac607040c31b9ba8a254ad4b909"
   integrity sha512-58pnZN9bhCxaaeX0vH5OHMMssW6F61oVeTxivFIx2MDHqPmeZgy3QXOripzKIWPovaJPSJaiZ6vcueH5oRDLMw==
 
-relay-compiler-language-typescript@^13.0.2:
+relay-compiler-language-typescript@13.0.2:
   version "13.0.2"
   resolved "https://registry.yarnpkg.com/relay-compiler-language-typescript/-/relay-compiler-language-typescript-13.0.2.tgz#ef3bfe955a94cb140bdd77c92380aa211c0a5015"
   integrity sha512-YbwTs7dW7FQcszTzPdxFLkb1jND+tlenYmGca4P0ybgiOCus8HpA7U1PRfIiFHxjwHntqjucmUDdJcSHjgGiGg==
@@ -13197,7 +13197,7 @@ relay-compiler-language-typescript@^13.0.2:
     immutable "^4.0.0-rc.12"
     invariant "^2.2.4"
 
-relay-compiler@^10.1.0:
+relay-compiler@10.1.0:
   version "10.1.0"
   resolved "https://registry.yarnpkg.com/relay-compiler/-/relay-compiler-10.1.0.tgz#fb4672cdbe9b54869a3a79759edd8c2d91609cbe"
   integrity sha512-HPqc3N3tNgEgUH5+lTr5lnLbgnsZMt+MRiyS0uAVNhuPY2It0X1ZJG+9qdA3L9IqKFUNwVn6zTO7RArjMZbARQ==
@@ -13219,7 +13219,7 @@ relay-compiler@^10.1.0:
     signedsource "^1.0.0"
     yargs "^15.3.1"
 
-relay-config@^10.1.0:
+relay-config@10.1.0:
   version "10.1.0"
   resolved "https://registry.yarnpkg.com/relay-config/-/relay-config-10.1.0.tgz#a730b959cd5e246290c117b5d3b108d343da8b8d"
   integrity sha512-/eE0wr/qjVld7MGqavK+GMWYjM+A81ijtjW/ud4y4gE/s6JYQ6ZpPqDKoJ0gNAn0nWKCZkhLC2Yqzu4BCV67sg==
@@ -13234,7 +13234,7 @@ relay-hooks@^3.7.0:
     "@restart/hooks" "^0.3.1"
     fbjs "^1.0.0"
 
-relay-runtime@10.1.0, relay-runtime@^10.1.0:
+relay-runtime@10.1.0:
   version "10.1.0"
   resolved "https://registry.yarnpkg.com/relay-runtime/-/relay-runtime-10.1.0.tgz#4753bf36e95e8d862cef33608e3d98b4ed730d16"
   integrity sha512-bxznLnQ1ST6APN/cFi7l0FpjbZVchWQjjhj9mAuJBuUqNNCh9uV+UTRhpQF7Q8ycsPp19LHTpVyGhYb0ustuRQ==

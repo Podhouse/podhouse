@@ -63,9 +63,9 @@ const Featured = ({ featured, t }: FeaturedProps) => {
     <>
       <FeaturedContainer ref={sliderRef} className="keen-slider">
         {featured.map(
-          ({ avatar, name, author, description }: FeaturedPodcast) => (
+          ({ id, avatar, name, author, description }: FeaturedPodcast) => (
             <FeaturedItemContainer
-              key={name}
+              key={id}
               className="keen-slider__slide number-slide1"
             >
               <NextLink

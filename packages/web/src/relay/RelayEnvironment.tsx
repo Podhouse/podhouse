@@ -1,30 +1,15 @@
 import { Network } from "relay-runtime";
 import { Store, Environment, RecordSource } from "relay-runtime";
 
-import fetch from "isomorphic-unfetch";
-
 let relayEnvironment: Environment;
 
-function fetchQuery(operation, variables) {
-  const endpoint = process.env.API_ENDPOINT;
-  return fetch(endpoint, {
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    }, // Add authentication and other headers here
-    body: JSON.stringify({
-      query: operation.text, // GraphQL text from input
-      variables,
-    }),
-  }).then((response) => response.json());
-}
+import cacheHandler from "./cacheHandler";
 
 type InitProps = {
   records?: any;
 };
 
-const network = Network.create(fetchQuery);
+const network = Network.create(cacheHandler);
 
 function createEnvironment(records) {
   const recordSource = new RecordSource(records);
