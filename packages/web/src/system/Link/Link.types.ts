@@ -24,4 +24,5 @@ export interface LinkProps {
   fontSize?: any;
   fontWeight?: number;
   onClick?: any;
+  textAlign?: "start" | "center" | "end";
 }

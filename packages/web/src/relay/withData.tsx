@@ -4,7 +4,7 @@ import { NextPage } from "next";
 import { RelayEnvironmentProvider } from "relay-hooks";
 import { GraphQLTaggedNode } from "relay-runtime";
 
-import RelayEnvironment from "./RelayEnvironment";
+import { RelayEnvironment } from "./RelayEnvironment";
 import fetchWithRetries from "./fetchWithRetries";
 
 import { handleData } from "./helpers";

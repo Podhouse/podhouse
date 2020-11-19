@@ -9,6 +9,10 @@ export const PodcastItemWithDetailsContainer = styled.div`
   grid-template-rows: 1fr;
   grid-gap: 10px;
   justify-items: flex-start;
+  text-align: start;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 `;
 
 export const PodcastItemWithDetailsAvatar = styled.img`
@@ -25,7 +29,9 @@ export const PodcastItemInnerContainer = styled.div`
   grid-row: 1 / 2;
   grid-column: 2 / 3;
   display: grid;
+  height: auto;
+  align-self: center;
   grid-template-columns: 1fr;
   grid-template-rows: max-content max-content;
-  grid-row-gap: 10px;
+  grid-row-gap: 5px;
 `;

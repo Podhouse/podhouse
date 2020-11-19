@@ -1,38 +1,28 @@
-import { RequestParameters, Variables, UploadableMap } from "relay-runtime";
+import { FetchFunction } from "relay-runtime";
 
 import { getToken } from "src/utils/auth";
 
-import { handleData, getRequestBody, getHeaders, isMutation } from "./helpers";
+import { getHeaders, handleData } from "./helpers";
 import fetchWithRetries from "./fetchWithRetries";
 
-// Define a function that fetches the results of a request (query/mutation/etc)
-// and returns its results as a Promise:
-const fetchQuery = async (
-  request: RequestParameters,
-  variables: Variables,
-  uploadables: UploadableMap,
-) => {
+// Define a function that fetches the results of an operation (query/mutation/etc)
+// and returns its results as a Promise
+const fetchQuery: FetchFunction = async (operation, variables) => {
   try {
-    const body = getRequestBody(request, variables, uploadables);
-
     const authorization = getToken();
 
     const headers = {
-      ...getHeaders(uploadables),
+      ...getHeaders(),
       authorization,
     };
 
-    const isMutationOperation = isMutation(request);
-
-    const fetchFn = isMutationOperation ? fetch : fetchWithRetries;
-
-    // uncomment to see optimistic update working
-    // const fetchFn = fetchWithRetries;
-
-    const response = await fetchFn(process.env.API_ENDPOINT, {
+    const response = await fetchWithRetries(process.env.API_ENDPOINT, {
       method: "POST",
       headers,
-      body,
+      body: JSON.stringify({
+        query: operation.text,
+        variables,
+      }),
       fetchTimeout: 20000,
       retryDelays: [1000, 3000, 5000],
     });
@@ -41,10 +31,6 @@ const fetchQuery = async (
 
     if (response.status === 401) {
       throw data.errors;
-    }
-
-    if (isMutation(request) && data.errors) {
-      throw data;
     }
 
     if (!data.data) {

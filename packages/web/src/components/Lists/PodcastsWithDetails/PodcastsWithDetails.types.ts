@@ -1,11 +1,6 @@
-export interface Podcast {
-  id: number;
-  name: string;
-  author: string;
-  avatar: string;
-}
+import { TrendingQueryResponse } from "src/modules/App/Browse/Trending/__generated__/TrendingQuery.graphql";
 
 export interface PodcastsWithDetailsProps {
   title: string;
-  items: Array<Podcast>;
+  podcasts: TrendingQueryResponse;
 }

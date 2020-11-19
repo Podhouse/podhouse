@@ -19,7 +19,7 @@ import { useSettingsContext } from "src/context/Settings/Settings";
 import { useQueueContext } from "src/context/Queue/Queue";
 import { useRateContext } from "src/context/Rate/Rate";
 
-import RelayEnvironment from "src/relay/RelayEnvironment";
+import { RelayEnvironment } from "src/relay/RelayEnvironment";
 
 interface AppProps {
   children: React.ReactNode;

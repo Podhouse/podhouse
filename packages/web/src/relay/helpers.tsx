@@ -3,8 +3,10 @@ import { RequestParameters, UploadableMap, CacheConfig } from "relay-runtime";
 
 export const isMutation = (request: RequestParameters) =>
   request.operationKind === "mutation";
+
 export const isQuery = (request: RequestParameters) =>
   request.operationKind === "query";
+
 export const forceFetch = (cacheConfig: CacheConfig) =>
   !!(cacheConfig && cacheConfig.force);
 
@@ -32,7 +34,7 @@ function getRequestBodyWithUploadables(request, variables, uploadables) {
   return formData;
 }
 
-function getRequestBodyWithoutUplodables(request, variables) {
+function getRequestBodyWithoutUploadables(request, variables) {
   return JSON.stringify({
     name: request.name, // used by graphql mock on tests
     query: request.text, // GraphQL text from input
@@ -49,7 +51,7 @@ export function getRequestBody(
     return getRequestBodyWithUploadables(request, variables, uploadables);
   }
 
-  return getRequestBodyWithoutUplodables(request, variables);
+  return getRequestBodyWithoutUploadables(request, variables);
 }
 
 export const getHeaders = (uploadables?: UploadableMap) => {

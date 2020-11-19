@@ -1,7 +1,9 @@
-export interface PodcastItemWithDetailsProps {
-  podcast: {
-    name: string;
-    author: string;
-    avatar: string;
+export type PodcastItemWithDetailsProps = {
+  node: {
+    readonly id: string;
+    readonly _id: string;
+    readonly name: string;
+    readonly author: string;
+    readonly image: string;
   };
-}
+};

@@ -1,4 +1,5 @@
 import React from "react";
+import Skeleton from "react-loading-skeleton";
 
 import {
   PodcastsWithDetailsContainer,
@@ -11,13 +12,18 @@ import PodcastItemWithDetails from "src/components/Podcast/PodcastItemWithDetail
 import Heading from "src/system/Heading/Heading";
 import Separator from "src/system/Separator/Separator";
 
-import { Podcast, PodcastsWithDetailsProps } from "./PodcastsWithDetails.types";
+import { PodcastsWithDetailsProps } from "./PodcastsWithDetails.types";
 
-const PodcastsWithDetails = ({ title, items }: PodcastsWithDetailsProps) => {
-  const renderItems = () =>
-    items.map((item: Podcast) => (
-      <PodcastItemWithDetails key={item.id} podcast={item} />
-    ));
+const PodcastsWithDetails = ({ title, podcasts }: PodcastsWithDetailsProps) => {
+  const renderItems = () => {
+    if (podcasts === null || podcasts === undefined) {
+      return <Skeleton />;
+    } else {
+      return podcasts.podcasts.edges.map(({ node }) => (
+        <PodcastItemWithDetails key={node.id} node={node} />
+      ));
+    }
+  };
 
   return (
     <PodcastsWithDetailsContainer>

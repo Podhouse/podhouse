@@ -1,15 +1,16 @@
+import { useMemo } from "react";
 import { Network } from "relay-runtime";
 import { Store, Environment, RecordSource } from "relay-runtime";
 
 let relayEnvironment: Environment;
 
-import cacheHandler from "./cacheHandler";
+import fetchQuery from "./fetchQuery";
 
 type InitProps = {
   records?: any;
 };
 
-const network = Network.create(cacheHandler);
+const network = Network.create(fetchQuery);
 
 function createEnvironment(records) {
   const recordSource = new RecordSource(records);
@@ -21,17 +22,28 @@ function createEnvironment(records) {
   return environment;
 }
 
-export default function RelayEnvironment(options: InitProps = {}) {
+export function RelayEnvironment(options: InitProps = {}) {
   const { records = {} } = options;
 
-  if (typeof window === "undefined") {
-    return createEnvironment(records);
-  }
+  // Create a network layer from the fetch function
+  const environment = relayEnvironment ?? createEnvironment(records);
 
-  // reuse Relay environment on client-side
-  if (!relayEnvironment) {
-    relayEnvironment = createEnvironment(records);
+  // If your page has Next.js data fetching methods that use Relay, the initial records
+  // will get hydrated here
+  if (records) {
+    environment.getStore().publish(new RecordSource(records));
   }
+  // For SSG and SSR always create a new Relay environment
+  if (typeof window === "undefined") return environment;
+  // Create the Relay environment once in the client
+  if (!relayEnvironment) relayEnvironment = environment;
 
   return relayEnvironment;
+}
+
+export function useEnvironment(initialRecords = {}) {
+  const store = useMemo(() => RelayEnvironment(initialRecords), [
+    initialRecords,
+  ]);
+  return store;
 }
