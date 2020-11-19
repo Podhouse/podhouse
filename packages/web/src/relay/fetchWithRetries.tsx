@@ -42,7 +42,7 @@ function fetchWithRetries(
         isRequestAlive = false;
         if (shouldRetry(requestsAttempted)) {
           // eslint-disable-next-line
-          console.log(false, 'fetchWithRetries: HTTP timeout, retrying.');
+          console.log(false, "fetchWithRetries: HTTP timeout, retrying.");
           retryRequest();
         } else {
           reject(
@@ -67,7 +67,8 @@ function fetchWithRetries(
               // Fetch was not successful, retrying.
               // TODO(#7595849): Only retry on transient HTTP errors.
               // eslint-disable-next-line
-              console.log(false, 'fetchWithRetries: HTTP error, retrying.'), retryRequest();
+              console.log(false, "fetchWithRetries: HTTP error, retrying."),
+                retryRequest();
             } else {
               // Request was not successful, giving up.
               const error: any = new Error(

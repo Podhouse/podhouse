@@ -157,6 +157,7 @@ type Episode implements Node {
   image: String!
   audio: String!
   duration: String!
+  podcast: Podcast!
 }
 
 type Mutation {

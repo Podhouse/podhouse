@@ -36,7 +36,6 @@ const EpisodeSchema = new Schema(
       ref: "Podcast",
       description: "Podcast this episode is attached to",
       required: true,
-      index: true,
     },
   },
   {

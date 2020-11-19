@@ -26,6 +26,7 @@
     "lint:staged": "lint-staged",
     "build": "yarn workspace @podhouse/web build & yarn workspace @podhouse/server build",
     "lint": "yarn workspace @podhouse/web lint & yarn workspace @podhouse/server lint",
+    "format": "yarn workspace @podhouse/web format & yarn workspace @podhouse/server format",
     "test": "yarn workspace @podhouse/web test & yarn workspace @podhouse/server test",
     "update-schema": "yarn workspace @podhouse/server update-schema"
   },
@@ -45,6 +46,7 @@
     "*.{js,ts,tsx}": [
       "yarn update-schema",
       "yarn lint",
+      "yarn format",
       "git add"
     ]
   }
