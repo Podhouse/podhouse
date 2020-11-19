@@ -1,6 +1,6 @@
 import React from "react";
 import { User } from "react-feather";
-import { useQuery, graphql, STORE_OR_NETWORK } from "relay-hooks";
+import { useQuery, graphql } from "relay-hooks";
 
 import { SettingsContainer } from "./Settings.styles";
 
@@ -29,7 +29,7 @@ const Settings = () => {
   const [, , handleAuth] = useAuthContext();
   const [, handleSettings] = useSettingsContext();
   const { props, error } = useQuery<SettingsQuery>(query, variables, {
-    fetchPolicy: STORE_OR_NETWORK,
+    fetchPolicy: "network-only",
   });
 
   if (props) {
