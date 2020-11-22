@@ -1,7 +1,7 @@
 import { useCallback } from "react";
-import { useRouter } from "next/router";
+import { useHistory } from "react-router-dom";
 
-export const TOKEN_KEY = "reacteurope";
+export const TOKEN_KEY = "podhouse";
 
 export const getToken = () => {
   return localStorage.getItem(TOKEN_KEY);
@@ -16,7 +16,7 @@ export const updateToken = (token = "") => {
 };
 
 export const useLogout = () => {
-  const history = useRouter();
+  const history = useHistory();
 
   const logout = useCallback(() => {
     updateToken("");

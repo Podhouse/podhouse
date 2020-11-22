@@ -10,18 +10,9 @@
     ]
   },
   "scripts": {
-    "app:start": "yarn workspace @podhouse/app start",
-    "app:build": "yarn workspace @podhouse/app build",
-    "app:test": "yarn workspace @podhouse/app test",
-    "app:lint": "yarn workspace @podhouse/app lint",
-    "app:format": "yarn workspace @podhouse/app format",
-    "app:relay": "yarn workspace @podhouse/app relay",
-    "web:dev": "yarn workspace @podhouse/web dev",
     "web:start": "yarn workspace @podhouse/web start",
     "web:build": "yarn workspace @podhouse/web build",
     "web:test": "yarn workspace @podhouse/web test",
-    "web:lint": "yarn workspace @podhouse/web lint",
-    "web:format": "yarn workspace @podhouse/web format",
     "web:relay": "yarn workspace @podhouse/web relay",
     "server:start": "yarn workspace @podhouse/server start",
     "server:build": "yarn workspace @podhouse/server build",
@@ -33,7 +24,8 @@
     "build": "yarn workspace @podhouse/web build & yarn workspace @podhouse/server build",
     "lint": "yarn workspace @podhouse/web lint & yarn workspace @podhouse/server lint",
     "test": "yarn workspace @podhouse/web test & yarn workspace @podhouse/server test",
-    "update-schema": "yarn workspace @podhouse/server update-schema"
+    "update-schema": "yarn workspace @podhouse/server update-schema",
+    "relay": "yarn workspace @podhouse/web relay"
   },
   "devDependencies": {
     "husky": "^4.3.0",

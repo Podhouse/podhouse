@@ -1,5 +1,5 @@
 import React from "react";
-import Head from "next/head";
+import { Switch, Route } from "react-router-dom";
 
 import { AppContainer } from "./App.styles";
 
@@ -7,6 +7,12 @@ import Header from "./Header/Header";
 import Menu from "./Menu/Menu";
 import Player from "./Player/Player";
 import Dashboard from "./Dashboard/Dashboard";
+
+import Home from "src/modules/App/Home/Home";
+import Subscriptions from "src/modules/App/Subscriptions/Subscriptions";
+import Favorites from "src/modules/App/Favorites/Favorites";
+
+import Provider from "src/components/Provider/Provider";
 
 import AuthModal from "src/components/Modals/AuthModal/AuthModal";
 import SettingsModal from "src/components/Modals/SettingsModal/SettingsModal";
@@ -18,28 +24,22 @@ import { useSettingsContext } from "src/context/Settings/Settings";
 import { useQueueContext } from "src/context/Queue/Queue";
 import { useRateContext } from "src/context/Rate/Rate";
 
-interface AppProps {
-  children: React.ReactNode;
-}
-
-const App = ({ children }: AppProps) => {
-  const [auth, handleAuth] = useAuthContext();
+const App = () => {
+  const [, auth] = useAuthContext();
   const [settings] = useSettingsContext();
   const [queue] = useQueueContext();
   const [rate, handleRate] = useRateContext();
 
   const renderAuthModal = () => {
-    if (auth.matches("open")) {
-      return <AuthModal auth={auth} handleAuth={handleAuth} />;
+    if (auth === true) {
+      return <AuthModal />;
     }
     return null;
   };
 
   const renderSettingsModal = () => {
-    if (auth.matches("loggedIn")) {
-      if (settings.matches("open")) {
-        return <SettingsModal />;
-      }
+    if (settings.matches("open")) {
+      return <SettingsModal />;
     }
     return null;
   };
@@ -59,26 +59,20 @@ const App = ({ children }: AppProps) => {
   };
 
   return (
-    <div>
-      <Head>
-        <title>Podhouse</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      </Head>
-
-      <>
-        {renderAuthModal()}
-        {renderSettingsModal()}
-        {renderQueueModal()}
-        {renderRateModal()}
-
-        <AppContainer>
-          <Dashboard>{children}</Dashboard>
-          <Header />
-          <Player />
-          <Menu />
-        </AppContainer>
-      </>
-    </div>
+    <Provider>
+      <AppContainer>
+        <Dashboard>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/subscriptions" component={Subscriptions} />
+            <Route exact path="/favorites" component={Favorites} />
+          </Switch>
+        </Dashboard>
+        <Header />
+        <Player />
+        <Menu />
+      </AppContainer>
+    </Provider>
   );
 };
 

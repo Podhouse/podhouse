@@ -21,7 +21,7 @@ export const ToggleContainer = styled.div`
     height: 15px;
     transition: transform 0.45s ease;
     border-radius: 50%;
-    background: ${({ theme }) => theme.primary};
+    background: #ffffff;
   }
 
   #switch .mode::before {

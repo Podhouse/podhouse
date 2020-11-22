@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 export const AuthContainer = styled.div`
   width: 100%;
   height: 100%;
-  background-color: ${({ theme }) => theme.bgPrimary};
+  background-color: #ffffff;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: max-content max-content;
@@ -21,7 +21,7 @@ export const AuthInsideContainer = styled.div`
   max-height: 100%;
   box-shadow: none;
   display: grid;
-  background-color: ${({ theme }) => theme.bgPrimary};
+  background-color: #ffffff;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(2, minmax(min-content, max-content));
   grid-row-gap: 20px;
@@ -43,7 +43,7 @@ export const AuthTextContainer = styled.div`
 export const AuthFormContainer = styled.form`
   width: 100%;
   height: 100%;
-  background-color: ${({ theme }) => theme.bgPrimary};
+  background-color: #ffffff;
   display: grid;
   grid-template-rows: repeat(auto-fill, max-content);
   grid-template-columns: 1fr;
@@ -66,7 +66,7 @@ export const AuthCircle = styled.div`
   width: 2px;
   height: 2px;
   border-radius: 50%;
-  background: ${({ theme }) => theme.tertiary};
+  background: #ffffff;
   align-self: center;
 `;
 

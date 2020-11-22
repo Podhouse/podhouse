@@ -1,43 +1,21 @@
-import React, { useState } from "react";
-import { withTranslation } from "i18n";
-import { WithTranslation } from "next-i18next";
-import { useRouter } from "next/router";
+import React from "react";
+import { Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
+import { SearchIcon } from '@chakra-ui/icons'
 
 import { SearchContainer } from "./Search.styles";
 
-import InputWithLeftIcon from "src/system/InputWithLeftIcon/InputWithLeftIcon";
-
-const Search = ({ t }: WithTranslation) => {
-  const [search, setSearch] = useState<string>("");
-
-  const onSearch = (e: any) => {
-    setSearch(e.target.value);
-  };
-
-  const router = useRouter();
-
-  const pushSearch = (e) => {
-    e.preventDefault();
-    router.push("/app/search");
-  };
-
+const Search = () => {
   return (
     <SearchContainer>
-      <InputWithLeftIcon
-        variant="primary"
-        scale="normal"
-        type="text"
-        name="search"
-        placeholder={t("search")}
-        onChange={onSearch}
-        onClick={pushSearch}
-        value={search}
-        error=""
-      />
+      <InputGroup>
+        <InputLeftElement
+          pointerEvents="none"
+          children={<SearchIcon color="gray.300" />}
+        />
+        <Input type="text" placeholder="Search" size="md" />
+      </InputGroup>
     </SearchContainer>
   );
 };
 
-Search.getInitialProps = async () => ({ namespacesRequired: ["header"] });
-
-export default withTranslation("header")(Search);
+export default Search;

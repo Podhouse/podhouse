@@ -11,7 +11,7 @@ export const QueueModalContainer = styled.div`
   width: 400px;
   height: 280px;
   padding: 20px;
-  background: ${({ theme }) => theme.bgPrimary};
+  background: #f3f3f3;
   border-radius: 5px;
   right: 30px;
   position: absolute;

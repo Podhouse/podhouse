@@ -12,7 +12,7 @@ export const SettingsModalContainer = styled.div`
   height: auto;
   padding-top: 5px;
   padding-bottom: 5px;
-  background: ${({ theme }) => theme.bgPrimary};
+  background: #ffffff;
   border-radius: 5px;
   right: 30px;
   position: absolute;
@@ -28,7 +28,7 @@ export const SettingsModalLinkContainer = styled.div`
   align-items: center;
   width: 100%;
   height: 100%;
-  background: ${({ theme }) => theme.bgPrimary};
+  background: #ffffff;
   padding-left: 20px;
   cursor: pointer;
 
@@ -37,10 +37,10 @@ export const SettingsModalLinkContainer = styled.div`
   }
 
   &:hover {
-    background: ${({ theme }) => theme.bgSecondary};
+    background: #f3f3f3;
 
     a {
-      color: ${({ theme }) => theme.primary};
+      color: #101010;
     }
   }
 `;
@@ -51,7 +51,7 @@ export const SettingsModalLink = styled.a`
   font-weight: normal;
   font-size: 14px;
   line-height: 17px;
-  color: ${({ theme }) => theme.tertiary};
+  color: #b7b7b7;
   text-decoration: none;
 `;
 
@@ -62,7 +62,7 @@ export const SettingsThemeContainer = styled.div`
   align-items: center;
   width: 100%;
   height: 100%;
-  background: ${({ theme }) => theme.bgPrimary};
+  background: #ffffff;
   padding: 0 20px 0 20px;
   cursor: pointer;
 
@@ -72,10 +72,10 @@ export const SettingsThemeContainer = styled.div`
   }
 
   &:hover {
-    background: ${({ theme }) => theme.bgSecondary};
+    background: #f3f3f3;
 
     a {
-      color: ${({ theme }) => theme.primary};
+      color: #101010;
     }
   }
 `;

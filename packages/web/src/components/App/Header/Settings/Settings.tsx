@@ -1,6 +1,5 @@
 import React from "react";
-import { withTranslation } from "i18n";
-import { WithTranslation } from "next-i18next";
+import { Link } from "@chakra-ui/react";
 import { User } from "react-feather";
 
 import { useAuthContext } from "src/context/Auth/Auth";
@@ -8,9 +7,7 @@ import { useSettingsContext } from "src/context/Settings/Settings";
 
 import { SettingsContainer } from "./Settings.styles";
 
-import Link from "src/system/Link/Link";
-
-const Settings = ({ t }: WithTranslation) => {
+const Settings = () => {
   const [auth, handleAuth] = useAuthContext();
   const [, handleSettings] = useSettingsContext();
 
@@ -28,7 +25,7 @@ const Settings = ({ t }: WithTranslation) => {
 
     return (
       <Link onClick={handleAuth} variant="primary" size="normal">
-        {t("login")}
+        Login
       </Link>
     );
   };
@@ -36,6 +33,4 @@ const Settings = ({ t }: WithTranslation) => {
   return <SettingsContainer>{renderSettings()}</SettingsContainer>;
 };
 
-Settings.getInitialProps = async () => ({ namespacesRequired: ["header"] });
-
-export default withTranslation("header")(Settings);
+export default Settings;

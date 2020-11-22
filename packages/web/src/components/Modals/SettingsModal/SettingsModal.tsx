@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
-import { withTranslation } from "i18n";
 import { WithTranslation } from "next-i18next";
-import NextLink from "next/link";
+import { Link } from "@chakra-ui/react";
+import { Link as ReactRouterLink } from "react-router-dom";
 
 import {
   SettingsModalContainer,
@@ -10,75 +10,65 @@ import {
   SettingsThemeIconContainer,
 } from "./SettingsModal.styles";
 
-import { useAuthContext } from "src/context/Auth/Auth";
 import { useSettingsContext } from "src/context/Settings/Settings";
 
 import useOnClickOutside from "src/hooks/useOnClickOutside";
 
-import useTheme from "src/system/useTheme";
+import { useLogout } from "src/utils/auth";
 
-import Link from "src/system/Link/Link";
 import ThemeToggle from "src/components/ThemeToggle/ThemeToggle";
 
 const SettingsModal = ({ t }: WithTranslation) => {
-  const [, , logoutAuth] = useAuthContext();
   const [, handleSettings] = useSettingsContext();
 
-  const themeState = useTheme();
+  const [logout] = useLogout();
 
   const ref = useRef<any>();
 
   useOnClickOutside(ref, () => handleSettings());
 
+  const onLogout = () => {
+    logout();
+    handleSettings();
+  };
+
   return (
     <SettingsModalContainer ref={ref}>
       <SettingsModalLinkContainer>
         <Link
-          variant="secondary"
-          size="light"
           href="mailto:leonardomso11@gmail.com"
           target="_blank"
           rel="noopener"
         >
-          {t("feedback")}
+          Feedback
         </Link>
       </SettingsModalLinkContainer>
 
       <SettingsModalLinkContainer>
-        <NextLink href="/app/settings" as="/app/settings">
-          <Link href="/app/settings" variant="secondary" size="light">
-            {t("settings")}
-          </Link>
-        </NextLink>
+        <ReactRouterLink to="/settings">
+          Settings
+        </ReactRouterLink>
       </SettingsModalLinkContainer>
 
-      <SettingsThemeContainer onClick={() => themeState.toggle()}>
-        <Link
-          onClick={() => themeState.toggle()}
-          variant="secondary"
-          size="light"
-        >
-          {t("theme")}
+      <SettingsThemeContainer onClick={() => { }}>
+        <Link onClick={() => { }}>
+          Theme
         </Link>
         <SettingsThemeIconContainer>
           <ThemeToggle
-            dark={themeState.dark}
-            onClick={() => themeState.toggle()}
+            dark={false}
+            onClick={() => { }}
           />
         </SettingsThemeIconContainer>
       </SettingsThemeContainer>
 
-      <SettingsModalLinkContainer onClick={logoutAuth}>
-        <Link onClick={logoutAuth} variant="secondary" size="light">
-          {t("logout")}
+      <SettingsModalLinkContainer onClick={onLogout}>
+        <Link onClick={logout}>
+          Logout
         </Link>
       </SettingsModalLinkContainer>
     </SettingsModalContainer>
   );
 };
 
-SettingsModal.getInitialProps = async () => ({
-  namespacesRequired: ["header"],
-});
-
-export default withTranslation("header")(SettingsModal);
+export default SettingsModal;

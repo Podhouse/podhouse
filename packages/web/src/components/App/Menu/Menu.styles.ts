@@ -5,7 +5,7 @@ export const MenuContainer = styled.aside`
   height: 60px;
   bottom: 0px;
   position: fixed;
-  background: ${({ theme }) => theme.bgPrimary};
+  background: #ffffff;
   z-index: 100;
 
   @media screen and (min-width: 800px) {
@@ -15,8 +15,8 @@ export const MenuContainer = styled.aside`
     height: 100%;
     position: inherit;
     z-index: 0;
-    background: ${({ theme }) => theme.bgPrimary};
-    border-right: ${({ theme }) => `1px solid ${theme.bgSecondary}`};
+    background: #ffffff;
+    border-right: #f3f3f3;
   }
 `;
 

@@ -1,67 +1,76 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# dependencies
-/node_modules
-/.pnp
-.pnp.js
-
-# testing
-/coverage
-
-# next.js
-/.next/
-/out/
-
-# production
-/build
-
-# misc
 .DS_Store
+*.sublime-project
+*.sublime-workspace
+.idea/
 
-# debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+lib-cov
+*.seed
+*.log
+*.csv
+*.dat
+*.out
+*.pid
+*.gz
+*.map
 
-# local env files
+pids
+logs
+results
+test-results
+
+node_modules
+npm-debug.log
+
+dump.rdb
+bundle.js
+
+build
+dist
+coverage
+.nyc_output
 .env
-.env.test
-.env.development
-.env.production
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
 
-# parcel-bundler cache (https://parceljs.org/)
+graphql.*.json
+junit.xml
+
+.vs
+
+test/globalConfig.json
+distTs
+
+# Random things to ignore
+ignore/
+package-lock.json
+/yarn-offline-cache
 .cache
 
-# Next.js build output
-.next
+**/node_modules
+.idea
+yarn-error.log
+.vs/
 
-# Nuxt.js build / generate output
-.nuxt
-dist
+# IDE/Editor GraphQL Extensions
+.gqlconfig
 
-# Gatsby files
-.cache/
-# Comment in the public line in if your project uses Gatsby and *not* Next.js
-# https://nextjs.org/blog/next-9-1#public-directory-support
-# public
+# Relay modern
+__generated__/
 
-# vuepress build output
-.vuepress/dist
+# Flow log
+flow.log
 
-# Serverless directories
-.serverless/
+# Random things to ignore
+yarn-offline-cache
 
-# FuseBox cache
-.fusebox/
+hard-source-cache/
+**/hard-source-cache/
 
-# DynamoDB Local files
-.dynamodb/
+# Cypress
+cypress/videos
+cypress/screenshots
 
-# TernJS port file
-.tern-port
+differencify_reports
+.parcel-cache
 
-.vercel
+.vscode
+.yarn
+.yarnrc

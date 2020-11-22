@@ -1,5 +1,5 @@
 import React from "react";
-import NextLink from "next/link";
+import { Link, Text } from "@chakra-ui/react";
 import { X } from "react-feather";
 
 import {
@@ -10,23 +10,18 @@ import {
 
 import { QueueModalItemProps } from "./QueueModalItem.types";
 
-import Link from "src/system/Link/Link";
-import Paragraph from "src/system/Paragraph/Paragraph";
-
 const QueueModalItem = ({ avatar, episode, name }: QueueModalItemProps) => {
   return (
     <QueueModalItemContainer>
       <QueueModalItemAvatar src={avatar} />
 
       <QueueModalItemsDetails>
-        <NextLink href="/app/episode/[episode]" as="/app/episode/123">
-          <Link href="/app/episode/123" variant="secondary" size="normal">
-            {episode}
-          </Link>
-        </NextLink>
-        <Paragraph variant="secondary" size="normal">
+        <Link href="/app/episode/123">
+          {episode}
+        </Link>
+        <Text>
           {name}
-        </Paragraph>
+        </Text>
       </QueueModalItemsDetails>
 
       <X
