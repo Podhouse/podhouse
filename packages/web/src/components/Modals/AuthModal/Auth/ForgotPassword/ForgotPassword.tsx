@@ -30,9 +30,12 @@ const validationSchema = Yup.object().shape({
 const ForgotPassword = ({ t }: WithTranslation) => {
   const [, , , send] = useAuthContext();
 
-  const { register, handleSubmit, errors, formState } = useForm<
-    ForgotPasswordFormProps
-  >({
+  const {
+    register,
+    handleSubmit,
+    errors,
+    formState,
+  } = useForm<ForgotPasswordFormProps>({
     mode: "onChange",
     resolver: yupResolver(validationSchema),
   });

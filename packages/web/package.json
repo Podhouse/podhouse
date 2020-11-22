@@ -101,9 +101,10 @@
     "@types/react-custom-scrollbars": "^4.0.7",
     "@types/react-dom": "^16.9.8",
     "@types/react-relay": "^7.0.17",
+    "@types/react-router-dom": "^5.1.6",
     "@types/react-table": "^7.0.23",
     "@types/styled-system": "^5.1.10",
-    "@types/yup": "^0.29.6",
+    "@types/yup": "^0.29.9",
     "@typescript-eslint/eslint-plugin": "^4.0.1",
     "@typescript-eslint/parser": "^4.0.1",
     "babel-jest": "^26.3.0",
@@ -120,10 +121,10 @@
     "jest-cli": "^26.4.2",
     "jest-dom": "^4.0.0",
     "prettier": "^2.1.1",
-    "ts-jest": "^26.3.0",
     "relay-compiler": "^10.1.0",
     "relay-compiler-language-typescript": "^13.0.2",
     "relay-config": "^10.1.0",
+    "ts-jest": "^26.3.0",
     "webpack": "^4.44.1"
   }
 }

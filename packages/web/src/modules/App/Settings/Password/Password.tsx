@@ -29,9 +29,12 @@ const validationSchema = Yup.object().shape({
 });
 
 const Password = ({ t }: WithTranslation) => {
-  const { register, handleSubmit, errors, formState } = useForm<
-    PasswordFormProps
-  >({
+  const {
+    register,
+    handleSubmit,
+    errors,
+    formState,
+  } = useForm<PasswordFormProps>({
     mode: "onChange",
     resolver: yupResolver(validationSchema),
   });

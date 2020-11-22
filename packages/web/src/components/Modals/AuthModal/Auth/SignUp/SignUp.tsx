@@ -32,9 +32,12 @@ const validationSchema = Yup.object().shape({
 const SignUp = ({ t }: WithTranslation) => {
   const [, , , send] = useAuthContext();
 
-  const { register, handleSubmit, errors, formState } = useForm<
-    SignUpFormProps
-  >({
+  const {
+    register,
+    handleSubmit,
+    errors,
+    formState,
+  } = useForm<SignUpFormProps>({
     mode: "onChange",
     resolver: yupResolver(validationSchema),
   });
