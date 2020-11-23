@@ -27,7 +27,7 @@ export default mutationWithClientMutationId({
 
     if (!user) {
       return {
-        error: "User doesn't exist",
+        error: "Account with this email address not found",
       };
     }
 

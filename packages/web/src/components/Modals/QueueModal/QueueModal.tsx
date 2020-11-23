@@ -39,12 +39,8 @@ const QueueModal = () => {
   return (
     <QueueModalContainer ref={ref}>
       <QueueModalHeaderContainer>
-        <Text>
-          Up next
-        </Text>
-        <Link onClick={() => { }}>
-          Clear all
-        </Link>
+        <Text>Up next</Text>
+        <Link onClick={() => {}}>Clear all</Link>
       </QueueModalHeaderContainer>
 
       <Scrollbars

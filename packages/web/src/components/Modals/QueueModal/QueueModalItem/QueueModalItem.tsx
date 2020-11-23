@@ -16,12 +16,8 @@ const QueueModalItem = ({ avatar, episode, name }: QueueModalItemProps) => {
       <QueueModalItemAvatar src={avatar} />
 
       <QueueModalItemsDetails>
-        <Link href="/app/episode/123">
-          {episode}
-        </Link>
-        <Text>
-          {name}
-        </Text>
+        <Link href="/app/episode/123">{episode}</Link>
+        <Text>{name}</Text>
       </QueueModalItemsDetails>
 
       <X

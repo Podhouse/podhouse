@@ -5,7 +5,7 @@ const Subscriptions = () => {
     <div>
       <h1>Subscriptions</h1>
     </div>
-  )
+  );
 };
 
 export default Subscriptions;

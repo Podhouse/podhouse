@@ -41,7 +41,6 @@ const UserType: GraphQLObjectType = new GraphQLObjectType<
         > = await context.dataloaders.PodcastLoader.loadMany(
           user.subscriptions.map((id) => id.toString()),
         );
-        console.log(connectionFromArray(podcasts, args));
         return connectionFromArray(podcasts, args);
       },
     },

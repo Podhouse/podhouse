@@ -1,13 +1,17 @@
-import { RequestParameters, Variables, UploadableMap } from 'relay-runtime';
+import { RequestParameters, Variables, UploadableMap } from "relay-runtime";
 
-import { getToken } from 'src/utils/auth';
+import { getToken } from "src/utils/auth";
 
-import { handleData, getRequestBody, getHeaders, isMutation } from './helpers';
-import fetchWithRetries from './fetchWithRetries';
+import { handleData, getRequestBody, getHeaders, isMutation } from "./helpers";
+import fetchWithRetries from "./fetchWithRetries";
 
 // Define a function that fetches the results of a request (query/mutation/etc)
 // and returns its results as a Promise:
-const fetchQuery = async (request: RequestParameters, variables: Variables, uploadables: UploadableMap) => {
+const fetchQuery = async (
+  request: RequestParameters,
+  variables: Variables,
+  uploadables: UploadableMap
+) => {
   try {
     const body = getRequestBody(request, variables, uploadables);
 
@@ -25,13 +29,16 @@ const fetchQuery = async (request: RequestParameters, variables: Variables, uplo
     // uncomment to see optimistic update working
     // const fetchFn = fetchWithRetries;
 
-    const response = await fetchFn("https://podhouse-server.herokuapp.com/graphql", {
-      method: 'POST',
-      headers,
-      body,
-      fetchTimeout: 20000,
-      retryDelays: [1000, 3000, 5000],
-    });
+    const response = await fetchFn(
+      "https://podhouse-server.herokuapp.com/graphql",
+      {
+        method: "POST",
+        headers,
+        body,
+        fetchTimeout: 20000,
+        retryDelays: [1000, 3000, 5000],
+      }
+    );
 
     const data = await handleData(response);
 
@@ -49,12 +56,15 @@ const fetchQuery = async (request: RequestParameters, variables: Variables, uplo
 
     return data;
   } catch (err) {
-    console.log('err: ', err);
+    console.log("err: ", err);
 
     const timeoutRegexp = new RegExp(/Still no successful response after/);
     const serverUnavailableRegexp = new RegExp(/Failed to fetch/);
-    if (timeoutRegexp.test(err.message) || serverUnavailableRegexp.test(err.message)) {
-      throw new Error('Unavailable service. Try again later.');
+    if (
+      timeoutRegexp.test(err.message) ||
+      serverUnavailableRegexp.test(err.message)
+    ) {
+      throw new Error("Unavailable service. Try again later.");
     }
 
     throw err;

@@ -4,9 +4,16 @@ import { globalIdField } from "graphql-relay";
 import { load } from "./EpisodeLoader";
 import { IEpisode } from "./EpisodeModel";
 
+import PodcastType from "../Podcast/PodcastType";
+import * as PodcastLoader from "../Podcast/PodcastLoader";
+
 import { nodeInterface, registerTypeLoader } from "../Node/TypeRegister";
 
-import { connectionDefinitions, mongooseIDResolver } from "../../common/";
+import {
+  connectionDefinitions,
+  mongooseIDResolver,
+  withFilter,
+} from "../../common/";
 
 import { GraphQLContext } from "../../types";
 
@@ -46,6 +53,11 @@ const EpisodeType: GraphQLObjectType = new GraphQLObjectType<
     duration: {
       type: GraphQLNonNull(GraphQLString),
       resolve: ({ duration }) => duration,
+    },
+    podcast: {
+      type: GraphQLNonNull(PodcastType),
+      resolve: async ({ podcast }, args, context) =>
+        await PodcastLoader.load(context, podcast),
     },
   }),
   interfaces: () => [nodeInterface],

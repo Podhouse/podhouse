@@ -47,9 +47,12 @@
     "*.{js,ts,tsx}": [
       "yarn update-schema",
       "yarn relay",
-      "yarn build",
-      "yarn lint",
-      "yarn format",
+      "yarn server:build",
+      "yarn web:build",
+      "yarn server:lint",
+      "yarn web:lint",
+      "yarn server:format",
+      "yarn web:format",
       "git add"
     ]
   }

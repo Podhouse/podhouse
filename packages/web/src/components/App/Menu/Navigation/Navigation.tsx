@@ -15,10 +15,7 @@ const Navigation = () => (
         <Home size={16} strokeWidth={1.7} />
       </Link>
 
-      <ReactRouterLink
-        id="link-desktop"
-        to="/"
-      >
+      <ReactRouterLink id="link-desktop" to="/">
         Browse
       </ReactRouterLink>
     </NavigationItemContainer>
@@ -28,10 +25,7 @@ const Navigation = () => (
         <Headphones size={16} strokeWidth={1.7} />
       </Link>
 
-      <ReactRouterLink
-        id="link-desktop"
-        to="/subscriptions"
-      >
+      <ReactRouterLink id="link-desktop" to="/subscriptions">
         Subscriptions
       </ReactRouterLink>
     </NavigationItemContainer>
@@ -41,10 +35,7 @@ const Navigation = () => (
         <Heart size={16} strokeWidth={1.7} />
       </Link>
 
-      <ReactRouterLink
-        id="link-desktop"
-        to="/favorites"
-      >
+      <ReactRouterLink id="link-desktop" to="/favorites">
         Favorites
       </ReactRouterLink>
     </NavigationItemContainer>

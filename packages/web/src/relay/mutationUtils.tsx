@@ -30,7 +30,7 @@ export function connectionUpdater({
     if (!conn) {
       console.log(
         "maybe this connection is not in relay store: ",
-        connectionName,
+        connectionName
       );
       return;
     }

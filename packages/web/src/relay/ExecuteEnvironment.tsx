@@ -1,4 +1,8 @@
-const canUseDOM = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
+const canUseDOM = !!(
+  typeof window !== "undefined" &&
+  window.document &&
+  window.document.createElement
+);
 
 /**
  * Simple, lightweight module assisting with the detection and context of
@@ -9,10 +13,11 @@ const canUseDOM = !!(typeof window !== 'undefined' && window.document && window.
 const ExecutionEnvironment = {
   canUseDOM: canUseDOM,
 
-  canUseWorkers: typeof Worker !== 'undefined',
+  canUseWorkers: typeof Worker !== "undefined",
 
   // @ts-ignore
-  canUseEventListeners: canUseDOM && !!(window.addEventListener || window.attachEvent),
+  canUseEventListeners:
+    canUseDOM && !!(window.addEventListener || window.attachEvent),
 
   canUseViewport: canUseDOM && !!window.screen,
 

@@ -1,26 +1,33 @@
-import { Variables } from 'react-relay';
-import { RequestParameters, UploadableMap, CacheConfig } from 'relay-runtime';
+import { Variables } from "react-relay";
+import { RequestParameters, UploadableMap, CacheConfig } from "relay-runtime";
 
-export const isMutation = (request: RequestParameters) => request.operationKind === 'mutation';
-export const isQuery = (request: RequestParameters) => request.operationKind === 'query';
-export const forceFetch = (cacheConfig: CacheConfig) => !!(cacheConfig && cacheConfig.force);
+export const isMutation = (request: RequestParameters) =>
+  request.operationKind === "mutation";
+export const isQuery = (request: RequestParameters) =>
+  request.operationKind === "query";
+export const forceFetch = (cacheConfig: CacheConfig) =>
+  !!(cacheConfig && cacheConfig.force);
 
 export const handleData = (response: any) => {
-  const contentType = response.headers.get('content-type');
-  if (contentType && contentType.indexOf('application/json') !== -1) {
+  const contentType = response.headers.get("content-type");
+  if (contentType && contentType.indexOf("application/json") !== -1) {
     return response.json();
   }
 
   return response.text();
 };
 
-function getRequestBodyWithUploadables(request: RequestParameters, variables: Variables, uploadables: UploadableMap) {
+function getRequestBodyWithUploadables(
+  request: RequestParameters,
+  variables: Variables,
+  uploadables: UploadableMap
+) {
   const formData = new FormData();
-  formData.append('name', request.name);
-  formData.append('query', request.operationKind);
-  formData.append('variables', JSON.stringify(variables));
+  formData.append("name", request.name);
+  formData.append("query", request.operationKind);
+  formData.append("variables", JSON.stringify(variables));
 
-  Object.keys(uploadables).forEach(key => {
+  Object.keys(uploadables).forEach((key) => {
     if (Object.prototype.hasOwnProperty.call(uploadables, key)) {
       formData.append(key, uploadables[key]);
     }
@@ -29,7 +36,10 @@ function getRequestBodyWithUploadables(request: RequestParameters, variables: Va
   return formData;
 }
 
-function getRequestBodyWithoutUplodables(request: RequestParameters, variables: Variables) {
+function getRequestBodyWithoutUplodables(
+  request: RequestParameters,
+  variables: Variables
+) {
   return JSON.stringify({
     name: request.name, // used by graphql mock on tests
     query: request.text, // GraphQL text from input
@@ -37,7 +47,11 @@ function getRequestBodyWithoutUplodables(request: RequestParameters, variables: 
   });
 }
 
-export function getRequestBody(request: RequestParameters, variables: Variables, uploadables?: UploadableMap) {
+export function getRequestBody(
+  request: RequestParameters,
+  variables: Variables,
+  uploadables?: UploadableMap
+) {
   if (uploadables) {
     return getRequestBodyWithUploadables(request, variables, uploadables);
   }
@@ -48,12 +62,12 @@ export function getRequestBody(request: RequestParameters, variables: Variables,
 export const getHeaders = (uploadables?: UploadableMap) => {
   if (uploadables) {
     return {
-      Accept: '*/*',
+      Accept: "*/*",
     };
   }
 
   return {
-    Accept: 'application/json',
-    'Content-type': 'application/json',
+    Accept: "application/json",
+    "Content-type": "application/json",
   };
 };

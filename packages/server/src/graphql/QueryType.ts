@@ -1,7 +1,7 @@
 import {
   GraphQLObjectType,
-  GraphQLNonNull,
   GraphQLString,
+  GraphQLNonNull,
   GraphQLID,
 } from "graphql";
 import { connectionArgs } from "graphql-relay";
@@ -12,12 +12,15 @@ import * as UserLoader from "../modules/User/UserLoader";
 import PodcastType from "../modules/Podcast/PodcastType";
 import { PodcastConnection } from "../modules/Podcast/PodcastType";
 import * as PodcastLoader from "../modules/Podcast/PodcastLoader";
+import PodcastFilterInputType from "../modules/Podcast/PodcastFilterInputType";
 
 import EpisodeType from "../modules/Episode/EpisodeType";
 import { EpisodeConnection } from "../modules/Episode/EpisodeType";
 import * as EpisodeLoader from "../modules/Episode/EpisodeLoader";
 
 import { nodesField, nodeField } from "../modules/Node/TypeRegister";
+
+import { withFilter } from "../common/withFilter";
 
 import { GraphQLContext } from "../types";
 
@@ -40,6 +43,38 @@ const QueryType = new GraphQLObjectType({
       resolve: async (_, args, context) =>
         await PodcastLoader.loadAll(context, args),
     },
+    podcastsByName: {
+      type: GraphQLNonNull(PodcastConnection.connectionType),
+      args: {
+        ...connectionArgs,
+        name: {
+          type: GraphQLString,
+        },
+      },
+      resolve: async (_, args, context) =>
+        await PodcastLoader.loadAll(
+          context,
+          withFilter(args, {
+            name: args.name,
+          }),
+        ),
+    },
+    podcastsByGenre: {
+      type: GraphQLNonNull(PodcastConnection.connectionType),
+      args: {
+        ...connectionArgs,
+        primaryGenre: {
+          type: GraphQLString,
+        },
+      },
+      resolve: async (_, args, context) =>
+        await PodcastLoader.loadAll(
+          context,
+          withFilter(args, {
+            primaryGenre: args.primaryGenre,
+          }),
+        ),
+    },
     podcast: {
       type: PodcastType,
       args: {
@@ -54,9 +89,20 @@ const QueryType = new GraphQLObjectType({
       type: GraphQLNonNull(EpisodeConnection.connectionType),
       args: {
         ...connectionArgs,
+        podcast: {
+          type: GraphQLID,
+        },
+        name: {
+          type: GraphQLString,
+        },
       },
       resolve: async (_, args, context) =>
-        await EpisodeLoader.loadAll(context, args),
+        await EpisodeLoader.loadAll(
+          context,
+          withFilter(args, {
+            name: args.name,
+          }),
+        ),
     },
     episode: {
       type: EpisodeType,

@@ -1,12 +1,20 @@
-import { QueryResponseCache, FetchFunction } from 'relay-runtime';
+import { QueryResponseCache, FetchFunction } from "relay-runtime";
 
 import fetchQuery from "./fetchQuery";
-import { isMutation, isQuery, forceFetch } from './helpers';
+import { isMutation, isQuery, forceFetch } from "./helpers";
 
 const oneMinute = 60 * 1000;
-const queryResponseCache = new QueryResponseCache({ size: 250, ttl: oneMinute });
+const queryResponseCache = new QueryResponseCache({
+  size: 250,
+  ttl: oneMinute,
+});
 
-const cacheHandler: FetchFunction = async (request, variables, cacheConfig, uploadables: any) => {
+const cacheHandler: FetchFunction = async (
+  request,
+  variables,
+  cacheConfig,
+  uploadables: any
+) => {
   const queryID: string = request.text as string;
 
   if (isMutation(request)) {

@@ -10,7 +10,7 @@ import {
   SliderTrack,
   SliderFilledTrack,
   SliderThumb,
-} from "@chakra-ui/react"
+} from "@chakra-ui/react";
 
 import { VolumeContainer } from "./Volume.styles";
 
