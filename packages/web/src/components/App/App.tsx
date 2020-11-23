@@ -8,7 +8,7 @@ import Menu from "./Menu/Menu";
 import Player from "./Player/Player";
 import Dashboard from "./Dashboard/Dashboard";
 
-import Home from "src/modules/App/Home/Home";
+import Browse from "src/modules/App/Browse/Browse";
 import Subscriptions from "src/modules/App/Subscriptions/Subscriptions";
 import Favorites from "src/modules/App/Favorites/Favorites";
 import Settings from "src/modules/App/Settings/Settings";
@@ -70,7 +70,7 @@ const App = () => {
       <AppContainer>
         <Dashboard>
           <Switch>
-            <Route exact path="/" component={Home} />
+            <Route exact path="/" component={Browse} />
             <Route exact path="/subscriptions" component={Subscriptions} />
             <Route exact path="/favorites" component={Favorites} />
             <Route exact path="/settings" component={Settings} />

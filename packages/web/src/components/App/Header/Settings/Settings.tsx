@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "@chakra-ui/react";
-import { User } from "react-feather";
 
 import { useAuthContext } from "src/context/Auth/Auth";
 import { useSettingsContext } from "src/context/Settings/Settings";

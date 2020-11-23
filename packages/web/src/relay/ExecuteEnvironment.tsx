@@ -15,7 +15,6 @@ const ExecutionEnvironment = {
 
   canUseWorkers: typeof Worker !== "undefined",
 
-  // @ts-ignore
   canUseEventListeners:
     canUseDOM && !!(window.addEventListener || window.attachEvent),
 
