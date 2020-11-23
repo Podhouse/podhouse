@@ -20,14 +20,6 @@ import {
 
 import { useAuthContext } from "src/context/Auth/Auth";
 
-import UserSignUpWithEmail from "./UserSignUpWithEmail";
-import {
-  UserSignUpWithEmailMutation,
-  UserSignUpWithEmailMutationResponse,
-} from "./__generated__/UserSignUpWithEmailMutation.graphql";
-
-import { updateToken } from "src/utils/auth";
-
 interface SignUpFormProps {
   email: string;
   password: string;

@@ -50,7 +50,6 @@
       "yarn server:build",
       "yarn web:build",
       "yarn server:lint",
-      "yarn web:lint",
       "yarn server:format",
       "yarn web:format",
       "git add"
