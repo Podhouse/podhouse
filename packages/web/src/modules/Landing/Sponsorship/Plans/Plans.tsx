@@ -181,6 +181,7 @@ const Plans = () => {
         <Featured
           featured={[
             {
+              id: featuredPodcast.collectionId,
               avatar: featuredPodcast.artworkUrl600,
               name: featuredPodcast.collectionName,
               author: featuredPodcast.artistName,

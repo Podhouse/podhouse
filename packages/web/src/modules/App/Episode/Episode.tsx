@@ -1,57 +1,134 @@
 import React from "react";
-import { withTranslation } from "i18n";
-import { WithTranslation } from "next-i18next";
+import NextLink from "next/link";
+import router from "next/router";
 import Scrollbars from "react-custom-scrollbars";
+import { fetchQuery } from "relay-runtime";
+import { useQuery, graphql, STORE_OR_NETWORK } from "relay-hooks";
+import Skeleton from "react-loading-skeleton";
 
 import {
   EpisodeContainer,
   EpisodeHeader,
   EpisodeAvatar,
   EpisodeDetailsContainer,
+  EpisodeDescription,
   EpisodeListenButtonContainer,
 } from "./Episode.styles";
+
+import { RelayEnvironment } from "src/relay/RelayEnvironment";
 
 import Button from "src/system/Button/Button";
 import Link from "src/system/Link/Link";
 import Heading from "src/system/Heading/Heading";
-import Paragraph from "src/system/Paragraph/Paragraph";
 
-const avatar =
-  "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg";
+import { EpisodeQuery } from "./__generated__/EpisodeQuery.graphql";
 
-const Episode = ({ t }: WithTranslation) => (
-  <Scrollbars universal autoHide autoHideTimeout={100} autoHideDuration={100}>
-    <EpisodeContainer>
-      <EpisodeHeader>
-        <EpisodeAvatar src={avatar} />
+const query = graphql`
+  query EpisodeQuery($_id: ID!) {
+    episode(_id: $_id) {
+      id
+      _id
+      title
+      description
+      publishedDate
+      link
+      image
+      audio
+      duration
+      podcast {
+        _id
+        name
+      }
+    }
+  }
+`;
 
-        <EpisodeDetailsContainer>
-          <Heading as="h1" variant="primary" size="normal">
-            A Fantasy of Fashion: Articles of Interest #7
-          </Heading>
-          <Link href="/app/podcast/invisible" variant="secondary" size="normal">
-            99% Invisible
-          </Link>
-          <Paragraph variant="secondary" size="normal" textAlign="start">
-            Design is everywhere in our lives, perhaps most importantly in the
-            places where we've just stopped noticing. 99% Invisible is a weekly
-            exploration of the process and power of design and architecture.
-            From award winning producer Roman Mars. Learn more at
-            99percentinvisible.org. A proud member of Radiotopia, from PRX.
-            Learn more at radiotopia.fm.
-          </Paragraph>
-        </EpisodeDetailsContainer>
+const Episode = () => {
+  const episodeId: string = router.query._id as string;
 
-        <EpisodeListenButtonContainer>
-          <Button type="button" variant="primary" size="normal">
-            {t("listen")}
-          </Button>
-        </EpisodeListenButtonContainer>
-      </EpisodeHeader>
-    </EpisodeContainer>
-  </Scrollbars>
-);
+  const { props, error } = useQuery<EpisodeQuery>(
+    query,
+    {
+      _id: episodeId,
+    },
+    {
+      fetchPolicy: STORE_OR_NETWORK,
+    },
+  );
 
-Episode.getInitialProps = async () => ({ namespacesRequired: ["podcast"] });
+  if (error) {
+    return <h1>Error</h1>;
+  }
 
-export default withTranslation("podcast")(Episode);
+  return (
+    <Scrollbars universal autoHide autoHideTimeout={100} autoHideDuration={100}>
+      <EpisodeContainer>
+        <EpisodeHeader>
+          {props === null || props === undefined ? (
+            <Skeleton width={200} height={200} />
+          ) : (
+            <EpisodeAvatar src={props.episode.image} />
+          )}
+
+          <EpisodeDetailsContainer>
+            {props === null || props === undefined ? (
+              <Skeleton width={300} height={30} />
+            ) : (
+              <Heading as="h1" variant="primary" size="normal">
+                {props.episode.title}
+              </Heading>
+            )}
+
+            {props === null || props === undefined ? (
+              <Skeleton width={300} height={20} />
+            ) : (
+              <NextLink
+                href={{
+                  pathname: `/app/podcast/${props.episode.podcast._id}`,
+                  query: { _id: props.episode.podcast._id },
+                }}
+              >
+                <Link variant="secondary" size="normal">
+                  {props.episode.podcast.name}
+                </Link>
+              </NextLink>
+            )}
+
+            {props === null || props === undefined ? (
+              <Skeleton width={300} height={100} />
+            ) : (
+              <EpisodeDescription
+                variant="secondary"
+                size="normal"
+                textAlign="start"
+              >
+                {props.episode.description}
+              </EpisodeDescription>
+            )}
+          </EpisodeDetailsContainer>
+
+          <EpisodeListenButtonContainer>
+            <Button type="button" variant="primary" size="normal">
+              Listen
+            </Button>
+          </EpisodeListenButtonContainer>
+        </EpisodeHeader>
+      </EpisodeContainer>
+    </Scrollbars>
+  );
+};
+
+Episode.getStaticProps = async () => {
+  const environment = RelayEnvironment();
+  const queryProps = await fetchQuery(environment, query, {});
+  const initialRecords = environment.getStore().getSource().toJSON();
+
+  return {
+    props: {
+      queryProps,
+      initialRecords,
+    },
+  };
+};
+
+export default Episode;

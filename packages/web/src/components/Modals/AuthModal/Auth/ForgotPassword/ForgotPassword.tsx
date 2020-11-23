@@ -33,7 +33,6 @@ const ForgotPassword = ({ t }: WithTranslation) => {
   const { register, handleSubmit, errors, formState } = useForm<
     ForgotPasswordFormProps
   >({
-    mode: "onChange",
     resolver: yupResolver(validationSchema),
   });
 

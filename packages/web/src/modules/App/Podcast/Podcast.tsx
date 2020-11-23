@@ -1,58 +1,97 @@
 import React from "react";
 import Head from "next/head";
-import { withTranslation } from "i18n";
-import { WithTranslation } from "next-i18next";
+import router from "next/router";
 import Scrollbars from "react-custom-scrollbars";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as Yup from "yup";
+import { fetchQuery } from "relay-runtime";
+import { useQuery, graphql, STORE_OR_NETWORK } from "relay-hooks";
+import Skeleton from "react-loading-skeleton";
 
 import {
   PodcastContainer,
   PodcastHeader,
   PodcastAvatar,
   PodcastDetailsContainer,
+  PodcastDescription,
   PodcastButtonsContainer,
   PodcastEpisodesContainer,
   PodcastLinksContainer,
   PodcastLinkContainer,
-  PodcastSearchInputContainer,
 } from "./Podcast.styles";
+
+import { RelayEnvironment } from "src/relay/RelayEnvironment";
 
 import EpisodeItem from "src/components/Podcast/EpisodeItem/EpisodeItem";
 
 import Button from "src/system/Button/Button";
-import InputWithLeftIcon from "src/system/InputWithLeftIcon/InputWithLeftIcon";
 import Heading from "src/system/Heading/Heading";
 import Link from "src/system/Link/Link";
-import Paragraph from "src/system/Paragraph/Paragraph";
 
-const avatar =
-  "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg";
+import { PodcastQuery } from "./__generated__/PodcastQuery.graphql";
 
-const episode = {
-  avatar,
-  name: "A Fantasy of Fashion: Articles of Interest #7",
-  description:
-    "In the wake of World War II, the government of France commissioned its most prominent designers to create a collection of miniature fashion dolls. It might seem like an odd thing to fund, but the fantasy of high fashion inspired hope in postwar Paris. These dolls also...",
-  publishedDate: "May 12, 2020",
-  duration: "39min",
-};
+const query = graphql`
+  query PodcastQuery(
+    $_id: ID!
+    $after: String
+    $first: Int!
+    $before: String
+    $last: Int!
+  ) {
+    podcast(_id: $_id) {
+      id
+      _id
+      appleId
+      name
+      author
+      description
+      website
+      rss
+      image
+      episodes(after: $after, first: $first, before: $before, last: $last) {
+        pageInfo {
+          hasNextPage
+          hasPreviousPage
+          startCursor
+          endCursor
+        }
+        edges {
+          node {
+            id
+            _id
+            title
+            description
+            publishedDate
+            link
+            image
+            audio
+            duration
+          }
+          cursor
+        }
+      }
+      genres
+      genreIds
+    }
+  }
+`;
 
-interface SearchPodcastProps {
-  podcast: string;
-}
+const Podcast = () => {
+  const podcastId: string = router.query._id as string;
 
-const validationSchema = Yup.object().shape({
-  email: Yup.string(),
-});
+  const { props, error } = useQuery<PodcastQuery>(
+    query,
+    {
+      _id: podcastId,
+      first: 10,
+      last: 10,
+    },
+    {
+      fetchPolicy: STORE_OR_NETWORK,
+    },
+  );
 
-const Podcast = ({ t }: WithTranslation) => {
-  const { register, handleSubmit } = useForm<SearchPodcastProps>({
-    resolver: yupResolver(validationSchema),
-  });
-
-  const onSubmit = (data) => console.log(data);
+  if (error) {
+    console.log("error: ", error);
+  }
 
   return (
     <Scrollbars universal autoHide autoHideTimeout={100} autoHideDuration={100}>
@@ -62,28 +101,45 @@ const Podcast = ({ t }: WithTranslation) => {
       </Head>
       <PodcastContainer>
         <PodcastHeader>
-          <PodcastAvatar src={avatar} />
+          {props === null || props === undefined ? (
+            <Skeleton width={200} height={200} />
+          ) : (
+            <PodcastAvatar src={props.podcast.image} />
+          )}
 
           <PodcastDetailsContainer>
-            <Heading as="h1" variant="primary" size="normal">
-              99% Invisible
-            </Heading>
-            <Heading as="h2" variant="primary" size="small" fontSize={16}>
-              Roman Mars
-            </Heading>
-            <Paragraph variant="secondary" size="normal" textAlign="start">
-              Design is everywhere in our lives, perhaps most importantly in the
-              places where we've just stopped noticing. 99% Invisible is a
-              weekly exploration of the process and power of design and
-              architecture. From award winning producer Roman Mars. Learn more
-              at 99percentinvisible.org. A proud member of Radiotopia, from PRX.
-              Learn more at radiotopia.fm.
-            </Paragraph>
+            {props === null || props === undefined ? (
+              <Skeleton width={300} height={30} />
+            ) : (
+              <Heading as="h1" variant="primary" size="normal">
+                {props.podcast.name}
+              </Heading>
+            )}
+
+            {props === null || props === undefined ? (
+              <Skeleton width={300} height={20} />
+            ) : (
+              <Heading as="h2" variant="primary" size="small" fontSize={16}>
+                {props.podcast.author}
+              </Heading>
+            )}
+
+            {props === null || props === undefined ? (
+              <Skeleton width={300} height={100} />
+            ) : (
+              <PodcastDescription
+                variant="secondary"
+                size="normal"
+                textAlign="start"
+              >
+                {props.podcast.description}
+              </PodcastDescription>
+            )}
           </PodcastDetailsContainer>
 
           <PodcastButtonsContainer>
             <Button type="button" variant="primary" size="normal">
-              {t("subscribe")}
+              Subscribe
             </Button>
           </PodcastButtonsContainer>
 
@@ -92,11 +148,15 @@ const Podcast = ({ t }: WithTranslation) => {
               <Link
                 variant="secondary"
                 size="normal"
-                href="mailto:leonardomso11@gmail.com"
+                href={
+                  props === null || props === undefined
+                    ? ""
+                    : props.podcast.website
+                }
                 target="_blank"
                 rel="noopener"
               >
-                {t("website")}
+                Website
               </Link>
             </PodcastLinkContainer>
 
@@ -104,43 +164,51 @@ const Podcast = ({ t }: WithTranslation) => {
               <Link
                 variant="secondary"
                 size="normal"
-                href="mailto:leonardomso11@gmail.com"
+                href={
+                  props === null || props === undefined ? "" : props.podcast.rss
+                }
                 target="_blank"
                 rel="noopener"
               >
                 RSS
               </Link>
             </PodcastLinkContainer>
-
-            <PodcastSearchInputContainer onSubmit={handleSubmit(onSubmit)}>
-              <InputWithLeftIcon
-                type="text"
-                name="podcast"
-                variant="primary"
-                scale="normal"
-                placeholder={t("search-episode")}
-                ref={register}
-                error=""
-              />
-            </PodcastSearchInputContainer>
           </PodcastLinksContainer>
         </PodcastHeader>
 
         <PodcastEpisodesContainer>
-          <EpisodeItem episode={episode} />
-          <EpisodeItem episode={episode} />
-          <EpisodeItem episode={episode} />
-          <EpisodeItem episode={episode} />
-          <EpisodeItem episode={episode} />
-          <EpisodeItem episode={episode} />
-          <EpisodeItem episode={episode} />
-          <EpisodeItem episode={episode} />
+          {props === null || props === undefined ? (
+            <>
+              <EpisodeItem episode={null} loading={true} />
+              <EpisodeItem episode={null} loading={true} />
+              <EpisodeItem episode={null} loading={true} />
+              <EpisodeItem episode={null} loading={true} />
+              <EpisodeItem episode={null} loading={true} />
+            </>
+          ) : (
+            props.podcast.episodes.edges.map(({ node }) => (
+              <EpisodeItem key={node.id} episode={node} loading={false} />
+            ))
+          )}
         </PodcastEpisodesContainer>
       </PodcastContainer>
     </Scrollbars>
   );
 };
 
-Podcast.getInitialProps = async () => ({ namespacesRequired: ["podcast"] });
+Podcast.getStaticProps = async () => {
+  const environment = RelayEnvironment();
+  const queryProps = await fetchQuery(environment, query, {
+    first: 9,
+  });
+  const initialRecords = environment.getStore().getSource().toJSON();
 
-export default withTranslation("podcast")(Podcast);
+  return {
+    props: {
+      queryProps,
+      initialRecords,
+    },
+  };
+};
+
+export default Podcast;

@@ -5,9 +5,9 @@ import useAuth from "src/hooks/useAuth";
 const AuthContext = React.createContext(undefined as any);
 
 const AuthProvider = ({ children }: any) => {
-  const { auth, handleAuth, logoutAuth, send } = useAuth();
+  const { current, auth, handleAuth, send } = useAuth();
 
-  const value = [auth, handleAuth, logoutAuth, send];
+  const value = [current, auth, handleAuth, send];
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };

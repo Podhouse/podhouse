@@ -24,6 +24,7 @@ const Link = forwardRef((props: LinkProps, ref) => {
     fontWeight,
     onClick,
     children,
+    textAlign = "center",
   } = props;
 
   const checkVariant = isDisabled ? "disabled" : variant;
@@ -40,6 +41,7 @@ const Link = forwardRef((props: LinkProps, ref) => {
       download={download}
       fontSize={fontSize}
       fontWeight={fontWeight}
+      textAlign={textAlign}
       onClick={onClick}
       ref={domRef}
       {...linkProps}

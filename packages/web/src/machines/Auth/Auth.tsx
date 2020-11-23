@@ -4,64 +4,42 @@ import { AuthContext, AuthStateSchema, AuthEvent } from "./Auth.types";
 
 const Auth = Machine<AuthContext, AuthStateSchema, AuthEvent>({
   id: "auth",
-  initial: "loggedIn",
+  initial: "getstarted",
   states: {
-    idle: {
+    getstarted: {
       on: {
-        OPEN: "open",
+        SIGNIN: "signin",
+        SIGNUP: "signup",
+        FORGOT: "forgot",
       },
     },
-    open: {
+    signin: {
       on: {
-        CLOSE: "idle",
-      },
-      initial: "getstarted",
-      states: {
-        getstarted: {
-          on: {
-            SIGNIN: "signin",
-            SIGNUP: "signup",
-            FORGOT: "forgot",
-          },
-        },
-        signin: {
-          on: {
-            SIGNUP: "signup",
-            FORGOT: "forgot",
-          },
-        },
-        signup: {
-          on: {
-            SIGNIN: "signin",
-            FORGOT: "forgot",
-          },
-        },
-        forgot: {
-          on: {
-            SIGNIN: "signin",
-            SIGNUP: "signup",
-          },
-        },
-        reset: {
-          on: {
-            SUBMITTING: "submitting",
-          },
-        },
-        submitting: {
-          on: {
-            SUCCESS: "success",
-            ERROR: "signin",
-          },
-        },
-        success: {
-          type: "final",
-        },
+        SIGNUP: "signup",
+        FORGOT: "forgot",
+        RESET: "reset",
       },
     },
-    loggedIn: {
+    signup: {
       on: {
-        LOGOUT: "idle",
+        SIGNIN: "signin",
+        FORGOT: "forgot",
       },
+    },
+    forgot: {
+      on: {
+        SIGNIN: "signin",
+        SIGNUP: "signup",
+      },
+    },
+    reset: {
+      on: {
+        SUCCESS: "success",
+        ERROR: "signin",
+      },
+    },
+    success: {
+      type: "final",
     },
   },
 });

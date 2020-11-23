@@ -11,38 +11,37 @@ import GetStarted from "./Auth/GetStarted/GetStarted";
 import SignIn from "./Auth/SignIn/SignIn";
 import SignUp from "./Auth/SignUp/SignUp";
 import ForgotPassword from "./Auth/ForgotPassword/ForgotPassword";
-import ResetPassword from "./Auth/ResetPassword/ResetPassword";
+import ChangePassword from "./Auth/ChangePassword/ChangePassword";
 import ForgotPasswordSuccess from "./Auth/ForgotPasswordSuccess/ForgotPasswordSuccess";
 
 import useOnClickOutside from "src/hooks/useOnClickOutside";
 
-interface AuthModalProps {
-  auth: any;
-  handleAuth: () => any;
-}
+import { useAuthContext } from "src/context/Auth/Auth";
 
-const AuthModal = ({ auth, handleAuth }: AuthModalProps) => {
+const AuthModal = () => {
+  const [current, , handleAuth] = useAuthContext();
+
   const ref = useRef<any>();
 
   useOnClickOutside(ref, () => handleAuth());
 
   const renderAuth = () => {
-    if (auth.matches("open.getstarted")) {
+    if (current.matches("getstarted")) {
       return <GetStarted />;
     }
-    if (auth.matches("open.signin")) {
+    if (current.matches("signin")) {
       return <SignIn />;
     }
-    if (auth.matches("open.signup")) {
+    if (current.matches("signup")) {
       return <SignUp />;
     }
-    if (auth.matches("open.forgot")) {
+    if (current.matches("forgot")) {
       return <ForgotPassword />;
     }
-    if (auth.matches("open.reset")) {
-      return <ResetPassword />;
+    if (current.matches("reset")) {
+      return <ChangePassword />;
     }
-    if (auth.matches("open.success")) {
+    if (current.matches("success")) {
       return <ForgotPasswordSuccess />;
     }
   };

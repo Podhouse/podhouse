@@ -10,7 +10,6 @@ import {
   SettingsThemeIconContainer,
 } from "./SettingsModal.styles";
 
-import { useAuthContext } from "src/context/Auth/Auth";
 import { useSettingsContext } from "src/context/Settings/Settings";
 
 import useOnClickOutside from "src/hooks/useOnClickOutside";
@@ -20,15 +19,23 @@ import useTheme from "src/system/useTheme";
 import Link from "src/system/Link/Link";
 import ThemeToggle from "src/components/ThemeToggle/ThemeToggle";
 
+import { useLogout } from "src/utils/auth";
+
 const SettingsModal = ({ t }: WithTranslation) => {
-  const [, , logoutAuth] = useAuthContext();
   const [, handleSettings] = useSettingsContext();
+
+  const [logout] = useLogout();
 
   const themeState = useTheme();
 
   const ref = useRef<any>();
 
   useOnClickOutside(ref, () => handleSettings());
+
+  const onLogout = () => {
+    logout();
+    handleSettings();
+  };
 
   return (
     <SettingsModalContainer ref={ref}>
@@ -68,8 +75,8 @@ const SettingsModal = ({ t }: WithTranslation) => {
         </SettingsThemeIconContainer>
       </SettingsThemeContainer>
 
-      <SettingsModalLinkContainer onClick={logoutAuth}>
-        <Link onClick={logoutAuth} variant="secondary" size="light">
+      <SettingsModalLinkContainer onClick={onLogout}>
+        <Link onClick={logout} variant="secondary" size="light">
           {t("logout")}
         </Link>
       </SettingsModalLinkContainer>

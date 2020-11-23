@@ -7,6 +7,7 @@ import {
   layout,
   space,
   variant,
+  textAlign,
 } from "styled-system";
 
 import { LinkProps } from "./Link.types";
@@ -61,6 +62,7 @@ const StyledLink = styled.a<LinkProps>`
   ${layout};
   ${space};
   ${typography};
+  ${textAlign};
   ${variants};
   ${sizes};
 

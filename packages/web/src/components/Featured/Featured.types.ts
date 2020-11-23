@@ -5,6 +5,7 @@ export type FeaturedProps = WithTranslation & {
 };
 
 export interface FeaturedPodcast {
+  id: number;
   avatar: string;
   name: string;
   author: string;
