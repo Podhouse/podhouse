@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 export const SettingsModalContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: repeat(4, 35px);
+  grid-template-rows: repeat(3, 35px);
   grid-row-gap: 5px;
   align-items: center;
   justify-content: center;
@@ -53,47 +53,4 @@ export const SettingsModalLink = styled.a`
   line-height: 17px;
   color: #b7b7b7;
   text-decoration: none;
-`;
-
-export const SettingsThemeContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  background: #ffffff;
-  padding: 0 20px 0 20px;
-  cursor: pointer;
-
-  a {
-    align-self: center;
-    justify-self: start;
-  }
-
-  &:hover {
-    background: #f3f3f3;
-
-    a {
-      color: #101010;
-    }
-  }
-`;
-
-export const SettingsThemeIconContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  grid-column: 2 / 3;
-  grid-row: 1 / 2;
-
-  .settings-theme-sun {
-    &:hover {
-      svg {
-        color: red;
-      }
-    }
-  }
 `;

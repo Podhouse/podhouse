@@ -13,7 +13,7 @@ export const HeaderContainer = styled.header`
     grid-template-areas: "search settings";
     grid-column-gap: 30px;
     background: #ffffff;
-    border-bottom: #f3f3f3;
+    border-bottom: 1px solid #f3f3f3;
     padding-left: 30px;
     padding-right: 30px;
     z-index: 1;

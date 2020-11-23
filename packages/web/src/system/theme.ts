@@ -1,6 +1,14 @@
 import { extendTheme } from "@chakra-ui/react";
 
 const theme = extendTheme({
+  styles: {
+    global: {
+      "html, body": {
+        fontFamily: "Inter",
+        fontSize: 14,
+      },
+    },
+  },
   colors: {
     brand: {
       50: "#f7f7f7",

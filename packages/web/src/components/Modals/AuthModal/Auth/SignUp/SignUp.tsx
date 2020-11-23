@@ -2,25 +2,23 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
-import { useMutation } from "react-relay/hooks";
-import { Input, Button, Link, Text } from "@chakra-ui/react";
+import {
+  Input,
+  Button,
+  Link,
+  Text,
+  FormControl,
+  FormLabel,
+  FormErrorMessage,
+} from "@chakra-ui/react";
 
 import {
   AuthTextContainer,
   AuthFormContainer,
   AuthLinksContainer,
-  AuthCircle,
 } from "../Auth.styles";
 
 import { useAuthContext } from "src/context/Auth/Auth";
-
-import UserSignUpWithEmail from "./UserSignUpWithEmail";
-import {
-  UserSignUpWithEmailMutation,
-  UserSignUpWithEmailMutationResponse,
-} from "./__generated__/UserSignUpWithEmailMutation.graphql";
-
-import { updateToken } from "src/utils/auth";
 
 interface SignUpFormProps {
   email: string;
@@ -33,10 +31,7 @@ const validationSchema = Yup.object().shape({
 });
 
 const SignUp = () => {
-  const [, , handleAuth, send] = useAuthContext();
-  const [userSignUpWithEmail, isPending] = useMutation<
-    UserSignUpWithEmailMutation
-  >(UserSignUpWithEmail);
+  const [, , , send] = useAuthContext();
 
   const {
     register,
@@ -51,76 +46,43 @@ const SignUp = () => {
     resolver: yupResolver(validationSchema),
   });
 
-  const onSubmit = () => {
-    userSignUpWithEmail({
-      variables: {
-        input: {
-          email: getValues().email,
-          password: getValues().password,
-        },
-      },
-      onCompleted: ({
-        UserSignUpWithEmail,
-      }: UserSignUpWithEmailMutationResponse) => {
-        if (UserSignUpWithEmail.error) {
-          const error = UserSignUpWithEmail.error;
-          setError("email", {
-            type: "manual",
-            message: error,
-          });
-          return;
-        }
-
-        updateToken(UserSignUpWithEmail.token);
-        handleAuth();
-      },
-    });
-  };
+  const onSubmit = () => {};
 
   return (
     <>
       <AuthTextContainer>
-        <Text>
-          Listen to your favorite podcasts
-        </Text>
+        <Text>Listen to your favorite podcasts</Text>
       </AuthTextContainer>
 
       <AuthFormContainer onSubmit={handleSubmit(onSubmit)}>
-        <Input
-          type="email"
-          name="email"
-          label="Email"
-          placeholder="Email"
-          ref={register}
-          error={errors.email?.message}
-        />
+        <FormControl isInvalid={errors.email && true}>
+          <FormLabel htmlFor="email">Email</FormLabel>
+          <Input name="email" placeholder="Email" ref={register} />
+          <FormErrorMessage>
+            {errors.email && errors.email.message}
+          </FormErrorMessage>
+        </FormControl>
 
-        <Input
-          type="password"
-          name="password"
-          label="Password"
-          placeholder="Password"
-          ref={register}
-          error={errors.password?.message}
-        />
+        <FormControl isInvalid={errors.password && true}>
+          <FormLabel htmlFor="password">Password</FormLabel>
+          <Input name="password" placeholder="Password" ref={register} />
+          <FormErrorMessage>
+            {errors.password && errors.password.message}
+          </FormErrorMessage>
+        </FormControl>
 
         <Button
+          colorScheme="blue"
           type="submit"
-          isDisabled={!formState.isValid || formState.isSubmitting || isPending}
+          width="100%"
+          isDisabled={!formState.isValid}
+          isLoading={formState.isSubmitting}
         >
           Sign up
         </Button>
 
         <AuthLinksContainer>
-          <Link onClick={() => send("SIGNIN")}>
-            Already have an account?
-          </Link>
-
-          <AuthCircle />
-
-          <Link onClick={() => send("FORGOT")}>
-            Forgout your password?
-          </Link>
+          <Link onClick={() => send("SIGNIN")}>Already have an account?</Link>
         </AuthLinksContainer>
       </AuthFormContainer>
     </>

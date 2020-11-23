@@ -11,7 +11,7 @@ import {
   MenuAvatarContainer,
 } from "./Menu.styles";
 
-import { ReactComponent as Logo } from "src/images/logo.svg";
+import { ReactComponent as Logo } from "src/images/logo-2.svg";
 
 const avatar =
   "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg";
@@ -34,11 +34,7 @@ const Menu = () => {
 
           <Navigation />
 
-          <Link
-            href="/app/episode/[episode]"
-            variant="secondary"
-            size="normal"
-          >
+          <Link href="/app/episode/[episode]" variant="secondary" size="normal">
             <MenuAvatarContainer src={avatar} alt="Podcast logo" />
           </Link>
         </MenuInsideContainer>

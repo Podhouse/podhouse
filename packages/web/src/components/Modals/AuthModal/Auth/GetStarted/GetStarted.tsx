@@ -15,40 +15,32 @@ const GetStarted = () => {
   return (
     <>
       <AuthTextContainer>
-        <Text>
-          Listen to your favorite podcasts
-        </Text>
+        <Text>Listen to your favorite podcasts</Text>
       </AuthTextContainer>
 
       <AuthGetStartedButtonsContainer>
         <Button
+          colorScheme="blue"
           type="button"
+          width="100%"
           onClick={() => send("SIGNUP")}
         >
           Sign up with email
         </Button>
 
         <AuthTextContainer>
-          <Text>
-            or
-          </Text>
+          <Text>or</Text>
         </AuthTextContainer>
 
         <Button
+          colorScheme="blue"
           type="button"
-          variant="primary"
-          size="normal"
+          width="100%"
           onClick={() => send("SIGNIN")}
         >
           Sign in with email
         </Button>
       </AuthGetStartedButtonsContainer>
-
-      <AuthLinksContainer>
-        <Link onClick={() => send("FORGOT")}>
-          Forgot your password?
-        </Link>
-      </AuthLinksContainer>
     </>
   );
 };

@@ -1,23 +1,21 @@
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
-import { ChakraProvider, CSSReset } from "@chakra-ui/react"
+import { ChakraProvider, CSSReset } from "@chakra-ui/react";
 import { RehawkProvider } from "rehawk";
-import { RelayEnvironmentProvider } from 'react-relay/hooks';
+import { RelayEnvironmentProvider } from "react-relay/hooks";
 
 import { AuthProvider } from "src/context/Auth/Auth";
 import { SettingsProvider } from "src/context/Settings/Settings";
 import { QueueProvider } from "src/context/Queue/Queue";
 import { RateProvider } from "src/context/Rate/Rate";
 
+import App from "src/components/App/App";
+
 import theme from "src/system/theme";
 
-import RelayEnvironment from 'src/relay/RelayEnvironment';
+import RelayEnvironment from "src/relay/RelayEnvironment";
 
-interface ProviderProps {
-  children: React.ReactNode;
-}
-
-const Provider = ({ children }: ProviderProps) => (
+const Provider = () => (
   <RelayEnvironmentProvider environment={RelayEnvironment}>
     <BrowserRouter>
       <ChakraProvider theme={theme}>
@@ -26,7 +24,7 @@ const Provider = ({ children }: ProviderProps) => (
             <SettingsProvider>
               <QueueProvider>
                 <RateProvider>
-                  {children}
+                  <App />
                 </RateProvider>
               </QueueProvider>
             </SettingsProvider>
@@ -35,7 +33,6 @@ const Provider = ({ children }: ProviderProps) => (
       </ChakraProvider>
       <CSSReset />
     </BrowserRouter>
-
   </RelayEnvironmentProvider>
 );
 

@@ -16,7 +16,7 @@ export const MenuContainer = styled.aside`
     position: inherit;
     z-index: 0;
     background: #ffffff;
-    border-right: #f3f3f3;
+    border-right: 1px solid #f3f3f3;
   }
 `;
 

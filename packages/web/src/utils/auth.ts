@@ -1,5 +1,4 @@
 import { useCallback } from "react";
-import { useHistory } from "react-router-dom";
 
 export const TOKEN_KEY = "podhouse";
 
@@ -16,13 +15,7 @@ export const updateToken = (token = "") => {
 };
 
 export const useLogout = () => {
-  const history = useHistory();
-
-  const logout = useCallback(() => {
-    updateToken("");
-
-    history.push("/app");
-  }, [history]);
+  const logout = () => updateToken("");
 
   return [logout];
 };

@@ -56,18 +56,10 @@ export const AuthFormContainer = styled.form`
 
 export const AuthLinksContainer = styled.div`
   display: grid;
-  grid-template-columns: max-content max-content max-content;
+  grid-template-columns: max-content;
   grid-template-rows: 1fr;
   grid-column-gap: 10px;
   justify-self: center;
-`;
-
-export const AuthCircle = styled.div`
-  width: 2px;
-  height: 2px;
-  border-radius: 50%;
-  background: #ffffff;
-  align-self: center;
 `;
 
 export const AuthGetStartedButtonsContainer = styled.div`

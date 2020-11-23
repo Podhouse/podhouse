@@ -11,8 +11,10 @@ import Dashboard from "./Dashboard/Dashboard";
 import Home from "src/modules/App/Home/Home";
 import Subscriptions from "src/modules/App/Subscriptions/Subscriptions";
 import Favorites from "src/modules/App/Favorites/Favorites";
-
-import Provider from "src/components/Provider/Provider";
+import Settings from "src/modules/App/Settings/Settings";
+import Podcast from "src/modules/App/Podcast/Podcast";
+import Episode from "src/modules/App/Episode/Episode";
+import Genres from "src/modules/App/Genres/Genres";
 
 import AuthModal from "src/components/Modals/AuthModal/AuthModal";
 import SettingsModal from "src/components/Modals/SettingsModal/SettingsModal";
@@ -59,20 +61,29 @@ const App = () => {
   };
 
   return (
-    <Provider>
+    <>
+      {renderAuthModal()}
+      {renderSettingsModal()}
+      {renderQueueModal()}
+      {renderRateModal()}
+
       <AppContainer>
         <Dashboard>
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/subscriptions" component={Subscriptions} />
             <Route exact path="/favorites" component={Favorites} />
+            <Route exact path="/settings" component={Settings} />
+            <Route exact path="/podcast" component={Podcast} />
+            <Route exact path="/episode" component={Episode} />
+            <Route exact path="/genres" component={Genres} />
           </Switch>
         </Dashboard>
         <Header />
         <Player />
         <Menu />
       </AppContainer>
-    </Provider>
+    </>
   );
 };
 
