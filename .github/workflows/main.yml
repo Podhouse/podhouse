@@ -26,22 +26,32 @@ jobs:
         env:
           CI: true
 
+      - name: Update schema
+        run: yarn update-schema
+        env:
+          CI: true
+
+      - name: Relay
+        run: yarn relay
+        env:
+          CI: true
+
       - name: Lint
         run: yarn lint
         env:
           CI: true
-
-      # - name: Test
-      #   run: yarn test --ci --coverage --maxWorkers=2
-      #   env:
-      #     CI: true
 
       - name: Build
         run: yarn build
         env:
           CI: true
 
-      - name: Update schema
-        run: yarn update-schema
+      - name: Lint
+        run: yarn lint
+        env:
+          CI: true
+
+      - name: Format
+        run: yarn format
         env:
           CI: true
