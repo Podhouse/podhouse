@@ -39,23 +39,41 @@ const QueryType = new GraphQLObjectType({
       type: GraphQLNonNull(PodcastConnection.connectionType),
       args: {
         ...connectionArgs,
+      },
+      resolve: async (_, args, context) =>
+        await PodcastLoader.loadAll(context, args),
+    },
+    podcastsByName: {
+      type: GraphQLNonNull(PodcastConnection.connectionType),
+      args: {
+        ...connectionArgs,
         name: {
           type: GraphQLString,
         },
+      },
+      resolve: async (_, args, context) =>
+        await PodcastLoader.loadAll(
+          context,
+          withFilter(args, {
+            name: args.name,
+          }),
+        ),
+    },
+    podcastsByGenre: {
+      type: GraphQLNonNull(PodcastConnection.connectionType),
+      args: {
+        ...connectionArgs,
         primaryGenre: {
           type: GraphQLString,
         },
       },
-      resolve: async (_, args, context) => {
-        const response = await PodcastLoader.loadAll(
+      resolve: async (_, args, context) =>
+        await PodcastLoader.loadAll(
           context,
           withFilter(args, {
             primaryGenre: args.primaryGenre,
           }),
-        );
-        console.log("response: ", response);
-        return response;
-      },
+        ),
     },
     podcast: {
       type: PodcastType,
