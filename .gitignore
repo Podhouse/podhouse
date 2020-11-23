@@ -65,3 +65,28 @@ dist
 .tern-port
 
 .vercel
+
+# Random things to ignore
+ignore/
+package-lock.json
+/yarn-offline-cache
+.cache
+
+# IDE/Editor GraphQL Extensions
+.gqlconfig
+
+# Relay modern
+# __generated__/
+
+# Flow log
+flow.log
+
+# Random things to ignore
+yarn-offline-cache
+
+hard-source-cache/
+**/hard-source-cache/
+
+# Cypress
+cypress/videos
+cypress/screenshots
