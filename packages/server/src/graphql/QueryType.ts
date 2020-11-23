@@ -1,4 +1,9 @@
-import { GraphQLObjectType, GraphQLNonNull, GraphQLID } from "graphql";
+import {
+  GraphQLObjectType,
+  GraphQLString,
+  GraphQLNonNull,
+  GraphQLID,
+} from "graphql";
 import { connectionArgs } from "graphql-relay";
 
 import UserType from "../modules/User/UserType";
@@ -7,12 +12,15 @@ import * as UserLoader from "../modules/User/UserLoader";
 import PodcastType from "../modules/Podcast/PodcastType";
 import { PodcastConnection } from "../modules/Podcast/PodcastType";
 import * as PodcastLoader from "../modules/Podcast/PodcastLoader";
+import PodcastFilterInputType from "../modules/Podcast/PodcastFilterInputType";
 
 import EpisodeType from "../modules/Episode/EpisodeType";
 import { EpisodeConnection } from "../modules/Episode/EpisodeType";
 import * as EpisodeLoader from "../modules/Episode/EpisodeLoader";
 
 import { nodesField, nodeField } from "../modules/Node/TypeRegister";
+
+import { withFilter } from "../common/withFilter";
 
 import { GraphQLContext } from "../types";
 
@@ -31,9 +39,23 @@ const QueryType = new GraphQLObjectType({
       type: GraphQLNonNull(PodcastConnection.connectionType),
       args: {
         ...connectionArgs,
+        name: {
+          type: GraphQLString,
+        },
+        primaryGenre: {
+          type: GraphQLString,
+        },
       },
-      resolve: async (_, args, context) =>
-        await PodcastLoader.loadAll(context, args),
+      resolve: async (_, args, context) => {
+        const response = await PodcastLoader.loadAll(
+          context,
+          withFilter(args, {
+            primaryGenre: args.primaryGenre,
+          }),
+        );
+        console.log("response: ", response);
+        return response;
+      },
     },
     podcast: {
       type: PodcastType,
