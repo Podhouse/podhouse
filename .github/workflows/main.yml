@@ -51,6 +51,11 @@ jobs:
         env:
           CI: true
 
+      - name: Lint web
+        run: yarn web:lint
+        env:
+          CI: true
+
       - name: Format server
         run: yarn server:format
         env:
