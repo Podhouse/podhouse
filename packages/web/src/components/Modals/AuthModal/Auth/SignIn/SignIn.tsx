@@ -36,10 +36,8 @@ const SignIn = () => {
   const {
     register,
     handleSubmit,
-    setError,
     errors,
     formState,
-    getValues,
   } = useForm<SignInFormProps>({
     mode: "onChange",
     reValidateMode: "onChange",

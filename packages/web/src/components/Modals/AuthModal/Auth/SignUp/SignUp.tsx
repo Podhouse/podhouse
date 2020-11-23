@@ -36,10 +36,8 @@ const SignUp = () => {
   const {
     register,
     handleSubmit,
-    setError,
     errors,
     formState,
-    getValues,
   } = useForm<SignUpFormProps>({
     mode: "onChange",
     reValidateMode: "onChange",

@@ -1,5 +1,3 @@
-import { useCallback } from "react";
-
 export const TOKEN_KEY = "podhouse";
 
 export const getToken = () => {

@@ -1,9 +1,8 @@
 import React from "react";
-import { Input, Button, Link, Text } from "@chakra-ui/react";
+import { Button, Text } from "@chakra-ui/react";
 
 import {
   AuthGetStartedButtonsContainer,
-  AuthLinksContainer,
   AuthTextContainer,
 } from "../Auth.styles";
 
