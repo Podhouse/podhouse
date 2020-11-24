@@ -1,13 +1,29 @@
 import ExecutionEnvironment from "./ExecuteEnvironment";
 
 export type InitWithRetries = {
-  body?: unknown;
-  cache?: string | null;
-  credentials?: string | null;
+  body?:
+    | string
+    | Blob
+    | ArrayBufferView
+    | ArrayBuffer
+    | FormData
+    | URLSearchParams
+    | ReadableStream<Uint8Array>
+    | null
+    | undefined;
+  cache?:
+    | "default"
+    | "force-cache"
+    | "no-cache"
+    | "no-store"
+    | "only-if-cached"
+    | "reload"
+    | undefined;
+  credentials?: "include" | "omit" | "same-origin" | undefined;
   fetchTimeout?: number | null;
-  headers?: unknown;
-  method?: string | null;
-  mode?: string | null;
+  headers?: HeadersInit | string[][] | Record<string, string> | undefined;
+  method?: string | undefined;
+  mode?: "same-origin" | "cors" | "navigate" | "no-cors" | undefined;
   retryDelays?: Array<number> | null;
 };
 
@@ -44,7 +60,7 @@ function fetchWithRetries(
       requestsAttempted++;
       requestStartTime = Date.now();
       let isRequestAlive = true;
-      const request = fetch(uri, init as any);
+      const request = fetch(uri, init);
       const requestTimeout = setTimeout(() => {
         isRequestAlive = false;
         if (shouldRetry(requestsAttempted)) {

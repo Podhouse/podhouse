@@ -10,24 +10,24 @@ const queryResponseCache = new QueryResponseCache({
 });
 
 const cacheHandler: FetchFunction = async (
-  request,
+  operation,
   variables,
   cacheConfig,
-  uploadables: any
+  uploadables
 ) => {
-  const queryID: string = request.text as string;
+  const queryID = operation.text || "";
 
-  if (isMutation(request)) {
+  if (isMutation(operation)) {
     queryResponseCache.clear();
-    return fetchQuery(request, variables, uploadables);
+    return fetchQuery(operation, variables);
   }
 
   const fromCache = queryResponseCache.get(queryID, variables);
-  if (isQuery(request) && fromCache !== null && !forceFetch(cacheConfig)) {
+  if (isQuery(operation) && fromCache !== null && !forceFetch(cacheConfig)) {
     return fromCache;
   }
 
-  const fromServer = await fetchQuery(request, variables, uploadables);
+  const fromServer = await fetchQuery(operation, variables);
   if (fromServer) {
     queryResponseCache.set(queryID, variables, fromServer);
   }

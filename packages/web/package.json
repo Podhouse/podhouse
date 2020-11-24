@@ -9,7 +9,7 @@
     "eject": "SKIP_PREFLIGHT_CHECK=true react-scripts eject",
     "lint": "eslint --ext js,ts,tsx src",
     "format": "prettier --write src",
-    "relay": "relay-compiler --src ./src --schema ./schema/schema.graphql"
+    "relay": "relay-compiler --src ./src --schema ./schema/schema.graphql --language typescript"
   },
   "dependencies": {
     "@chakra-ui/icons": "^1.0.1",
@@ -21,9 +21,12 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "@types/isomorphic-fetch": "^0.0.35",
     "@xstate/react": "^1.0.3",
     "@xstate/test": "^0.4.1",
+    "babel-plugin-relay": "^10.1.0",
     "framer-motion": "^2.9.4",
+    "isomorphic-fetch": "^3.0.0",
     "keen-slider": "^5.3.5",
     "react": "^17.0.1",
     "react-custom-scrollbars": "^4.2.1",
@@ -34,6 +37,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.0",
     "rehawk": "^0.2.2",
+    "relay-compiler-language-typescript": "^13.0.2",
     "relay-hooks": "^3.7.0",
     "typescript": "~4.0.5",
     "web-vitals": "^0.2.4",
@@ -71,18 +75,16 @@
     ]
   },
   "devDependencies": {
-    "@types/react-custom-scrollbars": "^4.0.7",
-    "@types/react-router-dom": "^5.1.6",
     "@types/jest": "^26.0.15",
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.53",
+    "@types/react-custom-scrollbars": "^4.0.7",
     "@types/react-dom": "^16.9.8",
     "@types/react-relay": "^7.0.17",
+    "@types/react-router-dom": "^5.1.6",
     "@types/relay-runtime": "^10.1.2",
     "@types/yup": "^0.29.9",
-    "babel-plugin-relay": "^10.1.0",
     "graphql": "^15.4.0",
-    "graphql-compiler": "^1.7.0",
     "relay-compiler": "^10.1.0",
     "relay-compiler-language-typescript": "^13.0.2",
     "relay-config": "^10.1.0"

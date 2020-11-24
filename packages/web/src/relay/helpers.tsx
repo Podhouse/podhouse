@@ -3,8 +3,10 @@ import { RequestParameters, UploadableMap, CacheConfig } from "relay-runtime";
 
 export const isMutation = (request: RequestParameters) =>
   request.operationKind === "mutation";
+
 export const isQuery = (request: RequestParameters) =>
   request.operationKind === "query";
+
 export const forceFetch = (cacheConfig: CacheConfig) =>
   !!(cacheConfig && cacheConfig.force);
 
@@ -24,7 +26,7 @@ function getRequestBodyWithUploadables(
 ) {
   const formData = new FormData();
   formData.append("name", request.name);
-  formData.append("query", request.operationKind);
+  formData.append("query", request.text as string);
   formData.append("variables", JSON.stringify(variables));
 
   Object.keys(uploadables).forEach((key) => {
@@ -36,7 +38,7 @@ function getRequestBodyWithUploadables(
   return formData;
 }
 
-function getRequestBodyWithoutUplodables(
+function getRequestBodyWithoutUploadables(
   request: RequestParameters,
   variables: Variables
 ) {
@@ -56,7 +58,7 @@ export function getRequestBody(
     return getRequestBodyWithUploadables(request, variables, uploadables);
   }
 
-  return getRequestBodyWithoutUplodables(request, variables);
+  return getRequestBodyWithoutUploadables(request, variables);
 }
 
 export const getHeaders = (uploadables?: UploadableMap) => {

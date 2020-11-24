@@ -2,6 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
+import { useMutation } from "react-relay/hooks";
 import {
   Input,
   Button,
@@ -12,6 +13,12 @@ import {
   FormErrorMessage,
 } from "@chakra-ui/react";
 
+import UserSignInWithEmail from "./UserSignInWithEmail";
+import {
+  UserSignInWithEmailMutation,
+  UserSignInWithEmailMutationResponse,
+} from "./__generated__/UserSignInWithEmailMutation.graphql";
+
 import {
   AuthTextContainer,
   AuthFormContainer,
@@ -19,6 +26,8 @@ import {
 } from "../Auth.styles";
 
 import { useAuthContext } from "src/context/Auth/Auth";
+
+import { updateToken } from "src/utils/auth";
 
 interface SignInFormProps {
   email: string;
@@ -31,20 +40,68 @@ const validationSchema = Yup.object().shape({
 });
 
 const SignIn = () => {
-  const [, , , send] = useAuthContext();
+  const [, , handleAuth, send] = useAuthContext();
+  const [
+    userSignInWithEmail,
+    isPending,
+  ] = useMutation<UserSignInWithEmailMutation>(UserSignInWithEmail);
 
   const {
     register,
     handleSubmit,
     errors,
     formState,
+    getValues,
+    setError,
   } = useForm<SignInFormProps>({
     mode: "onChange",
     reValidateMode: "onChange",
     resolver: yupResolver(validationSchema),
   });
 
-  const onSubmit = () => {};
+  const onSubmit = () => {
+    userSignInWithEmail({
+      variables: {
+        input: {
+          email: getValues().email,
+          password: getValues().password,
+        },
+      },
+      onCompleted: ({
+        UserSignInWithEmail,
+      }: UserSignInWithEmailMutationResponse) => {
+        console.log("UserSignInWithEmail: ", UserSignInWithEmail);
+        // if (UserSignInWithEmail?.error) {
+        //   const error = UserSignInWithEmail.error;
+
+        //   if (error === "Invalid password") {
+        //     setError("password", {
+        //       type: "manual",
+        //       message: error,
+        //     });
+        //   } else if (error === "Account with this email address not found") {
+        //     setError("email", {
+        //       type: "manual",
+        //       message: error,
+        //     });
+        //   } else {
+        //     setError("email", {
+        //       type: "manual",
+        //       message: error,
+        //     });
+        //     setError("password", {
+        //       type: "manual",
+        //       message: error,
+        //     });
+        //   }
+        //   return;
+        // }
+
+        // updateToken(UserSignInWithEmail?.token);
+        // handleAuth();
+      },
+    });
+  };
 
   return (
     <>
@@ -74,7 +131,7 @@ const SignIn = () => {
           type="submit"
           width="100%"
           isDisabled={!formState.isValid}
-          isLoading={formState.isSubmitting}
+          isLoading={formState.isSubmitting || isPending}
         >
           Sign in
         </Button>

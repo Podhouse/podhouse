@@ -1,5 +1,6 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
+import { RelayEnvironmentProvider } from "relay-hooks";
 
 import { AppContainer } from "./App.styles";
 
@@ -25,6 +26,8 @@ import { useAuthContext } from "src/context/Auth/Auth";
 import { useSettingsContext } from "src/context/Settings/Settings";
 import { useQueueContext } from "src/context/Queue/Queue";
 import { useRateContext } from "src/context/Rate/Rate";
+
+import RelayEnvironment from "src/relay/RelayEnvironment";
 
 const App = () => {
   const [, auth] = useAuthContext();
@@ -61,7 +64,7 @@ const App = () => {
   };
 
   return (
-    <>
+    <RelayEnvironmentProvider environment={RelayEnvironment}>
       {renderAuthModal()}
       {renderSettingsModal()}
       {renderQueueModal()}
@@ -83,7 +86,7 @@ const App = () => {
         <Player />
         <Menu />
       </AppContainer>
-    </>
+    </RelayEnvironmentProvider>
   );
 };
 

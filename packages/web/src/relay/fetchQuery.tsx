@@ -1,42 +1,35 @@
-import { RequestParameters, Variables, UploadableMap } from "relay-runtime";
+import { RequestParameters, Variables } from "relay-runtime";
+import fetch from "isomorphic-fetch";
+
+import fetchWithRetries from "./fetchWithRetries";
+
+import { handleData, isMutation } from "./helpers";
 
 import { getToken } from "src/utils/auth";
 
-import { handleData, getRequestBody, getHeaders, isMutation } from "./helpers";
-import fetchWithRetries from "./fetchWithRetries";
-
 // Define a function that fetches the results of a request (query/mutation/etc)
 // and returns its results as a Promise:
-const fetchQuery = async (
-  request: RequestParameters,
-  variables: Variables,
-  uploadables: UploadableMap
-) => {
+const fetchQuery = async (request: RequestParameters, variables: Variables) => {
   try {
-    const body = getRequestBody(request, variables, uploadables);
-
     const authorization = getToken();
-
-    const headers: any = {
-      ...getHeaders(uploadables),
-      authorization,
-    };
 
     const isMutationOperation = isMutation(request);
 
     const fetchFn = isMutationOperation ? fetch : fetchWithRetries;
 
-    // uncomment to see optimistic update working
-    // const fetchFn = fetchWithRetries;
-
     const response = await fetchFn(
       "https://podhouse-server.herokuapp.com/graphql",
       {
         method: "POST",
-        headers,
-        body,
-        fetchTimeout: 20000,
-        retryDelays: [1000, 3000, 5000],
+        headers: {
+          authorization,
+          Accept: "application/json",
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({
+          query: request.text,
+          variables,
+        }),
       }
     );
 

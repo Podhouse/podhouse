@@ -29,7 +29,7 @@ router.all(
 
 app.listen(process.env.PORT || 4000);
 app.use(logger());
-app.use(cors());
+app.use(cors({ maxAge: 86400, credentials: true }));
 app.use(
   helmet({
     contentSecurityPolicy:
