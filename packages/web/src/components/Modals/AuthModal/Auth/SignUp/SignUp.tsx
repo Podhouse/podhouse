@@ -2,6 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
+import { useMutation } from "react-relay/hooks";
 import {
   Input,
   Button,
@@ -20,6 +21,14 @@ import {
 
 import { useAuthContext } from "src/context/Auth/Auth";
 
+import UserSignUpWithEmail from "./UserSignUpWithEmail";
+import {
+  UserSignUpWithEmailMutation,
+  UserSignUpWithEmailMutationResponse,
+} from "./__generated__/UserSignUpWithEmailMutation.graphql";
+
+import { updateToken } from "src/utils/auth";
+
 interface SignUpFormProps {
   email: string;
   password: string;
@@ -31,20 +40,50 @@ const validationSchema = Yup.object().shape({
 });
 
 const SignUp = () => {
-  const [, , , send] = useAuthContext();
+  const [, , handleAuth, send] = useAuthContext();
+  const [
+    userSignUpWithEmail,
+    isPending,
+  ] = useMutation<UserSignUpWithEmailMutation>(UserSignUpWithEmail);
 
   const {
     register,
     handleSubmit,
     errors,
     formState,
+    getValues,
+    setError,
   } = useForm<SignUpFormProps>({
     mode: "onChange",
     reValidateMode: "onChange",
     resolver: yupResolver(validationSchema),
   });
 
-  const onSubmit = () => {};
+  const onSubmit = () => {
+    userSignUpWithEmail({
+      variables: {
+        input: {
+          email: getValues().email,
+          password: getValues().password,
+        },
+      },
+      onCompleted: ({
+        UserSignUpWithEmail,
+      }: UserSignUpWithEmailMutationResponse) => {
+        if (UserSignUpWithEmail?.error) {
+          const error = UserSignUpWithEmail.error;
+          setError("email", {
+            type: "manual",
+            message: error,
+          });
+          return;
+        }
+
+        updateToken(UserSignUpWithEmail?.token);
+        handleAuth();
+      },
+    });
+  };
 
   return (
     <>
@@ -74,7 +113,7 @@ const SignUp = () => {
           type="submit"
           width="100%"
           isDisabled={!formState.isValid}
-          isLoading={formState.isSubmitting}
+          isLoading={formState.isSubmitting || isPending}
         >
           Sign up
         </Button>

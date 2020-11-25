@@ -13,12 +13,6 @@ import {
   FormErrorMessage,
 } from "@chakra-ui/react";
 
-import UserSignInWithEmail from "./UserSignInWithEmail";
-import {
-  UserSignInWithEmailMutation,
-  UserSignInWithEmailMutationResponse,
-} from "./__generated__/UserSignInWithEmailMutation.graphql";
-
 import {
   AuthTextContainer,
   AuthFormContainer,
@@ -26,6 +20,12 @@ import {
 } from "../Auth.styles";
 
 import { useAuthContext } from "src/context/Auth/Auth";
+
+import UserSignInWithEmail from "./UserSignInWithEmail";
+import {
+  UserSignInWithEmailMutation,
+  UserSignInWithEmailMutationResponse,
+} from "./__generated__/UserSignInWithEmailMutation.graphql";
 
 import { updateToken } from "src/utils/auth";
 
@@ -70,35 +70,34 @@ const SignIn = () => {
       onCompleted: ({
         UserSignInWithEmail,
       }: UserSignInWithEmailMutationResponse) => {
-        console.log("UserSignInWithEmail: ", UserSignInWithEmail);
-        // if (UserSignInWithEmail?.error) {
-        //   const error = UserSignInWithEmail.error;
+        if (UserSignInWithEmail?.error) {
+          const error = UserSignInWithEmail.error;
 
-        //   if (error === "Invalid password") {
-        //     setError("password", {
-        //       type: "manual",
-        //       message: error,
-        //     });
-        //   } else if (error === "Account with this email address not found") {
-        //     setError("email", {
-        //       type: "manual",
-        //       message: error,
-        //     });
-        //   } else {
-        //     setError("email", {
-        //       type: "manual",
-        //       message: error,
-        //     });
-        //     setError("password", {
-        //       type: "manual",
-        //       message: error,
-        //     });
-        //   }
-        //   return;
-        // }
+          if (error === "Invalid password") {
+            setError("password", {
+              type: "manual",
+              message: error,
+            });
+          } else if (error === "Account with this email address not found") {
+            setError("email", {
+              type: "manual",
+              message: error,
+            });
+          } else {
+            setError("email", {
+              type: "manual",
+              message: error,
+            });
+            setError("password", {
+              type: "manual",
+              message: error,
+            });
+          }
+          return;
+        }
 
-        // updateToken(UserSignInWithEmail?.token);
-        // handleAuth();
+        updateToken(UserSignInWithEmail?.token);
+        handleAuth();
       },
     });
   };
