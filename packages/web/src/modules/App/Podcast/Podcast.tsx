@@ -44,7 +44,24 @@ const Podcast = () => {
           </PodcastDetailsContainer>
 
           <PodcastButtonsContainer>
-            <Button type="button" width="100%">
+            <Button
+              type="button"
+              width="100%"
+              bgColor="#101010"
+              color="#ffffff"
+              _hover={{ bg: "#101010" }}
+              _active={{
+                bg: "#101010",
+              }}
+              _focus={{
+                boxShadow:
+                  "0 0 1px 2px rgba(0, 0, 0, .50), 0 1px 1px rgba(0, 0, 0, .15)",
+              }}
+              _disabled={{
+                bgColor: "#eaeaea",
+                cursor: "not-allowed",
+              }}
+            >
               Subscribe
             </Button>
           </PodcastButtonsContainer>

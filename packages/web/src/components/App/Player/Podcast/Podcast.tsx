@@ -1,6 +1,6 @@
 import React from "react";
 import { Heart } from "react-feather";
-import { Link } from "@chakra-ui/react";
+import { Link as ReactRouterLink } from "react-router-dom";
 
 import {
   PodcastContainer,
@@ -24,9 +24,9 @@ const Podcast = ({ ready, currentPodcast }: PodcastProps) => {
         <PodcastAvatar avatar={avatar} />
 
         <PodcastDetails>
-          <Link href="/episode/123">{episode}</Link>
+          <ReactRouterLink to="/episode/123">{episode}</ReactRouterLink>
 
-          <Link href="/podcast/123">{name}</Link>
+          <ReactRouterLink to="/podcast/123">{name}</ReactRouterLink>
 
           <PodcastFavoriteContainer>
             <Heart

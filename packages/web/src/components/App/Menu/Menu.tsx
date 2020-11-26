@@ -1,6 +1,6 @@
 import React from "react";
 import Scrollbars from "react-custom-scrollbars";
-import { Link } from "@chakra-ui/react";
+import { Link as ReactRouterLink } from "react-router-dom";
 
 import Navigation from "./Navigation/Navigation";
 
@@ -27,16 +27,16 @@ const Menu = () => {
       >
         <MenuInsideContainer>
           <MenuLogoContainer>
-            <Link href="/app" variant="secondary" size="normal">
+            <ReactRouterLink to="/">
               <Logo />
-            </Link>
+            </ReactRouterLink>
           </MenuLogoContainer>
 
           <Navigation />
 
-          <Link href="/app/episode/[episode]" variant="secondary" size="normal">
+          <ReactRouterLink to="/episode/123">
             <MenuAvatarContainer src={avatar} alt="Podcast logo" />
-          </Link>
+          </ReactRouterLink>
         </MenuInsideContainer>
       </Scrollbars>
     </MenuContainer>

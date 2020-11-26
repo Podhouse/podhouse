@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { Image } from "@chakra-ui/react";
 
 export const MenuContainer = styled.aside`
   width: 100%;
@@ -48,7 +49,7 @@ export const MenuLogoContainer = styled.div`
   }
 `;
 
-export const MenuAvatarContainer = styled.img`
+export const MenuAvatarContainer = styled(Image)`
   display: none;
 
   @media screen and (min-width: 800px) {

@@ -126,11 +126,20 @@ const SignIn = () => {
         </FormControl>
 
         <Button
-          colorScheme="blue"
           type="submit"
           width="100%"
           isDisabled={!formState.isValid}
           isLoading={formState.isSubmitting || isPending}
+          bgColor="#101010"
+          color="#ffffff"
+          _hover={{ bg: "#101010" }}
+          _active={{
+            bg: "#101010",
+          }}
+          _focus={{
+            boxShadow:
+              "0 0 1px 2px rgba(0, 0, 0, .50), 0 1px 1px rgba(0, 0, 0, .15)",
+          }}
         >
           Sign in
         </Button>
