@@ -14,6 +14,8 @@
     "web:start": "yarn workspace @podhouse/web start",
     "web:build": "yarn workspace @podhouse/web build",
     "web:test": "yarn workspace @podhouse/web test",
+    "web:cypress:open": "yarn workspace @podhouse/web cypress:open",
+    "web:cypress:run": "yarn workspace @podhouse/web cypress:run",
     "web:lint": "yarn workspace @podhouse/web lint",
     "web:format": "yarn workspace @podhouse/web format",
     "web:relay": "yarn workspace @podhouse/web relay",
