@@ -24,9 +24,9 @@ const Podcast = ({ ready, currentPodcast }: PodcastProps) => {
         <PodcastAvatar avatar={avatar} />
 
         <PodcastDetails>
-          <Link href="/app/episode/123">{episode}</Link>
+          <Link href="/episode/123">{episode}</Link>
 
-          <Link href="/app/podcast/123">{name}</Link>
+          <Link href="/podcast/123">{name}</Link>
 
           <PodcastFavoriteContainer>
             <Heart

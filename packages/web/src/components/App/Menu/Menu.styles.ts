@@ -30,7 +30,7 @@ export const MenuInsideContainer = styled.div`
   @media screen and (min-width: 800px) {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 80px 1fr 210px;
+    grid-template-rows: 70px 1fr 210px;
     grid-row-gap: 30px;
   }
 `;

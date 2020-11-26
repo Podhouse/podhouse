@@ -77,8 +77,8 @@ const App = () => {
             <Route exact path="/subscriptions" component={Subscriptions} />
             <Route exact path="/favorites" component={Favorites} />
             <Route exact path="/settings" component={Settings} />
-            <Route exact path="/podcast" component={Podcast} />
-            <Route exact path="/episode" component={Episode} />
+            <Route exact path="/podcast/:id" component={Podcast} />
+            <Route exact path="/episode/:id" component={Episode} />
             <Route exact path="/genres" component={Genres} />
           </Switch>
         </Dashboard>

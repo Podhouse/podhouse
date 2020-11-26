@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 import Provider from "src/components/Provider/Provider";
+
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
 
