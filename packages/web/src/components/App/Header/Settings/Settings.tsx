@@ -10,7 +10,14 @@ const Settings = () => {
 
   return (
     <SettingsContainer>
-      <Link onClick={handleAuth}>Login</Link>
+      <Link
+        color="brand.900"
+        fontWeight="bold"
+        textTransform="uppercase"
+        onClick={handleAuth}
+      >
+        Login
+      </Link>
     </SettingsContainer>
   );
 };

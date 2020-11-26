@@ -15,7 +15,7 @@ import Favorites from "src/modules/App/Favorites/Favorites";
 import Settings from "src/modules/App/Settings/Settings";
 import Podcast from "src/modules/App/Podcast/Podcast";
 import Episode from "src/modules/App/Episode/Episode";
-import Genres from "src/modules/App/Genres/Genres";
+import Genre from "src/modules/App/Genre/Genre";
 
 import AuthModal from "src/components/Modals/AuthModal/AuthModal";
 import SettingsModal from "src/components/Modals/SettingsModal/SettingsModal";
@@ -79,7 +79,7 @@ const App = () => {
             <Route exact path="/settings" component={Settings} />
             <Route exact path="/podcast/:id" component={Podcast} />
             <Route exact path="/episode/:id" component={Episode} />
-            <Route exact path="/genres" component={Genres} />
+            <Route exact path="/genre/:id" component={Genre} />
           </Switch>
         </Dashboard>
         <Header />

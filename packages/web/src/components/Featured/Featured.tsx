@@ -63,11 +63,20 @@ const Featured = ({ featured }: FeaturedProps) => {
                   objectFit="cover"
                   alt="Podcast featured"
                 />
-                ;
               </ReactRouterLink>
 
               <FeaturedDetailsContainer>
-                <Badge>Featured</Badge>
+                <Badge
+                  pl="2"
+                  pr="2"
+                  pt="0.5"
+                  pb="0.5"
+                  borderRadius={2}
+                  fontSize="0.8em"
+                  colorScheme="green"
+                >
+                  Featured
+                </Badge>
 
                 <Heading
                   as={ReactRouterLink}

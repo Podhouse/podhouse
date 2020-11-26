@@ -2,7 +2,7 @@ import React from "react";
 
 import { AuthContainer, AuthInsideContainer } from "./Auth.styles";
 
-import { ReactComponent as Logo } from "src/images/logo.svg";
+import { ReactComponent as Logo } from "src/images/logo-2.svg";
 
 interface AuthProps {
   children: React.ReactNode;
