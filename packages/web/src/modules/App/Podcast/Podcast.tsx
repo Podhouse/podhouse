@@ -14,15 +14,33 @@ import {
   PodcastLinkContainer,
 } from "./Podcast.styles";
 
+import EpisodeItem from "src/components/Podcast/EpisodeItem/EpisodeItem";
+
 const avatar =
   "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg";
+
+const episode = {
+  avatar,
+  name: "A Fantasy of Fashion: Articles of Interest #7",
+  description:
+    "In the wake of World War II, the government of France commissioned its most prominent designers to create a collection of miniature fashion dolls. It might seem like an odd thing to fund, but the fantasy of high fashion inspired hope in postwar Paris. These dolls also...",
+  publishedDate: "May 12, 2020",
+  duration: "39min",
+};
 
 const Podcast = () => {
   return (
     <Scrollbars universal autoHide autoHideTimeout={100} autoHideDuration={100}>
       <PodcastContainer>
         <PodcastHeader>
-          <Image src={avatar} objectFit="cover" borderRadius={5} />
+          <Image
+            src={avatar}
+            objectFit="cover"
+            borderRadius={5}
+            maxWidth="200px"
+            alignSelf="center"
+            justifySelf="center"
+          />
 
           <PodcastDetailsContainer>
             <Heading as="h1" letterSpacing="-0.03em">
@@ -69,19 +87,30 @@ const Podcast = () => {
           <PodcastLinksContainer>
             <PodcastLinkContainer>
               <Link href="https://chakra-ui.com" isExternal>
-                Website <ExternalLink size={12} />
+                Website
               </Link>
+              <ExternalLink size={14} />
             </PodcastLinkContainer>
 
             <PodcastLinkContainer>
               <Link href="https://chakra-ui.com" isExternal>
-                RSS <ExternalLink size={12} />
+                RSS
               </Link>
+              <ExternalLink size={14} />
             </PodcastLinkContainer>
           </PodcastLinksContainer>
         </PodcastHeader>
 
-        <PodcastEpisodesContainer></PodcastEpisodesContainer>
+        <PodcastEpisodesContainer>
+          <EpisodeItem episode={episode} />
+          <EpisodeItem episode={episode} />
+          <EpisodeItem episode={episode} />
+          <EpisodeItem episode={episode} />
+          <EpisodeItem episode={episode} />
+          <EpisodeItem episode={episode} />
+          <EpisodeItem episode={episode} />
+          <EpisodeItem episode={episode} />
+        </PodcastEpisodesContainer>
       </PodcastContainer>
     </Scrollbars>
   );

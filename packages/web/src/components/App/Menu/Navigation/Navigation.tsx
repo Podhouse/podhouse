@@ -1,6 +1,5 @@
 import React from "react";
 import { Home, Headphones, Search, User, Heart } from "react-feather";
-import { Link } from "@chakra-ui/react";
 import { Link as ReactRouterLink } from "react-router-dom";
 
 import {
@@ -11,9 +10,9 @@ import {
 const Navigation = () => (
   <NavigationContainer>
     <NavigationItemContainer className="browse">
-      <Link href="/">
+      <ReactRouterLink to="/">
         <Home size={16} strokeWidth={1.7} />
-      </Link>
+      </ReactRouterLink>
 
       <ReactRouterLink id="link-desktop" to="/">
         Browse
@@ -21,9 +20,9 @@ const Navigation = () => (
     </NavigationItemContainer>
 
     <NavigationItemContainer className="subscriptions">
-      <Link href="/subscriptions">
+      <ReactRouterLink to="/subscriptions">
         <Headphones size={16} strokeWidth={1.7} />
-      </Link>
+      </ReactRouterLink>
 
       <ReactRouterLink id="link-desktop" to="/subscriptions">
         Subscriptions
@@ -31,9 +30,9 @@ const Navigation = () => (
     </NavigationItemContainer>
 
     <NavigationItemContainer className="favorites">
-      <Link href="/favorites">
+      <ReactRouterLink to="/favorites">
         <Heart size={16} strokeWidth={1.7} />
-      </Link>
+      </ReactRouterLink>
 
       <ReactRouterLink id="link-desktop" to="/favorites">
         Favorites
@@ -41,15 +40,15 @@ const Navigation = () => (
     </NavigationItemContainer>
 
     <NavigationItemContainer className="search">
-      <Link href="/search">
+      <ReactRouterLink to="/search">
         <Search size={16} strokeWidth={1.7} />
-      </Link>
+      </ReactRouterLink>
     </NavigationItemContainer>
 
     <NavigationItemContainer className="settings">
-      <Link href="/settings">
+      <ReactRouterLink to="/settings">
         <User size={16} strokeWidth={1.7} />
-      </Link>
+      </ReactRouterLink>
     </NavigationItemContainer>
   </NavigationContainer>
 );

@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Button, Text } from "@chakra-ui/react";
+import { Image, Button, Text } from "@chakra-ui/react";
 
 export const EpisodeLoadingContainer = styled.div`
   width: 100%;
@@ -36,8 +36,9 @@ export const EpisodeItemContainer = styled.div`
   }
 `;
 
-export const EpisodeItemAvatar = styled.img`
+export const EpisodeItemAvatar = styled(Image)`
   display: none;
+
   @media screen and (min-width: 800px) {
     display: block;
     grid-column: 1 / 2;
@@ -50,7 +51,7 @@ export const EpisodeItemAvatar = styled.img`
   }
 `;
 
-export const EpisodeItemName = styled.a`
+export const EpisodeItemName = styled(Text)`
   grid-column: 1 / 4;
   grid-row: 1 / 2;
   font-family: Inter;
@@ -58,17 +59,12 @@ export const EpisodeItemName = styled.a`
   font-weight: 500;
   font-size: 14px;
   line-height: 17px;
-  color: #b7b7b7;
   cursor: pointer;
   text-decoration: none;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-
-  &:hover {
-    color: #101010;
-  }
 
   @media screen and (min-width: 800px) {
     grid-column: 2 / 3;

@@ -1,12 +1,14 @@
 import React from "react";
 import { Skeleton } from "@chakra-ui/react";
 import { Link as ReactRouterLink } from "react-router-dom";
+import { Play } from "react-feather";
 
 import {
   EpisodeLoadingContainer,
   EpisodeLoadingDetailsContainer,
   EpisodeItemContainer,
   EpisodeItemAvatar,
+  EpisodeItemName,
   EpisodeItemDescription,
   EpisodeItemPublishedDate,
   EpisodeItemDuration,
@@ -28,7 +30,7 @@ const EpisodeItem = ({ episode, loading }: EpisodeItemProps) => {
     );
   }
 
-  const { title, description, publishedDate, image, duration } = episode;
+  const { name, description, avatar, publishedDate, duration } = episode;
 
   const imageAlt = `avatar`;
 
@@ -37,23 +39,25 @@ const EpisodeItem = ({ episode, loading }: EpisodeItemProps) => {
       {episode === null || episode === undefined ? (
         <Skeleton />
       ) : (
-        <EpisodeItemAvatar src={image} alt={imageAlt} />
+        <EpisodeItemAvatar src={avatar} alt={imageAlt} />
       )}
 
       {episode === null || episode === undefined ? (
         <Skeleton />
       ) : (
-        <ReactRouterLink to="/episode/123">{title}</ReactRouterLink>
-      )}
-
-      {episode === null || episode === undefined ? (
-        <Skeleton />
-      ) : (
-        <EpisodeItemDescription
-          variant="secondary"
-          size="normal"
-          textAlign="start"
+        <EpisodeItemName
+          as={ReactRouterLink}
+          to="/episode/123"
+          fontWeight="500"
         >
+          {name}
+        </EpisodeItemName>
+      )}
+
+      {episode === null || episode === undefined ? (
+        <Skeleton />
+      ) : (
+        <EpisodeItemDescription lineHeight="25px" textAlign="start">
           {description}
         </EpisodeItemDescription>
       )}
@@ -61,11 +65,7 @@ const EpisodeItem = ({ episode, loading }: EpisodeItemProps) => {
       {episode === null || episode === undefined ? (
         <Skeleton />
       ) : (
-        <EpisodeItemPublishedDate
-          variant="secondary"
-          size="normal"
-          textAlign="start"
-        >
+        <EpisodeItemPublishedDate textAlign="start">
           {publishedDate}
         </EpisodeItemPublishedDate>
       )}
@@ -73,16 +73,10 @@ const EpisodeItem = ({ episode, loading }: EpisodeItemProps) => {
       {episode === null || episode === undefined ? (
         <Skeleton />
       ) : (
-        <EpisodeItemDuration
-          variant="secondary"
-          size="normal"
-          textAlign="start"
-        >
-          {duration}
-        </EpisodeItemDuration>
+        <EpisodeItemDuration textAlign="start">{duration}</EpisodeItemDuration>
       )}
 
-      <EpisodeItemButton type="button" variant="secondary" size="normal">
+      <EpisodeItemButton type="button" leftIcon={<Play size={14} />}>
         Play
       </EpisodeItemButton>
     </EpisodeItemContainer>

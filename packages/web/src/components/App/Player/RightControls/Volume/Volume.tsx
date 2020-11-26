@@ -89,7 +89,7 @@ const Volume = ({ ready, volume, muted, onVolume, onMute }: VolumeProps) => {
         {renderVolume()}
         <Slider defaultValue={30}>
           <SliderTrack>
-            <SliderFilledTrack />
+            <SliderFilledTrack bg="#101010" />
           </SliderTrack>
           <SliderThumb />
         </Slider>

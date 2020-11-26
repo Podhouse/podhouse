@@ -5,7 +5,7 @@ export interface Podcast {
   avatar: string;
 }
 
-export interface PodcastsWithOnlyAvatarProps {
+export interface PodcastsWithOnlyAvatarListProps {
   title: string;
   items: Array<Podcast>;
 }

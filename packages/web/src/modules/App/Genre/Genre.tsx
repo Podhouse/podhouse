@@ -5,7 +5,7 @@ import { GenreContainer } from "./Genre.styles";
 
 import Featured from "src/components/Featured/Featured";
 
-import PodcastsWithOnlyAvatar from "src/components/Lists/PodcastsWithOnlyAvatar/PodcastsWithOnlyAvatar";
+import PodcastsWithOnlyAvatarList from "src/components/Lists/PodcastsWithOnlyAvatarList/PodcastsWithOnlyAvatarList";
 
 import featured from "src/utils/featured";
 
@@ -163,7 +163,7 @@ const Genre = () => (
   <Scrollbars universal autoHide autoHideTimeout={100} autoHideDuration={100}>
     <GenreContainer>
       <Featured featured={featured} />
-      <PodcastsWithOnlyAvatar title="Genre" items={items} />
+      <PodcastsWithOnlyAvatarList title="Genre" items={items} />
     </GenreContainer>
   </Scrollbars>
 );

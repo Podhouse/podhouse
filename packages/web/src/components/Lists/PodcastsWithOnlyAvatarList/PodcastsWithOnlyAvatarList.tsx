@@ -2,30 +2,30 @@ import React from "react";
 import { Heading, Divider } from "@chakra-ui/react";
 
 import {
-  PodcastsWithOnlyAvatarContainer,
-  PodcastsWithOnlyAvatarSection,
-  PodcastsWithOnlyAvatarHeader,
-} from "./PodcastsWithOnlyAvatar.styles";
+  PodcastsWithOnlyAvatarListContainer,
+  PodcastsWithOnlyAvatarListSection,
+  PodcastsWithOnlyAvatarListHeader,
+} from "./PodcastsWithOnlyAvatarList.styles";
 
 import PodcastItemWithAvatar from "src/components/Podcast/PodcastItemWithAvatar/PodcastItemWithAvatar";
 
 import {
   Podcast,
-  PodcastsWithOnlyAvatarProps,
-} from "./PodcastsWithOnlyAvatar.types";
+  PodcastsWithOnlyAvatarListProps,
+} from "./PodcastsWithOnlyAvatarList.types";
 
-const PodcastsWithOnlyAvatar = ({
+const PodcastsWithOnlyAvatarList = ({
   title,
   items,
-}: PodcastsWithOnlyAvatarProps) => {
+}: PodcastsWithOnlyAvatarListProps) => {
   const renderItems = () =>
     items.map((item: Podcast) => (
       <PodcastItemWithAvatar key={item.id} podcast={item} />
     ));
 
   return (
-    <PodcastsWithOnlyAvatarContainer>
-      <PodcastsWithOnlyAvatarHeader>
+    <PodcastsWithOnlyAvatarListContainer>
+      <PodcastsWithOnlyAvatarListHeader>
         <Heading
           as="h1"
           variant="secondary"
@@ -37,13 +37,13 @@ const PodcastsWithOnlyAvatar = ({
           {title}
         </Heading>
         <Divider orientation="horizontal" />
-      </PodcastsWithOnlyAvatarHeader>
+      </PodcastsWithOnlyAvatarListHeader>
 
-      <PodcastsWithOnlyAvatarSection>
+      <PodcastsWithOnlyAvatarListSection>
         {renderItems()}
-      </PodcastsWithOnlyAvatarSection>
-    </PodcastsWithOnlyAvatarContainer>
+      </PodcastsWithOnlyAvatarListSection>
+    </PodcastsWithOnlyAvatarListContainer>
   );
 };
 
-export default PodcastsWithOnlyAvatar;
+export default PodcastsWithOnlyAvatarList;

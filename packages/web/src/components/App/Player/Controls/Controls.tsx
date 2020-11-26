@@ -91,9 +91,9 @@ const Controls = ({
         <ControlsSliderContainer>
           <ControlsTime fontSize="sm">1:21</ControlsTime>
 
-          <Slider colorScheme="brand" defaultValue={30}>
+          <Slider defaultValue={30}>
             <SliderTrack>
-              <SliderFilledTrack />
+              <SliderFilledTrack bg="#101010" />
             </SliderTrack>
             <SliderThumb />
           </Slider>

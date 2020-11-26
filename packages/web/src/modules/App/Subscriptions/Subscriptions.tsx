@@ -3,7 +3,7 @@ import Scrollbars from "react-custom-scrollbars";
 
 import { SubscriptionsContainer } from "./Subscriptions.styles";
 
-import PodcastsWithOnlyAvatar from "src/components/Lists/PodcastsWithOnlyAvatar/PodcastsWithOnlyAvatar";
+import PodcastsWithOnlyAvatarList from "src/components/Lists/PodcastsWithOnlyAvatarList/PodcastsWithOnlyAvatarList";
 
 const items = [
   {
@@ -158,7 +158,7 @@ const items = [
 const Subscriptions = () => (
   <Scrollbars universal autoHide autoHideTimeout={100} autoHideDuration={100}>
     <SubscriptionsContainer>
-      <PodcastsWithOnlyAvatar title="Subscriptions" items={items} />
+      <PodcastsWithOnlyAvatarList title="Subscriptions" items={items} />
     </SubscriptionsContainer>
   </Scrollbars>
 );

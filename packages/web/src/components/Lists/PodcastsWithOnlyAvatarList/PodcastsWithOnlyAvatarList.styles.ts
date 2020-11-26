@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-export const PodcastsWithOnlyAvatarContainer = styled.div`
+export const PodcastsWithOnlyAvatarListContainer = styled.div`
   width: 100%;
   height: 100%;
   display: grid;
@@ -9,7 +9,7 @@ export const PodcastsWithOnlyAvatarContainer = styled.div`
   grid-row-gap: 20px;
 `;
 
-export const PodcastsWithOnlyAvatarHeader = styled.div`
+export const PodcastsWithOnlyAvatarListHeader = styled.div`
   width: 100%;
   height: auto;
   grid-column: 1 / 2;
@@ -20,7 +20,7 @@ export const PodcastsWithOnlyAvatarHeader = styled.div`
   grid-template-rows: max-content max-content;
 `;
 
-export const PodcastsWithOnlyAvatarSection = styled.div`
+export const PodcastsWithOnlyAvatarListSection = styled.div`
   width: 100%;
   height: auto;
   grid-column: 1 / 2;
