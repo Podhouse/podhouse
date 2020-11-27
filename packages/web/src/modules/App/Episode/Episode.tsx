@@ -21,7 +21,14 @@ const Episode = () => {
     <Scrollbars universal autoHide autoHideTimeout={100} autoHideDuration={100}>
       <EpisodeContainer>
         <EpisodeHeader>
-          <Image src={avatar} objectFit="cover" borderRadius={5} />
+          <Image
+            src={avatar}
+            objectFit="cover"
+            borderRadius={5}
+            maxWidth="200px"
+            alignSelf="center"
+            justifySelf="center"
+          />
 
           <EpisodeDetailsContainer>
             <Heading as="h1" letterSpacing="-0.03em">
