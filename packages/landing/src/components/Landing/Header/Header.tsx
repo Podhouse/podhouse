@@ -1,5 +1,6 @@
 import React from "react";
 import NextLink from "next/link";
+import { useRouter } from "next/router";
 import { Link, Button } from "@chakra-ui/react";
 
 import {
@@ -12,6 +13,12 @@ import {
 import PodhouseDark from "../../../../public/logo.svg";
 
 const Header = () => {
+  const router = useRouter();
+
+  const redirectToApp = () => {
+    router.push("https://play.podhouse.app");
+  };
+
   return (
     <HeaderContainer>
       <HeaderLogoContainer>
@@ -44,6 +51,7 @@ const Header = () => {
         <Button
           type="button"
           width={120}
+          onClick={redirectToApp}
           bgColor="#101010"
           color="#ffffff"
           _hover={{ bg: "#101010" }}
