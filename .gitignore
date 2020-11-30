@@ -88,8 +88,8 @@ yarn-error.log
 # IDE/Editor GraphQL Extensions
 .gqlconfig
 
-# Relay modern
-__generated__/
+# # Relay modern
+# __generated__/
 
 # Flow log
 flow.log
