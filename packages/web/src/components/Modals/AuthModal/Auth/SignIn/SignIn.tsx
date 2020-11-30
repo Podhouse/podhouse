@@ -111,7 +111,7 @@ const SignIn = () => {
       <AuthFormContainer onSubmit={handleSubmit(onSubmit)}>
         <FormControl isInvalid={errors.email && true}>
           <FormLabel htmlFor="email">Email</FormLabel>
-          <Input name="email" placeholder="Email" ref={register} />
+          <Input type="email" name="email" placeholder="Email" ref={register} />
           <FormErrorMessage>
             {errors.email && errors.email.message}
           </FormErrorMessage>
@@ -119,7 +119,12 @@ const SignIn = () => {
 
         <FormControl isInvalid={errors.password && true}>
           <FormLabel htmlFor="password">Password</FormLabel>
-          <Input name="password" placeholder="Password" ref={register} />
+          <Input
+            type="password"
+            name="password"
+            placeholder="Password"
+            ref={register}
+          />
           <FormErrorMessage>
             {errors.password && errors.password.message}
           </FormErrorMessage>
