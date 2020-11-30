@@ -57,13 +57,10 @@
       "yarn relay",
       "yarn server:build",
       "yarn web:build",
-      "yarn landing:build",
       "yarn server:lint",
       "yarn web:lint",
-      "yarn landing:lint",
       "yarn server:format",
       "yarn web:format",
-      "yarn landing:format",
       "git add"
     ]
   }
