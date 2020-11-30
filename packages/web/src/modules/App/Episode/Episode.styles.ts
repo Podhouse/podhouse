@@ -148,7 +148,7 @@ export const EpisodeLinkContainer = styled.div`
     display: grid;
     grid-template-columns: max-content max-content;
     grid-template-rows: 1fr;
-    grid-column-gap: 5px;
+    grid-column-gap: 4px;
     align-items: center;
   }
 `;

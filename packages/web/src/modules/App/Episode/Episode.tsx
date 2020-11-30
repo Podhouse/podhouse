@@ -75,14 +75,16 @@ const Episode = () => {
           <EpisodeLinksContainer>
             <EpisodeLinkContainer>
               <Link href="https://chakra-ui.com" isExternal>
-                Website <ExternalLink size={12} />
+                Website
               </Link>
+              <ExternalLink size={14} />
             </EpisodeLinkContainer>
 
             <EpisodeLinkContainer>
               <Link href="https://chakra-ui.com" isExternal>
-                RSS <ExternalLink size={12} />
+                RSS
               </Link>
+              <ExternalLink size={14} />
             </EpisodeLinkContainer>
           </EpisodeLinksContainer>
         </EpisodeHeader>
