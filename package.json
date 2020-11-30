@@ -10,6 +10,11 @@
     ]
   },
   "scripts": {
+    "landing:dev": "yarn workspace @podhouse/landing dev",
+    "landing:start": "yarn workspace @podhouse/landing start",
+    "landing:build": "yarn workspace @podhouse/landing build",
+    "landing:lint": "yarn workspace @podhouse/landing lint",
+    "landing:format": "yarn workspace @podhouse/landing format",
     "web:dev": "yarn workspace @podhouse/web dev",
     "web:start": "yarn workspace @podhouse/web start",
     "web:build": "yarn workspace @podhouse/web build",
@@ -52,10 +57,13 @@
       "yarn relay",
       "yarn server:build",
       "yarn web:build",
+      "yarn landing:build",
       "yarn server:lint",
       "yarn web:lint",
+      "yarn landing:lint",
       "yarn server:format",
       "yarn web:format",
+      "yarn landing:format",
       "git add"
     ]
   }
