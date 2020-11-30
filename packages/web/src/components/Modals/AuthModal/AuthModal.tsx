@@ -10,9 +10,6 @@ import Auth from "./Auth/Auth";
 import GetStarted from "./Auth/GetStarted/GetStarted";
 import SignIn from "./Auth/SignIn/SignIn";
 import SignUp from "./Auth/SignUp/SignUp";
-import ForgotPassword from "./Auth/ForgotPassword/ForgotPassword";
-import ChangePassword from "./Auth/ChangePassword/ChangePassword";
-import ForgotPasswordSuccess from "./Auth/ForgotPasswordSuccess/ForgotPasswordSuccess";
 
 import useOnClickOutside from "src/hooks/useOnClickOutside";
 
@@ -34,15 +31,6 @@ const AuthModal = () => {
     }
     if (current.matches("signup")) {
       return <SignUp />;
-    }
-    if (current.matches("forgot")) {
-      return <ForgotPassword />;
-    }
-    if (current.matches("reset")) {
-      return <ChangePassword />;
-    }
-    if (current.matches("success")) {
-      return <ForgotPasswordSuccess />;
     }
   };
 

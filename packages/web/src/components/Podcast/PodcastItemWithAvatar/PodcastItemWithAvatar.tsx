@@ -1,29 +1,25 @@
 import React from "react";
-import NextLink from "next/link";
+import { Link as ReactRouterLink } from "react-router-dom";
 
 import {
-  PodcastAvatarItemContainer,
-  PodcastAvatarItemAvatar,
+  PodcastItemWithAvatarContainer,
+  PodcastItemWithAvatarAvatar,
 } from "./PodcastItemWithAvatar.styles";
 
-import { PodcastAvatarItemProps } from "./PodcastItemWithAvatar.types";
+import { PodcastItemWithAvatarProps } from "./PodcastItemWithAvatar.types";
 
-import Link from "src/system/Link/Link";
-
-const PodcastAvatarItem = ({ podcast }: PodcastAvatarItemProps) => {
+const PodcastItemWithAvatar = ({ podcast }: PodcastItemWithAvatarProps) => {
   const { name, avatar } = podcast;
 
   const imageAlt = `${name} avatar`;
 
   return (
-    <PodcastAvatarItemContainer>
-      <NextLink href="/app/podcast/[podcast]" as="/app/podcast/123">
-        <Link variant="secondary" size="normal" href="/app/podcast/[podcast]">
-          <PodcastAvatarItemAvatar src={avatar} alt={imageAlt} />
-        </Link>
-      </NextLink>
-    </PodcastAvatarItemContainer>
+    <PodcastItemWithAvatarContainer>
+      <ReactRouterLink to="/podcast/123">
+        <PodcastItemWithAvatarAvatar src={avatar} alt={imageAlt} />
+      </ReactRouterLink>
+    </PodcastItemWithAvatarContainer>
   );
 };
 
-export default PodcastAvatarItem;
+export default PodcastItemWithAvatar;

@@ -1,67 +1,70 @@
 import React from "react";
-import { withTranslation } from "i18n";
-import { WithTranslation } from "next-i18next";
+import { Button, Text } from "@chakra-ui/react";
 
 import {
   AuthGetStartedButtonsContainer,
-  AuthLinksContainer,
   AuthTextContainer,
 } from "../Auth.styles";
 
-import Paragraph from "src/system/Paragraph/Paragraph";
-import Button from "src/system/Button/Button";
-import Link from "src/system/Link/Link";
-
 import { useAuthContext } from "src/context/Auth/Auth";
 
-const GetStarted = ({ t }: WithTranslation) => {
+const GetStarted = () => {
   const [, , , send] = useAuthContext();
 
   return (
     <>
       <AuthTextContainer>
-        <Paragraph variant="secondary" size="normal">
-          {t("listen-to-your-favorite-podcasts")}
-        </Paragraph>
+        <Text>Listen to your favorite podcasts</Text>
       </AuthTextContainer>
 
       <AuthGetStartedButtonsContainer>
         <Button
           type="button"
-          variant="primary"
-          size="normal"
+          width="100%"
           onClick={() => send("SIGNUP")}
+          bgColor="#101010"
+          color="#ffffff"
+          _hover={{ bg: "#101010" }}
+          _active={{
+            bg: "#101010",
+          }}
+          _focus={{
+            boxShadow:
+              "0 0 1px 2px rgba(0, 0, 0, .50), 0 1px 1px rgba(0, 0, 0, .15)",
+          }}
         >
-          {t("sign-up-with-email")}
+          Sign up with email
         </Button>
 
         <AuthTextContainer>
-          <Paragraph variant="secondary" size="normal">
-            {t("or")}
-          </Paragraph>
+          <Text>or</Text>
         </AuthTextContainer>
 
         <Button
+          variant="solid"
+          colorScheme="black"
           type="button"
-          variant="primary"
-          size="normal"
+          width="100%"
           onClick={() => send("SIGNIN")}
+          bgColor="#101010"
+          color="#ffffff"
+          _hover={{ bg: "#101010" }}
+          _active={{
+            bg: "#101010",
+          }}
+          _focus={{
+            boxShadow:
+              "0 0 1px 2px rgba(0, 0, 0, .50), 0 1px 1px rgba(0, 0, 0, .15)",
+          }}
+          _disabled={{
+            bgColor: "#f3f3f3",
+          }}
         >
-          {t("sign-in-with-email")}
+          Sign in with email
         </Button>
       </AuthGetStartedButtonsContainer>
-
-      <AuthLinksContainer>
-        <Link variant="secondary" size="normal" onClick={() => send("FORGOT")}>
-          {t("forgot-your-password?")}
-        </Link>
-      </AuthLinksContainer>
     </>
   );
 };
 
-GetStarted.getInitialProps = async () => ({
-  namespacesRequired: ["getstarted"],
-});
-
-export default withTranslation("getstarted")(GetStarted);
+export default GetStarted;

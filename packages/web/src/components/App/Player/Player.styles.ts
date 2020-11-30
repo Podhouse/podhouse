@@ -10,7 +10,7 @@ export const PlayerContainer = styled.div`
   grid-template-rows: 14px 1fr;
   grid-column-gap: 20px;
   grid-area: "player";
-  background: ${({ theme }) => theme.bgPrimary};
+  background: #ffffff;
   box-sizing: border-box;
   cursor: pointer;
   padding: 0;
@@ -26,7 +26,7 @@ export const PlayerContainer = styled.div`
     grid-area: "player";
     padding: 15px 30px;
     box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.05);
-    background: ${({ theme }) => theme.bgPrimary};
+    background: #ffffff;
     z-index: 1;
     cursor: default;
     position: inherit;

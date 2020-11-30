@@ -19,10 +19,14 @@ export const handleData = (response: any) => {
   return response.text();
 };
 
-function getRequestBodyWithUploadables(request, variables, uploadables) {
+function getRequestBodyWithUploadables(
+  request: RequestParameters,
+  variables: Variables,
+  uploadables: UploadableMap
+) {
   const formData = new FormData();
   formData.append("name", request.name);
-  formData.append("query", request.text);
+  formData.append("query", request.text as string);
   formData.append("variables", JSON.stringify(variables));
 
   Object.keys(uploadables).forEach((key) => {
@@ -34,7 +38,10 @@ function getRequestBodyWithUploadables(request, variables, uploadables) {
   return formData;
 }
 
-function getRequestBodyWithoutUploadables(request, variables) {
+function getRequestBodyWithoutUploadables(
+  request: RequestParameters,
+  variables: Variables
+) {
   return JSON.stringify({
     name: request.name, // used by graphql mock on tests
     query: request.text, // GraphQL text from input
@@ -45,7 +52,7 @@ function getRequestBodyWithoutUploadables(request, variables) {
 export function getRequestBody(
   request: RequestParameters,
   variables: Variables,
-  uploadables?: UploadableMap,
+  uploadables?: UploadableMap
 ) {
   if (uploadables) {
     return getRequestBodyWithUploadables(request, variables, uploadables);

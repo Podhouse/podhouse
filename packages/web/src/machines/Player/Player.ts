@@ -124,7 +124,7 @@ const Player = Machine<
         avatar: (_, event) => (event as PlayerOnReadyEvent).avatar,
       }),
     },
-  },
+  }
 );
 
 export default Player;

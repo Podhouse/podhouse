@@ -1,23 +1,17 @@
 import React, { useState, useRef, useEffect } from "react";
-import { withTranslation } from "i18n";
+import { Heading, Badge, Text, Image } from "@chakra-ui/react";
 import { useKeenSlider } from "keen-slider/react";
-import NextLink from "next/link";
+import { Link as ReactRouterLink } from "react-router-dom";
 
 import {
   FeaturedContainer,
   FeaturedItemContainer,
-  FeaturedAvatar,
   FeaturedDetailsContainer,
-  FeaturedEmptyAvatar,
 } from "./Featured.styles";
 
 import { FeaturedProps, FeaturedPodcast } from "./Featured.types";
 
-import Link from "src/system/Link/Link";
-import Paragraph from "src/system/Paragraph/Paragraph";
-import Badge from "src/system/Badge/Badge";
-
-const Featured = ({ featured, t }: FeaturedProps) => {
+const Featured = ({ featured }: FeaturedProps) => {
   const [pause, setPause] = useState<boolean>(false);
   const timer = useRef<any>();
   const [sliderRef, slider] = useKeenSlider<HTMLDivElement>({
@@ -32,9 +26,11 @@ const Featured = ({ featured, t }: FeaturedProps) => {
   });
 
   useEffect(() => {
+    //@ts-ignore
     sliderRef.current.addEventListener("mouseover", () => {
       setPause(true);
     });
+    //@ts-ignore
     sliderRef.current.addEventListener("mouseout", () => {
       setPause(false);
     });
@@ -51,14 +47,6 @@ const Featured = ({ featured, t }: FeaturedProps) => {
     };
   }, [pause, slider]);
 
-  const renderAvatar = (avatar: string) => {
-    if (avatar === "") {
-      return <FeaturedEmptyAvatar />;
-    } else {
-      return <FeaturedAvatar src={avatar} />;
-    }
-  };
-
   return (
     <>
       <FeaturedContainer ref={sliderRef} className="keen-slider">
@@ -68,45 +56,46 @@ const Featured = ({ featured, t }: FeaturedProps) => {
               key={id}
               className="keen-slider__slide number-slide1"
             >
-              <NextLink
-                href="/app/podcast/[podcast]"
-                as="/app/podcast/invisible"
-              >
-                {renderAvatar(avatar)}
-              </NextLink>
+              <ReactRouterLink to="/podcast/invisible">
+                <Image
+                  borderRadius={5}
+                  src={avatar}
+                  objectFit="cover"
+                  alt="Podcast featured"
+                />
+              </ReactRouterLink>
 
               <FeaturedDetailsContainer>
-                <Badge variant="info" size="normal">
-                  {t("featured")}
+                <Badge
+                  pl="2"
+                  pr="2"
+                  pt="0.5"
+                  pb="0.5"
+                  borderRadius={2}
+                  fontSize="0.8em"
+                  colorScheme="green"
+                >
+                  Featured
                 </Badge>
 
-                <NextLink
-                  href="/app/podcast/[podcast]"
-                  as="/app/podcast/invisible"
+                <Heading
+                  as={ReactRouterLink}
+                  letterSpacing="-0.03em"
+                  to="/podcast/invisible"
                 >
-                  <Link
-                    variant="primary"
-                    size="big"
-                    href="/app/podcast/invisible"
-                  >
-                    {name}
-                  </Link>
-                </NextLink>
-                <Paragraph variant="primary" size="normal" textAlign="start">
+                  {name}
+                </Heading>
+                <Heading as="h2" size="sm" letterSpacing="-0.03em">
                   {author}
-                </Paragraph>
-                <Paragraph variant="secondary" size="normal" textAlign="start">
-                  {description}
-                </Paragraph>
+                </Heading>
+                <Text lineHeight="25px">{description}</Text>
               </FeaturedDetailsContainer>
             </FeaturedItemContainer>
-          ),
+          )
         )}
       </FeaturedContainer>
     </>
   );
 };
 
-Featured.getInitialProps = async () => ({ namespacesRequired: ["common"] });
-
-export default withTranslation("common")(Featured);
+export default Featured;

@@ -12,8 +12,8 @@ export const HeaderContainer = styled.header`
     grid-template-rows: 1fr;
     grid-template-areas: "search settings";
     grid-column-gap: 30px;
-    background: ${({ theme }) => theme.bgPrimary};
-    border-bottom: ${({ theme }) => `1px solid ${theme.bgSecondary}`};
+    background: #ffffff;
+    border-bottom: 1px solid #f3f3f3;
     padding-left: 30px;
     padding-right: 30px;
     z-index: 1;

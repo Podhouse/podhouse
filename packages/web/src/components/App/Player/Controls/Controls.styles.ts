@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { Text } from "@chakra-ui/react";
 
 export const ControlsContainer = styled.div`
   grid-row: 1 / 3;
@@ -58,18 +59,12 @@ export const ControlsSliderContainer = styled.div`
   }
 `;
 
-export const ControlsTime = styled.p`
+export const ControlsTime = styled(Text)`
   display: none;
 
   @media screen and (min-width: 800px) {
     display: block;
-    font-family: Inter;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 12px;
-    line-height: 15px;
-    color: ${({ theme }) => theme.primary};
-    text-transform: uppercase;
+    color: #101010;
     justify-self: center;
   }
 `;

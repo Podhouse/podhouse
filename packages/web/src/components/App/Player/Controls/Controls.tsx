@@ -1,5 +1,11 @@
 import React from "react";
 import { Play, Pause, RotateCcw, RotateCw } from "react-feather";
+import {
+  Slider,
+  SliderTrack,
+  SliderFilledTrack,
+  SliderThumb,
+} from "@chakra-ui/react";
 
 import {
   ControlsContainer,
@@ -7,12 +13,6 @@ import {
   ControlsSliderContainer,
   ControlsTime,
 } from "./Controls.styles";
-
-import useTheme from "src/system/useTheme";
-
-import Slider from "src/components/Slider/Slider";
-
-import formatTime from "src/utils/formatTime";
 
 interface ControlsProps {
   ready: boolean;
@@ -39,16 +39,12 @@ const Controls = ({
   onBackward,
   onForward,
 }: ControlsProps) => {
-  const themeState = useTheme();
-
-  const iconColor = themeState.dark ? "#FFFFFF" : "#101010";
-
   const onPlaying = () => {
     if (playing) {
       return (
         <Pause
           size={28}
-          color={iconColor}
+          color="#101010"
           strokeWidth={1.7}
           style={iconStyle}
           onClick={onPause}
@@ -59,7 +55,7 @@ const Controls = ({
     return (
       <Play
         size={28}
-        color={iconColor}
+        color="#101010"
         strokeWidth={1.7}
         style={iconStyle}
         onClick={onPlay}
@@ -75,7 +71,7 @@ const Controls = ({
         <ControlsButtonsContainer>
           <RotateCcw
             size={18}
-            color={iconColor}
+            color="#101010"
             style={iconStyle}
             strokeWidth={2}
             onClick={() => onBackward(15)}
@@ -85,7 +81,7 @@ const Controls = ({
 
           <RotateCw
             size={18}
-            color={iconColor}
+            color="#101010"
             style={iconStyle}
             strokeWidth={2}
             onClick={() => onForward(15)}
@@ -93,17 +89,16 @@ const Controls = ({
         </ControlsButtonsContainer>
 
         <ControlsSliderContainer>
-          <ControlsTime>{formatTime(seek)}</ControlsTime>
+          <ControlsTime fontSize="sm">1:21</ControlsTime>
 
-          <Slider
-            min={0}
-            max={duration}
-            value={seek}
-            step={0.1}
-            onChange={onSeek}
-          />
+          <Slider defaultValue={30}>
+            <SliderTrack>
+              <SliderFilledTrack bg="#101010" />
+            </SliderTrack>
+            <SliderThumb />
+          </Slider>
 
-          <ControlsTime>{formatTime(duration)}</ControlsTime>
+          <ControlsTime fontSize="sm">45:12</ControlsTime>
         </ControlsSliderContainer>
       </ControlsContainer>
     );

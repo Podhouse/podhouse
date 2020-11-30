@@ -1,4 +1,4 @@
-export interface PodcastAvatarItemProps {
+export interface PodcastItemWithAvatarProps {
   podcast: {
     name: string;
     author: string;

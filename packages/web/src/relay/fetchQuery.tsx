@@ -1,36 +1,46 @@
-import { FetchFunction } from "relay-runtime";
+import { RequestParameters, Variables } from "relay-runtime";
+import fetch from "isomorphic-fetch";
+
+import fetchWithRetries from "./fetchWithRetries";
+
+import { handleData, isMutation } from "./helpers";
 
 import { getToken } from "src/utils/auth";
 
-import { getHeaders, handleData } from "./helpers";
-import fetchWithRetries from "./fetchWithRetries";
-
-// Define a function that fetches the results of an operation (query/mutation/etc)
-// and returns its results as a Promise
-const fetchQuery: FetchFunction = async (operation, variables) => {
+// Define a function that fetches the results of a request (query/mutation/etc)
+// and returns its results as a Promise:
+const fetchQuery = async (request: RequestParameters, variables: Variables) => {
   try {
     const authorization = getToken();
 
-    const headers = {
-      ...getHeaders(),
-      authorization,
-    };
+    const isMutationOperation = isMutation(request);
 
-    const response = await fetchWithRetries(process.env.API_ENDPOINT, {
-      method: "POST",
-      headers,
-      body: JSON.stringify({
-        query: operation.text,
-        variables,
-      }),
-      fetchTimeout: 20000,
-      retryDelays: [1000, 3000, 5000],
-    });
+    const fetchFn = isMutationOperation ? fetch : fetchWithRetries;
+
+    const response = await fetchFn(
+      "https://podhouse-server.herokuapp.com/graphql",
+      {
+        method: "POST",
+        headers: {
+          authorization,
+          Accept: "application/json",
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({
+          query: request.text,
+          variables,
+        }),
+      }
+    );
 
     const data = await handleData(response);
 
     if (response.status === 401) {
       throw data.errors;
+    }
+
+    if (isMutation(request) && data.errors) {
+      throw data;
     }
 
     if (!data.data) {

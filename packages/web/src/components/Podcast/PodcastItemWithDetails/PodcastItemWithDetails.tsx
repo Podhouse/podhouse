@@ -1,8 +1,6 @@
 import React from "react";
-import NextLink from "next/link";
-
-import Link from "src/system/Link/Link";
-import Paragraph from "src/system/Paragraph/Paragraph";
+import { Link as ReactRouterLink } from "react-router-dom";
+import { Text } from "@chakra-ui/react";
 
 import {
   PodcastItemWithDetailsContainer,
@@ -12,31 +10,23 @@ import {
 
 import { PodcastItemWithDetailsProps } from "./PodcastItemWithDetails.types";
 
-const PodcastItemWithDetails = ({ node }: PodcastItemWithDetailsProps) => {
-  const { _id, name, author, image } = node;
+const PodcastItemWithDetails = ({ podcast }: PodcastItemWithDetailsProps) => {
+  const { name, author, image } = podcast;
 
-  const imageAlt = `${name} image`;
+  const imageAlt = `image`;
 
   return (
     <PodcastItemWithDetailsContainer>
-      <NextLink href={{ pathname: `/app/podcast/${_id}`, query: { _id: _id } }}>
-        <Link variant="secondary" size="normal">
-          <PodcastItemWithDetailsAvatar src={image} alt={imageAlt} />
-        </Link>
-      </NextLink>
+      <ReactRouterLink to="/podcast/123">
+        <PodcastItemWithDetailsAvatar src={image} alt={imageAlt} />
+      </ReactRouterLink>
 
       <PodcastItemInnerContainer>
-        <NextLink
-          href={{ pathname: `/app/podcast/${_id}`, query: { _id: _id } }}
-        >
-          <Link textAlign="start" variant="secondary" size="normal">
-            {name}
-          </Link>
-        </NextLink>
+        <Text as={ReactRouterLink} to="/podcast/123" fontWeight="500">
+          {name}
+        </Text>
 
-        <Paragraph textAlign="start" variant="secondary" size="normal">
-          {author}
-        </Paragraph>
+        <Text textAlign="start">{author}</Text>
       </PodcastItemInnerContainer>
     </PodcastItemWithDetailsContainer>
   );

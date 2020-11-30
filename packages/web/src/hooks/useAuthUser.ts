@@ -1,10 +1,5 @@
 import { graphql, readInlineData } from "react-relay";
 
-import {
-  useAuthUser_user,
-  useAuthUser_user$key,
-} from "./__generated__/useAuthUser_user.graphql";
-
 const useAuthFragment = graphql`
   fragment useAuthUser_user on User @inline {
     id
@@ -12,8 +7,8 @@ const useAuthFragment = graphql`
   }
 `;
 
-const useAuthUser = (userRef: useAuthUser_user$key) => {
-  const user = readInlineData<useAuthUser_user>(useAuthFragment, userRef);
+const useAuthUser = (userRef: any) => {
+  const user = readInlineData<any>(useAuthFragment, userRef);
 
   const isAuthenticated = !!user;
 

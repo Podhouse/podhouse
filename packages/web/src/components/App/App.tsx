@@ -1,5 +1,5 @@
 import React from "react";
-import Head from "next/head";
+import { Switch, Route } from "react-router-dom";
 import { RelayEnvironmentProvider } from "relay-hooks";
 
 import { AppContainer } from "./App.styles";
@@ -8,6 +8,14 @@ import Header from "./Header/Header";
 import Menu from "./Menu/Menu";
 import Player from "./Player/Player";
 import Dashboard from "./Dashboard/Dashboard";
+
+import Browse from "src/modules/App/Browse/Browse";
+import Subscriptions from "src/modules/App/Subscriptions/Subscriptions";
+import Favorites from "src/modules/App/Favorites/Favorites";
+import Settings from "src/modules/App/Settings/Settings";
+import Podcast from "src/modules/App/Podcast/Podcast";
+import Episode from "src/modules/App/Episode/Episode";
+import Genre from "src/modules/App/Genre/Genre";
 
 import AuthModal from "src/components/Modals/AuthModal/AuthModal";
 import SettingsModal from "src/components/Modals/SettingsModal/SettingsModal";
@@ -19,13 +27,9 @@ import { useSettingsContext } from "src/context/Settings/Settings";
 import { useQueueContext } from "src/context/Queue/Queue";
 import { useRateContext } from "src/context/Rate/Rate";
 
-import { RelayEnvironment } from "src/relay/RelayEnvironment";
+import RelayEnvironment from "src/relay/RelayEnvironment";
 
-interface AppProps {
-  children: React.ReactNode;
-}
-
-const App = ({ children }: AppProps) => {
+const App = () => {
   const [, auth] = useAuthContext();
   const [settings] = useSettingsContext();
   const [queue] = useQueueContext();
@@ -60,26 +64,29 @@ const App = ({ children }: AppProps) => {
   };
 
   return (
-    <div>
-      <Head>
-        <title>Podhouse</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      </Head>
+    <RelayEnvironmentProvider environment={RelayEnvironment}>
+      {renderAuthModal()}
+      {renderSettingsModal()}
+      {renderQueueModal()}
+      {renderRateModal()}
 
-      <RelayEnvironmentProvider environment={RelayEnvironment()}>
-        {renderAuthModal()}
-        {renderSettingsModal()}
-        {renderQueueModal()}
-        {renderRateModal()}
-
-        <AppContainer>
-          <Dashboard>{children}</Dashboard>
-          <Header />
-          <Player />
-          <Menu />
-        </AppContainer>
-      </RelayEnvironmentProvider>
-    </div>
+      <AppContainer>
+        <Dashboard>
+          <Switch>
+            <Route exact path="/" component={Browse} />
+            <Route exact path="/subscriptions" component={Subscriptions} />
+            <Route exact path="/favorites" component={Favorites} />
+            <Route exact path="/settings" component={Settings} />
+            <Route exact path="/podcast/:id" component={Podcast} />
+            <Route exact path="/episode/:id" component={Episode} />
+            <Route exact path="/genre/:id" component={Genre} />
+          </Switch>
+        </Dashboard>
+        <Header />
+        <Player />
+        <Menu />
+      </AppContainer>
+    </RelayEnvironmentProvider>
   );
 };
 

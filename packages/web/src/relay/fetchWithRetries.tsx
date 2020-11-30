@@ -1,13 +1,29 @@
 import ExecutionEnvironment from "./ExecuteEnvironment";
 
 export type InitWithRetries = {
-  body?: unknown;
-  cache?: string | null;
-  credentials?: string | null;
+  body?:
+    | string
+    | Blob
+    | ArrayBufferView
+    | ArrayBuffer
+    | FormData
+    | URLSearchParams
+    | ReadableStream<Uint8Array>
+    | null
+    | undefined;
+  cache?:
+    | "default"
+    | "force-cache"
+    | "no-cache"
+    | "no-store"
+    | "only-if-cached"
+    | "reload"
+    | undefined;
+  credentials?: "include" | "omit" | "same-origin" | undefined;
   fetchTimeout?: number | null;
-  headers?: unknown;
-  method?: string | null;
-  mode?: string | null;
+  headers?: HeadersInit | string[][] | Record<string, string> | undefined;
+  method?: string | undefined;
+  mode?: "same-origin" | "cors" | "navigate" | "no-cors" | undefined;
   retryDelays?: Array<number> | null;
 };
 
@@ -20,11 +36,18 @@ const DEFAULT_RETRIES = [1000, 3000];
  */
 function fetchWithRetries(
   uri: string,
-  initWithRetries?: InitWithRetries | null,
+  initWithRetries?: InitWithRetries | null
 ): Promise<any> {
   const { fetchTimeout, retryDelays, ...init } = initWithRetries || {};
   const _fetchTimeout = fetchTimeout != null ? fetchTimeout : DEFAULT_TIMEOUT;
   const _retryDelays = retryDelays != null ? retryDelays : DEFAULT_RETRIES;
+
+  /**
+   * Checks if another attempt should be done to send a request to the server.
+   */
+  function shouldRetry(attempt: number): boolean {
+    return ExecutionEnvironment.canUseDOM && attempt <= _retryDelays.length;
+  }
 
   let requestsAttempted = 0;
   let requestStartTime = 0;
@@ -37,18 +60,19 @@ function fetchWithRetries(
       requestsAttempted++;
       requestStartTime = Date.now();
       let isRequestAlive = true;
-      const request = fetch(uri, init as any);
+      const request = fetch(uri, init);
       const requestTimeout = setTimeout(() => {
         isRequestAlive = false;
         if (shouldRetry(requestsAttempted)) {
           // eslint-disable-next-line
           console.log(false, "fetchWithRetries: HTTP timeout, retrying.");
+          // eslint-disable-next-line
           retryRequest();
         } else {
           reject(
             new Error(
-              `fetchWithRetries(): Failed to get response from server, tried ${requestsAttempted} times.`,
-            ),
+              `fetchWithRetries(): Failed to get response from server, tried ${requestsAttempted} times.`
+            )
           );
         }
       }, _fetchTimeout);
@@ -72,7 +96,7 @@ function fetchWithRetries(
             } else {
               // Request was not successful, giving up.
               const error: any = new Error(
-                `fetchWithRetries(): Still no successful response after ${requestsAttempted} retries, giving up.`,
+                `fetchWithRetries(): Still no successful response after ${requestsAttempted} retries, giving up.`
               );
               error.response = response;
               reject(error);
@@ -82,6 +106,7 @@ function fetchWithRetries(
         .catch((error) => {
           clearTimeout(requestTimeout);
           if (shouldRetry(requestsAttempted)) {
+            // eslint-disable-next-line
             retryRequest();
           } else {
             reject(error);
@@ -98,13 +123,6 @@ function fetchWithRetries(
       const retryStartTime = requestStartTime + retryDelay;
       // Schedule retry for a configured duration after last request started.
       setTimeout(sendTimedRequest, retryStartTime - Date.now());
-    }
-
-    /**
-     * Checks if another attempt should be done to send a request to the server.
-     */
-    function shouldRetry(attempt: number): boolean {
-      return ExecutionEnvironment.canUseDOM && attempt <= _retryDelays.length;
     }
 
     sendTimedRequest();

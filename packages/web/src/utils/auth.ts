@@ -1,13 +1,11 @@
-import { useCallback } from "react";
-import { useRouter } from "next/router";
-
 export const TOKEN_KEY = "podhouse";
 
-export const getToken = () => {
-  return localStorage.getItem(TOKEN_KEY);
+export const getToken = (): string => {
+  const currentToken = localStorage.getItem(TOKEN_KEY);
+  return currentToken ? currentToken : "";
 };
 
-export const updateToken = (token = "") => {
+export const updateToken = (token: string | null = "") => {
   if (!token || token === "" || token === null) {
     localStorage.removeItem(TOKEN_KEY);
   } else {
@@ -16,13 +14,7 @@ export const updateToken = (token = "") => {
 };
 
 export const useLogout = () => {
-  const history = useRouter();
-
-  const logout = useCallback(() => {
-    updateToken("");
-
-    history.push("/app");
-  }, [history]);
+  const logout = () => updateToken("");
 
   return [logout];
 };

@@ -6,7 +6,9 @@ interface Props {
 }
 
 const Portal = ({ children }: Props) => {
-  const xgruveRoot: HTMLElement | null = document.getElementById("xgruve");
+  const xgruveRoot: HTMLElement = document.getElementById(
+    "xgruve"
+  ) as HTMLElement;
 
   if (!xgruveRoot) {
     const xgruveRoot: HTMLDivElement = document.createElement("div");
@@ -16,9 +18,9 @@ const Portal = ({ children }: Props) => {
 
   const xgruveElement: HTMLDivElement = document.createElement("div");
 
-  useEffect(() => {
+  useEffect((): any => {
     xgruveRoot.appendChild(xgruveElement);
-    return () => xgruveRoot.removeChild(xgruveElement);
+    return (): any => xgruveRoot.removeChild(xgruveElement);
   });
 
   return createPortal(children, xgruveElement);

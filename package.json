@@ -10,10 +10,17 @@
     ]
   },
   "scripts": {
+    "landing:dev": "yarn workspace @podhouse/landing dev",
+    "landing:start": "yarn workspace @podhouse/landing start",
+    "landing:build": "yarn workspace @podhouse/landing build",
+    "landing:lint": "yarn workspace @podhouse/landing lint",
+    "landing:format": "yarn workspace @podhouse/landing format",
     "web:dev": "yarn workspace @podhouse/web dev",
     "web:start": "yarn workspace @podhouse/web start",
     "web:build": "yarn workspace @podhouse/web build",
     "web:test": "yarn workspace @podhouse/web test",
+    "web:cypress:open": "yarn workspace @podhouse/web cypress:open",
+    "web:cypress:run": "yarn workspace @podhouse/web cypress:run",
     "web:lint": "yarn workspace @podhouse/web lint",
     "web:format": "yarn workspace @podhouse/web format",
     "web:relay": "yarn workspace @podhouse/web relay",
@@ -36,6 +43,7 @@
     "lerna": "^3.22.1",
     "lint-staged": "^10.3.0",
     "prettier": "^2.1.1",
+    "relay-compiler-language-typescript": "^13.0.2",
     "typescript": "^4.0.2"
   },
   "husky": {
@@ -47,9 +55,12 @@
     "*.{js,ts,tsx}": [
       "yarn update-schema",
       "yarn relay",
-      "yarn build",
-      "yarn lint",
-      "yarn format",
+      "yarn server:build",
+      "yarn web:build",
+      "yarn server:lint",
+      "yarn web:lint",
+      "yarn server:format",
+      "yarn web:format",
       "git add"
     ]
   }

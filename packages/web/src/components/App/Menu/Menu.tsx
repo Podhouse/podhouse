@@ -1,6 +1,6 @@
 import React from "react";
 import Scrollbars from "react-custom-scrollbars";
-import NextLink from "next/link";
+import { Link as ReactRouterLink } from "react-router-dom";
 
 import Navigation from "./Navigation/Navigation";
 
@@ -11,26 +11,12 @@ import {
   MenuAvatarContainer,
 } from "./Menu.styles";
 
-import useTheme from "src/system/useTheme";
-import Link from "src/system/Link/Link";
-
-import PodhouseDark from "../../../../public/logo/logo-medium-dark.svg";
-import PodhouseWhite from "../../../../public/logo/logo-medium-white.svg";
+import { ReactComponent as Logo } from "src/images/logo-2.svg";
 
 const avatar =
   "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg";
 
 const Menu = () => {
-  const themeState = useTheme();
-
-  const onRenderLogo = () => {
-    if (themeState.dark) {
-      return <PodhouseWhite />;
-    }
-
-    return <PodhouseDark />;
-  };
-
   return (
     <MenuContainer>
       <Scrollbars
@@ -41,24 +27,16 @@ const Menu = () => {
       >
         <MenuInsideContainer>
           <MenuLogoContainer>
-            <NextLink href="/app" as="/app">
-              <Link href="/app" variant="secondary" size="normal">
-                {onRenderLogo()}
-              </Link>
-            </NextLink>
+            <ReactRouterLink to="/">
+              <Logo />
+            </ReactRouterLink>
           </MenuLogoContainer>
 
           <Navigation />
 
-          <NextLink href="/app/episode/[episode]" as="/app/episode/[episode]">
-            <Link
-              href="/app/episode/[episode]"
-              variant="secondary"
-              size="normal"
-            >
-              <MenuAvatarContainer src={avatar} alt="Podcast logo" />
-            </Link>
-          </NextLink>
+          <ReactRouterLink to="/episode/123">
+            <MenuAvatarContainer src={avatar} alt="Podcast logo" />
+          </ReactRouterLink>
         </MenuInsideContainer>
       </Scrollbars>
     </MenuContainer>

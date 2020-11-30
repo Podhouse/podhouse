@@ -23,29 +23,6 @@ export const FeaturedItemContainer = styled.div`
   }
 `;
 
-export const FeaturedAvatar = styled.img`
-  object-fit: cover;
-  border-radius: 5px;
-  cursor: pointer;
-  grid-row: 1 / 2;
-  grid-column: 1 / 2;
-  align-self: center;
-  justify-self: center;
-  background-color: ${({ theme }) => theme.bgPrimary};
-`;
-
-export const FeaturedEmptyAvatar = styled.div`
-  width: 200px;
-  height: 200px;
-  border-radius: 5px;
-  cursor: pointer;
-  grid-row: 1 / 2;
-  grid-column: 1 / 2;
-  align-self: center;
-  justify-self: center;
-  background-color: ${({ theme }) => theme.bgSecondary};
-`;
-
 export const FeaturedDetailsContainer = styled.div`
   width: auto;
   height: auto;

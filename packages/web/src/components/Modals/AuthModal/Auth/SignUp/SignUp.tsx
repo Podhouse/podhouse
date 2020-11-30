@@ -1,22 +1,23 @@
 import React from "react";
-import { withTranslation } from "i18n";
-import { WithTranslation } from "next-i18next";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import { useMutation } from "react-relay/hooks";
+import {
+  Input,
+  Button,
+  Link,
+  Text,
+  FormControl,
+  FormLabel,
+  FormErrorMessage,
+} from "@chakra-ui/react";
 
 import {
   AuthTextContainer,
   AuthFormContainer,
   AuthLinksContainer,
-  AuthCircle,
 } from "../Auth.styles";
-
-import Paragraph from "src/system/Paragraph/Paragraph";
-import Input from "src/system/Input/Input";
-import Button from "src/system/Button/Button";
-import Link from "src/system/Link/Link";
 
 import { useAuthContext } from "src/context/Auth/Auth";
 
@@ -38,19 +39,20 @@ const validationSchema = Yup.object().shape({
   password: Yup.string().required("Password is required"),
 });
 
-const SignUp = ({ t }: WithTranslation) => {
+const SignUp = () => {
   const [, , handleAuth, send] = useAuthContext();
-  const [userSignUpWithEmail, isPending] = useMutation<
-    UserSignUpWithEmailMutation
-  >(UserSignUpWithEmail);
+  const [
+    userSignUpWithEmail,
+    isPending,
+  ] = useMutation<UserSignUpWithEmailMutation>(UserSignUpWithEmail);
 
   const {
     register,
     handleSubmit,
-    setError,
     errors,
     formState,
     getValues,
+    setError,
   } = useForm<SignUpFormProps>({
     mode: "onChange",
     reValidateMode: "onChange",
@@ -68,7 +70,7 @@ const SignUp = ({ t }: WithTranslation) => {
       onCompleted: ({
         UserSignUpWithEmail,
       }: UserSignUpWithEmailMutationResponse) => {
-        if (UserSignUpWithEmail.error) {
+        if (UserSignUpWithEmail?.error) {
           const error = UserSignUpWithEmail.error;
           setError("email", {
             type: "manual",
@@ -77,7 +79,7 @@ const SignUp = ({ t }: WithTranslation) => {
           return;
         }
 
-        updateToken(UserSignUpWithEmail.token);
+        updateToken(UserSignUpWithEmail?.token);
         handleAuth();
       },
     });
@@ -86,67 +88,55 @@ const SignUp = ({ t }: WithTranslation) => {
   return (
     <>
       <AuthTextContainer>
-        <Paragraph variant="secondary" size="normal">
-          {t("listen-to-your-favorite-podcasts")}
-        </Paragraph>
+        <Text>Listen to your favorite podcasts</Text>
       </AuthTextContainer>
 
       <AuthFormContainer onSubmit={handleSubmit(onSubmit)}>
-        <Input
-          type="email"
-          name="email"
-          label={t("email")}
-          placeholder={t("email")}
-          variant="primary"
-          scale="normal"
-          ref={register}
-          error={errors.email?.message}
-        />
+        <FormControl isInvalid={errors.email && true}>
+          <FormLabel htmlFor="email">Email</FormLabel>
+          <Input name="email" placeholder="Email" ref={register} />
+          <FormErrorMessage>
+            {errors.email && errors.email.message}
+          </FormErrorMessage>
+        </FormControl>
 
-        <Input
-          type="password"
-          name="password"
-          label={t("password")}
-          placeholder={t("password")}
-          variant="primary"
-          scale="normal"
-          ref={register}
-          error={errors.password?.message}
-        />
+        <FormControl isInvalid={errors.password && true}>
+          <FormLabel htmlFor="password">Password</FormLabel>
+          <Input name="password" placeholder="Password" ref={register} />
+          <FormErrorMessage>
+            {errors.password && errors.password.message}
+          </FormErrorMessage>
+        </FormControl>
 
         <Button
           type="submit"
-          variant="primary"
-          size="normal"
-          isDisabled={!formState.isValid || formState.isSubmitting || isPending}
+          width="100%"
+          isDisabled={!formState.isValid}
+          isLoading={formState.isSubmitting || isPending}
+          bgColor="#101010"
+          color="#ffffff"
+          _hover={{ bg: "#101010" }}
+          _active={{
+            bg: "#101010",
+          }}
+          _focus={{
+            boxShadow:
+              "0 0 1px 2px rgba(0, 0, 0, .50), 0 1px 1px rgba(0, 0, 0, .15)",
+          }}
+          _disabled={{
+            bgColor: "#eaeaea",
+            cursor: "not-allowed",
+          }}
         >
-          {t("sign-up")}
+          Sign up
         </Button>
 
         <AuthLinksContainer>
-          <Link
-            variant="secondary"
-            size="normal"
-            onClick={() => send("SIGNIN")}
-          >
-            {t("already-have-an-account?")}
-          </Link>
-
-          <AuthCircle />
-
-          <Link
-            variant="secondary"
-            size="normal"
-            onClick={() => send("FORGOT")}
-          >
-            {t("forgot-your-password?")}
-          </Link>
+          <Link onClick={() => send("SIGNIN")}>Already have an account?</Link>
         </AuthLinksContainer>
       </AuthFormContainer>
     </>
   );
 };
 
-SignUp.getInitialProps = async () => ({ namespacesRequired: ["getstarted"] });
-
-export default withTranslation("getstarted")(SignUp);
+export default SignUp;

@@ -1,15 +1,11 @@
 import React from "react";
-import Head from "next/head";
-import router from "next/router";
 import Scrollbars from "react-custom-scrollbars";
-import { fetchQuery } from "relay-runtime";
-import { useQuery, graphql, STORE_OR_NETWORK } from "relay-hooks";
-import Skeleton from "react-loading-skeleton";
+import { Heading, Button, Link, Image } from "@chakra-ui/react";
+import { ExternalLink } from "react-feather";
 
 import {
   PodcastContainer,
   PodcastHeader,
-  PodcastAvatar,
   PodcastDetailsContainer,
   PodcastDescription,
   PodcastButtonsContainer,
@@ -18,197 +14,106 @@ import {
   PodcastLinkContainer,
 } from "./Podcast.styles";
 
-import { RelayEnvironment } from "src/relay/RelayEnvironment";
-
 import EpisodeItem from "src/components/Podcast/EpisodeItem/EpisodeItem";
 
-import Button from "src/system/Button/Button";
-import Heading from "src/system/Heading/Heading";
-import Link from "src/system/Link/Link";
+const avatar =
+  "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg";
 
-import { PodcastQuery } from "./__generated__/PodcastQuery.graphql";
-
-const query = graphql`
-  query PodcastQuery(
-    $_id: ID!
-    $after: String
-    $first: Int!
-    $before: String
-    $last: Int!
-  ) {
-    podcast(_id: $_id) {
-      id
-      _id
-      appleId
-      name
-      author
-      description
-      website
-      rss
-      image
-      episodes(after: $after, first: $first, before: $before, last: $last) {
-        pageInfo {
-          hasNextPage
-          hasPreviousPage
-          startCursor
-          endCursor
-        }
-        edges {
-          node {
-            id
-            _id
-            title
-            description
-            publishedDate
-            link
-            image
-            audio
-            duration
-          }
-          cursor
-        }
-      }
-      genres
-      genreIds
-    }
-  }
-`;
+const episode = {
+  avatar,
+  name: "A Fantasy of Fashion: Articles of Interest #7",
+  description:
+    "In the wake of World War II, the government of France commissioned its most prominent designers to create a collection of miniature fashion dolls. It might seem like an odd thing to fund, but the fantasy of high fashion inspired hope in postwar Paris. These dolls also...",
+  publishedDate: "May 12, 2020",
+  duration: "39min",
+};
 
 const Podcast = () => {
-  const podcastId: string = router.query._id as string;
-
-  const { props, error } = useQuery<PodcastQuery>(
-    query,
-    {
-      _id: podcastId,
-      first: 10,
-      last: 10,
-    },
-    {
-      fetchPolicy: STORE_OR_NETWORK,
-    },
-  );
-
-  if (error) {
-    console.log("error: ", error);
-  }
-
   return (
     <Scrollbars universal autoHide autoHideTimeout={100} autoHideDuration={100}>
-      <Head>
-        <title>99% Invisible</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      </Head>
       <PodcastContainer>
         <PodcastHeader>
-          {props === null || props === undefined ? (
-            <Skeleton width={200} height={200} />
-          ) : (
-            <PodcastAvatar src={props.podcast.image} />
-          )}
+          <Image
+            src={avatar}
+            objectFit="cover"
+            borderRadius={5}
+            maxWidth="200px"
+            alignSelf="center"
+            justifySelf="center"
+          />
 
           <PodcastDetailsContainer>
-            {props === null || props === undefined ? (
-              <Skeleton width={300} height={30} />
-            ) : (
-              <Heading as="h1" variant="primary" size="normal">
-                {props.podcast.name}
-              </Heading>
-            )}
+            <Heading as="h1" letterSpacing="-0.03em">
+              99% Invisible
+            </Heading>
 
-            {props === null || props === undefined ? (
-              <Skeleton width={300} height={20} />
-            ) : (
-              <Heading as="h2" variant="primary" size="small" fontSize={16}>
-                {props.podcast.author}
-              </Heading>
-            )}
+            <Heading as="h2" size="sm" letterSpacing="-0.03em">
+              Roman Mars
+            </Heading>
 
-            {props === null || props === undefined ? (
-              <Skeleton width={300} height={100} />
-            ) : (
-              <PodcastDescription
-                variant="secondary"
-                size="normal"
-                textAlign="start"
-              >
-                {props.podcast.description}
-              </PodcastDescription>
-            )}
+            <PodcastDescription lineHeight="25px" textAlign="start">
+              Design is everywhere in our lives, perhaps most importantly in the
+              places where we've just stopped noticing. 99% Invisible is a
+              weekly exploration of the process and power of design and
+              architecture. From award winning producer Roman Mars. Learn more
+              at 99percentinvisible.org. A proud member of Radiotopia, from PRX.
+              Learn more at radiotopia.fm.
+            </PodcastDescription>
           </PodcastDetailsContainer>
 
           <PodcastButtonsContainer>
-            <Button type="button" variant="primary" size="normal">
+            <Button
+              type="button"
+              width="100%"
+              bgColor="#101010"
+              color="#ffffff"
+              _hover={{ bg: "#101010" }}
+              _active={{
+                bg: "#101010",
+              }}
+              _focus={{
+                boxShadow:
+                  "0 0 1px 2px rgba(0, 0, 0, .50), 0 1px 1px rgba(0, 0, 0, .15)",
+              }}
+              _disabled={{
+                bgColor: "#eaeaea",
+                cursor: "not-allowed",
+              }}
+            >
               Subscribe
             </Button>
           </PodcastButtonsContainer>
 
           <PodcastLinksContainer>
             <PodcastLinkContainer>
-              <Link
-                variant="secondary"
-                size="normal"
-                href={
-                  props === null || props === undefined
-                    ? ""
-                    : props.podcast.website
-                }
-                target="_blank"
-                rel="noopener"
-              >
+              <Link href="https://chakra-ui.com" isExternal>
                 Website
               </Link>
+              <ExternalLink size={14} />
             </PodcastLinkContainer>
 
             <PodcastLinkContainer>
-              <Link
-                variant="secondary"
-                size="normal"
-                href={
-                  props === null || props === undefined ? "" : props.podcast.rss
-                }
-                target="_blank"
-                rel="noopener"
-              >
+              <Link href="https://chakra-ui.com" isExternal>
                 RSS
               </Link>
+              <ExternalLink size={14} />
             </PodcastLinkContainer>
           </PodcastLinksContainer>
         </PodcastHeader>
 
         <PodcastEpisodesContainer>
-          {props === null || props === undefined ? (
-            <>
-              <EpisodeItem episode={null} loading={true} />
-              <EpisodeItem episode={null} loading={true} />
-              <EpisodeItem episode={null} loading={true} />
-              <EpisodeItem episode={null} loading={true} />
-              <EpisodeItem episode={null} loading={true} />
-            </>
-          ) : (
-            props.podcast.episodes.edges.map(({ node }) => (
-              <EpisodeItem key={node.id} episode={node} loading={false} />
-            ))
-          )}
+          <EpisodeItem episode={episode} />
+          <EpisodeItem episode={episode} />
+          <EpisodeItem episode={episode} />
+          <EpisodeItem episode={episode} />
+          <EpisodeItem episode={episode} />
+          <EpisodeItem episode={episode} />
+          <EpisodeItem episode={episode} />
+          <EpisodeItem episode={episode} />
         </PodcastEpisodesContainer>
       </PodcastContainer>
     </Scrollbars>
   );
-};
-
-Podcast.getStaticProps = async () => {
-  const environment = RelayEnvironment();
-  const queryProps = await fetchQuery(environment, query, {
-    first: 9,
-  });
-  const initialRecords = environment.getStore().getSource().toJSON();
-
-  return {
-    props: {
-      queryProps,
-      initialRecords,
-    },
-  };
 };
 
 export default Podcast;

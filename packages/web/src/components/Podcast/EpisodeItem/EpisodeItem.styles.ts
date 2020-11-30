@@ -1,7 +1,5 @@
 import styled from "@emotion/styled";
-
-import Button from "src/system/Button/Button";
-import Paragraph from "src/system/Paragraph/Paragraph";
+import { Image, Button, Text } from "@chakra-ui/react";
 
 export const EpisodeLoadingContainer = styled.div`
   width: 100%;
@@ -29,7 +27,6 @@ export const EpisodeItemContainer = styled.div`
   grid-template-rows: repeat(3, max-content);
   grid-column-gap: 20px;
   grid-row-gap: 10px;
-
   @media screen and (min-width: 800px) {
     grid-template-columns: 80px 1fr minmax(min-content, 110px) minmax(
         min-content,
@@ -39,7 +36,7 @@ export const EpisodeItemContainer = styled.div`
   }
 `;
 
-export const EpisodeItemAvatar = styled.img`
+export const EpisodeItemAvatar = styled(Image)`
   display: none;
 
   @media screen and (min-width: 800px) {
@@ -54,7 +51,7 @@ export const EpisodeItemAvatar = styled.img`
   }
 `;
 
-export const EpisodeItemName = styled.a`
+export const EpisodeItemName = styled(Text)`
   grid-column: 1 / 4;
   grid-row: 1 / 2;
   font-family: Inter;
@@ -62,7 +59,6 @@ export const EpisodeItemName = styled.a`
   font-weight: 500;
   font-size: 14px;
   line-height: 17px;
-  color: ${({ theme }) => theme.secondary};
   cursor: pointer;
   text-decoration: none;
   display: -webkit-box;
@@ -70,17 +66,13 @@ export const EpisodeItemName = styled.a`
   -webkit-box-orient: vertical;
   overflow: hidden;
 
-  &:hover {
-    color: ${({ theme }) => theme.primary};
-  }
-
   @media screen and (min-width: 800px) {
     grid-column: 2 / 3;
     grid-row: 1 / 2;
   }
 `;
 
-export const EpisodeItemDescription = styled(Paragraph)`
+export const EpisodeItemDescription = styled(Text)`
   width: 100%;
   grid-column: 1 / 4;
   grid-row: 2 / 3;
@@ -89,7 +81,6 @@ export const EpisodeItemDescription = styled(Paragraph)`
   -webkit-box-orient: vertical;
   overflow: hidden;
   align-self: center;
-
   @media screen and (min-width: 800px) {
     width: 100%;
     -webkit-line-clamp: 2;
@@ -101,7 +92,7 @@ export const EpisodeItemDescription = styled(Paragraph)`
   }
 `;
 
-export const EpisodeItemPublishedDate = styled(Paragraph)`
+export const EpisodeItemPublishedDate = styled(Text)`
   grid-column: 1 / 2;
   grid-row: 3 / 4;
   display: -webkit-box;
@@ -109,7 +100,6 @@ export const EpisodeItemPublishedDate = styled(Paragraph)`
   -webkit-box-orient: vertical;
   overflow: hidden;
   align-self: center;
-
   @media screen and (min-width: 800px) {
     grid-column: 3 / 4;
     grid-row: 1 / 3;
@@ -117,7 +107,7 @@ export const EpisodeItemPublishedDate = styled(Paragraph)`
   }
 `;
 
-export const EpisodeItemDuration = styled(Paragraph)`
+export const EpisodeItemDuration = styled(Text)`
   grid-column: 2 / 3;
   grid-row: 3 / 4;
   display: -webkit-box;
@@ -126,7 +116,6 @@ export const EpisodeItemDuration = styled(Paragraph)`
   overflow: hidden;
   align-self: center;
   justify-self: center;
-
   @media screen and (min-width: 800px) {
     grid-column: 4 / 5;
     grid-row: 1 / 3;
@@ -139,7 +128,6 @@ export const EpisodeItemButton = styled(Button)`
   grid-row: 3 / 4;
   align-self: center;
   justify-self: flex-end;
-
   @media screen and (min-width: 800px) {
     grid-column: 5 / 6;
     grid-row: 1 / 3;

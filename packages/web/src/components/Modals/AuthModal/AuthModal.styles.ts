@@ -15,7 +15,7 @@ export const AutoModalInsideContainer = styled.div`
   transform: translate(-50%, -50%);
   width: 500px;
   height: auto;
-  background: ${({ theme }) => theme.bgPrimary};
+  background: #f3f3f3;
   border-radius: 5px;
   position: absolute;
 `;
@@ -25,15 +25,15 @@ export const AuthModalLinkContainer = styled.div`
   align-items: center;
   width: 100%;
   height: 100%;
-  background: ${({ theme }) => theme.bgPrimary};
+  background: #f3f3f3;
   padding-left: 20px;
   cursor: pointer;
 
   &:hover {
-    background: ${({ theme }) => theme.tertiary};
+    background: #b7b7b7;
 
     a {
-      color: ${({ theme }) => theme.primary};
+      color: #101010;
       cursor: pointer;
     }
   }
@@ -45,6 +45,6 @@ export const AuthModalLink = styled.a`
   font-weight: normal;
   font-size: 14px;
   line-height: 17px;
-  color: ${({ theme }) => theme.tertiary};
+  color: #b7b7b7;
   text-decoration: none;
 `;

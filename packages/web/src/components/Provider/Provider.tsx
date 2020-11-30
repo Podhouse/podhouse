@@ -1,40 +1,36 @@
-import React, { Fragment } from "react";
-import { Global } from "@emotion/react";
+import React from "react";
+import { BrowserRouter } from "react-router-dom";
+import { ChakraProvider, CSSReset } from "@chakra-ui/react";
 import { RehawkProvider } from "rehawk";
 
-import App from "src/components/App/App";
+import "keen-slider/keen-slider.min.css";
 
 import { AuthProvider } from "src/context/Auth/Auth";
 import { SettingsProvider } from "src/context/Settings/Settings";
 import { QueueProvider } from "src/context/Queue/Queue";
 import { RateProvider } from "src/context/Rate/Rate";
 
-import ThemeProvider from "src/system/ThemeProvider";
-import reset from "src/system/reset";
+import App from "src/components/App/App";
 
-interface ProviderProps {
-  children: React.ReactNode;
-}
+import theme from "src/system/theme";
 
-const Provider = ({ children }: ProviderProps) => (
-  <Fragment>
-    <ThemeProvider>
+const Provider = () => (
+  <BrowserRouter>
+    <ChakraProvider theme={theme}>
       <RehawkProvider>
         <AuthProvider>
           <SettingsProvider>
             <QueueProvider>
               <RateProvider>
-                <App>{children}</App>
+                <App />
               </RateProvider>
             </QueueProvider>
           </SettingsProvider>
         </AuthProvider>
       </RehawkProvider>
-    </ThemeProvider>
-    <Global styles={reset} />
-  </Fragment>
+    </ChakraProvider>
+    <CSSReset />
+  </BrowserRouter>
 );
-
-export const getLayout = (page) => <Provider>{page}</Provider>;
 
 export default Provider;

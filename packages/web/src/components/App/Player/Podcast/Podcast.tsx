@@ -1,6 +1,6 @@
 import React from "react";
-import NextLink from "next/link";
 import { Heart } from "react-feather";
+import { Link as ReactRouterLink } from "react-router-dom";
 
 import {
   PodcastContainer,
@@ -9,18 +9,11 @@ import {
   PodcastFavoriteContainer,
 } from "./Podcast.styles";
 
-import useTheme from "src/system/useTheme";
-import Link from "src/system/Link/Link";
-
 import { PodcastProps } from "./Podcast.types";
 
 const iconStyle = { cursor: "pointer" };
 
 const Podcast = ({ ready, currentPodcast }: PodcastProps) => {
-  const themeState = useTheme();
-
-  const iconColor = themeState.dark ? "#FFFFFF" : "#101010";
-
   const { avatar, name, episode } = currentPodcast;
 
   const onReady = () => {
@@ -31,24 +24,16 @@ const Podcast = ({ ready, currentPodcast }: PodcastProps) => {
         <PodcastAvatar avatar={avatar} />
 
         <PodcastDetails>
-          <NextLink href="/app/episode/[episode]" as="/app/episode/123">
-            <Link variant="primary" size="light" href="/app/episode/123">
-              {episode}
-            </Link>
-          </NextLink>
+          <ReactRouterLink to="/episode/123">{episode}</ReactRouterLink>
 
-          <NextLink href="/app/podcast/123" as="/app/podcast/123">
-            <Link variant="secondary" size="light" href="/app/podcast/123">
-              {name}
-            </Link>
-          </NextLink>
+          <ReactRouterLink to="/podcast/123">{name}</ReactRouterLink>
 
           <PodcastFavoriteContainer>
             <Heart
               className="like-button"
               size={16}
               strokeWidth={1.7}
-              color={iconColor}
+              color="#101010"
               style={iconStyle}
               onClick={() => {}}
             />

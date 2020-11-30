@@ -50,11 +50,11 @@ export const NavigationItemContainer = styled.div`
 
     :hover {
       svg {
-        stroke: ${({ theme }) => theme.primary};
+        stroke: #101010;
       }
 
       a {
-        color: ${({ theme }) => theme.primary};
+        color: #101010;
       }
     }
   }

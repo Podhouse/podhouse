@@ -1,11 +1,12 @@
 import styled from "@emotion/styled";
+import { Image } from "@chakra-ui/react";
 
 export const MenuContainer = styled.aside`
   width: 100%;
   height: 60px;
   bottom: 0px;
   position: fixed;
-  background: ${({ theme }) => theme.bgPrimary};
+  background: #ffffff;
   z-index: 100;
 
   @media screen and (min-width: 800px) {
@@ -15,8 +16,8 @@ export const MenuContainer = styled.aside`
     height: 100%;
     position: inherit;
     z-index: 0;
-    background: ${({ theme }) => theme.bgPrimary};
-    border-right: ${({ theme }) => `1px solid ${theme.bgSecondary}`};
+    background: #ffffff;
+    border-right: 1px solid #f3f3f3;
   }
 `;
 
@@ -30,7 +31,7 @@ export const MenuInsideContainer = styled.div`
   @media screen and (min-width: 800px) {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 80px 1fr 210px;
+    grid-template-rows: 70px 1fr 210px;
     grid-row-gap: 30px;
   }
 `;
@@ -48,7 +49,7 @@ export const MenuLogoContainer = styled.div`
   }
 `;
 
-export const MenuAvatarContainer = styled.img`
+export const MenuAvatarContainer = styled(Image)`
   display: none;
 
   @media screen and (min-width: 800px) {

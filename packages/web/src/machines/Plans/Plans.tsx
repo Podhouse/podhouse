@@ -65,7 +65,7 @@ const Plans = Machine<PlansContext, PlansStateSchema, PlansEvent>(
         info: (_, event) => (event as PlansCheckoutEvent).info,
       }),
     },
-  },
+  }
 );
 
 export default Plans;

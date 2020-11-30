@@ -1,6 +1,5 @@
 import React, { useRef } from "react";
-import { withTranslation } from "i18n";
-import { WithTranslation } from "next-i18next";
+import { Link, Text } from "@chakra-ui/react";
 import Scrollbars from "react-custom-scrollbars";
 
 import {
@@ -14,9 +13,6 @@ import QueueModalItem from "./QueueModalItem/QueueModalItem";
 import { useQueueContext } from "src/context/Queue/Queue";
 
 import useOnClickOutside from "src/hooks/useOnClickOutside";
-
-import Link from "src/system/Link/Link";
-import Heading from "src/system/Heading/Heading";
 
 const episodes = [
   {
@@ -33,7 +29,7 @@ const episodes = [
   },
 ];
 
-const QueueModal = ({ t }: WithTranslation) => {
+const QueueModal = () => {
   const [, handleQueue] = useQueueContext();
 
   const ref = useRef<any>();
@@ -43,19 +39,8 @@ const QueueModal = ({ t }: WithTranslation) => {
   return (
     <QueueModalContainer ref={ref}>
       <QueueModalHeaderContainer>
-        <Heading
-          as="h1"
-          variant="secondary"
-          size="normal"
-          fontSize={14}
-          fontWeight={500}
-          textAlign="start"
-        >
-          {t("up-next")}
-        </Heading>
-        <Link onClick={() => {}} variant="secondary" size="normal">
-          {t("clear-all")}
-        </Link>
+        <Text>Up next</Text>
+        <Link onClick={() => {}}>Clear all</Link>
       </QueueModalHeaderContainer>
 
       <Scrollbars
@@ -79,6 +64,4 @@ const QueueModal = ({ t }: WithTranslation) => {
   );
 };
 
-QueueModal.getInitialProps = async () => ({ namespacesRequired: ["player"] });
-
-export default withTranslation("player")(QueueModal);
+export default QueueModal;

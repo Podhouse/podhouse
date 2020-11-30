@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-export const ChangePasswordFormContainer = styled.form`
+export const ChangePasswordContainer = styled.form`
   width: 100%;
   height: 100%;
   display: grid;

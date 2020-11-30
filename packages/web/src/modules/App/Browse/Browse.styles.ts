@@ -14,7 +14,6 @@ export const StyledSection = styled.div`
   width: 100%;
   height: 100%;
   grid-column: 1 / 2;
-
   @media screen and (min-width: 800px) {
     display: grid;
     grid-template-columns: 1fr;

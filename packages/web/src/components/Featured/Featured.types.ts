@@ -1,8 +1,6 @@
-import { WithTranslation } from "next-i18next";
-
-export type FeaturedProps = WithTranslation & {
+export interface FeaturedProps {
   featured: Array<FeaturedPodcast>;
-};
+}
 
 export interface FeaturedPodcast {
   id: number;

@@ -1,13 +1,13 @@
 import styled from "@emotion/styled";
 
-export const PodcastAvatarItemContainer = styled.div`
+export const PodcastItemWithAvatarContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
   grid-gap: 10px;
 `;
 
-export const PodcastAvatarItemAvatar = styled.img`
+export const PodcastItemWithAvatarAvatar = styled.img`
   grid-row: 1 / 3;
   grid-column: 1 / 2;
   width: 140px;

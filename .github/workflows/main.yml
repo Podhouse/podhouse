@@ -36,22 +36,47 @@ jobs:
         env:
           CI: true
 
-      - name: Lint
-        run: yarn lint
+      - name: Build server
+        run: yarn server:build
         env:
           CI: true
 
-      - name: Build
-        run: yarn build
+      - name: Build web
+        run: yarn web:build
         env:
           CI: true
 
-      - name: Lint
-        run: yarn lint
+      - name: Build landing
+        run: yarn landing:build
         env:
           CI: true
 
-      - name: Format
-        run: yarn format
+      - name: Lint server
+        run: yarn server:lint
+        env:
+          CI: true
+
+      - name: Lint web
+        run: yarn web:lint
+        env:
+          CI: true
+
+      - name: Lint landing
+        run: yarn landing:lint
+        env:
+          CI: true
+
+      - name: Format server
+        run: yarn server:format
+        env:
+          CI: true
+
+      - name: Format web
+        run: yarn web:format
+        env:
+          CI: true
+
+      - name: Format landing
+        run: yarn landing:format
         env:
           CI: true

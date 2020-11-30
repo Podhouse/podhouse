@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
-
-import Heading from "src/system/Heading/Heading";
+import { Heading } from "@chakra-ui/react";
 
 export const SettingsContainer = styled.div`
   width: 100%;

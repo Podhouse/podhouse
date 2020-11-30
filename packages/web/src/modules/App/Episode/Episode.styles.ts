@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
-
-import Paragraph from "src/system/Paragraph/Paragraph";
+import { Text } from "@chakra-ui/react";
 
 export const EpisodeContainer = styled.div`
   width: 100%;
@@ -8,9 +7,8 @@ export const EpisodeContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(2, max-content);
-  grid-row-gap: 20px;
+  grid-row-gap: 30px;
   padding: 30px 30px 0px 30px;
-
   @media screen and (min-width: 800px) {
     display: grid;
     grid-template-columns: 1fr;
@@ -26,27 +24,15 @@ export const EpisodeHeader = styled.div`
   grid-row: 1 / 2;
   grid-column: 1 / 2;
   display: grid;
-  grid-template-rows: 200px max-content 40px;
+  grid-template-rows: 200px max-content 40px 40px;
   grid-template-columns: 1fr;
   grid-row-gap: 20px;
-
   @media screen and (min-width: 800px) {
     display: grid;
     grid-template-columns: 200px 1fr;
-    grid-template-rows: 200px 40px;
+    grid-template-rows: max-content 40px;
     grid-gap: 20px;
   }
-`;
-
-export const EpisodeAvatar = styled.img`
-  width: 200px;
-  height: 200px;
-  border-radius: 5px;
-  cursor: pointer;
-  grid-row: 1 / 2;
-  grid-column: 1 / 2;
-  align-self: center;
-  justify-self: center;
 `;
 
 export const EpisodeDetailsContainer = styled.div`
@@ -60,7 +46,6 @@ export const EpisodeDetailsContainer = styled.div`
   grid-row-gap: 10px;
   align-items: center;
   justify-items: center;
-
   @media screen and (min-width: 800px) {
     grid-row: 1 / 2;
     grid-column: 2 / 3;
@@ -70,7 +55,7 @@ export const EpisodeDetailsContainer = styled.div`
   }
 `;
 
-export const EpisodeDescription = styled(Paragraph)`
+export const EpisodeDescription = styled(Text)`
   width: 100%;
   display: -webkit-box;
   -webkit-line-clamp: 4;
@@ -78,7 +63,7 @@ export const EpisodeDescription = styled(Paragraph)`
   overflow: hidden;
 `;
 
-export const EpisodeListenButtonContainer = styled.div`
+export const EpisodeButtonsContainer = styled.div`
   width: 100%;
   height: 100%;
   grid-row: 3 / 4;
@@ -86,7 +71,6 @@ export const EpisodeListenButtonContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-
   @media screen and (min-width: 800px) {
     grid-row: 2 / 3;
     grid-column: 1 / 2;
@@ -109,7 +93,7 @@ export const EpisodeShareButton = styled.button`
     padding: 0;
     width: 70px;
     height: auto;
-    color: ${({ theme }) => theme.tertiary};
+    color: #b7b7b7;
     font-family: Inter;
     font-style: normal;
     font-weight: normal;
@@ -132,8 +116,61 @@ export const EpisodeItemsContainer = styled.div`
   grid-template-rows: auto-fill;
   grid-gap: 20px;
   justify-content: center;
-
   @media screen and (min-width: 800px) {
     justify-content: flex-start;
+  }
+`;
+
+export const EpisodeLinksContainer = styled.div`
+  grid-row: 4 / 5;
+  grid-column: 1 / 2;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+
+  @media screen and (min-width: 800px) {
+    display: grid;
+    grid-row: 2 / 3;
+    grid-column: 2 / 3;
+    display: grid;
+    grid-template-columns: max-content max-content 1fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 20px;
+  }
+`;
+
+export const EpisodeLinkContainer = styled.div`
+  display: none;
+
+  @media screen and (min-width: 800px) {
+    width: auto;
+    height: auto;
+    display: grid;
+    grid-template-columns: max-content max-content;
+    grid-template-rows: 1fr;
+    grid-column-gap: 5px;
+    align-items: center;
+  }
+`;
+
+export const EpisodeLink = styled.a`
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  color: #b7b7b7;
+  text-decoration: none;
+`;
+
+export const EpisodeSearchInputContainer = styled.form`
+  grid-row: 1 / 2;
+  grid-column: 1 / 2;
+  @media screen and (min-width: 800px) {
+    grid-row: 1 / 2;
+    grid-column: 3 / 4;
+    width: 100%;
+    max-width: 400px;
+    justify-self: end;
   }
 `;

@@ -25,12 +25,12 @@ export function connectionUpdater({
       return;
     }
 
-    const parentProxy = store.get(parentId);
+    const parentProxy: RecordProxy = store.get(parentId) as RecordProxy;
     const conn = ConnectionHandler.getConnection(parentProxy, connectionName);
     if (!conn) {
       console.log(
         "maybe this connection is not in relay store: ",
-        connectionName,
+        connectionName
       );
       return;
     }
@@ -56,7 +56,7 @@ export function connectionDeleteEdgeUpdater({
   nodeId,
   store,
 }: ConnectionDeleteEdgeUpdaterOptions) {
-  const parentProxy = store.get(parentId);
+  const parentProxy: RecordProxy = store.get(parentId) as RecordProxy;
   const conn = ConnectionHandler.getConnection(parentProxy, connectionName);
 
   if (!conn) {
