@@ -2,9 +2,9 @@ import React from "react";
 
 import { getLayout } from "src/components/Landing/Landing";
 
-import Home from "src/modules/Home/Home";
+import About from "src/modules/About/About";
 
-const Index = () => <Home />;
+const Index = () => <About />;
 
 Index.getLayout = getLayout;
 

@@ -46,6 +46,11 @@ jobs:
         env:
           CI: true
 
+      - name: Build landing
+        run: yarn landing:build
+        env:
+          CI: true
+
       - name: Lint server
         run: yarn server:lint
         env:
@@ -56,6 +61,11 @@ jobs:
         env:
           CI: true
 
+      - name: Lint landing
+        run: yarn landing:lint
+        env:
+          CI: true
+
       - name: Format server
         run: yarn server:format
         env:
@@ -63,5 +73,10 @@ jobs:
 
       - name: Format web
         run: yarn web:format
+        env:
+          CI: true
+
+      - name: Format landing
+        run: yarn landing:format
         env:
           CI: true
