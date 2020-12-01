@@ -11,6 +11,8 @@ import { useSettingsContext } from "src/context/Settings/Settings";
 
 import useAuthUser from "src/hooks/useAuthUser";
 
+import { getToken } from "src/utils/auth";
+
 import { SettingsQuery } from "./__generated__/SettingsQuery.graphql";
 
 const query = graphql`
@@ -28,7 +30,10 @@ const Settings = () => {
   const data = useLazyLoadQuery<SettingsQuery>(
     query,
     {},
-    { fetchPolicy: "store-or-network" }
+    {
+      fetchPolicy: "store-and-network",
+      fetchKey: getToken(),
+    }
   );
 
   const isAuthenticated = useAuthUser(data?.currentUser);
