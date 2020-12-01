@@ -72,10 +72,27 @@ const SignUp = () => {
       }: UserSignUpWithEmailMutationResponse) => {
         if (UserSignUpWithEmail?.error) {
           const error = UserSignUpWithEmail.error;
-          setError("email", {
-            type: "manual",
-            message: error,
-          });
+
+          if (error === "Invalid password") {
+            setError("password", {
+              type: "manual",
+              message: error,
+            });
+          } else if (error === "Email address is already in use") {
+            setError("email", {
+              type: "manual",
+              message: error,
+            });
+          } else {
+            setError("email", {
+              type: "manual",
+              message: error,
+            });
+            setError("password", {
+              type: "manual",
+              message: error,
+            });
+          }
           return;
         }
 
