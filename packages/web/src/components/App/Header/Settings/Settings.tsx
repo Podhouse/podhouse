@@ -38,9 +38,6 @@ const Settings = () => {
 
   const isAuthenticated = useAuthUser(data?.currentUser);
 
-  console.log("isAuthenticated: ", isAuthenticated);
-  console.log("data.currentUser: ", data?.currentUser);
-
   if (!isAuthenticated) {
     return (
       <SettingsContainer>

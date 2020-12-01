@@ -17,12 +17,16 @@ const PodcastItemWithDetails = ({ node }: PodcastItemWithDetailsProps) => {
 
   return (
     <PodcastItemWithDetailsContainer>
-      <ReactRouterLink to={`/podcast/${_id}`}>
+      <ReactRouterLink to={{ pathname: `/podcast/${_id}`, state: { _id } }}>
         <PodcastItemWithDetailsAvatar src={image} alt={imageAlt} />
       </ReactRouterLink>
 
       <PodcastItemInnerContainer>
-        <Text as={ReactRouterLink} to={`/podcast/${_id}`} fontWeight="500">
+        <Text
+          as={ReactRouterLink}
+          to={{ pathname: `/podcast/${_id}`, state: { _id } }}
+          fontWeight="500"
+        >
           {name}
         </Text>
 

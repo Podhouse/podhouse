@@ -9,6 +9,7 @@ export const PodcastContainer = styled.div`
   grid-template-rows: repeat(2, max-content);
   grid-row-gap: 30px;
   padding: 30px 30px 0px 30px;
+
   @media screen and (min-width: 800px) {
     display: grid;
     grid-template-columns: 1fr;
