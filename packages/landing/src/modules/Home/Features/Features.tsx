@@ -17,13 +17,19 @@ import {
 const Features = () => (
   <LandingGridContainer>
     <LandingGridContentContainer>
-      <Heading color="#101010" as="h2" fontSize={36} letterSpacing="-0.03em" textAlign="center">
+      <Heading
+        color="#101010"
+        as="h2"
+        fontSize={36}
+        letterSpacing="-0.03em"
+        textAlign="center"
+      >
         The best podcast experience
       </Heading>
 
       <Text color="#101010" lineHeight="25px" textAlign="center">
-        We provide a ton of features so you can listen to your podcasts
-        without having to worry about anything.
+        We provide a ton of features so you can listen to your podcasts without
+        having to worry about anything.
       </Text>
     </LandingGridContentContainer>
 
@@ -67,8 +73,8 @@ const Features = () => (
             Discover new podcasts everyday
           </Text>
           <Text color="#101010" lineHeight="25px">
-            Discover new podcasts every day, know what's trending, and
-            subscribe to podcasts easily.
+            Discover new podcasts every day, know what's trending, and subscribe
+            to podcasts easily.
           </Text>
         </FeaturesItemTextContainer>
       </FeaturesItemContainer>
@@ -78,7 +84,9 @@ const Features = () => (
           <Smile color="#fff" />
         </FeaturesItemIconContainer>
         <FeaturesItemTextContainer>
-          <Text color="#101010" fontWeight="500">No annoying ads</Text>
+          <Text color="#101010" fontWeight="500">
+            No annoying ads
+          </Text>
           <Text color="#101010" lineHeight="25px">
             You will not see any annoying ads, your experience is our main
             priority, now and ever.

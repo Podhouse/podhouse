@@ -12,7 +12,13 @@ import {
 const Podcasts = () => (
   <LandingGridContainer>
     <LandingGridContentContainer>
-      <Heading color="#101010" as="h2" fontSize={36} letterSpacing="-0.03em" textAlign="center">
+      <Heading
+        color="#101010"
+        as="h2"
+        fontSize={36}
+        letterSpacing="-0.03em"
+        textAlign="center"
+      >
         Listen to your favorite podcasts
       </Heading>
       <Text color="#101010" lineHeight="25px" textAlign="center">
