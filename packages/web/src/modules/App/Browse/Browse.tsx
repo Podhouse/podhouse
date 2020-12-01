@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import Scrollbars from "react-custom-scrollbars";
 
 import { BrowseContainer } from "./Browse.styles";
@@ -113,7 +113,9 @@ const Browse = () => {
     <Scrollbars universal autoHide autoHideTimeout={100} autoHideDuration={100}>
       <BrowseContainer>
         <Featured featured={featured} />
-        <Trending />
+        <Suspense fallback={<h1>Loading...</h1>}>
+          <Trending />
+        </Suspense>
         <Genres title="Categories" genres={genres} />
       </BrowseContainer>
     </Scrollbars>
