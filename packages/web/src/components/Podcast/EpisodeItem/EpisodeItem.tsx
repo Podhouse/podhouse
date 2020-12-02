@@ -15,25 +15,29 @@ import {
 import { EpisodeItemProps } from "./EpisodeItem.types";
 
 const EpisodeItem = ({ node }: EpisodeItemProps) => {
+  const { _id, image, title, description, publishedDate, duration } = node;
+
   return (
     <EpisodeItemContainer>
-      <EpisodeItemAvatar src={node.image} alt="image" />
+      <EpisodeItemAvatar src={image} alt="image" />
 
-      <EpisodeItemName as={ReactRouterLink} to="/episode/123" fontWeight="500">
-        {node.title}
+      <EpisodeItemName
+        as={ReactRouterLink}
+        to={{ pathname: `/episode/${_id}`, state: { _id } }}
+        fontWeight="500"
+      >
+        {title}
       </EpisodeItemName>
 
       <EpisodeItemDescription lineHeight="25px" textAlign="start">
-        {node.description}
+        {description}
       </EpisodeItemDescription>
 
       <EpisodeItemPublishedDate textAlign="start">
-        {node.publishedDate}
+        {publishedDate}
       </EpisodeItemPublishedDate>
 
-      <EpisodeItemDuration textAlign="start">
-        {node.duration}
-      </EpisodeItemDuration>
+      <EpisodeItemDuration textAlign="start">{duration}</EpisodeItemDuration>
 
       <EpisodeItemButton type="button" leftIcon={<Play size={14} />}>
         Play

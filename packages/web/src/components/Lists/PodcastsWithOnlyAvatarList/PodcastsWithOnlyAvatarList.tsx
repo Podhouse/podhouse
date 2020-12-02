@@ -7,22 +7,11 @@ import {
   PodcastsWithOnlyAvatarListHeader,
 } from "./PodcastsWithOnlyAvatarList.styles";
 
-import PodcastItemWithAvatar from "src/components/Podcast/PodcastItemWithAvatar/PodcastItemWithAvatar";
-
-import {
-  Podcast,
-  PodcastsWithOnlyAvatarListProps,
-} from "./PodcastsWithOnlyAvatarList.types";
+import { PodcastsWithOnlyAvatarListProps } from "./PodcastsWithOnlyAvatarList.types";
 
 const PodcastsWithOnlyAvatarList = ({
   title,
-  items,
 }: PodcastsWithOnlyAvatarListProps) => {
-  const renderItems = () =>
-    items.map((item: Podcast) => (
-      <PodcastItemWithAvatar key={item.id} podcast={item} />
-    ));
-
   return (
     <PodcastsWithOnlyAvatarListContainer>
       <PodcastsWithOnlyAvatarListHeader>
@@ -39,9 +28,7 @@ const PodcastsWithOnlyAvatarList = ({
         <Divider orientation="horizontal" />
       </PodcastsWithOnlyAvatarListHeader>
 
-      <PodcastsWithOnlyAvatarListSection>
-        {renderItems()}
-      </PodcastsWithOnlyAvatarListSection>
+      <PodcastsWithOnlyAvatarListSection />
     </PodcastsWithOnlyAvatarListContainer>
   );
 };

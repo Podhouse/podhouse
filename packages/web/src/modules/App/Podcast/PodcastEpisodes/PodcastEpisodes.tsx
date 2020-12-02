@@ -21,7 +21,7 @@ const query = graphql`
       @connection(key: "PodcastEpisodes_episodes") {
       edges {
         node {
-          id
+          _id
           title
           description
           publishedDate
@@ -29,6 +29,11 @@ const query = graphql`
           image
           audio
           duration
+          podcast {
+            name
+            website
+            rss
+          }
         }
       }
     }
@@ -57,7 +62,7 @@ const PodcastEpisodes = ({ podcast, shouldLoadMore }: Props) => {
   return (
     <PodcastEpisodesContainer>
       {data.episodes.edges.map(({ node }: any) => (
-        <EpisodeItem key={node.id} node={node} />
+        <EpisodeItem key={node._id} node={node} />
       ))}
     </PodcastEpisodesContainer>
   );

@@ -13,12 +13,10 @@ import { PodcastItemWithDetailsProps } from "./PodcastItemWithDetails.types";
 const PodcastItemWithDetails = ({ node }: PodcastItemWithDetailsProps) => {
   const { _id, name, author, image } = node;
 
-  const imageAlt = `image`;
-
   return (
     <PodcastItemWithDetailsContainer>
       <ReactRouterLink to={{ pathname: `/podcast/${_id}`, state: { _id } }}>
-        <PodcastItemWithDetailsAvatar src={image} alt={imageAlt} />
+        <PodcastItemWithDetailsAvatar src={image} alt="image" />
       </ReactRouterLink>
 
       <PodcastItemInnerContainer>
