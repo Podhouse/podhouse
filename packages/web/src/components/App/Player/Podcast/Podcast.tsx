@@ -1,5 +1,4 @@
 import React from "react";
-import { Heart } from "react-feather";
 import { Link as ReactRouterLink } from "react-router-dom";
 
 import {
@@ -10,8 +9,6 @@ import {
 } from "./Podcast.styles";
 
 import { PodcastProps } from "./Podcast.types";
-
-const iconStyle = { cursor: "pointer" };
 
 const Podcast = ({ ready, currentPodcast }: PodcastProps) => {
   const { avatar, name, episode } = currentPodcast;
@@ -29,14 +26,14 @@ const Podcast = ({ ready, currentPodcast }: PodcastProps) => {
           <ReactRouterLink to="/podcast/123">{name}</ReactRouterLink>
 
           <PodcastFavoriteContainer>
-            <Heart
+            {/* <Heart
               className="like-button"
               size={16}
               strokeWidth={1.7}
               color="#101010"
               style={iconStyle}
               onClick={() => {}}
-            />
+            /> */}
           </PodcastFavoriteContainer>
         </PodcastDetails>
       </PodcastContainer>
