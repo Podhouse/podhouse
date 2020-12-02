@@ -3,26 +3,31 @@ import { Heading, Divider } from "@chakra-ui/react";
 
 import { GenresContainer, GenresSection, GenresHeader } from "./Genres.styles";
 
-import Genre from "src/components/Genre/Genre";
+import GenreItem from "src/components/GenreItem/GenreItem";
 
-import { IGenre, GenresProps } from "./Genres.types";
+import genres, { Genre } from "src/utils/genres";
 
-const Genres = ({ title, genres }: GenresProps) => {
-  const renderItems = () =>
-    genres.map((genre: IGenre) => <Genre key={genre.id} genre={genre} />);
+const Genres = () => (
+  <GenresContainer>
+    <GenresHeader>
+      <Heading as="h1" fontSize={14} fontWeight={500} textAlign="start">
+        Genres
+      </Heading>
+      <Divider orientation="horizontal" />
+    </GenresHeader>
 
-  return (
-    <GenresContainer>
-      <GenresHeader>
-        <Heading as="h1" fontSize={14} fontWeight={500} textAlign="start">
-          {title}
-        </Heading>
-        <Divider orientation="horizontal" />
-      </GenresHeader>
-
-      <GenresSection>{renderItems()}</GenresSection>
-    </GenresContainer>
-  );
-};
+    <GenresSection>
+      {genres.map(({ href, id, name, primaryGenre }: Genre) => (
+        <GenreItem
+          key={id}
+          id={id}
+          name={name}
+          primaryGenre={primaryGenre}
+          href={href}
+        />
+      ))}
+    </GenresSection>
+  </GenresContainer>
+);
 
 export default Genres;
