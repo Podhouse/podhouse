@@ -42,15 +42,19 @@ const PodcastInfo = ({ queryReference, query, shouldLoadMore }: Props) => {
         />
 
         <PodcastInfoDetailsContainer>
-          <Heading as="h1" letterSpacing="-0.03em">
+          <Heading color="#101010" as="h1" letterSpacing="-0.03em">
             {podcast?.name}
           </Heading>
 
-          <Heading as="h2" size="sm" letterSpacing="-0.03em">
+          <Heading color="#101010" as="h2" size="sm" letterSpacing="-0.03em">
             {podcast?.author}
           </Heading>
 
-          <PodcastInfoDescription lineHeight="25px" textAlign="start">
+          <PodcastInfoDescription
+            color="#101010"
+            lineHeight="25px"
+            textAlign="start"
+          >
             {podcast?.description}
           </PodcastInfoDescription>
         </PodcastInfoDetailsContainer>
@@ -80,14 +84,14 @@ const PodcastInfo = ({ queryReference, query, shouldLoadMore }: Props) => {
 
         <PodcastInfoLinksContainer>
           <PodcastInfoLinkContainer>
-            <Link href={podcast?.website} isExternal>
+            <Link color="#101010" href={podcast?.website} isExternal>
               Website
             </Link>
             <ExternalLink size={14} />
           </PodcastInfoLinkContainer>
 
           <PodcastInfoLinkContainer>
-            <Link href={podcast?.rss} isExternal>
+            <Link color="#101010" href={podcast?.rss} isExternal>
               RSS
             </Link>
             <ExternalLink size={14} />

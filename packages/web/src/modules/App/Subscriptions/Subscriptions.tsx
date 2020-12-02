@@ -1,166 +1,87 @@
-import React from "react";
+import React, { useState, Suspense } from "react";
+import { Heading } from "@chakra-ui/react";
 import Scrollbars from "react-custom-scrollbars";
+import graphql from "babel-plugin-relay/macro";
+import { useLazyLoadQuery } from "react-relay/hooks";
 
-import { SubscriptionsContainer } from "./Subscriptions.styles";
+import SubscriptionsPodcast from "./SubscriptionsPodcast/SubscriptionsPodcast";
 
-import PodcastsWithOnlyAvatarList from "src/components/Lists/PodcastsWithOnlyAvatarList/PodcastsWithOnlyAvatarList";
+import useAuthUser from "src/hooks/useAuthUser";
 
-const items = [
-  {
-    id: 1,
-    name: "99% Invisible",
-    author: "Roman Mars",
-    avatar:
-      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
-  },
-  {
-    id: 2,
-    name: "99% Invisible",
-    author: "Roman Mars",
-    avatar:
-      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
-  },
-  {
-    id: 3,
-    name: "99% Invisible",
-    author: "Roman Mars",
-    avatar:
-      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
-  },
-  {
-    id: 4,
-    name: "99% Invisible",
-    author: "Roman Mars",
-    avatar:
-      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
-  },
-  {
-    id: 5,
-    name: "99% Invisible",
-    author: "Roman Mars",
-    avatar:
-      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
-  },
-  {
-    id: 6,
-    name: "99% Invisible",
-    author: "Roman Mars",
-    avatar:
-      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
-  },
-  {
-    id: 7,
-    name: "99% Invisible",
-    author: "Roman Mars",
-    avatar:
-      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
-  },
-  {
-    id: 8,
-    name: "99% Invisible",
-    author: "Roman Mars",
-    avatar:
-      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
-  },
-  {
-    id: 9,
-    name: "99% Invisible",
-    author: "Roman Mars",
-    avatar:
-      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
-  },
-  {
-    id: 10,
-    name: "99% Invisible",
-    author: "Roman Mars",
-    avatar:
-      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
-  },
-  {
-    id: 11,
-    name: "99% Invisible",
-    author: "Roman Mars",
-    avatar:
-      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
-  },
-  {
-    id: 12,
-    name: "99% Invisible",
-    author: "Roman Mars",
-    avatar:
-      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
-  },
-  {
-    id: 13,
-    name: "99% Invisible",
-    author: "Roman Mars",
-    avatar:
-      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
-  },
-  {
-    id: 14,
-    name: "99% Invisible",
-    author: "Roman Mars",
-    avatar:
-      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
-  },
-  {
-    id: 15,
-    name: "99% Invisible",
-    author: "Roman Mars",
-    avatar:
-      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
-  },
-  {
-    id: 16,
-    name: "99% Invisible",
-    author: "Roman Mars",
-    avatar:
-      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
-  },
-  {
-    id: 17,
-    name: "99% Invisible",
-    author: "Roman Mars",
-    avatar:
-      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
-  },
-  {
-    id: 18,
-    name: "99% Invisible",
-    author: "Roman Mars",
-    avatar:
-      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
-  },
-  {
-    id: 19,
-    name: "99% Invisible",
-    author: "Roman Mars",
-    avatar:
-      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
-  },
-  {
-    id: 20,
-    name: "99% Invisible",
-    author: "Roman Mars",
-    avatar:
-      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
-  },
-  {
-    id: 21,
-    name: "99% Invisible",
-    author: "Roman Mars",
-    avatar:
-      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
-  },
-];
+import { getToken } from "src/utils/auth";
+
+import { SubscriptionsQuery } from "./__generated__/SubscriptionsQuery.graphql";
+
+const query = graphql`
+  query SubscriptionsQuery {
+    currentUser {
+      ...useAuthUser_user
+      ...SubscriptionsPodcast_subscriptions
+    }
+  }
+`;
+
+type ScrollFrameType = {
+  clientHeight: number;
+  clientWidth: number;
+  left: number;
+  scrollHeight: number;
+  scrollLeft: number;
+  scrollTop: number;
+  scrollWidth: number;
+  top: number;
+};
+
+const SubscriptionsComponent = () => {
+  const [shouldLoadMore, setShouldLoadMore] = useState<boolean>(false);
+
+  const { currentUser } = useLazyLoadQuery<SubscriptionsQuery>(
+    query,
+    {},
+    {
+      fetchPolicy: "store-and-network",
+      fetchKey: getToken(),
+    }
+  );
+
+  const onLoadMore = (value: ScrollFrameType) => {
+    if (value.top === 1) {
+      setShouldLoadMore(true);
+    }
+    setShouldLoadMore(false);
+  };
+
+  const user = useAuthUser(currentUser);
+
+  if (!user) {
+    return (
+      <Scrollbars autoHide autoHideTimeout={100} autoHideDuration={100}>
+        <Heading color="#101010" as="h1" letterSpacing="-0.03em">
+          You should be logged in to see your subscriptions
+        </Heading>
+      </Scrollbars>
+    );
+  }
+
+  return (
+    <Scrollbars
+      onScrollFrame={onLoadMore}
+      autoHide
+      autoHideTimeout={100}
+      autoHideDuration={100}
+    >
+      <SubscriptionsPodcast
+        user={currentUser}
+        shouldLoadMore={shouldLoadMore}
+      />
+    </Scrollbars>
+  );
+};
 
 const Subscriptions = () => (
-  <Scrollbars universal autoHide autoHideTimeout={100} autoHideDuration={100}>
-    <SubscriptionsContainer>
-      <PodcastsWithOnlyAvatarList title="Subscriptions" items={items} />
-    </SubscriptionsContainer>
-  </Scrollbars>
+  <Suspense fallback={<h1>Loading...</h1>}>
+    <SubscriptionsComponent />
+  </Suspense>
 );
 
 export default Subscriptions;

@@ -5,6 +5,7 @@ import { IUser } from "./UserModel";
 import { load } from "./UserLoader";
 
 import { PodcastConnection } from "../Podcast/PodcastType";
+import * as PodcastLoader from "../Podcast/PodcastLoader";
 
 import { nodeInterface, registerTypeLoader } from "../Node/TypeRegister";
 
@@ -15,7 +16,6 @@ import {
 } from "../../common/";
 
 import { GraphQLContext } from "../../types";
-import { IPodcast } from "../Podcast/PodcastModel";
 
 const UserType: GraphQLObjectType = new GraphQLObjectType<
   IUser,
@@ -36,12 +36,12 @@ const UserType: GraphQLObjectType = new GraphQLObjectType<
         ...connectionArgs,
       },
       resolve: async (user, args, context) => {
-        const podcasts: Array<
-          IPodcast | Error
-        > = await context.dataloaders.PodcastLoader.loadMany(
-          user.subscriptions.map((id) => id.toString()),
+        const podcasts = user.subscriptions.map((id) =>
+          PodcastLoader.load(context, id.toString()),
         );
-        return connectionFromArray(podcasts, args);
+        const result = await Promise.all(podcasts).then((res) => res);
+        console.log("result: ", result);
+        return connectionFromArray(result, args);
       },
     },
     createdAt: {

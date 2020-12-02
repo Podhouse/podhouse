@@ -7,10 +7,13 @@ import {
   PodcastsWithOnlyAvatarListHeader,
 } from "./PodcastsWithOnlyAvatarList.styles";
 
+import PodcastItemWithAvatar from "src/components/Podcast/PodcastItemWithAvatar/PodcastItemWithAvatar";
+
 import { PodcastsWithOnlyAvatarListProps } from "./PodcastsWithOnlyAvatarList.types";
 
 const PodcastsWithOnlyAvatarList = ({
   title,
+  data,
 }: PodcastsWithOnlyAvatarListProps) => {
   return (
     <PodcastsWithOnlyAvatarListContainer>
@@ -28,7 +31,11 @@ const PodcastsWithOnlyAvatarList = ({
         <Divider orientation="horizontal" />
       </PodcastsWithOnlyAvatarListHeader>
 
-      <PodcastsWithOnlyAvatarListSection />
+      <PodcastsWithOnlyAvatarListSection>
+        {data.subscriptions.edges.map(({ node }: any) => (
+          <PodcastItemWithAvatar key={node._id} node={node} />
+        ))}
+      </PodcastsWithOnlyAvatarListSection>
     </PodcastsWithOnlyAvatarListContainer>
   );
 };

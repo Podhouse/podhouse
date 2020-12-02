@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-export const SubscriptionsContainer = styled.div`
+export const SubscriptionsPodcastContainer = styled.div`
   width: 100%;
   height: 100%;
   display: grid;
