@@ -110,7 +110,7 @@ const Browse = () => {
   ];
 
   return (
-    <Scrollbars universal autoHide autoHideTimeout={100} autoHideDuration={100}>
+    <Scrollbars autoHide autoHideTimeout={100} autoHideDuration={100}>
       <BrowseContainer>
         <Featured featured={featured} />
         <Suspense fallback={<h1>Loading...</h1>}>

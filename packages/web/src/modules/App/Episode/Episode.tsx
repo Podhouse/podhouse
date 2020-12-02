@@ -40,7 +40,7 @@ const Episode = () => {
   }, [loadQuery, disposeQuery, state._id]);
 
   return (
-    <Scrollbars universal autoHide autoHideTimeout={100} autoHideDuration={100}>
+    <Scrollbars autoHide autoHideTimeout={100} autoHideDuration={100}>
       {queryReference !== null ? (
         <Suspense fallback={<h1>Loading...</h1>}>
           <EpisodeInfo queryReference={queryReference} query={query} />

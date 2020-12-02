@@ -56,7 +56,6 @@ const Podcast = () => {
   return (
     <Scrollbars
       onScrollFrame={onLoadMore}
-      universal
       autoHide
       autoHideTimeout={100}
       autoHideDuration={100}

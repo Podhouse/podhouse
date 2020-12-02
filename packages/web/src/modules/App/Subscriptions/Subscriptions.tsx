@@ -1,5 +1,5 @@
 import React, { useState, Suspense } from "react";
-import { Heading } from "@chakra-ui/react";
+import { Box, Text, Link, Stack } from "@chakra-ui/react";
 import Scrollbars from "react-custom-scrollbars";
 import graphql from "babel-plugin-relay/macro";
 import { useLazyLoadQuery } from "react-relay/hooks";
@@ -7,6 +7,8 @@ import { useLazyLoadQuery } from "react-relay/hooks";
 import SubscriptionsPodcast from "./SubscriptionsPodcast/SubscriptionsPodcast";
 
 import useAuthUser from "src/hooks/useAuthUser";
+
+import { useAuthContext } from "src/context/Auth/Auth";
 
 import { getToken } from "src/utils/auth";
 
@@ -33,6 +35,8 @@ type ScrollFrameType = {
 };
 
 const SubscriptionsComponent = () => {
+  const [, , handleAuth] = useAuthContext();
+
   const [shouldLoadMore, setShouldLoadMore] = useState<boolean>(false);
 
   const { currentUser } = useLazyLoadQuery<SubscriptionsQuery>(
@@ -55,11 +59,28 @@ const SubscriptionsComponent = () => {
 
   if (!user) {
     return (
-      <Scrollbars autoHide autoHideTimeout={100} autoHideDuration={100}>
-        <Heading color="#101010" as="h1" letterSpacing="-0.03em">
-          You should be logged in to see your subscriptions
-        </Heading>
-      </Scrollbars>
+      <Box
+        d="flex"
+        alignItems="center"
+        justifyContent="center"
+        w="100%"
+        h="100%"
+        bgColor="red"
+      >
+        <Stack spacing={4} shouldWrapChildren align="center">
+          <Text color="#101010" maxWidth="300px" textAlign="center">
+            You should be logged in to see your subscriptions
+          </Text>
+          <Link
+            color="brand.900"
+            fontWeight="bold"
+            textTransform="uppercase"
+            onClick={handleAuth}
+          >
+            Login
+          </Link>
+        </Stack>
+      </Box>
     );
   }
 
