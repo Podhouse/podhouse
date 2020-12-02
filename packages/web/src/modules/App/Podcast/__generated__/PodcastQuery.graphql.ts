@@ -3,6 +3,7 @@
 // @ts-nocheck
 
 import { ConcreteRequest } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type PodcastQueryVariables = {
   _id: string;
 };
@@ -14,6 +15,7 @@ export type PodcastQueryResponse = {
     readonly website: string;
     readonly rss: string;
     readonly image: string;
+    readonly " $fragmentRefs": FragmentRefs<"PodcastEpisodes_episodes">;
   } | null;
 };
 export type PodcastQuery = {
@@ -32,8 +34,35 @@ query PodcastQuery(
     website
     rss
     image
+    ...PodcastEpisodes_episodes
     id
   }
+}
+
+fragment PodcastEpisodes_episodes on Podcast {
+  episodes(first: 10) {
+    edges {
+      node {
+        id
+        title
+        description
+        publishedDate
+        link
+        image
+        audio
+        duration
+        __typename
+      }
+      cursor
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+      hasPreviousPage
+      startCursor
+    }
+  }
+  id
 }
 */
 
@@ -93,6 +122,20 @@ const node: ConcreteRequest = (function () {
       kind: "ScalarField",
       name: "image",
       storageKey: null,
+    },
+    v8 = [
+      {
+        kind: "Literal",
+        name: "first",
+        value: 10,
+      },
+    ],
+    v9 = {
+      alias: null,
+      args: null,
+      kind: "ScalarField",
+      name: "id",
+      storageKey: null,
     };
   return {
     fragment: {
@@ -115,6 +158,11 @@ const node: ConcreteRequest = (function () {
             v5 /*: any*/,
             v6 /*: any*/,
             v7 /*: any*/,
+            {
+              args: null,
+              kind: "FragmentSpread",
+              name: "PodcastEpisodes_episodes",
+            },
           ],
           storageKey: null,
         },
@@ -144,26 +192,153 @@ const node: ConcreteRequest = (function () {
             v7 /*: any*/,
             {
               alias: null,
-              args: null,
-              kind: "ScalarField",
-              name: "id",
-              storageKey: null,
+              args: v8 /*: any*/,
+              concreteType: "EpisodeConnection",
+              kind: "LinkedField",
+              name: "episodes",
+              plural: false,
+              selections: [
+                {
+                  alias: null,
+                  args: null,
+                  concreteType: "EpisodeEdge",
+                  kind: "LinkedField",
+                  name: "edges",
+                  plural: true,
+                  selections: [
+                    {
+                      alias: null,
+                      args: null,
+                      concreteType: "Episode",
+                      kind: "LinkedField",
+                      name: "node",
+                      plural: false,
+                      selections: [
+                        v9 /*: any*/,
+                        {
+                          alias: null,
+                          args: null,
+                          kind: "ScalarField",
+                          name: "title",
+                          storageKey: null,
+                        },
+                        v4 /*: any*/,
+                        {
+                          alias: null,
+                          args: null,
+                          kind: "ScalarField",
+                          name: "publishedDate",
+                          storageKey: null,
+                        },
+                        {
+                          alias: null,
+                          args: null,
+                          kind: "ScalarField",
+                          name: "link",
+                          storageKey: null,
+                        },
+                        v7 /*: any*/,
+                        {
+                          alias: null,
+                          args: null,
+                          kind: "ScalarField",
+                          name: "audio",
+                          storageKey: null,
+                        },
+                        {
+                          alias: null,
+                          args: null,
+                          kind: "ScalarField",
+                          name: "duration",
+                          storageKey: null,
+                        },
+                        {
+                          alias: null,
+                          args: null,
+                          kind: "ScalarField",
+                          name: "__typename",
+                          storageKey: null,
+                        },
+                      ],
+                      storageKey: null,
+                    },
+                    {
+                      alias: null,
+                      args: null,
+                      kind: "ScalarField",
+                      name: "cursor",
+                      storageKey: null,
+                    },
+                  ],
+                  storageKey: null,
+                },
+                {
+                  alias: null,
+                  args: null,
+                  concreteType: "PageInfoExtended",
+                  kind: "LinkedField",
+                  name: "pageInfo",
+                  plural: false,
+                  selections: [
+                    {
+                      alias: null,
+                      args: null,
+                      kind: "ScalarField",
+                      name: "endCursor",
+                      storageKey: null,
+                    },
+                    {
+                      alias: null,
+                      args: null,
+                      kind: "ScalarField",
+                      name: "hasNextPage",
+                      storageKey: null,
+                    },
+                    {
+                      alias: null,
+                      args: null,
+                      kind: "ScalarField",
+                      name: "hasPreviousPage",
+                      storageKey: null,
+                    },
+                    {
+                      alias: null,
+                      args: null,
+                      kind: "ScalarField",
+                      name: "startCursor",
+                      storageKey: null,
+                    },
+                  ],
+                  storageKey: null,
+                },
+              ],
+              storageKey: "episodes(first:10)",
             },
+            {
+              alias: null,
+              args: v8 /*: any*/,
+              filters: null,
+              handle: "connection",
+              key: "PodcastEpisodes_episodes",
+              kind: "LinkedHandle",
+              name: "episodes",
+            },
+            v9 /*: any*/,
           ],
           storageKey: null,
         },
       ],
     },
     params: {
-      cacheID: "77772dde24afbe28d3d98af0d9e01ad5",
+      cacheID: "7ab82656e68171de60eb54c81ef23142",
       id: null,
       metadata: {},
       name: "PodcastQuery",
       operationKind: "query",
       text:
-        "query PodcastQuery(\n  $_id: ID!\n) {\n  podcast(_id: $_id) {\n    name\n    author\n    description\n    website\n    rss\n    image\n    id\n  }\n}\n",
+        "query PodcastQuery(\n  $_id: ID!\n) {\n  podcast(_id: $_id) {\n    name\n    author\n    description\n    website\n    rss\n    image\n    ...PodcastEpisodes_episodes\n    id\n  }\n}\n\nfragment PodcastEpisodes_episodes on Podcast {\n  episodes(first: 10) {\n    edges {\n      node {\n        id\n        title\n        description\n        publishedDate\n        link\n        image\n        audio\n        duration\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n  id\n}\n",
     },
   };
 })();
-(node as any).hash = "d6522e94f2e7121eaac4f1f6c06f5658";
+(node as any).hash = "54c760e3c683d1ee60a8f3fc0b962fdc";
 export default node;

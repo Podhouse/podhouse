@@ -1,10 +1,8 @@
-import React, { useEffect, Suspense } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import Scrollbars from "react-custom-scrollbars";
 import graphql from "babel-plugin-relay/macro";
 import { useQueryLoader } from "react-relay/hooks";
 import { useLocation } from "react-router-dom";
-
-import { PodcastContainer } from "./Podcast.styles";
 
 import PodcastInfo from "./PodcastInfo/PodcastInfo";
 
@@ -17,11 +15,25 @@ const query = graphql`
       website
       rss
       image
+      ...PodcastEpisodes_episodes
     }
   }
 `;
 
+type ScrollFrameType = {
+  clientHeight: number;
+  clientWidth: number;
+  left: number;
+  scrollHeight: number;
+  scrollLeft: number;
+  scrollTop: number;
+  scrollWidth: number;
+  top: number;
+};
+
 const Podcast = () => {
+  const [shouldLoadMore, setShouldLoadMore] = useState<boolean>(false);
+
   const { state } = useLocation<any>();
 
   const [queryReference, loadQuery, disposeQuery] = useQueryLoader(query);
@@ -34,15 +46,30 @@ const Podcast = () => {
     };
   }, [loadQuery, disposeQuery, state._id]);
 
+  const onLoadMore = (value: ScrollFrameType) => {
+    if (value.top === 1) {
+      setShouldLoadMore(true);
+    }
+    setShouldLoadMore(false);
+  };
+
   return (
-    <Scrollbars universal autoHide autoHideTimeout={100} autoHideDuration={100}>
-      <PodcastContainer>
-        {queryReference !== null ? (
-          <Suspense fallback={<h1>Loading...</h1>}>
-            <PodcastInfo queryReference={queryReference} query={query} />
-          </Suspense>
-        ) : null}
-      </PodcastContainer>
+    <Scrollbars
+      onScrollFrame={onLoadMore}
+      universal
+      autoHide
+      autoHideTimeout={100}
+      autoHideDuration={100}
+    >
+      {queryReference !== null ? (
+        <Suspense fallback={<h1>Loading...</h1>}>
+          <PodcastInfo
+            queryReference={queryReference}
+            query={query}
+            shouldLoadMore={shouldLoadMore}
+          />
+        </Suspense>
+      ) : null}
     </Scrollbars>
   );
 };

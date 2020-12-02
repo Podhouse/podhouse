@@ -1,11 +1,8 @@
 import React from "react";
-import { Skeleton } from "@chakra-ui/react";
 import { Link as ReactRouterLink } from "react-router-dom";
 import { Play } from "react-feather";
 
 import {
-  EpisodeLoadingContainer,
-  EpisodeLoadingDetailsContainer,
   EpisodeItemContainer,
   EpisodeItemAvatar,
   EpisodeItemName,
@@ -17,64 +14,26 @@ import {
 
 import { EpisodeItemProps } from "./EpisodeItem.types";
 
-const EpisodeItem = ({ episode, loading }: EpisodeItemProps) => {
-  if (!episode || loading) {
-    return (
-      <EpisodeLoadingContainer>
-        <Skeleton width={80} height={80} />
-        <EpisodeLoadingDetailsContainer>
-          <Skeleton width={300} height={20} />
-          <Skeleton width={300} height={50} />
-        </EpisodeLoadingDetailsContainer>
-      </EpisodeLoadingContainer>
-    );
-  }
-
-  const { name, description, avatar, publishedDate, duration } = episode;
-
-  const imageAlt = `avatar`;
-
+const EpisodeItem = ({ node }: EpisodeItemProps) => {
   return (
     <EpisodeItemContainer>
-      {episode === null || episode === undefined ? (
-        <Skeleton />
-      ) : (
-        <EpisodeItemAvatar src={avatar} alt={imageAlt} />
-      )}
+      <EpisodeItemAvatar src={node.image} alt="image" />
 
-      {episode === null || episode === undefined ? (
-        <Skeleton />
-      ) : (
-        <EpisodeItemName
-          as={ReactRouterLink}
-          to="/episode/123"
-          fontWeight="500"
-        >
-          {name}
-        </EpisodeItemName>
-      )}
+      <EpisodeItemName as={ReactRouterLink} to="/episode/123" fontWeight="500">
+        {node.title}
+      </EpisodeItemName>
 
-      {episode === null || episode === undefined ? (
-        <Skeleton />
-      ) : (
-        <EpisodeItemDescription lineHeight="25px" textAlign="start">
-          {description}
-        </EpisodeItemDescription>
-      )}
+      <EpisodeItemDescription lineHeight="25px" textAlign="start">
+        {node.description}
+      </EpisodeItemDescription>
 
-      {episode === null || episode === undefined ? (
-        <Skeleton />
-      ) : (
-        <EpisodeItemPublishedDate textAlign="start">
-          {publishedDate}
-        </EpisodeItemPublishedDate>
-      )}
+      <EpisodeItemPublishedDate textAlign="start">
+        {node.publishedDate}
+      </EpisodeItemPublishedDate>
 
-      {episode === null || episode === undefined ? (
-        <Skeleton />
-      ) : (
-        <EpisodeItemDuration textAlign="start">{duration}</EpisodeItemDuration>
-      )}
+      <EpisodeItemDuration textAlign="start">
+        {node.duration}
+      </EpisodeItemDuration>
 
       <EpisodeItemButton type="button" leftIcon={<Play size={14} />}>
         Play
