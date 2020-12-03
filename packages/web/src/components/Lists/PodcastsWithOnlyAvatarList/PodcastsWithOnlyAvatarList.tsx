@@ -13,7 +13,7 @@ import { PodcastsWithOnlyAvatarListProps } from "./PodcastsWithOnlyAvatarList.ty
 
 const PodcastsWithOnlyAvatarList = ({
   title,
-  data,
+  edges,
 }: PodcastsWithOnlyAvatarListProps) => {
   return (
     <PodcastsWithOnlyAvatarListContainer>
@@ -32,7 +32,7 @@ const PodcastsWithOnlyAvatarList = ({
       </PodcastsWithOnlyAvatarListHeader>
 
       <PodcastsWithOnlyAvatarListSection>
-        {data.subscriptions.edges.map(({ node }: any) => (
+        {edges.map(({ node }: any) => (
           <PodcastItemWithAvatar key={node._id} node={node} />
         ))}
       </PodcastsWithOnlyAvatarListSection>

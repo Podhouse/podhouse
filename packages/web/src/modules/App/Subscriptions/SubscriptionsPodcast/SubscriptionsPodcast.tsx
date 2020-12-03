@@ -41,7 +41,6 @@ const SubscriptionsPodcast = ({ user, shouldLoadMore }: Props) => {
   >(query, user);
 
   const loadMore = useCallback(() => {
-    // Don't fetch again if we're already loading the next page
     if (isLoadingNext) return;
     loadNext(10);
   }, [isLoadingNext, loadNext]);
@@ -50,7 +49,10 @@ const SubscriptionsPodcast = ({ user, shouldLoadMore }: Props) => {
 
   return (
     <SubscriptionsPodcastContainer>
-      <PodcastsWithOnlyAvatarList title="Subscriptions" data={data} />
+      <PodcastsWithOnlyAvatarList
+        title="Subscriptions"
+        edges={data.subscriptions.edges}
+      />
     </SubscriptionsPodcastContainer>
   );
 };

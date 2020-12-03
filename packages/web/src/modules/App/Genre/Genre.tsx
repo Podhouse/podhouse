@@ -7,6 +7,7 @@ import { useLocation } from "react-router-dom";
 import { GenreContainer } from "./Genre.styles";
 
 import Featured from "src/components/Featured/Featured";
+import PodcastsWithOnlyAvatarList from "src/components/Lists/PodcastsWithOnlyAvatarList/PodcastsWithOnlyAvatarList";
 
 import { GenreQuery } from "./__generated__/GenreQuery.graphql";
 import { GenrePaginationQuery } from "./__generated__/GenrePaginationQuery.graphql";
@@ -15,8 +16,8 @@ import { Genre_podcasts$key } from "./__generated__/Genre_podcasts.graphql";
 import featured from "src/utils/featured";
 
 const query = graphql`
-  query GenreQuery {
-    ...Genre_podcasts
+  query GenreQuery($primaryGenre: String!) {
+    ...Genre_podcasts @arguments(primaryGenre: $primaryGenre)
   }
 `;
 
@@ -79,7 +80,6 @@ const GenreComponent = () => {
   console.log("data: ", data);
 
   const loadMore = useCallback(() => {
-    // Don't fetch again if we're already loading the next page
     if (isLoadingNext) return;
     loadNext(10);
   }, [isLoadingNext, loadNext]);
@@ -102,9 +102,10 @@ const GenreComponent = () => {
     >
       <GenreContainer>
         <Featured featured={featured} />
-        <div>
-          <h1>genre</h1>
-        </div>
+        <PodcastsWithOnlyAvatarList
+          title={state.primaryGenre}
+          edges={data.podcastsByGenre.edges}
+        />
       </GenreContainer>
     </Scrollbars>
   );
