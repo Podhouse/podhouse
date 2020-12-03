@@ -11,6 +11,7 @@ import {
   FormControl,
   FormLabel,
   FormErrorMessage,
+  useToast,
 } from "@chakra-ui/react";
 
 import {
@@ -40,6 +41,7 @@ const validationSchema = Yup.object().shape({
 });
 
 const SignUp = () => {
+  const toast = useToast();
   const [, , handleAuth, send] = useAuthContext();
   const [
     userSignUpWithEmail,
@@ -98,6 +100,13 @@ const SignUp = () => {
 
         updateToken(UserSignUpWithEmail?.token);
         handleAuth();
+        toast({
+          title: "Signed up successfully",
+          description: "You've created your account",
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+        });
       },
     });
   };

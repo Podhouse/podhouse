@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
+import { Global } from "@emotion/react";
 import { ChakraProvider, CSSReset } from "@chakra-ui/react";
 import { RehawkProvider } from "rehawk";
 
@@ -29,6 +30,17 @@ const Provider = () => (
         </AuthProvider>
       </RehawkProvider>
     </ChakraProvider>
+    <Global
+      styles={`
+        /* cyrillic-ext */
+        @font-face {
+          font-family: 'Inter';
+          font-style: normal;
+          font-display: swap;
+          src: "url(fonts/Inter/Inter-VariableFont_slnt,wght.ttf) format('ttf')"
+        }
+        `}
+    />
     <CSSReset />
   </BrowserRouter>
 );
