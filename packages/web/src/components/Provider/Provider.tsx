@@ -32,12 +32,84 @@ const Provider = () => (
     </ChakraProvider>
     <Global
       styles={`
-        /* cyrillic-ext */
         @font-face {
+          font-family: 'Inter';
+          src: url('./fonts/Inter-Regular.ttf') format('truetype');
           font-weight: normal;
           font-style: normal;
           font-display: swap;
-          src: url('/fonts/Inter-Regular.ttf') format('truetype');
+        } 
+        
+        @font-face {
+          font-family: 'Inter';
+          src: url('./fonts/Inter-Black.ttf') format('truetype');
+          font-weight: 900;
+          font-style: normal;
+          font-display: swap;
+        }
+        
+        @font-face {
+          font-family: 'Inter';
+          src: url('./fonts/Inter-ExtraBold.ttf') format('truetype');
+          font-weight: 800;
+          font-style: normal;
+          font-display: swap;
+        }
+        
+        @font-face {
+          font-family: 'Inter';
+          src: url('./fonts/Inter-Bold.ttf') format('truetype');
+          font-weight: bold;
+          font-style: normal;
+          font-display: swap;
+        }
+        
+        @font-face {
+          font-family: 'Inter';
+          src: url('./fonts/Inter-ExtraLight.ttf') format('truetype');
+          font-weight: 200;
+          font-style: normal;
+          font-display: swap;
+        }
+        
+        @font-face {
+          font-family: 'Inter';
+          src: url('./fonts/Inter-Light.ttf') format('truetype');
+          font-weight: 300;
+          font-style: normal;
+          font-display: swap;
+        }
+        
+        @font-face {
+          font-family: 'Inter';
+          src: url('./fonts/Inter-Medium.ttf') format('truetype');
+          font-weight: 500;
+          font-style: normal;
+          font-display: swap;
+        }
+        
+        @font-face {
+          font-family: 'Inter';
+          src: url('./fonts/Inter-Regular_1.ttf') format('truetype');
+          font-weight: normal;
+          font-style: normal;
+          font-display: swap;
+        }
+        
+        @font-face {
+          font-family: 'Inter';
+          src: url('./fonts/Inter-Thin.ttf') format('truetype');
+          font-weight: 100;
+          font-style: normal;
+          font-display: swap;
+        }
+        
+        @font-face {
+          font-family: 'Inter';
+          src: url('./fonts/Inter-SemiBold.ttf') format('truetype');
+          font-weight: 600;
+          font-style: normal;
+          font-display: swap;
         }
         `}
     />
