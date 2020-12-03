@@ -34,10 +34,10 @@ const Provider = () => (
       styles={`
         /* cyrillic-ext */
         @font-face {
-          font-family: 'Inter';
+          font-weight: normal;
           font-style: normal;
           font-display: swap;
-          src: "url(fonts/Inter/Inter-VariableFont_slnt,wght.ttf) format('ttf')"
+          src: url('/fonts/Inter-Regular.ttf') format('truetype');
         }
         `}
     />
