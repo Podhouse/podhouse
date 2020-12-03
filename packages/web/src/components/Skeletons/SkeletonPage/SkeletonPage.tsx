@@ -26,6 +26,7 @@ const SkeletonPage = ({ episodes }: Props) => (
         borderRadius={3}
         width="200px"
         height="200px"
+        justifySelf="center"
       />
 
       <SkeletonPageDetailsContainer>

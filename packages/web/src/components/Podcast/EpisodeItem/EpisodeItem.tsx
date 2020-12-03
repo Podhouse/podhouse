@@ -25,6 +25,7 @@ const EpisodeItem = ({ node }: EpisodeItemProps) => {
         as={ReactRouterLink}
         to={{ pathname: `/episode/${_id}`, state: { _id } }}
         fontWeight="500"
+        lineHeight="25px"
       >
         {title}
       </EpisodeItemName>

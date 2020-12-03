@@ -36,11 +36,6 @@ export const EpisodeItemAvatar = styled(Image)`
 export const EpisodeItemName = styled(Text)`
   grid-column: 1 / 4;
   grid-row: 1 / 2;
-  font-family: Inter;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 17px;
   cursor: pointer;
   text-decoration: none;
   display: -webkit-box;

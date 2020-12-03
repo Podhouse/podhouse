@@ -5,6 +5,7 @@ export const AppContainer = styled.div`
   height: 100vh;
   min-height: -webkit-fill-available;
   display: flex;
+  overflow: hidden;
 
   @media screen and (min-width: 800px) {
     width: 100%;
@@ -13,5 +14,6 @@ export const AppContainer = styled.div`
     display: grid;
     grid-template-rows: 70px 1fr 100px;
     grid-template-columns: 210px 1fr;
+    overflow: hidden;
   }
 `;

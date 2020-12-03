@@ -39,15 +39,30 @@ const EpisodeInfo = ({ queryReference, query }: Props) => {
         />
 
         <EpisodeInfoDetailsContainer>
-          <Heading as="h1" letterSpacing="-0.03em">
+          <Heading
+            color="#101010"
+            as="h1"
+            letterSpacing="-0.03em"
+            textAlign="start"
+          >
             {episode?.title}
           </Heading>
 
-          <Heading as="h2" size="sm" letterSpacing="-0.03em">
+          <Heading
+            color="#101010"
+            as="h2"
+            size="sm"
+            letterSpacing="-0.03em"
+            textAlign="start"
+          >
             {episode?.podcast.name}
           </Heading>
 
-          <EpisodeInfoDescription lineHeight="25px" textAlign="start">
+          <EpisodeInfoDescription
+            color="#101010"
+            lineHeight="25px"
+            textAlign="start"
+          >
             {episode?.description}
           </EpisodeInfoDescription>
         </EpisodeInfoDetailsContainer>
