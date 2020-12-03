@@ -4,6 +4,8 @@ import graphql from "babel-plugin-relay/macro";
 import { useQueryLoader } from "react-relay/hooks";
 import { useLocation } from "react-router-dom";
 
+import SkeletonPage from "src/components/Skeletons/SkeletonPage/SkeletonPage";
+
 import PodcastInfo from "./PodcastInfo/PodcastInfo";
 
 const query = graphql`
@@ -61,7 +63,7 @@ const Podcast = () => {
       autoHideDuration={100}
     >
       {queryReference !== null ? (
-        <Suspense fallback={<h1>Loading...</h1>}>
+        <Suspense fallback={<SkeletonPage episodes={true} />}>
           <PodcastInfo
             queryReference={queryReference}
             query={query}

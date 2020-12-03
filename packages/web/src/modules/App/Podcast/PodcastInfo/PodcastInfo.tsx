@@ -14,7 +14,7 @@ import {
   PodcastInfoLinkContainer,
 } from "./PodcastInfo.styles";
 
-import PodcastEpisodes from "../PodcastEpisodes/PodcastEpisodes";
+import PodcastEpisodes from "./PodcastEpisodes/PodcastEpisodes";
 
 import { PodcastQuery } from "../__generated__/PodcastQuery.graphql";
 

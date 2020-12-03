@@ -4,6 +4,8 @@ import Scrollbars from "react-custom-scrollbars";
 import graphql from "babel-plugin-relay/macro";
 import { useLazyLoadQuery } from "react-relay/hooks";
 
+import SkeletonPodcastsWithOnlyAvatarList from "src/components/Skeletons/SkeletonPodcastsWithOnlyAvatarList/SkeletonPodcastsWithOnlyAvatarList";
+
 import SubscriptionsPodcast from "./SubscriptionsPodcast/SubscriptionsPodcast";
 
 import useAuthUser from "src/hooks/useAuthUser";
@@ -100,7 +102,7 @@ const SubscriptionsComponent = () => {
 };
 
 const Subscriptions = () => (
-  <Suspense fallback={<h1>Loading...</h1>}>
+  <Suspense fallback={<SkeletonPodcastsWithOnlyAvatarList />}>
     <SubscriptionsComponent />
   </Suspense>
 );

@@ -14,30 +14,28 @@ import { PodcastsWithOnlyAvatarListProps } from "./PodcastsWithOnlyAvatarList.ty
 const PodcastsWithOnlyAvatarList = ({
   title,
   edges,
-}: PodcastsWithOnlyAvatarListProps) => {
-  return (
-    <PodcastsWithOnlyAvatarListContainer>
-      <PodcastsWithOnlyAvatarListHeader>
-        <Heading
-          as="h1"
-          variant="secondary"
-          size="normal"
-          fontSize={14}
-          fontWeight={500}
-          textAlign="start"
-        >
-          {title}
-        </Heading>
-        <Divider orientation="horizontal" />
-      </PodcastsWithOnlyAvatarListHeader>
+}: PodcastsWithOnlyAvatarListProps) => (
+  <PodcastsWithOnlyAvatarListContainer>
+    <PodcastsWithOnlyAvatarListHeader>
+      <Heading
+        as="h1"
+        variant="secondary"
+        size="normal"
+        fontSize={14}
+        fontWeight={500}
+        textAlign="start"
+      >
+        {title}
+      </Heading>
+      <Divider orientation="horizontal" />
+    </PodcastsWithOnlyAvatarListHeader>
 
-      <PodcastsWithOnlyAvatarListSection>
-        {edges.map(({ node }: any) => (
-          <PodcastItemWithAvatar key={node._id} node={node} />
-        ))}
-      </PodcastsWithOnlyAvatarListSection>
-    </PodcastsWithOnlyAvatarListContainer>
-  );
-};
+    <PodcastsWithOnlyAvatarListSection>
+      {edges.map(({ node }: any) => (
+        <PodcastItemWithAvatar key={node._id} node={node} />
+      ))}
+    </PodcastsWithOnlyAvatarListSection>
+  </PodcastsWithOnlyAvatarListContainer>
+);
 
 export default PodcastsWithOnlyAvatarList;
