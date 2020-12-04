@@ -39,6 +39,12 @@ const formatTime = (seconds: number) => {
     .join(":");
 };
 
+const convertDurationToSeconds = (duration: string | undefined) => {
+  if (!duration) return 0;
+  const [hours, minutes, seconds] = duration.split(":");
+  return Number(hours) * 60 * 60 + Number(minutes) * 60 + Number(seconds);
+};
+
 const Controls = ({
   ready,
   playing,
@@ -101,7 +107,13 @@ const Controls = ({
       <ControlsSliderContainer>
         <ControlsTime fontSize="sm">{formatTime(seek)}</ControlsTime>
 
-        <Slider defaultValue={0} value={seek}>
+        <Slider
+          defaultValue={0}
+          value={seek}
+          step={0.1}
+          min={0}
+          max={convertDurationToSeconds(episode?.duration)}
+        >
           <SliderTrack>
             <SliderFilledTrack bg="#101010" />
           </SliderTrack>
