@@ -13,9 +13,11 @@ import { PodcastProps } from "./Podcast.types";
 const Podcast = ({ ready, episode }: PodcastProps) => {
   if (!ready || !episode) return null;
 
+  console.log("episode: ", episode);
+
   return (
     <PodcastContainer>
-      {episode.image ? <PodcastAvatar avatar={episode.image} /> : null}
+      {episode.image ? <PodcastAvatar avatar={episode?.image} /> : null}
 
       <PodcastDetails>
         <ReactRouterLink
@@ -29,7 +31,7 @@ const Podcast = ({ ready, episode }: PodcastProps) => {
 
         <ReactRouterLink
           to={{
-            pathname: `/episode/${episode?.podcast._id}`,
+            pathname: `/podcast/${episode?.podcast._id}`,
             state: { _id: episode?.podcast._id },
           }}
         >

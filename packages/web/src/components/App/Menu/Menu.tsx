@@ -13,10 +13,11 @@ import {
 
 import { ReactComponent as Logo } from "src/images/logo-2.svg";
 
-const avatar =
-  "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg";
+import { usePlayerContext } from "src/player/Player";
 
 const Menu = () => {
+  const { episode } = usePlayerContext();
+
   return (
     <MenuContainer>
       <Scrollbars
@@ -34,9 +35,16 @@ const Menu = () => {
 
           <Navigation />
 
-          <ReactRouterLink to="/episode/123">
-            <MenuAvatarContainer src={avatar} alt="Podcast logo" />
-          </ReactRouterLink>
+          {episode ? (
+            <ReactRouterLink
+              to={{
+                pathname: `/episode/${episode._id}`,
+                state: { _id: episode._id },
+              }}
+            >
+              <MenuAvatarContainer src={episode.image} alt="Podcast logo" />
+            </ReactRouterLink>
+          ) : null}
         </MenuInsideContainer>
       </Scrollbars>
     </MenuContainer>

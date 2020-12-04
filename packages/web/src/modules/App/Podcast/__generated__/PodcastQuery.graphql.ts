@@ -52,7 +52,6 @@ fragment PodcastEpisodes_episodes on Podcast {
         audio
         duration
         podcast {
-          _id
           name
           website
           rss
@@ -142,13 +141,6 @@ const node: ConcreteRequest = (function () {
       alias: null,
       args: null,
       kind: "ScalarField",
-      name: "_id",
-      storageKey: null,
-    },
-    v10 = {
-      alias: null,
-      args: null,
-      kind: "ScalarField",
       name: "id",
       storageKey: null,
     };
@@ -229,7 +221,13 @@ const node: ConcreteRequest = (function () {
                       name: "node",
                       plural: false,
                       selections: [
-                        v9 /*: any*/,
+                        {
+                          alias: null,
+                          args: null,
+                          kind: "ScalarField",
+                          name: "_id",
+                          storageKey: null,
+                        },
                         {
                           alias: null,
                           args: null,
@@ -275,15 +273,14 @@ const node: ConcreteRequest = (function () {
                           name: "podcast",
                           plural: false,
                           selections: [
-                            v9 /*: any*/,
                             v2 /*: any*/,
                             v5 /*: any*/,
                             v6 /*: any*/,
-                            v10 /*: any*/,
+                            v9 /*: any*/,
                           ],
                           storageKey: null,
                         },
-                        v10 /*: any*/,
+                        v9 /*: any*/,
                         {
                           alias: null,
                           args: null,
@@ -355,20 +352,20 @@ const node: ConcreteRequest = (function () {
               kind: "LinkedHandle",
               name: "episodes",
             },
-            v10 /*: any*/,
+            v9 /*: any*/,
           ],
           storageKey: null,
         },
       ],
     },
     params: {
-      cacheID: "ea29f81735455c1a4b2b91b1acd900cf",
+      cacheID: "4fd15b76ae1fc467cfbd467f5d0aeba8",
       id: null,
       metadata: {},
       name: "PodcastQuery",
       operationKind: "query",
       text:
-        "query PodcastQuery(\n  $_id: ID!\n) {\n  podcast(_id: $_id) {\n    name\n    author\n    description\n    website\n    rss\n    image\n    ...PodcastEpisodes_episodes\n    id\n  }\n}\n\nfragment PodcastEpisodes_episodes on Podcast {\n  episodes(first: 10) {\n    edges {\n      node {\n        _id\n        title\n        description\n        publishedDate\n        link\n        image\n        audio\n        duration\n        podcast {\n          _id\n          name\n          website\n          rss\n          id\n        }\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n  id\n}\n",
+        "query PodcastQuery(\n  $_id: ID!\n) {\n  podcast(_id: $_id) {\n    name\n    author\n    description\n    website\n    rss\n    image\n    ...PodcastEpisodes_episodes\n    id\n  }\n}\n\nfragment PodcastEpisodes_episodes on Podcast {\n  episodes(first: 10) {\n    edges {\n      node {\n        _id\n        title\n        description\n        publishedDate\n        link\n        image\n        audio\n        duration\n        podcast {\n          name\n          website\n          rss\n          id\n        }\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n  id\n}\n",
     },
   };
 })();

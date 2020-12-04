@@ -1,9 +1,10 @@
-import { useContext, useState, useEffect, useRef, ChangeEvent } from "react";
+import { useState, useEffect, useRef, ChangeEvent } from "react";
 import raf from "raf";
 
-import PlayerContext from "./PlayerContext";
-import { PlayerStateContext, UsePlayerOptions } from "src/player/Player.types";
+import { UsePlayerOptions } from "src/player/Player.types";
 import { PlayerEpisode } from "./Player.types";
+
+import useAudioPlayer from "./useAudioPlayer";
 
 const usePlayer = ({
   volume = 0.5,
@@ -19,16 +20,11 @@ const usePlayer = ({
   onLooped = () => {},
   onEnded = () => {},
 }: UsePlayerOptions) => {
-  const context: PlayerStateContext | undefined = useContext(PlayerContext);
-
-  if (context === undefined) {
-    throw new Error("usePlayer can only be used inside PlayerProvider");
-  }
-
   const {
     audio,
     load,
     idle,
+    loading,
     ready,
     error,
     playing: playerPlaying,
@@ -37,7 +33,7 @@ const usePlayer = ({
     muted: playerMuted,
     loop: playerLoop,
     send,
-  } = context;
+  } = useAudioPlayer();
 
   const hasEnded = audio?.ended;
   if (hasEnded) send("END");
@@ -203,11 +199,15 @@ const usePlayer = ({
   };
 
   const onEpisode = (newEpisode: PlayerEpisode) => {
-    setEpisode(newEpisode);
+    if (newEpisode !== null) {
+      load({ src: newEpisode.audio, volume, muted, loop, rate });
+      setEpisode(newEpisode);
+    }
   };
 
   return {
     idle,
+    loading,
     ready,
     error,
     playing: playerPlaying,

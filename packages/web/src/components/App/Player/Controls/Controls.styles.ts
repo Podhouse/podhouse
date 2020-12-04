@@ -56,6 +56,7 @@ export const ControlsSliderContainer = styled.div`
     display: grid;
     grid-template-columns: 50px 1fr 50px;
     grid-template-rows: 1fr;
+    grid-column-gap: 10px;
   }
 `;
 

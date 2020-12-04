@@ -24,6 +24,15 @@ const Player = Machine<
     states: {
       idle: {
         on: {
+          LOADING: "loading",
+          ERROR: {
+            target: "error",
+            actions: "onError",
+          },
+        },
+      },
+      loading: {
+        on: {
           READY: {
             target: "ready",
             actions: "onReady",

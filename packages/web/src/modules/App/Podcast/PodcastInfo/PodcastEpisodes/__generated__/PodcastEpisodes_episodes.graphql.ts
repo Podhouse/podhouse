@@ -17,7 +17,6 @@ export type PodcastEpisodes_episodes = {
         readonly audio: string;
         readonly duration: string;
         readonly podcast: {
-          readonly _id: string;
           readonly name: string;
           readonly website: string;
           readonly rss: string;
@@ -35,14 +34,7 @@ export type PodcastEpisodes_episodes$key = {
 };
 
 const node: ReaderFragment = (function () {
-  var v0 = ["episodes"],
-    v1 = {
-      alias: null,
-      args: null,
-      kind: "ScalarField",
-      name: "_id",
-      storageKey: null,
-    };
+  var v0 = ["episodes"];
   return {
     argumentDefinitions: [
       {
@@ -119,7 +111,13 @@ const node: ReaderFragment = (function () {
                 name: "node",
                 plural: false,
                 selections: [
-                  v1 /*: any*/,
+                  {
+                    alias: null,
+                    args: null,
+                    kind: "ScalarField",
+                    name: "_id",
+                    storageKey: null,
+                  },
                   {
                     alias: null,
                     args: null,
@@ -177,7 +175,6 @@ const node: ReaderFragment = (function () {
                     name: "podcast",
                     plural: false,
                     selections: [
-                      v1 /*: any*/,
                       {
                         alias: null,
                         args: null,
@@ -276,5 +273,5 @@ const node: ReaderFragment = (function () {
     abstractKey: null,
   };
 })();
-(node as any).hash = "4b3d6d8aa44ca2ed00edec1fb31910e2";
+(node as any).hash = "8e803fd5b33028453ebc32f4296375d9";
 export default node;

@@ -7,6 +7,7 @@ export type PlayerMachineContext = {
 export type PlayerMachineState = {
   states: {
     idle: {};
+    loading: {};
     ready: {
       states: {
         idle: {};
@@ -21,8 +22,8 @@ export type PlayerMachineState = {
   };
 };
 
-export type PlayerLoadEvent = {
-  type: "LOAD";
+export type PlayerLoadingEvent = {
+  type: "LOADING";
 };
 
 export type PlayerReadyEvent = {
@@ -70,7 +71,7 @@ export type PlayerRetryEvent = {
 };
 
 export type PlayerMachineEvents =
-  | PlayerLoadEvent
+  | PlayerLoadingEvent
   | PlayerReadyEvent
   | PlayerPlayEvent
   | PlayerPauseEvent
@@ -119,7 +120,7 @@ export interface PlayerStateContext {
   send: any;
 }
 
-export interface PlayerEpisode {
+export type PlayerEpisode = {
   readonly _id: string;
   readonly title: string;
   readonly description: string;
@@ -134,4 +135,4 @@ export interface PlayerEpisode {
     readonly website: string;
     readonly rss: string;
   };
-}
+} | null;

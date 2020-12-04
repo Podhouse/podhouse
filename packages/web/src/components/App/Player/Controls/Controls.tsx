@@ -30,6 +30,15 @@ interface ControlsProps {
 
 const iconStyle = { cursor: "pointer" };
 
+const formatTime = (seconds: number) => {
+  const h = Math.floor(seconds / 3600);
+  const m = Math.floor((seconds % 3600) / 60);
+  const s = Math.round(seconds % 60);
+  return [h, m > 9 ? m : h ? "0" + m : m || "0", s > 9 ? s : "0" + s]
+    .filter(Boolean)
+    .join(":");
+};
+
 const Controls = ({
   ready,
   playing,
@@ -90,7 +99,7 @@ const Controls = ({
       </ControlsButtonsContainer>
 
       <ControlsSliderContainer>
-        <ControlsTime fontSize="sm">{seek}</ControlsTime>
+        <ControlsTime fontSize="sm">{formatTime(seek)}</ControlsTime>
 
         <Slider defaultValue={0} value={seek}>
           <SliderTrack>

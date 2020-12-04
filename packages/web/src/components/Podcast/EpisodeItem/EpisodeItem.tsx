@@ -14,8 +14,12 @@ import {
 
 import { EpisodeItemProps } from "./EpisodeItem.types";
 
+import { usePlayerContext } from "src/player/Player";
+
 const EpisodeItem = ({ node }: EpisodeItemProps) => {
   const { _id, image, title, description, publishedDate, duration } = node;
+
+  const { onEpisode } = usePlayerContext();
 
   return (
     <EpisodeItemContainer>
@@ -40,7 +44,11 @@ const EpisodeItem = ({ node }: EpisodeItemProps) => {
 
       <EpisodeItemDuration textAlign="start">{duration}</EpisodeItemDuration>
 
-      <EpisodeItemButton type="button" leftIcon={<Play size={14} />}>
+      <EpisodeItemButton
+        type="button"
+        leftIcon={<Play size={14} />}
+        onClick={() => onEpisode(node)}
+      >
         Play
       </EpisodeItemButton>
     </EpisodeItemContainer>

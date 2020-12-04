@@ -1,20 +1,16 @@
-import React, { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { useMachine } from "@xstate/react";
 
 import PlayerMachine from "./PlayerMachine";
-import PlayerContext from "./PlayerContext";
 
-import { PlayerStateContext, LoadAudioOptions } from "src/player/Player.types";
+import { LoadAudioOptions } from "src/player/Player.types";
 
-interface PlayerProviderProps {
-  children: React.ReactNode;
-}
-
-const PlayerProvider = ({ children }: PlayerProviderProps) => {
+const useAudioPlayer = () => {
   const [current, send] = useMachine(PlayerMachine);
   const [audio, setAudio] = useState<HTMLAudioElement | null>(null);
 
   const idle = current.matches("idle");
+  const loading = current.matches("loading");
   const ready = current.matches("ready");
   const error = current.context.error;
   const playing = current.matches("ready.playing");
@@ -77,6 +73,9 @@ const PlayerProvider = ({ children }: PlayerProviderProps) => {
       newAudioElement.addEventListener("error", () =>
         send({ type: "ERROR", error: "Error" })
       );
+      newAudioElement.addEventListener("loadstart", () => {
+        send({ type: "LOADING" });
+      });
       newAudioElement.addEventListener("loadeddata", () => {
         send({
           type: "READY",
@@ -106,10 +105,11 @@ const PlayerProvider = ({ children }: PlayerProviderProps) => {
     };
   }, []);
 
-  const context: PlayerStateContext = {
+  return {
     audio,
     load,
     idle,
+    loading,
     ready,
     error,
     playing,
@@ -119,10 +119,6 @@ const PlayerProvider = ({ children }: PlayerProviderProps) => {
     loop,
     send,
   };
-
-  return (
-    <PlayerContext.Provider value={context}>{children}</PlayerContext.Provider>
-  );
 };
 
-export default PlayerProvider;
+export default useAudioPlayer;

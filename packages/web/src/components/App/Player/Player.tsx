@@ -6,11 +6,12 @@ import Podcast from "./Podcast/Podcast";
 import Controls from "./Controls/Controls";
 import RightControls from "./RightControls/RightControls";
 
-import usePlayer from "src/player/usePlayer";
+import { usePlayerContext } from "src/player/Player";
 
 const Player = () => {
   const {
     idle,
+    loading,
     ready,
     error,
     playing,
@@ -25,12 +26,19 @@ const Player = () => {
     onSeek,
     onForward,
     onBackward,
-  } = usePlayer({
-    volume: 1.0,
-    rate: 1.0,
-  });
+  } = usePlayerContext();
 
-  if (idle || error) return null;
+  if (loading) {
+    return (
+      <PlayerContainer>
+        <h1>Loading...</h1>
+      </PlayerContainer>
+    );
+  }
+
+  if (idle || error) {
+    return <PlayerContainer />;
+  }
 
   return (
     <PlayerContainer>

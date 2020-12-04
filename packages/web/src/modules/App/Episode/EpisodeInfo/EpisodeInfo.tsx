@@ -16,6 +16,8 @@ import {
 
 import { EpisodeQuery } from "../__generated__/EpisodeQuery.graphql";
 
+import { usePlayerContext } from "src/player/Player";
+
 // TODO:
 // Should improve the queryReference type to be a PreloadedQuery<EpisodeQuery>
 interface Props {
@@ -25,6 +27,8 @@ interface Props {
 
 const EpisodeInfo = ({ queryReference, query }: Props) => {
   const { episode } = usePreloadedQuery<EpisodeQuery>(query, queryReference);
+
+  const { onEpisode } = usePlayerContext();
 
   return (
     <EpisodeInfoContainer>
@@ -71,6 +75,7 @@ const EpisodeInfo = ({ queryReference, query }: Props) => {
           <Button
             type="button"
             width="100%"
+            onClick={() => onEpisode(episode)}
             bgColor="#101010"
             color="#ffffff"
             _hover={{ bg: "#101010" }}
