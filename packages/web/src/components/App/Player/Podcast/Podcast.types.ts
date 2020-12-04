@@ -1,10 +1,8 @@
+import { PlayerEpisode } from "src/player/Player.types";
+
 export interface PodcastProps {
   ready: boolean;
-  currentPodcast: {
-    avatar: string;
-    name: string;
-    episode: string;
-  };
+  episode: PlayerEpisode | null;
 }
 
 export interface PodcastAvatarProps {

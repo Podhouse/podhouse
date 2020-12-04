@@ -8,12 +8,15 @@ import Volume from "./Volume/Volume";
 import { useQueueContext } from "src/context/Queue/Queue";
 import { useRateContext } from "src/context/Rate/Rate";
 
+import { PlayerEpisode } from "src/player/Player.types";
+
 const iconStyle = { cursor: "pointer" };
 
 interface RightControlsProps {
   ready: boolean;
   volume: number;
   muted: boolean;
+  episode: PlayerEpisode | null;
   onVolume: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onMute: () => void;
 }
@@ -22,11 +25,14 @@ const RightControls = ({
   ready,
   volume,
   muted,
+  episode,
   onVolume,
   onMute,
 }: RightControlsProps) => {
   const [, handleQueue] = useQueueContext();
   const [, handleRate] = useRateContext();
+
+  if (!episode) return null;
 
   return (
     <RightControlsContainer>

@@ -14,11 +14,13 @@ import {
   ControlsTime,
 } from "./Controls.styles";
 
+import { PlayerEpisode } from "src/player/Player.types";
+
 interface ControlsProps {
   ready: boolean;
   playing: boolean;
   seek: number;
-  duration: number;
+  episode: PlayerEpisode | null;
   onPlay: () => void;
   onPause: () => void;
   onSeek: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -32,7 +34,7 @@ const Controls = ({
   ready,
   playing,
   seek,
-  duration,
+  episode,
   onPlay,
   onPause,
   onSeek,
@@ -63,48 +65,44 @@ const Controls = ({
     );
   };
 
-  const onReady = () => {
-    if (!ready) return null;
+  if (!ready) return null;
 
-    return (
-      <ControlsContainer>
-        <ControlsButtonsContainer>
-          <RotateCcw
-            size={18}
-            color="#101010"
-            style={iconStyle}
-            strokeWidth={2}
-            onClick={() => onBackward(15)}
-          />
+  return (
+    <ControlsContainer>
+      <ControlsButtonsContainer>
+        <RotateCcw
+          size={18}
+          color="#101010"
+          style={iconStyle}
+          strokeWidth={2}
+          onClick={() => onBackward(15)}
+        />
 
-          {onPlaying()}
+        {onPlaying()}
 
-          <RotateCw
-            size={18}
-            color="#101010"
-            style={iconStyle}
-            strokeWidth={2}
-            onClick={() => onForward(15)}
-          />
-        </ControlsButtonsContainer>
+        <RotateCw
+          size={18}
+          color="#101010"
+          style={iconStyle}
+          strokeWidth={2}
+          onClick={() => onForward(15)}
+        />
+      </ControlsButtonsContainer>
 
-        <ControlsSliderContainer>
-          <ControlsTime fontSize="sm">1:21</ControlsTime>
+      <ControlsSliderContainer>
+        <ControlsTime fontSize="sm">{seek}</ControlsTime>
 
-          <Slider defaultValue={30}>
-            <SliderTrack>
-              <SliderFilledTrack bg="#101010" />
-            </SliderTrack>
-            <SliderThumb />
-          </Slider>
+        <Slider defaultValue={0} value={seek}>
+          <SliderTrack>
+            <SliderFilledTrack bg="#101010" />
+          </SliderTrack>
+          <SliderThumb />
+        </Slider>
 
-          <ControlsTime fontSize="sm">45:12</ControlsTime>
-        </ControlsSliderContainer>
-      </ControlsContainer>
-    );
-  };
-
-  return onReady();
+        <ControlsTime fontSize="sm">{episode?.duration}</ControlsTime>
+      </ControlsSliderContainer>
+    </ControlsContainer>
+  );
 };
 
 export default Controls;

@@ -2,10 +2,10 @@ import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import { Global } from "@emotion/react";
 import { ChakraProvider, CSSReset } from "@chakra-ui/react";
-import { RehawkProvider } from "rehawk";
 
 import "keen-slider/keen-slider.min.css";
 
+import PlayerProvider from "src/player/PlayerProvider";
 import { AuthProvider } from "src/context/Auth/Auth";
 import { SettingsProvider } from "src/context/Settings/Settings";
 import { QueueProvider } from "src/context/Queue/Queue";
@@ -18,7 +18,7 @@ import theme from "src/system/theme";
 const Provider = () => (
   <BrowserRouter>
     <ChakraProvider theme={theme}>
-      <RehawkProvider>
+      <PlayerProvider>
         <AuthProvider>
           <SettingsProvider>
             <QueueProvider>
@@ -28,7 +28,7 @@ const Provider = () => (
             </QueueProvider>
           </SettingsProvider>
         </AuthProvider>
-      </RehawkProvider>
+      </PlayerProvider>
     </ChakraProvider>
     <Global
       styles={`

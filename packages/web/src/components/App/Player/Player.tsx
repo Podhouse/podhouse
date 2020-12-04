@@ -1,5 +1,4 @@
 import React from "react";
-import { useRehawk } from "rehawk";
 
 import { PlayerContainer } from "./Player.styles";
 
@@ -7,48 +6,41 @@ import Podcast from "./Podcast/Podcast";
 import Controls from "./Controls/Controls";
 import RightControls from "./RightControls/RightControls";
 
-const src =
-  "https://storage.googleapis.com/media-session/elephants-dream/the-wires.mp3";
-
-const currentPodcast = {
-  avatar:
-    "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
-  name: "WTF with Marc Maron Podcast",
-  episode: "Episode 1137 - John Legend",
-};
+import usePlayer from "src/player/usePlayer";
 
 const Player = () => {
   const {
+    idle,
     ready,
+    error,
     playing,
+    episode,
     seek,
-    duration,
     volume,
     muted,
     onPlay,
     onPause,
-    onSeek,
-    onVolume,
     onMute,
-    onBackward,
+    onVolume,
+    onSeek,
     onForward,
-  } = useRehawk({
-    src,
-    preload: true,
+    onBackward,
+  } = usePlayer({
     volume: 1.0,
     rate: 1.0,
-    autoplay: false,
   });
+
+  if (idle || error) return null;
 
   return (
     <PlayerContainer>
-      <Podcast ready={ready} currentPodcast={currentPodcast} />
+      <Podcast ready={ready} episode={episode} />
 
       <Controls
         ready={ready}
         playing={playing}
         seek={seek}
-        duration={duration}
+        episode={episode}
         onPlay={onPlay}
         onPause={onPause}
         onSeek={onSeek}
@@ -60,6 +52,7 @@ const Player = () => {
         ready={ready}
         volume={volume}
         muted={muted}
+        episode={episode}
         onVolume={onVolume}
         onMute={onMute}
       />

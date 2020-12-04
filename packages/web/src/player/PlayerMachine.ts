@@ -15,15 +15,14 @@ const Player = Machine<
 >(
   {
     id: "player",
-    initial: "loading",
+    initial: "idle",
     context: {
-      name: null,
-      episode: null,
-      avatar: null,
+      muted: false,
+      loop: false,
       error: null,
     },
     states: {
-      loading: {
+      idle: {
         on: {
           READY: {
             target: "ready",
@@ -115,13 +114,19 @@ const Player = Machine<
   },
   {
     actions: {
+      onReady: assign<PlayerMachineContext, any>({
+        muted: (_, event) => (event as PlayerOnReadyEvent).muted,
+        loop: (_, event) => (event as PlayerOnReadyEvent).loop,
+        error: (_, event) => (event as PlayerOnReadyEvent).error,
+      }),
       onError: assign<PlayerMachineContext, any>({
         error: (_, event) => (event as PlayerOnErrorEvent).error,
       }),
-      onReady: assign<PlayerMachineContext, any>({
-        name: (_, event) => (event as PlayerOnReadyEvent).name,
-        episode: (_, event) => (event as PlayerOnReadyEvent).episode,
-        avatar: (_, event) => (event as PlayerOnReadyEvent).avatar,
+      onMute: assign<PlayerMachineContext, PlayerMachineEvents>({
+        muted: (context) => !context.muted,
+      }),
+      onLoop: assign<PlayerMachineContext, PlayerMachineEvents>({
+        loop: (context) => !context.loop,
       }),
     },
   }

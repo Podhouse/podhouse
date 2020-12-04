@@ -86,7 +86,7 @@ const EpisodeInfo = ({ queryReference, query }: Props) => {
               cursor: "not-allowed",
             }}
           >
-            Subscribe
+            Play
           </Button>
         </EpisodeInfoButtonsContainer>
 

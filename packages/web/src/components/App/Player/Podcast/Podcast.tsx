@@ -10,37 +10,45 @@ import {
 
 import { PodcastProps } from "./Podcast.types";
 
-const Podcast = ({ ready, currentPodcast }: PodcastProps) => {
-  const { avatar, name, episode } = currentPodcast;
+const Podcast = ({ ready, episode }: PodcastProps) => {
+  if (!ready || !episode) return null;
 
-  const onReady = () => {
-    if (!ready) return null;
+  return (
+    <PodcastContainer>
+      {episode.image ? <PodcastAvatar avatar={episode.image} /> : null}
 
-    return (
-      <PodcastContainer>
-        <PodcastAvatar avatar={avatar} />
+      <PodcastDetails>
+        <ReactRouterLink
+          to={{
+            pathname: `/episode/${episode?._id}`,
+            state: { _id: episode?._id },
+          }}
+        >
+          {episode?.title}
+        </ReactRouterLink>
 
-        <PodcastDetails>
-          <ReactRouterLink to="/episode/123">{episode}</ReactRouterLink>
+        <ReactRouterLink
+          to={{
+            pathname: `/episode/${episode?.podcast._id}`,
+            state: { _id: episode?.podcast._id },
+          }}
+        >
+          {episode?.podcast.name}
+        </ReactRouterLink>
 
-          <ReactRouterLink to="/podcast/123">{name}</ReactRouterLink>
-
-          <PodcastFavoriteContainer>
-            {/* <Heart
-              className="like-button"
-              size={16}
-              strokeWidth={1.7}
-              color="#101010"
-              style={iconStyle}
-              onClick={() => {}}
-            /> */}
-          </PodcastFavoriteContainer>
-        </PodcastDetails>
-      </PodcastContainer>
-    );
-  };
-
-  return onReady();
+        <PodcastFavoriteContainer>
+          {/* <Heart
+            className="like-button"
+            size={16}
+            strokeWidth={1.7}
+            color="#101010"
+            style={iconStyle}
+            onClick={() => {}}
+          /> */}
+        </PodcastFavoriteContainer>
+      </PodcastDetails>
+    </PodcastContainer>
+  );
 };
 
 export default Podcast;

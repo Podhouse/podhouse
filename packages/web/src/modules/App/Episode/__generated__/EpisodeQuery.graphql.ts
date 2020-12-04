@@ -17,6 +17,7 @@ export type EpisodeQueryResponse = {
     readonly audio: string;
     readonly duration: string;
     readonly podcast: {
+      readonly _id: string;
       readonly name: string;
       readonly website: string;
       readonly rss: string;
@@ -42,6 +43,7 @@ query EpisodeQuery(
     audio
     duration
     podcast {
+      _id
       name
       website
       rss
@@ -181,7 +183,12 @@ const node: ConcreteRequest = (function () {
               kind: "LinkedField",
               name: "podcast",
               plural: false,
-              selections: [v10 /*: any*/, v11 /*: any*/, v12 /*: any*/],
+              selections: [
+                v2 /*: any*/,
+                v10 /*: any*/,
+                v11 /*: any*/,
+                v12 /*: any*/,
+              ],
               storageKey: null,
             },
           ],
@@ -221,6 +228,7 @@ const node: ConcreteRequest = (function () {
               name: "podcast",
               plural: false,
               selections: [
+                v2 /*: any*/,
                 v10 /*: any*/,
                 v11 /*: any*/,
                 v12 /*: any*/,
@@ -235,15 +243,15 @@ const node: ConcreteRequest = (function () {
       ],
     },
     params: {
-      cacheID: "9a653bbc75c165deee3bece397a3a8db",
+      cacheID: "f4bbfdf365e286a00b1ca25337563540",
       id: null,
       metadata: {},
       name: "EpisodeQuery",
       operationKind: "query",
       text:
-        "query EpisodeQuery(\n  $_id: ID!\n) {\n  episode(_id: $_id) {\n    _id\n    title\n    description\n    publishedDate\n    link\n    image\n    audio\n    duration\n    podcast {\n      name\n      website\n      rss\n      id\n    }\n    id\n  }\n}\n",
+        "query EpisodeQuery(\n  $_id: ID!\n) {\n  episode(_id: $_id) {\n    _id\n    title\n    description\n    publishedDate\n    link\n    image\n    audio\n    duration\n    podcast {\n      _id\n      name\n      website\n      rss\n      id\n    }\n    id\n  }\n}\n",
     },
   };
 })();
-(node as any).hash = "6eb0a906a4bf8be8726300223f1458a7";
+(node as any).hash = "5c2a9c19d384797f12660e4ff7e2b5db";
 export default node;
