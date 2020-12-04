@@ -8,6 +8,7 @@ import { GenreContainer } from "./Genre.styles";
 
 import Featured from "src/components/Featured/Featured";
 import PodcastsWithOnlyAvatarList from "src/components/Lists/PodcastsWithOnlyAvatarList/PodcastsWithOnlyAvatarList";
+import SkeletonPodcastsWithOnlyAvatarList from "src/components/Skeletons/SkeletonPodcastsWithOnlyAvatarList/SkeletonPodcastsWithOnlyAvatarList";
 
 import { GenreQuery } from "./__generated__/GenreQuery.graphql";
 import { GenrePaginationQuery } from "./__generated__/GenrePaginationQuery.graphql";
@@ -112,7 +113,14 @@ const GenreComponent = () => {
 };
 
 const Genre = () => (
-  <Suspense fallback={<h1>Loading...</h1>}>
+  <Suspense
+    fallback={
+      <>
+        <Featured featured={featured} />
+        <SkeletonPodcastsWithOnlyAvatarList />
+      </>
+    }
+  >
     <GenreComponent />
   </Suspense>
 );

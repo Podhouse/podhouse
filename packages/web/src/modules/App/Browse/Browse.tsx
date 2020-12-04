@@ -4,6 +4,7 @@ import Scrollbars from "react-custom-scrollbars";
 import { BrowseContainer } from "./Browse.styles";
 
 import Featured from "src/components/Featured/Featured";
+import SkeletonPodcastsWithDetailsList from "src/components/Skeletons/SkeletonPodcastsWithDetailsList/SkeletonPodcastsWithDetailsList";
 
 import Trending from "./Trending/Trending";
 import Genres from "./Genres/Genres";
@@ -15,7 +16,7 @@ const Browse = () => (
     <BrowseContainer>
       <Featured featured={featured} />
 
-      <Suspense fallback={<h1>Loading...</h1>}>
+      <Suspense fallback={<SkeletonPodcastsWithDetailsList />}>
         <Trending />
       </Suspense>
 

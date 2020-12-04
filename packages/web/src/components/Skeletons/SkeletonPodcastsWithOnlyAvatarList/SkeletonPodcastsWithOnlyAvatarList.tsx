@@ -16,7 +16,7 @@ const SkeletonPodcastsWithOnlyAvatarList = () => (
           startColor="#E2E8F0"
           endColor="#E2E8F0"
           borderRadius={3}
-          width="100%"
+          width="120px"
           height="30px"
         />
         <Divider orientation="horizontal" />
