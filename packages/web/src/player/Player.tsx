@@ -6,10 +6,9 @@ const PlayerContext = React.createContext(undefined as any);
 
 const PlayerProvider = ({ children }: any) => {
   const {
-    idle,
+    initial,
     loading,
     ready,
-    error,
     playing,
     paused,
     stopped,
@@ -41,10 +40,9 @@ const PlayerProvider = ({ children }: any) => {
   });
 
   const value = {
-    idle,
+    initial,
     loading,
     ready,
-    error,
     playing,
     paused,
     stopped,

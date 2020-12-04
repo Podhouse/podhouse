@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { Link as ReactRouterLink } from "react-router-dom";
 
 import { PodcastAvatarProps } from "./Podcast.types";
 
@@ -59,6 +60,13 @@ export const PodcastDetails = styled.div`
       display: block;
     }
   }
+`;
+
+export const PodcastNameTitle = styled(ReactRouterLink)`
+  max-width: 300px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 `;
 
 export const PodcastFavoriteContainer = styled.div`

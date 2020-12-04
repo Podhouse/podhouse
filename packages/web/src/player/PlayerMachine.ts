@@ -5,7 +5,6 @@ import {
   PlayerMachineState,
   PlayerMachineEvents,
   PlayerOnReadyEvent,
-  PlayerOnErrorEvent,
 } from "./Player.types";
 
 const Player = Machine<
@@ -15,14 +14,13 @@ const Player = Machine<
 >(
   {
     id: "player",
-    initial: "idle",
+    initial: "initial",
     context: {
       muted: false,
       loop: false,
-      error: null,
     },
     states: {
-      idle: {
+      initial: {
         on: {
           LOADING: "loading",
           ERROR: {
@@ -44,21 +42,8 @@ const Player = Machine<
         },
       },
       ready: {
-        initial: "idle",
+        initial: "playing",
         states: {
-          idle: {
-            on: {
-              PLAY: "playing",
-              MUTE: {
-                target: "",
-                actions: "onMute",
-              },
-              LOOP: {
-                target: "",
-                actions: "onLoop",
-              },
-            },
-          },
           playing: {
             on: {
               PAUSE: "paused",
@@ -70,11 +55,6 @@ const Player = Machine<
               LOOP: {
                 target: "",
                 actions: "onLoop",
-              },
-              END: "ended",
-              ERROR: {
-                target: "error",
-                actions: "onError",
               },
             },
           },
@@ -90,7 +70,6 @@ const Player = Machine<
                 target: "",
                 actions: "onLoop",
               },
-              END: "ended",
             },
           },
           stopped: {
@@ -106,14 +85,11 @@ const Player = Machine<
               },
             },
           },
-          ended: {
-            on: {
-              RETRY: "idle",
-            },
-          },
-          error: {
-            type: "final",
-          },
+        },
+        on: {
+          RELOAD: "initial",
+          END: "initial",
+          ERROR: "initial",
         },
       },
       error: {
@@ -126,10 +102,6 @@ const Player = Machine<
       onReady: assign<PlayerMachineContext, any>({
         muted: (_, event) => (event as PlayerOnReadyEvent).muted,
         loop: (_, event) => (event as PlayerOnReadyEvent).loop,
-        error: (_, event) => (event as PlayerOnReadyEvent).error,
-      }),
-      onError: assign<PlayerMachineContext, any>({
-        error: (_, event) => (event as PlayerOnErrorEvent).error,
       }),
       onMute: assign<PlayerMachineContext, PlayerMachineEvents>({
         muted: (context) => !context.muted,

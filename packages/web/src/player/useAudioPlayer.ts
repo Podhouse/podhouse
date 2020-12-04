@@ -1,106 +1,101 @@
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useMachine } from "@xstate/react";
 
 import PlayerMachine from "./PlayerMachine";
 
-import { LoadAudioOptions } from "src/player/Player.types";
+import {
+  NewAudioOptions,
+  PlayerMachineContext,
+  PlayerMachineEvents,
+} from "src/player/Player.types";
 
 const useAudioPlayer = () => {
-  const [current, send] = useMachine(PlayerMachine);
+  const [current, send] = useMachine<PlayerMachineContext, PlayerMachineEvents>(
+    PlayerMachine
+  );
   const [audio, setAudio] = useState<HTMLAudioElement | null>(null);
 
-  const idle = current.matches("idle");
+  const playerRef = useRef<HTMLAudioElement | null>();
+
+  const initial = current.matches("initial");
   const loading = current.matches("loading");
   const ready = current.matches("ready");
-  const error = current.context.error;
   const playing = current.matches("ready.playing");
   const paused = current.matches("ready.paused");
   const stopped = current.matches("ready.stopped");
+
   const muted = current.context.muted;
   const loop = current.context.loop;
 
-  const rehawkRef = useRef<HTMLAudioElement | null>();
-  const previousPlayerRef = useRef<HTMLAudioElement | null>();
+  const createNewAudioElement = ({
+    src,
+    volume = 0.5,
+    muted = false,
+    loop = false,
+    rate = 1.0,
+  }: NewAudioOptions): HTMLAudioElement => {
+    const audioElement = new Audio(src);
+    audioElement.autoplay = true;
+    audioElement.volume = volume;
+    audioElement.muted = muted;
+    audioElement.loop = loop;
+    audioElement.playbackRate = rate;
+    return audioElement;
+  };
 
-  const newAudio = useCallback(
-    ({
+  const createAndSetNewAudio = ({
+    src,
+    volume,
+    muted,
+    loop,
+    rate,
+  }: NewAudioOptions) => {
+    const newAudioElement = createNewAudioElement({
       src,
-      volume = 0.5,
-      muted = false,
-      loop = false,
-      rate = 1.0,
-    }: LoadAudioOptions): HTMLAudioElement => {
-      const audioElement = new Audio(src);
-      audioElement.autoplay = true;
-      audioElement.volume = volume;
-      audioElement.muted = muted;
-      audioElement.loop = loop;
-      audioElement.playbackRate = rate;
-      return audioElement;
-    },
-    []
-  );
+      volume,
+      muted,
+      loop,
+      rate,
+    });
 
-  const load = useCallback(
-    ({ src, volume, muted, loop, rate }: LoadAudioOptions) => {
-      if (rehawkRef.current) {
-        if (rehawkRef.current.currentSrc === src) return;
-
-        if (idle) {
-          previousPlayerRef.current = rehawkRef.current;
-          previousPlayerRef.current.addEventListener("loadeddata", () => {
-            previousPlayerRef.current = null;
-          });
-        }
-
-        rehawkRef.current.addEventListener("playing", () => {
-          rehawkRef.current?.pause();
-          rehawkRef.current = null;
-        });
-      }
-
-      const newAudioElement = newAudio({
-        src,
-        volume,
+    newAudioElement.addEventListener("abort", () => console.log("error"));
+    newAudioElement.addEventListener("error", () => console.log("error"));
+    newAudioElement.addEventListener("loadstart", () => {
+      send({ type: "LOADING" });
+    });
+    newAudioElement.addEventListener("loadeddata", () => {
+      send({
+        type: "READY",
         muted,
         loop,
-        rate,
       });
+    });
+    newAudioElement.addEventListener("play", () => send("PLAY"));
+    newAudioElement.addEventListener("pause", () => send("PAUSE"));
 
-      newAudioElement.addEventListener("abort", () =>
-        send({ type: "ERROR", error: "Error" })
-      );
-      newAudioElement.addEventListener("error", () =>
-        send({ type: "ERROR", error: "Error" })
-      );
-      newAudioElement.addEventListener("loadstart", () => {
-        send({ type: "LOADING" });
-      });
-      newAudioElement.addEventListener("loadeddata", () => {
-        send({
-          type: "READY",
-          muted,
-          loop,
-          error,
-        });
-        send("PLAY");
-      });
-      newAudioElement.addEventListener("play", () => send("PLAY"));
-      newAudioElement.addEventListener("pause", () => send("PAUSE"));
+    setAudio(newAudioElement);
+    playerRef.current = newAudioElement;
+  };
 
-      setAudio(newAudioElement);
-      rehawkRef.current = newAudioElement;
-    },
-    // eslint-disable-next-line
-    [newAudio]
-  );
+  const load = ({ src, volume, muted, loop, rate }: NewAudioOptions) => {
+    if (playerRef.current) {
+      if (playerRef.current.currentSrc === src) return;
+
+      playerRef.current.pause();
+      send("RELOAD");
+      playerRef.current.removeAttribute("src");
+      playerRef.current = null;
+    }
+
+    createAndSetNewAudio({ src, volume, muted, loop, rate });
+  };
 
   useEffect(() => {
     return () => {
-      if (!rehawkRef.current) return;
-      if (rehawkRef.current) {
-        rehawkRef.current.pause();
-        rehawkRef.current.removeAttribute("src");
+      if (!playerRef.current) return;
+      if (playerRef.current) {
+        playerRef.current.pause();
+        playerRef.current.removeAttribute("src");
       }
     };
   }, []);
@@ -108,10 +103,9 @@ const useAudioPlayer = () => {
   return {
     audio,
     load,
-    idle,
+    initial,
     loading,
     ready,
-    error,
     playing,
     paused,
     stopped,

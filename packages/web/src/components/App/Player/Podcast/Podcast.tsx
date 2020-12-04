@@ -1,10 +1,10 @@
 import React from "react";
-import { Link as ReactRouterLink } from "react-router-dom";
 
 import {
   PodcastContainer,
   PodcastAvatar,
   PodcastDetails,
+  PodcastNameTitle,
   PodcastFavoriteContainer,
 } from "./Podcast.styles";
 
@@ -13,30 +13,28 @@ import { PodcastProps } from "./Podcast.types";
 const Podcast = ({ ready, episode }: PodcastProps) => {
   if (!ready || !episode) return null;
 
-  console.log("episode: ", episode);
-
   return (
     <PodcastContainer>
       {episode.image ? <PodcastAvatar avatar={episode?.image} /> : null}
 
       <PodcastDetails>
-        <ReactRouterLink
+        <PodcastNameTitle
           to={{
             pathname: `/episode/${episode?._id}`,
             state: { _id: episode?._id },
           }}
         >
           {episode?.title}
-        </ReactRouterLink>
+        </PodcastNameTitle>
 
-        <ReactRouterLink
+        <PodcastNameTitle
           to={{
             pathname: `/podcast/${episode?.podcast._id}`,
             state: { _id: episode?.podcast._id },
           }}
         >
           {episode?.podcast.name}
-        </ReactRouterLink>
+        </PodcastNameTitle>
 
         <PodcastFavoriteContainer>
           {/* <Heart

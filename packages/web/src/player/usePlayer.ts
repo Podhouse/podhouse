@@ -12,7 +12,6 @@ const usePlayer = ({
   loop = false,
   rate = 1.0,
   onReady = () => {},
-  onError = () => {},
   onPlaying = () => {},
   onPaused = () => {},
   onStopped = () => {},
@@ -23,10 +22,9 @@ const usePlayer = ({
   const {
     audio,
     load,
-    idle,
+    initial,
     loading,
     ready,
-    error,
     playing: playerPlaying,
     paused: playerPaused,
     stopped: playerStopped,
@@ -44,11 +42,6 @@ const usePlayer = ({
   const [playerSeek, setPlayerSeek] = useState<number>(0);
 
   const playerSeekRef = useRef<number>();
-
-  useEffect(() => {
-    if (!episode?.audio) return;
-    load({ src: episode?.audio, volume, muted, loop, rate });
-  }, [volume, muted, loop, rate, episode, load]);
 
   useEffect(() => {
     const animate = () => {
@@ -74,13 +67,6 @@ const usePlayer = ({
     }
     // eslint-disable-next-line
   }, [ready]);
-
-  useEffect(() => {
-    if (error) {
-      onError();
-    }
-    // eslint-disable-next-line
-  }, [error]);
 
   useEffect(() => {
     if (playerPlaying) {
@@ -192,7 +178,7 @@ const usePlayer = ({
 
   const onBackward = (value: number = 15) => {
     if (!audio) return;
-    if (idle) return;
+    if (initial) return;
     const seek = playerSeek - value;
     setPlayerSeek(seek);
     audio.currentTime = seek;
@@ -206,10 +192,9 @@ const usePlayer = ({
   };
 
   return {
-    idle,
+    initial,
     loading,
     ready,
-    error,
     playing: playerPlaying,
     paused: playerPaused,
     stopped: playerStopped,

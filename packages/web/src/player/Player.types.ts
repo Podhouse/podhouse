@@ -1,21 +1,17 @@
 export type PlayerMachineContext = {
   muted: boolean;
   loop: boolean;
-  error: string | null;
 };
 
 export type PlayerMachineState = {
   states: {
-    idle: {};
+    initial: {};
     loading: {};
     ready: {
       states: {
-        idle: {};
         playing: {};
         paused: {};
         stopped: {};
-        ended: {};
-        error: {};
       };
     };
     error: {};
@@ -54,16 +50,18 @@ export type PlayerEndEvent = {
   type: "END";
 };
 
+export type PlayerReloadEvent = {
+  type: "RELOAD";
+};
+
 export type PlayerOnErrorEvent = {
   type: "ERROR";
-  error: string;
 };
 
 export type PlayerOnReadyEvent = {
   type: "READY";
   muted: boolean;
   loop: boolean;
-  error: null;
 };
 
 export type PlayerRetryEvent = {
@@ -79,6 +77,7 @@ export type PlayerMachineEvents =
   | PlayerMuteEvent
   | PlayerLoopEvent
   | PlayerEndEvent
+  | PlayerReloadEvent
   | PlayerOnErrorEvent
   | PlayerOnReadyEvent
   | PlayerRetryEvent;
@@ -98,7 +97,7 @@ export interface UsePlayerOptions {
   onEnded?: () => void;
 }
 
-export interface LoadAudioOptions {
+export interface NewAudioOptions {
   src: string;
   volume: number;
   muted: boolean;
@@ -108,7 +107,7 @@ export interface LoadAudioOptions {
 
 export interface PlayerStateContext {
   audio: HTMLAudioElement | null;
-  load: (args: LoadAudioOptions) => void;
+  load: (args: NewAudioOptions) => void;
   idle: boolean;
   ready: boolean;
   error: string | null;
