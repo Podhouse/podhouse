@@ -6,14 +6,17 @@ import Podcast from "./Podcast/Podcast";
 import Controls from "./Controls/Controls";
 import RightControls from "./RightControls/RightControls";
 
+import SkeletonPodcast from "src/components/Skeletons/SkeletonPlayer/SkeletonPodcast/SkeletonPodcast";
+import SkeletonControls from "src/components/Skeletons/SkeletonPlayer/SkeletonControls/SkeletonControls";
+import SkeletonRightControls from "src/components/Skeletons/SkeletonPlayer/SkeletonRightControls/SkeletonRightControls";
+
 import { usePlayerContext } from "src/player/Player";
 
 const Player = () => {
   const {
-    idle,
+    initial,
     loading,
     ready,
-    error,
     playing,
     episode,
     seek,
@@ -28,42 +31,42 @@ const Player = () => {
     onBackward,
   } = usePlayerContext();
 
-  if (loading) {
-    return (
-      <PlayerContainer>
-        <h1>Loading...</h1>
-      </PlayerContainer>
-    );
-  }
-
-  if (idle || error) {
-    return <PlayerContainer />;
-  }
-
   return (
     <PlayerContainer>
-      <Podcast ready={ready} episode={episode} />
+      {loading ? (
+        <SkeletonPodcast />
+      ) : (
+        <Podcast ready={ready} episode={episode} />
+      )}
 
-      <Controls
-        ready={ready}
-        playing={playing}
-        seek={seek}
-        episode={episode}
-        onPlay={onPlay}
-        onPause={onPause}
-        onSeek={onSeek}
-        onBackward={onBackward}
-        onForward={onForward}
-      />
+      {initial || loading ? (
+        <SkeletonControls />
+      ) : (
+        <Controls
+          ready={ready}
+          playing={playing}
+          seek={seek}
+          episode={episode}
+          onPlay={onPlay}
+          onPause={onPause}
+          onSeek={onSeek}
+          onBackward={onBackward}
+          onForward={onForward}
+        />
+      )}
 
-      <RightControls
-        ready={ready}
-        volume={volume}
-        muted={muted}
-        episode={episode}
-        onVolume={onVolume}
-        onMute={onMute}
-      />
+      {initial || loading ? (
+        <SkeletonRightControls />
+      ) : (
+        <RightControls
+          ready={ready}
+          volume={volume}
+          muted={muted}
+          episode={episode}
+          onVolume={onVolume}
+          onMute={onMute}
+        />
+      )}
     </PlayerContainer>
   );
 };

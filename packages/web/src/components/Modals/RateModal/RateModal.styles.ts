@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { Link } from "@chakra-ui/react";
 
 type Props = {
   active: boolean;
@@ -16,7 +17,7 @@ export const RateModalContainer = styled.div`
   height: auto;
   padding-top: 5px;
   padding-bottom: 5px;
-  background: #f3f3f3;
+  background: #fff;
   border-radius: 5px;
   right: 135px;
   position: absolute;
@@ -32,18 +33,19 @@ export const RateModalLinkContainer = styled.div<Props>`
   align-items: center;
   width: 100%;
   height: 100%;
-  background: ${({ active }) => (active ? "#f3f3f3" : "#ffffff")};
-  color: ${({ active }) => (active ? "#ffffff" : "#f3f3f3")};
   padding-left: 20px;
   cursor: pointer;
 
   &:hover {
-    background: "#ffffff";
-    color: "#ffffff";
+    background: #f3f3f3;
+
+    a {
+      color: #101010;
+    }
   }
 `;
 
-export const RateModalLink = styled.a`
+export const RateModalLink = styled(Link)`
   font-style: normal;
   font-weight: normal;
   font-size: 14px;

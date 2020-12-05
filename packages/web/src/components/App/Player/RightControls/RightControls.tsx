@@ -1,11 +1,10 @@
 import React from "react";
-import { Clock, List } from "react-feather";
+import { Clock } from "react-feather";
 
 import { RightControlsContainer } from "./RightControls.styles";
 
 import Volume from "./Volume/Volume";
 
-import { useQueueContext } from "src/context/Queue/Queue";
 import { useRateContext } from "src/context/Rate/Rate";
 
 import { PlayerEpisode } from "src/player/Player.types";
@@ -29,20 +28,19 @@ const RightControls = ({
   onVolume,
   onMute,
 }: RightControlsProps) => {
-  const [, handleQueue] = useQueueContext();
   const [, handleRate] = useRateContext();
 
   if (!episode) return null;
 
   return (
     <RightControlsContainer>
-      <List
+      {/* <List
         size={20}
         strokeWidth={1.7}
         color="#101010"
         style={iconStyle}
         onClick={handleQueue}
-      />
+      /> */}
 
       <Clock
         size={20}

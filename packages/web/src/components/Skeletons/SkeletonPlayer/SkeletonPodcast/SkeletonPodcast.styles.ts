@@ -1,8 +1,6 @@
 import styled from "@emotion/styled";
-import { Image } from "@chakra-ui/react";
-import { Link as ReactRouterLink } from "react-router-dom";
 
-export const PodcastContainer = styled.div`
+export const SkeletonPodcastContainer = styled.div`
   width: 50px;
   height: 50px;
   display: flex;
@@ -26,10 +24,9 @@ export const PodcastContainer = styled.div`
   }
 `;
 
-export const PodcastImage = styled(Image)`
+export const SkeletonPodcastAvatar = styled.div`
   width: 40px;
   height: 40px;
-  object-fit: cover;
   border-radius: 5px;
   align-self: center;
 
@@ -38,7 +35,7 @@ export const PodcastImage = styled(Image)`
   }
 `;
 
-export const PodcastDetails = styled.div`
+export const SkeletonPodcastDetails = styled.div`
   display: none;
 
   .like-button {
@@ -46,13 +43,12 @@ export const PodcastDetails = styled.div`
   }
 
   @media screen and (min-width: 800px) {
+    display: flex;
+    flex-direction: column;
     width: 100%;
     height: 50px;
-    display: grid;
-    grid-template-columns: max-content 20px;
-    grid-template-rows: max-content max-content;
-    grid-gap: 10px;
     justify-items: flex-start;
+    justify-content: space-between;
 
     .like-button {
       display: block;
@@ -60,14 +56,12 @@ export const PodcastDetails = styled.div`
   }
 `;
 
-export const PodcastNameTitle = styled(ReactRouterLink)`
+export const SkeletonPodcastNameTitle = styled.div`
+  width: 100%;
   max-width: 300px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
 `;
 
-export const PodcastFavoriteContainer = styled.div`
+export const SkeletonPodcastFavoriteContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;

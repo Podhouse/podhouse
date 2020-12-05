@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { Link, Text } from "@chakra-ui/react";
+import { Link, Heading } from "@chakra-ui/react";
 import Scrollbars from "react-custom-scrollbars";
 
 import {
@@ -22,7 +22,25 @@ const episodes = [
       "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
   },
   {
-    episode: "403 - Return of Yokai",
+    episode: "403 - Return of Yokaii",
+    name: "99% Invisible",
+    avatar:
+      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
+  },
+  {
+    episode: "403 - Return of Yokaiii",
+    name: "99% Invisible",
+    avatar:
+      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
+  },
+  {
+    episode: "403 - Return of Yokaiiii",
+    name: "99% Invisible",
+    avatar:
+      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
+  },
+  {
+    episode: "403 - Return of Yokaiiiiii",
     name: "99% Invisible",
     avatar:
       "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
@@ -39,8 +57,15 @@ const QueueModal = () => {
   return (
     <QueueModalContainer ref={ref}>
       <QueueModalHeaderContainer>
-        <Text>Up next</Text>
-        <Link onClick={() => {}}>Clear all</Link>
+        <Heading
+          color="#101010"
+          size="sm"
+          letterSpacing="-0.03em"
+          textAlign="start"
+        >
+          Up next
+        </Heading>
+        <Link justifySelf="end">Clear all</Link>
       </QueueModalHeaderContainer>
 
       <Scrollbars

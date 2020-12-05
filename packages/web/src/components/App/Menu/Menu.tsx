@@ -8,7 +8,8 @@ import {
   MenuContainer,
   MenuInsideContainer,
   MenuLogoContainer,
-  MenuAvatarContainer,
+  MenuPodcastImage,
+  MenuSkeletonPodcastImage,
 } from "./Menu.styles";
 
 import { ReactComponent as Logo } from "src/images/logo-2.svg";
@@ -16,7 +17,25 @@ import { ReactComponent as Logo } from "src/images/logo-2.svg";
 import { usePlayerContext } from "src/player/Player";
 
 const Menu = () => {
-  const { episode } = usePlayerContext();
+  const { loading, episode } = usePlayerContext();
+
+  const onRenderPodcastImage = () => {
+    if (loading)
+      return (
+        <MenuSkeletonPodcastImage startColor="#E2E8F0" endColor="#E2E8F0" />
+      );
+    if (!episode) return null;
+    return (
+      <ReactRouterLink
+        to={{
+          pathname: `/episode/${episode._id}`,
+          state: { _id: episode._id },
+        }}
+      >
+        <MenuPodcastImage src={episode.image} alt="Podcast logo" />
+      </ReactRouterLink>
+    );
+  };
 
   return (
     <MenuContainer>
@@ -35,16 +54,7 @@ const Menu = () => {
 
           <Navigation />
 
-          {episode ? (
-            <ReactRouterLink
-              to={{
-                pathname: `/episode/${episode._id}`,
-                state: { _id: episode._id },
-              }}
-            >
-              <MenuAvatarContainer src={episode.image} alt="Podcast logo" />
-            </ReactRouterLink>
-          ) : null}
+          {onRenderPodcastImage()}
         </MenuInsideContainer>
       </Scrollbars>
     </MenuContainer>

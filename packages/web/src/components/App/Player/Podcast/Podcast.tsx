@@ -2,20 +2,27 @@ import React from "react";
 
 import {
   PodcastContainer,
-  PodcastAvatar,
+  PodcastImage,
   PodcastDetails,
   PodcastNameTitle,
   PodcastFavoriteContainer,
 } from "./Podcast.styles";
 
-import { PodcastProps } from "./Podcast.types";
+import { PlayerEpisode } from "src/player/Player.types";
 
-const Podcast = ({ ready, episode }: PodcastProps) => {
-  if (!ready || !episode) return null;
+interface Props {
+  ready: boolean;
+  episode: PlayerEpisode | null;
+}
+
+const Podcast = ({ ready, episode }: Props) => {
+  if (!ready) return null;
+
+  if (!episode) return null;
 
   return (
     <PodcastContainer>
-      {episode.image ? <PodcastAvatar avatar={episode?.image} /> : null}
+      <PodcastImage src={episode?.image} />
 
       <PodcastDetails>
         <PodcastNameTitle
