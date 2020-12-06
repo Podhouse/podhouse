@@ -15,8 +15,8 @@ const Header = () => (
           <Skeleton
             height="20px"
             width="20px"
-            startColor="#f3f3f3"
-            endColor="#f3f3f3"
+            startColor="#E2E8F0"
+            endColor="#E2E8F0"
             borderRadius={3}
           />
         </SkeletonContainer>
