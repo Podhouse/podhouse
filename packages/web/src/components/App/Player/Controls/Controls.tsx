@@ -1,11 +1,11 @@
 import React from "react";
 import { Play, Pause, RotateCcw, RotateCw } from "react-feather";
 import {
-  Slider,
+  SliderInput,
   SliderTrack,
-  SliderFilledTrack,
-  SliderThumb,
-} from "@chakra-ui/react";
+  SliderRange,
+  SliderHandle,
+} from "@reach/slider";
 
 import {
   ControlsContainer,
@@ -23,7 +23,10 @@ interface ControlsProps {
   episode: PlayerEpisode | null;
   onPlay: () => void;
   onPause: () => void;
-  onSeek: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onSeek: (
+    newValue: number,
+    props?: { min?: number; max?: number; handlePosition?: string }
+  ) => void;
   onBackward: (value?: number) => void;
   onForward: (value?: number) => void;
 }
@@ -107,18 +110,18 @@ const Controls = ({
       <ControlsSliderContainer>
         <ControlsTime fontSize="sm">{formatTime(seek)}</ControlsTime>
 
-        <Slider
-          defaultValue={0}
+        <SliderInput
           value={seek}
-          step={0.1}
           min={0}
           max={convertDurationToSeconds(episode?.duration)}
+          step={0.1}
+          onChange={onSeek}
         >
           <SliderTrack>
-            <SliderFilledTrack bg="#101010" />
+            <SliderRange />
+            <SliderHandle />
           </SliderTrack>
-          <SliderThumb />
-        </Slider>
+        </SliderInput>
 
         <ControlsTime fontSize="sm">{episode?.duration}</ControlsTime>
       </ControlsSliderContainer>

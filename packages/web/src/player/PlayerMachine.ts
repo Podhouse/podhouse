@@ -88,7 +88,14 @@ const Player = Machine<
         },
         on: {
           RELOAD: "initial",
-          END: "initial",
+          END: "end",
+          ERROR: "initial",
+        },
+      },
+      end: {
+        on: {
+          RELOAD: "initial",
+          PLAY: "ready",
           ERROR: "initial",
         },
       },

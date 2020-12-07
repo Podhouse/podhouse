@@ -1,12 +1,12 @@
 import React from "react";
 import { Play, RotateCcw, RotateCw } from "react-feather";
+import { Skeleton } from "@chakra-ui/react";
 import {
-  Slider,
+  SliderInput,
   SliderTrack,
-  SliderFilledTrack,
-  SliderThumb,
-  Skeleton,
-} from "@chakra-ui/react";
+  SliderRange,
+  SliderHandle,
+} from "@reach/slider";
 
 import { usePlayerContext } from "src/player/Player";
 
@@ -56,12 +56,12 @@ const SkeletonControls = () => {
       <SkeletonControlsSliderContainer>
         <SkeletonControlsTime>{onRenderTime()}</SkeletonControlsTime>
 
-        <Slider defaultValue={0} value={0}>
+        <SliderInput defaultValue={0} value={0} disabled={true}>
           <SliderTrack>
-            <SliderFilledTrack bg="#101010" />
+            <SliderRange />
+            <SliderHandle />
           </SliderTrack>
-          <SliderThumb />
-        </Slider>
+        </SliderInput>
 
         <SkeletonControlsTime>{onRenderTime()}</SkeletonControlsTime>
       </SkeletonControlsSliderContainer>

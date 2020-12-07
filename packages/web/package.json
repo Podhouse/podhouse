@@ -21,6 +21,7 @@
     "@emotion/react": "^11.1.2",
     "@emotion/styled": "^11.0.0",
     "@hookform/resolvers": "^1.1.1",
+    "@reach/slider": "^0.12.1",
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
     "@testing-library/user-event": "^12.5.0",

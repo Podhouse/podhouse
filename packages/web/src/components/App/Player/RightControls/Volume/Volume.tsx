@@ -6,21 +6,22 @@ import {
   VolumeX,
 } from "react-feather";
 import {
-  Slider,
+  SliderInput,
   SliderTrack,
-  SliderFilledTrack,
-  SliderThumb,
-} from "@chakra-ui/react";
+  SliderRange,
+  SliderHandle,
+} from "@reach/slider";
 
 import { VolumeContainer } from "./Volume.styles";
-
-const iconStyle = { cursor: "pointer" };
 
 interface VolumeProps {
   ready: boolean;
   volume: number;
   muted: boolean;
-  onVolume: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onVolume: (
+    newValue: number,
+    props?: { min?: number; max?: number; handlePosition?: string }
+  ) => void;
   onMute: () => void;
 }
 
@@ -32,7 +33,7 @@ const Volume = ({ ready, volume, muted, onVolume, onMute }: VolumeProps) => {
           size={20}
           strokeWidth={1.7}
           color="#101010"
-          style={iconStyle}
+          style={{ cursor: "pointer" }}
           onClick={onMute}
         />
       );
@@ -43,7 +44,7 @@ const Volume = ({ ready, volume, muted, onVolume, onMute }: VolumeProps) => {
           size={20}
           strokeWidth={1.7}
           color="#101010"
-          style={iconStyle}
+          style={{ cursor: "pointer" }}
           onClick={onMute}
         />
       );
@@ -54,7 +55,7 @@ const Volume = ({ ready, volume, muted, onVolume, onMute }: VolumeProps) => {
           size={20}
           strokeWidth={1.7}
           color="#101010"
-          style={iconStyle}
+          style={{ cursor: "pointer" }}
           onClick={onMute}
         />
       );
@@ -65,7 +66,7 @@ const Volume = ({ ready, volume, muted, onVolume, onMute }: VolumeProps) => {
           size={20}
           strokeWidth={1.7}
           color="#101010"
-          style={iconStyle}
+          style={{ cursor: "pointer" }}
           onClick={onMute}
         />
       );
@@ -75,7 +76,7 @@ const Volume = ({ ready, volume, muted, onVolume, onMute }: VolumeProps) => {
         size={20}
         strokeWidth={1.7}
         color="#101010"
-        style={iconStyle}
+        style={{ cursor: "pointer" }}
         onClick={onMute}
       />
     );
@@ -87,12 +88,19 @@ const Volume = ({ ready, volume, muted, onVolume, onMute }: VolumeProps) => {
     return (
       <VolumeContainer>
         {renderVolume()}
-        <Slider defaultValue={30}>
+
+        <SliderInput
+          value={volume}
+          min={0}
+          max={1}
+          step={0.1}
+          onChange={onVolume}
+        >
           <SliderTrack>
-            <SliderFilledTrack bg="#101010" />
+            <SliderRange />
+            <SliderHandle />
           </SliderTrack>
-          <SliderThumb />
-        </Slider>
+        </SliderInput>
       </VolumeContainer>
     );
   };

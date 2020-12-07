@@ -9,14 +9,15 @@ import { useRateContext } from "src/context/Rate/Rate";
 
 import { PlayerEpisode } from "src/player/Player.types";
 
-const iconStyle = { cursor: "pointer" };
-
 interface RightControlsProps {
   ready: boolean;
   volume: number;
   muted: boolean;
   episode: PlayerEpisode | null;
-  onVolume: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onVolume: (
+    newValue: number,
+    props?: { min?: number; max?: number; handlePosition?: string }
+  ) => void;
   onMute: () => void;
 }
 
@@ -38,7 +39,7 @@ const RightControls = ({
         size={20}
         strokeWidth={1.7}
         color="#101010"
-        style={iconStyle}
+        style={{ cursor: "pointer" }}
         onClick={handleQueue}
       /> */}
 
@@ -46,7 +47,7 @@ const RightControls = ({
         size={20}
         strokeWidth={1.7}
         color="#101010"
-        style={iconStyle}
+        style={{ cursor: "pointer" }}
         onClick={handleRate}
       />
 

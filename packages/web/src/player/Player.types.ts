@@ -14,6 +14,7 @@ export type PlayerMachineState = {
         stopped: {};
       };
     };
+    end: {};
     error: {};
   };
 };

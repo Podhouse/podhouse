@@ -1,11 +1,11 @@
 import React from "react";
 import { Clock, Volume2 } from "react-feather";
 import {
-  Slider,
+  SliderInput,
   SliderTrack,
-  SliderFilledTrack,
-  SliderThumb,
-} from "@chakra-ui/react";
+  SliderRange,
+  SliderHandle,
+} from "@reach/slider";
 
 import {
   SkeletonRightControlsContainer,
@@ -28,12 +28,12 @@ const SkeletonRightControls = () => (
     <SkeletonVolumeContainer>
       <Volume2 size={20} strokeWidth={1.7} color="#101010" style={iconStyle} />
 
-      <Slider defaultValue={0} value={0}>
+      <SliderInput defaultValue={0} value={0} disabled={true}>
         <SliderTrack>
-          <SliderFilledTrack bg="#101010" />
+          <SliderRange />
+          <SliderHandle />
         </SliderTrack>
-        <SliderThumb />
-      </Slider>
+      </SliderInput>
     </SkeletonVolumeContainer>
   </SkeletonRightControlsContainer>
 );

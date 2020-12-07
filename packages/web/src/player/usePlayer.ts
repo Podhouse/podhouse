@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, ChangeEvent } from "react";
+import { useState, useEffect, useRef } from "react";
 import raf from "raf";
 
 import { UsePlayerOptions } from "src/player/Player.types";
@@ -106,7 +106,6 @@ const usePlayer = ({
   useEffect(() => {
     if (hasEnded) {
       onEnded();
-      setEpisode(null);
     }
     // eslint-disable-next-line
   }, [hasEnded]);
@@ -147,28 +146,32 @@ const usePlayer = ({
     send("LOOP");
   };
 
-  const onVolume = (e: ChangeEvent<HTMLInputElement>) => {
+  const onVolume = (
+    newValue: number,
+    props?: { min?: number; max?: number; handlePosition?: string }
+  ): void => {
     if (!audio) return;
-    const volume = parseFloat(e.target.value);
-    setPlayerVolume(volume);
-    audio.volume = volume;
+    setPlayerVolume(newValue);
+    audio.volume = newValue;
   };
 
-  const onRate = (value: any) => {
+  const onRate = (value: any): void => {
     if (!audio) return;
     const rate = parseFloat(value);
     setPlayerRate(rate);
     audio.playbackRate = rate;
   };
 
-  const onSeek = (e: ChangeEvent<HTMLInputElement>) => {
+  const onSeek = (
+    newValue: number,
+    props?: { min?: number; max?: number; handlePosition?: string }
+  ): void => {
     if (!audio) return;
-    const seek = parseFloat(e.target.value);
-    setPlayerSeek(seek);
-    audio.currentTime = seek;
+    setPlayerSeek(newValue);
+    audio.currentTime = newValue;
   };
 
-  const onForward = (value: number = 15) => {
+  const onForward = (value: number = 15): void => {
     if (!audio) return;
     if (hasEnded) return;
     const seek = playerSeek + value;
@@ -176,7 +179,7 @@ const usePlayer = ({
     audio.currentTime = seek;
   };
 
-  const onBackward = (value: number = 15) => {
+  const onBackward = (value: number = 15): void => {
     if (!audio) return;
     if (initial) return;
     const seek = playerSeek - value;
@@ -184,7 +187,7 @@ const usePlayer = ({
     audio.currentTime = seek;
   };
 
-  const onEpisode = (newEpisode: PlayerEpisode) => {
+  const onEpisode = (newEpisode: PlayerEpisode): void => {
     if (newEpisode !== null) {
       load({ src: newEpisode.audio, volume, muted, loop, rate });
       setEpisode(newEpisode);
