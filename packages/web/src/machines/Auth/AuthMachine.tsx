@@ -2,7 +2,7 @@ import { Machine } from "xstate";
 
 import { AuthContext, AuthStateSchema, AuthEvent } from "./Auth.types";
 
-const Auth = Machine<AuthContext, AuthStateSchema, AuthEvent>({
+const AuthMachine = Machine<AuthContext, AuthStateSchema, AuthEvent>({
   id: "auth",
   initial: "getstarted",
   states: {
@@ -44,4 +44,4 @@ const Auth = Machine<AuthContext, AuthStateSchema, AuthEvent>({
   },
 });
 
-export default Auth;
+export default AuthMachine;

@@ -10,7 +10,7 @@ import SubscriptionsPodcast from "./SubscriptionsPodcast/SubscriptionsPodcast";
 
 import useAuthUser from "src/hooks/useAuthUser";
 
-import { useAuthContext } from "src/context/Auth/Auth";
+import { useAuthContext } from "src/machines/Auth/AuthContext";
 
 import { getToken } from "src/utils/auth";
 
@@ -37,7 +37,7 @@ type ScrollFrameType = {
 };
 
 const SubscriptionsComponent = () => {
-  const [, , handleAuth] = useAuthContext();
+  const { handleAuth } = useAuthContext();
 
   const [shouldLoadMore, setShouldLoadMore] = useState<boolean>(false);
 

@@ -1,26 +1,25 @@
-import React, { useRef } from "react";
-
+import React from "react";
 import {
-  AuthModalContainer,
-  AutoModalInsideContainer,
-} from "./AuthModal.styles";
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalBody,
+  ModalCloseButton,
+  Text,
+} from "@chakra-ui/react";
 
-import Auth from "./Auth/Auth";
+import { AuthContainer, AuthLogoContainer } from "./AuthModal.styles";
 
-import GetStarted from "./Auth/GetStarted/GetStarted";
-import SignIn from "./Auth/SignIn/SignIn";
-import SignUp from "./Auth/SignUp/SignUp";
+import { ReactComponent as Logo } from "src/images/logo-2.svg";
 
-import useOnClickOutside from "src/hooks/useOnClickOutside";
+import GetStarted from "./GetStarted/GetStarted";
+import SignIn from "./SignIn/SignIn";
+import SignUp from "./SignUp/SignUp";
 
-import { useAuthContext } from "src/context/Auth/Auth";
+import { useAuthContext } from "src/machines/Auth/AuthContext";
 
 const AuthModal = () => {
-  const [current, , handleAuth] = useAuthContext();
-
-  const ref = useRef<any>();
-
-  useOnClickOutside(ref, () => handleAuth());
+  const { current, auth, handleAuth } = useAuthContext();
 
   const renderAuth = () => {
     if (current.matches("getstarted")) {
@@ -35,11 +34,21 @@ const AuthModal = () => {
   };
 
   return (
-    <AuthModalContainer>
-      <AutoModalInsideContainer ref={ref}>
-        <Auth>{renderAuth()}</Auth>
-      </AutoModalInsideContainer>
-    </AuthModalContainer>
+    <Modal isOpen={auth} onClose={handleAuth} isCentered size="lg">
+      <ModalOverlay />
+      <ModalContent>
+        <ModalCloseButton />
+        <ModalBody>
+          <AuthContainer>
+            <AuthLogoContainer>
+              <Logo />
+              <Text>Listen to your favorite podcasts</Text>
+            </AuthLogoContainer>
+            {renderAuth()}
+          </AuthContainer>
+        </ModalBody>
+      </ModalContent>
+    </Modal>
   );
 };
 

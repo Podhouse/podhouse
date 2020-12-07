@@ -7,20 +7,15 @@ import {
   Input,
   Button,
   Link,
-  Text,
   FormControl,
   FormLabel,
   FormErrorMessage,
   useToast,
 } from "@chakra-ui/react";
 
-import {
-  AuthTextContainer,
-  AuthFormContainer,
-  AuthLinksContainer,
-} from "../Auth.styles";
+import { AuthFormContainer, AuthLinksContainer } from "../AuthModal.styles";
 
-import { useAuthContext } from "src/context/Auth/Auth";
+import { useAuthContext } from "src/machines/Auth/AuthContext";
 
 import UserSignInWithEmail from "./UserSignInWithEmail";
 import {
@@ -42,7 +37,7 @@ const validationSchema = Yup.object().shape({
 
 const SignIn = () => {
   const toast = useToast();
-  const [, , handleAuth, send] = useAuthContext();
+  const { handleAuth, send } = useAuthContext();
   const [
     userSignInWithEmail,
     isPending,
@@ -112,63 +107,53 @@ const SignIn = () => {
   };
 
   return (
-    <>
-      <AuthTextContainer>
-        <Text>Listen to your favorite podcasts</Text>
-      </AuthTextContainer>
+    <AuthFormContainer onSubmit={handleSubmit(onSubmit)}>
+      <FormControl isInvalid={errors.email && true}>
+        <FormLabel htmlFor="email">Email</FormLabel>
+        <Input type="email" name="email" placeholder="Email" ref={register} />
+        <FormErrorMessage>
+          {errors.email && errors.email.message}
+        </FormErrorMessage>
+      </FormControl>
 
-      <AuthFormContainer onSubmit={handleSubmit(onSubmit)}>
-        <FormControl isInvalid={errors.email && true}>
-          <FormLabel htmlFor="email">Email</FormLabel>
-          <Input type="email" name="email" placeholder="Email" ref={register} />
-          <FormErrorMessage>
-            {errors.email && errors.email.message}
-          </FormErrorMessage>
-        </FormControl>
+      <FormControl isInvalid={errors.password && true}>
+        <FormLabel htmlFor="password">Password</FormLabel>
+        <Input
+          type="password"
+          name="password"
+          placeholder="Password"
+          ref={register}
+        />
+        <FormErrorMessage>
+          {errors.password && errors.password.message}
+        </FormErrorMessage>
+      </FormControl>
 
-        <FormControl isInvalid={errors.password && true}>
-          <FormLabel htmlFor="password">Password</FormLabel>
-          <Input
-            type="password"
-            name="password"
-            placeholder="Password"
-            ref={register}
-          />
-          <FormErrorMessage>
-            {errors.password && errors.password.message}
-          </FormErrorMessage>
-        </FormControl>
+      <Button
+        type="submit"
+        width="100%"
+        isDisabled={!formState.isValid}
+        isLoading={formState.isSubmitting || isPending}
+        bgColor="#101010"
+        color="#ffffff"
+        _hover={{ bg: "#101010" }}
+        _active={{
+          bg: "#101010",
+        }}
+        _focus={{
+          boxShadow:
+            "0 0 1px 2px rgba(0, 0, 0, .50), 0 1px 1px rgba(0, 0, 0, .15)",
+        }}
+      >
+        Sign in
+      </Button>
 
-        <Button
-          type="submit"
-          width="100%"
-          isDisabled={!formState.isValid}
-          isLoading={formState.isSubmitting || isPending}
-          bgColor="#101010"
-          color="#ffffff"
-          _hover={{ bg: "#101010" }}
-          _active={{
-            bg: "#101010",
-          }}
-          _focus={{
-            boxShadow:
-              "0 0 1px 2px rgba(0, 0, 0, .50), 0 1px 1px rgba(0, 0, 0, .15)",
-          }}
-        >
-          Sign in
-        </Button>
-
-        <AuthLinksContainer>
-          <Link
-            variant="secondary"
-            size="normal"
-            onClick={() => send("SIGNUP")}
-          >
-            Don't have an account?
-          </Link>
-        </AuthLinksContainer>
-      </AuthFormContainer>
-    </>
+      <AuthLinksContainer>
+        <Link variant="secondary" size="normal" onClick={() => send("SIGNUP")}>
+          Don't have an account?
+        </Link>
+      </AuthLinksContainer>
+    </AuthFormContainer>
   );
 };
 

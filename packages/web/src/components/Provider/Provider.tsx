@@ -6,7 +6,7 @@ import { ChakraProvider, CSSReset } from "@chakra-ui/react";
 import "keen-slider/keen-slider.min.css";
 
 import { PlayerProvider } from "src/player/Player";
-import { AuthProvider } from "src/context/Auth/Auth";
+import { AuthProvider } from "src/machines/Auth/AuthContext";
 import { SettingsProvider } from "src/context/Settings/Settings";
 import { QueueProvider } from "src/context/Queue/Queue";
 import { RateProvider } from "src/context/Rate/Rate";

@@ -6,7 +6,7 @@ import { Link } from "@chakra-ui/react";
 
 import { SettingsContainer } from "./Settings.styles";
 
-import { useAuthContext } from "src/context/Auth/Auth";
+import { useAuthContext } from "src/machines/Auth/AuthContext";
 import { useSettingsContext } from "src/context/Settings/Settings";
 
 import useAuthUser from "src/hooks/useAuthUser";
@@ -24,7 +24,7 @@ const query = graphql`
 `;
 
 const Settings = () => {
-  const [, , handleAuth] = useAuthContext();
+  const { handleAuth } = useAuthContext();
   const [, handleSettings] = useSettingsContext();
 
   const data = useLazyLoadQuery<SettingsQuery>(

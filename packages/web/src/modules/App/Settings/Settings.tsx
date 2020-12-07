@@ -10,7 +10,7 @@ import ChangePassword from "./ChangePassword/ChangePassword";
 
 import useAuthUser from "src/hooks/useAuthUser";
 
-import { useAuthContext } from "src/context/Auth/Auth";
+import { useAuthContext } from "src/machines/Auth/AuthContext";
 
 import { getToken } from "src/utils/auth";
 
@@ -25,7 +25,7 @@ const query = graphql`
 `;
 
 const SettingsComponent = () => {
-  const [, , handleAuth] = useAuthContext();
+  const { handleAuth } = useAuthContext();
 
   const { currentUser } = useLazyLoadQuery<SettingsUserQuery>(
     query,
