@@ -2,7 +2,7 @@ import { Machine } from "xstate";
 
 import { RateContext, RateStateSchema, RateEvent } from "./Rate.types";
 
-const Rate = Machine<RateContext, RateStateSchema, RateEvent>({
+const RateMachine = Machine<RateContext, RateStateSchema, RateEvent>({
   id: "rate",
   initial: "close",
   states: {
@@ -19,4 +19,4 @@ const Rate = Machine<RateContext, RateStateSchema, RateEvent>({
   },
 });
 
-export default Rate;
+export default RateMachine;

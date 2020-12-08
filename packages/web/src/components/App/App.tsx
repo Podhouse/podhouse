@@ -23,17 +23,17 @@ import QueueModal from "src/components/Modals/QueueModal/QueueModal";
 import RateModal from "src/components/Modals/RateModal/RateModal";
 
 import { useAuthContext } from "src/machines/Auth/AuthContext";
-import { useSettingsContext } from "src/context/Settings/Settings";
-import { useQueueContext } from "src/context/Queue/Queue";
-import { useRateContext } from "src/context/Rate/Rate";
+import { useSettingsContext } from "src/machines/Settings/SettingsContext";
+import { useQueueContext } from "src/machines/Queue/QueueContext";
+import { useRateContext } from "src/machines/Rate/RateContext";
 
 import RelayEnvironment from "src/relay/RelayEnvironment";
 
 const App = () => {
   const { auth } = useAuthContext();
-  const [settings] = useSettingsContext();
-  const [queue] = useQueueContext();
-  const [rate, handleRate] = useRateContext();
+  const { settings } = useSettingsContext();
+  const { queue } = useQueueContext();
+  const { rate, handleRate } = useRateContext();
 
   const renderAuthModal = () => {
     if (auth === true) {

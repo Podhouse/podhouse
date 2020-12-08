@@ -8,7 +8,7 @@ import {
   PodcastFavoriteContainer,
 } from "./Podcast.styles";
 
-import { PlayerEpisode } from "src/player/Player.types";
+import { PlayerEpisode } from "src/machines/Player/Player.types";
 
 interface Props {
   ready: boolean;

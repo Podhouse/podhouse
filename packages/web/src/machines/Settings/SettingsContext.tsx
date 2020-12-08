@@ -1,13 +1,13 @@
 import React, { useContext } from "react";
 
-import useSettings from "src/hooks/useSettings";
+import useSettings from "src/machines/Settings/useSettings";
 
 const SettingsContext = React.createContext(undefined as any);
 
 const SettingsProvider = ({ children }: any) => {
   const { settings, handleSettings } = useSettings();
 
-  const data = [settings, handleSettings];
+  const data = { settings, handleSettings };
 
   return (
     <SettingsContext.Provider value={data}>{children}</SettingsContext.Provider>

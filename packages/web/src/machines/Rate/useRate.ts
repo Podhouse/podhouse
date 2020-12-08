@@ -1,6 +1,6 @@
 import { useMachine } from "@xstate/react";
 
-import Rate from "src/machines/Rate/Rate";
+import Rate from "src/machines/Rate/RateMachine";
 
 const useRate = () => {
   const [current, send] = useMachine(Rate);

@@ -1,9 +1,9 @@
 import { useMachine } from "@xstate/react";
 
-import Queue from "src/machines/Queue/Queue";
+import QueueMachine from "src/machines/Queue/QueueMachine";
 
 const useQueue = () => {
-  const [current, send] = useMachine(Queue);
+  const [current, send] = useMachine(QueueMachine);
 
   const handleQueue = () => {
     if (current.matches("close")) {

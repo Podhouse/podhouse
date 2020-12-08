@@ -1,13 +1,13 @@
 import React, { useContext } from "react";
 
-import useRate from "src/hooks/useRate";
+import useRate from "src/machines/Rate/useRate";
 
 const RateContext = React.createContext(undefined as any);
 
 const RateProvider = ({ children }: any) => {
   const { rate, handleRate } = useRate();
 
-  const data = [rate, handleRate];
+  const data = { rate, handleRate };
 
   return <RateContext.Provider value={data}>{children}</RateContext.Provider>;
 };

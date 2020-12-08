@@ -10,7 +10,7 @@ import SkeletonPodcast from "src/components/Skeletons/SkeletonPlayer/SkeletonPod
 import SkeletonControls from "src/components/Skeletons/SkeletonPlayer/SkeletonControls/SkeletonControls";
 import SkeletonRightControls from "src/components/Skeletons/SkeletonPlayer/SkeletonRightControls/SkeletonRightControls";
 
-import { usePlayerContext } from "src/player/Player";
+import { usePlayerContext } from "src/machines/Player/Player";
 
 const Player = () => {
   const {

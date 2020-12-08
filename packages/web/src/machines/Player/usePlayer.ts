@@ -1,8 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import raf from "raf";
 
-import { UsePlayerOptions } from "src/player/Player.types";
-import { PlayerEpisode } from "./Player.types";
+import { UsePlayerOptions, PlayerEpisode } from "./Player.types";
 
 import useAudioPlayer from "./useAudioPlayer";
 
@@ -33,15 +32,14 @@ const usePlayer = ({
     send,
   } = useAudioPlayer();
 
-  const hasEnded = audio?.ended;
-  if (hasEnded) send("END");
-
   const [episode, setEpisode] = useState<PlayerEpisode | null>(null);
   const [playerVolume, setPlayerVolume] = useState<number>(volume);
   const [playerRate, setPlayerRate] = useState<number>(rate);
   const [playerSeek, setPlayerSeek] = useState<number>(0);
 
   const playerSeekRef = useRef<number>();
+
+  const episodeHasEnded = audio?.ended;
 
   useEffect(() => {
     const animate = () => {
@@ -104,11 +102,11 @@ const usePlayer = ({
   }, [playerLoop]);
 
   useEffect(() => {
-    if (hasEnded) {
+    if (episodeHasEnded) {
       onEnded();
     }
     // eslint-disable-next-line
-  }, [hasEnded]);
+  }, [episodeHasEnded]);
 
   const onToggle = () => {
     if (!audio) return;
@@ -173,7 +171,7 @@ const usePlayer = ({
 
   const onForward = (value: number = 15): void => {
     if (!audio) return;
-    if (hasEnded) return;
+    if (episodeHasEnded) return;
     const seek = playerSeek + value;
     setPlayerSeek(seek);
     audio.currentTime = seek;
@@ -207,7 +205,7 @@ const usePlayer = ({
     muted: playerMuted,
     rate: playerRate,
     loop: playerLoop,
-    ended: hasEnded,
+    ended: episodeHasEnded,
     load,
     onToggle,
     onPlay,

@@ -2,7 +2,7 @@ import { Machine } from "xstate";
 
 import { QueueContext, QueueStateSchema, QueueEvent } from "./Queue.types";
 
-const Queue = Machine<QueueContext, QueueStateSchema, QueueEvent>({
+const QueueMachine = Machine<QueueContext, QueueStateSchema, QueueEvent>({
   id: "queue",
   initial: "close",
   states: {
@@ -19,4 +19,4 @@ const Queue = Machine<QueueContext, QueueStateSchema, QueueEvent>({
   },
 });
 
-export default Queue;
+export default QueueMachine;

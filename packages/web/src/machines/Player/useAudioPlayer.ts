@@ -7,7 +7,7 @@ import {
   NewAudioOptions,
   PlayerMachineContext,
   PlayerMachineEvents,
-} from "src/player/Player.types";
+} from "./Player.types";
 
 const useAudioPlayer = () => {
   const [current, send] = useMachine<PlayerMachineContext, PlayerMachineEvents>(
@@ -72,6 +72,10 @@ const useAudioPlayer = () => {
     });
     newAudioElement.addEventListener("play", () => send("PLAY"));
     newAudioElement.addEventListener("pause", () => send("PAUSE"));
+    newAudioElement.addEventListener("ended", () => {
+      send("END");
+      send("RELOAD");
+    });
 
     setAudio(newAudioElement);
     playerRef.current = newAudioElement;

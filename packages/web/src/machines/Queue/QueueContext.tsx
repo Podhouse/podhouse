@@ -1,13 +1,13 @@
 import React, { useContext } from "react";
 
-import useQueue from "src/hooks/useQueue";
+import useQueue from "src/machines/Queue/useQueue";
 
 const QueueContext = React.createContext(undefined as any);
 
 const QueueProvider = ({ children }: any) => {
   const { queue, handleQueue } = useQueue();
 
-  const data = [queue, handleQueue];
+  const data = { queue, handleQueue };
 
   return <QueueContext.Provider value={data}>{children}</QueueContext.Provider>;
 };

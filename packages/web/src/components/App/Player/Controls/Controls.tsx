@@ -14,7 +14,7 @@ import {
   ControlsTime,
 } from "./Controls.styles";
 
-import { PlayerEpisode } from "src/player/Player.types";
+import { PlayerEpisode } from "src/machines/Player/Player.types";
 
 interface ControlsProps {
   ready: boolean;

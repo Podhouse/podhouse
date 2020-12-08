@@ -6,7 +6,11 @@ import {
   SettingsEvent,
 } from "./Settings.types";
 
-const Settings = Machine<SettingsContext, SettingsStateSchema, SettingsEvent>({
+const SettingsMachine = Machine<
+  SettingsContext,
+  SettingsStateSchema,
+  SettingsEvent
+>({
   id: "settings",
   initial: "close",
   states: {
@@ -23,4 +27,4 @@ const Settings = Machine<SettingsContext, SettingsStateSchema, SettingsEvent>({
   },
 });
 
-export default Settings;
+export default SettingsMachine;

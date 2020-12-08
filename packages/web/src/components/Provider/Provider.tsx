@@ -5,11 +5,11 @@ import { ChakraProvider, CSSReset } from "@chakra-ui/react";
 
 import "keen-slider/keen-slider.min.css";
 
-import { PlayerProvider } from "src/player/Player";
+import { PlayerProvider } from "src/machines/Player/Player";
 import { AuthProvider } from "src/machines/Auth/AuthContext";
-import { SettingsProvider } from "src/context/Settings/Settings";
-import { QueueProvider } from "src/context/Queue/Queue";
-import { RateProvider } from "src/context/Rate/Rate";
+import { SettingsProvider } from "src/machines/Settings/SettingsContext";
+import { QueueProvider } from "src/machines/Queue/QueueContext";
+import { RateProvider } from "src/machines/Rate/RateContext";
 
 import App from "src/components/App/App";
 

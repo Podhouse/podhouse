@@ -5,9 +5,9 @@ import { RightControlsContainer } from "./RightControls.styles";
 
 import Volume from "./Volume/Volume";
 
-import { useRateContext } from "src/context/Rate/Rate";
+import { useRateContext } from "src/machines/Rate/RateContext";
 
-import { PlayerEpisode } from "src/player/Player.types";
+import { PlayerEpisode } from "src/machines/Player/Player.types";
 
 interface RightControlsProps {
   ready: boolean;
@@ -29,7 +29,7 @@ const RightControls = ({
   onVolume,
   onMute,
 }: RightControlsProps) => {
-  const [, handleRate] = useRateContext();
+  const { handleRate } = useRateContext();
 
   if (!episode) return null;
 

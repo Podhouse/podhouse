@@ -6,7 +6,7 @@ import {
   RateModalLink,
 } from "./RateModal.styles";
 
-import { usePlayerContext } from "src/player/Player";
+import { usePlayerContext } from "src/machines/Player/Player";
 
 import useOnClickOutside from "src/hooks/useOnClickOutside";
 
