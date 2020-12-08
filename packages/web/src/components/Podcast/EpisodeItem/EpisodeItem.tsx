@@ -14,7 +14,7 @@ import {
 
 import { EpisodeItemProps } from "./EpisodeItem.types";
 
-import { usePlayerContext } from "src/machines/Player/Player";
+import { usePlayerContext } from "src/machines/Player/PlayerContext";
 
 const EpisodeItem = ({ node }: EpisodeItemProps) => {
   const { _id, image, title, description, publishedDate, duration } = node;

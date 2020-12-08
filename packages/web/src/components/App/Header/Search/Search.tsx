@@ -5,8 +5,12 @@ import { SearchIcon } from "@chakra-ui/icons";
 
 import { SearchContainer } from "./Search.styles";
 
+import { useSearchContext } from "src/machines/Search/SearchContext";
+
 const Search = () => {
   const history = useHistory();
+
+  const { search, onSearch } = useSearchContext();
 
   return (
     <SearchContainer>
@@ -15,7 +19,13 @@ const Search = () => {
           pointerEvents="none"
           children={<SearchIcon focusBorderColor="#101010" color="gray.300" />}
         />
-        <Input type="text" placeholder="Search" size="md" />
+        <Input
+          type="text"
+          placeholder="Search"
+          size="md"
+          value={search}
+          onChange={onSearch}
+        />
       </InputGroup>
     </SearchContainer>
   );

@@ -14,7 +14,7 @@ import {
 
 import { ReactComponent as Logo } from "src/images/logo-2.svg";
 
-import { usePlayerContext } from "src/machines/Player/Player";
+import { usePlayerContext } from "src/machines/Player/PlayerContext";
 
 const Menu = () => {
   const { loading, episode } = usePlayerContext();

@@ -7,9 +7,12 @@ import SearchPodcast from "./SearchPodcast/SearchPodcast";
 
 import SkeletonPodcastsWithOnlyAvatarList from "src/components/Skeletons/SkeletonPodcastsWithOnlyAvatarList/SkeletonPodcastsWithOnlyAvatarList";
 
+import { useSearchContext } from "src/machines/Search/SearchContext";
+
 import {
   SearchQuery,
   SearchQueryResponse,
+  SearchQueryVariables,
 } from "./__generated__/SearchQuery.graphql";
 
 const query = graphql`
@@ -29,16 +32,19 @@ type ScrollFrameType = {
   top: number;
 };
 
-const SearchComponent = () => {
+type Props = {
+  searchArgs: SearchQueryVariables;
+};
+
+const SearchComponent = ({ searchArgs }: Props) => {
   const [shouldLoadMore, setShouldLoadMore] = useState<boolean>(false);
 
   const searchQuery: SearchQueryResponse = useLazyLoadQuery<SearchQuery>(
     query,
-    {
-      name: "The",
-    },
+    searchArgs,
     {
       fetchPolicy: "store-and-network",
+      fetchKey: searchArgs.name,
     }
   );
 
@@ -64,10 +70,18 @@ const SearchComponent = () => {
   );
 };
 
-const Search = () => (
-  <Suspense fallback={<SkeletonPodcastsWithOnlyAvatarList />}>
-    <SearchComponent />
-  </Suspense>
-);
+const Search = () => {
+  const { search } = useSearchContext();
+
+  const searchArgs: SearchQueryVariables = {
+    name: search,
+  };
+
+  return (
+    <Suspense fallback={<SkeletonPodcastsWithOnlyAvatarList />}>
+      <SearchComponent searchArgs={searchArgs} />
+    </Suspense>
+  );
+};
 
 export default Search;

@@ -54,8 +54,7 @@ const userQuery = graphql`
   }
 `;
 
-// TODO:
-// Should improve the queryReference type to be a PreloadedQuery<PodcastQuery>
+// TODO: Should improve the queryReference type to be a PreloadedQuery<PodcastQuery>
 interface Props {
   queryReference: any;
   query: GraphQLTaggedNode;
@@ -88,8 +87,6 @@ const PodcastInfo = ({ queryReference, query, shouldLoadMore }: Props) => {
       fetchKey: getToken(),
     }
   );
-
-  console.log("userSubscribedToPodcast: ", userSubscribedToPodcast);
 
   const [
     userSubscribeToPodcast,

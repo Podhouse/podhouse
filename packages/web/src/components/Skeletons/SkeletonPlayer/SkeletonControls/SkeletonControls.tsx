@@ -8,7 +8,7 @@ import {
   SliderHandle,
 } from "@reach/slider";
 
-import { usePlayerContext } from "src/machines/Player/Player";
+import { usePlayerContext } from "src/machines/Player/PlayerContext";
 
 import {
   SkeletonControlsContainer,

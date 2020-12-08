@@ -16,7 +16,7 @@ import {
 
 import { EpisodeQuery } from "../__generated__/EpisodeQuery.graphql";
 
-import { usePlayerContext } from "src/machines/Player/Player";
+import { usePlayerContext } from "src/machines/Player/PlayerContext";
 
 // TODO:
 // Should improve the queryReference type to be a PreloadedQuery<EpisodeQuery>
