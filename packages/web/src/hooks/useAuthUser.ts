@@ -3,8 +3,11 @@ import { readInlineData } from "react-relay";
 
 const useAuthFragment = graphql`
   fragment useAuthUser_user on User @inline {
+    _id
     id
     email
+    createdAt
+    updatedAt
   }
 `;
 

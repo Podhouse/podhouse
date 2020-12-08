@@ -18,6 +18,7 @@ type Query {
   podcast(_id: ID!): Podcast
   episodes(after: String, first: Int, before: String, last: Int, podcast: ID, name: String): EpisodeConnection!
   episode(_id: ID!): Episode
+  userSubscribedToPodcast(_id: ID!): Boolean!
 }
 
 """An object with an ID"""

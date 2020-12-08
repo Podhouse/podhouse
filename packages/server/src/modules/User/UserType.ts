@@ -40,7 +40,6 @@ const UserType: GraphQLObjectType = new GraphQLObjectType<
           PodcastLoader.load(context, id.toString()),
         );
         const result = await Promise.all(podcasts).then((res) => res);
-        console.log("result: ", result);
         return connectionFromArray(result, args);
       },
     },

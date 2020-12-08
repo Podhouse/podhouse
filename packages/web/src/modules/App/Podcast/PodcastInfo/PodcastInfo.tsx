@@ -3,6 +3,8 @@ import { Heading, Button, Link, Image } from "@chakra-ui/react";
 import { ExternalLink } from "react-feather";
 import { GraphQLTaggedNode } from "relay-runtime";
 import { usePreloadedQuery } from "react-relay/hooks";
+import graphql from "babel-plugin-relay/macro";
+import { useLazyLoadQuery } from "react-relay/hooks";
 
 import {
   PodcastInfoContainer,
@@ -18,6 +20,20 @@ import PodcastEpisodes from "./PodcastEpisodes/PodcastEpisodes";
 
 import { PodcastQuery } from "../__generated__/PodcastQuery.graphql";
 
+import useAuthUser from "src/hooks/useAuthUser";
+
+import { getToken } from "src/utils/auth";
+
+import { PodcastInfoQuery } from "./__generated__/PodcastInfoQuery.graphql";
+
+const query = graphql`
+  query PodcastInfoQuery {
+    currentUser {
+      ...useAuthUser_user
+    }
+  }
+`;
+
 // TODO:
 // Should improve the queryReference type to be a PreloadedQuery<PodcastQuery>
 interface Props {
@@ -28,6 +44,23 @@ interface Props {
 
 const PodcastInfo = ({ queryReference, query, shouldLoadMore }: Props) => {
   const { podcast } = usePreloadedQuery<PodcastQuery>(query, queryReference);
+
+  const data = useLazyLoadQuery<PodcastInfoQuery>(
+    query,
+    {},
+    {
+      fetchPolicy: "store-and-network",
+      fetchKey: getToken(),
+    }
+  );
+
+  const isAuthenticated = useAuthUser(data?.currentUser);
+
+  if (!isAuthenticated) {
+    console.log("not: ", isAuthenticated);
+  } else {
+    console.log("true: ", isAuthenticated);
+  }
 
   return (
     <PodcastInfoContainer>

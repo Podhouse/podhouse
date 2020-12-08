@@ -24,13 +24,23 @@ query SettingsQuery {
 }
 
 fragment useAuthUser_user on User {
+  _id
   id
   email
+  createdAt
+  updatedAt
 }
 */
 
 const node: ConcreteRequest = (function () {
   var v0 = [
+    {
+      alias: null,
+      args: null,
+      kind: "ScalarField",
+      name: "_id",
+      storageKey: null,
+    },
     {
       alias: null,
       args: null,
@@ -43,6 +53,20 @@ const node: ConcreteRequest = (function () {
       args: null,
       kind: "ScalarField",
       name: "email",
+      storageKey: null,
+    },
+    {
+      alias: null,
+      args: null,
+      kind: "ScalarField",
+      name: "createdAt",
+      storageKey: null,
+    },
+    {
+      alias: null,
+      args: null,
+      kind: "ScalarField",
+      name: "updatedAt",
       storageKey: null,
     },
   ];
@@ -92,13 +116,13 @@ const node: ConcreteRequest = (function () {
       ],
     },
     params: {
-      cacheID: "00c62d0e73a2e74aa0af5bf06a18ae6d",
+      cacheID: "e2e234e0233ce7c7a686304b92a2d402",
       id: null,
       metadata: {},
       name: "SettingsQuery",
       operationKind: "query",
       text:
-        "query SettingsQuery {\n  currentUser {\n    ...useAuthUser_user\n    id\n  }\n}\n\nfragment useAuthUser_user on User {\n  id\n  email\n}\n",
+        "query SettingsQuery {\n  currentUser {\n    ...useAuthUser_user\n    id\n  }\n}\n\nfragment useAuthUser_user on User {\n  _id\n  id\n  email\n  createdAt\n  updatedAt\n}\n",
     },
   };
 })();

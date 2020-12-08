@@ -4,19 +4,19 @@
 
 import { ConcreteRequest } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
-export type SettingsUserQueryVariables = {};
-export type SettingsUserQueryResponse = {
+export type PodcastInfoQueryVariables = {};
+export type PodcastInfoQueryResponse = {
   readonly currentUser: {
     readonly " $fragmentRefs": FragmentRefs<"useAuthUser_user">;
   } | null;
 };
-export type SettingsUserQuery = {
-  readonly response: SettingsUserQueryResponse;
-  readonly variables: SettingsUserQueryVariables;
+export type PodcastInfoQuery = {
+  readonly response: PodcastInfoQueryResponse;
+  readonly variables: PodcastInfoQueryVariables;
 };
 
 /*
-query SettingsUserQuery {
+query PodcastInfoQuery {
   currentUser {
     ...useAuthUser_user
     id
@@ -75,7 +75,7 @@ const node: ConcreteRequest = (function () {
       argumentDefinitions: [],
       kind: "Fragment",
       metadata: null,
-      name: "SettingsUserQuery",
+      name: "PodcastInfoQuery",
       selections: [
         {
           alias: null,
@@ -101,7 +101,7 @@ const node: ConcreteRequest = (function () {
     operation: {
       argumentDefinitions: [],
       kind: "Operation",
-      name: "SettingsUserQuery",
+      name: "PodcastInfoQuery",
       selections: [
         {
           alias: null,
@@ -116,15 +116,15 @@ const node: ConcreteRequest = (function () {
       ],
     },
     params: {
-      cacheID: "d92e4800993c9aa894066d40970dde2c",
+      cacheID: "0570a6aaf2b056cf819a0ad4e7eae061",
       id: null,
       metadata: {},
-      name: "SettingsUserQuery",
+      name: "PodcastInfoQuery",
       operationKind: "query",
       text:
-        "query SettingsUserQuery {\n  currentUser {\n    ...useAuthUser_user\n    id\n  }\n}\n\nfragment useAuthUser_user on User {\n  _id\n  id\n  email\n  createdAt\n  updatedAt\n}\n",
+        "query PodcastInfoQuery {\n  currentUser {\n    ...useAuthUser_user\n    id\n  }\n}\n\nfragment useAuthUser_user on User {\n  _id\n  id\n  email\n  createdAt\n  updatedAt\n}\n",
     },
   };
 })();
-(node as any).hash = "73f4a3257535ef903b8943e73f32c2d6";
+(node as any).hash = "a36efcf1fbf69416f3e2a296e815859f";
 export default node;
