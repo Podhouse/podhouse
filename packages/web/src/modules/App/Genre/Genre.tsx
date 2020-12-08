@@ -1,51 +1,21 @@
-import React, { useState, useCallback, Suspense } from "react";
+import React, { useState, Suspense } from "react";
 import Scrollbars from "react-custom-scrollbars";
 import graphql from "babel-plugin-relay/macro";
-import { useLazyLoadQuery, usePaginationFragment } from "react-relay/hooks";
+import { useLazyLoadQuery } from "react-relay/hooks";
 import { useLocation } from "react-router-dom";
 
-import { GenreContainer } from "./Genre.styles";
-
 import Featured from "src/components/Featured/Featured";
-import PodcastsWithOnlyAvatarList from "src/components/Lists/PodcastsWithOnlyAvatarList/PodcastsWithOnlyAvatarList";
 import SkeletonPodcastsWithOnlyAvatarList from "src/components/Skeletons/SkeletonPodcastsWithOnlyAvatarList/SkeletonPodcastsWithOnlyAvatarList";
 
 import { GenreQuery } from "./__generated__/GenreQuery.graphql";
-import { GenrePaginationQuery } from "./__generated__/GenrePaginationQuery.graphql";
-import { Genre_podcasts$key } from "./__generated__/Genre_podcasts.graphql";
+
+import GenrePodcast from "./GenrePodcast/GenrePodcast";
 
 import featured from "src/utils/featured";
 
 const query = graphql`
   query GenreQuery($primaryGenre: String!) {
-    ...Genre_podcasts @arguments(primaryGenre: $primaryGenre)
-  }
-`;
-
-const fragment = graphql`
-  fragment Genre_podcasts on Query
-  @argumentDefinitions(
-    primaryGenre: { type: "String" }
-    after: { type: "String" }
-    first: { type: "Int", defaultValue: 10 }
-    before: { type: "String" }
-    last: { type: "Int" }
-  )
-  @refetchable(queryName: "GenrePaginationQuery") {
-    podcastsByGenre(
-      primaryGenre: $primaryGenre
-      after: $after
-      first: $first
-      before: $before
-      last: $last
-    ) @connection(key: "Genre_podcastsByGenre") {
-      edges {
-        node {
-          _id
-          image
-        }
-      }
-    }
+    ...GenrePodcast_podcasts @arguments(primaryGenre: $primaryGenre)
   }
 `;
 
@@ -65,27 +35,11 @@ const GenreComponent = () => {
 
   const { state } = useLocation<any>();
 
-  const queryData = useLazyLoadQuery<GenreQuery>(
+  const genreQuery = useLazyLoadQuery<GenreQuery>(
     query,
     { primaryGenre: state.primaryGenre },
     { fetchPolicy: "store-and-network" }
   );
-
-  console.log("queryData: ", queryData);
-
-  const { data, loadNext, isLoadingNext } = usePaginationFragment<
-    GenrePaginationQuery,
-    Genre_podcasts$key
-  >(fragment, queryData);
-
-  console.log("data: ", data);
-
-  const loadMore = useCallback(() => {
-    if (isLoadingNext) return;
-    loadNext(10);
-  }, [isLoadingNext, loadNext]);
-
-  if (shouldLoadMore === true) loadMore();
 
   const onLoadMore = (value: ScrollFrameType) => {
     if (value.top === 1) {
@@ -101,13 +55,11 @@ const GenreComponent = () => {
       autoHideTimeout={100}
       autoHideDuration={100}
     >
-      <GenreContainer>
-        <Featured featured={featured} />
-        <PodcastsWithOnlyAvatarList
-          title={state.primaryGenre}
-          edges={data.podcastsByGenre.edges}
-        />
-      </GenreContainer>
+      <GenrePodcast
+        genreQuery={genreQuery}
+        primaryGenre={state.primaryGenre}
+        shouldLoadMore={shouldLoadMore}
+      />
     </Scrollbars>
   );
 };

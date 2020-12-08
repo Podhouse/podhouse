@@ -4,26 +4,34 @@
 
 import { ConcreteRequest } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
-export type GenreQueryVariables = {
-  primaryGenre: string;
+export type SearchPodcastPaginationQueryVariables = {
+  after?: string | null;
+  before?: string | null;
+  first?: number | null;
+  last?: number | null;
+  name?: string | null;
 };
-export type GenreQueryResponse = {
-  readonly " $fragmentRefs": FragmentRefs<"GenrePodcast_podcasts">;
+export type SearchPodcastPaginationQueryResponse = {
+  readonly " $fragmentRefs": FragmentRefs<"SearchPodcast_podcastsByName">;
 };
-export type GenreQuery = {
-  readonly response: GenreQueryResponse;
-  readonly variables: GenreQueryVariables;
+export type SearchPodcastPaginationQuery = {
+  readonly response: SearchPodcastPaginationQueryResponse;
+  readonly variables: SearchPodcastPaginationQueryVariables;
 };
 
 /*
-query GenreQuery(
-  $primaryGenre: String!
+query SearchPodcastPaginationQuery(
+  $after: String
+  $before: String
+  $first: Int = 10
+  $last: Int
+  $name: String
 ) {
-  ...GenrePodcast_podcasts_BPIEN
+  ...SearchPodcast_podcastsByName_3GnGUH
 }
 
-fragment GenrePodcast_podcasts_BPIEN on Query {
-  podcastsByGenre(primaryGenre: $primaryGenre, first: 10) {
+fragment SearchPodcast_podcastsByName_3GnGUH on Query {
+  podcastsByName(name: $name, after: $after, first: $first, before: $before, last: $last) {
     edges {
       node {
         _id
@@ -48,33 +56,67 @@ const node: ConcreteRequest = (function () {
       {
         defaultValue: null,
         kind: "LocalArgument",
-        name: "primaryGenre",
+        name: "after",
+      },
+      {
+        defaultValue: null,
+        kind: "LocalArgument",
+        name: "before",
+      },
+      {
+        defaultValue: 10,
+        kind: "LocalArgument",
+        name: "first",
+      },
+      {
+        defaultValue: null,
+        kind: "LocalArgument",
+        name: "last",
+      },
+      {
+        defaultValue: null,
+        kind: "LocalArgument",
+        name: "name",
       },
     ],
-    v1 = {
-      kind: "Variable",
-      name: "primaryGenre",
-      variableName: "primaryGenre",
-    },
-    v2 = [
+    v1 = [
       {
-        kind: "Literal",
-        name: "first",
-        value: 10,
+        kind: "Variable",
+        name: "after",
+        variableName: "after",
       },
-      v1 /*: any*/,
+      {
+        kind: "Variable",
+        name: "before",
+        variableName: "before",
+      },
+      {
+        kind: "Variable",
+        name: "first",
+        variableName: "first",
+      },
+      {
+        kind: "Variable",
+        name: "last",
+        variableName: "last",
+      },
+      {
+        kind: "Variable",
+        name: "name",
+        variableName: "name",
+      },
     ];
   return {
     fragment: {
       argumentDefinitions: v0 /*: any*/,
       kind: "Fragment",
       metadata: null,
-      name: "GenreQuery",
+      name: "SearchPodcastPaginationQuery",
       selections: [
         {
-          args: [v1 /*: any*/],
+          args: v1 /*: any*/,
           kind: "FragmentSpread",
-          name: "GenrePodcast_podcasts",
+          name: "SearchPodcast_podcastsByName",
         },
       ],
       type: "Query",
@@ -84,14 +126,14 @@ const node: ConcreteRequest = (function () {
     operation: {
       argumentDefinitions: v0 /*: any*/,
       kind: "Operation",
-      name: "GenreQuery",
+      name: "SearchPodcastPaginationQuery",
       selections: [
         {
           alias: null,
-          args: v2 /*: any*/,
+          args: v1 /*: any*/,
           concreteType: "PodcastConnection",
           kind: "LinkedField",
-          name: "podcastsByGenre",
+          name: "podcastsByName",
           plural: false,
           selections: [
             {
@@ -195,25 +237,25 @@ const node: ConcreteRequest = (function () {
         },
         {
           alias: null,
-          args: v2 /*: any*/,
-          filters: ["primaryGenre"],
+          args: v1 /*: any*/,
+          filters: ["name"],
           handle: "connection",
-          key: "GenrePodcast_podcastsByGenre",
+          key: "SearchPodcast_podcastsByName",
           kind: "LinkedHandle",
-          name: "podcastsByGenre",
+          name: "podcastsByName",
         },
       ],
     },
     params: {
-      cacheID: "e998e0fd36b569f7580c250b102a7786",
+      cacheID: "f78513b86f735e0ddfe755577276dff0",
       id: null,
       metadata: {},
-      name: "GenreQuery",
+      name: "SearchPodcastPaginationQuery",
       operationKind: "query",
       text:
-        "query GenreQuery(\n  $primaryGenre: String!\n) {\n  ...GenrePodcast_podcasts_BPIEN\n}\n\nfragment GenrePodcast_podcasts_BPIEN on Query {\n  podcastsByGenre(primaryGenre: $primaryGenre, first: 10) {\n    edges {\n      node {\n        _id\n        image\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n",
+        "query SearchPodcastPaginationQuery(\n  $after: String\n  $before: String\n  $first: Int = 10\n  $last: Int\n  $name: String\n) {\n  ...SearchPodcast_podcastsByName_3GnGUH\n}\n\nfragment SearchPodcast_podcastsByName_3GnGUH on Query {\n  podcastsByName(name: $name, after: $after, first: $first, before: $before, last: $last) {\n    edges {\n      node {\n        _id\n        image\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n",
     },
   };
 })();
-(node as any).hash = "446c4831d791f758d834facd84682572";
+(node as any).hash = "5f32156c1466e3f685306ff80d80ced5";
 export default node;

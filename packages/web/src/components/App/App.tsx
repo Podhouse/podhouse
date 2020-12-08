@@ -11,6 +11,7 @@ import Dashboard from "./Dashboard/Dashboard";
 
 import Browse from "src/modules/App/Browse/Browse";
 import Subscriptions from "src/modules/App/Subscriptions/Subscriptions";
+import Search from "src/modules/App/Search/Search";
 import Favorites from "src/modules/App/Favorites/Favorites";
 import Settings from "src/modules/App/Settings/Settings";
 import Podcast from "src/modules/App/Podcast/Podcast";
@@ -75,6 +76,7 @@ const App = () => {
           <Switch>
             <Route exact path="/" component={Browse} />
             <Route exact path="/subscriptions" component={Subscriptions} />
+            <Route exact path="/search" component={Search} />
             <Route exact path="/favorites" component={Favorites} />
             <Route exact path="/settings" component={Settings} />
             <Route exact path="/podcast/:id" component={Podcast} />

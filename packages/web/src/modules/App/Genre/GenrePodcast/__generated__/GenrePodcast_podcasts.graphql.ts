@@ -4,7 +4,7 @@
 
 import { ReaderFragment } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
-export type Genre_podcasts = {
+export type GenrePodcast_podcasts = {
   readonly podcastsByGenre: {
     readonly edges: ReadonlyArray<{
       readonly node: {
@@ -13,12 +13,12 @@ export type Genre_podcasts = {
       } | null;
     } | null>;
   };
-  readonly " $refType": "Genre_podcasts";
+  readonly " $refType": "GenrePodcast_podcasts";
 };
-export type Genre_podcasts$data = Genre_podcasts;
-export type Genre_podcasts$key = {
-  readonly " $data"?: Genre_podcasts$data;
-  readonly " $fragmentRefs": FragmentRefs<"Genre_podcasts">;
+export type GenrePodcast_podcasts$data = GenrePodcast_podcasts;
+export type GenrePodcast_podcasts$key = {
+  readonly " $data"?: GenrePodcast_podcasts$data;
+  readonly " $fragmentRefs": FragmentRefs<"GenrePodcast_podcasts">;
 };
 
 const node: ReaderFragment = (function () {
@@ -77,7 +77,7 @@ const node: ReaderFragment = (function () {
         operation: require("./GenrePaginationQuery.graphql.ts"),
       },
     },
-    name: "Genre_podcasts",
+    name: "GenrePodcast_podcasts",
     selections: [
       {
         alias: "podcastsByGenre",
@@ -90,7 +90,7 @@ const node: ReaderFragment = (function () {
         ],
         concreteType: "PodcastConnection",
         kind: "LinkedField",
-        name: "__Genre_podcastsByGenre_connection",
+        name: "__GenrePodcast_podcastsByGenre_connection",
         plural: false,
         selections: [
           {
@@ -190,5 +190,5 @@ const node: ReaderFragment = (function () {
     abstractKey: null,
   };
 })();
-(node as any).hash = "71b4a506fba32f567a77bde48eb22d94";
+(node as any).hash = "f64ff1d026459e67c4d773bc3f0366ee";
 export default node;
