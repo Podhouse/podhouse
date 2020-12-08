@@ -1,10 +1,13 @@
 import React from "react";
-import { Heading, Button, Link, Image } from "@chakra-ui/react";
+import { Heading, Button, Link, Image, useToast } from "@chakra-ui/react";
 import { ExternalLink } from "react-feather";
-import { GraphQLTaggedNode } from "relay-runtime";
-import { usePreloadedQuery } from "react-relay/hooks";
 import graphql from "babel-plugin-relay/macro";
-import { useLazyLoadQuery } from "react-relay/hooks";
+import { GraphQLTaggedNode } from "relay-runtime";
+import {
+  usePreloadedQuery,
+  useLazyLoadQuery,
+  useMutation,
+} from "react-relay/hooks";
 
 import {
   PodcastInfoContainer,
@@ -18,16 +21,33 @@ import {
 
 import PodcastEpisodes from "./PodcastEpisodes/PodcastEpisodes";
 
-import { PodcastQuery } from "../__generated__/PodcastQuery.graphql";
-
-import useAuthUser from "src/hooks/useAuthUser";
+import {
+  PodcastUserSubscribeToPodcast,
+  PodcastUserUnsubscribeToPodcast,
+} from "./PodcastUser";
 
 import { getToken } from "src/utils/auth";
 
+import useAuthUser from "src/hooks/useAuthUser";
+
+import { PodcastUserSubscribeToPodcastMutation } from "./__generated__/PodcastUserSubscribeToPodcastMutation.graphql";
+
+import { PodcastUserUnsubscribeToPodcastMutation } from "./__generated__/PodcastUserUnsubscribeToPodcastMutation.graphql";
+
+import { PodcastQuery } from "../__generated__/PodcastQuery.graphql";
+
 import { PodcastInfoQuery } from "./__generated__/PodcastInfoQuery.graphql";
 
-const query = graphql`
-  query PodcastInfoQuery {
+import { PodcastInfoUserQuery } from "./__generated__/PodcastInfoUserQuery.graphql";
+
+const podcastInfoQuery = graphql`
+  query PodcastInfoQuery($_id: ID!) {
+    userSubscribedToPodcast(_id: $_id)
+  }
+`;
+
+const userQuery = graphql`
+  query PodcastInfoUserQuery {
     currentUser {
       ...useAuthUser_user
     }
@@ -43,10 +63,10 @@ interface Props {
 }
 
 const PodcastInfo = ({ queryReference, query, shouldLoadMore }: Props) => {
-  const { podcast } = usePreloadedQuery<PodcastQuery>(query, queryReference);
+  const toast = useToast();
 
-  const data = useLazyLoadQuery<PodcastInfoQuery>(
-    query,
+  const userData = useLazyLoadQuery<PodcastInfoUserQuery>(
+    userQuery,
     {},
     {
       fetchPolicy: "store-and-network",
@@ -54,13 +74,76 @@ const PodcastInfo = ({ queryReference, query, shouldLoadMore }: Props) => {
     }
   );
 
-  const isAuthenticated = useAuthUser(data?.currentUser);
+  const isAuthenticated = useAuthUser(userData?.currentUser);
 
-  if (!isAuthenticated) {
-    console.log("not: ", isAuthenticated);
-  } else {
-    console.log("true: ", isAuthenticated);
-  }
+  const { podcast } = usePreloadedQuery<PodcastQuery>(query, queryReference);
+
+  const { userSubscribedToPodcast } = useLazyLoadQuery<PodcastInfoQuery>(
+    podcastInfoQuery,
+    {
+      _id: podcast?._id as string,
+    },
+    {
+      fetchPolicy: "store-and-network",
+      fetchKey: getToken(),
+    }
+  );
+
+  console.log("userSubscribedToPodcast: ", userSubscribedToPodcast);
+
+  const [
+    userSubscribeToPodcast,
+    isSubscribeToPodcastPending,
+  ] = useMutation<PodcastUserSubscribeToPodcastMutation>(
+    PodcastUserSubscribeToPodcast
+  );
+
+  const [
+    userUnsubscribeToPodcast,
+    isUnsubscribeToPodcastPending,
+  ] = useMutation<PodcastUserUnsubscribeToPodcastMutation>(
+    PodcastUserUnsubscribeToPodcast
+  );
+
+  const onSubscribeOrUnsubscribeToPodcast = () => {
+    if (!isAuthenticated) return {};
+
+    if (userSubscribedToPodcast === true) {
+      userUnsubscribeToPodcast({
+        variables: {
+          input: {
+            podcastId: podcast?._id as string,
+          },
+        },
+        onCompleted: () => {
+          toast({
+            title: "Unsubscribed successfully",
+            description: "You've unsubscribed to this podcast",
+            status: "success",
+            duration: 3000,
+            isClosable: true,
+          });
+        },
+      });
+    } else {
+      userSubscribeToPodcast({
+        variables: {
+          input: {
+            podcastId: podcast?._id as string,
+          },
+        },
+        onCompleted: () => {
+          toast({
+            title: "Subscribed successfully",
+            description: "You've subscribed to this podcast",
+            status: "success",
+            duration: 3000,
+            isClosable: true,
+          });
+        },
+      });
+    }
+  };
 
   return (
     <PodcastInfoContainer>
@@ -106,6 +189,10 @@ const PodcastInfo = ({ queryReference, query, shouldLoadMore }: Props) => {
         <PodcastInfoButtonsContainer>
           <Button
             type="button"
+            onClick={onSubscribeOrUnsubscribeToPodcast}
+            isLoading={
+              isSubscribeToPodcastPending || isUnsubscribeToPodcastPending
+            }
             width="100%"
             bgColor="#101010"
             color="#ffffff"
@@ -122,7 +209,7 @@ const PodcastInfo = ({ queryReference, query, shouldLoadMore }: Props) => {
               cursor: "not-allowed",
             }}
           >
-            Subscribe
+            {userSubscribedToPodcast === true ? "Unsubscribe" : "Subscribe"}
           </Button>
         </PodcastInfoButtonsContainer>
 

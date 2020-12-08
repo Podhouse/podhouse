@@ -3,12 +3,11 @@
 // @ts-nocheck
 
 import { ConcreteRequest } from "relay-runtime";
-import { FragmentRefs } from "relay-runtime";
-export type PodcastInfoQueryVariables = {};
+export type PodcastInfoQueryVariables = {
+  _id: string;
+};
 export type PodcastInfoQueryResponse = {
-  readonly currentUser: {
-    readonly " $fragmentRefs": FragmentRefs<"useAuthUser_user">;
-  } | null;
+  readonly userSubscribedToPodcast: boolean;
 };
 export type PodcastInfoQuery = {
   readonly response: PodcastInfoQueryResponse;
@@ -16,115 +15,63 @@ export type PodcastInfoQuery = {
 };
 
 /*
-query PodcastInfoQuery {
-  currentUser {
-    ...useAuthUser_user
-    id
-  }
-}
-
-fragment useAuthUser_user on User {
-  _id
-  id
-  email
-  createdAt
-  updatedAt
+query PodcastInfoQuery(
+  $_id: ID!
+) {
+  userSubscribedToPodcast(_id: $_id)
 }
 */
 
 const node: ConcreteRequest = (function () {
   var v0 = [
-    {
-      alias: null,
-      args: null,
-      kind: "ScalarField",
-      name: "_id",
-      storageKey: null,
-    },
-    {
-      alias: null,
-      args: null,
-      kind: "ScalarField",
-      name: "id",
-      storageKey: null,
-    },
-    {
-      alias: null,
-      args: null,
-      kind: "ScalarField",
-      name: "email",
-      storageKey: null,
-    },
-    {
-      alias: null,
-      args: null,
-      kind: "ScalarField",
-      name: "createdAt",
-      storageKey: null,
-    },
-    {
-      alias: null,
-      args: null,
-      kind: "ScalarField",
-      name: "updatedAt",
-      storageKey: null,
-    },
-  ];
+      {
+        defaultValue: null,
+        kind: "LocalArgument",
+        name: "_id",
+      },
+    ],
+    v1 = [
+      {
+        alias: null,
+        args: [
+          {
+            kind: "Variable",
+            name: "_id",
+            variableName: "_id",
+          },
+        ],
+        kind: "ScalarField",
+        name: "userSubscribedToPodcast",
+        storageKey: null,
+      },
+    ];
   return {
     fragment: {
-      argumentDefinitions: [],
+      argumentDefinitions: v0 /*: any*/,
       kind: "Fragment",
       metadata: null,
       name: "PodcastInfoQuery",
-      selections: [
-        {
-          alias: null,
-          args: null,
-          concreteType: "User",
-          kind: "LinkedField",
-          name: "currentUser",
-          plural: false,
-          selections: [
-            {
-              kind: "InlineDataFragmentSpread",
-              name: "useAuthUser_user",
-              selections: v0 /*: any*/,
-            },
-          ],
-          storageKey: null,
-        },
-      ],
+      selections: v1 /*: any*/,
       type: "Query",
       abstractKey: null,
     },
     kind: "Request",
     operation: {
-      argumentDefinitions: [],
+      argumentDefinitions: v0 /*: any*/,
       kind: "Operation",
       name: "PodcastInfoQuery",
-      selections: [
-        {
-          alias: null,
-          args: null,
-          concreteType: "User",
-          kind: "LinkedField",
-          name: "currentUser",
-          plural: false,
-          selections: v0 /*: any*/,
-          storageKey: null,
-        },
-      ],
+      selections: v1 /*: any*/,
     },
     params: {
-      cacheID: "0570a6aaf2b056cf819a0ad4e7eae061",
+      cacheID: "38fa9be4afa05c87fc30f6f9f8c56c69",
       id: null,
       metadata: {},
       name: "PodcastInfoQuery",
       operationKind: "query",
       text:
-        "query PodcastInfoQuery {\n  currentUser {\n    ...useAuthUser_user\n    id\n  }\n}\n\nfragment useAuthUser_user on User {\n  _id\n  id\n  email\n  createdAt\n  updatedAt\n}\n",
+        "query PodcastInfoQuery(\n  $_id: ID!\n) {\n  userSubscribedToPodcast(_id: $_id)\n}\n",
     },
   };
 })();
-(node as any).hash = "a36efcf1fbf69416f3e2a296e815859f";
+(node as any).hash = "aa40117bed01c9e7854afecd8db9ae22";
 export default node;

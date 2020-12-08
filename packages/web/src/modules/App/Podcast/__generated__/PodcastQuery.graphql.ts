@@ -9,6 +9,8 @@ export type PodcastQueryVariables = {
 };
 export type PodcastQueryResponse = {
   readonly podcast: {
+    readonly id: string;
+    readonly _id: string;
     readonly name: string;
     readonly author: string;
     readonly description: string;
@@ -28,6 +30,8 @@ query PodcastQuery(
   $_id: ID!
 ) {
   podcast(_id: $_id) {
+    id
+    _id
     name
     author
     description
@@ -35,7 +39,6 @@ query PodcastQuery(
     rss
     image
     ...PodcastEpisodes_episodes
-    id
   }
 }
 
@@ -92,58 +95,65 @@ const node: ConcreteRequest = (function () {
       alias: null,
       args: null,
       kind: "ScalarField",
-      name: "name",
+      name: "id",
       storageKey: null,
     },
     v3 = {
       alias: null,
       args: null,
       kind: "ScalarField",
-      name: "author",
+      name: "_id",
       storageKey: null,
     },
     v4 = {
       alias: null,
       args: null,
       kind: "ScalarField",
-      name: "description",
+      name: "name",
       storageKey: null,
     },
     v5 = {
       alias: null,
       args: null,
       kind: "ScalarField",
-      name: "website",
+      name: "author",
       storageKey: null,
     },
     v6 = {
       alias: null,
       args: null,
       kind: "ScalarField",
-      name: "rss",
+      name: "description",
       storageKey: null,
     },
     v7 = {
       alias: null,
       args: null,
       kind: "ScalarField",
+      name: "website",
+      storageKey: null,
+    },
+    v8 = {
+      alias: null,
+      args: null,
+      kind: "ScalarField",
+      name: "rss",
+      storageKey: null,
+    },
+    v9 = {
+      alias: null,
+      args: null,
+      kind: "ScalarField",
       name: "image",
       storageKey: null,
     },
-    v8 = [
+    v10 = [
       {
         kind: "Literal",
         name: "first",
         value: 10,
       },
-    ],
-    v9 = {
-      alias: null,
-      args: null,
-      kind: "ScalarField",
-      name: "id",
-      storageKey: null,
-    };
+    ];
   return {
     fragment: {
       argumentDefinitions: v0 /*: any*/,
@@ -165,6 +175,8 @@ const node: ConcreteRequest = (function () {
             v5 /*: any*/,
             v6 /*: any*/,
             v7 /*: any*/,
+            v8 /*: any*/,
+            v9 /*: any*/,
             {
               args: null,
               kind: "FragmentSpread",
@@ -197,9 +209,11 @@ const node: ConcreteRequest = (function () {
             v5 /*: any*/,
             v6 /*: any*/,
             v7 /*: any*/,
+            v8 /*: any*/,
+            v9 /*: any*/,
             {
               alias: null,
-              args: v8 /*: any*/,
+              args: v10 /*: any*/,
               concreteType: "EpisodeConnection",
               kind: "LinkedField",
               name: "episodes",
@@ -221,13 +235,7 @@ const node: ConcreteRequest = (function () {
                       name: "node",
                       plural: false,
                       selections: [
-                        {
-                          alias: null,
-                          args: null,
-                          kind: "ScalarField",
-                          name: "_id",
-                          storageKey: null,
-                        },
+                        v3 /*: any*/,
                         {
                           alias: null,
                           args: null,
@@ -235,7 +243,7 @@ const node: ConcreteRequest = (function () {
                           name: "title",
                           storageKey: null,
                         },
-                        v4 /*: any*/,
+                        v6 /*: any*/,
                         {
                           alias: null,
                           args: null,
@@ -250,7 +258,7 @@ const node: ConcreteRequest = (function () {
                           name: "link",
                           storageKey: null,
                         },
-                        v7 /*: any*/,
+                        v9 /*: any*/,
                         {
                           alias: null,
                           args: null,
@@ -273,14 +281,14 @@ const node: ConcreteRequest = (function () {
                           name: "podcast",
                           plural: false,
                           selections: [
+                            v4 /*: any*/,
+                            v7 /*: any*/,
+                            v8 /*: any*/,
                             v2 /*: any*/,
-                            v5 /*: any*/,
-                            v6 /*: any*/,
-                            v9 /*: any*/,
                           ],
                           storageKey: null,
                         },
-                        v9 /*: any*/,
+                        v2 /*: any*/,
                         {
                           alias: null,
                           args: null,
@@ -345,29 +353,28 @@ const node: ConcreteRequest = (function () {
             },
             {
               alias: null,
-              args: v8 /*: any*/,
+              args: v10 /*: any*/,
               filters: null,
               handle: "connection",
               key: "PodcastEpisodes_episodes",
               kind: "LinkedHandle",
               name: "episodes",
             },
-            v9 /*: any*/,
           ],
           storageKey: null,
         },
       ],
     },
     params: {
-      cacheID: "4fd15b76ae1fc467cfbd467f5d0aeba8",
+      cacheID: "c7b8a93c1fd90ca9949ffa7921d06cc5",
       id: null,
       metadata: {},
       name: "PodcastQuery",
       operationKind: "query",
       text:
-        "query PodcastQuery(\n  $_id: ID!\n) {\n  podcast(_id: $_id) {\n    name\n    author\n    description\n    website\n    rss\n    image\n    ...PodcastEpisodes_episodes\n    id\n  }\n}\n\nfragment PodcastEpisodes_episodes on Podcast {\n  episodes(first: 10) {\n    edges {\n      node {\n        _id\n        title\n        description\n        publishedDate\n        link\n        image\n        audio\n        duration\n        podcast {\n          name\n          website\n          rss\n          id\n        }\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n  id\n}\n",
+        "query PodcastQuery(\n  $_id: ID!\n) {\n  podcast(_id: $_id) {\n    id\n    _id\n    name\n    author\n    description\n    website\n    rss\n    image\n    ...PodcastEpisodes_episodes\n  }\n}\n\nfragment PodcastEpisodes_episodes on Podcast {\n  episodes(first: 10) {\n    edges {\n      node {\n        _id\n        title\n        description\n        publishedDate\n        link\n        image\n        audio\n        duration\n        podcast {\n          name\n          website\n          rss\n          id\n        }\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n  id\n}\n",
     },
   };
 })();
-(node as any).hash = "54c760e3c683d1ee60a8f3fc0b962fdc";
+(node as any).hash = "5aa03b301ef743619a6a491ed62f5a8d";
 export default node;

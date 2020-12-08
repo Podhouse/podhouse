@@ -11,6 +11,8 @@ import PodcastInfo from "./PodcastInfo/PodcastInfo";
 const query = graphql`
   query PodcastQuery($_id: ID!) {
     podcast(_id: $_id) {
+      id
+      _id
       name
       author
       description
