@@ -8,7 +8,7 @@ import SkeletonPage from "src/components/Skeletons/SkeletonPage/SkeletonPage";
 
 import PodcastInfo from "./PodcastInfo/PodcastInfo";
 
-const query = graphql`
+const podcastQuery = graphql`
   query PodcastQuery($_id: ID!) {
     podcast(_id: $_id) {
       id
@@ -20,6 +20,14 @@ const query = graphql`
       rss
       image
       ...PodcastEpisodes_episodes
+    }
+  }
+`;
+
+const userQuery = graphql`
+  query PodcastInfoUserQuery($input: UserSubscribedInput!) {
+    currentUser {
+      subscribed(input: $input)
     }
   }
 `;
@@ -40,15 +48,22 @@ const Podcast = () => {
 
   const { state } = useLocation<any>();
 
-  const [queryReference, loadQuery, disposeQuery] = useQueryLoader(query);
+  const [queryReference, loadQuery, disposeQuery] = useQueryLoader(
+    podcastQuery
+  );
+  const [userQueryReference, userLoadQuery, userDisposeQuery] = useQueryLoader(
+    userQuery
+  );
 
   useEffect(() => {
-    loadQuery({ _id: state._id }, { fetchPolicy: "store-and-network" });
+    loadQuery({ _id: state._id }, { fetchPolicy: "store-or-network" });
+    userLoadQuery({ input: { _id: state._id } });
 
     return () => {
       disposeQuery();
+      userDisposeQuery();
     };
-  }, [loadQuery, disposeQuery, state._id]);
+  }, [loadQuery, userLoadQuery, disposeQuery, userDisposeQuery, state._id]);
 
   const onLoadMore = (value: ScrollFrameType) => {
     if (value.top === 1) {
@@ -68,7 +83,9 @@ const Podcast = () => {
         <Suspense fallback={<SkeletonPage episodes={true} />}>
           <PodcastInfo
             queryReference={queryReference}
-            query={query}
+            podcastQuery={podcastQuery}
+            userQueryReference={userQueryReference}
+            userQuery={userQuery}
             shouldLoadMore={shouldLoadMore}
           />
         </Suspense>
