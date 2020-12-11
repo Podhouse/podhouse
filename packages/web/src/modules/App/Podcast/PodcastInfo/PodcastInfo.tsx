@@ -109,7 +109,7 @@ const PodcastInfo = ({ queryReference, query, shouldLoadMore }: Props) => {
       userUnsubscribeToPodcast({
         variables: {
           input: {
-            podcastId: podcast?._id as string,
+            _id: podcast?._id as string,
           },
         },
         onCompleted: () => {
@@ -126,7 +126,7 @@ const PodcastInfo = ({ queryReference, query, shouldLoadMore }: Props) => {
       userSubscribeToPodcast({
         variables: {
           input: {
-            podcastId: podcast?._id as string,
+            _id: podcast?._id as string,
           },
         },
         onCompleted: () => {

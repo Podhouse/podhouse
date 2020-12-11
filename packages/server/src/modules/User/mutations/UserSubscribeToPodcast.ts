@@ -1,21 +1,25 @@
 import { GraphQLString, GraphQLNonNull } from "graphql";
-import { mutationWithClientMutationId } from "graphql-relay";
+import { mutationWithClientMutationId, toGlobalId } from "graphql-relay";
+
+import * as UserLoader from "../UserLoader";
+
+import { UserConnection } from "../UserType";
 
 import { GraphQLContext } from "../../../types";
 
 type UserSubscribePodcastArgs = {
-  podcastId: string;
+  _id: string;
 };
 
 export default mutationWithClientMutationId({
   name: "UserSubscribeToPodcast",
   inputFields: {
-    podcastId: {
+    _id: {
       type: new GraphQLNonNull(GraphQLString),
     },
   },
   mutateAndGetPayload: async (
-    { podcastId }: UserSubscribePodcastArgs,
+    { _id }: UserSubscribePodcastArgs,
     { user }: GraphQLContext,
   ) => {
     if (!user) {
@@ -24,7 +28,7 @@ export default mutationWithClientMutationId({
       };
     }
 
-    const subscribedToPodcast = user.subscriptions.includes(podcastId as any);
+    const subscribedToPodcast = user.subscriptions.includes(_id as any);
 
     if (subscribedToPodcast === true) {
       return {
@@ -32,7 +36,7 @@ export default mutationWithClientMutationId({
         error: "Already subscribed to podcast",
       };
     } else {
-      user.subscriptions.push(podcastId as any);
+      user.subscriptions.push(_id as any);
       await user.save();
 
       return {
@@ -42,13 +46,22 @@ export default mutationWithClientMutationId({
     }
   },
   outputFields: {
-    message: {
-      type: GraphQLString,
-      resolve: ({ message }) => message,
-    },
-    error: {
-      type: GraphQLString,
-      resolve: ({ error }) => error,
+    user: {
+      type: UserConnection.edgeType,
+      resolve: async (root, _, context) => {
+        // Load new edge from loader
+        const currentUser = await UserLoader.load(context, context.user?._id);
+
+        // Returns null if no node was loaded
+        if (!currentUser) {
+          return null;
+        }
+
+        return {
+          cursor: toGlobalId("User", currentUser._id),
+          node: currentUser,
+        };
+      },
     },
   },
 });

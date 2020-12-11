@@ -5,8 +5,18 @@ export const PodcastUserSubscribeToPodcast = graphql`
     $input: UserSubscribeToPodcastInput!
   ) {
     UserSubscribeToPodcast(input: $input) {
-      message
-      error
+      user {
+        node {
+          subscriptions {
+            edges {
+              node {
+                id
+                name
+              }
+            }
+          }
+        }
+      }
     }
   }
 `;
@@ -16,8 +26,18 @@ export const PodcastUserUnsubscribeToPodcast = graphql`
     $input: UserUnsubscribeToPodcastInput!
   ) {
     UserUnsubscribeToPodcast(input: $input) {
-      message
-      error
+      user {
+        node {
+          subscriptions {
+            edges {
+              node {
+                id
+                name
+              }
+            }
+          }
+        }
+      }
     }
   }
 `;

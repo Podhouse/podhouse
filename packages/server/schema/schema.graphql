@@ -210,23 +210,30 @@ input UserChangePasswordInput {
 }
 
 type UserSubscribeToPodcastPayload {
-  message: String
-  error: String
+  user: UserEdge
   clientMutationId: String
 }
 
+"""An edge in a connection."""
+type UserEdge {
+  """The item at the end of the edge"""
+  node: User
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
 input UserSubscribeToPodcastInput {
-  podcastId: String!
+  _id: String!
   clientMutationId: String
 }
 
 type UserUnsubscribeToPodcastPayload {
-  message: String
-  error: String
+  user: UserEdge
   clientMutationId: String
 }
 
 input UserUnsubscribeToPodcastInput {
-  podcastId: String!
+  _id: String!
   clientMutationId: String
 }

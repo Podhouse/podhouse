@@ -1,21 +1,25 @@
 import { GraphQLString, GraphQLNonNull } from "graphql";
-import { mutationWithClientMutationId } from "graphql-relay";
+import { mutationWithClientMutationId, toGlobalId } from "graphql-relay";
+
+import * as UserLoader from "../UserLoader";
+
+import { UserConnection } from "../UserType";
 
 import { GraphQLContext } from "../../../types";
 
 type UserSubscribePodcastArgs = {
-  podcastId: string;
+  _id: string;
 };
 
 export default mutationWithClientMutationId({
   name: "UserUnsubscribeToPodcast",
   inputFields: {
-    podcastId: {
+    _id: {
       type: new GraphQLNonNull(GraphQLString),
     },
   },
   mutateAndGetPayload: async (
-    { podcastId }: UserSubscribePodcastArgs,
+    { _id }: UserSubscribePodcastArgs,
     { user }: GraphQLContext,
   ) => {
     if (!user) {
@@ -24,10 +28,10 @@ export default mutationWithClientMutationId({
       };
     }
 
-    const subscribedToPodcast = user.subscriptions.includes(podcastId as any);
+    const subscribedToPodcast = user.subscriptions.includes(_id as any);
 
     if (subscribedToPodcast === true) {
-      const podcastIdIndex = user.subscriptions.indexOf(podcastId as any);
+      const podcastIdIndex = user.subscriptions.indexOf(_id as any);
       const subscriptions = user.subscriptions.filter(
         (_, index) => index !== podcastIdIndex,
       );
@@ -47,13 +51,22 @@ export default mutationWithClientMutationId({
     }
   },
   outputFields: {
-    message: {
-      type: GraphQLString,
-      resolve: ({ message }) => message,
-    },
-    error: {
-      type: GraphQLString,
-      resolve: ({ error }) => error,
+    user: {
+      type: UserConnection.edgeType,
+      resolve: async (root, _, context) => {
+        // Load new edge from loader
+        const currentUser = await UserLoader.load(context, context.user?._id);
+
+        // Returns null if no node was loaded
+        if (!currentUser) {
+          return null;
+        }
+
+        return {
+          cursor: toGlobalId("User", currentUser._id),
+          node: currentUser,
+        };
+      },
     },
   },
 });
