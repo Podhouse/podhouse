@@ -19,42 +19,78 @@ import { usePlayerContext } from "src/machines/Player/PlayerContext";
 const EpisodeItem = ({ node }: EpisodeItemProps) => {
   const { _id, image, title, description, publishedDate, duration } = node;
 
-  const { playing, episode, onEpisode } = usePlayerContext();
+  const {
+    loading,
+    playing,
+    paused,
+    onToggle,
+    episode,
+    onEpisode,
+  } = usePlayerContext();
 
   const renderEpisodeButton = () => {
     if (episode && episode.title === title) {
-      if (playing) {
+      if (loading) {
+        return (
+          <EpisodeItemButton type="button" width="90px" isLoading={true}>
+            Loading
+          </EpisodeItemButton>
+        );
+      } else if (playing) {
         return (
           <EpisodeItemButton
             type="button"
+            width="90px"
             leftIcon={<Pause size={14} />}
-            onClick={() => onEpisode(node)}
+            onClick={onToggle}
+            bgColor="#101010"
+            color="#ffffff"
+            _hover={{ bg: "#101010" }}
+            _active={{
+              bg: "#101010",
+            }}
+            _focus={{
+              boxShadow:
+                "0 0 1px 2px rgba(0, 0, 0, .50), 0 1px 1px rgba(0, 0, 0, .15)",
+            }}
           >
             Pause
           </EpisodeItemButton>
         );
-      } else {
+      } else if (paused) {
         return (
           <EpisodeItemButton
             type="button"
+            width="90px"
             leftIcon={<Play size={14} />}
-            onClick={() => onEpisode(node)}
+            onClick={onToggle}
+            bgColor="#101010"
+            color="#ffffff"
+            _hover={{ bg: "#101010" }}
+            _active={{
+              bg: "#101010",
+            }}
+            _focus={{
+              boxShadow:
+                "0 0 1px 2px rgba(0, 0, 0, .50), 0 1px 1px rgba(0, 0, 0, .15)",
+            }}
           >
             Play
           </EpisodeItemButton>
         );
       }
-    } else {
-      return (
-        <EpisodeItemButton
-          type="button"
-          leftIcon={<Play size={14} />}
-          onClick={() => onEpisode(node)}
-        >
-          Play
-        </EpisodeItemButton>
-      );
     }
+
+    return (
+      <EpisodeItemButton
+        type="button"
+        width="90px"
+        leftIcon={<Play size={14} />}
+        onClick={() => onEpisode(node)}
+      >
+        Play
+      </EpisodeItemButton>
+    );
   };
 
   return (
