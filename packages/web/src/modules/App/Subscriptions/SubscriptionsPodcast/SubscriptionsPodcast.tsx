@@ -8,6 +8,8 @@ import PodcastsWithOnlyAvatarList from "src/components/Lists/PodcastsWithOnlyAva
 
 import { SubscriptionsPodcastPaginationQuery } from "./__generated__/SubscriptionsPodcastPaginationQuery.graphql";
 
+import { SubscriptionsPodcast_subscriptions$key } from "./__generated__/SubscriptionsPodcast_subscriptions.graphql";
+
 const query = graphql`
   fragment SubscriptionsPodcast_subscriptions on User
   @argumentDefinitions(
@@ -37,7 +39,7 @@ interface Props {
 const SubscriptionsPodcast = ({ user, shouldLoadMore }: Props) => {
   const { data, loadNext, isLoadingNext } = usePaginationFragment<
     SubscriptionsPodcastPaginationQuery,
-    any
+    SubscriptionsPodcast_subscriptions$key
   >(query, user);
 
   const loadMore = useCallback(() => {

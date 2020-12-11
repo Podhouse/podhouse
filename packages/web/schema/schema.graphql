@@ -36,6 +36,7 @@ type User implements Node {
   _id: String!
   email: String!
   subscriptions(after: String, first: Int, before: String, last: Int): PodcastConnection!
+  subscribed(input: UserSubscribedInput!): Boolean
   createdAt: String!
   updatedAt: String!
 }
@@ -163,6 +164,11 @@ type Episode implements Node {
   podcast: Podcast!
 }
 
+"""Input payload for checking if user is subscribed to podcast"""
+input UserSubscribedInput {
+  _id: String!
+}
+
 type Mutation {
   UserSignInWithEmail(input: UserSignInWithEmailInput!): UserSignInWithEmailPayload
   UserSignUpWithEmail(input: UserSignUpWithEmailInput!): UserSignUpWithEmailPayload
@@ -211,6 +217,7 @@ input UserChangePasswordInput {
 
 type UserSubscribeToPodcastPayload {
   user: UserEdge
+  error: String
   clientMutationId: String
 }
 
@@ -230,6 +237,7 @@ input UserSubscribeToPodcastInput {
 
 type UserUnsubscribeToPodcastPayload {
   user: UserEdge
+  error: String
   clientMutationId: String
 }
 

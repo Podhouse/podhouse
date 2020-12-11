@@ -32,7 +32,6 @@ export default mutationWithClientMutationId({
 
     if (subscribedToPodcast === true) {
       return {
-        message: null,
         error: "Already subscribed to podcast",
       };
     } else {
@@ -40,7 +39,7 @@ export default mutationWithClientMutationId({
       await user.save();
 
       return {
-        message: "Subscribed successfully",
+        _id: user._id,
         error: null,
       };
     }
@@ -48,11 +47,9 @@ export default mutationWithClientMutationId({
   outputFields: {
     user: {
       type: UserConnection.edgeType,
-      resolve: async (root, _, context) => {
-        // Load new edge from loader
-        const currentUser = await UserLoader.load(context, context.user?._id);
+      resolve: async ({ _id }, _, context) => {
+        const currentUser = await UserLoader.load(context, _id);
 
-        // Returns null if no node was loaded
         if (!currentUser) {
           return null;
         }
@@ -62,6 +59,10 @@ export default mutationWithClientMutationId({
           node: currentUser,
         };
       },
+    },
+    error: {
+      type: GraphQLString,
+      resolve: ({ error }) => error,
     },
   },
 });

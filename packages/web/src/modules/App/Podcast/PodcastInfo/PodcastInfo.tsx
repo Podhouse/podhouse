@@ -26,33 +26,12 @@ import {
   PodcastUserUnsubscribeToPodcast,
 } from "./PodcastUser";
 
-import { getToken } from "src/utils/auth";
-
-import useAuthUser from "src/hooks/useAuthUser";
-
 import { PodcastUserSubscribeToPodcastMutation } from "./__generated__/PodcastUserSubscribeToPodcastMutation.graphql";
-
 import { PodcastUserUnsubscribeToPodcastMutation } from "./__generated__/PodcastUserUnsubscribeToPodcastMutation.graphql";
-
 import { PodcastQuery } from "../__generated__/PodcastQuery.graphql";
-
-import { PodcastInfoQuery } from "./__generated__/PodcastInfoQuery.graphql";
-
 import { PodcastInfoUserQuery } from "./__generated__/PodcastInfoUserQuery.graphql";
 
-const podcastInfoQuery = graphql`
-  query PodcastInfoQuery($_id: ID!) {
-    userSubscribedToPodcast(_id: $_id)
-  }
-`;
-
-const userQuery = graphql`
-  query PodcastInfoUserQuery {
-    currentUser {
-      ...useAuthUser_user
-    }
-  }
-`;
+import { getToken } from "src/utils/auth";
 
 // TODO: Should improve the queryReference type to be a PreloadedQuery<PodcastQuery>
 interface Props {
@@ -61,29 +40,28 @@ interface Props {
   shouldLoadMore: boolean;
 }
 
+const UserQuery = graphql`
+  query PodcastInfoUserQuery($input: UserSubscribedInput!) {
+    currentUser {
+      subscribed(input: $input)
+    }
+  }
+`;
+
 const PodcastInfo = ({ queryReference, query, shouldLoadMore }: Props) => {
   const toast = useToast();
 
-  const userData = useLazyLoadQuery<PodcastInfoUserQuery>(
-    userQuery,
-    {},
-    {
-      fetchPolicy: "store-and-network",
-      fetchKey: getToken(),
-    }
-  );
-
-  const isAuthenticated = useAuthUser(userData?.currentUser);
-
   const { podcast } = usePreloadedQuery<PodcastQuery>(query, queryReference);
 
-  const { userSubscribedToPodcast } = useLazyLoadQuery<PodcastInfoQuery>(
-    podcastInfoQuery,
+  const { currentUser } = useLazyLoadQuery<PodcastInfoUserQuery>(
+    UserQuery,
     {
-      _id: podcast?._id as string,
+      input: {
+        _id: podcast?._id as string,
+      },
     },
     {
-      fetchPolicy: "store-and-network",
+      fetchPolicy: "store-or-network",
       fetchKey: getToken(),
     }
   );
@@ -103,43 +81,41 @@ const PodcastInfo = ({ queryReference, query, shouldLoadMore }: Props) => {
   );
 
   const onSubscribeOrUnsubscribeToPodcast = () => {
-    if (!isAuthenticated) return {};
+    if (!currentUser) return;
 
-    if (userSubscribedToPodcast === true) {
-      userUnsubscribeToPodcast({
-        variables: {
-          input: {
-            _id: podcast?._id as string,
-          },
+    userSubscribeToPodcast({
+      variables: {
+        input: {
+          _id: podcast?._id as string,
         },
-        onCompleted: () => {
-          toast({
-            title: "Unsubscribed successfully",
-            description: "You've unsubscribed to this podcast",
-            status: "success",
-            duration: 3000,
-            isClosable: true,
-          });
+      },
+      onCompleted: () => {
+        toast({
+          title: "Subscribed successfully",
+          description: "You've subscribed to this podcast",
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+        });
+      },
+    });
+
+    userUnsubscribeToPodcast({
+      variables: {
+        input: {
+          _id: podcast?._id as string,
         },
-      });
-    } else {
-      userSubscribeToPodcast({
-        variables: {
-          input: {
-            _id: podcast?._id as string,
-          },
-        },
-        onCompleted: () => {
-          toast({
-            title: "Subscribed successfully",
-            description: "You've subscribed to this podcast",
-            status: "success",
-            duration: 3000,
-            isClosable: true,
-          });
-        },
-      });
-    }
+      },
+      onCompleted: () => {
+        toast({
+          title: "Unsubscribed successfully",
+          description: "You've unsubscribed to this podcast",
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+        });
+      },
+    });
   };
 
   return (
@@ -206,7 +182,7 @@ const PodcastInfo = ({ queryReference, query, shouldLoadMore }: Props) => {
               cursor: "not-allowed",
             }}
           >
-            {userSubscribedToPodcast === true ? "Unsubscribe" : "Subscribe"}
+            Subscribe
           </Button>
         </PodcastInfoButtonsContainer>
 
