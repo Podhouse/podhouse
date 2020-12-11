@@ -1,6 +1,6 @@
 import React from "react";
 import { Link as ReactRouterLink } from "react-router-dom";
-import { Play } from "react-feather";
+import { Play, Pause } from "react-feather";
 
 import {
   EpisodeItemContainer,
@@ -19,7 +19,43 @@ import { usePlayerContext } from "src/machines/Player/PlayerContext";
 const EpisodeItem = ({ node }: EpisodeItemProps) => {
   const { _id, image, title, description, publishedDate, duration } = node;
 
-  const { onEpisode } = usePlayerContext();
+  const { playing, episode, onEpisode } = usePlayerContext();
+
+  const renderEpisodeButton = () => {
+    if (episode && episode.title === title) {
+      if (playing) {
+        return (
+          <EpisodeItemButton
+            type="button"
+            leftIcon={<Pause size={14} />}
+            onClick={() => onEpisode(node)}
+          >
+            Pause
+          </EpisodeItemButton>
+        );
+      } else {
+        return (
+          <EpisodeItemButton
+            type="button"
+            leftIcon={<Play size={14} />}
+            onClick={() => onEpisode(node)}
+          >
+            Play
+          </EpisodeItemButton>
+        );
+      }
+    } else {
+      return (
+        <EpisodeItemButton
+          type="button"
+          leftIcon={<Play size={14} />}
+          onClick={() => onEpisode(node)}
+        >
+          Play
+        </EpisodeItemButton>
+      );
+    }
+  };
 
   return (
     <EpisodeItemContainer>
@@ -44,13 +80,7 @@ const EpisodeItem = ({ node }: EpisodeItemProps) => {
 
       <EpisodeItemDuration textAlign="start">{duration}</EpisodeItemDuration>
 
-      <EpisodeItemButton
-        type="button"
-        leftIcon={<Play size={14} />}
-        onClick={() => onEpisode(node)}
-      >
-        Play
-      </EpisodeItemButton>
+      {renderEpisodeButton()}
     </EpisodeItemContainer>
   );
 };

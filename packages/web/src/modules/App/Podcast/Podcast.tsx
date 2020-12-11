@@ -27,6 +27,8 @@ const podcastQuery = graphql`
 const userQuery = graphql`
   query PodcastInfoUserQuery($input: UserSubscribedInput!) {
     currentUser {
+      id
+      _id
       subscribed(input: $input)
     }
   }

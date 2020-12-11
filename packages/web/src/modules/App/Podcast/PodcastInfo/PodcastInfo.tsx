@@ -77,6 +77,9 @@ const PodcastInfo = ({
             input: {
               _id: podcast?._id as string,
             },
+            unsubscribedInput: {
+              _id: podcast?._id as string,
+            },
           },
           onCompleted: () => {
             toast({
@@ -92,6 +95,9 @@ const PodcastInfo = ({
         userSubscribeToPodcast({
           variables: {
             input: {
+              _id: podcast?._id as string,
+            },
+            subscribedInput: {
               _id: podcast?._id as string,
             },
           },

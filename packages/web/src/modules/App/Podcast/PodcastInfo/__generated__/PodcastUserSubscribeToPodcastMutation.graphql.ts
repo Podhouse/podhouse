@@ -7,21 +7,19 @@ export type UserSubscribeToPodcastInput = {
   _id: string;
   clientMutationId?: string | null;
 };
+export type UserSubscribedInput = {
+  _id: string;
+};
 export type PodcastUserSubscribeToPodcastMutationVariables = {
   input: UserSubscribeToPodcastInput;
+  subscribedInput: UserSubscribedInput;
 };
 export type PodcastUserSubscribeToPodcastMutationResponse = {
   readonly UserSubscribeToPodcast: {
+    readonly error: string | null;
     readonly user: {
       readonly node: {
-        readonly subscriptions: {
-          readonly edges: ReadonlyArray<{
-            readonly node: {
-              readonly id: string;
-              readonly name: string;
-            } | null;
-          } | null>;
-        };
+        readonly subscribed: boolean | null;
       } | null;
     } | null;
   } | null;
@@ -34,18 +32,13 @@ export type PodcastUserSubscribeToPodcastMutation = {
 /*
 mutation PodcastUserSubscribeToPodcastMutation(
   $input: UserSubscribeToPodcastInput!
+  $subscribedInput: UserSubscribedInput!
 ) {
   UserSubscribeToPodcast(input: $input) {
+    error
     user {
       node {
-        subscriptions {
-          edges {
-            node {
-              id
-              name
-            }
-          }
-        }
+        subscribed(input: $subscribedInput)
         id
       }
     }
@@ -60,6 +53,11 @@ const node: ConcreteRequest = (function () {
         kind: "LocalArgument",
         name: "input",
       },
+      {
+        defaultValue: null,
+        kind: "LocalArgument",
+        name: "subscribedInput",
+      },
     ],
     v1 = [
       {
@@ -72,48 +70,20 @@ const node: ConcreteRequest = (function () {
       alias: null,
       args: null,
       kind: "ScalarField",
-      name: "id",
+      name: "error",
       storageKey: null,
     },
     v3 = {
       alias: null,
-      args: null,
-      concreteType: "PodcastConnection",
-      kind: "LinkedField",
-      name: "subscriptions",
-      plural: false,
-      selections: [
+      args: [
         {
-          alias: null,
-          args: null,
-          concreteType: "PodcastEdge",
-          kind: "LinkedField",
-          name: "edges",
-          plural: true,
-          selections: [
-            {
-              alias: null,
-              args: null,
-              concreteType: "Podcast",
-              kind: "LinkedField",
-              name: "node",
-              plural: false,
-              selections: [
-                v2 /*: any*/,
-                {
-                  alias: null,
-                  args: null,
-                  kind: "ScalarField",
-                  name: "name",
-                  storageKey: null,
-                },
-              ],
-              storageKey: null,
-            },
-          ],
-          storageKey: null,
+          kind: "Variable",
+          name: "input",
+          variableName: "subscribedInput",
         },
       ],
+      kind: "ScalarField",
+      name: "subscribed",
       storageKey: null,
     };
   return {
@@ -131,6 +101,7 @@ const node: ConcreteRequest = (function () {
           name: "UserSubscribeToPodcast",
           plural: false,
           selections: [
+            v2 /*: any*/,
             {
               alias: null,
               args: null,
@@ -173,6 +144,7 @@ const node: ConcreteRequest = (function () {
           name: "UserSubscribeToPodcast",
           plural: false,
           selections: [
+            v2 /*: any*/,
             {
               alias: null,
               args: null,
@@ -188,7 +160,16 @@ const node: ConcreteRequest = (function () {
                   kind: "LinkedField",
                   name: "node",
                   plural: false,
-                  selections: [v3 /*: any*/, v2 /*: any*/],
+                  selections: [
+                    v3 /*: any*/,
+                    {
+                      alias: null,
+                      args: null,
+                      kind: "ScalarField",
+                      name: "id",
+                      storageKey: null,
+                    },
+                  ],
                   storageKey: null,
                 },
               ],
@@ -200,15 +181,15 @@ const node: ConcreteRequest = (function () {
       ],
     },
     params: {
-      cacheID: "db50d1cbd689045446c3dd35d496f458",
+      cacheID: "ad18e6123cac7b09a8c2691988f39369",
       id: null,
       metadata: {},
       name: "PodcastUserSubscribeToPodcastMutation",
       operationKind: "mutation",
       text:
-        "mutation PodcastUserSubscribeToPodcastMutation(\n  $input: UserSubscribeToPodcastInput!\n) {\n  UserSubscribeToPodcast(input: $input) {\n    user {\n      node {\n        subscriptions {\n          edges {\n            node {\n              id\n              name\n            }\n          }\n        }\n        id\n      }\n    }\n  }\n}\n",
+        "mutation PodcastUserSubscribeToPodcastMutation(\n  $input: UserSubscribeToPodcastInput!\n  $subscribedInput: UserSubscribedInput!\n) {\n  UserSubscribeToPodcast(input: $input) {\n    error\n    user {\n      node {\n        subscribed(input: $subscribedInput)\n        id\n      }\n    }\n  }\n}\n",
     },
   };
 })();
-(node as any).hash = "d9e1717b8197e9ae3e41721dc7dfdc7e";
+(node as any).hash = "0f2654b4ef153ce80ad58acac2af58af";
 export default node;
