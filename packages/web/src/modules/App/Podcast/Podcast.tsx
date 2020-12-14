@@ -8,6 +8,9 @@ import SkeletonPage from "src/components/Skeletons/SkeletonPage/SkeletonPage";
 
 import PodcastInfo from "./PodcastInfo/PodcastInfo";
 
+import { PodcastQuery } from "./__generated__/PodcastQuery.graphql";
+import { PodcastInfoUserQuery } from "./__generated__/PodcastInfoUserQuery.graphql";
+
 const podcastQuery = graphql`
   query PodcastQuery($_id: ID!) {
     podcast(_id: $_id) {
@@ -50,12 +53,16 @@ const Podcast = () => {
 
   const { state } = useLocation<any>();
 
-  const [queryReference, loadQuery, disposeQuery] = useQueryLoader(
-    podcastQuery
-  );
-  const [userQueryReference, userLoadQuery, userDisposeQuery] = useQueryLoader(
-    userQuery
-  );
+  const [
+    queryReference,
+    loadQuery,
+    disposeQuery,
+  ] = useQueryLoader<PodcastQuery>(podcastQuery);
+  const [
+    userQueryReference,
+    userLoadQuery,
+    userDisposeQuery,
+  ] = useQueryLoader<PodcastInfoUserQuery>(userQuery);
 
   useEffect(() => {
     loadQuery({ _id: state._id }, { fetchPolicy: "store-or-network" });

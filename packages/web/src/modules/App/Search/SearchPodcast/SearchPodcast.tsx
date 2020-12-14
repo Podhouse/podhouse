@@ -1,6 +1,11 @@
 import React, { useCallback } from "react";
 import graphql from "babel-plugin-relay/macro";
-import { usePaginationFragment } from "react-relay/hooks";
+import { GraphQLTaggedNode } from "react-relay";
+import {
+  usePaginationFragment,
+  usePreloadedQuery,
+  PreloadedQuery,
+} from "react-relay/hooks";
 
 import { SearchPodcastContainer } from "./SearchPodcast.styles";
 
@@ -9,16 +14,19 @@ import PodcastsWithOnlyAvatarList from "src/components/Lists/PodcastsWithOnlyAva
 import { SearchPodcastPaginationQuery } from "./__generated__/SearchPodcastPaginationQuery.graphql";
 import { SearchPodcast_podcastsByName$key } from "./__generated__/SearchPodcast_podcastsByName.graphql";
 
-import { SearchQueryResponse } from "../__generated__/SearchQuery.graphql";
+import {
+  SearchQuery,
+  SearchQueryResponse,
+} from "../__generated__/SearchQuery.graphql";
 
 const query = graphql`
   fragment SearchPodcast_podcastsByName on Query
   @argumentDefinitions(
-    name: { type: "String" }
     after: { type: "String" }
     first: { type: "Int", defaultValue: 10 }
     before: { type: "String" }
     last: { type: "Int" }
+    name: { type: "String" }
   )
   @refetchable(queryName: "SearchPodcastPaginationQuery") {
     podcastsByName(
@@ -39,15 +47,24 @@ const query = graphql`
 `;
 
 interface Props {
-  searchQuery: SearchQueryResponse;
+  searchQuery: GraphQLTaggedNode;
+  queryReference: any;
   shouldLoadMore: boolean;
 }
 
-const SearchPodcast = ({ searchQuery, shouldLoadMore }: Props) => {
+const SearchPodcast = ({
+  searchQuery,
+  queryReference,
+  shouldLoadMore,
+}: Props) => {
+  const results = usePreloadedQuery<SearchQuery>(searchQuery, queryReference);
+
   const { data, loadNext, isLoadingNext } = usePaginationFragment<
     SearchPodcastPaginationQuery,
     SearchPodcast_podcastsByName$key
-  >(query, searchQuery);
+  >(query, results);
+
+  console.log("data: ", data);
 
   const loadMore = useCallback(() => {
     if (isLoadingNext) return;
@@ -58,6 +75,7 @@ const SearchPodcast = ({ searchQuery, shouldLoadMore }: Props) => {
 
   return (
     <SearchPodcastContainer>
+      <h1>testing</h1>
       <PodcastsWithOnlyAvatarList
         title="Search"
         edges={data.podcastsByName.edges}

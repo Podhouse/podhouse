@@ -1,7 +1,9 @@
-import React, { useState, Suspense } from "react";
+import React, { useState, useEffect, Suspense } from "react";
+import { Heading } from "@chakra-ui/react";
 import Scrollbars from "react-custom-scrollbars";
 import graphql from "babel-plugin-relay/macro";
-import { useLazyLoadQuery } from "react-relay/hooks";
+import { useQueryLoader } from "react-relay/hooks";
+import { useDebounce } from "use-debounce";
 
 import SearchPodcast from "./SearchPodcast/SearchPodcast";
 
@@ -15,7 +17,7 @@ import {
   SearchQueryVariables,
 } from "./__generated__/SearchQuery.graphql";
 
-const query = graphql`
+const searchQuery = graphql`
   query SearchQuery($name: String!) {
     ...SearchPodcast_podcastsByName @arguments(name: $name)
   }
@@ -39,14 +41,17 @@ type Props = {
 const SearchComponent = ({ searchArgs }: Props) => {
   const [shouldLoadMore, setShouldLoadMore] = useState<boolean>(false);
 
-  const searchQuery: SearchQueryResponse = useLazyLoadQuery<SearchQuery>(
-    query,
-    searchArgs,
-    {
-      fetchPolicy: "store-and-network",
-      fetchKey: searchArgs.name,
-    }
+  const [queryReference, loadQuery, disposeQuery] = useQueryLoader<SearchQuery>(
+    searchQuery
   );
+
+  useEffect(() => {
+    loadQuery({ name: searchArgs.name });
+
+    return () => {
+      disposeQuery();
+    };
+  }, [searchArgs.name]);
 
   const onLoadMore = (value: ScrollFrameType) => {
     if (value.top === 1) {
@@ -54,6 +59,10 @@ const SearchComponent = ({ searchArgs }: Props) => {
     }
     setShouldLoadMore(false);
   };
+
+  if (!searchArgs.name) {
+    return <Heading>here you can search podcasts</Heading>;
+  }
 
   return (
     <Scrollbars
@@ -64,6 +73,7 @@ const SearchComponent = ({ searchArgs }: Props) => {
     >
       <SearchPodcast
         searchQuery={searchQuery}
+        queryReference={queryReference}
         shouldLoadMore={shouldLoadMore}
       />
     </Scrollbars>
@@ -71,7 +81,7 @@ const SearchComponent = ({ searchArgs }: Props) => {
 };
 
 const Search = () => {
-  const { search } = useSearchContext();
+  const { search }: { search: string } = useSearchContext();
 
   const searchArgs: SearchQueryVariables = {
     name: search,
