@@ -1,9 +1,4 @@
-import React, {
-  useState,
-  useEffect,
-  Suspense,
-  unstable_useTransition,
-} from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import Scrollbars from "react-custom-scrollbars";
 import graphql from "babel-plugin-relay/macro";
 import { useQueryLoader } from "react-relay/hooks";
@@ -49,17 +44,13 @@ const Search = () => {
     searchQuery
   );
 
-  const [startTransition] = unstable_useTransition({ timeoutMs: 1300 } as any);
-
   useEffect(() => {
     if (debouncedSearch) {
-      startTransition(() => {
-        loadQuery({ name: debouncedSearch });
-      });
+      loadQuery({ name: debouncedSearch });
     } else {
       disposeQuery();
     }
-  }, [loadQuery, disposeQuery, debouncedSearch, startTransition]);
+  }, [loadQuery, disposeQuery, debouncedSearch]);
 
   const onLoadMore = (value: ScrollFrameType) => {
     if (value.top === 1) {
