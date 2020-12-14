@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import { Global } from "@emotion/react";
-import { ChakraProvider, CSSReset } from "@chakra-ui/react";
+import { ChakraProvider } from "@chakra-ui/react";
 
 import { SearchProvider } from "src/machines/Search/SearchContext";
 import { PlayerProvider } from "src/machines/Player/PlayerContext";
@@ -116,7 +116,6 @@ const Provider = () => (
         }
         `}
     />
-    <CSSReset />
   </BrowserRouter>
 );
 

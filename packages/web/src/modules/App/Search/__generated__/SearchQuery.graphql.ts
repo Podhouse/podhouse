@@ -5,11 +5,7 @@
 import { ConcreteRequest } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
 export type SearchQueryVariables = {
-  first?: number | null;
-  last?: number | null;
-  before?: string | null;
-  after?: string | null;
-  name: string;
+  name?: string | null;
 };
 export type SearchQueryResponse = {
   readonly " $fragmentRefs": FragmentRefs<"SearchPodcast_podcastsByName">;
@@ -21,17 +17,13 @@ export type SearchQuery = {
 
 /*
 query SearchQuery(
-  $first: Int
-  $last: Int
-  $before: String
-  $after: String
-  $name: String!
+  $name: String
 ) {
-  ...SearchPodcast_podcastsByName_3GnGUH
+  ...SearchPodcast_podcastsByName_2aiVTE
 }
 
-fragment SearchPodcast_podcastsByName_3GnGUH on Query {
-  podcastsByName(first: $first, last: $last, before: $before, after: $after, name: $name) {
+fragment SearchPodcast_podcastsByName_2aiVTE on Query {
+  podcastsByName(first: 25, name: $name) {
     edges {
       node {
         _id
@@ -52,73 +44,35 @@ fragment SearchPodcast_podcastsByName_3GnGUH on Query {
 */
 
 const node: ConcreteRequest = (function () {
-  var v0 = {
-      defaultValue: null,
-      kind: "LocalArgument",
-      name: "after",
-    },
-    v1 = {
-      defaultValue: null,
-      kind: "LocalArgument",
-      name: "before",
-    },
-    v2 = {
-      defaultValue: null,
-      kind: "LocalArgument",
-      name: "first",
-    },
-    v3 = {
-      defaultValue: null,
-      kind: "LocalArgument",
-      name: "last",
-    },
-    v4 = {
-      defaultValue: null,
-      kind: "LocalArgument",
-      name: "name",
-    },
-    v5 = [
+  var v0 = [
       {
-        kind: "Variable",
-        name: "after",
-        variableName: "after",
-      },
-      {
-        kind: "Variable",
-        name: "before",
-        variableName: "before",
-      },
-      {
-        kind: "Variable",
-        name: "first",
-        variableName: "first",
-      },
-      {
-        kind: "Variable",
-        name: "last",
-        variableName: "last",
-      },
-      {
-        kind: "Variable",
+        defaultValue: null,
+        kind: "LocalArgument",
         name: "name",
-        variableName: "name",
       },
+    ],
+    v1 = {
+      kind: "Variable",
+      name: "name",
+      variableName: "name",
+    },
+    v2 = [
+      {
+        kind: "Literal",
+        name: "first",
+        value: 25,
+      },
+      v1 /*: any*/,
     ];
   return {
     fragment: {
-      argumentDefinitions: [
-        v0 /*: any*/,
-        v1 /*: any*/,
-        v2 /*: any*/,
-        v3 /*: any*/,
-        v4 /*: any*/,
-      ],
+      argumentDefinitions: v0 /*: any*/,
       kind: "Fragment",
       metadata: null,
       name: "SearchQuery",
       selections: [
         {
-          args: v5 /*: any*/,
+          args: [v1 /*: any*/],
           kind: "FragmentSpread",
           name: "SearchPodcast_podcastsByName",
         },
@@ -128,19 +82,13 @@ const node: ConcreteRequest = (function () {
     },
     kind: "Request",
     operation: {
-      argumentDefinitions: [
-        v2 /*: any*/,
-        v3 /*: any*/,
-        v1 /*: any*/,
-        v0 /*: any*/,
-        v4 /*: any*/,
-      ],
+      argumentDefinitions: v0 /*: any*/,
       kind: "Operation",
       name: "SearchQuery",
       selections: [
         {
           alias: null,
-          args: v5 /*: any*/,
+          args: v2 /*: any*/,
           concreteType: "PodcastConnection",
           kind: "LinkedField",
           name: "podcastsByName",
@@ -247,7 +195,7 @@ const node: ConcreteRequest = (function () {
         },
         {
           alias: null,
-          args: v5 /*: any*/,
+          args: v2 /*: any*/,
           filters: ["name"],
           handle: "connection",
           key: "SearchPodcast_podcastsByName",
@@ -257,15 +205,15 @@ const node: ConcreteRequest = (function () {
       ],
     },
     params: {
-      cacheID: "68da3fc6d8b86e8465b483c0d8611136",
+      cacheID: "17210e7c675197d40e1bf26c96e28a8f",
       id: null,
       metadata: {},
       name: "SearchQuery",
       operationKind: "query",
       text:
-        "query SearchQuery(\n  $first: Int\n  $last: Int\n  $before: String\n  $after: String\n  $name: String!\n) {\n  ...SearchPodcast_podcastsByName_3GnGUH\n}\n\nfragment SearchPodcast_podcastsByName_3GnGUH on Query {\n  podcastsByName(first: $first, last: $last, before: $before, after: $after, name: $name) {\n    edges {\n      node {\n        _id\n        image\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n",
+        "query SearchQuery(\n  $name: String\n) {\n  ...SearchPodcast_podcastsByName_2aiVTE\n}\n\nfragment SearchPodcast_podcastsByName_2aiVTE on Query {\n  podcastsByName(first: 25, name: $name) {\n    edges {\n      node {\n        _id\n        image\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n",
     },
   };
 })();
-(node as any).hash = "048a31d266ff774f59cc779ed137d61d";
+(node as any).hash = "d6cb6640c26bb6c828460d1a124f5579";
 export default node;

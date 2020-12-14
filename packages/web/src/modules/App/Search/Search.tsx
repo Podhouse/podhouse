@@ -1,12 +1,19 @@
-import React, { useState, useEffect, Suspense } from "react";
+import React, {
+  useState,
+  useEffect,
+  Suspense,
+  unstable_useTransition,
+} from "react";
 import Scrollbars from "react-custom-scrollbars";
 import graphql from "babel-plugin-relay/macro";
 import { useQueryLoader } from "react-relay/hooks";
 import { useDebounce } from "use-debounce";
+import { ErrorBoundary } from "react-error-boundary";
 
 import SearchPodcast from "./SearchPodcast/SearchPodcast";
 
 import SkeletonPodcastsWithOnlyAvatarList from "src/components/Skeletons/SkeletonPodcastsWithOnlyAvatarList/SkeletonPodcastsWithOnlyAvatarList";
+import ErrorFallback from "src/components/ErrorFallback/ErrorFallback";
 
 import { useSearchContext } from "src/machines/Search/SearchContext";
 
@@ -15,21 +22,8 @@ import { SearchContainer } from "./Search.styles";
 import { SearchQuery } from "./__generated__/SearchQuery.graphql";
 
 const searchQuery = graphql`
-  query SearchQuery(
-    $first: Int
-    $last: Int
-    $before: String
-    $after: String
-    $name: String!
-  ) {
-    ...SearchPodcast_podcastsByName
-      @arguments(
-        first: $first
-        last: $last
-        before: $before
-        after: $after
-        name: $name
-      )
+  query SearchQuery($name: String) {
+    ...SearchPodcast_podcastsByName @arguments(name: $name)
   }
 `;
 
@@ -55,13 +49,17 @@ const Search = () => {
     searchQuery
   );
 
+  const [startTransition] = unstable_useTransition({ timeoutMs: 1300 } as any);
+
   useEffect(() => {
     if (debouncedSearch) {
-      loadQuery({ name: debouncedSearch });
+      startTransition(() => {
+        loadQuery({ name: debouncedSearch });
+      });
     } else {
       disposeQuery();
     }
-  }, [loadQuery, disposeQuery, debouncedSearch]);
+  }, [loadQuery, disposeQuery, debouncedSearch, startTransition]);
 
   const onLoadMore = (value: ScrollFrameType) => {
     if (value.top === 1) {
@@ -78,19 +76,21 @@ const Search = () => {
       autoHideDuration={100}
     >
       {queryReference && (
-        <Suspense
-          fallback={
-            <SearchContainer>
-              <SkeletonPodcastsWithOnlyAvatarList />
-            </SearchContainer>
-          }
-        >
-          <SearchPodcast
-            searchQuery={searchQuery}
-            queryReference={queryReference}
-            shouldLoadMore={shouldLoadMore}
-          />
-        </Suspense>
+        <ErrorBoundary FallbackComponent={ErrorFallback}>
+          <Suspense
+            fallback={
+              <SearchContainer>
+                <SkeletonPodcastsWithOnlyAvatarList />
+              </SearchContainer>
+            }
+          >
+            <SearchPodcast
+              searchQuery={searchQuery}
+              queryReference={queryReference}
+              shouldLoadMore={shouldLoadMore}
+            />
+          </Suspense>
+        </ErrorBoundary>
       )}
     </Scrollbars>
   );

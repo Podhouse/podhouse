@@ -32,15 +32,15 @@ const query = graphql`
 `;
 
 interface Props {
-  user: any;
+  currentUser: any;
   shouldLoadMore: boolean;
 }
 
-const SubscriptionsPodcast = ({ user, shouldLoadMore }: Props) => {
+const SubscriptionsPodcast = ({ currentUser, shouldLoadMore }: Props) => {
   const { data, loadNext, isLoadingNext } = usePaginationFragment<
     SubscriptionsPodcastPaginationQuery,
     SubscriptionsPodcast_subscriptions$key
-  >(query, user);
+  >(query, currentUser);
 
   const loadMore = useCallback(() => {
     if (isLoadingNext) return;

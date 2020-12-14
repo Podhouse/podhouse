@@ -3,8 +3,10 @@ import Scrollbars from "react-custom-scrollbars";
 import graphql from "babel-plugin-relay/macro";
 import { useQueryLoader } from "react-relay/hooks";
 import { useLocation } from "react-router-dom";
+import { ErrorBoundary } from "react-error-boundary";
 
 import SkeletonPage from "src/components/Skeletons/SkeletonPage/SkeletonPage";
+import ErrorFallback from "src/components/ErrorFallback/ErrorFallback";
 
 import PodcastInfo from "./PodcastInfo/PodcastInfo";
 
@@ -89,15 +91,17 @@ const Podcast = () => {
       autoHideDuration={100}
     >
       {queryReference && (
-        <Suspense fallback={<SkeletonPage episodes={true} />}>
-          <PodcastInfo
-            queryReference={queryReference}
-            podcastQuery={podcastQuery}
-            userQueryReference={userQueryReference}
-            userQuery={userQuery}
-            shouldLoadMore={shouldLoadMore}
-          />
-        </Suspense>
+        <ErrorBoundary FallbackComponent={ErrorFallback}>
+          <Suspense fallback={<SkeletonPage episodes={true} />}>
+            <PodcastInfo
+              queryReference={queryReference}
+              podcastQuery={podcastQuery}
+              userQueryReference={userQueryReference}
+              userQuery={userQuery}
+              shouldLoadMore={shouldLoadMore}
+            />
+          </Suspense>
+        </ErrorBoundary>
       )}
     </Scrollbars>
   );

@@ -3,9 +3,11 @@ import Scrollbars from "react-custom-scrollbars";
 import graphql from "babel-plugin-relay/macro";
 import { useLazyLoadQuery } from "react-relay/hooks";
 import { useLocation } from "react-router-dom";
+import { ErrorBoundary } from "react-error-boundary";
 
 import GenrePodcast from "./GenrePodcast/GenrePodcast";
 
+import ErrorFallback from "src/components/ErrorFallback/ErrorFallback";
 import Featured from "src/components/Featured/Featured";
 import SkeletonPodcastsWithOnlyAvatarList from "src/components/Skeletons/SkeletonPodcastsWithOnlyAvatarList/SkeletonPodcastsWithOnlyAvatarList";
 
@@ -67,16 +69,18 @@ const GenreComponent = () => {
 };
 
 const Genre = () => (
-  <Suspense
-    fallback={
-      <GenreContainer>
-        <Featured featured={featured} />
-        <SkeletonPodcastsWithOnlyAvatarList />
-      </GenreContainer>
-    }
-  >
-    <GenreComponent />
-  </Suspense>
+  <ErrorBoundary FallbackComponent={ErrorFallback}>
+    <Suspense
+      fallback={
+        <GenreContainer>
+          <Featured featured={featured} />
+          <SkeletonPodcastsWithOnlyAvatarList />
+        </GenreContainer>
+      }
+    >
+      <GenreComponent />
+    </Suspense>
+  </ErrorBoundary>
 );
 
 export default Genre;
