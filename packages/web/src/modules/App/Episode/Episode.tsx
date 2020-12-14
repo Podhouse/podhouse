@@ -44,11 +44,11 @@ const Episode = () => {
 
   return (
     <Scrollbars autoHide autoHideTimeout={100} autoHideDuration={100}>
-      {queryReference !== null ? (
+      {queryReference && (
         <Suspense fallback={<SkeletonPage episodes={false} />}>
           <EpisodeInfo queryReference={queryReference} query={query} />
         </Suspense>
-      ) : null}
+      )}
     </Scrollbars>
   );
 };

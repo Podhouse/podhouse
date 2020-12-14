@@ -88,7 +88,7 @@ const Podcast = () => {
       autoHideTimeout={100}
       autoHideDuration={100}
     >
-      {queryReference !== null ? (
+      {queryReference && (
         <Suspense fallback={<SkeletonPage episodes={true} />}>
           <PodcastInfo
             queryReference={queryReference}
@@ -98,7 +98,7 @@ const Podcast = () => {
             shouldLoadMore={shouldLoadMore}
           />
         </Suspense>
-      ) : null}
+      )}
     </Scrollbars>
   );
 };

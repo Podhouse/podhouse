@@ -27,7 +27,7 @@ query SubscriptionsQuery {
 }
 
 fragment SubscriptionsPodcast_subscriptions on User {
-  subscriptions(first: 10) {
+  subscriptions(first: 25) {
     edges {
       node {
         _id
@@ -96,7 +96,7 @@ const node: ConcreteRequest = (function () {
       {
         kind: "Literal",
         name: "first",
-        value: 10,
+        value: 25,
       },
     ];
   return {
@@ -249,7 +249,7 @@ const node: ConcreteRequest = (function () {
                   storageKey: null,
                 },
               ],
-              storageKey: "subscriptions(first:10)",
+              storageKey: "subscriptions(first:25)",
             },
             {
               alias: null,
@@ -266,13 +266,13 @@ const node: ConcreteRequest = (function () {
       ],
     },
     params: {
-      cacheID: "d5d6e419f0813a58203c4643b148a4b0",
+      cacheID: "7e8ccd07166f6b42e4a4d2ea3ee23da2",
       id: null,
       metadata: {},
       name: "SubscriptionsQuery",
       operationKind: "query",
       text:
-        "query SubscriptionsQuery {\n  currentUser {\n    ...useAuthUser_user\n    ...SubscriptionsPodcast_subscriptions\n    id\n  }\n}\n\nfragment SubscriptionsPodcast_subscriptions on User {\n  subscriptions(first: 10) {\n    edges {\n      node {\n        _id\n        image\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n  id\n}\n\nfragment useAuthUser_user on User {\n  _id\n  id\n  email\n  createdAt\n  updatedAt\n}\n",
+        "query SubscriptionsQuery {\n  currentUser {\n    ...useAuthUser_user\n    ...SubscriptionsPodcast_subscriptions\n    id\n  }\n}\n\nfragment SubscriptionsPodcast_subscriptions on User {\n  subscriptions(first: 25) {\n    edges {\n      node {\n        _id\n        image\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n  id\n}\n\nfragment useAuthUser_user on User {\n  _id\n  id\n  email\n  createdAt\n  updatedAt\n}\n",
     },
   };
 })();

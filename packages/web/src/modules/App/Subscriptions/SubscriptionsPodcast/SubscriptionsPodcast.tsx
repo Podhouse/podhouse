@@ -14,7 +14,7 @@ const query = graphql`
   fragment SubscriptionsPodcast_subscriptions on User
   @argumentDefinitions(
     after: { type: "String" }
-    first: { type: "Int", defaultValue: 10 }
+    first: { type: "Int", defaultValue: 25 }
     before: { type: "String" }
     last: { type: "Int" }
   )
@@ -44,7 +44,7 @@ const SubscriptionsPodcast = ({ user, shouldLoadMore }: Props) => {
 
   const loadMore = useCallback(() => {
     if (isLoadingNext) return;
-    loadNext(10);
+    loadNext(25);
   }, [isLoadingNext, loadNext]);
 
   if (shouldLoadMore === true) loadMore();

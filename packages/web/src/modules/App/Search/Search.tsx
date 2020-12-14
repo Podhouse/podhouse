@@ -1,9 +1,7 @@
 import React, { useState, useEffect, Suspense } from "react";
-import { Heading } from "@chakra-ui/react";
 import Scrollbars from "react-custom-scrollbars";
 import graphql from "babel-plugin-relay/macro";
 import { useQueryLoader } from "react-relay/hooks";
-import { useDebounce } from "use-debounce";
 
 import SearchPodcast from "./SearchPodcast/SearchPodcast";
 
@@ -11,11 +9,7 @@ import SkeletonPodcastsWithOnlyAvatarList from "src/components/Skeletons/Skeleto
 
 import { useSearchContext } from "src/machines/Search/SearchContext";
 
-import {
-  SearchQuery,
-  SearchQueryResponse,
-  SearchQueryVariables,
-} from "./__generated__/SearchQuery.graphql";
+import { SearchQuery } from "./__generated__/SearchQuery.graphql";
 
 const searchQuery = graphql`
   query SearchQuery($name: String!) {
@@ -34,11 +28,9 @@ type ScrollFrameType = {
   top: number;
 };
 
-type Props = {
-  searchArgs: SearchQueryVariables;
-};
+const Search = () => {
+  const { search }: { search: string } = useSearchContext();
 
-const SearchComponent = ({ searchArgs }: Props) => {
   const [shouldLoadMore, setShouldLoadMore] = useState<boolean>(false);
 
   const [queryReference, loadQuery, disposeQuery] = useQueryLoader<SearchQuery>(
@@ -46,12 +38,12 @@ const SearchComponent = ({ searchArgs }: Props) => {
   );
 
   useEffect(() => {
-    loadQuery({ name: searchArgs.name });
-
-    return () => {
+    if (search !== "") {
+      loadQuery({ name: search }, { fetchPolicy: "store-or-network" });
+    } else {
       disposeQuery();
-    };
-  }, [searchArgs.name]);
+    }
+  }, [loadQuery, disposeQuery, search]);
 
   const onLoadMore = (value: ScrollFrameType) => {
     if (value.top === 1) {
@@ -60,10 +52,6 @@ const SearchComponent = ({ searchArgs }: Props) => {
     setShouldLoadMore(false);
   };
 
-  if (!searchArgs.name) {
-    return <Heading>here you can search podcasts</Heading>;
-  }
-
   return (
     <Scrollbars
       onScrollFrame={onLoadMore}
@@ -71,26 +59,16 @@ const SearchComponent = ({ searchArgs }: Props) => {
       autoHideTimeout={100}
       autoHideDuration={100}
     >
-      <SearchPodcast
-        searchQuery={searchQuery}
-        queryReference={queryReference}
-        shouldLoadMore={shouldLoadMore}
-      />
+      {queryReference && (
+        <Suspense fallback={<SkeletonPodcastsWithOnlyAvatarList />}>
+          <SearchPodcast
+            searchQuery={searchQuery}
+            queryReference={queryReference}
+            shouldLoadMore={shouldLoadMore}
+          />
+        </Suspense>
+      )}
     </Scrollbars>
-  );
-};
-
-const Search = () => {
-  const { search }: { search: string } = useSearchContext();
-
-  const searchArgs: SearchQueryVariables = {
-    name: search,
-  };
-
-  return (
-    <Suspense fallback={<SkeletonPodcastsWithOnlyAvatarList />}>
-      <SearchComponent searchArgs={searchArgs} />
-    </Suspense>
   );
 };
 

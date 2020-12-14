@@ -4,12 +4,14 @@ import graphql from "babel-plugin-relay/macro";
 import { useLazyLoadQuery } from "react-relay/hooks";
 import { useLocation } from "react-router-dom";
 
+import GenrePodcast from "./GenrePodcast/GenrePodcast";
+
 import Featured from "src/components/Featured/Featured";
 import SkeletonPodcastsWithOnlyAvatarList from "src/components/Skeletons/SkeletonPodcastsWithOnlyAvatarList/SkeletonPodcastsWithOnlyAvatarList";
 
-import { GenreQuery } from "./__generated__/GenreQuery.graphql";
+import { GenreContainer } from "./Genre.styles";
 
-import GenrePodcast from "./GenrePodcast/GenrePodcast";
+import { GenreQuery } from "./__generated__/GenreQuery.graphql";
 
 import featured from "src/utils/featured";
 
@@ -67,10 +69,10 @@ const GenreComponent = () => {
 const Genre = () => (
   <Suspense
     fallback={
-      <>
+      <GenreContainer>
         <Featured featured={featured} />
         <SkeletonPodcastsWithOnlyAvatarList />
-      </>
+      </GenreContainer>
     }
   >
     <GenreComponent />

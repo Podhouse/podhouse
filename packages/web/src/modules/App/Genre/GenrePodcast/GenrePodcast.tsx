@@ -20,7 +20,7 @@ const query = graphql`
   @argumentDefinitions(
     primaryGenre: { type: "String" }
     after: { type: "String" }
-    first: { type: "Int", defaultValue: 10 }
+    first: { type: "Int", defaultValue: 25 }
     before: { type: "String" }
     last: { type: "Int" }
   )
@@ -56,7 +56,7 @@ const GenrePodcast = ({ genreQuery, primaryGenre, shouldLoadMore }: Props) => {
 
   const loadMore = useCallback(() => {
     if (isLoadingNext) return;
-    loadNext(10);
+    loadNext(25);
   }, [isLoadingNext, loadNext]);
 
   if (shouldLoadMore === true) loadMore();

@@ -23,7 +23,7 @@ export type GenrePaginationQuery = {
 query GenrePaginationQuery(
   $after: String
   $before: String
-  $first: Int = 10
+  $first: Int = 25
   $last: Int
   $primaryGenre: String
 ) {
@@ -64,7 +64,7 @@ const node: ConcreteRequest = (function () {
         name: "before",
       },
       {
-        defaultValue: 10,
+        defaultValue: 25,
         kind: "LocalArgument",
         name: "first",
       },
@@ -247,15 +247,15 @@ const node: ConcreteRequest = (function () {
       ],
     },
     params: {
-      cacheID: "c4b98d8c30c075bf0b749bb1731fb69a",
+      cacheID: "bffd591db077b61490d9b9827d2b9c93",
       id: null,
       metadata: {},
       name: "GenrePaginationQuery",
       operationKind: "query",
       text:
-        "query GenrePaginationQuery(\n  $after: String\n  $before: String\n  $first: Int = 10\n  $last: Int\n  $primaryGenre: String\n) {\n  ...GenrePodcast_podcasts_2w6tXt\n}\n\nfragment GenrePodcast_podcasts_2w6tXt on Query {\n  podcastsByGenre(primaryGenre: $primaryGenre, after: $after, first: $first, before: $before, last: $last) {\n    edges {\n      node {\n        _id\n        image\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n",
+        "query GenrePaginationQuery(\n  $after: String\n  $before: String\n  $first: Int = 25\n  $last: Int\n  $primaryGenre: String\n) {\n  ...GenrePodcast_podcasts_2w6tXt\n}\n\nfragment GenrePodcast_podcasts_2w6tXt on Query {\n  podcastsByGenre(primaryGenre: $primaryGenre, after: $after, first: $first, before: $before, last: $last) {\n    edges {\n      node {\n        _id\n        image\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n",
     },
   };
 })();
-(node as any).hash = "f64ff1d026459e67c4d773bc3f0366ee";
+(node as any).hash = "30915da552816680378e95ace0cf6a27";
 export default node;

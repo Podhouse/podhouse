@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { Image } from "@chakra-ui/react";
 
 export const PodcastItemWithAvatarContainer = styled.div`
   display: grid;
@@ -7,7 +8,7 @@ export const PodcastItemWithAvatarContainer = styled.div`
   grid-gap: 10px;
 `;
 
-export const PodcastItemWithAvatarAvatar = styled.img`
+export const PodcastItemWithAvatarAvatar = styled(Image)`
   grid-row: 1 / 3;
   grid-column: 1 / 2;
   width: 140px;

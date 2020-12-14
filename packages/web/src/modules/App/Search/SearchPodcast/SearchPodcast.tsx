@@ -1,11 +1,7 @@
 import React, { useCallback } from "react";
 import graphql from "babel-plugin-relay/macro";
 import { GraphQLTaggedNode } from "react-relay";
-import {
-  usePaginationFragment,
-  usePreloadedQuery,
-  PreloadedQuery,
-} from "react-relay/hooks";
+import { usePaginationFragment, usePreloadedQuery } from "react-relay/hooks";
 
 import { SearchPodcastContainer } from "./SearchPodcast.styles";
 
@@ -14,12 +10,9 @@ import PodcastsWithOnlyAvatarList from "src/components/Lists/PodcastsWithOnlyAva
 import { SearchPodcastPaginationQuery } from "./__generated__/SearchPodcastPaginationQuery.graphql";
 import { SearchPodcast_podcastsByName$key } from "./__generated__/SearchPodcast_podcastsByName.graphql";
 
-import {
-  SearchQuery,
-  SearchQueryResponse,
-} from "../__generated__/SearchQuery.graphql";
+import { SearchQuery } from "../__generated__/SearchQuery.graphql";
 
-const query = graphql`
+const fragment = graphql`
   fragment SearchPodcast_podcastsByName on Query
   @argumentDefinitions(
     after: { type: "String" }
@@ -59,10 +52,12 @@ const SearchPodcast = ({
 }: Props) => {
   const results = usePreloadedQuery<SearchQuery>(searchQuery, queryReference);
 
+  console.log("results: ", results);
+
   const { data, loadNext, isLoadingNext } = usePaginationFragment<
     SearchPodcastPaginationQuery,
     SearchPodcast_podcastsByName$key
-  >(query, results);
+  >(fragment, results);
 
   console.log("data: ", data);
 
@@ -75,7 +70,6 @@ const SearchPodcast = ({
 
   return (
     <SearchPodcastContainer>
-      <h1>testing</h1>
       <PodcastsWithOnlyAvatarList
         title="Search"
         edges={data.podcastsByName.edges}
