@@ -27,7 +27,7 @@ const Trending = () => {
     query,
     { first: 9 },
     {
-      fetchPolicy: "store-and-network",
+      fetchPolicy: "store-or-network",
     }
   );
 

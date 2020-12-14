@@ -45,7 +45,7 @@ const SubscriptionsComponent = () => {
     query,
     {},
     {
-      fetchPolicy: "store-and-network",
+      fetchPolicy: "store-or-network",
       fetchKey: getToken(),
     }
   );

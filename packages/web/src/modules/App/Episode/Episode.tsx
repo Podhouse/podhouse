@@ -8,6 +8,8 @@ import SkeletonPage from "src/components/Skeletons/SkeletonPage/SkeletonPage";
 
 import EpisodeInfo from "./EpisodeInfo/EpisodeInfo";
 
+import { EpisodeQuery } from "./__generated__/EpisodeQuery.graphql";
+
 const query = graphql`
   query EpisodeQuery($_id: ID!) {
     episode(_id: $_id) {
@@ -32,10 +34,14 @@ const query = graphql`
 const Episode = () => {
   const { state } = useLocation<any>();
 
-  const [queryReference, loadQuery, disposeQuery] = useQueryLoader(query);
+  const [
+    queryReference,
+    loadQuery,
+    disposeQuery,
+  ] = useQueryLoader<EpisodeQuery>(query);
 
   useEffect(() => {
-    loadQuery({ _id: state._id }, { fetchPolicy: "store-and-network" });
+    loadQuery({ _id: state._id }, { fetchPolicy: "store-or-network" });
 
     return () => {
       disposeQuery();

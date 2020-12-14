@@ -2,6 +2,7 @@ import React, { useState, useEffect, Suspense } from "react";
 import Scrollbars from "react-custom-scrollbars";
 import graphql from "babel-plugin-relay/macro";
 import { useQueryLoader } from "react-relay/hooks";
+import { useDebounce } from "use-debounce";
 
 import SearchPodcast from "./SearchPodcast/SearchPodcast";
 
@@ -9,11 +10,26 @@ import SkeletonPodcastsWithOnlyAvatarList from "src/components/Skeletons/Skeleto
 
 import { useSearchContext } from "src/machines/Search/SearchContext";
 
+import { SearchContainer } from "./Search.styles";
+
 import { SearchQuery } from "./__generated__/SearchQuery.graphql";
 
 const searchQuery = graphql`
-  query SearchQuery($name: String!) {
-    ...SearchPodcast_podcastsByName @arguments(name: $name)
+  query SearchQuery(
+    $first: Int
+    $last: Int
+    $before: String
+    $after: String
+    $name: String!
+  ) {
+    ...SearchPodcast_podcastsByName
+      @arguments(
+        first: $first
+        last: $last
+        before: $before
+        after: $after
+        name: $name
+      )
   }
 `;
 
@@ -31,6 +47,8 @@ type ScrollFrameType = {
 const Search = () => {
   const { search }: { search: string } = useSearchContext();
 
+  const [debouncedSearch] = useDebounce(search, 1000);
+
   const [shouldLoadMore, setShouldLoadMore] = useState<boolean>(false);
 
   const [queryReference, loadQuery, disposeQuery] = useQueryLoader<SearchQuery>(
@@ -38,12 +56,12 @@ const Search = () => {
   );
 
   useEffect(() => {
-    if (search !== "") {
-      loadQuery({ name: search }, { fetchPolicy: "store-or-network" });
+    if (debouncedSearch) {
+      loadQuery({ name: debouncedSearch });
     } else {
       disposeQuery();
     }
-  }, [loadQuery, disposeQuery, search]);
+  }, [loadQuery, disposeQuery, debouncedSearch]);
 
   const onLoadMore = (value: ScrollFrameType) => {
     if (value.top === 1) {
@@ -60,7 +78,13 @@ const Search = () => {
       autoHideDuration={100}
     >
       {queryReference && (
-        <Suspense fallback={<SkeletonPodcastsWithOnlyAvatarList />}>
+        <Suspense
+          fallback={
+            <SearchContainer>
+              <SkeletonPodcastsWithOnlyAvatarList />
+            </SearchContainer>
+          }
+        >
           <SearchPodcast
             searchQuery={searchQuery}
             queryReference={queryReference}

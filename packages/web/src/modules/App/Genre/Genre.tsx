@@ -40,7 +40,7 @@ const GenreComponent = () => {
   const genreQuery = useLazyLoadQuery<GenreQuery>(
     query,
     { primaryGenre: state.primaryGenre },
-    { fetchPolicy: "store-and-network" }
+    { fetchPolicy: "store-or-network" }
   );
 
   const onLoadMore = (value: ScrollFrameType) => {

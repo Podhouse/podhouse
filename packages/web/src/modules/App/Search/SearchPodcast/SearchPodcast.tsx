@@ -15,19 +15,19 @@ import { SearchQuery } from "../__generated__/SearchQuery.graphql";
 const fragment = graphql`
   fragment SearchPodcast_podcastsByName on Query
   @argumentDefinitions(
-    after: { type: "String" }
-    first: { type: "Int", defaultValue: 10 }
-    before: { type: "String" }
+    first: { type: "Int", defaultValue: 25 }
     last: { type: "Int" }
+    before: { type: "String" }
+    after: { type: "String" }
     name: { type: "String" }
   )
   @refetchable(queryName: "SearchPodcastPaginationQuery") {
     podcastsByName(
-      name: $name
-      after: $after
       first: $first
-      before: $before
       last: $last
+      before: $before
+      after: $after
+      name: $name
     ) @connection(key: "SearchPodcast_podcastsByName") {
       edges {
         node {
@@ -50,20 +50,20 @@ const SearchPodcast = ({
   queryReference,
   shouldLoadMore,
 }: Props) => {
-  const results = usePreloadedQuery<SearchQuery>(searchQuery, queryReference);
+  const query = usePreloadedQuery<SearchQuery>(searchQuery, queryReference);
 
-  console.log("results: ", results);
+  console.log("query: ", query);
 
   const { data, loadNext, isLoadingNext } = usePaginationFragment<
     SearchPodcastPaginationQuery,
     SearchPodcast_podcastsByName$key
-  >(fragment, results);
+  >(fragment, query);
 
   console.log("data: ", data);
 
   const loadMore = useCallback(() => {
     if (isLoadingNext) return;
-    loadNext(10);
+    loadNext(25);
   }, [isLoadingNext, loadNext]);
 
   if (shouldLoadMore === true) loadMore();
