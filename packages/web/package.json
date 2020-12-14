@@ -57,7 +57,7 @@
     "workbox-strategies": "^6.0.0",
     "workbox-streams": "^6.0.0",
     "xstate": "^4.14.1",
-    "yup": "^0.31.0"
+    "yup": "^0.32.8"
   },
   "devDependencies": {
     "@types/jest": "^26.0.15",
