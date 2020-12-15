@@ -10,4 +10,11 @@ module.exports = withPlugins([
       optimizeImagesInDev: true,
     }),
   ],
+  [
+    {
+      env: {
+        GOOGLE_ANALYTICS_ID: process.env.GOOGLE_ANALYTICS_ID,
+      },
+    },
+  ],
 ]);

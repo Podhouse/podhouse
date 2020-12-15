@@ -1,6 +1,7 @@
 import React from "react";
 import Document, { Head, Main, NextScript } from "next/document";
 import GoogleFonts from "next-google-fonts";
+import GoogleAnalytics from "next-simple-google-analytics";
 
 class MyDocument extends Document {
   render() {
@@ -32,7 +33,10 @@ class MyDocument extends Document {
             href="/icon-512x512.png"
           />
           <link rel="manifest" href="/manifest.json" />
+          <title>Podhouse – The Best Podcast Player on the Web</title>
+          <meta name="Description" content="Listen to your favorite podcasts" />
           <GoogleFonts href="https://fonts.googleapis.com/css?family=Inter:100,200,300,400,500,600,700,800,900&display=swap" />
+          <GoogleAnalytics id={process.env.GOOGLE_ANALYTICS_ID} />
         </Head>
         <body>
           <Main />
