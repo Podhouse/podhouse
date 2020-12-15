@@ -25,6 +25,7 @@ const Search = () => {
           size="md"
           value={search}
           onChange={onSearch}
+          aria-label="Search podcast"
         />
       </InputGroup>
     </SearchContainer>
