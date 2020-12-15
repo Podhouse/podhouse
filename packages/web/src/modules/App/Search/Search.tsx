@@ -17,7 +17,7 @@ import { SearchContainer } from "./Search.styles";
 import { SearchQuery } from "./__generated__/SearchQuery.graphql";
 
 const searchQuery = graphql`
-  query SearchQuery($name: String) {
+  query SearchQuery($name: String!) {
     ...SearchPodcast_podcastsByName @arguments(name: $name)
   }
 `;

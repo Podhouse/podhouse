@@ -5,7 +5,7 @@
 import { ConcreteRequest } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
 export type SearchQueryVariables = {
-  name?: string | null;
+  name: string;
 };
 export type SearchQueryResponse = {
   readonly " $fragmentRefs": FragmentRefs<"SearchPodcast_podcastsByName">;
@@ -17,7 +17,7 @@ export type SearchQuery = {
 
 /*
 query SearchQuery(
-  $name: String
+  $name: String!
 ) {
   ...SearchPodcast_podcastsByName_2aiVTE
 }
@@ -205,15 +205,15 @@ const node: ConcreteRequest = (function () {
       ],
     },
     params: {
-      cacheID: "17210e7c675197d40e1bf26c96e28a8f",
+      cacheID: "8e3a2c638ccfa0317f99f0280a3d187f",
       id: null,
       metadata: {},
       name: "SearchQuery",
       operationKind: "query",
       text:
-        "query SearchQuery(\n  $name: String\n) {\n  ...SearchPodcast_podcastsByName_2aiVTE\n}\n\nfragment SearchPodcast_podcastsByName_2aiVTE on Query {\n  podcastsByName(first: 25, name: $name) {\n    edges {\n      node {\n        _id\n        image\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n",
+        "query SearchQuery(\n  $name: String!\n) {\n  ...SearchPodcast_podcastsByName_2aiVTE\n}\n\nfragment SearchPodcast_podcastsByName_2aiVTE on Query {\n  podcastsByName(first: 25, name: $name) {\n    edges {\n      node {\n        _id\n        image\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n",
     },
   };
 })();
-(node as any).hash = "d6cb6640c26bb6c828460d1a124f5579";
+(node as any).hash = "b25d7fccda57088d4e630145bb5f0959";
 export default node;

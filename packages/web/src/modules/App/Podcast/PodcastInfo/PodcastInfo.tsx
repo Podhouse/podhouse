@@ -2,7 +2,11 @@ import React from "react";
 import { Heading, Button, Link, Image, useToast } from "@chakra-ui/react";
 import { ExternalLink } from "react-feather";
 import { GraphQLTaggedNode } from "relay-runtime";
-import { usePreloadedQuery, useMutation } from "react-relay/hooks";
+import {
+  usePreloadedQuery,
+  useMutation,
+  PreloadedQuery,
+} from "react-relay/hooks";
 
 import {
   PodcastInfoContainer,
@@ -26,9 +30,8 @@ import { PodcastUserUnsubscribeToPodcastMutation } from "./__generated__/Podcast
 import { PodcastQuery } from "../__generated__/PodcastQuery.graphql";
 import { PodcastInfoUserQuery } from "../__generated__/PodcastInfoUserQuery.graphql";
 
-// TODO: Should improve the queryReference type to be a PreloadedQuery<PodcastQuery>
 interface Props {
-  queryReference: any;
+  podcastQueryReference: PreloadedQuery<PodcastQuery>;
   podcastQuery: GraphQLTaggedNode;
   userQueryReference: any;
   userQuery: GraphQLTaggedNode;
@@ -36,7 +39,7 @@ interface Props {
 }
 
 const PodcastInfo = ({
-  queryReference,
+  podcastQueryReference,
   podcastQuery,
   userQueryReference,
   userQuery,
@@ -46,7 +49,7 @@ const PodcastInfo = ({
 
   const { podcast } = usePreloadedQuery<PodcastQuery>(
     podcastQuery,
-    queryReference
+    podcastQueryReference
   );
   const { currentUser } = usePreloadedQuery<PodcastInfoUserQuery>(
     userQuery,

@@ -56,10 +56,11 @@ const Podcast = () => {
   const { state } = useLocation<any>();
 
   const [
-    queryReference,
-    loadQuery,
-    disposeQuery,
+    podcastQueryReference,
+    podcastLoadQuery,
+    podcastDisposeQuery,
   ] = useQueryLoader<PodcastQuery>(podcastQuery);
+
   const [
     userQueryReference,
     userLoadQuery,
@@ -67,14 +68,20 @@ const Podcast = () => {
   ] = useQueryLoader<PodcastInfoUserQuery>(userQuery);
 
   useEffect(() => {
-    loadQuery({ _id: state._id }, { fetchPolicy: "store-or-network" });
+    podcastLoadQuery({ _id: state._id }, { fetchPolicy: "store-or-network" });
     userLoadQuery({ input: { _id: state._id } });
 
     return () => {
-      disposeQuery();
+      podcastDisposeQuery();
       userDisposeQuery();
     };
-  }, [loadQuery, userLoadQuery, disposeQuery, userDisposeQuery, state._id]);
+  }, [
+    podcastLoadQuery,
+    userLoadQuery,
+    podcastDisposeQuery,
+    userDisposeQuery,
+    state._id,
+  ]);
 
   const onLoadMore = (value: ScrollFrameType) => {
     if (value.top === 1) {
@@ -90,11 +97,11 @@ const Podcast = () => {
       autoHideTimeout={100}
       autoHideDuration={100}
     >
-      {queryReference && (
+      {podcastQueryReference && (
         <ErrorBoundary FallbackComponent={ErrorFallback}>
           <Suspense fallback={<SkeletonPage episodes={true} />}>
             <PodcastInfo
-              queryReference={queryReference}
+              podcastQueryReference={podcastQueryReference}
               podcastQuery={podcastQuery}
               userQueryReference={userQueryReference}
               userQuery={userQuery}

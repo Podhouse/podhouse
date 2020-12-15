@@ -1,7 +1,11 @@
 import React, { useCallback } from "react";
 import graphql from "babel-plugin-relay/macro";
 import { GraphQLTaggedNode } from "react-relay";
-import { usePaginationFragment, usePreloadedQuery } from "react-relay/hooks";
+import {
+  usePaginationFragment,
+  usePreloadedQuery,
+  PreloadedQuery,
+} from "react-relay/hooks";
 
 import { SearchPodcastContainer } from "./SearchPodcast.styles";
 
@@ -41,7 +45,7 @@ const fragment = graphql`
 
 interface Props {
   searchQuery: GraphQLTaggedNode;
-  queryReference: any;
+  queryReference: PreloadedQuery<SearchQuery>;
   shouldLoadMore: boolean;
 }
 
@@ -52,14 +56,10 @@ const SearchPodcast = ({
 }: Props) => {
   const query = usePreloadedQuery<SearchQuery>(searchQuery, queryReference);
 
-  console.log("query: ", query);
-
   const { data, loadNext, isLoadingNext } = usePaginationFragment<
     SearchPodcastPaginationQuery,
     SearchPodcast_podcastsByName$key
   >(fragment, query);
-
-  console.log("data: ", data);
 
   const loadMore = useCallback(() => {
     if (isLoadingNext) return;
@@ -67,6 +67,10 @@ const SearchPodcast = ({
   }, [isLoadingNext, loadNext]);
 
   if (shouldLoadMore === true) loadMore();
+
+  console.log("query: ", query);
+
+  console.log("data: ", data);
 
   return (
     <SearchPodcastContainer>

@@ -2,7 +2,7 @@ import React from "react";
 import { Heading, Button, Link, Image } from "@chakra-ui/react";
 import { ExternalLink } from "react-feather";
 import { GraphQLTaggedNode } from "relay-runtime";
-import { usePreloadedQuery } from "react-relay/hooks";
+import { usePreloadedQuery, PreloadedQuery } from "react-relay/hooks";
 
 import {
   EpisodeInfoContainer,
@@ -18,10 +18,8 @@ import { EpisodeQuery } from "../__generated__/EpisodeQuery.graphql";
 
 import { usePlayerContext } from "src/machines/Player/PlayerContext";
 
-// TODO:
-// Should improve the queryReference type to be a PreloadedQuery<EpisodeQuery>
 interface Props {
-  queryReference: any;
+  queryReference: PreloadedQuery<EpisodeQuery>;
   query: GraphQLTaggedNode;
 }
 
