@@ -2112,9 +2112,9 @@
     "@hapi/hoek" "^8.3.0"
 
 "@hookform/resolvers@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@hookform/resolvers/-/resolvers-1.1.0.tgz#ed4446be33cd7c419ab0416451682051ae1e3a6e"
-  integrity sha512-rzhWRu6s6CEpWXuxWsbJJmuJCpc10AAK+NpQ4LeVJbl7ShE9r0ODMv043KZ7Dvg4PmdTgQg6v6C2rKKhv9wm+g==
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@hookform/resolvers/-/resolvers-1.2.0.tgz#3a429b4bd3ec9981764fcdcc2491202f9f72d847"
+  integrity sha512-YCKEj/3Kdo3uNt+zrWKV8txaiuATtvgHyz+KYmun3n5JDjxdI0HcVQgfcmJabmkBXBzKuIIrYfxaV8sRuAPZ8w==
 
 "@istanbuljs/load-nyc-config@^1.0.0":
   version "1.1.0"
