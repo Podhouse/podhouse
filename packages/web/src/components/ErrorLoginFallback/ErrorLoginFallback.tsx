@@ -3,7 +3,7 @@ import { Link } from "@chakra-ui/react";
 
 import { ErrorLoginFallbackContainer } from "./ErrorLoginFallback.styles";
 
-const ErrorLoginFallback = ({ error, resetErrorBoundary }: any) => (
+const ErrorLoginFallback = () => (
   <ErrorLoginFallbackContainer role="alert">
     <Link color="brand.900" fontWeight="bold" textTransform="uppercase">
       Retry

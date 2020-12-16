@@ -50,9 +50,6 @@ fragment SubscriptionsPodcast_subscriptions on User {
 fragment useAuthUser_user on User {
   _id
   id
-  email
-  createdAt
-  updatedAt
 }
 */
 
@@ -71,28 +68,7 @@ const node: ConcreteRequest = (function () {
       name: "id",
       storageKey: null,
     },
-    v2 = {
-      alias: null,
-      args: null,
-      kind: "ScalarField",
-      name: "email",
-      storageKey: null,
-    },
-    v3 = {
-      alias: null,
-      args: null,
-      kind: "ScalarField",
-      name: "createdAt",
-      storageKey: null,
-    },
-    v4 = {
-      alias: null,
-      args: null,
-      kind: "ScalarField",
-      name: "updatedAt",
-      storageKey: null,
-    },
-    v5 = [
+    v2 = [
       {
         kind: "Literal",
         name: "first",
@@ -117,13 +93,7 @@ const node: ConcreteRequest = (function () {
             {
               kind: "InlineDataFragmentSpread",
               name: "useAuthUser_user",
-              selections: [
-                v0 /*: any*/,
-                v1 /*: any*/,
-                v2 /*: any*/,
-                v3 /*: any*/,
-                v4 /*: any*/,
-              ],
+              selections: [v0 /*: any*/, v1 /*: any*/],
             },
             {
               args: null,
@@ -153,12 +123,9 @@ const node: ConcreteRequest = (function () {
           selections: [
             v0 /*: any*/,
             v1 /*: any*/,
-            v2 /*: any*/,
-            v3 /*: any*/,
-            v4 /*: any*/,
             {
               alias: null,
-              args: v5 /*: any*/,
+              args: v2 /*: any*/,
               concreteType: "PodcastConnection",
               kind: "LinkedField",
               name: "subscriptions",
@@ -253,7 +220,7 @@ const node: ConcreteRequest = (function () {
             },
             {
               alias: null,
-              args: v5 /*: any*/,
+              args: v2 /*: any*/,
               filters: null,
               handle: "connection",
               key: "SubscriptionsPodcast_subscriptions",
@@ -266,13 +233,13 @@ const node: ConcreteRequest = (function () {
       ],
     },
     params: {
-      cacheID: "7e8ccd07166f6b42e4a4d2ea3ee23da2",
+      cacheID: "4f5ab29f6ba8243301128a504d0dc17a",
       id: null,
       metadata: {},
       name: "SubscriptionsQuery",
       operationKind: "query",
       text:
-        "query SubscriptionsQuery {\n  currentUser {\n    ...useAuthUser_user\n    ...SubscriptionsPodcast_subscriptions\n    id\n  }\n}\n\nfragment SubscriptionsPodcast_subscriptions on User {\n  subscriptions(first: 25) {\n    edges {\n      node {\n        _id\n        image\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n  id\n}\n\nfragment useAuthUser_user on User {\n  _id\n  id\n  email\n  createdAt\n  updatedAt\n}\n",
+        "query SubscriptionsQuery {\n  currentUser {\n    ...useAuthUser_user\n    ...SubscriptionsPodcast_subscriptions\n    id\n  }\n}\n\nfragment SubscriptionsPodcast_subscriptions on User {\n  subscriptions(first: 25) {\n    edges {\n      node {\n        _id\n        image\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n  id\n}\n\nfragment useAuthUser_user on User {\n  _id\n  id\n}\n",
     },
   };
 })();

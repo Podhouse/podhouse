@@ -16,14 +16,14 @@ import { useLogout } from "src/utils/auth";
 const SettingsModal = () => {
   const { handleSettings } = useSettingsContext();
 
-  const [logout] = useLogout();
+  const { onLogout } = useLogout();
 
   const ref = useRef<any>();
 
   useOnClickOutside(ref, () => handleSettings());
 
-  const onLogout = () => {
-    logout();
+  const onHandleLogout = () => {
+    onLogout();
     handleSettings();
   };
 
@@ -43,8 +43,8 @@ const SettingsModal = () => {
         <ReactRouterLink to="/settings">Settings</ReactRouterLink>
       </SettingsModalLinkContainer>
 
-      <SettingsModalLinkContainer onClick={onLogout}>
-        <Link onClick={onLogout}>Logout</Link>
+      <SettingsModalLinkContainer onClick={onHandleLogout}>
+        <Link onClick={onHandleLogout}>Logout</Link>
       </SettingsModalLinkContainer>
     </SettingsModalContainer>
   );
