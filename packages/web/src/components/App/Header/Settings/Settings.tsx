@@ -13,35 +13,45 @@ import useAuthUser from "src/hooks/useAuthUser";
 
 import { getToken } from "src/utils/auth";
 
+import { SettingsQuery } from "./__generated__/SettingsQuery.graphql";
+
+const query = graphql`
+  query SettingsQuery {
+    currentUser {
+      ...useAuthUser_user
+    }
+  }
+`;
+
 const Settings = () => {
   const { handleAuth } = useAuthContext();
   const { handleSettings } = useSettingsContext();
 
-  // const data = useLazyLoadQuery<SettingsQuery>(
-  //   query,
-  //   {},
-  //   {
-  //     fetchPolicy: "network-only",
-  //     fetchKey: getToken(),
-  //   }
-  // );
+  const data = useLazyLoadQuery<SettingsQuery>(
+    query,
+    {},
+    {
+      fetchPolicy: "store-and-network",
+      fetchKey: getToken(),
+    }
+  );
 
-  // const isAuthenticated = useAuthUser(data?.currentUser);
+  const isAuthenticated = useAuthUser(data?.currentUser);
 
-  // if (!isAuthenticated) {
-  //   return (
-  //     <SettingsContainer>
-  //       <Link
-  //         color="brand.900"
-  //         fontWeight="bold"
-  //         textTransform="uppercase"
-  //         onClick={handleAuth}
-  //       >
-  //         Login
-  //       </Link>
-  //     </SettingsContainer>
-  //   );
-  // }
+  if (!isAuthenticated) {
+    return (
+      <SettingsContainer>
+        <Link
+          color="brand.900"
+          fontWeight="bold"
+          textTransform="uppercase"
+          onClick={handleAuth}
+        >
+          Login
+        </Link>
+      </SettingsContainer>
+    );
+  }
 
   return (
     <SettingsContainer>
