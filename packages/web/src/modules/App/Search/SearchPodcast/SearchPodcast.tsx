@@ -69,6 +69,9 @@ const SearchPodcast = ({
 
   if (shouldLoadMore === true) loadMore();
 
+  console.log("query: ", query);
+  console.log("data: ", data);
+
   return (
     <SearchPodcastContainer>
       <PodcastsWithOnlyAvatarList

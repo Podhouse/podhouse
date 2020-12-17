@@ -1,4 +1,4 @@
-import React, { useState, Suspense } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import Scrollbars from "react-custom-scrollbars";
 import graphql from "babel-plugin-relay/macro";
 import { useQueryLoader } from "react-relay/hooks";
@@ -10,6 +10,8 @@ import SkeletonPodcastsWithOnlyAvatarList from "src/components/Skeletons/Skeleto
 import ErrorFallback from "src/components/ErrorFallback/ErrorFallback";
 
 import { SearchContainer } from "./Search.styles";
+
+import { useSearchContext } from "src/machines/Search/SearchContext";
 
 import { SearchQuery } from "./__generated__/SearchQuery.graphql";
 
@@ -31,6 +33,8 @@ type ScrollFrameType = {
 };
 
 const Search = () => {
+  const { search } = useSearchContext();
+
   const [shouldLoadMore, setShouldLoadMore] = useState<boolean>(false);
 
   const [queryReference, loadQuery] = useQueryLoader<SearchQuery>(searchQuery);
@@ -42,6 +46,10 @@ const Search = () => {
     setShouldLoadMore(false);
   };
 
+  useEffect(() => {
+    loadQuery({ podcastName: search }, { fetchPolicy: "network-only" });
+  }, [loadQuery, search]);
+
   return (
     <Scrollbars
       onScrollFrame={onLoadMore}
@@ -49,13 +57,6 @@ const Search = () => {
       autoHideTimeout={100}
       autoHideDuration={100}
     >
-      <button
-        onClick={() => {
-          loadQuery({ podcastName: "How" });
-        }}
-      >
-        load
-      </button>
       {queryReference && (
         <ErrorBoundary FallbackComponent={ErrorFallback}>
           <Suspense
