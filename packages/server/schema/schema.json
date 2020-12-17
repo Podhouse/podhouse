@@ -198,7 +198,7 @@
                   "defaultValue": null
                 },
                 {
-                  "name": "name",
+                  "name": "podcastName",
                   "description": null,
                   "type": {
                     "kind": "SCALAR",

@@ -1,6 +1,11 @@
 import React, { useCallback } from "react";
 import graphql from "babel-plugin-relay/macro";
-import { usePaginationFragment } from "react-relay/hooks";
+import { GraphQLTaggedNode } from "react-relay";
+import {
+  usePreloadedQuery,
+  usePaginationFragment,
+  PreloadedQuery,
+} from "react-relay/hooks";
 
 import { GenrePodcastContainer } from "./GenrePodcast.styles";
 
@@ -11,11 +16,11 @@ import PodcastsWithOnlyAvatarList from "src/components/Lists/PodcastsWithOnlyAva
 import { GenrePaginationQuery } from "./__generated__/GenrePaginationQuery.graphql";
 import { GenrePodcast_podcasts$key } from "./__generated__/GenrePodcast_podcasts.graphql";
 
-import { GenreQueryResponse } from "../__generated__/GenreQuery.graphql";
+import { GenreQuery } from "../__generated__/GenreQuery.graphql";
 
 import featured from "src/utils/featured";
 
-const query = graphql`
+const fragment = graphql`
   fragment GenrePodcast_podcasts on Query
   @argumentDefinitions(
     primaryGenre: { type: "String" }
@@ -43,16 +48,24 @@ const query = graphql`
 `;
 
 interface Props {
-  genreQuery: GenreQueryResponse;
-  primaryGenre: string;
+  genreQuery: GraphQLTaggedNode;
+  queryReference: PreloadedQuery<GenreQuery>;
   shouldLoadMore: boolean;
+  primaryGenre: string;
 }
 
-const GenrePodcast = ({ genreQuery, primaryGenre, shouldLoadMore }: Props) => {
+const GenrePodcast = ({
+  genreQuery,
+  queryReference,
+  shouldLoadMore,
+  primaryGenre,
+}: Props) => {
+  const query = usePreloadedQuery<GenreQuery>(genreQuery, queryReference);
+
   const { data, loadNext, isLoadingNext } = usePaginationFragment<
     GenrePaginationQuery,
     GenrePodcast_podcasts$key
-  >(query, genreQuery);
+  >(fragment, query);
 
   const loadMore = useCallback(() => {
     if (isLoadingNext) return;

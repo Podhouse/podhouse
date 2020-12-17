@@ -46,9 +46,9 @@ const node: ReaderFragment = (function () {
         name: "last",
       },
       {
-        defaultValue: null,
+        defaultValue: "",
         kind: "LocalArgument",
-        name: "name",
+        name: "podcastName",
       },
     ],
     kind: "Fragment",
@@ -84,8 +84,8 @@ const node: ReaderFragment = (function () {
         args: [
           {
             kind: "Variable",
-            name: "name",
-            variableName: "name",
+            name: "podcastName",
+            variableName: "podcastName",
           },
         ],
         concreteType: "PodcastConnection",
@@ -190,5 +190,5 @@ const node: ReaderFragment = (function () {
     abstractKey: null,
   };
 })();
-(node as any).hash = "2322b0cb595d50060a69fd2957a06a8c";
+(node as any).hash = "ea5378281d4e5726d0bd2273a5f2de0b";
 export default node;

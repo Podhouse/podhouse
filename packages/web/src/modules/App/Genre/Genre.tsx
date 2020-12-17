@@ -1,7 +1,7 @@
-import React, { useState, Suspense } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import Scrollbars from "react-custom-scrollbars";
 import graphql from "babel-plugin-relay/macro";
-import { useLazyLoadQuery } from "react-relay/hooks";
+import { useQueryLoader } from "react-relay/hooks";
 import { useLocation } from "react-router-dom";
 import { ErrorBoundary } from "react-error-boundary";
 
@@ -17,7 +17,7 @@ import { GenreQuery } from "./__generated__/GenreQuery.graphql";
 
 import featured from "src/utils/featured";
 
-const query = graphql`
+const genreQuery = graphql`
   query GenreQuery($primaryGenre: String!) {
     ...GenrePodcast_podcasts @arguments(primaryGenre: $primaryGenre)
   }
@@ -34,16 +34,22 @@ type ScrollFrameType = {
   top: number;
 };
 
-const GenreComponent = () => {
+const Genre = () => {
   const [shouldLoadMore, setShouldLoadMore] = useState<boolean>(false);
 
   const { state } = useLocation<any>();
 
-  const genreQuery = useLazyLoadQuery<GenreQuery>(
-    query,
-    { primaryGenre: state.primaryGenre },
-    { fetchPolicy: "store-or-network" }
+  const [queryReference, loadQuery, disposeQuery] = useQueryLoader<GenreQuery>(
+    genreQuery
   );
+
+  useEffect(() => {
+    loadQuery({ primaryGenre: state.primaryGenre });
+
+    return () => {
+      disposeQuery();
+    };
+  }, [loadQuery, disposeQuery, state.primaryGenre]);
 
   const onLoadMore = (value: ScrollFrameType) => {
     if (value.top === 1) {
@@ -59,28 +65,27 @@ const GenreComponent = () => {
       autoHideTimeout={100}
       autoHideDuration={100}
     >
-      <GenrePodcast
-        genreQuery={genreQuery}
-        primaryGenre={state.primaryGenre}
-        shouldLoadMore={shouldLoadMore}
-      />
+      {queryReference && (
+        <ErrorBoundary FallbackComponent={ErrorFallback}>
+          <Suspense
+            fallback={
+              <GenreContainer>
+                <Featured featured={featured} />
+                <SkeletonPodcastsWithOnlyAvatarList />
+              </GenreContainer>
+            }
+          >
+            <GenrePodcast
+              genreQuery={genreQuery}
+              queryReference={queryReference}
+              shouldLoadMore={shouldLoadMore}
+              primaryGenre={state.primaryGenre}
+            />
+          </Suspense>
+        </ErrorBoundary>
+      )}
     </Scrollbars>
   );
 };
-
-const Genre = () => (
-  <ErrorBoundary FallbackComponent={ErrorFallback}>
-    <Suspense
-      fallback={
-        <GenreContainer>
-          <Featured featured={featured} />
-          <SkeletonPodcastsWithOnlyAvatarList />
-        </GenreContainer>
-      }
-    >
-      <GenreComponent />
-    </Suspense>
-  </ErrorBoundary>
-);
 
 export default Genre;

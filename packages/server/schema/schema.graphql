@@ -13,7 +13,7 @@ type Query {
   ): [Node]!
   currentUser: User
   podcasts(after: String, first: Int, before: String, last: Int): PodcastConnection!
-  podcastsByName(after: String, first: Int, before: String, last: Int, name: String): PodcastConnection!
+  podcastsByName(after: String, first: Int, before: String, last: Int, podcastName: String): PodcastConnection!
   podcastsByGenre(after: String, first: Int, before: String, last: Int, primaryGenre: String): PodcastConnection!
   podcast(_id: ID!): Podcast
   episodes(after: String, first: Int, before: String, last: Int, podcast: ID, name: String): EpisodeConnection!

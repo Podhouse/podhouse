@@ -48,7 +48,7 @@ const QueryType = new GraphQLObjectType({
       type: GraphQLNonNull(PodcastConnection.connectionType),
       args: {
         ...connectionArgs,
-        name: {
+        podcastName: {
           type: GraphQLString,
         },
       },
@@ -56,7 +56,7 @@ const QueryType = new GraphQLObjectType({
         await PodcastLoader.loadAll(
           context,
           withFilter(args, {
-            name: args.name,
+            name: args.podcastName,
           }),
         ),
     },

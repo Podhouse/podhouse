@@ -9,7 +9,7 @@ export type SearchPodcastPaginationQueryVariables = {
   before?: string | null;
   first?: number | null;
   last?: number | null;
-  name?: string | null;
+  podcastName?: string | null;
 };
 export type SearchPodcastPaginationQueryResponse = {
   readonly " $fragmentRefs": FragmentRefs<"SearchPodcast_podcastsByName">;
@@ -25,13 +25,13 @@ query SearchPodcastPaginationQuery(
   $before: String
   $first: Int = 25
   $last: Int
-  $name: String
+  $podcastName: String = ""
 ) {
-  ...SearchPodcast_podcastsByName_3GnGUH
+  ...SearchPodcast_podcastsByName_1yFHIs
 }
 
-fragment SearchPodcast_podcastsByName_3GnGUH on Query {
-  podcastsByName(first: $first, last: $last, before: $before, after: $after, name: $name) {
+fragment SearchPodcast_podcastsByName_1yFHIs on Query {
+  podcastsByName(podcastName: $podcastName, after: $after, first: $first, before: $before, last: $last) {
     edges {
       node {
         _id
@@ -74,9 +74,9 @@ const node: ConcreteRequest = (function () {
         name: "last",
       },
       {
-        defaultValue: null,
+        defaultValue: "",
         kind: "LocalArgument",
-        name: "name",
+        name: "podcastName",
       },
     ],
     v1 = [
@@ -102,8 +102,8 @@ const node: ConcreteRequest = (function () {
       },
       {
         kind: "Variable",
-        name: "name",
-        variableName: "name",
+        name: "podcastName",
+        variableName: "podcastName",
       },
     ];
   return {
@@ -238,7 +238,7 @@ const node: ConcreteRequest = (function () {
         {
           alias: null,
           args: v1 /*: any*/,
-          filters: ["name"],
+          filters: ["podcastName"],
           handle: "connection",
           key: "SearchPodcast_podcastsByName",
           kind: "LinkedHandle",
@@ -247,15 +247,15 @@ const node: ConcreteRequest = (function () {
       ],
     },
     params: {
-      cacheID: "7660b71b92fd5bc5709c3d9a80ee19b0",
+      cacheID: "65d7cd1933061901d6f1e191bd3476fa",
       id: null,
       metadata: {},
       name: "SearchPodcastPaginationQuery",
       operationKind: "query",
       text:
-        "query SearchPodcastPaginationQuery(\n  $after: String\n  $before: String\n  $first: Int = 25\n  $last: Int\n  $name: String\n) {\n  ...SearchPodcast_podcastsByName_3GnGUH\n}\n\nfragment SearchPodcast_podcastsByName_3GnGUH on Query {\n  podcastsByName(first: $first, last: $last, before: $before, after: $after, name: $name) {\n    edges {\n      node {\n        _id\n        image\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n",
+        'query SearchPodcastPaginationQuery(\n  $after: String\n  $before: String\n  $first: Int = 25\n  $last: Int\n  $podcastName: String = ""\n) {\n  ...SearchPodcast_podcastsByName_1yFHIs\n}\n\nfragment SearchPodcast_podcastsByName_1yFHIs on Query {\n  podcastsByName(podcastName: $podcastName, after: $after, first: $first, before: $before, last: $last) {\n    edges {\n      node {\n        _id\n        image\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n',
     },
   };
 })();
-(node as any).hash = "2322b0cb595d50060a69fd2957a06a8c";
+(node as any).hash = "ea5378281d4e5726d0bd2273a5f2de0b";
 export default node;

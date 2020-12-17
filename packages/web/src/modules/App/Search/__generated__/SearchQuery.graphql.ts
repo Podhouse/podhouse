@@ -5,7 +5,7 @@
 import { ConcreteRequest } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
 export type SearchQueryVariables = {
-  name: string;
+  podcastName: string;
 };
 export type SearchQueryResponse = {
   readonly " $fragmentRefs": FragmentRefs<"SearchPodcast_podcastsByName">;
@@ -17,13 +17,13 @@ export type SearchQuery = {
 
 /*
 query SearchQuery(
-  $name: String!
+  $podcastName: String!
 ) {
-  ...SearchPodcast_podcastsByName_2aiVTE
+  ...SearchPodcast_podcastsByName_h9Yo2
 }
 
-fragment SearchPodcast_podcastsByName_2aiVTE on Query {
-  podcastsByName(first: 25, name: $name) {
+fragment SearchPodcast_podcastsByName_h9Yo2 on Query {
+  podcastsByName(podcastName: $podcastName, first: 25) {
     edges {
       node {
         _id
@@ -48,13 +48,13 @@ const node: ConcreteRequest = (function () {
       {
         defaultValue: null,
         kind: "LocalArgument",
-        name: "name",
+        name: "podcastName",
       },
     ],
     v1 = {
       kind: "Variable",
-      name: "name",
-      variableName: "name",
+      name: "podcastName",
+      variableName: "podcastName",
     },
     v2 = [
       {
@@ -196,7 +196,7 @@ const node: ConcreteRequest = (function () {
         {
           alias: null,
           args: v2 /*: any*/,
-          filters: ["name"],
+          filters: ["podcastName"],
           handle: "connection",
           key: "SearchPodcast_podcastsByName",
           kind: "LinkedHandle",
@@ -205,15 +205,15 @@ const node: ConcreteRequest = (function () {
       ],
     },
     params: {
-      cacheID: "8e3a2c638ccfa0317f99f0280a3d187f",
+      cacheID: "6b035bc884fb2f3d040da5b71d4b6544",
       id: null,
       metadata: {},
       name: "SearchQuery",
       operationKind: "query",
       text:
-        "query SearchQuery(\n  $name: String!\n) {\n  ...SearchPodcast_podcastsByName_2aiVTE\n}\n\nfragment SearchPodcast_podcastsByName_2aiVTE on Query {\n  podcastsByName(first: 25, name: $name) {\n    edges {\n      node {\n        _id\n        image\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n",
+        "query SearchQuery(\n  $podcastName: String!\n) {\n  ...SearchPodcast_podcastsByName_h9Yo2\n}\n\nfragment SearchPodcast_podcastsByName_h9Yo2 on Query {\n  podcastsByName(podcastName: $podcastName, first: 25) {\n    edges {\n      node {\n        _id\n        image\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n",
     },
   };
 })();
-(node as any).hash = "b25d7fccda57088d4e630145bb5f0959";
+(node as any).hash = "e34b5b74b4337b48c8f6ba0f6e1a2f3c";
 export default node;

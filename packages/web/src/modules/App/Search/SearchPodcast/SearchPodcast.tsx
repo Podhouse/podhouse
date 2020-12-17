@@ -19,19 +19,19 @@ import { SearchQuery } from "../__generated__/SearchQuery.graphql";
 const fragment = graphql`
   fragment SearchPodcast_podcastsByName on Query
   @argumentDefinitions(
-    first: { type: "Int", defaultValue: 25 }
-    last: { type: "Int" }
-    before: { type: "String" }
+    podcastName: { type: "String", defaultValue: "" }
     after: { type: "String" }
-    name: { type: "String" }
+    first: { type: "Int", defaultValue: 25 }
+    before: { type: "String" }
+    last: { type: "Int" }
   )
   @refetchable(queryName: "SearchPodcastPaginationQuery") {
     podcastsByName(
-      first: $first
-      last: $last
-      before: $before
+      podcastName: $podcastName
       after: $after
-      name: $name
+      first: $first
+      before: $before
+      last: $last
     ) @connection(key: "SearchPodcast_podcastsByName") {
       edges {
         node {
