@@ -33,8 +33,12 @@ const query = graphql`
   }
 `;
 
+type LocationState = {
+  _id: string;
+};
+
 const Episode = () => {
-  const { state } = useLocation<any>();
+  const { state } = useLocation<LocationState>();
 
   const [
     queryReference,

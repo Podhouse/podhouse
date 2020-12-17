@@ -34,10 +34,14 @@ type ScrollFrameType = {
   top: number;
 };
 
+type LocationState = {
+  primaryGenre: string;
+};
+
 const Genre = () => {
   const [shouldLoadMore, setShouldLoadMore] = useState<boolean>(false);
 
-  const { state } = useLocation<any>();
+  const { state } = useLocation<LocationState>();
 
   const [queryReference, loadQuery, disposeQuery] = useQueryLoader<GenreQuery>(
     genreQuery

@@ -1,16 +1,13 @@
-import React, { useState, useEffect, Suspense } from "react";
+import React, { useState, Suspense } from "react";
 import Scrollbars from "react-custom-scrollbars";
 import graphql from "babel-plugin-relay/macro";
 import { useQueryLoader } from "react-relay/hooks";
-import { useDebounce } from "use-debounce";
 import { ErrorBoundary } from "react-error-boundary";
 
 import SearchPodcast from "./SearchPodcast/SearchPodcast";
 
 import SkeletonPodcastsWithOnlyAvatarList from "src/components/Skeletons/SkeletonPodcastsWithOnlyAvatarList/SkeletonPodcastsWithOnlyAvatarList";
 import ErrorFallback from "src/components/ErrorFallback/ErrorFallback";
-
-import { useSearchContext } from "src/machines/Search/SearchContext";
 
 import { SearchContainer } from "./Search.styles";
 
@@ -34,25 +31,9 @@ type ScrollFrameType = {
 };
 
 const Search = () => {
-  const { search }: { search: string } = useSearchContext();
-
-  const [debouncedSearch] = useDebounce(search, 500);
-
   const [shouldLoadMore, setShouldLoadMore] = useState<boolean>(false);
 
-  const [queryReference, loadQuery, disposeQuery] = useQueryLoader<SearchQuery>(
-    searchQuery
-  );
-
-  useEffect(() => {
-    if (debouncedSearch) {
-      loadQuery({ podcastName: debouncedSearch });
-    }
-
-    return () => {
-      disposeQuery();
-    };
-  }, [loadQuery, disposeQuery, debouncedSearch]);
+  const [queryReference, loadQuery] = useQueryLoader<SearchQuery>(searchQuery);
 
   const onLoadMore = (value: ScrollFrameType) => {
     if (value.top === 1) {
@@ -68,6 +49,13 @@ const Search = () => {
       autoHideTimeout={100}
       autoHideDuration={100}
     >
+      <button
+        onClick={() => {
+          loadQuery({ podcastName: "How" });
+        }}
+      >
+        load
+      </button>
       {queryReference && (
         <ErrorBoundary FallbackComponent={ErrorFallback}>
           <Suspense

@@ -35,6 +35,7 @@ const fragment = graphql`
     ) @connection(key: "SearchPodcast_podcastsByName") {
       edges {
         node {
+          id
           _id
           image
         }
@@ -67,10 +68,6 @@ const SearchPodcast = ({
   }, [isLoadingNext, loadNext]);
 
   if (shouldLoadMore === true) loadMore();
-
-  console.log("query: ", query);
-
-  console.log("data: ", data);
 
   return (
     <SearchPodcastContainer>

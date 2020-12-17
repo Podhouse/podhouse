@@ -1,16 +1,18 @@
-import React from "react";
+import React, { ChangeEvent, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
 
 import { SearchContainer } from "./Search.styles";
 
-import { useSearchContext } from "src/machines/Search/SearchContext";
-
 const Search = () => {
   const history = useHistory();
 
-  const { search, onSearch } = useSearchContext();
+  const [search, setSearch] = useState<string>("");
+
+  const onSearch = (e: ChangeEvent<HTMLInputElement>) => {
+    setSearch(e.target.value);
+  };
 
   return (
     <SearchContainer>

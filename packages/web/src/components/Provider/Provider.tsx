@@ -2,6 +2,9 @@ import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import { Global } from "@emotion/react";
 import { ChakraProvider } from "@chakra-ui/react";
+import { RelayEnvironmentProvider } from "relay-hooks";
+
+import RelayEnvironment from "src/relay/RelayEnvironment";
 
 import { SearchProvider } from "src/machines/Search/SearchContext";
 import { PlayerProvider } from "src/machines/Player/PlayerContext";
@@ -17,24 +20,25 @@ import theme from "src/system/theme";
 import "keen-slider/keen-slider.min.css";
 
 const Provider = () => (
-  <BrowserRouter>
-    <ChakraProvider theme={theme}>
-      <PlayerProvider>
-        <SearchProvider>
-          <AuthProvider>
-            <SettingsProvider>
-              <QueueProvider>
-                <RateProvider>
-                  <App />
-                </RateProvider>
-              </QueueProvider>
-            </SettingsProvider>
-          </AuthProvider>
-        </SearchProvider>
-      </PlayerProvider>
-    </ChakraProvider>
-    <Global
-      styles={`
+  <RelayEnvironmentProvider environment={RelayEnvironment}>
+    <BrowserRouter>
+      <ChakraProvider theme={theme}>
+        <PlayerProvider>
+          <SearchProvider>
+            <AuthProvider>
+              <SettingsProvider>
+                <QueueProvider>
+                  <RateProvider>
+                    <App />
+                  </RateProvider>
+                </QueueProvider>
+              </SettingsProvider>
+            </AuthProvider>
+          </SearchProvider>
+        </PlayerProvider>
+      </ChakraProvider>
+      <Global
+        styles={`
         @font-face {
           font-family: 'Inter';
           src: url('./fonts/Inter-Regular.ttf') format('truetype');
@@ -115,8 +119,9 @@ const Provider = () => (
           font-display: swap;
         }
         `}
-    />
-  </BrowserRouter>
+      />
+    </BrowserRouter>
+  </RelayEnvironmentProvider>
 );
 
 export default Provider;

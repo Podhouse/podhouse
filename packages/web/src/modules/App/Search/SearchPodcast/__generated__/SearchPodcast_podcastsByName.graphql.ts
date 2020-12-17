@@ -8,6 +8,7 @@ export type SearchPodcast_podcastsByName = {
   readonly podcastsByName: {
     readonly edges: ReadonlyArray<{
       readonly node: {
+        readonly id: string;
         readonly _id: string;
         readonly image: string;
       } | null;
@@ -113,6 +114,13 @@ const node: ReaderFragment = (function () {
                     alias: null,
                     args: null,
                     kind: "ScalarField",
+                    name: "id",
+                    storageKey: null,
+                  },
+                  {
+                    alias: null,
+                    args: null,
+                    kind: "ScalarField",
                     name: "_id",
                     storageKey: null,
                   },
@@ -190,5 +198,5 @@ const node: ReaderFragment = (function () {
     abstractKey: null,
   };
 })();
-(node as any).hash = "ea5378281d4e5726d0bd2273a5f2de0b";
+(node as any).hash = "b2f6b348d906c3be662d85fddba452bc";
 export default node;

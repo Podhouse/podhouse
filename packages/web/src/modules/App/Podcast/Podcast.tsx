@@ -50,10 +50,14 @@ type ScrollFrameType = {
   top: number;
 };
 
+type LocationState = {
+  _id: string;
+};
+
 const Podcast = () => {
   const [shouldLoadMore, setShouldLoadMore] = useState<boolean>(false);
 
-  const { state } = useLocation<any>();
+  const { state } = useLocation<LocationState>();
 
   const [
     podcastQueryReference,
