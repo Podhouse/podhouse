@@ -19,7 +19,7 @@ import { SearchQuery } from "../__generated__/SearchQuery.graphql";
 const fragment = graphql`
   fragment SearchPodcast_podcastsByName on Query
   @argumentDefinitions(
-    podcastName: { type: "String", defaultValue: "" }
+    podcastName: { type: "String" }
     after: { type: "String" }
     first: { type: "Int", defaultValue: 25 }
     before: { type: "String" }
