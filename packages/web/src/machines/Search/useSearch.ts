@@ -1,11 +1,11 @@
-import { useState, ChangeEvent } from "react";
+import { useState, useCallback, ChangeEvent } from "react";
 
 const useSearch = () => {
   const [search, setSearch] = useState<string>("");
 
-  const onSearch = (e: ChangeEvent<HTMLInputElement>) => {
+  const onSearch = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
-  };
+  }, []);
 
   return {
     search,

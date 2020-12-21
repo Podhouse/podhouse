@@ -1,4 +1,5 @@
 import React, { useState, useEffect, Suspense } from "react";
+import { useDebounce } from "use-debounce";
 import Scrollbars from "react-custom-scrollbars";
 import graphql from "babel-plugin-relay/macro";
 import { useQueryLoader } from "react-relay/hooks";
@@ -33,7 +34,8 @@ type ScrollFrameType = {
 };
 
 const Search = () => {
-  const { search } = useSearchContext();
+  const { search }: { search: string } = useSearchContext();
+  const [debouncedSearch] = useDebounce(search, 500);
 
   const [shouldLoadMore, setShouldLoadMore] = useState<boolean>(false);
 
@@ -47,8 +49,8 @@ const Search = () => {
   };
 
   useEffect(() => {
-    loadQuery({ podcastName: search }, { fetchPolicy: "network-only" });
-  }, [loadQuery, search]);
+    loadQuery({ podcastName: debouncedSearch }, { fetchPolicy: "store-or-network" });
+  }, [loadQuery, debouncedSearch]);
 
   return (
     <Scrollbars
