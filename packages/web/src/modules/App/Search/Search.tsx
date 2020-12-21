@@ -3,6 +3,7 @@ import Scrollbars from "react-custom-scrollbars";
 import graphql from "babel-plugin-relay/macro";
 import { useQueryLoader } from "react-relay/hooks";
 import { ErrorBoundary } from "react-error-boundary";
+import { useDebounce } from "use-debounce";
 
 import SearchPodcast from "./SearchPodcast/SearchPodcast";
 
@@ -16,8 +17,8 @@ import { useSearchContext } from "src/machines/Search/SearchContext";
 import { SearchQuery } from "./__generated__/SearchQuery.graphql";
 
 const searchQuery = graphql`
-  query SearchQuery($podcastName: String!) {
-    ...SearchPodcast_podcastsByName @arguments(podcastName: $podcastName)
+   query SearchQuery($podcastName: String!) {
+    ...SearchPodcast_podcasts @arguments(podcastName: $podcastName)
   }
 `;
 
@@ -33,11 +34,12 @@ type ScrollFrameType = {
 };
 
 const Search = () => {
-  const { search }: { search: string } = useSearchContext();
-
   const [shouldLoadMore, setShouldLoadMore] = useState<boolean>(false);
 
-  const [queryReference, loadQuery] = useQueryLoader<SearchQuery>(searchQuery);
+  const [queryReference, loadQuery, disposeQuery] = useQueryLoader<SearchQuery>(searchQuery);
+
+  const { search }: { search: string } = useSearchContext();
+  const [debouncedSearch] = useDebounce(search, 500);
 
   const onLoadMore = (value: ScrollFrameType) => {
     if (value.top === 1) {
@@ -47,8 +49,12 @@ const Search = () => {
   };
 
   useEffect(() => {
-    loadQuery({ podcastName: search }, { fetchPolicy: "store-or-network" });
-  }, [loadQuery, search]);
+    loadQuery({ podcastName: debouncedSearch });
+
+    return () => {
+      disposeQuery();
+    };
+  }, [loadQuery, disposeQuery, debouncedSearch]);
 
   return (
     <Scrollbars

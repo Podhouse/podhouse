@@ -4,7 +4,7 @@
 
 import { ReaderFragment } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
-export type SearchPodcast_podcastsByName = {
+export type SearchPodcast_podcasts = {
     readonly podcastsByName: {
         readonly edges: ReadonlyArray<{
             readonly node: {
@@ -14,12 +14,12 @@ export type SearchPodcast_podcastsByName = {
             } | null;
         } | null>;
     };
-    readonly " $refType": "SearchPodcast_podcastsByName";
+    readonly " $refType": "SearchPodcast_podcasts";
 };
-export type SearchPodcast_podcastsByName$data = SearchPodcast_podcastsByName;
-export type SearchPodcast_podcastsByName$key = {
-    readonly " $data"?: SearchPodcast_podcastsByName$data;
-    readonly " $fragmentRefs": FragmentRefs<"SearchPodcast_podcastsByName">;
+export type SearchPodcast_podcasts$data = SearchPodcast_podcasts;
+export type SearchPodcast_podcasts$key = {
+    readonly " $data"?: SearchPodcast_podcasts$data;
+    readonly " $fragmentRefs": FragmentRefs<"SearchPodcast_podcasts">;
 };
 
 
@@ -82,11 +82,17 @@ return {
       "operation": require('./SearchPodcastPaginationQuery.graphql.ts')
     }
   },
-  "name": "SearchPodcast_podcastsByName",
+  "name": "SearchPodcast_podcasts",
   "selections": [
     {
       "alias": "podcastsByName",
-      "args": null,
+      "args": [
+        {
+          "kind": "Variable",
+          "name": "podcastName",
+          "variableName": "podcastName"
+        }
+      ],
       "concreteType": "PodcastConnection",
       "kind": "LinkedField",
       "name": "__SearchPodcast_podcastsByName_connection",
@@ -196,5 +202,5 @@ return {
   "abstractKey": null
 };
 })();
-(node as any).hash = '5097b55f328385a855940cf11e9a2cf8';
+(node as any).hash = '16ae1cea54a571e743f4f545b8bfaa8f';
 export default node;

@@ -12,7 +12,7 @@ export type SearchPodcastPaginationQueryVariables = {
     podcastName?: string | null;
 };
 export type SearchPodcastPaginationQueryResponse = {
-    readonly " $fragmentRefs": FragmentRefs<"SearchPodcast_podcastsByName">;
+    readonly " $fragmentRefs": FragmentRefs<"SearchPodcast_podcasts">;
 };
 export type SearchPodcastPaginationQuery = {
     readonly response: SearchPodcastPaginationQueryResponse;
@@ -29,10 +29,10 @@ query SearchPodcastPaginationQuery(
   $last: Int
   $podcastName: String
 ) {
-  ...SearchPodcast_podcastsByName_1yFHIs
+  ...SearchPodcast_podcasts_1yFHIs
 }
 
-fragment SearchPodcast_podcastsByName_1yFHIs on Query {
+fragment SearchPodcast_podcasts_1yFHIs on Query {
   podcastsByName(podcastName: $podcastName, after: $after, first: $first, before: $before, last: $last) {
     edges {
       node {
@@ -118,7 +118,7 @@ return {
       {
         "args": (v1/*: any*/),
         "kind": "FragmentSpread",
-        "name": "SearchPodcast_podcastsByName"
+        "name": "SearchPodcast_podcasts"
       }
     ],
     "type": "Query",
@@ -240,7 +240,9 @@ return {
       {
         "alias": null,
         "args": (v1/*: any*/),
-        "filters": [],
+        "filters": [
+          "podcastName"
+        ],
         "handle": "connection",
         "key": "SearchPodcast_podcastsByName",
         "kind": "LinkedHandle",
@@ -249,14 +251,14 @@ return {
     ]
   },
   "params": {
-    "cacheID": "81226545a17d7c498f83eb713bea1985",
+    "cacheID": "051b6beb12acc168029850a62cc5792a",
     "id": null,
     "metadata": {},
     "name": "SearchPodcastPaginationQuery",
     "operationKind": "query",
-    "text": "query SearchPodcastPaginationQuery(\n  $after: String\n  $before: String\n  $first: Int = 25\n  $last: Int\n  $podcastName: String\n) {\n  ...SearchPodcast_podcastsByName_1yFHIs\n}\n\nfragment SearchPodcast_podcastsByName_1yFHIs on Query {\n  podcastsByName(podcastName: $podcastName, after: $after, first: $first, before: $before, last: $last) {\n    edges {\n      node {\n        id\n        _id\n        image\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n"
+    "text": "query SearchPodcastPaginationQuery(\n  $after: String\n  $before: String\n  $first: Int = 25\n  $last: Int\n  $podcastName: String\n) {\n  ...SearchPodcast_podcasts_1yFHIs\n}\n\nfragment SearchPodcast_podcasts_1yFHIs on Query {\n  podcastsByName(podcastName: $podcastName, after: $after, first: $first, before: $before, last: $last) {\n    edges {\n      node {\n        id\n        _id\n        image\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n"
   }
 };
 })();
-(node as any).hash = '5097b55f328385a855940cf11e9a2cf8';
+(node as any).hash = '16ae1cea54a571e743f4f545b8bfaa8f';
 export default node;

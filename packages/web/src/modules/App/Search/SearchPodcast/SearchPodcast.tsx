@@ -12,12 +12,12 @@ import { SearchPodcastContainer } from "./SearchPodcast.styles";
 import PodcastsWithOnlyAvatarList from "src/components/Lists/PodcastsWithOnlyAvatarList/PodcastsWithOnlyAvatarList";
 
 import { SearchPodcastPaginationQuery } from "./__generated__/SearchPodcastPaginationQuery.graphql";
-import { SearchPodcast_podcastsByName$key } from "./__generated__/SearchPodcast_podcastsByName.graphql";
+import { SearchPodcast_podcasts$key } from "./__generated__/SearchPodcast_podcasts.graphql";
 
 import { SearchQuery } from "../__generated__/SearchQuery.graphql";
 
 const fragment = graphql`
-  fragment SearchPodcast_podcastsByName on Query
+  fragment SearchPodcast_podcasts on Query
   @argumentDefinitions(
     podcastName: { type: "String" }
     after: { type: "String" }
@@ -32,7 +32,7 @@ const fragment = graphql`
       first: $first
       before: $before
       last: $last
-    ) @connection(key: "SearchPodcast_podcastsByName", filters: []) {
+    ) @connection(key: "SearchPodcast_podcastsByName") {
       edges {
         node {
           id
@@ -59,7 +59,7 @@ const SearchPodcast = ({
 
   const { data, loadNext, isLoadingNext } = usePaginationFragment<
     SearchPodcastPaginationQuery,
-    SearchPodcast_podcastsByName$key
+    SearchPodcast_podcasts$key
   >(fragment, query);
 
   const loadMore = useCallback(() => {

@@ -39,6 +39,7 @@ const fragment = graphql`
     ) @connection(key: "GenrePodcast_podcastsByGenre") {
       edges {
         node {
+          id
           _id
           image
         }

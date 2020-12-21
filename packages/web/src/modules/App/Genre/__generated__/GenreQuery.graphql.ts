@@ -28,9 +28,9 @@ fragment GenrePodcast_podcasts_BPIEN on Query {
   podcastsByGenre(primaryGenre: $primaryGenre, first: 25) {
     edges {
       node {
+        id
         _id
         image
-        id
         __typename
       }
       cursor
@@ -118,6 +118,13 @@ return {
                     "alias": null,
                     "args": null,
                     "kind": "ScalarField",
+                    "name": "id",
+                    "storageKey": null
+                  },
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
                     "name": "_id",
                     "storageKey": null
                   },
@@ -126,13 +133,6 @@ return {
                     "args": null,
                     "kind": "ScalarField",
                     "name": "image",
-                    "storageKey": null
-                  },
-                  {
-                    "alias": null,
-                    "args": null,
-                    "kind": "ScalarField",
-                    "name": "id",
                     "storageKey": null
                   },
                   {
@@ -211,12 +211,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "cf2cc74330ba7a1806774ed4a0fd9e77",
+    "cacheID": "7ca8ce2036fcfd5f05866cbd44558ce8",
     "id": null,
     "metadata": {},
     "name": "GenreQuery",
     "operationKind": "query",
-    "text": "query GenreQuery(\n  $primaryGenre: String!\n) {\n  ...GenrePodcast_podcasts_BPIEN\n}\n\nfragment GenrePodcast_podcasts_BPIEN on Query {\n  podcastsByGenre(primaryGenre: $primaryGenre, first: 25) {\n    edges {\n      node {\n        _id\n        image\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n"
+    "text": "query GenreQuery(\n  $primaryGenre: String!\n) {\n  ...GenrePodcast_podcasts_BPIEN\n}\n\nfragment GenrePodcast_podcasts_BPIEN on Query {\n  podcastsByGenre(primaryGenre: $primaryGenre, first: 25) {\n    edges {\n      node {\n        id\n        _id\n        image\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n"
   }
 };
 })();

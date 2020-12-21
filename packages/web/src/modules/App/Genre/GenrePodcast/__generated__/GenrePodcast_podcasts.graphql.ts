@@ -8,6 +8,7 @@ export type GenrePodcast_podcasts = {
     readonly podcastsByGenre: {
         readonly edges: ReadonlyArray<{
             readonly node: {
+                readonly id: string;
                 readonly _id: string;
                 readonly image: string;
             } | null;
@@ -117,6 +118,13 @@ return {
                   "alias": null,
                   "args": null,
                   "kind": "ScalarField",
+                  "name": "id",
+                  "storageKey": null
+                },
+                {
+                  "alias": null,
+                  "args": null,
+                  "kind": "ScalarField",
                   "name": "_id",
                   "storageKey": null
                 },
@@ -194,5 +202,5 @@ return {
   "abstractKey": null
 };
 })();
-(node as any).hash = '30915da552816680378e95ace0cf6a27';
+(node as any).hash = '01ef3ea0845b63aabf34cbda403362ec';
 export default node;

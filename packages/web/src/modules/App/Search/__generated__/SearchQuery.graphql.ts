@@ -8,7 +8,7 @@ export type SearchQueryVariables = {
     podcastName: string;
 };
 export type SearchQueryResponse = {
-    readonly " $fragmentRefs": FragmentRefs<"SearchPodcast_podcastsByName">;
+    readonly " $fragmentRefs": FragmentRefs<"SearchPodcast_podcasts">;
 };
 export type SearchQuery = {
     readonly response: SearchQueryResponse;
@@ -21,10 +21,10 @@ export type SearchQuery = {
 query SearchQuery(
   $podcastName: String!
 ) {
-  ...SearchPodcast_podcastsByName_h9Yo2
+  ...SearchPodcast_podcasts_h9Yo2
 }
 
-fragment SearchPodcast_podcastsByName_h9Yo2 on Query {
+fragment SearchPodcast_podcasts_h9Yo2 on Query {
   podcastsByName(podcastName: $podcastName, first: 25) {
     edges {
       node {
@@ -78,7 +78,7 @@ return {
           (v1/*: any*/)
         ],
         "kind": "FragmentSpread",
-        "name": "SearchPodcast_podcastsByName"
+        "name": "SearchPodcast_podcasts"
       }
     ],
     "type": "Query",
@@ -200,7 +200,9 @@ return {
       {
         "alias": null,
         "args": (v2/*: any*/),
-        "filters": [],
+        "filters": [
+          "podcastName"
+        ],
         "handle": "connection",
         "key": "SearchPodcast_podcastsByName",
         "kind": "LinkedHandle",
@@ -209,14 +211,14 @@ return {
     ]
   },
   "params": {
-    "cacheID": "fa6b172618d609ca57acce29174e17bb",
+    "cacheID": "d60ec655a8c97c75b9e7208b9a343bb5",
     "id": null,
     "metadata": {},
     "name": "SearchQuery",
     "operationKind": "query",
-    "text": "query SearchQuery(\n  $podcastName: String!\n) {\n  ...SearchPodcast_podcastsByName_h9Yo2\n}\n\nfragment SearchPodcast_podcastsByName_h9Yo2 on Query {\n  podcastsByName(podcastName: $podcastName, first: 25) {\n    edges {\n      node {\n        id\n        _id\n        image\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n"
+    "text": "query SearchQuery(\n  $podcastName: String!\n) {\n  ...SearchPodcast_podcasts_h9Yo2\n}\n\nfragment SearchPodcast_podcasts_h9Yo2 on Query {\n  podcastsByName(podcastName: $podcastName, first: 25) {\n    edges {\n      node {\n        id\n        _id\n        image\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n"
   }
 };
 })();
-(node as any).hash = 'e34b5b74b4337b48c8f6ba0f6e1a2f3c';
+(node as any).hash = '5ba09ad9049e8774b483e13070ac90ee';
 export default node;
