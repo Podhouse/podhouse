@@ -37,7 +37,7 @@
     "react-error-boundary": "^3.1.0",
     "react-feather": "^2.0.9",
     "react-hook-form": "^6.13.1",
-    "react-relay": "^0.0.0-experimental-0b967d2e",
+    "react-relay": "^10.1.2",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.1",
     "rehawk": "^0.2.2",
