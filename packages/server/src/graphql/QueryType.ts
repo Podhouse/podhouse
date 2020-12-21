@@ -5,7 +5,7 @@ import {
   GraphQLID,
   GraphQLBoolean,
 } from "graphql";
-import { connectionArgs } from "graphql-relay";
+import { connectionArgs, connectionFromArray } from "graphql-relay";
 
 import UserType from "../modules/User/UserType";
 import UserModel, { IUser } from "../modules/User/UserModel";
@@ -14,6 +14,7 @@ import * as UserLoader from "../modules/User/UserLoader";
 import PodcastType from "../modules/Podcast/PodcastType";
 import { PodcastConnection } from "../modules/Podcast/PodcastType";
 import * as PodcastLoader from "../modules/Podcast/PodcastLoader";
+import PodcastModel from "../modules/Podcast/PodcastModel";
 
 import EpisodeType from "../modules/Episode/EpisodeType";
 import { EpisodeConnection } from "../modules/Episode/EpisodeType";
@@ -52,13 +53,11 @@ const QueryType = new GraphQLObjectType({
           type: GraphQLString,
         },
       },
-      resolve: async (_, args, context: GraphQLContext) =>
-        await PodcastLoader.loadAll(
-          context,
-          withFilter(args, {
-            name: args.podcastName,
-          }),
-        ),
+      resolve: async (_, args, context: GraphQLContext) => {
+        const regex = new RegExp(args.podcastName, "i");
+        const podcasts = await PodcastModel.find({ name: { $regex: regex } });
+        return connectionFromArray(podcasts, args);
+      },
     },
     podcastsByGenre: {
       type: GraphQLNonNull(PodcastConnection.connectionType),
