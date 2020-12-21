@@ -1,10 +1,14 @@
 export interface PodcastsWithDetailsListProps {
   title: string;
-  podcasts: Array<{
-    id: string;
-    _id: string;
-    name: string;
-    author: string;
-    image: string;
-  }>;
+  readonly podcasts: {
+    readonly edges: ReadonlyArray<{
+      readonly node: {
+        readonly id: string;
+        readonly _id: string;
+        readonly name: string;
+        readonly author: string;
+        readonly image: string;
+      } | null;
+    } | null>;
+  };
 }

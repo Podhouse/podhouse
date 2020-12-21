@@ -10,4 +10,11 @@ module.exports = withPlugins([
       optimizeImagesInDev: true,
     }),
   ],
+  [
+    {
+      env: {
+        FATHOM_ID: process.env.FATHOM_ID,
+      },
+    },
+  ],
 ]);

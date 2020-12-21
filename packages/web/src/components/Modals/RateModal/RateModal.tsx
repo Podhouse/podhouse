@@ -1,11 +1,12 @@
 import React, { useRef } from "react";
-import { useRehawk } from "rehawk";
 
 import {
   RateModalContainer,
   RateModalLinkContainer,
   RateModalLink,
 } from "./RateModal.styles";
+
+import { usePlayerContext } from "src/machines/Player/PlayerContext";
 
 import useOnClickOutside from "src/hooks/useOnClickOutside";
 
@@ -14,7 +15,7 @@ interface RateModalProps {
 }
 
 const RateModal = ({ handleRate }: RateModalProps) => {
-  const { rate, onRate } = useRehawk({});
+  const { rate, onRate } = usePlayerContext();
 
   const ref = useRef<any>();
 

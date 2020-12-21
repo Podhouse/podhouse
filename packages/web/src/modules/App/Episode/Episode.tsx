@@ -1,94 +1,68 @@
-import React from "react";
+import React, { useEffect, Suspense } from "react";
 import Scrollbars from "react-custom-scrollbars";
-import { Heading, Button, Link, Image } from "@chakra-ui/react";
-import { ExternalLink } from "react-feather";
+import graphql from "babel-plugin-relay/macro";
+import { useQueryLoader } from "react-relay/hooks";
+import { useLocation } from "react-router-dom";
+import { ErrorBoundary } from "react-error-boundary";
 
-import {
-  EpisodeContainer,
-  EpisodeHeader,
-  EpisodeDetailsContainer,
-  EpisodeDescription,
-  EpisodeButtonsContainer,
-  EpisodeLinksContainer,
-  EpisodeLinkContainer,
-} from "./Episode.styles";
+import SkeletonPage from "src/components/Skeletons/SkeletonPage/SkeletonPage";
+import ErrorFallback from "src/components/ErrorFallback/ErrorFallback";
 
-const avatar =
-  "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg";
+import EpisodeInfo from "./EpisodeInfo/EpisodeInfo";
+
+import { EpisodeQuery } from "./__generated__/EpisodeQuery.graphql";
+
+const query = graphql`
+  query EpisodeQuery($_id: ID!) {
+    episode(_id: $_id) {
+      _id
+      title
+      description
+      publishedDate
+      link
+      image
+      audio
+      duration
+      podcast {
+        _id
+        name
+        website
+        rss
+      }
+    }
+  }
+`;
+
+type LocationState = {
+  _id: string;
+};
 
 const Episode = () => {
+  const { state } = useLocation<LocationState>();
+
+  const [
+    queryReference,
+    loadQuery,
+    disposeQuery,
+  ] = useQueryLoader<EpisodeQuery>(query);
+
+  useEffect(() => {
+    loadQuery({ _id: state._id }, { fetchPolicy: "store-or-network" });
+
+    return () => {
+      disposeQuery();
+    };
+  }, [loadQuery, disposeQuery, state._id]);
+
   return (
-    <Scrollbars universal autoHide autoHideTimeout={100} autoHideDuration={100}>
-      <EpisodeContainer>
-        <EpisodeHeader>
-          <Image
-            src={avatar}
-            objectFit="cover"
-            borderRadius={5}
-            maxWidth="200px"
-            alignSelf="center"
-            justifySelf="center"
-          />
-
-          <EpisodeDetailsContainer>
-            <Heading as="h1" letterSpacing="-0.03em">
-              99% Invisible
-            </Heading>
-
-            <Heading as="h2" size="sm" letterSpacing="-0.03em">
-              Roman Mars
-            </Heading>
-
-            <EpisodeDescription lineHeight="25px" textAlign="start">
-              Design is everywhere in our lives, perhaps most importantly in the
-              places where we've just stopped noticing. 99% Invisible is a
-              weekly exploration of the process and power of design and
-              architecture. From award winning producer Roman Mars. Learn more
-              at 99percentinvisible.org. A proud member of Radiotopia, from PRX.
-              Learn more at radiotopia.fm.
-            </EpisodeDescription>
-          </EpisodeDetailsContainer>
-
-          <EpisodeButtonsContainer>
-            <Button
-              type="button"
-              width="100%"
-              bgColor="#101010"
-              color="#ffffff"
-              _hover={{ bg: "#101010" }}
-              _active={{
-                bg: "#101010",
-              }}
-              _focus={{
-                boxShadow:
-                  "0 0 1px 2px rgba(0, 0, 0, .50), 0 1px 1px rgba(0, 0, 0, .15)",
-              }}
-              _disabled={{
-                bgColor: "#eaeaea",
-                cursor: "not-allowed",
-              }}
-            >
-              Listen
-            </Button>
-          </EpisodeButtonsContainer>
-
-          <EpisodeLinksContainer>
-            <EpisodeLinkContainer>
-              <Link href="https://chakra-ui.com" isExternal>
-                Website
-              </Link>
-              <ExternalLink size={14} />
-            </EpisodeLinkContainer>
-
-            <EpisodeLinkContainer>
-              <Link href="https://chakra-ui.com" isExternal>
-                RSS
-              </Link>
-              <ExternalLink size={14} />
-            </EpisodeLinkContainer>
-          </EpisodeLinksContainer>
-        </EpisodeHeader>
-      </EpisodeContainer>
+    <Scrollbars autoHide autoHideTimeout={100} autoHideDuration={100}>
+      {queryReference && (
+        <ErrorBoundary FallbackComponent={ErrorFallback}>
+          <Suspense fallback={<SkeletonPage episodes={false} />}>
+            <EpisodeInfo queryReference={queryReference} query={query} />
+          </Suspense>
+        </ErrorBoundary>
+      )}
     </Scrollbars>
   );
 };

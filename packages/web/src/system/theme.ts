@@ -6,6 +6,12 @@ const theme = extendTheme({
       "html, body": {
         fontFamily: "Inter",
         fontSize: 14,
+        "@font-face": {
+          fontFamily: "Inter",
+          fontDisplay: "swap",
+          src:
+            "url(fonts/Inter/Inter-VariableFont_slnt,wght.ttf) format('ttf')",
+        },
       },
     },
   },

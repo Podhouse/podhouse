@@ -1,24 +1,6 @@
 import styled from "@emotion/styled";
 import { Image, Button, Text } from "@chakra-ui/react";
 
-export const EpisodeLoadingContainer = styled.div`
-  width: 100%;
-  height: auto;
-  display: grid;
-  grid-template-columns: 80px 1fr;
-  grid-template-rows: max-content;
-  grid-column-gap: 20px;
-`;
-
-export const EpisodeLoadingDetailsContainer = styled.div`
-  grid-row: 1 / 3;
-  grid-column: 2 / 3;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: max-content max-content;
-  grid-row-gap: 10px;
-`;
-
 export const EpisodeItemContainer = styled.div`
   width: 100%;
   height: auto;
@@ -54,11 +36,6 @@ export const EpisodeItemAvatar = styled(Image)`
 export const EpisodeItemName = styled(Text)`
   grid-column: 1 / 4;
   grid-row: 1 / 2;
-  font-family: Inter;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 17px;
   cursor: pointer;
   text-decoration: none;
   display: -webkit-box;

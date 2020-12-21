@@ -3,16 +3,18 @@ import {
   GraphQLString,
   GraphQLNonNull,
   GraphQLID,
+  GraphQLBoolean,
 } from "graphql";
-import { connectionArgs } from "graphql-relay";
+import { connectionArgs, connectionFromArray } from "graphql-relay";
 
 import UserType from "../modules/User/UserType";
+import UserModel, { IUser } from "../modules/User/UserModel";
 import * as UserLoader from "../modules/User/UserLoader";
 
 import PodcastType from "../modules/Podcast/PodcastType";
 import { PodcastConnection } from "../modules/Podcast/PodcastType";
 import * as PodcastLoader from "../modules/Podcast/PodcastLoader";
-import PodcastFilterInputType from "../modules/Podcast/PodcastFilterInputType";
+import PodcastModel from "../modules/Podcast/PodcastModel";
 
 import EpisodeType from "../modules/Episode/EpisodeType";
 import { EpisodeConnection } from "../modules/Episode/EpisodeType";
@@ -40,24 +42,22 @@ const QueryType = new GraphQLObjectType({
       args: {
         ...connectionArgs,
       },
-      resolve: async (_, args, context) =>
+      resolve: async (_, args, context: GraphQLContext) =>
         await PodcastLoader.loadAll(context, args),
     },
     podcastsByName: {
       type: GraphQLNonNull(PodcastConnection.connectionType),
       args: {
         ...connectionArgs,
-        name: {
+        podcastName: {
           type: GraphQLString,
         },
       },
-      resolve: async (_, args, context) =>
-        await PodcastLoader.loadAll(
-          context,
-          withFilter(args, {
-            name: args.name,
-          }),
-        ),
+      resolve: async (_, args, context: GraphQLContext) => {
+        const regex = new RegExp(args.podcastName, "i");
+        const podcasts = await PodcastModel.find({ name: { $regex: regex } });
+        return connectionFromArray(podcasts, args);
+      },
     },
     podcastsByGenre: {
       type: GraphQLNonNull(PodcastConnection.connectionType),
@@ -67,7 +67,7 @@ const QueryType = new GraphQLObjectType({
           type: GraphQLString,
         },
       },
-      resolve: async (_, args, context) =>
+      resolve: async (_, args, context: GraphQLContext) =>
         await PodcastLoader.loadAll(
           context,
           withFilter(args, {
@@ -82,7 +82,7 @@ const QueryType = new GraphQLObjectType({
           type: GraphQLNonNull(GraphQLID),
         },
       },
-      resolve: async (_, { _id }, context) =>
+      resolve: async (_, { _id }, context: GraphQLContext) =>
         await PodcastLoader.load(context, _id),
     },
     episodes: {
@@ -96,7 +96,7 @@ const QueryType = new GraphQLObjectType({
           type: GraphQLString,
         },
       },
-      resolve: async (_, args, context) =>
+      resolve: async (_, args, context: GraphQLContext) =>
         await EpisodeLoader.loadAll(
           context,
           withFilter(args, {
@@ -111,8 +111,28 @@ const QueryType = new GraphQLObjectType({
           type: GraphQLNonNull(GraphQLID),
         },
       },
-      resolve: async (_, { _id }, context) =>
+      resolve: async (_, { _id }, context: GraphQLContext) =>
         await EpisodeLoader.load(context, _id),
+    },
+    userSubscribedToPodcast: {
+      type: GraphQLNonNull(GraphQLBoolean),
+      args: {
+        _id: {
+          type: GraphQLNonNull(GraphQLID),
+        },
+      },
+      resolve: async (_, { _id }, context: GraphQLContext) => {
+        const user: Array<IUser> | [] = await UserModel.find({
+          _id: context.user?._id,
+          subscriptions: { $in: [_id] },
+        });
+
+        if (!Array.isArray(user) || !user.length) {
+          return false;
+        } else {
+          return true;
+        }
+      },
     },
   }),
 });

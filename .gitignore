@@ -110,3 +110,7 @@ differencify_reports
 .vscode
 .yarn
 .yarnrc
+
+.env.local
+.env.development
+.env.production

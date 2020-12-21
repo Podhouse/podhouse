@@ -1,18 +1,32 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
 
 import { SearchContainer } from "./Search.styles";
 
+import { useSearchContext } from "src/machines/Search/SearchContext";
+
 const Search = () => {
+  const history = useHistory();
+
+  const { search, onSearch } = useSearchContext();
+
   return (
     <SearchContainer>
-      <InputGroup>
+      <InputGroup onClick={() => history.push("/search")}>
         <InputLeftElement
           pointerEvents="none"
-          children={<SearchIcon color="gray.300" />}
+          children={<SearchIcon focusBorderColor="#101010" color="gray.300" />}
         />
-        <Input type="text" placeholder="Search" size="md" />
+        <Input
+          type="text"
+          placeholder="Search"
+          size="md"
+          value={search}
+          onChange={onSearch}
+          aria-label="Search podcast"
+        />
       </InputGroup>
     </SearchContainer>
   );

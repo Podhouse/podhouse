@@ -9,7 +9,13 @@ import {
 const CallToAction = () => (
   <LandingGridContainer>
     <LandingGridContentContainer>
-      <Heading color="#101010" as="h2" fontSize={36} letterSpacing="-0.03em" textAlign="center">
+      <Heading
+        color="#101010"
+        as="h2"
+        fontSize={36}
+        letterSpacing="-0.03em"
+        textAlign="center"
+      >
         Got more questions?
       </Heading>
       <Link

@@ -1,21 +1,25 @@
 import { GraphQLString, GraphQLNonNull } from "graphql";
-import { mutationWithClientMutationId } from "graphql-relay";
+import { mutationWithClientMutationId, toGlobalId } from "graphql-relay";
+
+import * as UserLoader from "../UserLoader";
+
+import { UserConnection } from "../UserType";
 
 import { GraphQLContext } from "../../../types";
 
 type UserSubscribePodcastArgs = {
-  podcastId: string;
+  _id: string;
 };
 
 export default mutationWithClientMutationId({
   name: "UserSubscribeToPodcast",
   inputFields: {
-    podcastId: {
+    _id: {
       type: new GraphQLNonNull(GraphQLString),
     },
   },
   mutateAndGetPayload: async (
-    { podcastId }: UserSubscribePodcastArgs,
+    { _id }: UserSubscribePodcastArgs,
     { user }: GraphQLContext,
   ) => {
     if (!user) {
@@ -24,27 +28,37 @@ export default mutationWithClientMutationId({
       };
     }
 
-    const subscribedToPodcast = user.subscriptions.includes(podcastId as any);
+    const subscribedToPodcast = user.subscriptions.includes(_id as any);
 
     if (subscribedToPodcast === true) {
       return {
-        message: null,
         error: "Already subscribed to podcast",
       };
     } else {
-      user.subscriptions.push(podcastId as any);
+      user.subscriptions.push(_id as any);
       await user.save();
 
       return {
-        message: "Subscribed successfully",
+        _id: user._id,
         error: null,
       };
     }
   },
   outputFields: {
-    message: {
-      type: GraphQLString,
-      resolve: ({ message }) => message,
+    user: {
+      type: UserConnection.edgeType,
+      resolve: async ({ _id }, _, context) => {
+        const currentUser = await UserLoader.load(context, _id);
+
+        if (!currentUser) {
+          return null;
+        }
+
+        return {
+          cursor: toGlobalId("User", currentUser._id),
+          node: currentUser,
+        };
+      },
     },
     error: {
       type: GraphQLString,

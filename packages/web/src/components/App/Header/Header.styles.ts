@@ -21,3 +21,14 @@ export const HeaderContainer = styled.header`
     grid-row: 1 / 2;
   }
 `;
+
+export const SkeletonContainer = styled.div`
+  width: fit-content;
+  height: 100%;
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+  display: flex;
+  justify-self: flex-end;
+  justify-content: flex-end;
+  align-items: center;
+`;

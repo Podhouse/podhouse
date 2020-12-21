@@ -9,9 +9,9 @@ export const RightControlsContainer = styled.div`
     grid-column: 3/ 4;
     grid-row: 1 / 2;
     display: grid;
-    grid-template-columns: repeat(3, max-content);
+    grid-template-columns: max-content max-content;
     grid-template-rows: 1fr;
-    grid-column-gap: 15px;
+    grid-column-gap: 10px;
     align-items: center;
     justify-content: space-evenly;
     justify-self: flex-end;

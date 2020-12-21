@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { Image } from "@chakra-ui/react";
 
 export const PodcastItemWithDetailsContainer = styled.div`
   width: 100%;
@@ -15,7 +16,7 @@ export const PodcastItemWithDetailsContainer = styled.div`
   white-space: nowrap;
 `;
 
-export const PodcastItemWithDetailsAvatar = styled.img`
+export const PodcastItemWithDetailsAvatar = styled(Image)`
   grid-row: 1 / 2;
   grid-column: 1 / 2;
   width: 60px;

@@ -1,49 +1,61 @@
 import React from "react";
-import { Heart } from "react-feather";
-import { Link as ReactRouterLink } from "react-router-dom";
 
 import {
   PodcastContainer,
-  PodcastAvatar,
+  PodcastImage,
   PodcastDetails,
+  PodcastNameTitle,
   PodcastFavoriteContainer,
 } from "./Podcast.styles";
 
-import { PodcastProps } from "./Podcast.types";
+import { PlayerEpisode } from "src/machines/Player/Player.types";
 
-const iconStyle = { cursor: "pointer" };
+interface Props {
+  ready: boolean;
+  episode: PlayerEpisode | null;
+}
 
-const Podcast = ({ ready, currentPodcast }: PodcastProps) => {
-  const { avatar, name, episode } = currentPodcast;
+const Podcast = ({ ready, episode }: Props) => {
+  if (!ready) return null;
 
-  const onReady = () => {
-    if (!ready) return null;
+  if (!episode) return null;
 
-    return (
-      <PodcastContainer>
-        <PodcastAvatar avatar={avatar} />
+  return (
+    <PodcastContainer>
+      <PodcastImage src={episode?.image} />
 
-        <PodcastDetails>
-          <ReactRouterLink to="/episode/123">{episode}</ReactRouterLink>
+      <PodcastDetails>
+        <PodcastNameTitle
+          to={{
+            pathname: `/episode/${episode?._id}`,
+            state: { _id: episode?._id },
+          }}
+        >
+          {episode?.title}
+        </PodcastNameTitle>
 
-          <ReactRouterLink to="/podcast/123">{name}</ReactRouterLink>
+        <PodcastNameTitle
+          to={{
+            pathname: `/podcast/${episode?.podcast._id}`,
+            state: { _id: episode?.podcast._id },
+          }}
+        >
+          {episode?.podcast.name}
+        </PodcastNameTitle>
 
-          <PodcastFavoriteContainer>
-            <Heart
-              className="like-button"
-              size={16}
-              strokeWidth={1.7}
-              color="#101010"
-              style={iconStyle}
-              onClick={() => {}}
-            />
-          </PodcastFavoriteContainer>
-        </PodcastDetails>
-      </PodcastContainer>
-    );
-  };
-
-  return onReady();
+        <PodcastFavoriteContainer>
+          {/* <Heart
+            className="like-button"
+            size={16}
+            strokeWidth={1.7}
+            color="#101010"
+            style={iconStyle}
+            onClick={() => {}}
+          /> */}
+        </PodcastFavoriteContainer>
+      </PodcastDetails>
+    </PodcastContainer>
+  );
 };
 
 export default Podcast;

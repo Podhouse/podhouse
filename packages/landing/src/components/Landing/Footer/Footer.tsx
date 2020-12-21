@@ -63,9 +63,7 @@ const Footer = () => (
       </Link>
     </FooterBrandsContainer>
 
-    <Text color="#101010">
-      2020 Podhouse. All rights reserved
-    </Text>
+    <Text color="#101010">2020 Podhouse. All rights reserved</Text>
   </FooterContainer>
 );
 

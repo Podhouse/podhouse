@@ -13,11 +13,12 @@ type Query {
   ): [Node]!
   currentUser: User
   podcasts(after: String, first: Int, before: String, last: Int): PodcastConnection!
-  podcastsByName(after: String, first: Int, before: String, last: Int, name: String): PodcastConnection!
+  podcastsByName(after: String, first: Int, before: String, last: Int, podcastName: String): PodcastConnection!
   podcastsByGenre(after: String, first: Int, before: String, last: Int, primaryGenre: String): PodcastConnection!
   podcast(_id: ID!): Podcast
   episodes(after: String, first: Int, before: String, last: Int, podcast: ID, name: String): EpisodeConnection!
   episode(_id: ID!): Episode
+  userSubscribedToPodcast(_id: ID!): Boolean!
 }
 
 """An object with an ID"""
@@ -35,6 +36,7 @@ type User implements Node {
   _id: String!
   email: String!
   subscriptions(after: String, first: Int, before: String, last: Int): PodcastConnection!
+  subscribed(input: UserSubscribedInput!): Boolean
   createdAt: String!
   updatedAt: String!
 }
@@ -162,6 +164,11 @@ type Episode implements Node {
   podcast: Podcast!
 }
 
+"""Input payload for checking if user is subscribed to podcast"""
+input UserSubscribedInput {
+  _id: String!
+}
+
 type Mutation {
   UserSignInWithEmail(input: UserSignInWithEmailInput!): UserSignInWithEmailPayload
   UserSignUpWithEmail(input: UserSignUpWithEmailInput!): UserSignUpWithEmailPayload
@@ -209,23 +216,32 @@ input UserChangePasswordInput {
 }
 
 type UserSubscribeToPodcastPayload {
-  message: String
+  user: UserEdge
   error: String
   clientMutationId: String
 }
 
+"""An edge in a connection."""
+type UserEdge {
+  """The item at the end of the edge"""
+  node: User
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
 input UserSubscribeToPodcastInput {
-  podcastId: String!
+  _id: String!
   clientMutationId: String
 }
 
 type UserUnsubscribeToPodcastPayload {
-  message: String
+  user: UserEdge
   error: String
   clientMutationId: String
 }
 
 input UserUnsubscribeToPodcastInput {
-  podcastId: String!
+  _id: String!
   clientMutationId: String
 }

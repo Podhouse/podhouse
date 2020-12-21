@@ -14,7 +14,7 @@ import { FeaturedProps, FeaturedPodcast } from "./Featured.types";
 const Featured = ({ featured }: FeaturedProps) => {
   const [pause, setPause] = useState<boolean>(false);
   const timer = useRef<any>();
-  const [sliderRef, slider] = useKeenSlider<HTMLDivElement>({
+  const [sliderRef, slider] = useKeenSlider<any>({
     loop: true,
     duration: 7000,
     dragStart: () => {
@@ -26,11 +26,9 @@ const Featured = ({ featured }: FeaturedProps) => {
   });
 
   useEffect(() => {
-    //@ts-ignore
     sliderRef.current.addEventListener("mouseover", () => {
       setPause(true);
     });
-    //@ts-ignore
     sliderRef.current.addEventListener("mouseout", () => {
       setPause(false);
     });
@@ -62,6 +60,7 @@ const Featured = ({ featured }: FeaturedProps) => {
                   src={avatar}
                   objectFit="cover"
                   alt="Podcast featured"
+                  loading="lazy"
                 />
               </ReactRouterLink>
 

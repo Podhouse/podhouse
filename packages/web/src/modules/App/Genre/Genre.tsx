@@ -1,171 +1,95 @@
-import React from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import Scrollbars from "react-custom-scrollbars";
+import graphql from "babel-plugin-relay/macro";
+import { useQueryLoader } from "react-relay/hooks";
+import { useLocation } from "react-router-dom";
+import { ErrorBoundary } from "react-error-boundary";
+
+import GenrePodcast from "./GenrePodcast/GenrePodcast";
+
+import ErrorFallback from "src/components/ErrorFallback/ErrorFallback";
+import Featured from "src/components/Featured/Featured";
+import SkeletonPodcastsWithOnlyAvatarList from "src/components/Skeletons/SkeletonPodcastsWithOnlyAvatarList/SkeletonPodcastsWithOnlyAvatarList";
 
 import { GenreContainer } from "./Genre.styles";
 
-import Featured from "src/components/Featured/Featured";
-
-import PodcastsWithOnlyAvatarList from "src/components/Lists/PodcastsWithOnlyAvatarList/PodcastsWithOnlyAvatarList";
+import { GenreQuery } from "./__generated__/GenreQuery.graphql";
 
 import featured from "src/utils/featured";
 
-const items = [
-  {
-    id: 1,
-    name: "99% Invisible",
-    author: "Roman Mars",
-    avatar:
-      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
-  },
-  {
-    id: 2,
-    name: "99% Invisible",
-    author: "Roman Mars",
-    avatar:
-      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
-  },
-  {
-    id: 3,
-    name: "99% Invisible",
-    author: "Roman Mars",
-    avatar:
-      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
-  },
-  {
-    id: 4,
-    name: "99% Invisible",
-    author: "Roman Mars",
-    avatar:
-      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
-  },
-  {
-    id: 5,
-    name: "99% Invisible",
-    author: "Roman Mars",
-    avatar:
-      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
-  },
-  {
-    id: 6,
-    name: "99% Invisible",
-    author: "Roman Mars",
-    avatar:
-      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
-  },
-  {
-    id: 7,
-    name: "99% Invisible",
-    author: "Roman Mars",
-    avatar:
-      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
-  },
-  {
-    id: 8,
-    name: "99% Invisible",
-    author: "Roman Mars",
-    avatar:
-      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
-  },
-  {
-    id: 9,
-    name: "99% Invisible",
-    author: "Roman Mars",
-    avatar:
-      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
-  },
-  {
-    id: 10,
-    name: "99% Invisible",
-    author: "Roman Mars",
-    avatar:
-      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
-  },
-  {
-    id: 11,
-    name: "99% Invisible",
-    author: "Roman Mars",
-    avatar:
-      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
-  },
-  {
-    id: 12,
-    name: "99% Invisible",
-    author: "Roman Mars",
-    avatar:
-      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
-  },
-  {
-    id: 13,
-    name: "99% Invisible",
-    author: "Roman Mars",
-    avatar:
-      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
-  },
-  {
-    id: 14,
-    name: "99% Invisible",
-    author: "Roman Mars",
-    avatar:
-      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
-  },
-  {
-    id: 15,
-    name: "99% Invisible",
-    author: "Roman Mars",
-    avatar:
-      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
-  },
-  {
-    id: 16,
-    name: "99% Invisible",
-    author: "Roman Mars",
-    avatar:
-      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
-  },
-  {
-    id: 17,
-    name: "99% Invisible",
-    author: "Roman Mars",
-    avatar:
-      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
-  },
-  {
-    id: 18,
-    name: "99% Invisible",
-    author: "Roman Mars",
-    avatar:
-      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
-  },
-  {
-    id: 19,
-    name: "99% Invisible",
-    author: "Roman Mars",
-    avatar:
-      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
-  },
-  {
-    id: 20,
-    name: "99% Invisible",
-    author: "Roman Mars",
-    avatar:
-      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
-  },
-  {
-    id: 21,
-    name: "99% Invisible",
-    author: "Roman Mars",
-    avatar:
-      "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg",
-  },
-];
+const genreQuery = graphql`
+  query GenreQuery($primaryGenre: String!) {
+    ...GenrePodcast_podcasts @arguments(primaryGenre: $primaryGenre)
+  }
+`;
 
-const Genre = () => (
-  <Scrollbars universal autoHide autoHideTimeout={100} autoHideDuration={100}>
-    <GenreContainer>
-      <Featured featured={featured} />
-      <PodcastsWithOnlyAvatarList title="Genre" items={items} />
-    </GenreContainer>
-  </Scrollbars>
-);
+type ScrollFrameType = {
+  clientHeight: number;
+  clientWidth: number;
+  left: number;
+  scrollHeight: number;
+  scrollLeft: number;
+  scrollTop: number;
+  scrollWidth: number;
+  top: number;
+};
+
+type LocationState = {
+  primaryGenre: string;
+};
+
+const Genre = () => {
+  const [shouldLoadMore, setShouldLoadMore] = useState<boolean>(false);
+
+  const { state } = useLocation<LocationState>();
+
+  const [queryReference, loadQuery, disposeQuery] = useQueryLoader<GenreQuery>(
+    genreQuery
+  );
+
+  useEffect(() => {
+    loadQuery({ primaryGenre: state.primaryGenre });
+
+    return () => {
+      disposeQuery();
+    };
+  }, [loadQuery, disposeQuery, state.primaryGenre]);
+
+  const onLoadMore = (value: ScrollFrameType) => {
+    if (value.top === 1) {
+      setShouldLoadMore(true);
+    }
+    setShouldLoadMore(false);
+  };
+
+  return (
+    <Scrollbars
+      onScrollFrame={onLoadMore}
+      autoHide
+      autoHideTimeout={100}
+      autoHideDuration={100}
+    >
+      {queryReference && (
+        <ErrorBoundary FallbackComponent={ErrorFallback}>
+          <Suspense
+            fallback={
+              <GenreContainer>
+                <Featured featured={featured} />
+                <SkeletonPodcastsWithOnlyAvatarList />
+              </GenreContainer>
+            }
+          >
+            <GenrePodcast
+              genreQuery={genreQuery}
+              queryReference={queryReference}
+              shouldLoadMore={shouldLoadMore}
+              primaryGenre={state.primaryGenre}
+            />
+          </Suspense>
+        </ErrorBoundary>
+      )}
+    </Scrollbars>
+  );
+};
 
 export default Genre;

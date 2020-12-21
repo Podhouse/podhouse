@@ -10,19 +10,21 @@ import {
 
 import { PodcastItemWithDetailsProps } from "./PodcastItemWithDetails.types";
 
-const PodcastItemWithDetails = ({ podcast }: PodcastItemWithDetailsProps) => {
-  const { name, author, image } = podcast;
-
-  const imageAlt = `image`;
+const PodcastItemWithDetails = ({ node }: PodcastItemWithDetailsProps) => {
+  const { _id, name, author, image } = node;
 
   return (
     <PodcastItemWithDetailsContainer>
-      <ReactRouterLink to="/podcast/123">
-        <PodcastItemWithDetailsAvatar src={image} alt={imageAlt} />
+      <ReactRouterLink to={{ pathname: `/podcast/${_id}`, state: { _id } }}>
+        <PodcastItemWithDetailsAvatar src={image} alt="image" loading="lazy" />
       </ReactRouterLink>
 
       <PodcastItemInnerContainer>
-        <Text as={ReactRouterLink} to="/podcast/123" fontWeight="500">
+        <Text
+          as={ReactRouterLink}
+          to={{ pathname: `/podcast/${_id}`, state: { _id } }}
+          fontWeight="500"
+        >
           {name}
         </Text>
 

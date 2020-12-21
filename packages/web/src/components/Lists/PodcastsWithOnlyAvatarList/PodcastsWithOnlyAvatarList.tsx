@@ -9,41 +9,33 @@ import {
 
 import PodcastItemWithAvatar from "src/components/Podcast/PodcastItemWithAvatar/PodcastItemWithAvatar";
 
-import {
-  Podcast,
-  PodcastsWithOnlyAvatarListProps,
-} from "./PodcastsWithOnlyAvatarList.types";
+import { PodcastsWithOnlyAvatarListProps } from "./PodcastsWithOnlyAvatarList.types";
 
 const PodcastsWithOnlyAvatarList = ({
   title,
-  items,
-}: PodcastsWithOnlyAvatarListProps) => {
-  const renderItems = () =>
-    items.map((item: Podcast) => (
-      <PodcastItemWithAvatar key={item.id} podcast={item} />
-    ));
+  edges,
+}: PodcastsWithOnlyAvatarListProps) => (
+  <PodcastsWithOnlyAvatarListContainer>
+    <PodcastsWithOnlyAvatarListHeader>
+      <Heading
+        as="h1"
+        variant="secondary"
+        size="normal"
+        fontSize={14}
+        fontWeight={500}
+        textAlign="start"
+      >
+        {title}
+      </Heading>
+      <Divider orientation="horizontal" />
+    </PodcastsWithOnlyAvatarListHeader>
 
-  return (
-    <PodcastsWithOnlyAvatarListContainer>
-      <PodcastsWithOnlyAvatarListHeader>
-        <Heading
-          as="h1"
-          variant="secondary"
-          size="normal"
-          fontSize={14}
-          fontWeight={500}
-          textAlign="start"
-        >
-          {title}
-        </Heading>
-        <Divider orientation="horizontal" />
-      </PodcastsWithOnlyAvatarListHeader>
-
-      <PodcastsWithOnlyAvatarListSection>
-        {renderItems()}
-      </PodcastsWithOnlyAvatarListSection>
-    </PodcastsWithOnlyAvatarListContainer>
-  );
-};
+    <PodcastsWithOnlyAvatarListSection>
+      {edges.map(({ node }: any) => (
+        <PodcastItemWithAvatar key={node._id} node={node} />
+      ))}
+    </PodcastsWithOnlyAvatarListSection>
+  </PodcastsWithOnlyAvatarListContainer>
+);
 
 export default PodcastsWithOnlyAvatarList;

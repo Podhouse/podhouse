@@ -8,15 +8,35 @@ import {
   MenuContainer,
   MenuInsideContainer,
   MenuLogoContainer,
-  MenuAvatarContainer,
+  MenuPodcastImage,
+  MenuSkeletonPodcastImage,
 } from "./Menu.styles";
 
 import { ReactComponent as Logo } from "src/images/logo-2.svg";
 
-const avatar =
-  "https://upload.wikimedia.org/wikipedia/commons/f/f2/99%25_Invisible_logo.jpg";
+import { usePlayerContext } from "src/machines/Player/PlayerContext";
 
 const Menu = () => {
+  const { loading, episode } = usePlayerContext();
+
+  const onRenderPodcastImage = () => {
+    if (loading)
+      return (
+        <MenuSkeletonPodcastImage startColor="#E2E8F0" endColor="#E2E8F0" />
+      );
+    if (!episode) return null;
+    return (
+      <ReactRouterLink
+        to={{
+          pathname: `/episode/${episode._id}`,
+          state: { _id: episode._id },
+        }}
+      >
+        <MenuPodcastImage src={episode.image} alt="Podcast logo" />
+      </ReactRouterLink>
+    );
+  };
+
   return (
     <MenuContainer>
       <Scrollbars
@@ -34,9 +54,7 @@ const Menu = () => {
 
           <Navigation />
 
-          <ReactRouterLink to="/episode/123">
-            <MenuAvatarContainer src={avatar} alt="Podcast logo" />
-          </ReactRouterLink>
+          {onRenderPodcastImage()}
         </MenuInsideContainer>
       </Scrollbars>
     </MenuContainer>

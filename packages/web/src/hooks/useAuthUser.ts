@@ -1,9 +1,10 @@
-import { graphql, readInlineData } from "react-relay";
+import graphql from "babel-plugin-relay/macro";
+import { readInlineData } from "react-relay";
 
 const useAuthFragment = graphql`
   fragment useAuthUser_user on User @inline {
+    _id
     id
-    email
   }
 `;
 

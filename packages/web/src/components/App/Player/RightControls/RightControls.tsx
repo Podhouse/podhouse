@@ -1,20 +1,23 @@
 import React from "react";
-import { Clock, List } from "react-feather";
+import { Clock } from "react-feather";
 
 import { RightControlsContainer } from "./RightControls.styles";
 
 import Volume from "./Volume/Volume";
 
-import { useQueueContext } from "src/context/Queue/Queue";
-import { useRateContext } from "src/context/Rate/Rate";
+import { useRateContext } from "src/machines/Rate/RateContext";
 
-const iconStyle = { cursor: "pointer" };
+import { PlayerEpisode } from "src/machines/Player/Player.types";
 
 interface RightControlsProps {
   ready: boolean;
   volume: number;
   muted: boolean;
-  onVolume: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  episode: PlayerEpisode | null;
+  onVolume: (
+    newValue: number,
+    props?: { min?: number; max?: number; handlePosition?: string }
+  ) => void;
   onMute: () => void;
 }
 
@@ -22,27 +25,29 @@ const RightControls = ({
   ready,
   volume,
   muted,
+  episode,
   onVolume,
   onMute,
 }: RightControlsProps) => {
-  const [, handleQueue] = useQueueContext();
-  const [, handleRate] = useRateContext();
+  const { handleRate } = useRateContext();
+
+  if (!episode) return null;
 
   return (
     <RightControlsContainer>
-      <List
+      {/* <List
         size={20}
         strokeWidth={1.7}
         color="#101010"
-        style={iconStyle}
+        style={{ cursor: "pointer" }}
         onClick={handleQueue}
-      />
+      /> */}
 
       <Clock
         size={20}
         strokeWidth={1.7}
         color="#101010"
-        style={iconStyle}
+        style={{ cursor: "pointer" }}
         onClick={handleRate}
       />
 

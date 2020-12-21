@@ -1,5 +1,5 @@
 import React from "react";
-import { Skeleton, Heading, Divider } from "@chakra-ui/react";
+import { Heading, Divider } from "@chakra-ui/react";
 
 import {
   PodcastsWithDetailsListContainer,
@@ -14,31 +14,21 @@ import { PodcastsWithDetailsListProps } from "./PodcastsWithDetailsList.types";
 const PodcastsWithDetailsList = ({
   title,
   podcasts,
-}: PodcastsWithDetailsListProps) => {
-  const renderItems = () => {
-    if (podcasts === null || podcasts === undefined) {
-      return <Skeleton />;
-    } else {
-      return podcasts.map((podcast: any) => (
-        <PodcastItemWithDetails key={podcast.id} podcast={podcast} />
-      ));
-    }
-  };
+}: PodcastsWithDetailsListProps) => (
+  <PodcastsWithDetailsListContainer>
+    <PodcastsWithDetailsListHeader>
+      <Heading as="h1" fontSize={14} fontWeight={500} textAlign="start">
+        {title}
+      </Heading>
+      <Divider orientation="horizontal" />
+    </PodcastsWithDetailsListHeader>
 
-  return (
-    <PodcastsWithDetailsListContainer>
-      <PodcastsWithDetailsListHeader>
-        <Heading as="h1" fontSize={14} fontWeight={500} textAlign="start">
-          {title}
-        </Heading>
-        <Divider orientation="horizontal" />
-      </PodcastsWithDetailsListHeader>
-
-      <PodcastsWithDetailsListSection>
-        {renderItems()}
-      </PodcastsWithDetailsListSection>
-    </PodcastsWithDetailsListContainer>
-  );
-};
+    <PodcastsWithDetailsListSection>
+      {podcasts.edges.map(({ node }: any) => (
+        <PodcastItemWithDetails key={node.id} node={node} />
+      ))}
+    </PodcastsWithDetailsListSection>
+  </PodcastsWithDetailsListContainer>
+);
 
 export default PodcastsWithDetailsList;

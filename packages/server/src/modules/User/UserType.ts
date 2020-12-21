@@ -1,10 +1,17 @@
-import { GraphQLObjectType, GraphQLString, GraphQLNonNull } from "graphql";
+import {
+  GraphQLObjectType,
+  GraphQLInputObjectType,
+  GraphQLString,
+  GraphQLNonNull,
+  GraphQLBoolean,
+} from "graphql";
 import { globalIdField, connectionFromArray } from "graphql-relay";
 
 import { IUser } from "./UserModel";
 import { load } from "./UserLoader";
 
 import { PodcastConnection } from "../Podcast/PodcastType";
+import * as PodcastLoader from "../Podcast/PodcastLoader";
 
 import { nodeInterface, registerTypeLoader } from "../Node/TypeRegister";
 
@@ -15,7 +22,16 @@ import {
 } from "../../common/";
 
 import { GraphQLContext } from "../../types";
-import { IPodcast } from "../Podcast/PodcastModel";
+
+const UserSubscribedInputType = new GraphQLInputObjectType({
+  name: "UserSubscribedInput",
+  description: "Input payload for checking if user is subscribed to podcast",
+  fields: () => ({
+    _id: {
+      type: GraphQLNonNull(GraphQLString),
+    },
+  }),
+});
 
 const UserType: GraphQLObjectType = new GraphQLObjectType<
   IUser,
@@ -35,22 +51,34 @@ const UserType: GraphQLObjectType = new GraphQLObjectType<
       args: {
         ...connectionArgs,
       },
-      resolve: async (user, args, context) => {
-        const podcasts: Array<
-          IPodcast | Error
-        > = await context.dataloaders.PodcastLoader.loadMany(
-          user.subscriptions.map((id) => id.toString()),
+      resolve: async (user, args, context: GraphQLContext) => {
+        const podcasts = user.subscriptions.map((id) =>
+          PodcastLoader.load(context, id.toString()),
         );
-        return connectionFromArray(podcasts, args);
+        const result = await Promise.all(podcasts).then((res) => res);
+        return connectionFromArray(result, args);
+      },
+    },
+    subscribed: {
+      type: GraphQLBoolean,
+      args: {
+        input: {
+          type: GraphQLNonNull(UserSubscribedInputType),
+        },
+      },
+      resolve: ({ subscriptions }, { input }: { input: { _id: string } }) => {
+        const stringsSubscriptions = subscriptions.map((x) => x.toString());
+        const uniqueStrings = [...new Set(stringsSubscriptions)];
+        return uniqueStrings.includes(input._id);
       },
     },
     createdAt: {
       type: GraphQLNonNull(GraphQLString),
-      resolve: (obj) => (obj.createdAt ? obj.createdAt.toISOString() : null),
+      resolve: ({ createdAt }) => (createdAt ? createdAt.toISOString() : null),
     },
     updatedAt: {
       type: GraphQLNonNull(GraphQLString),
-      resolve: (obj) => (obj.updatedAt ? obj.updatedAt.toISOString() : null),
+      resolve: ({ updatedAt }) => (updatedAt ? updatedAt.toISOString() : null),
     },
   }),
   interfaces: () => [nodeInterface],

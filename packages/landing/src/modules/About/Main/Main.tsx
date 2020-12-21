@@ -9,7 +9,13 @@ import {
 const Main = () => (
   <LandingGridContainer>
     <LandingGridContentContainer>
-      <Heading color="#101010" as="h1" fontSize={64} letterSpacing="-0.03em" textAlign="center">
+      <Heading
+        color="#101010"
+        as="h1"
+        fontSize={64}
+        letterSpacing="-0.03em"
+        textAlign="center"
+      >
         About Podhouse
       </Heading>
       <Text color="#101010" lineHeight="25px" textAlign="center">

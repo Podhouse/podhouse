@@ -1,7 +1,6 @@
 export interface PodcastItemWithAvatarProps {
-  podcast: {
-    name: string;
-    author: string;
-    avatar: string;
+  node: {
+    readonly _id: string;
+    readonly image: string;
   };
 }

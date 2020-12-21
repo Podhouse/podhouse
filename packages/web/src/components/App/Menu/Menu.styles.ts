@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Image } from "@chakra-ui/react";
+import { Image, Skeleton } from "@chakra-ui/react";
 
 export const MenuContainer = styled.aside`
   width: 100%;
@@ -49,7 +49,18 @@ export const MenuLogoContainer = styled.div`
   }
 `;
 
-export const MenuAvatarContainer = styled(Image)`
+export const MenuPodcastImage = styled(Image)`
+  display: none;
+
+  @media screen and (min-width: 800px) {
+    display: block;
+    cursor: pointer;
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
+  }
+`;
+
+export const MenuSkeletonPodcastImage = styled(Skeleton)`
   display: none;
 
   @media screen and (min-width: 800px) {

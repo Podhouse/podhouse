@@ -1,11 +1,9 @@
-export interface Podcast {
-  id: number;
-  name: string;
-  author: string;
-  avatar: string;
-}
-
 export interface PodcastsWithOnlyAvatarListProps {
   title: string;
-  items: Array<Podcast>;
+  edges: ReadonlyArray<{
+    readonly node: {
+      readonly _id: string;
+      readonly image: string;
+    } | null;
+  } | null>;
 }

@@ -1,11 +1,8 @@
 import React from "react";
-import { Skeleton } from "@chakra-ui/react";
 import { Link as ReactRouterLink } from "react-router-dom";
-import { Play } from "react-feather";
+import { Play, Pause } from "react-feather";
 
 import {
-  EpisodeLoadingContainer,
-  EpisodeLoadingDetailsContainer,
   EpisodeItemContainer,
   EpisodeItemAvatar,
   EpisodeItemName,
@@ -17,68 +14,109 @@ import {
 
 import { EpisodeItemProps } from "./EpisodeItem.types";
 
-const EpisodeItem = ({ episode, loading }: EpisodeItemProps) => {
-  if (!episode || loading) {
+import { usePlayerContext } from "src/machines/Player/PlayerContext";
+
+const EpisodeItem = ({ node }: EpisodeItemProps) => {
+  const { _id, image, title, description, publishedDate, duration } = node;
+
+  const {
+    loading,
+    playing,
+    paused,
+    onToggle,
+    episode,
+    onEpisode,
+  } = usePlayerContext();
+
+  const renderEpisodeButton = () => {
+    if (episode && episode.title === title) {
+      if (loading) {
+        return (
+          <EpisodeItemButton type="button" width="90px" isLoading={true}>
+            Loading
+          </EpisodeItemButton>
+        );
+      } else if (playing) {
+        return (
+          <EpisodeItemButton
+            type="button"
+            width="90px"
+            leftIcon={<Pause size={14} />}
+            onClick={onToggle}
+            bgColor="#101010"
+            color="#ffffff"
+            _hover={{ bg: "#101010" }}
+            _active={{
+              bg: "#101010",
+            }}
+            _focus={{
+              boxShadow:
+                "0 0 1px 2px rgba(0, 0, 0, .50), 0 1px 1px rgba(0, 0, 0, .15)",
+            }}
+          >
+            Pause
+          </EpisodeItemButton>
+        );
+      } else if (paused) {
+        return (
+          <EpisodeItemButton
+            type="button"
+            width="90px"
+            leftIcon={<Play size={14} />}
+            onClick={onToggle}
+            bgColor="#101010"
+            color="#ffffff"
+            _hover={{ bg: "#101010" }}
+            _active={{
+              bg: "#101010",
+            }}
+            _focus={{
+              boxShadow:
+                "0 0 1px 2px rgba(0, 0, 0, .50), 0 1px 1px rgba(0, 0, 0, .15)",
+            }}
+          >
+            Play
+          </EpisodeItemButton>
+        );
+      }
+    }
+
     return (
-      <EpisodeLoadingContainer>
-        <Skeleton width={80} height={80} />
-        <EpisodeLoadingDetailsContainer>
-          <Skeleton width={300} height={20} />
-          <Skeleton width={300} height={50} />
-        </EpisodeLoadingDetailsContainer>
-      </EpisodeLoadingContainer>
+      <EpisodeItemButton
+        type="button"
+        width="90px"
+        leftIcon={<Play size={14} />}
+        onClick={() => onEpisode(node)}
+      >
+        Play
+      </EpisodeItemButton>
     );
-  }
-
-  const { name, description, avatar, publishedDate, duration } = episode;
-
-  const imageAlt = `avatar`;
+  };
 
   return (
     <EpisodeItemContainer>
-      {episode === null || episode === undefined ? (
-        <Skeleton />
-      ) : (
-        <EpisodeItemAvatar src={avatar} alt={imageAlt} />
-      )}
+      <EpisodeItemAvatar src={image} alt="image" />
 
-      {episode === null || episode === undefined ? (
-        <Skeleton />
-      ) : (
-        <EpisodeItemName
-          as={ReactRouterLink}
-          to="/episode/123"
-          fontWeight="500"
-        >
-          {name}
-        </EpisodeItemName>
-      )}
+      <EpisodeItemName
+        as={ReactRouterLink}
+        to={{ pathname: `/episode/${_id}`, state: { _id } }}
+        fontWeight="500"
+        lineHeight="25px"
+      >
+        {title}
+      </EpisodeItemName>
 
-      {episode === null || episode === undefined ? (
-        <Skeleton />
-      ) : (
-        <EpisodeItemDescription lineHeight="25px" textAlign="start">
-          {description}
-        </EpisodeItemDescription>
-      )}
+      <EpisodeItemDescription lineHeight="25px" textAlign="start">
+        {description}
+      </EpisodeItemDescription>
 
-      {episode === null || episode === undefined ? (
-        <Skeleton />
-      ) : (
-        <EpisodeItemPublishedDate textAlign="start">
-          {publishedDate}
-        </EpisodeItemPublishedDate>
-      )}
+      <EpisodeItemPublishedDate textAlign="start">
+        {publishedDate}
+      </EpisodeItemPublishedDate>
 
-      {episode === null || episode === undefined ? (
-        <Skeleton />
-      ) : (
-        <EpisodeItemDuration textAlign="start">{duration}</EpisodeItemDuration>
-      )}
+      <EpisodeItemDuration textAlign="start">{duration}</EpisodeItemDuration>
 
-      <EpisodeItemButton type="button" leftIcon={<Play size={14} />}>
-        Play
-      </EpisodeItemButton>
+      {renderEpisodeButton()}
     </EpisodeItemContainer>
   );
 };

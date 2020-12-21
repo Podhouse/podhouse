@@ -1,21 +1,25 @@
 import { GraphQLString, GraphQLNonNull } from "graphql";
-import { mutationWithClientMutationId } from "graphql-relay";
+import { mutationWithClientMutationId, toGlobalId } from "graphql-relay";
+
+import * as UserLoader from "../UserLoader";
+
+import { UserConnection } from "../UserType";
 
 import { GraphQLContext } from "../../../types";
 
 type UserSubscribePodcastArgs = {
-  podcastId: string;
+  _id: string;
 };
 
 export default mutationWithClientMutationId({
   name: "UserUnsubscribeToPodcast",
   inputFields: {
-    podcastId: {
+    _id: {
       type: new GraphQLNonNull(GraphQLString),
     },
   },
   mutateAndGetPayload: async (
-    { podcastId }: UserSubscribePodcastArgs,
+    { _id }: UserSubscribePodcastArgs,
     { user }: GraphQLContext,
   ) => {
     if (!user) {
@@ -24,10 +28,10 @@ export default mutationWithClientMutationId({
       };
     }
 
-    const subscribedToPodcast = user.subscriptions.includes(podcastId as any);
+    const subscribedToPodcast = user.subscriptions.includes(_id as any);
 
     if (subscribedToPodcast === true) {
-      const podcastIdIndex = user.subscriptions.indexOf(podcastId as any);
+      const podcastIdIndex = user.subscriptions.indexOf(_id as any);
       const subscriptions = user.subscriptions.filter(
         (_, index) => index !== podcastIdIndex,
       );
@@ -36,20 +40,30 @@ export default mutationWithClientMutationId({
       await user.save();
 
       return {
-        message: null,
-        error: "Unsubscribed successfully",
+        _id: user._id,
+        error: null,
       };
     } else {
       return {
-        message: null,
-        error: "Already unsubscribed to podcast",
+        error: "You're not subscribed to this podcast",
       };
     }
   },
   outputFields: {
-    message: {
-      type: GraphQLString,
-      resolve: ({ message }) => message,
+    user: {
+      type: UserConnection.edgeType,
+      resolve: async ({ _id }, _, context) => {
+        const currentUser = await UserLoader.load(context, _id);
+
+        if (!currentUser) {
+          return null;
+        }
+
+        return {
+          cursor: toGlobalId("User", currentUser._id),
+          node: currentUser,
+        };
+      },
     },
     error: {
       type: GraphQLString,

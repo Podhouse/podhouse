@@ -1,5 +1,5 @@
 import React from "react";
-import { Home, Headphones, Search, User, Heart } from "react-feather";
+import { Home, Headphones, Search, User } from "react-feather";
 import { Link as ReactRouterLink } from "react-router-dom";
 
 import {
@@ -29,7 +29,7 @@ const Navigation = () => (
       </ReactRouterLink>
     </NavigationItemContainer>
 
-    <NavigationItemContainer className="favorites">
+    {/* <NavigationItemContainer className="favorites">
       <ReactRouterLink to="/favorites">
         <Heart size={16} strokeWidth={1.7} />
       </ReactRouterLink>
@@ -37,7 +37,7 @@ const Navigation = () => (
       <ReactRouterLink id="link-desktop" to="/favorites">
         Favorites
       </ReactRouterLink>
-    </NavigationItemContainer>
+    </NavigationItemContainer> */}
 
     <NavigationItemContainer className="search">
       <ReactRouterLink to="/search">

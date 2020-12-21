@@ -14,7 +14,7 @@ export const updateToken = (token: string | null = "") => {
 };
 
 export const useLogout = () => {
-  const logout = () => updateToken("");
+  const onLogout = () => updateToken("");
 
-  return [logout];
+  return { onLogout };
 };
