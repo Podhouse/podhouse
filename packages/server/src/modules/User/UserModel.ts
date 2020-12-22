@@ -21,6 +21,12 @@ const UserSchema = new Schema(
         ref: "Podcast",
       },
     ],
+    favorites: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Episode",
+      },
+    ],
   },
   {
     timestamps: {
@@ -35,6 +41,7 @@ export interface IUser extends Document {
   email: string;
   password: string;
   subscriptions: Array<Schema.Types.ObjectId>;
+  favorites: Array<Schema.Types.ObjectId>;
   createdAt: Date;
   updatedAt: Date;
   authenticate: (plainTextPassword: string) => boolean;

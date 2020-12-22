@@ -7,7 +7,7 @@ const SearchContext = React.createContext(undefined as any);
 type SearchContextValue = {
   search: string;
   onSearch: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}
+};
 
 const SearchProvider = ({ children }: any) => {
   const { search, onSearch } = useSearch();

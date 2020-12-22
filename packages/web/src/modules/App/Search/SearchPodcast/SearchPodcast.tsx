@@ -32,7 +32,11 @@ const fragment = graphql`
       first: $first
       before: $before
       last: $last
-    ) @connection(key: "SearchPodcast_podcastsByName", filters: ["podcastName"]) {
+    )
+      @connection(
+        key: "SearchPodcast_podcastsByName"
+        filters: ["podcastName"]
+      ) {
       edges {
         node {
           id

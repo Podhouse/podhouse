@@ -19,6 +19,7 @@ import PodcastModel from "../modules/Podcast/PodcastModel";
 import EpisodeType from "../modules/Episode/EpisodeType";
 import { EpisodeConnection } from "../modules/Episode/EpisodeType";
 import * as EpisodeLoader from "../modules/Episode/EpisodeLoader";
+import EpisodeModel from "../modules/Episode/EpisodeModel";
 
 import { nodesField, nodeField } from "../modules/Node/TypeRegister";
 
@@ -132,6 +133,46 @@ const QueryType = new GraphQLObjectType({
         } else {
           return true;
         }
+      },
+    },
+    userFavoritedEpisode: {
+      type: GraphQLNonNull(GraphQLBoolean),
+      args: {
+        _id: {
+          type: GraphQLNonNull(GraphQLID),
+        },
+      },
+      resolve: async (_, { _id }, context: GraphQLContext) => {
+        const user: Array<IUser> | [] = await UserModel.find({
+          _id: context.user?._id,
+          favorites: { $in: [_id] },
+        });
+
+        if (!Array.isArray(user) || !user.length) {
+          return false;
+        } else {
+          return true;
+        }
+      },
+    },
+    searchPodcastEpisode: {
+      type: GraphQLNonNull(EpisodeConnection.connectionType),
+      args: {
+        ...connectionArgs,
+        podcastID: {
+          type: GraphQLNonNull(GraphQLID),
+        },
+        episodeName: {
+          type: GraphQLNonNull(GraphQLString),
+        },
+      },
+      resolve: async (_, args, context: GraphQLContext) => {
+        const regex = new RegExp(args.episodeName, "i");
+        const episodes = await EpisodeModel.find({
+          title: { $regex: regex },
+          podcast: args.podcastID,
+        });
+        return connectionFromArray(episodes, args);
       },
     },
   }),

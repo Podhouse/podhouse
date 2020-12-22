@@ -17,7 +17,7 @@ import { useSearchContext } from "src/machines/Search/SearchContext";
 import { SearchQuery } from "./__generated__/SearchQuery.graphql";
 
 const searchQuery = graphql`
-   query SearchQuery($podcastName: String!) {
+  query SearchQuery($podcastName: String!) {
     ...SearchPodcast_podcasts @arguments(podcastName: $podcastName)
   }
 `;
@@ -36,7 +36,9 @@ type ScrollFrameType = {
 const Search = () => {
   const [shouldLoadMore, setShouldLoadMore] = useState<boolean>(false);
 
-  const [queryReference, loadQuery, disposeQuery] = useQueryLoader<SearchQuery>(searchQuery);
+  const [queryReference, loadQuery, disposeQuery] = useQueryLoader<SearchQuery>(
+    searchQuery
+  );
 
   const { search }: { search: string } = useSearchContext();
   const [debouncedSearch] = useDebounce(search, 500);

@@ -7,11 +7,13 @@ import {
 } from "graphql";
 import { globalIdField, connectionFromArray } from "graphql-relay";
 
-import { IUser } from "./UserModel";
 import { load } from "./UserLoader";
 
 import { PodcastConnection } from "../Podcast/PodcastType";
 import * as PodcastLoader from "../Podcast/PodcastLoader";
+
+import { EpisodeConnection } from "../Episode/EpisodeType";
+import * as EpisodeLoader from "../Episode/EpisodeLoader";
 
 import { nodeInterface, registerTypeLoader } from "../Node/TypeRegister";
 
@@ -33,10 +35,17 @@ const UserSubscribedInputType = new GraphQLInputObjectType({
   }),
 });
 
-const UserType: GraphQLObjectType = new GraphQLObjectType<
-  IUser,
-  GraphQLContext
->({
+const UserFavoritedInputType = new GraphQLInputObjectType({
+  name: "UserFavoritedInput",
+  description: "Input payload for checking if user has favorited an episode",
+  fields: () => ({
+    _id: {
+      type: GraphQLNonNull(GraphQLString),
+    },
+  }),
+});
+
+const UserType: GraphQLObjectType = new GraphQLObjectType({
   name: "User",
   description: "UserType",
   fields: () => ({
@@ -59,6 +68,19 @@ const UserType: GraphQLObjectType = new GraphQLObjectType<
         return connectionFromArray(result, args);
       },
     },
+    favorites: {
+      type: GraphQLNonNull(EpisodeConnection.connectionType),
+      args: {
+        ...connectionArgs,
+      },
+      resolve: async (user, args, context: GraphQLContext) => {
+        const episodes = user.favorites.map((id) =>
+          EpisodeLoader.load(context, id.toString()),
+        );
+        const result = await Promise.all(episodes).then((res) => res);
+        return connectionFromArray(result, args);
+      },
+    },
     subscribed: {
       type: GraphQLBoolean,
       args: {
@@ -67,8 +89,25 @@ const UserType: GraphQLObjectType = new GraphQLObjectType<
         },
       },
       resolve: ({ subscriptions }, { input }: { input: { _id: string } }) => {
-        const stringsSubscriptions = subscriptions.map((x) => x.toString());
-        const uniqueStrings = [...new Set(stringsSubscriptions)];
+        const stringsSubscriptions: Array<string> = subscriptions.map((x) =>
+          x.toString(),
+        );
+        const uniqueStrings: Array<string> = [...new Set(stringsSubscriptions)];
+        return uniqueStrings.includes(input._id);
+      },
+    },
+    favorited: {
+      type: GraphQLBoolean,
+      args: {
+        input: {
+          type: GraphQLNonNull(UserSubscribedInputType),
+        },
+      },
+      resolve: ({ subscriptions }, { input }: { input: { _id: string } }) => {
+        const stringsFavorites: Array<string> = subscriptions.map((x) =>
+          x.toString(),
+        );
+        const uniqueStrings: Array<string> = [...new Set(stringsFavorites)];
         return uniqueStrings.includes(input._id);
       },
     },
