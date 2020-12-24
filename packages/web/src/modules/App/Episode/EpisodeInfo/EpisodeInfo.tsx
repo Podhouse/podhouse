@@ -1,7 +1,6 @@
 import React from "react";
 import { Heading, Button, Link, Image } from "@chakra-ui/react";
 import { ExternalLink } from "react-feather";
-import { GraphQLTaggedNode } from "relay-runtime";
 import { usePreloadedQuery, PreloadedQuery } from "react-relay/hooks";
 
 import {
@@ -20,7 +19,7 @@ import { usePlayerContext } from "src/machines/Player/PlayerContext";
 
 interface Props {
   queryReference: PreloadedQuery<EpisodeQuery>;
-  query: GraphQLTaggedNode;
+  query: any;
 }
 
 const EpisodeInfo = ({ queryReference, query }: Props) => {

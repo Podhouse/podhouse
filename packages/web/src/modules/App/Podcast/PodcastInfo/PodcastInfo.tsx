@@ -1,7 +1,6 @@
 import React from "react";
 import { Heading, Button, Link, Image, useToast } from "@chakra-ui/react";
 import { ExternalLink } from "react-feather";
-import { GraphQLTaggedNode } from "relay-runtime";
 import {
   usePreloadedQuery,
   useMutation,
@@ -32,9 +31,9 @@ import { PodcastInfoUserQuery } from "../__generated__/PodcastInfoUserQuery.grap
 
 interface Props {
   podcastQueryReference: PreloadedQuery<PodcastQuery>;
-  podcastQuery: GraphQLTaggedNode;
+  podcastQuery: any;
   userQueryReference: any;
-  userQuery: GraphQLTaggedNode;
+  userQuery: any;
   shouldLoadMore: boolean;
 }
 
