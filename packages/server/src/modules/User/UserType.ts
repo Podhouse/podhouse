@@ -60,8 +60,8 @@ const UserType: GraphQLObjectType = new GraphQLObjectType({
       args: {
         ...connectionArgs,
       },
-      resolve: async (user, args, context: GraphQLContext) => {
-        const podcasts = user.subscriptions.map((id) =>
+      resolve: async ({ subscriptions }, args, context: GraphQLContext) => {
+        const podcasts = subscriptions.map((id) =>
           PodcastLoader.load(context, id.toString()),
         );
         const result = await Promise.all(podcasts).then((res) => res);
@@ -73,8 +73,8 @@ const UserType: GraphQLObjectType = new GraphQLObjectType({
       args: {
         ...connectionArgs,
       },
-      resolve: async (user, args, context: GraphQLContext) => {
-        const episodes = user.favorites.map((id) =>
+      resolve: async ({ favorites }, args, context: GraphQLContext) => {
+        const episodes = favorites.map((id) =>
           EpisodeLoader.load(context, id.toString()),
         );
         const result = await Promise.all(episodes).then((res) => res);
@@ -100,15 +100,37 @@ const UserType: GraphQLObjectType = new GraphQLObjectType({
       type: GraphQLBoolean,
       args: {
         input: {
-          type: GraphQLNonNull(UserSubscribedInputType),
+          type: GraphQLNonNull(UserFavoritedInputType),
         },
       },
-      resolve: ({ subscriptions }, { input }: { input: { _id: string } }) => {
-        const stringsFavorites: Array<string> = subscriptions.map((x) =>
+      resolve: ({ favorites }, { input }: { input: { _id: string } }) => {
+        const stringsFavorites: Array<string> = favorites.map((x) =>
           x.toString(),
         );
         const uniqueStrings: Array<string> = [...new Set(stringsFavorites)];
         return uniqueStrings.includes(input._id);
+      },
+    },
+    history: {
+      type: GraphQLNonNull(EpisodeConnection.connectionType),
+      args: {
+        ...connectionArgs,
+      },
+      resolve: async ({ history }, args, context: GraphQLContext) => {
+        const episodes = history.map((id) =>
+          EpisodeLoader.load(context, id.toString()),
+        );
+        const result = await Promise.all(episodes).then((res) => res);
+        return connectionFromArray(result, args);
+      },
+    },
+    currentListening: {
+      type: GraphQLNonNull(EpisodeConnection.connectionType),
+      args: {
+        ...connectionArgs,
+      },
+      resolve: async (user, args, context: GraphQLContext) => {
+        return user;
       },
     },
     createdAt: {

@@ -15,7 +15,7 @@ const cacheHandler: FetchFunction = async (
   cacheConfig,
   uploadables
 ) => {
-  const queryID = operation.text || "";
+  const queryID: string = operation.text || "";
 
   if (isMutation(operation)) {
     queryResponseCache.clear();

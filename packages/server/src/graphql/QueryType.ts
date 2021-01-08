@@ -90,18 +90,18 @@ const QueryType = new GraphQLObjectType({
       type: GraphQLNonNull(EpisodeConnection.connectionType),
       args: {
         ...connectionArgs,
-        podcast: {
-          type: GraphQLID,
+        podcastID: {
+          type: GraphQLNonNull(GraphQLID),
         },
-        name: {
-          type: GraphQLString,
+        episodeName: {
+          type: GraphQLNonNull(GraphQLString),
         },
       },
       resolve: async (_, args, context: GraphQLContext) =>
         await EpisodeLoader.loadAll(
           context,
           withFilter(args, {
-            name: args.name,
+            name: args.episodeName,
           }),
         ),
     },

@@ -7,7 +7,6 @@ import {
 } from "graphql";
 import { globalIdField } from "graphql-relay";
 
-import { IPodcast } from "./PodcastModel";
 import { load } from "./PodcastLoader";
 
 import * as EpisodeLoader from "../Episode/EpisodeLoader";
@@ -22,12 +21,7 @@ import {
   withFilter,
 } from "../../common/";
 
-import { GraphQLContext } from "../../types";
-
-const PodcastType: GraphQLObjectType = new GraphQLObjectType<
-  IPodcast,
-  GraphQLContext
->({
+const PodcastType: GraphQLObjectType = new GraphQLObjectType({
   name: "Podcast",
   description: "PodcastType",
   fields: () => ({

@@ -1,9 +1,9 @@
 import { GraphQLString, GraphQLNonNull } from "graphql";
 import { mutationWithClientMutationId } from "graphql-relay";
 
-import { errorField, successField } from "../../../common/";
-
 import { GraphQLContext } from "../../../types";
+
+import { errorField, successField } from "../../../common/";
 
 type UserChangePasswordArgs = {
   oldPassword: string;
@@ -27,14 +27,16 @@ export default mutationWithClientMutationId({
     if (!user) {
       return {
         error: "User not authenticated",
+        success: null,
       };
     }
 
-    const correctPassword = user.authenticate(oldPassword);
+    const correctPassword: boolean = user.authenticate(oldPassword);
 
     if (!correctPassword) {
       return {
         error: "Invalid password",
+        success: null,
       };
     }
 

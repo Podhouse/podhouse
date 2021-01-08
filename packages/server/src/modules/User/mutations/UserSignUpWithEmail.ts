@@ -1,11 +1,11 @@
 import { GraphQLString, GraphQLNonNull } from "graphql";
 import { mutationWithClientMutationId } from "graphql-relay";
 
-import UserModel from "../UserModel";
-
-import { errorField, successField } from "../../../common/";
+import UserModel, { IUser } from "../UserModel";
 
 import { generateToken } from "../../../utils/auth";
+
+import { errorField, successField } from "../../../common/";
 
 type UserSignUpWithEmailArgs = {
   email: string;
@@ -29,17 +29,19 @@ export default mutationWithClientMutationId({
 
     if (userExists) {
       return {
+        token: null,
         error: "Email address is already in use",
+        success: null,
       };
     }
 
-    const user = await new UserModel({
+    const user: IUser = await new UserModel({
       email,
       password,
     }).save();
 
     return {
-      token: generateToken(user),
+      token: generateToken(user._id),
       success: "Signed up succcessfully",
       error: null,
     };

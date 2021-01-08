@@ -1,5 +1,6 @@
-import { GraphQLString, GraphQLNonNull } from "graphql";
+import { GraphQLString, GraphQLInt, GraphQLNonNull } from "graphql";
 import { mutationWithClientMutationId, toGlobalId } from "graphql-relay";
+import { Types } from "mongoose";
 
 import * as UserLoader from "../UserLoader";
 
@@ -7,21 +8,21 @@ import { UserConnection } from "../UserType";
 
 import { GraphQLContext } from "../../../types";
 
-import { errorField, successField } from "../../../common/";
+import { errorField, successField } from "../../../common";
 
-type UserFavoriteEpisodeArgs = {
-  _id: string;
+type UserRemoveEpisodeFromHistoryArgs = {
+  episodeIndex: number;
 };
 
 export default mutationWithClientMutationId({
-  name: "UserFavoriteEpisode",
+  name: "UserRemoveEpisodeFromHistory",
   inputFields: {
-    _id: {
-      type: new GraphQLNonNull(GraphQLString),
+    episodeIndex: {
+      type: new GraphQLNonNull(GraphQLInt),
     },
   },
   mutateAndGetPayload: async (
-    { _id }: UserFavoriteEpisodeArgs,
+    { episodeIndex }: UserRemoveEpisodeFromHistoryArgs,
     { user }: GraphQLContext,
   ) => {
     if (!user) {
@@ -32,22 +33,24 @@ export default mutationWithClientMutationId({
       };
     }
 
-    const hasFavoritedEpisode: boolean = user.favorites.includes(_id as any);
+    const arrayHasIndex = user.history.hasOwnProperty(episodeIndex);
 
-    if (hasFavoritedEpisode === true) {
-      return {
-        _id: user._id,
-        error: "Already favorited this episode",
-        success: null,
-      };
-    } else {
-      user.favorites.push(_id as any);
+    if (arrayHasIndex === true) {
+      const history = user.history.filter((_, index) => index !== episodeIndex);
+
+      user.history = history;
       await user.save();
 
       return {
         _id: user._id,
         error: null,
-        success: "Favorited episode successfully!",
+        success: "Removed episode from history successfully!",
+      };
+    } else {
+      return {
+        _id: user._id,
+        error: "Episode does not exist on history",
+        success: null,
       };
     }
   },

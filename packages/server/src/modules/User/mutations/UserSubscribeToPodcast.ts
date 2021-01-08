@@ -7,7 +7,9 @@ import { UserConnection } from "../UserType";
 
 import { GraphQLContext } from "../../../types";
 
-type UserSubscribePodcastArgs = {
+import { errorField, successField } from "../../../common/";
+
+type UserSubscribeToPodcastArgs = {
   _id: string;
 };
 
@@ -19,12 +21,14 @@ export default mutationWithClientMutationId({
     },
   },
   mutateAndGetPayload: async (
-    { _id }: UserSubscribePodcastArgs,
+    { _id }: UserSubscribeToPodcastArgs,
     { user }: GraphQLContext,
   ) => {
     if (!user) {
       return {
+        user: null,
         error: "User not authenticated",
+        success: null,
       };
     }
 
@@ -32,7 +36,9 @@ export default mutationWithClientMutationId({
 
     if (subscribedToPodcast === true) {
       return {
+        user: null,
         error: "Already subscribed to podcast",
+        success: null,
       };
     } else {
       user.subscriptions.push(_id as any);
@@ -41,6 +47,7 @@ export default mutationWithClientMutationId({
       return {
         _id: user._id,
         error: null,
+        success: "Subscribed to podcast succcessfully",
       };
     }
   },
@@ -60,9 +67,7 @@ export default mutationWithClientMutationId({
         };
       },
     },
-    error: {
-      type: GraphQLString,
-      resolve: ({ error }) => error,
-    },
+    ...errorField,
+    ...successField,
   },
 });

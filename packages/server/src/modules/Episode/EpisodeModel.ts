@@ -6,36 +6,45 @@ const EpisodeSchema = new Schema(
   {
     title: {
       type: String,
-      required: true,
     },
     description: {
       type: String,
-      required: true,
     },
     publishedDate: {
       type: String,
-      required: true,
     },
     link: {
       type: String,
     },
     image: {
       type: String,
-      required: true,
+    },
+    guid: {
+      type: String,
     },
     audio: {
       type: String,
-      required: true,
     },
     duration: {
       type: String,
-      required: true,
+    },
+    generator: {
+      type: String,
+    },
+    owner: {
+      name: {
+        type: String,
+      },
+      email: {
+        type: String,
+      },
     },
     podcast: {
       type: ObjectId,
       ref: "Podcast",
       description: "Podcast this episode is attached to",
       required: true,
+      index: true,
     },
   },
   {
@@ -47,10 +56,16 @@ export interface IEpisode extends Document {
   title: string;
   description: string;
   publishedDate: string;
-  link?: string;
+  link: string;
   image: string;
   audio: string;
+  guid: string;
   duration: string;
+  generator: string;
+  owner: {
+    name: string;
+    email: string;
+  };
   podcast: Types.ObjectId;
 }
 

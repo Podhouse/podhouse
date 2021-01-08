@@ -7,21 +7,21 @@ import { UserConnection } from "../UserType";
 
 import { GraphQLContext } from "../../../types";
 
-import { errorField, successField } from "../../../common/";
+import { errorField, successField } from "../../../common";
 
-type UserFavoriteEpisodeArgs = {
+type UserAddEpisodeToHistoryArgs = {
   _id: string;
 };
 
 export default mutationWithClientMutationId({
-  name: "UserFavoriteEpisode",
+  name: "UserAddEpisodeToHistory",
   inputFields: {
     _id: {
       type: new GraphQLNonNull(GraphQLString),
     },
   },
   mutateAndGetPayload: async (
-    { _id }: UserFavoriteEpisodeArgs,
+    { _id }: UserAddEpisodeToHistoryArgs,
     { user }: GraphQLContext,
   ) => {
     if (!user) {
@@ -32,24 +32,14 @@ export default mutationWithClientMutationId({
       };
     }
 
-    const hasFavoritedEpisode: boolean = user.favorites.includes(_id as any);
+    user.history.push(_id as any);
+    await user.save();
 
-    if (hasFavoritedEpisode === true) {
-      return {
-        _id: user._id,
-        error: "Already favorited this episode",
-        success: null,
-      };
-    } else {
-      user.favorites.push(_id as any);
-      await user.save();
-
-      return {
-        _id: user._id,
-        error: null,
-        success: "Favorited episode successfully!",
-      };
-    }
+    return {
+      _id: user._id,
+      error: null,
+      success: "Added episode to history successfully",
+    };
   },
   outputFields: {
     user: {

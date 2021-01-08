@@ -1,11 +1,11 @@
 import { GraphQLString, GraphQLNonNull } from "graphql";
 import { mutationWithClientMutationId } from "graphql-relay";
 
-import UserModel from "../UserModel";
-
-import { errorField, successField } from "../../../common/";
+import UserModel, { IUser } from "../UserModel";
 
 import { generateToken } from "../../../utils/auth";
+
+import { errorField, successField } from "../../../common/";
 
 type UserSignInWithEmailArgs = {
   email: string;
@@ -23,11 +23,15 @@ export default mutationWithClientMutationId({
     },
   },
   mutateAndGetPayload: async ({ email, password }: UserSignInWithEmailArgs) => {
-    const user = await UserModel.findOne({ email: email.trim().toLowerCase() });
+    const user: IUser = await UserModel.findOne({
+      email: email.trim().toLowerCase(),
+    });
 
     if (!user) {
       return {
+        token: null,
         error: "Account with this email address not found",
+        success: null,
       };
     }
 
@@ -35,12 +39,14 @@ export default mutationWithClientMutationId({
 
     if (!correctPassword) {
       return {
+        token: null,
         error: "Invalid password",
+        success: null,
       };
     }
 
     return {
-      token: generateToken(user),
+      token: generateToken(user._id),
       success: "Logged in successfully",
       error: null,
     };
