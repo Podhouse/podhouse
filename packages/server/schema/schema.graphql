@@ -19,6 +19,8 @@ type Query {
   episodes(after: String, first: Int, before: String, last: Int, podcast: ID, name: String): EpisodeConnection!
   episode(_id: ID!): Episode
   userSubscribedToPodcast(_id: ID!): Boolean!
+  userFavoritedEpisode(_id: ID!): Boolean!
+  searchPodcastEpisode(after: String, first: Int, before: String, last: Int, podcastID: ID!, episodeName: String!): EpisodeConnection!
 }
 
 """An object with an ID"""
@@ -36,7 +38,9 @@ type User implements Node {
   _id: String!
   email: String!
   subscriptions(after: String, first: Int, before: String, last: Int): PodcastConnection!
+  favorites(after: String, first: Int, before: String, last: Int): EpisodeConnection!
   subscribed(input: UserSubscribedInput!): Boolean
+  favorited(input: UserSubscribedInput!): Boolean
   createdAt: String!
   updatedAt: String!
 }
@@ -175,6 +179,8 @@ type Mutation {
   UserChangePassword(input: UserChangePasswordInput!): UserChangePasswordPayload
   UserSubscribeToPodcast(input: UserSubscribeToPodcastInput!): UserSubscribeToPodcastPayload
   UserUnsubscribeToPodcast(input: UserUnsubscribeToPodcastInput!): UserUnsubscribeToPodcastPayload
+  UserFavoriteEpisode(input: UserFavoriteEpisodeInput!): UserFavoriteEpisodePayload
+  UserUnfavoriteEpisode(input: UserUnfavoriteEpisodeInput!): UserUnfavoriteEpisodePayload
 }
 
 type UserSignInWithEmailPayload {
@@ -242,6 +248,28 @@ type UserUnsubscribeToPodcastPayload {
 }
 
 input UserUnsubscribeToPodcastInput {
+  _id: String!
+  clientMutationId: String
+}
+
+type UserFavoriteEpisodePayload {
+  user: UserEdge
+  error: String
+  clientMutationId: String
+}
+
+input UserFavoriteEpisodeInput {
+  _id: String!
+  clientMutationId: String
+}
+
+type UserUnfavoriteEpisodePayload {
+  user: UserEdge
+  error: String
+  clientMutationId: String
+}
+
+input UserUnfavoriteEpisodeInput {
   _id: String!
   clientMutationId: String
 }

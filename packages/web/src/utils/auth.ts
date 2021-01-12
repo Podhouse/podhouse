@@ -1,4 +1,20 @@
+import { useEffect, useState } from "react";
+
 export const TOKEN_KEY = "podhouse";
+
+export const useToken = () => {
+  const [token, setToken] = useState<string>();
+  useEffect(() => {
+    setInterval(() => {
+      setToken(getToken());
+    }, 1000);
+
+    return () => {
+      clearInterval();
+    };
+  }, []);
+  return { token };
+};
 
 export const getToken = (): string => {
   const currentToken = localStorage.getItem(TOKEN_KEY);

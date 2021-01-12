@@ -6,7 +6,7 @@ import {
   ErrorFallbackInnerContainer,
 } from "./ErrorFallback.styles";
 
-const ErrorFallback = ({ error, resetErrorBoundary }: any) => (
+const ErrorFallback = ({ resetErrorBoundary }: any) => (
   <ErrorFallbackContainer role="alert">
     <ErrorFallbackInnerContainer>
       <Heading
@@ -20,7 +20,7 @@ const ErrorFallback = ({ error, resetErrorBoundary }: any) => (
       </Heading>
 
       <Heading color="#101010" as="h2" size="lg" textAlign="center">
-        {error.message}
+        Something went wrong
       </Heading>
 
       <Button

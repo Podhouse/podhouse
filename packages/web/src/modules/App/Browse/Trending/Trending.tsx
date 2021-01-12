@@ -16,6 +16,7 @@ const query = graphql`
           name
           author
           image
+          appleId
         }
       }
     }

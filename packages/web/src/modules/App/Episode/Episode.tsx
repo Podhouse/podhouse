@@ -24,10 +24,12 @@ const query = graphql`
       audio
       duration
       podcast {
+        id
         _id
         name
         website
         rss
+        appleId
       }
     }
   }
@@ -54,10 +56,14 @@ const Episode = () => {
     };
   }, [loadQuery, disposeQuery, state._id]);
 
+  const onResetQuery = () => {
+    loadQuery({ _id: state._id }, { fetchPolicy: "store-or-network" });
+  };
+
   return (
     <Scrollbars autoHide autoHideTimeout={100} autoHideDuration={100}>
       {queryReference && (
-        <ErrorBoundary FallbackComponent={ErrorFallback}>
+        <ErrorBoundary FallbackComponent={ErrorFallback} onReset={onResetQuery}>
           <Suspense fallback={<SkeletonPage episodes={false} />}>
             <EpisodeInfo queryReference={queryReference} query={query} />
           </Suspense>

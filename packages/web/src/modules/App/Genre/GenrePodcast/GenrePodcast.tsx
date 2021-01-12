@@ -41,6 +41,8 @@ const fragment = graphql`
         node {
           id
           _id
+          name
+          appleId
           image
         }
       }

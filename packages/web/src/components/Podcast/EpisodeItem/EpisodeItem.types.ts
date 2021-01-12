@@ -9,10 +9,12 @@ export interface EpisodeItemProps {
     readonly audio: string;
     readonly duration: string;
     readonly podcast: {
+      readonly id: string;
       readonly _id: string;
       readonly name: string;
       readonly website: string;
       readonly rss: string;
+      readonly appleId: number;
     };
   };
 }

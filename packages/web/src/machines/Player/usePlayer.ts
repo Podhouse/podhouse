@@ -189,6 +189,7 @@ const usePlayer = ({
     if (newEpisode !== null) {
       load({ src: newEpisode.audio, volume, muted, loop, rate });
       setEpisode(newEpisode);
+      onToggle();
     }
   };
 

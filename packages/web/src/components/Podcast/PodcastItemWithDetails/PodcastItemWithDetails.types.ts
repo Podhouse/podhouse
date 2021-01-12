@@ -5,5 +5,6 @@ export type PodcastItemWithDetailsProps = {
     readonly name: string;
     readonly author: string;
     readonly image: string;
+    readonly appleId: number;
   };
 };

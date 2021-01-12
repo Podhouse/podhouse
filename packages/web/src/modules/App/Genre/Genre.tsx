@@ -62,6 +62,10 @@ const Genre = () => {
     setShouldLoadMore(false);
   };
 
+  const onResetQuery = () => {
+    loadQuery({ primaryGenre: state.primaryGenre });
+  };
+
   return (
     <Scrollbars
       onScrollFrame={onLoadMore}
@@ -70,7 +74,7 @@ const Genre = () => {
       autoHideDuration={100}
     >
       {queryReference && (
-        <ErrorBoundary FallbackComponent={ErrorFallback}>
+        <ErrorBoundary FallbackComponent={ErrorFallback} onReset={onResetQuery}>
           <Suspense
             fallback={
               <GenreContainer>

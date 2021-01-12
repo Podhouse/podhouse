@@ -10,37 +10,51 @@ import {
 
 import { PlayerEpisode } from "src/machines/Player/Player.types";
 
+import convertPodcastNameToURL from "src/utils/convertPodcastNameToURL";
+
 interface Props {
   ready: boolean;
   episode: PlayerEpisode | null;
 }
 
 const Podcast = ({ ready, episode }: Props) => {
-  if (!ready) return null;
+  if (!ready) {
+    return null;
+  }
 
-  if (!episode) return null;
+  if (!episode) {
+    return null;
+  }
+
+  const route: string = convertPodcastNameToURL(
+    episode.podcast.name,
+    episode.podcast.appleId
+  );
+
+  console.log("route: ", route);
+  console.log("id: ", episode.podcast._id);
 
   return (
     <PodcastContainer>
-      <PodcastImage src={episode?.image} />
+      <PodcastImage src={episode.image} />
 
       <PodcastDetails>
         <PodcastNameTitle
           to={{
-            pathname: `/episode/${episode?._id}`,
-            state: { _id: episode?._id },
+            pathname: `/episode/${episode._id}`,
+            state: { _id: episode._id },
           }}
         >
-          {episode?.title}
+          {episode.title}
         </PodcastNameTitle>
 
         <PodcastNameTitle
           to={{
-            pathname: `/podcast/${episode?.podcast._id}`,
-            state: { _id: episode?.podcast._id },
+            pathname: route,
+            state: { _id: episode.podcast._id },
           }}
         >
-          {episode?.podcast.name}
+          {episode.podcast.name}
         </PodcastNameTitle>
 
         <PodcastFavoriteContainer>

@@ -19,6 +19,7 @@ const podcastQuery = graphql`
       id
       _id
       name
+      appleId
       author
       description
       website
@@ -87,6 +88,11 @@ const Podcast = () => {
     state._id,
   ]);
 
+  const onResetQueries = () => {
+    podcastLoadQuery({ _id: state._id }, { fetchPolicy: "store-or-network" });
+    userLoadQuery({ input: { _id: state._id } });
+  };
+
   const onLoadMore = (value: ScrollFrameType) => {
     if (value.top === 1) {
       setShouldLoadMore(true);
@@ -102,7 +108,10 @@ const Podcast = () => {
       autoHideDuration={100}
     >
       {podcastQueryReference && (
-        <ErrorBoundary FallbackComponent={ErrorFallback}>
+        <ErrorBoundary
+          FallbackComponent={ErrorFallback}
+          onReset={onResetQueries}
+        >
           <Suspense fallback={<SkeletonPage episodes={true} />}>
             <PodcastInfo
               podcastQueryReference={podcastQueryReference}
