@@ -16252,7 +16252,7 @@ relay-hooks@^4.0.0-rc.3:
     "@restart/hooks" "^0.3.1"
     fbjs "^3.0.0"
 
-relay-runtime@10.1.2:
+relay-runtime@10.1.2, relay-runtime@^10.1.2:
   version "10.1.2"
   resolved "https://registry.yarnpkg.com/relay-runtime/-/relay-runtime-10.1.2.tgz#842577b78f556a52712773a5c328f94bafd71570"
   integrity sha512-nAMji6xaQ4bPlBZdXwVEDBDmmPZMfmgHHskUpnDVVldhtuu9zUb4bTDYM5Sk4MMBO8uOR5MJqDkEfBkpV02w+A==

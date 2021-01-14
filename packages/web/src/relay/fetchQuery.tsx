@@ -7,8 +7,6 @@ import { handleData, isMutation } from "./helpers";
 
 import { getToken } from "src/utils/auth";
 
-// Define a function that fetches the results of a request (query/mutation/etc)
-// and returns its results as a Promise:
 const fetchQuery = async (request: RequestParameters, variables: Variables) => {
   try {
     const authorization = getToken();
@@ -16,6 +14,9 @@ const fetchQuery = async (request: RequestParameters, variables: Variables) => {
     const isMutationOperation = isMutation(request);
 
     const fetchFn = isMutationOperation ? fetch : fetchWithRetries;
+
+    // Uncomment to see optimistic update working
+    // const fetchFn = fetchWithRetries;
 
     const response = await fetchFn(
       "https://podhouse-server.herokuapp.com/graphql",
@@ -30,6 +31,8 @@ const fetchQuery = async (request: RequestParameters, variables: Variables) => {
           query: request.text,
           variables,
         }),
+        fetchTimeout: 20000,
+        retryDelays: [1000, 3000, 5000],
       }
     );
 
@@ -53,6 +56,7 @@ const fetchQuery = async (request: RequestParameters, variables: Variables) => {
 
     const timeoutRegexp = new RegExp(/Still no successful response after/);
     const serverUnavailableRegexp = new RegExp(/Failed to fetch/);
+
     if (
       timeoutRegexp.test(err.message) ||
       serverUnavailableRegexp.test(err.message)

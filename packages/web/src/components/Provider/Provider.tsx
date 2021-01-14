@@ -4,7 +4,7 @@ import { Global } from "@emotion/react";
 import { ChakraProvider } from "@chakra-ui/react";
 import { RelayEnvironmentProvider } from "relay-hooks";
 
-import RelayEnvironment from "src/relay/RelayEnvironment";
+import environment from "src/relay/RelayEnvironment";
 
 import { SearchProvider } from "src/machines/Search/SearchContext";
 import { PlayerProvider } from "src/machines/Player/PlayerContext";
@@ -20,7 +20,7 @@ import theme from "src/system/theme";
 import "keen-slider/keen-slider.min.css";
 
 const Provider = () => (
-  <RelayEnvironmentProvider environment={RelayEnvironment}>
+  <RelayEnvironmentProvider environment={environment}>
     <BrowserRouter>
       <ChakraProvider theme={theme}>
         <PlayerProvider>
