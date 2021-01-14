@@ -1,6 +1,5 @@
-import { GraphQLString, GraphQLInt, GraphQLNonNull } from "graphql";
+import { GraphQLInt, GraphQLNonNull } from "graphql";
 import { mutationWithClientMutationId, toGlobalId } from "graphql-relay";
-import { Types } from "mongoose";
 
 import * as UserLoader from "../UserLoader";
 

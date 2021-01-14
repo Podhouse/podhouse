@@ -75,7 +75,10 @@ function parsePodcastFeed(
             finalDuration = formatSeconds(durationWithoutSpecialCharacters);
           }
 
-          let owner: { name: string | undefined; email: string | undefined } = {
+          const owner: {
+            name: string | undefined;
+            email: string | undefined;
+          } = {
             name: "",
             email: "",
           };

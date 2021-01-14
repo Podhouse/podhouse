@@ -94,6 +94,11 @@ const Podcast = () => {
     setShouldLoadMore(false);
   };
 
+  const onRefetchQuery = () => {
+    podcastLoadQuery({ _id: state._id }, { fetchPolicy: "store-or-network" });
+    userLoadQuery({ input: { _id: state._id } });
+  };
+
   return (
     <Scrollbars
       onScrollFrame={onLoadMore}
@@ -102,7 +107,10 @@ const Podcast = () => {
       autoHideDuration={100}
     >
       {podcastQueryReference && (
-        <ErrorBoundary FallbackComponent={ErrorFallback}>
+        <ErrorBoundary
+          FallbackComponent={ErrorFallback}
+          onReset={onRefetchQuery}
+        >
           <Suspense fallback={<SkeletonPage episodes={true} />}>
             <PodcastInfo
               podcastQueryReference={podcastQueryReference}

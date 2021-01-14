@@ -67,10 +67,7 @@ export default mutationWithClientMutationId({
     } else {
       const { title } = await parser.parseURL(rss);
 
-      const podcastFromItunes: Podcast = await searchPodcastOnItunes(
-        title,
-        rss,
-      );
+      const podcastFromItunes: Podcast = await searchPodcastOnItunes(title);
 
       const podcast: IPodcast = await new PodcastModel(
         podcastFromItunes,

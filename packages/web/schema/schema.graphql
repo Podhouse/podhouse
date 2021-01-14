@@ -13,8 +13,8 @@ type Query {
   ): [Node]!
   currentUser: User
   podcasts(after: String, first: Int, before: String, last: Int): PodcastConnection!
-  podcastsByName(after: String, first: Int, before: String, last: Int, podcastName: String): PodcastConnection!
-  podcastsByGenre(after: String, first: Int, before: String, last: Int, primaryGenre: String): PodcastConnection!
+  podcastsByName(after: String, first: Int, before: String, last: Int, podcastName: String!): PodcastConnection!
+  podcastsByGenre(after: String, first: Int, before: String, last: Int, primaryGenre: String!): PodcastConnection!
   podcast(_id: ID!): Podcast
   episodes(after: String, first: Int, before: String, last: Int, podcastID: ID!, episodeName: String!): EpisodeConnection!
   episode(_id: ID!): Episode
@@ -33,16 +33,13 @@ interface Node {
 type User implements Node {
   """The ID of an object"""
   id: ID!
-
-  """mongoose _id"""
   _id: String!
   email: String!
   subscriptions(after: String, first: Int, before: String, last: Int): PodcastConnection!
   favorites(after: String, first: Int, before: String, last: Int): EpisodeConnection!
-  subscribed(input: UserSubscribedInput!): Boolean
-  favorited(input: UserFavoritedInput!): Boolean
+  subscribed(input: UserSubscribedInput!): Boolean!
+  favorited(input: UserFavoritedInput!): Boolean!
   history(after: String, first: Int, before: String, last: Int): EpisodeConnection!
-  currentListening(after: String, first: Int, before: String, last: Int): EpisodeConnection!
   createdAt: String!
   updatedAt: String!
 }
@@ -101,8 +98,6 @@ type PodcastEdge {
 type Podcast implements Node {
   """The ID of an object"""
   id: ID!
-
-  """mongoose _id"""
   _id: String!
   appleId: Int!
   name: String!
@@ -157,8 +152,6 @@ type EpisodeEdge {
 type Episode implements Node {
   """The ID of an object"""
   id: ID!
-
-  """mongoose _id"""
   _id: String!
   title: String!
   description: String!

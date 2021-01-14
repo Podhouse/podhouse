@@ -58,6 +58,10 @@ const Search = () => {
     };
   }, [loadQuery, disposeQuery, debouncedSearch]);
 
+  const onRefetchQuery = () => {
+    loadQuery({ podcastName: debouncedSearch });
+  };
+
   return (
     <Scrollbars
       onScrollFrame={onLoadMore}
@@ -66,7 +70,10 @@ const Search = () => {
       autoHideDuration={100}
     >
       {queryReference && (
-        <ErrorBoundary FallbackComponent={ErrorFallback}>
+        <ErrorBoundary
+          FallbackComponent={ErrorFallback}
+          onReset={onRefetchQuery}
+        >
           <Suspense
             fallback={
               <SearchContainer>

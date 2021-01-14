@@ -7,6 +7,8 @@ import {
 } from "graphql";
 import { globalIdField, connectionFromArray } from "graphql-relay";
 
+import { IUser } from "./UserModel";
+
 import { load } from "./UserLoader";
 
 import { PodcastConnection } from "../Podcast/PodcastType";
@@ -45,7 +47,10 @@ const UserFavoritedInputType = new GraphQLInputObjectType({
   }),
 });
 
-const UserType: GraphQLObjectType = new GraphQLObjectType({
+const UserType: GraphQLObjectType = new GraphQLObjectType<
+  IUser,
+  GraphQLContext
+>({
   name: "User",
   description: "UserType",
   fields: () => ({
@@ -82,7 +87,7 @@ const UserType: GraphQLObjectType = new GraphQLObjectType({
       },
     },
     subscribed: {
-      type: GraphQLBoolean,
+      type: GraphQLNonNull(GraphQLBoolean),
       args: {
         input: {
           type: GraphQLNonNull(UserSubscribedInputType),
@@ -97,7 +102,7 @@ const UserType: GraphQLObjectType = new GraphQLObjectType({
       },
     },
     favorited: {
-      type: GraphQLBoolean,
+      type: GraphQLNonNull(GraphQLBoolean),
       args: {
         input: {
           type: GraphQLNonNull(UserFavoritedInputType),
@@ -122,15 +127,6 @@ const UserType: GraphQLObjectType = new GraphQLObjectType({
         );
         const result = await Promise.all(episodes).then((res) => res);
         return connectionFromArray(result, args);
-      },
-    },
-    currentListening: {
-      type: GraphQLNonNull(EpisodeConnection.connectionType),
-      args: {
-        ...connectionArgs,
-      },
-      resolve: async (user, args, context: GraphQLContext) => {
-        return user;
       },
     },
     createdAt: {

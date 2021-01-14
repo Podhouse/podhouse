@@ -2,7 +2,7 @@ import got from "got";
 
 import { RawItunesPodcast, Results, Podcast } from "../types";
 
-const searchPodcastOnItunes = async (name: string, feed: string) => {
+const searchPodcastOnItunes = async (name: string): Promise<Podcast> => {
   try {
     const options = {
       url: `https://itunes.apple.com/search?term=${name}&entity=podcast`,
@@ -91,7 +91,7 @@ const searchPodcastOnItunes = async (name: string, feed: string) => {
       return podcast;
     }
   } catch (err) {
-    console.log(err);
+    searchPodcastOnItunes(name);
   }
 };
 
