@@ -18,6 +18,12 @@ const Footer = () => (
         </Link>
       </NextLink>
 
+      <NextLink href="/brand" as="/brand">
+        <Link href="/brand" fontWeight="500" color="#101010">
+          Brand
+        </Link>
+      </NextLink>
+
       <Link
         href="mailto:leonardomso11@gmail.com"
         target="_blank"
