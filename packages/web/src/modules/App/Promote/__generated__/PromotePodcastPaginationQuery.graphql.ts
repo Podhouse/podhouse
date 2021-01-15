@@ -4,28 +4,36 @@
 
 import { ConcreteRequest } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
-export type GenreQueryVariables = {
-    primaryGenre: string;
+export type PromotePodcastPaginationQueryVariables = {
+    after?: string | null;
+    before?: string | null;
+    first?: number | null;
+    last?: number | null;
+    podcastName: string;
 };
-export type GenreQueryResponse = {
-    readonly " $fragmentRefs": FragmentRefs<"GenrePodcast_podcasts">;
+export type PromotePodcastPaginationQueryResponse = {
+    readonly " $fragmentRefs": FragmentRefs<"PromotePodcast_podcasts">;
 };
-export type GenreQuery = {
-    readonly response: GenreQueryResponse;
-    readonly variables: GenreQueryVariables;
+export type PromotePodcastPaginationQuery = {
+    readonly response: PromotePodcastPaginationQueryResponse;
+    readonly variables: PromotePodcastPaginationQueryVariables;
 };
 
 
 
 /*
-query GenreQuery(
-  $primaryGenre: String!
+query PromotePodcastPaginationQuery(
+  $after: String
+  $before: String
+  $first: Int = 10
+  $last: Int
+  $podcastName: String!
 ) {
-  ...GenrePodcast_podcasts_BPIEN
+  ...PromotePodcast_podcasts_1yFHIs
 }
 
-fragment GenrePodcast_podcasts_BPIEN on Query {
-  podcastsByGenre(primaryGenre: $primaryGenre, first: 25) {
+fragment PromotePodcast_podcasts_1yFHIs on Query {
+  podcastsByName(podcastName: $podcastName, after: $after, first: $first, before: $before, last: $last) {
     edges {
       node {
         id
@@ -50,35 +58,67 @@ var v0 = [
   {
     "defaultValue": null,
     "kind": "LocalArgument",
-    "name": "primaryGenre"
+    "name": "after"
+  },
+  {
+    "defaultValue": null,
+    "kind": "LocalArgument",
+    "name": "before"
+  },
+  {
+    "defaultValue": 10,
+    "kind": "LocalArgument",
+    "name": "first"
+  },
+  {
+    "defaultValue": null,
+    "kind": "LocalArgument",
+    "name": "last"
+  },
+  {
+    "defaultValue": null,
+    "kind": "LocalArgument",
+    "name": "podcastName"
   }
 ],
-v1 = {
-  "kind": "Variable",
-  "name": "primaryGenre",
-  "variableName": "primaryGenre"
-},
-v2 = [
+v1 = [
   {
-    "kind": "Literal",
-    "name": "first",
-    "value": 25
+    "kind": "Variable",
+    "name": "after",
+    "variableName": "after"
   },
-  (v1/*: any*/)
+  {
+    "kind": "Variable",
+    "name": "before",
+    "variableName": "before"
+  },
+  {
+    "kind": "Variable",
+    "name": "first",
+    "variableName": "first"
+  },
+  {
+    "kind": "Variable",
+    "name": "last",
+    "variableName": "last"
+  },
+  {
+    "kind": "Variable",
+    "name": "podcastName",
+    "variableName": "podcastName"
+  }
 ];
 return {
   "fragment": {
     "argumentDefinitions": (v0/*: any*/),
     "kind": "Fragment",
     "metadata": null,
-    "name": "GenreQuery",
+    "name": "PromotePodcastPaginationQuery",
     "selections": [
       {
-        "args": [
-          (v1/*: any*/)
-        ],
+        "args": (v1/*: any*/),
         "kind": "FragmentSpread",
-        "name": "GenrePodcast_podcasts"
+        "name": "PromotePodcast_podcasts"
       }
     ],
     "type": "Query",
@@ -88,14 +128,14 @@ return {
   "operation": {
     "argumentDefinitions": (v0/*: any*/),
     "kind": "Operation",
-    "name": "GenreQuery",
+    "name": "PromotePodcastPaginationQuery",
     "selections": [
       {
         "alias": null,
-        "args": (v2/*: any*/),
+        "args": (v1/*: any*/),
         "concreteType": "PodcastConnection",
         "kind": "LinkedField",
-        "name": "podcastsByGenre",
+        "name": "podcastsByName",
         "plural": false,
         "selections": [
           {
@@ -199,26 +239,26 @@ return {
       },
       {
         "alias": null,
-        "args": (v2/*: any*/),
+        "args": (v1/*: any*/),
         "filters": [
-          "primaryGenre"
+          "podcastName"
         ],
         "handle": "connection",
-        "key": "GenrePodcast_podcastsByGenre",
+        "key": "PromotePodcast_podcastsByName",
         "kind": "LinkedHandle",
-        "name": "podcastsByGenre"
+        "name": "podcastsByName"
       }
     ]
   },
   "params": {
-    "cacheID": "7ca8ce2036fcfd5f05866cbd44558ce8",
+    "cacheID": "81891323e572523c7e5039f0b172b103",
     "id": null,
     "metadata": {},
-    "name": "GenreQuery",
+    "name": "PromotePodcastPaginationQuery",
     "operationKind": "query",
-    "text": "query GenreQuery(\n  $primaryGenre: String!\n) {\n  ...GenrePodcast_podcasts_BPIEN\n}\n\nfragment GenrePodcast_podcasts_BPIEN on Query {\n  podcastsByGenre(primaryGenre: $primaryGenre, first: 25) {\n    edges {\n      node {\n        id\n        _id\n        image\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n"
+    "text": "query PromotePodcastPaginationQuery(\n  $after: String\n  $before: String\n  $first: Int = 10\n  $last: Int\n  $podcastName: String!\n) {\n  ...PromotePodcast_podcasts_1yFHIs\n}\n\nfragment PromotePodcast_podcasts_1yFHIs on Query {\n  podcastsByName(podcastName: $podcastName, after: $after, first: $first, before: $before, last: $last) {\n    edges {\n      node {\n        id\n        _id\n        image\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n"
   }
 };
 })();
-(node as any).hash = '446c4831d791f758d834facd84682572';
+(node as any).hash = 'abd9d416db1c9ea09202da59d3d3d586';
 export default node;

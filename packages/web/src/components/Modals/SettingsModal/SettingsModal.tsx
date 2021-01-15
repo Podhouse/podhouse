@@ -40,7 +40,7 @@ const SettingsModal = () => {
       </SettingsModalLinkContainer>
 
       <SettingsModalLinkContainer>
-        <ReactRouterLink to="/advertise">Advertise</ReactRouterLink>
+        <ReactRouterLink to="/promote">Promote</ReactRouterLink>
       </SettingsModalLinkContainer>
 
       <SettingsModalLinkContainer>

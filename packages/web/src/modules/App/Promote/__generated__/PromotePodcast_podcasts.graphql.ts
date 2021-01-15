@@ -4,40 +4,29 @@
 
 import { ReaderFragment } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
-export type PodcastEpisodes_episodes = {
-    readonly episodes: {
+export type PromotePodcast_podcasts = {
+    readonly podcastsByName: {
         readonly edges: ReadonlyArray<{
             readonly node: {
+                readonly id: string;
                 readonly _id: string;
-                readonly title: string;
-                readonly description: string;
-                readonly publishedDate: string;
-                readonly link: string;
                 readonly image: string;
-                readonly audio: string;
-                readonly duration: string;
-                readonly podcast: {
-                    readonly name: string;
-                    readonly website: string;
-                    readonly rss: string;
-                };
             } | null;
         } | null>;
     };
-    readonly id: string;
-    readonly " $refType": "PodcastEpisodes_episodes";
+    readonly " $refType": "PromotePodcast_podcasts";
 };
-export type PodcastEpisodes_episodes$data = PodcastEpisodes_episodes;
-export type PodcastEpisodes_episodes$key = {
-    readonly " $data"?: PodcastEpisodes_episodes$data;
-    readonly " $fragmentRefs": FragmentRefs<"PodcastEpisodes_episodes">;
+export type PromotePodcast_podcasts$data = PromotePodcast_podcasts;
+export type PromotePodcast_podcasts$key = {
+    readonly " $data"?: PromotePodcast_podcasts$data;
+    readonly " $fragmentRefs": FragmentRefs<"PromotePodcast_podcasts">;
 };
 
 
 
 const node: ReaderFragment = (function(){
 var v0 = [
-  "episodes"
+  "podcastsByName"
 ];
 return {
   "argumentDefinitions": [
@@ -60,6 +49,11 @@ return {
       "defaultValue": null,
       "kind": "LocalArgument",
       "name": "last"
+    },
+    {
+      "defaultValue": null,
+      "kind": "LocalArgument",
+      "name": "podcastName"
     }
   ],
   "kind": "Fragment",
@@ -84,27 +78,30 @@ return {
         },
         "path": (v0/*: any*/)
       },
-      "fragmentPathInResult": [
-        "node"
-      ],
-      "operation": require('./PodcastEpisodesPaginationQuery.graphql.ts'),
-      "identifierField": "id"
+      "fragmentPathInResult": [],
+      "operation": require('./PromotePodcastPaginationQuery.graphql.ts')
     }
   },
-  "name": "PodcastEpisodes_episodes",
+  "name": "PromotePodcast_podcasts",
   "selections": [
     {
-      "alias": "episodes",
-      "args": null,
-      "concreteType": "EpisodeConnection",
+      "alias": "podcastsByName",
+      "args": [
+        {
+          "kind": "Variable",
+          "name": "podcastName",
+          "variableName": "podcastName"
+        }
+      ],
+      "concreteType": "PodcastConnection",
       "kind": "LinkedField",
-      "name": "__PodcastEpisodes_episodes_connection",
+      "name": "__PromotePodcast_podcastsByName_connection",
       "plural": false,
       "selections": [
         {
           "alias": null,
           "args": null,
-          "concreteType": "EpisodeEdge",
+          "concreteType": "PodcastEdge",
           "kind": "LinkedField",
           "name": "edges",
           "plural": true,
@@ -112,11 +109,18 @@ return {
             {
               "alias": null,
               "args": null,
-              "concreteType": "Episode",
+              "concreteType": "Podcast",
               "kind": "LinkedField",
               "name": "node",
               "plural": false,
               "selections": [
+                {
+                  "alias": null,
+                  "args": null,
+                  "kind": "ScalarField",
+                  "name": "id",
+                  "storageKey": null
+                },
                 {
                   "alias": null,
                   "args": null,
@@ -128,81 +132,7 @@ return {
                   "alias": null,
                   "args": null,
                   "kind": "ScalarField",
-                  "name": "title",
-                  "storageKey": null
-                },
-                {
-                  "alias": null,
-                  "args": null,
-                  "kind": "ScalarField",
-                  "name": "description",
-                  "storageKey": null
-                },
-                {
-                  "alias": null,
-                  "args": null,
-                  "kind": "ScalarField",
-                  "name": "publishedDate",
-                  "storageKey": null
-                },
-                {
-                  "alias": null,
-                  "args": null,
-                  "kind": "ScalarField",
-                  "name": "link",
-                  "storageKey": null
-                },
-                {
-                  "alias": null,
-                  "args": null,
-                  "kind": "ScalarField",
                   "name": "image",
-                  "storageKey": null
-                },
-                {
-                  "alias": null,
-                  "args": null,
-                  "kind": "ScalarField",
-                  "name": "audio",
-                  "storageKey": null
-                },
-                {
-                  "alias": null,
-                  "args": null,
-                  "kind": "ScalarField",
-                  "name": "duration",
-                  "storageKey": null
-                },
-                {
-                  "alias": null,
-                  "args": null,
-                  "concreteType": "Podcast",
-                  "kind": "LinkedField",
-                  "name": "podcast",
-                  "plural": false,
-                  "selections": [
-                    {
-                      "alias": null,
-                      "args": null,
-                      "kind": "ScalarField",
-                      "name": "name",
-                      "storageKey": null
-                    },
-                    {
-                      "alias": null,
-                      "args": null,
-                      "kind": "ScalarField",
-                      "name": "website",
-                      "storageKey": null
-                    },
-                    {
-                      "alias": null,
-                      "args": null,
-                      "kind": "ScalarField",
-                      "name": "rss",
-                      "storageKey": null
-                    }
-                  ],
                   "storageKey": null
                 },
                 {
@@ -266,18 +196,11 @@ return {
         }
       ],
       "storageKey": null
-    },
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
-      "name": "id",
-      "storageKey": null
     }
   ],
-  "type": "Podcast",
+  "type": "Query",
   "abstractKey": null
 };
 })();
-(node as any).hash = '8e803fd5b33028453ebc32f4296375d9';
+(node as any).hash = 'abd9d416db1c9ea09202da59d3d3d586';
 export default node;

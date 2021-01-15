@@ -7,6 +7,7 @@ import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
 
 import "@reach/slider/styles.css";
+import "@reach/combobox/styles.css";
 
 ReactDOM.render(
   <React.StrictMode>

@@ -4,28 +4,28 @@
 
 import { ConcreteRequest } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
-export type GenreQueryVariables = {
-    primaryGenre: string;
+export type PromoteQueryVariables = {
+    podcastName: string;
 };
-export type GenreQueryResponse = {
-    readonly " $fragmentRefs": FragmentRefs<"GenrePodcast_podcasts">;
+export type PromoteQueryResponse = {
+    readonly " $fragmentRefs": FragmentRefs<"PromotePodcast_podcasts">;
 };
-export type GenreQuery = {
-    readonly response: GenreQueryResponse;
-    readonly variables: GenreQueryVariables;
+export type PromoteQuery = {
+    readonly response: PromoteQueryResponse;
+    readonly variables: PromoteQueryVariables;
 };
 
 
 
 /*
-query GenreQuery(
-  $primaryGenre: String!
+query PromoteQuery(
+  $podcastName: String!
 ) {
-  ...GenrePodcast_podcasts_BPIEN
+  ...PromotePodcast_podcasts_h9Yo2
 }
 
-fragment GenrePodcast_podcasts_BPIEN on Query {
-  podcastsByGenre(primaryGenre: $primaryGenre, first: 25) {
+fragment PromotePodcast_podcasts_h9Yo2 on Query {
+  podcastsByName(podcastName: $podcastName, first: 10) {
     edges {
       node {
         id
@@ -50,19 +50,19 @@ var v0 = [
   {
     "defaultValue": null,
     "kind": "LocalArgument",
-    "name": "primaryGenre"
+    "name": "podcastName"
   }
 ],
 v1 = {
   "kind": "Variable",
-  "name": "primaryGenre",
-  "variableName": "primaryGenre"
+  "name": "podcastName",
+  "variableName": "podcastName"
 },
 v2 = [
   {
     "kind": "Literal",
     "name": "first",
-    "value": 25
+    "value": 10
   },
   (v1/*: any*/)
 ];
@@ -71,14 +71,14 @@ return {
     "argumentDefinitions": (v0/*: any*/),
     "kind": "Fragment",
     "metadata": null,
-    "name": "GenreQuery",
+    "name": "PromoteQuery",
     "selections": [
       {
         "args": [
           (v1/*: any*/)
         ],
         "kind": "FragmentSpread",
-        "name": "GenrePodcast_podcasts"
+        "name": "PromotePodcast_podcasts"
       }
     ],
     "type": "Query",
@@ -88,14 +88,14 @@ return {
   "operation": {
     "argumentDefinitions": (v0/*: any*/),
     "kind": "Operation",
-    "name": "GenreQuery",
+    "name": "PromoteQuery",
     "selections": [
       {
         "alias": null,
         "args": (v2/*: any*/),
         "concreteType": "PodcastConnection",
         "kind": "LinkedField",
-        "name": "podcastsByGenre",
+        "name": "podcastsByName",
         "plural": false,
         "selections": [
           {
@@ -201,24 +201,24 @@ return {
         "alias": null,
         "args": (v2/*: any*/),
         "filters": [
-          "primaryGenre"
+          "podcastName"
         ],
         "handle": "connection",
-        "key": "GenrePodcast_podcastsByGenre",
+        "key": "PromotePodcast_podcastsByName",
         "kind": "LinkedHandle",
-        "name": "podcastsByGenre"
+        "name": "podcastsByName"
       }
     ]
   },
   "params": {
-    "cacheID": "7ca8ce2036fcfd5f05866cbd44558ce8",
+    "cacheID": "e70a48f1c589fe49e6b248f646da8579",
     "id": null,
     "metadata": {},
-    "name": "GenreQuery",
+    "name": "PromoteQuery",
     "operationKind": "query",
-    "text": "query GenreQuery(\n  $primaryGenre: String!\n) {\n  ...GenrePodcast_podcasts_BPIEN\n}\n\nfragment GenrePodcast_podcasts_BPIEN on Query {\n  podcastsByGenre(primaryGenre: $primaryGenre, first: 25) {\n    edges {\n      node {\n        id\n        _id\n        image\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n"
+    "text": "query PromoteQuery(\n  $podcastName: String!\n) {\n  ...PromotePodcast_podcasts_h9Yo2\n}\n\nfragment PromotePodcast_podcasts_h9Yo2 on Query {\n  podcastsByName(podcastName: $podcastName, first: 10) {\n    edges {\n      node {\n        id\n        _id\n        image\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n"
   }
 };
 })();
-(node as any).hash = '446c4831d791f758d834facd84682572';
+(node as any).hash = '0a6a5df3face955961a6ea63b906e5f1';
 export default node;
