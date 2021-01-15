@@ -18,6 +18,12 @@ const Footer = () => (
         </Link>
       </NextLink>
 
+      <NextLink href="/advertise" as="/advertise">
+        <Link href="/advertise" fontWeight="500" color="#101010">
+          Advertise
+        </Link>
+      </NextLink>
+
       <NextLink href="/brand" as="/brand">
         <Link href="/brand" fontWeight="500" color="#101010">
           Brand
