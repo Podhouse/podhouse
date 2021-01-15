@@ -12,6 +12,8 @@ import Browse from "src/modules/App/Browse/Browse";
 import Subscriptions from "src/modules/App/Subscriptions/Subscriptions";
 import Search from "src/modules/App/Search/Search";
 import Favorites from "src/modules/App/Favorites/Favorites";
+import Advertise from "src/modules/App/Advertise/Advertise";
+import WhatsNew from "src/modules/App/WhatsNew/WhatsNew";
 import Settings from "src/modules/App/Settings/Settings";
 import Podcast from "src/modules/App/Podcast/Podcast";
 import Episode from "src/modules/App/Episode/Episode";
@@ -75,6 +77,8 @@ const App = () => {
             <Route exact path="/subscriptions" component={Subscriptions} />
             <Route exact path="/search" component={Search} />
             <Route exact path="/favorites" component={Favorites} />
+            <Route exact path="/advertise" component={Advertise} />
+            <Route exact path="/whats-new" component={WhatsNew} />
             <Route exact path="/settings" component={Settings} />
             <Route exact path="/podcast/:id" component={Podcast} />
             <Route exact path="/episode/:id" component={Episode} />
