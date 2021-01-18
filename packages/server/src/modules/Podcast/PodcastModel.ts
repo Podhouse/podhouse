@@ -53,6 +53,9 @@ const PodcastSchema = new Schema(
   },
 );
 
+PodcastSchema.index({ name: "text" });
+PodcastSchema.index({ primaryGenre: "text" });
+
 export interface IPodcast extends Document {
   appleId: number;
   name: string;

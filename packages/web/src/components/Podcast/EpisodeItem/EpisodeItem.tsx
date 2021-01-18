@@ -16,6 +16,8 @@ import { EpisodeItemProps } from "./EpisodeItem.types";
 
 import { usePlayerContext } from "src/machines/Player/PlayerContext";
 
+import convertEpisodeNameToURL from "src/utils/convertEpisodeNameToURL";
+
 const EpisodeItem = ({ node }: EpisodeItemProps) => {
   const { _id, image, title, description, publishedDate, duration } = node;
 
@@ -27,6 +29,11 @@ const EpisodeItem = ({ node }: EpisodeItemProps) => {
     episode,
     onEpisode,
   } = usePlayerContext();
+
+  const route: string = convertEpisodeNameToURL(
+    episode.title,
+    episode.podcast.appleId
+  );
 
   const renderEpisodeButton = () => {
     if (episode && episode.title === title) {
@@ -95,11 +102,13 @@ const EpisodeItem = ({ node }: EpisodeItemProps) => {
 
   return (
     <EpisodeItemContainer>
-      <EpisodeItemAvatar src={image} alt="image" />
+      <ReactRouterLink to={{ pathname: route, state: { _id } }}>
+        <EpisodeItemAvatar src={image} alt="image" />
+      </ReactRouterLink>
 
       <EpisodeItemName
         as={ReactRouterLink}
-        to={{ pathname: `/episode/${_id}`, state: { _id } }}
+        to={{ pathname: route, state: { _id } }}
         fontWeight="500"
         lineHeight="25px"
       >

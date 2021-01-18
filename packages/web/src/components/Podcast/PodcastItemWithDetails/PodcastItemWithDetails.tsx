@@ -26,7 +26,7 @@ const PodcastItemWithDetails = ({ node }: PodcastItemWithDetailsProps) => {
       <PodcastItemInnerContainer>
         <Text
           as={ReactRouterLink}
-          to={{ pathname: `/podcast/${_id}`, state: { _id } }}
+          to={{ pathname: route, state: { _id } }}
           fontWeight="500"
         >
           {name}
