@@ -10,6 +10,7 @@ export type PromotePodcast_podcasts = {
       readonly node: {
         readonly id: string;
         readonly _id: string;
+        readonly name: string;
         readonly image: string;
       } | null;
     } | null>;
@@ -128,6 +129,13 @@ const node: ReaderFragment = (function () {
                     alias: null,
                     args: null,
                     kind: "ScalarField",
+                    name: "name",
+                    storageKey: null,
+                  },
+                  {
+                    alias: null,
+                    args: null,
+                    kind: "ScalarField",
                     name: "image",
                     storageKey: null,
                   },
@@ -198,5 +206,5 @@ const node: ReaderFragment = (function () {
     abstractKey: null,
   };
 })();
-(node as any).hash = "abd9d416db1c9ea09202da59d3d3d586";
+(node as any).hash = "45678163eef17a45d88e2289795e3c17";
 export default node;

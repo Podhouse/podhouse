@@ -36,6 +36,7 @@ fragment PromotePodcast_podcasts_1yFHIs on Query {
       node {
         id
         _id
+        name
         image
         __typename
       }
@@ -170,6 +171,13 @@ const node: ConcreteRequest = (function () {
                       alias: null,
                       args: null,
                       kind: "ScalarField",
+                      name: "name",
+                      storageKey: null,
+                    },
+                    {
+                      alias: null,
+                      args: null,
+                      kind: "ScalarField",
                       name: "image",
                       storageKey: null,
                     },
@@ -247,15 +255,15 @@ const node: ConcreteRequest = (function () {
       ],
     },
     params: {
-      cacheID: "81891323e572523c7e5039f0b172b103",
+      cacheID: "a9ac29433ec196c50c7eb37e9a239870",
       id: null,
       metadata: {},
       name: "PromotePodcastPaginationQuery",
       operationKind: "query",
       text:
-        "query PromotePodcastPaginationQuery(\n  $after: String\n  $before: String\n  $first: Int = 10\n  $last: Int\n  $podcastName: String!\n) {\n  ...PromotePodcast_podcasts_1yFHIs\n}\n\nfragment PromotePodcast_podcasts_1yFHIs on Query {\n  podcastsByName(podcastName: $podcastName, after: $after, first: $first, before: $before, last: $last) {\n    edges {\n      node {\n        id\n        _id\n        image\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n",
+        "query PromotePodcastPaginationQuery(\n  $after: String\n  $before: String\n  $first: Int = 10\n  $last: Int\n  $podcastName: String!\n) {\n  ...PromotePodcast_podcasts_1yFHIs\n}\n\nfragment PromotePodcast_podcasts_1yFHIs on Query {\n  podcastsByName(podcastName: $podcastName, after: $after, first: $first, before: $before, last: $last) {\n    edges {\n      node {\n        id\n        _id\n        name\n        image\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n",
     },
   };
 })();
-(node as any).hash = "abd9d416db1c9ea09202da59d3d3d586";
+(node as any).hash = "45678163eef17a45d88e2289795e3c17";
 export default node;

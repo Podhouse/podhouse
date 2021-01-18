@@ -6,6 +6,8 @@ import { useLazyLoadQuery } from "react-relay/hooks";
 
 import SkeletonPodcastsWithOnlyAvatarList from "src/components/Skeletons/SkeletonPodcastsWithOnlyAvatarList/SkeletonPodcastsWithOnlyAvatarList";
 
+import { SubscriptionsContainer } from "./Subscriptions.styles";
+
 import SubscriptionsPodcast from "./SubscriptionsPodcast/SubscriptionsPodcast";
 
 import useAuthUser from "src/hooks/useAuthUser";
@@ -102,7 +104,13 @@ const SubscriptionsComponent = () => {
 };
 
 const Subscriptions = () => (
-  <Suspense fallback={<SkeletonPodcastsWithOnlyAvatarList />}>
+  <Suspense
+    fallback={
+      <SubscriptionsContainer>
+        <SkeletonPodcastsWithOnlyAvatarList />
+      </SubscriptionsContainer>
+    }
+  >
     <SubscriptionsComponent />
   </Suspense>
 );

@@ -28,6 +28,7 @@ fragment PromotePodcast_podcasts_h9Yo2 on Query {
       node {
         id
         _id
+        name
         image
         __typename
       }
@@ -128,6 +129,13 @@ const node: ConcreteRequest = (function () {
                       alias: null,
                       args: null,
                       kind: "ScalarField",
+                      name: "name",
+                      storageKey: null,
+                    },
+                    {
+                      alias: null,
+                      args: null,
+                      kind: "ScalarField",
                       name: "image",
                       storageKey: null,
                     },
@@ -205,13 +213,13 @@ const node: ConcreteRequest = (function () {
       ],
     },
     params: {
-      cacheID: "e70a48f1c589fe49e6b248f646da8579",
+      cacheID: "b8f8352e27facb61e3e443a85f7ceab0",
       id: null,
       metadata: {},
       name: "PromoteQuery",
       operationKind: "query",
       text:
-        "query PromoteQuery(\n  $podcastName: String!\n) {\n  ...PromotePodcast_podcasts_h9Yo2\n}\n\nfragment PromotePodcast_podcasts_h9Yo2 on Query {\n  podcastsByName(podcastName: $podcastName, first: 10) {\n    edges {\n      node {\n        id\n        _id\n        image\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n",
+        "query PromoteQuery(\n  $podcastName: String!\n) {\n  ...PromotePodcast_podcasts_h9Yo2\n}\n\nfragment PromotePodcast_podcasts_h9Yo2 on Query {\n  podcastsByName(podcastName: $podcastName, first: 10) {\n    edges {\n      node {\n        id\n        _id\n        name\n        image\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n",
     },
   };
 })();
