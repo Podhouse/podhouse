@@ -10,7 +10,6 @@
     "cypress:run": "SKIP_PREFLIGHT_CHECK=true cypress run",
     "eject": "SKIP_PREFLIGHT_CHECK=true react-scripts eject",
     "lint": "eslint --ext 'src/**/*.{js,jsx,ts,tsx}'",
-    "lint:fix": "eslint --fix 'src/**/*.{js,jsx,ts,tsx}'",
     "format": "prettier --write src",
     "relay": "relay-compiler --src ./src --schema ./schema/schema.graphql --language typescript"
   },
@@ -29,6 +28,7 @@
     "@testing-library/user-event": "^12.6.0",
     "@xstate/react": "^1.2.2",
     "babel-plugin-relay": "^10.1.2",
+    "eslint": "^7.18.0",
     "framer-motion": "^3.2.1",
     "isomorphic-fetch": "^3.0.0",
     "keen-slider": "^5.4.0",
