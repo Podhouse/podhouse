@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 import { Heading, Button, Link, Image, useToast } from "@chakra-ui/react";
 import { ExternalLink } from "react-feather";
 import {
@@ -6,6 +7,7 @@ import {
   useMutation,
   PreloadedQuery,
 } from "react-relay/hooks";
+import { useLocation } from "react-router-dom";
 
 import {
   PodcastInfoContainer,
@@ -44,6 +46,8 @@ const PodcastInfo = ({
   userQuery,
   shouldLoadMore,
 }: Props) => {
+  const location = useLocation();
+
   const toast = useToast();
 
   const { podcast } = usePreloadedQuery<PodcastQuery>(
@@ -119,6 +123,34 @@ const PodcastInfo = ({
 
   return (
     <PodcastInfoContainer>
+      <Helmet>
+        <title>{podcast?.name}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta charSet="utf-8" />
+        <meta name="description" content={podcast?.description} />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary" />
+        <meta property="twitter:title" content={podcast?.name} />
+        <meta property="twitter:description" content={podcast?.description} />
+        <meta property="twitter:image" content={podcast?.image} />
+        <meta property="twitter:url" content={location.pathname} />
+
+        {/* Open Graph */}
+        <meta property="og:url" content={location.pathname} key="ogurl" />
+        <meta property="og:image" content={podcast?.image} key="ogimage" />
+        <meta
+          property="og:site_name"
+          content={podcast?.name}
+          key="ogsitename"
+        />
+        <meta property="og:title" content={podcast?.name} key="ogtitle" />
+        <meta
+          property="og:description"
+          content={podcast?.description}
+          key="ogdesc"
+        />
+      </Helmet>
       <PodcastInfoHeader>
         <Image
           src={podcast?.image}
