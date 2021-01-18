@@ -23,7 +23,7 @@ import featured from "src/utils/featured";
 const fragment = graphql`
   fragment GenrePodcast_podcasts on Query
   @argumentDefinitions(
-    primaryGenre: { type: "String!" }
+    primaryGenre: { type: "String" }
     after: { type: "String" }
     first: { type: "Int", defaultValue: 25 }
     before: { type: "String" }

@@ -9,7 +9,7 @@ export type SearchPodcastPaginationQueryVariables = {
   before?: string | null;
   first?: number | null;
   last?: number | null;
-  podcastName: string;
+  podcastName?: string | null;
 };
 export type SearchPodcastPaginationQueryResponse = {
   readonly " $fragmentRefs": FragmentRefs<"SearchPodcast_podcasts">;
@@ -25,7 +25,7 @@ query SearchPodcastPaginationQuery(
   $before: String
   $first: Int = 25
   $last: Int
-  $podcastName: String!
+  $podcastName: String
 ) {
   ...SearchPodcast_podcasts_1yFHIs
 }
@@ -263,15 +263,15 @@ const node: ConcreteRequest = (function () {
       ],
     },
     params: {
-      cacheID: "48e33b024b379d337eab340143686472",
+      cacheID: "beac04e8f17c3a828927c3a620b2d03e",
       id: null,
       metadata: {},
       name: "SearchPodcastPaginationQuery",
       operationKind: "query",
       text:
-        "query SearchPodcastPaginationQuery(\n  $after: String\n  $before: String\n  $first: Int = 25\n  $last: Int\n  $podcastName: String!\n) {\n  ...SearchPodcast_podcasts_1yFHIs\n}\n\nfragment SearchPodcast_podcasts_1yFHIs on Query {\n  podcastsByName(podcastName: $podcastName, after: $after, first: $first, before: $before, last: $last) {\n    edges {\n      node {\n        id\n        _id\n        name\n        appleId\n        image\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n",
+        "query SearchPodcastPaginationQuery(\n  $after: String\n  $before: String\n  $first: Int = 25\n  $last: Int\n  $podcastName: String\n) {\n  ...SearchPodcast_podcasts_1yFHIs\n}\n\nfragment SearchPodcast_podcasts_1yFHIs on Query {\n  podcastsByName(podcastName: $podcastName, after: $after, first: $first, before: $before, last: $last) {\n    edges {\n      node {\n        id\n        _id\n        name\n        appleId\n        image\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n",
     },
   };
 })();
-(node as any).hash = "bb01e9aea4829ed31d821a4abfa22c28";
+(node as any).hash = "7531b185b1edc5d3fb83ab189b167eaa";
 export default node;

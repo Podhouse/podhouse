@@ -51,7 +51,7 @@ const QueryType = new GraphQLObjectType({
       args: {
         ...connectionArgs,
         podcastName: {
-          type: GraphQLNonNull(GraphQLString),
+          type: GraphQLString,
         },
       },
       resolve: async (_, args, context: GraphQLContext) => {
@@ -65,7 +65,7 @@ const QueryType = new GraphQLObjectType({
       args: {
         ...connectionArgs,
         primaryGenre: {
-          type: GraphQLNonNull(GraphQLString),
+          type: GraphQLString,
         },
       },
       resolve: async (_, args, context: GraphQLContext) =>
