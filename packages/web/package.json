@@ -9,7 +9,7 @@
     "cypress:open": "SKIP_PREFLIGHT_CHECK=true cypress open",
     "cypress:run": "SKIP_PREFLIGHT_CHECK=true cypress run",
     "eject": "SKIP_PREFLIGHT_CHECK=true react-scripts eject",
-    "lint": "eslint --ext 'src/**/*.{js,jsx,ts,tsx}'",
+    "lint": "eslint --ext js,ts,tsx src",
     "format": "prettier --write src",
     "relay": "relay-compiler --src ./src --schema ./schema/schema.graphql --language typescript"
   },
@@ -85,6 +85,16 @@
     "extends": [
       "react-app",
       "react-app/jest"
+    ],
+    "overrides": [
+      {
+        "rules": {
+          "no-unused-vars": "off",
+          "@typescript-eslint/no-unused-vars": [
+            "off"
+          ]
+        }
+      }
     ]
   },
   "browserslist": {
