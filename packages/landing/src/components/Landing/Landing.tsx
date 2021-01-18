@@ -10,8 +10,6 @@ import Footer from "src/components/Landing/Footer/Footer";
 
 import theme from "src/system/theme";
 
-import PodhouseImage from "../../../public/icon-1200x630.png";
-
 interface LandingProps {
   children: React.ReactNode;
 }
@@ -49,7 +47,11 @@ const Landing = ({ children }: LandingProps) => {
             />
             {/* Open Graph */}
             <meta property="og:url" content={router.pathname} key="ogurl" />
-            <meta property="og:image" content={PodhouseImage} key="ogimage" />
+            <meta
+              property="og:image"
+              content={require("../../../public/icon-1200x630.png")}
+              key="ogimage"
+            />
             <meta property="og:site_name" content="Podhouse" key="ogsitename" />
             <meta property="og:title" content="Podhouse" key="ogtitle" />
             <meta
