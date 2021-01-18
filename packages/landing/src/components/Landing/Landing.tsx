@@ -32,12 +32,7 @@ const Landing = ({ children }: LandingProps) => {
               name="description"
               content="The best podcast web app to listen to your favorite podcasts"
             />
-            <meta property="og:title" content="Podhouse" key="ogtitle" />+{" "}
-            <meta
-              property="og:description"
-              content="The best podcast web app to listen to your favorite podcasts"
-              key="ogdesc"
-            />
+
             {/* Twitter */}
             <meta name="twitter:card" content="summary" key="twcard" />
             <meta
