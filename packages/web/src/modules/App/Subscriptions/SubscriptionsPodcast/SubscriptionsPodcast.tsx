@@ -14,7 +14,7 @@ const query = graphql`
   fragment SubscriptionsPodcast_subscriptions on User
   @argumentDefinitions(
     after: { type: "String" }
-    first: { type: "Int", defaultValue: 25 }
+    first: { type: "Int", defaultValue: 10 }
     before: { type: "String" }
     last: { type: "Int" }
   )
@@ -35,19 +35,19 @@ const query = graphql`
 `;
 
 interface Props {
-  currentUser: any;
+  user: any;
   shouldLoadMore: boolean;
 }
 
-const SubscriptionsPodcast = ({ currentUser, shouldLoadMore }: Props) => {
+const SubscriptionsPodcast = ({ user, shouldLoadMore }: Props) => {
   const { data, loadNext, isLoadingNext } = usePaginationFragment<
     SubscriptionsPodcastPaginationQuery,
     SubscriptionsPodcast_subscriptions$key
-  >(query, currentUser);
+  >(query, user);
 
   const loadMore = useCallback(() => {
     if (isLoadingNext) return;
-    loadNext(25);
+    loadNext(10);
   }, [isLoadingNext, loadNext]);
 
   if (shouldLoadMore === true) loadMore();

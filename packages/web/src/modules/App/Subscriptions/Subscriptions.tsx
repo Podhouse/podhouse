@@ -3,16 +3,12 @@ import { Box, Text, Link, Stack } from "@chakra-ui/react";
 import Scrollbars from "react-custom-scrollbars";
 import graphql from "babel-plugin-relay/macro";
 import { useLazyLoadQuery } from "react-relay/hooks";
-import { ErrorBoundary } from "react-error-boundary";
 
 import SkeletonPodcastsWithOnlyAvatarList from "src/components/Skeletons/SkeletonPodcastsWithOnlyAvatarList/SkeletonPodcastsWithOnlyAvatarList";
-import ErrorFallback from "src/components/ErrorFallback/ErrorFallback";
 
 import SubscriptionsPodcast from "./SubscriptionsPodcast/SubscriptionsPodcast";
 
 import useAuthUser from "src/hooks/useAuthUser";
-
-import { SubscriptionsContainer } from "./Subscriptions.styles";
 
 import { useAuthContext } from "src/machines/Auth/AuthContext";
 
@@ -49,7 +45,7 @@ const SubscriptionsComponent = () => {
     query,
     {},
     {
-      fetchPolicy: "store-or-network",
+      fetchPolicy: "store-and-network",
       fetchKey: getToken(),
     }
   );
@@ -98,7 +94,7 @@ const SubscriptionsComponent = () => {
       autoHideDuration={100}
     >
       <SubscriptionsPodcast
-        currentUser={currentUser}
+        user={currentUser}
         shouldLoadMore={shouldLoadMore}
       />
     </Scrollbars>
@@ -106,17 +102,9 @@ const SubscriptionsComponent = () => {
 };
 
 const Subscriptions = () => (
-  <ErrorBoundary FallbackComponent={ErrorFallback}>
-    <Suspense
-      fallback={
-        <SubscriptionsContainer>
-          <SkeletonPodcastsWithOnlyAvatarList />
-        </SubscriptionsContainer>
-      }
-    >
-      <SubscriptionsComponent />
-    </Suspense>
-  </ErrorBoundary>
+  <Suspense fallback={<SkeletonPodcastsWithOnlyAvatarList />}>
+    <SubscriptionsComponent />
+  </Suspense>
 );
 
 export default Subscriptions;
