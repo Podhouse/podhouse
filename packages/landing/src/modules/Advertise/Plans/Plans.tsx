@@ -1,5 +1,13 @@
 import React from "react";
-import { Heading, Text, Badge, List, ListItem, ListIcon, Button } from "@chakra-ui/react";
+import {
+  Heading,
+  Text,
+  Badge,
+  List,
+  ListItem,
+  ListIcon,
+  Button,
+} from "@chakra-ui/react";
 import { BsCheck } from "react-icons/bs";
 
 import {
@@ -22,7 +30,8 @@ const Plans = () => (
         The right price for your podcast
       </Heading>
       <Text color="#101010" lineHeight="25px" textAlign="center">
-        We have the right price for you start to advertise your podcast with us and reach more listeners
+        We have the right price for you start to advertise your podcast with us
+        and reach more listeners
       </Text>
     </LandingGridContentContainer>
 
@@ -52,7 +61,8 @@ const Plans = () => (
         </Heading>
 
         <Text color="#101010" lineHeight="25px" textAlign="start">
-          Get your podcast featured on a specific genre page and reach more listeners from that genre
+          Get your podcast featured on a specific genre page and reach more
+          listeners from that genre
         </Text>
 
         <List spacing={3}>
@@ -113,7 +123,8 @@ const Plans = () => (
         </Heading>
 
         <Text color="#101010" lineHeight="25px" textAlign="start">
-          Podcast listeners are very highly engaged, you can grow your audience by advertising with us
+          Podcast listeners are very highly engaged, you can grow your audience
+          by advertising with us
         </Text>
 
         <List spacing={3}>
@@ -146,7 +157,7 @@ const Plans = () => (
           }}
         >
           Get started
-      </Button>
+        </Button>
       </PlanContainer>
     </PlansContainer>
   </LandingGridContainer>

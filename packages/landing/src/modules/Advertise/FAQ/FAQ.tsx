@@ -1,10 +1,7 @@
 import React from "react";
 import { Heading, Text } from "@chakra-ui/react";
 
-import {
-  FAQItemsContainer,
-  FAQItemContainer,
-} from "./FAQ.styles";
+import { FAQItemsContainer, FAQItemContainer } from "./FAQ.styles";
 
 import {
   LandingGridContainer,
@@ -51,11 +48,13 @@ interface FAQItem {
 const FAQ = () => (
   <LandingGridContainer>
     <LandingGridContentContainer>
-      <Heading color="#101010"
+      <Heading
+        color="#101010"
         as="h2"
         fontSize={36}
         letterSpacing="-0.03em"
-        textAlign="center">
+        textAlign="center"
+      >
         Frequently asked questions
       </Heading>
       <Text color="#101010" lineHeight="25px" textAlign="start">
@@ -66,11 +65,15 @@ const FAQ = () => (
     <FAQItemsContainer>
       {items.map(({ title, body }: FAQItem) => (
         <FAQItemContainer key={title}>
-          <Heading color="#101010"
+          <Heading
+            color="#101010"
             as="h3"
             fontSize={16}
             letterSpacing="-0.03em"
-            textAlign="start">{title}</Heading>
+            textAlign="start"
+          >
+            {title}
+          </Heading>
           <Text color="#101010" lineHeight="25px" textAlign="start">
             {body}
           </Text>

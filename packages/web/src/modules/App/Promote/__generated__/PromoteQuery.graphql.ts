@@ -5,17 +5,15 @@
 import { ConcreteRequest } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
 export type PromoteQueryVariables = {
-    podcastName: string;
+  podcastName: string;
 };
 export type PromoteQueryResponse = {
-    readonly " $fragmentRefs": FragmentRefs<"PromotePodcast_podcasts">;
+  readonly " $fragmentRefs": FragmentRefs<"PromotePodcast_podcasts">;
 };
 export type PromoteQuery = {
-    readonly response: PromoteQueryResponse;
-    readonly variables: PromoteQueryVariables;
+  readonly response: PromoteQueryResponse;
+  readonly variables: PromoteQueryVariables;
 };
-
-
 
 /*
 query PromoteQuery(
@@ -45,180 +43,177 @@ fragment PromotePodcast_podcasts_h9Yo2 on Query {
 }
 */
 
-const node: ConcreteRequest = (function(){
-var v0 = [
-  {
-    "defaultValue": null,
-    "kind": "LocalArgument",
-    "name": "podcastName"
-  }
-],
-v1 = {
-  "kind": "Variable",
-  "name": "podcastName",
-  "variableName": "podcastName"
-},
-v2 = [
-  {
-    "kind": "Literal",
-    "name": "first",
-    "value": 10
-  },
-  (v1/*: any*/)
-];
-return {
-  "fragment": {
-    "argumentDefinitions": (v0/*: any*/),
-    "kind": "Fragment",
-    "metadata": null,
-    "name": "PromoteQuery",
-    "selections": [
+const node: ConcreteRequest = (function () {
+  var v0 = [
       {
-        "args": [
-          (v1/*: any*/)
-        ],
-        "kind": "FragmentSpread",
-        "name": "PromotePodcast_podcasts"
-      }
-    ],
-    "type": "Query",
-    "abstractKey": null
-  },
-  "kind": "Request",
-  "operation": {
-    "argumentDefinitions": (v0/*: any*/),
-    "kind": "Operation",
-    "name": "PromoteQuery",
-    "selections": [
-      {
-        "alias": null,
-        "args": (v2/*: any*/),
-        "concreteType": "PodcastConnection",
-        "kind": "LinkedField",
-        "name": "podcastsByName",
-        "plural": false,
-        "selections": [
-          {
-            "alias": null,
-            "args": null,
-            "concreteType": "PodcastEdge",
-            "kind": "LinkedField",
-            "name": "edges",
-            "plural": true,
-            "selections": [
-              {
-                "alias": null,
-                "args": null,
-                "concreteType": "Podcast",
-                "kind": "LinkedField",
-                "name": "node",
-                "plural": false,
-                "selections": [
-                  {
-                    "alias": null,
-                    "args": null,
-                    "kind": "ScalarField",
-                    "name": "id",
-                    "storageKey": null
-                  },
-                  {
-                    "alias": null,
-                    "args": null,
-                    "kind": "ScalarField",
-                    "name": "_id",
-                    "storageKey": null
-                  },
-                  {
-                    "alias": null,
-                    "args": null,
-                    "kind": "ScalarField",
-                    "name": "image",
-                    "storageKey": null
-                  },
-                  {
-                    "alias": null,
-                    "args": null,
-                    "kind": "ScalarField",
-                    "name": "__typename",
-                    "storageKey": null
-                  }
-                ],
-                "storageKey": null
-              },
-              {
-                "alias": null,
-                "args": null,
-                "kind": "ScalarField",
-                "name": "cursor",
-                "storageKey": null
-              }
-            ],
-            "storageKey": null
-          },
-          {
-            "alias": null,
-            "args": null,
-            "concreteType": "PageInfoExtended",
-            "kind": "LinkedField",
-            "name": "pageInfo",
-            "plural": false,
-            "selections": [
-              {
-                "alias": null,
-                "args": null,
-                "kind": "ScalarField",
-                "name": "endCursor",
-                "storageKey": null
-              },
-              {
-                "alias": null,
-                "args": null,
-                "kind": "ScalarField",
-                "name": "hasNextPage",
-                "storageKey": null
-              },
-              {
-                "alias": null,
-                "args": null,
-                "kind": "ScalarField",
-                "name": "hasPreviousPage",
-                "storageKey": null
-              },
-              {
-                "alias": null,
-                "args": null,
-                "kind": "ScalarField",
-                "name": "startCursor",
-                "storageKey": null
-              }
-            ],
-            "storageKey": null
-          }
-        ],
-        "storageKey": null
+        defaultValue: null,
+        kind: "LocalArgument",
+        name: "podcastName",
       },
+    ],
+    v1 = {
+      kind: "Variable",
+      name: "podcastName",
+      variableName: "podcastName",
+    },
+    v2 = [
       {
-        "alias": null,
-        "args": (v2/*: any*/),
-        "filters": [
-          "podcastName"
-        ],
-        "handle": "connection",
-        "key": "PromotePodcast_podcastsByName",
-        "kind": "LinkedHandle",
-        "name": "podcastsByName"
-      }
-    ]
-  },
-  "params": {
-    "cacheID": "e70a48f1c589fe49e6b248f646da8579",
-    "id": null,
-    "metadata": {},
-    "name": "PromoteQuery",
-    "operationKind": "query",
-    "text": "query PromoteQuery(\n  $podcastName: String!\n) {\n  ...PromotePodcast_podcasts_h9Yo2\n}\n\nfragment PromotePodcast_podcasts_h9Yo2 on Query {\n  podcastsByName(podcastName: $podcastName, first: 10) {\n    edges {\n      node {\n        id\n        _id\n        image\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n"
-  }
-};
+        kind: "Literal",
+        name: "first",
+        value: 10,
+      },
+      v1 /*: any*/,
+    ];
+  return {
+    fragment: {
+      argumentDefinitions: v0 /*: any*/,
+      kind: "Fragment",
+      metadata: null,
+      name: "PromoteQuery",
+      selections: [
+        {
+          args: [v1 /*: any*/],
+          kind: "FragmentSpread",
+          name: "PromotePodcast_podcasts",
+        },
+      ],
+      type: "Query",
+      abstractKey: null,
+    },
+    kind: "Request",
+    operation: {
+      argumentDefinitions: v0 /*: any*/,
+      kind: "Operation",
+      name: "PromoteQuery",
+      selections: [
+        {
+          alias: null,
+          args: v2 /*: any*/,
+          concreteType: "PodcastConnection",
+          kind: "LinkedField",
+          name: "podcastsByName",
+          plural: false,
+          selections: [
+            {
+              alias: null,
+              args: null,
+              concreteType: "PodcastEdge",
+              kind: "LinkedField",
+              name: "edges",
+              plural: true,
+              selections: [
+                {
+                  alias: null,
+                  args: null,
+                  concreteType: "Podcast",
+                  kind: "LinkedField",
+                  name: "node",
+                  plural: false,
+                  selections: [
+                    {
+                      alias: null,
+                      args: null,
+                      kind: "ScalarField",
+                      name: "id",
+                      storageKey: null,
+                    },
+                    {
+                      alias: null,
+                      args: null,
+                      kind: "ScalarField",
+                      name: "_id",
+                      storageKey: null,
+                    },
+                    {
+                      alias: null,
+                      args: null,
+                      kind: "ScalarField",
+                      name: "image",
+                      storageKey: null,
+                    },
+                    {
+                      alias: null,
+                      args: null,
+                      kind: "ScalarField",
+                      name: "__typename",
+                      storageKey: null,
+                    },
+                  ],
+                  storageKey: null,
+                },
+                {
+                  alias: null,
+                  args: null,
+                  kind: "ScalarField",
+                  name: "cursor",
+                  storageKey: null,
+                },
+              ],
+              storageKey: null,
+            },
+            {
+              alias: null,
+              args: null,
+              concreteType: "PageInfoExtended",
+              kind: "LinkedField",
+              name: "pageInfo",
+              plural: false,
+              selections: [
+                {
+                  alias: null,
+                  args: null,
+                  kind: "ScalarField",
+                  name: "endCursor",
+                  storageKey: null,
+                },
+                {
+                  alias: null,
+                  args: null,
+                  kind: "ScalarField",
+                  name: "hasNextPage",
+                  storageKey: null,
+                },
+                {
+                  alias: null,
+                  args: null,
+                  kind: "ScalarField",
+                  name: "hasPreviousPage",
+                  storageKey: null,
+                },
+                {
+                  alias: null,
+                  args: null,
+                  kind: "ScalarField",
+                  name: "startCursor",
+                  storageKey: null,
+                },
+              ],
+              storageKey: null,
+            },
+          ],
+          storageKey: null,
+        },
+        {
+          alias: null,
+          args: v2 /*: any*/,
+          filters: ["podcastName"],
+          handle: "connection",
+          key: "PromotePodcast_podcastsByName",
+          kind: "LinkedHandle",
+          name: "podcastsByName",
+        },
+      ],
+    },
+    params: {
+      cacheID: "e70a48f1c589fe49e6b248f646da8579",
+      id: null,
+      metadata: {},
+      name: "PromoteQuery",
+      operationKind: "query",
+      text:
+        "query PromoteQuery(\n  $podcastName: String!\n) {\n  ...PromotePodcast_podcasts_h9Yo2\n}\n\nfragment PromotePodcast_podcasts_h9Yo2 on Query {\n  podcastsByName(podcastName: $podcastName, first: 10) {\n    edges {\n      node {\n        id\n        _id\n        image\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n",
+    },
+  };
 })();
-(node as any).hash = '0a6a5df3face955961a6ea63b906e5f1';
+(node as any).hash = "0a6a5df3face955961a6ea63b906e5f1";
 export default node;

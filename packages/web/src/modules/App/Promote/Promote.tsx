@@ -1,4 +1,10 @@
-import React, { ChangeEvent, useState, useCallback, useEffect, Suspense } from "react";
+import React, {
+  ChangeEvent,
+  useState,
+  useCallback,
+  useEffect,
+  Suspense,
+} from "react";
 import { Heading, Text, Input } from "@chakra-ui/react";
 import Scrollbars from "react-custom-scrollbars";
 import {
@@ -14,7 +20,7 @@ import {
   useQueryLoader,
   usePreloadedQuery,
   usePaginationFragment,
-  PreloadedQuery
+  PreloadedQuery,
 } from "react-relay/hooks";
 import { ErrorBoundary } from "react-error-boundary";
 import { useDebounce } from "use-debounce";
@@ -71,9 +77,11 @@ const fragment = graphql`
 const Promote = () => {
   const [shouldLoadMore, setShouldLoadMore] = useState<boolean>(false);
 
-  const [queryReference, loadQuery, disposeQuery] = useQueryLoader<PromoteQuery>(
-    promoteQuery
-  );
+  const [
+    queryReference,
+    loadQuery,
+    disposeQuery,
+  ] = useQueryLoader<PromoteQuery>(promoteQuery);
 
   const [search, setSearch] = useState<string>("");
 
@@ -88,7 +96,7 @@ const Promote = () => {
   const onSearch = (e: ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
     loadQuery({ podcastName: debouncedSearch });
-  }
+  };
 
   const onRefetchQuery = () => {
     loadQuery({ podcastName: debouncedSearch });
@@ -106,28 +114,34 @@ const Promote = () => {
             textAlign="start"
           >
             Promote on Podhouse
-        </Heading>
+          </Heading>
 
           <Text color="#101010" lineHeight="25px" textAlign="start">
-            Here you can find the latest updates on Podhouse and check the new features that landed on the app
-        </Text>
+            Here you can find the latest updates on Podhouse and check the new
+            features that landed on the app
+          </Text>
         </PromoteContainerHeaderContainer>
 
         <Combobox aria-label="choose a fruit">
-          <ComboboxInput as={Input} placeholder="Search your podcast" onChange={onSearch} />
+          <ComboboxInput
+            as={Input}
+            placeholder="Search your podcast"
+            onChange={onSearch}
+          />
           {queryReference && (
             <ErrorBoundary
               FallbackComponent={ErrorFallback}
               onReset={onRefetchQuery}
             >
-              <Suspense
-                fallback={<h1>Loading...</h1>}
-              >
-                <Popover promoteQuery={promoteQuery} queryReference={queryReference} shouldLoadMore={shouldLoadMore} />
+              <Suspense fallback={<h1>Loading...</h1>}>
+                <Popover
+                  promoteQuery={promoteQuery}
+                  queryReference={queryReference}
+                  shouldLoadMore={shouldLoadMore}
+                />
               </Suspense>
             </ErrorBoundary>
           )}
-
         </Combobox>
       </PromoteContainer>
     </Scrollbars>
@@ -155,13 +169,13 @@ const Popover = ({ promoteQuery, queryReference, shouldLoadMore }: Props) => {
 
   if (shouldLoadMore === true) loadMore();
 
-  console.log('data: ', data);
+  console.log("data: ", data);
 
   return (
     <ComboboxPopover>
       <h1>combobox</h1>
     </ComboboxPopover>
-  )
-}
+  );
+};
 
 export default Promote;

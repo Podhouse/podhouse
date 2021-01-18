@@ -35,12 +35,7 @@ interface PlansProps {
   handleSelect: (plan: IPlan) => void;
 }
 
-const Plans = ({
-  selected,
-  plans,
-  currentPlan,
-  handleSelect,
-}: PlansProps) => {
+const Plans = ({ selected, plans, currentPlan, handleSelect }: PlansProps) => {
   const renderPlans = () => {
     if (selected) {
       const plan: any = plans.find((plan: any) => plan === currentPlan);
