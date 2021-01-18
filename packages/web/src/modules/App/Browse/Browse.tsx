@@ -18,7 +18,7 @@ const Browse = () => {
     <Scrollbars autoHide autoHideTimeout={100} autoHideDuration={100}>
       <BrowseContainer>
         <Helmet>
-          <title>Browse</title>
+          <title>Podhouse</title>
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta charSet="utf-8" />
           <meta
