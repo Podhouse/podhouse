@@ -34,17 +34,23 @@ const Landing = ({ children }: LandingProps) => {
             />
 
             {/* Twitter */}
-            <meta name="twitter:card" content="summary" key="twcard" />
+            <meta name="twitter:card" content="summary" />
+            <meta property="twitter:title" content="Podhouse" />
             <meta
-              name="twitter:creator"
-              content="@podhouseapp"
-              key="twhandle"
+              property="twitter:description"
+              content="The best podcast web app to listen to your favorite podcasts"
             />
+            <meta
+              property="twitter:image"
+              content="https://i.imgur.com/C1TOvBB.jpg"
+            />
+            <meta property="twitter:url" content={router.pathname} />
+
             {/* Open Graph */}
             <meta property="og:url" content={router.pathname} key="ogurl" />
             <meta
               property="og:image"
-              content={require("../../../public/icon-1200x630.png")}
+              content="https://i.imgur.com/C1TOvBB.jpg"
               key="ogimage"
             />
             <meta property="og:site_name" content="Podhouse" key="ogsitename" />
