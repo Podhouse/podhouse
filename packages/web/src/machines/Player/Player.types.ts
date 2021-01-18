@@ -134,5 +134,6 @@ export type PlayerEpisode = {
     readonly name: string;
     readonly website: string;
     readonly rss: string;
+    readonly appleId: number;
   };
 } | null;

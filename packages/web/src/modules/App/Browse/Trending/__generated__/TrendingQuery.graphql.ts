@@ -16,6 +16,7 @@ export type TrendingQueryResponse = {
         readonly name: string;
         readonly author: string;
         readonly image: string;
+        readonly appleId: number;
       } | null;
     } | null>;
   };
@@ -38,6 +39,7 @@ query TrendingQuery(
         name
         author
         image
+        appleId
       }
     }
   }
@@ -126,6 +128,13 @@ const node: ConcreteRequest = (function () {
                     name: "image",
                     storageKey: null,
                   },
+                  {
+                    alias: null,
+                    args: null,
+                    kind: "ScalarField",
+                    name: "appleId",
+                    storageKey: null,
+                  },
                 ],
                 storageKey: null,
               },
@@ -154,15 +163,15 @@ const node: ConcreteRequest = (function () {
       selections: v2 /*: any*/,
     },
     params: {
-      cacheID: "b451bed12f2ff7d040f5cc47ae44f892",
+      cacheID: "5551ba51f754f9ef8069aa7902958fc4",
       id: null,
       metadata: {},
       name: "TrendingQuery",
       operationKind: "query",
       text:
-        "query TrendingQuery(\n  $first: Int!\n  $after: String\n) {\n  podcasts(first: $first, after: $after) {\n    edges {\n      node {\n        id\n        _id\n        name\n        author\n        image\n      }\n    }\n  }\n}\n",
+        "query TrendingQuery(\n  $first: Int!\n  $after: String\n) {\n  podcasts(first: $first, after: $after) {\n    edges {\n      node {\n        id\n        _id\n        name\n        author\n        image\n        appleId\n      }\n    }\n  }\n}\n",
     },
   };
 })();
-(node as any).hash = "d238dc431da5287568e78d63b615ec7e";
+(node as any).hash = "e38a276140a8adfe375d037ed742697d";
 export default node;

@@ -23,7 +23,10 @@ const query = graphql`
       @connection(key: "SubscriptionsPodcast_subscriptions") {
       edges {
         node {
+          id
           _id
+          name
+          appleId
           image
         }
       }

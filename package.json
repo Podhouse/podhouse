@@ -22,6 +22,7 @@
     "web:cypress:open": "yarn workspace @podhouse/web cypress:open",
     "web:cypress:run": "yarn workspace @podhouse/web cypress:run",
     "web:lint": "yarn workspace @podhouse/web lint",
+    "web:lint:fix": "yarn workspace @podhouse/web lint:fix",
     "web:format": "yarn workspace @podhouse/web format",
     "web:relay": "yarn workspace @podhouse/web relay",
     "server:start": "yarn workspace @podhouse/server start",

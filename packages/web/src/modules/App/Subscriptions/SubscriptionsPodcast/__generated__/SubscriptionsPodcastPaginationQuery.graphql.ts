@@ -40,9 +40,11 @@ fragment SubscriptionsPodcast_subscriptions_pbnwq on User {
   subscriptions(after: $after, first: $first, before: $before, last: $last) {
     edges {
       node {
-        _id
-        image
         id
+        _id
+        name
+        appleId
+        image
         __typename
       }
       cursor
@@ -209,6 +211,7 @@ const node: ConcreteRequest = (function () {
                           name: "node",
                           plural: false,
                           selections: [
+                            v8 /*: any*/,
                             {
                               alias: null,
                               args: null,
@@ -220,10 +223,23 @@ const node: ConcreteRequest = (function () {
                               alias: null,
                               args: null,
                               kind: "ScalarField",
+                              name: "name",
+                              storageKey: null,
+                            },
+                            {
+                              alias: null,
+                              args: null,
+                              kind: "ScalarField",
+                              name: "appleId",
+                              storageKey: null,
+                            },
+                            {
+                              alias: null,
+                              args: null,
+                              kind: "ScalarField",
                               name: "image",
                               storageKey: null,
                             },
-                            v8 /*: any*/,
                             v7 /*: any*/,
                           ],
                           storageKey: null,
@@ -299,15 +315,15 @@ const node: ConcreteRequest = (function () {
       ],
     },
     params: {
-      cacheID: "6de2fc4f6463a62363b935ee14f3f1bb",
+      cacheID: "771ecd2dc4a8d7e158b63b90898d6735",
       id: null,
       metadata: {},
       name: "SubscriptionsPodcastPaginationQuery",
       operationKind: "query",
       text:
-        "query SubscriptionsPodcastPaginationQuery(\n  $after: String\n  $before: String\n  $first: Int = 25\n  $last: Int\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ...SubscriptionsPodcast_subscriptions_pbnwq\n    id\n  }\n}\n\nfragment SubscriptionsPodcast_subscriptions_pbnwq on User {\n  subscriptions(after: $after, first: $first, before: $before, last: $last) {\n    edges {\n      node {\n        _id\n        image\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n  id\n}\n",
+        "query SubscriptionsPodcastPaginationQuery(\n  $after: String\n  $before: String\n  $first: Int = 25\n  $last: Int\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ...SubscriptionsPodcast_subscriptions_pbnwq\n    id\n  }\n}\n\nfragment SubscriptionsPodcast_subscriptions_pbnwq on User {\n  subscriptions(after: $after, first: $first, before: $before, last: $last) {\n    edges {\n      node {\n        id\n        _id\n        name\n        appleId\n        image\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n  id\n}\n",
     },
   };
 })();
-(node as any).hash = "aa5396ea126ef440eb181a0ad811ec89";
+(node as any).hash = "b5c9efeaa7a5f67f64c7c9bd04baa1ed";
 export default node;

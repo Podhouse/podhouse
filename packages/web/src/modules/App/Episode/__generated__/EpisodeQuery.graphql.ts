@@ -17,10 +17,12 @@ export type EpisodeQueryResponse = {
     readonly audio: string;
     readonly duration: string;
     readonly podcast: {
+      readonly id: string;
       readonly _id: string;
       readonly name: string;
       readonly website: string;
       readonly rss: string;
+      readonly appleId: number;
     };
   } | null;
 };
@@ -43,11 +45,12 @@ query EpisodeQuery(
     audio
     duration
     podcast {
+      id
       _id
       name
       website
       rss
-      id
+      appleId
     }
     id
   }
@@ -129,28 +132,48 @@ const node: ConcreteRequest = (function () {
       alias: null,
       args: null,
       kind: "ScalarField",
-      name: "name",
+      name: "id",
       storageKey: null,
     },
     v11 = {
       alias: null,
       args: null,
-      kind: "ScalarField",
-      name: "website",
-      storageKey: null,
-    },
-    v12 = {
-      alias: null,
-      args: null,
-      kind: "ScalarField",
-      name: "rss",
-      storageKey: null,
-    },
-    v13 = {
-      alias: null,
-      args: null,
-      kind: "ScalarField",
-      name: "id",
+      concreteType: "Podcast",
+      kind: "LinkedField",
+      name: "podcast",
+      plural: false,
+      selections: [
+        v10 /*: any*/,
+        v2 /*: any*/,
+        {
+          alias: null,
+          args: null,
+          kind: "ScalarField",
+          name: "name",
+          storageKey: null,
+        },
+        {
+          alias: null,
+          args: null,
+          kind: "ScalarField",
+          name: "website",
+          storageKey: null,
+        },
+        {
+          alias: null,
+          args: null,
+          kind: "ScalarField",
+          name: "rss",
+          storageKey: null,
+        },
+        {
+          alias: null,
+          args: null,
+          kind: "ScalarField",
+          name: "appleId",
+          storageKey: null,
+        },
+      ],
       storageKey: null,
     };
   return {
@@ -176,21 +199,7 @@ const node: ConcreteRequest = (function () {
             v7 /*: any*/,
             v8 /*: any*/,
             v9 /*: any*/,
-            {
-              alias: null,
-              args: null,
-              concreteType: "Podcast",
-              kind: "LinkedField",
-              name: "podcast",
-              plural: false,
-              selections: [
-                v2 /*: any*/,
-                v10 /*: any*/,
-                v11 /*: any*/,
-                v12 /*: any*/,
-              ],
-              storageKey: null,
-            },
+            v11 /*: any*/,
           ],
           storageKey: null,
         },
@@ -220,38 +229,23 @@ const node: ConcreteRequest = (function () {
             v7 /*: any*/,
             v8 /*: any*/,
             v9 /*: any*/,
-            {
-              alias: null,
-              args: null,
-              concreteType: "Podcast",
-              kind: "LinkedField",
-              name: "podcast",
-              plural: false,
-              selections: [
-                v2 /*: any*/,
-                v10 /*: any*/,
-                v11 /*: any*/,
-                v12 /*: any*/,
-                v13 /*: any*/,
-              ],
-              storageKey: null,
-            },
-            v13 /*: any*/,
+            v11 /*: any*/,
+            v10 /*: any*/,
           ],
           storageKey: null,
         },
       ],
     },
     params: {
-      cacheID: "f4bbfdf365e286a00b1ca25337563540",
+      cacheID: "d98086ffac01b053dc4b3645bd5d6f4f",
       id: null,
       metadata: {},
       name: "EpisodeQuery",
       operationKind: "query",
       text:
-        "query EpisodeQuery(\n  $_id: ID!\n) {\n  episode(_id: $_id) {\n    _id\n    title\n    description\n    publishedDate\n    link\n    image\n    audio\n    duration\n    podcast {\n      _id\n      name\n      website\n      rss\n      id\n    }\n    id\n  }\n}\n",
+        "query EpisodeQuery(\n  $_id: ID!\n) {\n  episode(_id: $_id) {\n    _id\n    title\n    description\n    publishedDate\n    link\n    image\n    audio\n    duration\n    podcast {\n      id\n      _id\n      name\n      website\n      rss\n      appleId\n    }\n    id\n  }\n}\n",
     },
   };
 })();
-(node as any).hash = "5c2a9c19d384797f12660e4ff7e2b5db";
+(node as any).hash = "ae2cf0331ee83b3d36f30a73dc2c910e";
 export default node;

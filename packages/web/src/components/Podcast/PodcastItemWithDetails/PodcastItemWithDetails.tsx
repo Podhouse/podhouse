@@ -10,12 +10,16 @@ import {
 
 import { PodcastItemWithDetailsProps } from "./PodcastItemWithDetails.types";
 
+import convertPodcastNameToURL from "src/utils/convertPodcastNameToURL";
+
 const PodcastItemWithDetails = ({ node }: PodcastItemWithDetailsProps) => {
-  const { _id, name, author, image } = node;
+  const { _id, name, author, appleId, image } = node;
+
+  const route: string = convertPodcastNameToURL(name, appleId);
 
   return (
     <PodcastItemWithDetailsContainer>
-      <ReactRouterLink to={{ pathname: `/podcast/${_id}`, state: { _id } }}>
+      <ReactRouterLink to={{ pathname: route, state: { _id } }}>
         <PodcastItemWithDetailsAvatar src={image} alt="image" loading="lazy" />
       </ReactRouterLink>
 

@@ -10,6 +10,8 @@ export type SearchPodcast_podcasts = {
       readonly node: {
         readonly id: string;
         readonly _id: string;
+        readonly name: string;
+        readonly appleId: number;
         readonly image: string;
       } | null;
     } | null>;
@@ -128,6 +130,20 @@ const node: ReaderFragment = (function () {
                     alias: null,
                     args: null,
                     kind: "ScalarField",
+                    name: "name",
+                    storageKey: null,
+                  },
+                  {
+                    alias: null,
+                    args: null,
+                    kind: "ScalarField",
+                    name: "appleId",
+                    storageKey: null,
+                  },
+                  {
+                    alias: null,
+                    args: null,
+                    kind: "ScalarField",
                     name: "image",
                     storageKey: null,
                   },
@@ -198,5 +214,5 @@ const node: ReaderFragment = (function () {
     abstractKey: null,
   };
 })();
-(node as any).hash = "2d216326a5960fefa3062f9f3d44b416";
+(node as any).hash = "bb01e9aea4829ed31d821a4abfa22c28";
 export default node;

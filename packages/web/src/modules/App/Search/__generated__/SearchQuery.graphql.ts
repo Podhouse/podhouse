@@ -28,6 +28,8 @@ fragment SearchPodcast_podcasts_h9Yo2 on Query {
       node {
         id
         _id
+        name
+        appleId
         image
         __typename
       }
@@ -128,6 +130,20 @@ const node: ConcreteRequest = (function () {
                       alias: null,
                       args: null,
                       kind: "ScalarField",
+                      name: "name",
+                      storageKey: null,
+                    },
+                    {
+                      alias: null,
+                      args: null,
+                      kind: "ScalarField",
+                      name: "appleId",
+                      storageKey: null,
+                    },
+                    {
+                      alias: null,
+                      args: null,
+                      kind: "ScalarField",
                       name: "image",
                       storageKey: null,
                     },
@@ -205,13 +221,13 @@ const node: ConcreteRequest = (function () {
       ],
     },
     params: {
-      cacheID: "d60ec655a8c97c75b9e7208b9a343bb5",
+      cacheID: "abc55396d62dce4c07c382cf99e248fd",
       id: null,
       metadata: {},
       name: "SearchQuery",
       operationKind: "query",
       text:
-        "query SearchQuery(\n  $podcastName: String!\n) {\n  ...SearchPodcast_podcasts_h9Yo2\n}\n\nfragment SearchPodcast_podcasts_h9Yo2 on Query {\n  podcastsByName(podcastName: $podcastName, first: 25) {\n    edges {\n      node {\n        id\n        _id\n        image\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n",
+        "query SearchQuery(\n  $podcastName: String!\n) {\n  ...SearchPodcast_podcasts_h9Yo2\n}\n\nfragment SearchPodcast_podcasts_h9Yo2 on Query {\n  podcastsByName(podcastName: $podcastName, first: 25) {\n    edges {\n      node {\n        id\n        _id\n        name\n        appleId\n        image\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n",
     },
   };
 })();

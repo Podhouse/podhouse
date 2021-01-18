@@ -6,7 +6,6 @@ import { ErrorBoundary } from "react-error-boundary";
 import { useDebounce } from "use-debounce";
 
 import SearchPodcast from "./SearchPodcast/SearchPodcast";
-
 import SkeletonPodcastsWithOnlyAvatarList from "src/components/Skeletons/SkeletonPodcastsWithOnlyAvatarList/SkeletonPodcastsWithOnlyAvatarList";
 import ErrorFallback from "src/components/ErrorFallback/ErrorFallback";
 

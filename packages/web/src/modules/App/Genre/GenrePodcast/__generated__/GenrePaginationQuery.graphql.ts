@@ -36,6 +36,8 @@ fragment GenrePodcast_podcasts_2w6tXt on Query {
       node {
         id
         _id
+        name
+        appleId
         image
         __typename
       }
@@ -170,6 +172,20 @@ const node: ConcreteRequest = (function () {
                       alias: null,
                       args: null,
                       kind: "ScalarField",
+                      name: "name",
+                      storageKey: null,
+                    },
+                    {
+                      alias: null,
+                      args: null,
+                      kind: "ScalarField",
+                      name: "appleId",
+                      storageKey: null,
+                    },
+                    {
+                      alias: null,
+                      args: null,
+                      kind: "ScalarField",
                       name: "image",
                       storageKey: null,
                     },
@@ -247,15 +263,15 @@ const node: ConcreteRequest = (function () {
       ],
     },
     params: {
-      cacheID: "dacc62af5ff7821625e61a52b2fcd7f2",
+      cacheID: "e84d5181b5f3071d3ef099d9cf0c40f0",
       id: null,
       metadata: {},
       name: "GenrePaginationQuery",
       operationKind: "query",
       text:
-        "query GenrePaginationQuery(\n  $after: String\n  $before: String\n  $first: Int = 25\n  $last: Int\n  $primaryGenre: String!\n) {\n  ...GenrePodcast_podcasts_2w6tXt\n}\n\nfragment GenrePodcast_podcasts_2w6tXt on Query {\n  podcastsByGenre(primaryGenre: $primaryGenre, after: $after, first: $first, before: $before, last: $last) {\n    edges {\n      node {\n        id\n        _id\n        image\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n",
+        "query GenrePaginationQuery(\n  $after: String\n  $before: String\n  $first: Int = 25\n  $last: Int\n  $primaryGenre: String!\n) {\n  ...GenrePodcast_podcasts_2w6tXt\n}\n\nfragment GenrePodcast_podcasts_2w6tXt on Query {\n  podcastsByGenre(primaryGenre: $primaryGenre, after: $after, first: $first, before: $before, last: $last) {\n    edges {\n      node {\n        id\n        _id\n        name\n        appleId\n        image\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n",
     },
   };
 })();
-(node as any).hash = "348fd8ac505aa663818b7122b4438d7c";
+(node as any).hash = "b52e9fc70f51053693b555b894763e7d";
 export default node;

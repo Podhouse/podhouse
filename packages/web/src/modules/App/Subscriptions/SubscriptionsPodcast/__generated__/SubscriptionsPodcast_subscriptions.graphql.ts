@@ -8,7 +8,10 @@ export type SubscriptionsPodcast_subscriptions = {
   readonly subscriptions: {
     readonly edges: ReadonlyArray<{
       readonly node: {
+        readonly id: string;
         readonly _id: string;
+        readonly name: string;
+        readonly appleId: number;
         readonly image: string;
       } | null;
     } | null>;
@@ -23,7 +26,14 @@ export type SubscriptionsPodcast_subscriptions$key = {
 };
 
 const node: ReaderFragment = (function () {
-  var v0 = ["subscriptions"];
+  var v0 = ["subscriptions"],
+    v1 = {
+      alias: null,
+      args: null,
+      kind: "ScalarField",
+      name: "id",
+      storageKey: null,
+    };
   return {
     argumentDefinitions: [
       {
@@ -100,11 +110,26 @@ const node: ReaderFragment = (function () {
                 name: "node",
                 plural: false,
                 selections: [
+                  v1 /*: any*/,
                   {
                     alias: null,
                     args: null,
                     kind: "ScalarField",
                     name: "_id",
+                    storageKey: null,
+                  },
+                  {
+                    alias: null,
+                    args: null,
+                    kind: "ScalarField",
+                    name: "name",
+                    storageKey: null,
+                  },
+                  {
+                    alias: null,
+                    args: null,
+                    kind: "ScalarField",
+                    name: "appleId",
                     storageKey: null,
                   },
                   {
@@ -176,17 +201,11 @@ const node: ReaderFragment = (function () {
         ],
         storageKey: null,
       },
-      {
-        alias: null,
-        args: null,
-        kind: "ScalarField",
-        name: "id",
-        storageKey: null,
-      },
+      v1 /*: any*/,
     ],
     type: "User",
     abstractKey: null,
   };
 })();
-(node as any).hash = "aa5396ea126ef440eb181a0ad811ec89";
+(node as any).hash = "b5c9efeaa7a5f67f64c7c9bd04baa1ed";
 export default node;

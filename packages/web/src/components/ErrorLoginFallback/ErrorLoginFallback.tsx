@@ -3,10 +3,15 @@ import { Link } from "@chakra-ui/react";
 
 import { ErrorLoginFallbackContainer } from "./ErrorLoginFallback.styles";
 
-const ErrorLoginFallback = () => (
+const ErrorLoginFallback = ({ resetErrorBoundary }: any) => (
   <ErrorLoginFallbackContainer role="alert">
-    <Link color="brand.900" fontWeight="bold" textTransform="uppercase">
-      Retry
+    <Link
+      color="brand.900"
+      fontWeight="bold"
+      textTransform="uppercase"
+      onClick={resetErrorBoundary}
+    >
+      RETRY
     </Link>
   </ErrorLoginFallbackContainer>
 );

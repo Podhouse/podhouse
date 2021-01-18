@@ -25,7 +25,117 @@ interface Props {
 const EpisodeInfo = ({ queryReference, query }: Props) => {
   const { episode } = usePreloadedQuery<EpisodeQuery>(query, queryReference);
 
-  const { onEpisode } = usePlayerContext();
+  const {
+    episode: playerEpisode,
+    loading,
+    playing,
+    paused,
+    onToggle,
+    onEpisode,
+  } = usePlayerContext();
+
+  const renderEpisodeButton = () => {
+    if (playerEpisode && playerEpisode.title === episode?.title) {
+      if (loading) {
+        return (
+          <Button
+            type="button"
+            width="100%"
+            isLoading={loading}
+            bgColor="#101010"
+            color="#ffffff"
+            _hover={{ bg: "#101010" }}
+            _active={{
+              bg: "#101010",
+            }}
+            _focus={{
+              boxShadow:
+                "0 0 1px 2px rgba(0, 0, 0, .50), 0 1px 1px rgba(0, 0, 0, .15)",
+            }}
+            _disabled={{
+              bgColor: "#eaeaea",
+              cursor: "not-allowed",
+            }}
+          />
+        );
+      } else if (playing) {
+        return (
+          <Button
+            type="button"
+            width="100%"
+            onClick={onToggle}
+            isLoading={loading}
+            bgColor="#101010"
+            color="#ffffff"
+            _hover={{ bg: "#101010" }}
+            _active={{
+              bg: "#101010",
+            }}
+            _focus={{
+              boxShadow:
+                "0 0 1px 2px rgba(0, 0, 0, .50), 0 1px 1px rgba(0, 0, 0, .15)",
+            }}
+            _disabled={{
+              bgColor: "#eaeaea",
+              cursor: "not-allowed",
+            }}
+          >
+            Pause
+          </Button>
+        );
+      } else if (paused) {
+        return (
+          <Button
+            type="button"
+            width="100%"
+            onClick={onToggle}
+            isLoading={loading}
+            bgColor="#101010"
+            color="#ffffff"
+            _hover={{ bg: "#101010" }}
+            _active={{
+              bg: "#101010",
+            }}
+            _focus={{
+              boxShadow:
+                "0 0 1px 2px rgba(0, 0, 0, .50), 0 1px 1px rgba(0, 0, 0, .15)",
+            }}
+            _disabled={{
+              bgColor: "#eaeaea",
+              cursor: "not-allowed",
+            }}
+          >
+            Play
+          </Button>
+        );
+      }
+    }
+
+    return (
+      <Button
+        type="button"
+        width="100%"
+        onClick={() => onEpisode(episode)}
+        isLoading={loading}
+        bgColor="#101010"
+        color="#ffffff"
+        _hover={{ bg: "#101010" }}
+        _active={{
+          bg: "#101010",
+        }}
+        _focus={{
+          boxShadow:
+            "0 0 1px 2px rgba(0, 0, 0, .50), 0 1px 1px rgba(0, 0, 0, .15)",
+        }}
+        _disabled={{
+          bgColor: "#eaeaea",
+          cursor: "not-allowed",
+        }}
+      >
+        Play
+      </Button>
+    );
+  };
 
   return (
     <EpisodeInfoContainer>
@@ -69,27 +179,7 @@ const EpisodeInfo = ({ queryReference, query }: Props) => {
         </EpisodeInfoDetailsContainer>
 
         <EpisodeInfoButtonsContainer>
-          <Button
-            type="button"
-            width="100%"
-            onClick={() => onEpisode(episode)}
-            bgColor="#101010"
-            color="#ffffff"
-            _hover={{ bg: "#101010" }}
-            _active={{
-              bg: "#101010",
-            }}
-            _focus={{
-              boxShadow:
-                "0 0 1px 2px rgba(0, 0, 0, .50), 0 1px 1px rgba(0, 0, 0, .15)",
-            }}
-            _disabled={{
-              bgColor: "#eaeaea",
-              cursor: "not-allowed",
-            }}
-          >
-            Play
-          </Button>
+          {renderEpisodeButton()}
         </EpisodeInfoButtonsContainer>
 
         <EpisodeInfoLinksContainer>

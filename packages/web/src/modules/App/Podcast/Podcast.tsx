@@ -19,6 +19,7 @@ const podcastQuery = graphql`
       id
       _id
       name
+      appleId
       author
       description
       website
@@ -86,6 +87,11 @@ const Podcast = () => {
     userDisposeQuery,
     state._id,
   ]);
+
+  const onResetQueries = () => {
+    podcastLoadQuery({ _id: state._id }, { fetchPolicy: "store-or-network" });
+    userLoadQuery({ input: { _id: state._id } });
+  };
 
   const onLoadMore = (value: ScrollFrameType) => {
     if (value.top === 1) {
