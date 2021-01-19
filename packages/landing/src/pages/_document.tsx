@@ -32,8 +32,11 @@ class MyDocument extends Document {
             href="/icon-512x512.png"
           />
           <link rel="manifest" href="/manifest.json" />
-          <title>Podhouse – The Best Podcast Player on the Web</title>
-          <meta name="Description" content="Listen to your favorite podcasts" />
+          <title>Podhouse</title>
+          <meta
+            name="description"
+            content="The best podcast web app to listen to your favorite podcasts"
+          />
           <GoogleFonts href="https://fonts.googleapis.com/css?family=Inter:100,200,300,400,500,600,700,800,900&display=swap" />
         </Head>
         <body>
