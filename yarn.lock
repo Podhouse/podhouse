@@ -15284,16 +15284,15 @@ react-refresh@0.8.3, react-refresh@^0.8.3:
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.8.3.tgz#721d4657672d400c5e3c75d063c4a85fb2d5d68f"
   integrity sha512-X8jZHc7nCMjaCqoU+V2I0cOhNW+QMBwSUkeXnTi8IPe6zaRWfn60ZzvFDZqWPfmSJfjub7dDW1SP0jaHWLu/hg==
 
-react-relay@^0.0.0-experimental-0b967d2e:
-  version "0.0.0-experimental-0b967d2e"
-  resolved "https://registry.yarnpkg.com/react-relay/-/react-relay-0.0.0-experimental-0b967d2e.tgz#ebb748b86d9cce1fa1f7b38cda9f4d638d371f34"
-  integrity sha512-j7oSwFrqCuSvmYEks3HtPF2sDmWjbijOtgUUKQKvaevvBYJ5k6My0AdvazfXDCFZBjx+Brz/YthCZVfcWLouwQ==
+react-relay@^10.1.3:
+  version "10.1.3"
+  resolved "https://registry.yarnpkg.com/react-relay/-/react-relay-10.1.3.tgz#6be894140c69017f805ef3edb989b2b308f45c22"
+  integrity sha512-cqtev2cEojWd2/j1kvIvNvCeHFQfn623wjHnSjOAvJts7h3CsGVsPaEhWho/hYEKt7kf22zPdBKbcSJvsOVxYA==
   dependencies:
     "@babel/runtime" "^7.0.0"
     fbjs "^3.0.0"
     nullthrows "^1.1.1"
-    relay-runtime "10.1.2"
-    scheduler "^0.19.1"
+    relay-runtime "10.1.3"
 
 react-remove-scroll-bar@^2.1.0:
   version "2.1.1"
@@ -15755,6 +15754,14 @@ relay-runtime@10.1.2:
     "@babel/runtime" "^7.0.0"
     fbjs "^3.0.0"
 
+relay-runtime@10.1.3:
+  version "10.1.3"
+  resolved "https://registry.yarnpkg.com/relay-runtime/-/relay-runtime-10.1.3.tgz#1d7bfe590b50cd7f18f6d1c0f20df71fe5bb451a"
+  integrity sha512-NSh4CaRRpUaziK72h4T5uKw6rvHovmS/xD9+czqUYg6yKv22ajwBE6SWmjwTSKnt2NBzIfDjh2C3heo9pLbvtg==
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+    fbjs "^3.0.0"
+
 reload-server-webpack-plugin@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/reload-server-webpack-plugin/-/reload-server-webpack-plugin-1.0.1.tgz#fa1c9182892a7f1ebf77d6a37a1f4254a74f9c38"
@@ -16209,14 +16216,6 @@ saxes@^5.0.0:
   integrity sha512-5LBh1Tls8c9xgGjw3QrMwETmTMVk0oFgvrFSvWx62llR2hcEInrKNZ2GZCCuuy2lvWrdl5jhbpeqc5hRYKFOcw==
   dependencies:
     xmlchars "^2.2.0"
-
-scheduler@^0.19.1:
-  version "0.19.1"
-  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.19.1.tgz#4f3e2ed2c1a7d65681f4c854fa8c5a1ccb40f196"
-  integrity sha512-n/zwRWRYSUj0/3g/otKDRPMh6qv2SYMWNq85IEa8iZyAv8od9zDYpGSnpBEjNgcMNq6Scbu5KfIPxNF72R/2EA==
-  dependencies:
-    loose-envify "^1.1.0"
-    object-assign "^4.1.1"
 
 scheduler@^0.20.1:
   version "0.20.1"
