@@ -18,7 +18,7 @@ const Main = () => (
       >
         Our design assets
       </Heading>
-      <Text color="#101010" lineHeight="25px" textAlign="center">
+      <Text color="#101010" lineHeight="30px" textAlign="center">
         We take our design experience very seriously, our main goal is to
         provide a clean, beautiful, and simple experience. You can download our
         design assets here

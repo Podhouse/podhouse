@@ -12,10 +12,10 @@ const items = [
   {
     title: "Can I advertise my product/company?",
     body:
-      "Right now we are only accepting podcasts, in the future we will accept podcasts and companies who want to advertise with us.",
+      "Yes, you can. Shoot us an email and we can discuss it, the price is the same for podcast owners and product/company owners.",
   },
   {
-    title: "What are the terms of sale?",
+    title: "What are the terms of sale to advertise on Podhouse?",
     body:
       "After you purchase, it will be approved in 24 hours. Ad text and images must be appropriate for a general audience of all ages.",
   },
@@ -47,7 +47,7 @@ const FAQ = () => (
       >
         Frequently asked questions
       </Heading>
-      <Text color="#101010" lineHeight="25px" textAlign="start">
+      <Text color="#101010" lineHeight="30px" textAlign="start">
         Here's some questions about advertising in Podhouse that you might have
       </Text>
     </LandingGridContentContainer>
@@ -59,12 +59,12 @@ const FAQ = () => (
             color="#101010"
             as="h3"
             fontSize={16}
-            letterSpacing="-0.03em"
+            lineHeight="30px"
             textAlign="start"
           >
             {title}
           </Heading>
-          <Text color="#101010" lineHeight="25px" textAlign="start">
+          <Text color="#101010" lineHeight="30px" textAlign="start">
             {body}
           </Text>
         </FAQItemContainer>

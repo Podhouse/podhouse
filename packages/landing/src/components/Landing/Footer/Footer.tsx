@@ -18,6 +18,12 @@ const Footer = () => (
         </Link>
       </NextLink>
 
+      <NextLink href="/blog" as="/blog">
+        <Link href="/blog" fontWeight="500" color="#101010">
+          Blog
+        </Link>
+      </NextLink>
+
       <NextLink href="/advertise" as="/advertise">
         <Link href="/advertise" fontWeight="500" color="#101010">
           Advertise
@@ -75,7 +81,7 @@ const Footer = () => (
       </Link>
     </FooterBrandsContainer>
 
-    <Text color="#101010">2020 Podhouse. All rights reserved</Text>
+    <Text color="#101010" fontSize="12px">2021 © Podhouse. All rights reserved</Text>
   </FooterContainer>
 );
 

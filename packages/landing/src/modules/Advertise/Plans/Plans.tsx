@@ -37,7 +37,7 @@ const Plans = () => {
         >
           The right price for your podcast
         </Heading>
-        <Text color="#101010" lineHeight="25px" textAlign="center">
+        <Text color="#101010" lineHeight="30px" textAlign="center">
           We have the right price for you start to advertise your podcast with
           us and reach more listeners
         </Text>
@@ -65,10 +65,10 @@ const Plans = () => {
             letterSpacing="-0.03em"
             textAlign="start"
           >
-            $49
+            $99
           </Heading>
 
-          <Text color="#101010" lineHeight="25px" textAlign="start">
+          <Text color="#101010" lineHeight="30px" textAlign="start">
             Get your podcast featured on a specific genre page and reach more
             listeners from that genre
           </Text>
@@ -128,10 +128,10 @@ const Plans = () => {
             letterSpacing="-0.03em"
             textAlign="start"
           >
-            $99
+            $499
           </Heading>
 
-          <Text color="#101010" lineHeight="25px" textAlign="start">
+          <Text color="#101010" lineHeight="30px" textAlign="start">
             Podcast listeners are very highly engaged, you can grow your
             audience by advertising with us
           </Text>

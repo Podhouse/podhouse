@@ -27,7 +27,7 @@ const Features = () => (
         The best podcast experience
       </Heading>
 
-      <Text color="#101010" lineHeight="25px" textAlign="center">
+      <Text color="#101010" lineHeight="30px" textAlign="center">
         We provide a ton of features so you can listen to your podcasts without
         having to worry about anything.
       </Text>
@@ -39,10 +39,10 @@ const Features = () => (
           <Layers color="#fff" />
         </FeaturesItemIconContainer>
         <FeaturesItemTextContainer>
-          <Text color="#101010" fontWeight="500">
+          <Text color="#101010" fontWeight="600">
             Simple, intuitive and clean design
           </Text>
-          <Text color="#101010" lineHeight="25px">
+          <Text color="#101010" lineHeight="30px">
             We bring a nice, clean and intuitive app for you to listen to your
             favorite podcasts.
           </Text>
@@ -54,10 +54,10 @@ const Features = () => (
           <Volume2 color="#fff" />
         </FeaturesItemIconContainer>
         <FeaturesItemTextContainer>
-          <Text color="#101010" fontWeight="500">
+          <Text color="#101010" fontWeight="600">
             Listen to podcasts anywhere, anytime
           </Text>
-          <Text color="#101010" lineHeight="25px">
+          <Text color="#101010" lineHeight="30px">
             Access and listen to podcasts anywhere and anytime, without having
             to worry about sync.
           </Text>
@@ -69,10 +69,10 @@ const Features = () => (
           <Activity color="#fff" />
         </FeaturesItemIconContainer>
         <FeaturesItemTextContainer>
-          <Text color="#101010" fontWeight="500">
+          <Text color="#101010" fontWeight="600">
             Discover new podcasts everyday
           </Text>
-          <Text color="#101010" lineHeight="25px">
+          <Text color="#101010" lineHeight="30px">
             Discover new podcasts every day, know what's trending, and subscribe
             to podcasts easily.
           </Text>
@@ -84,10 +84,10 @@ const Features = () => (
           <Smile color="#fff" />
         </FeaturesItemIconContainer>
         <FeaturesItemTextContainer>
-          <Text color="#101010" fontWeight="500">
+          <Text color="#101010" fontWeight="600">
             No annoying ads
           </Text>
-          <Text color="#101010" lineHeight="25px">
+          <Text color="#101010" lineHeight="30px">
             You will not see any annoying ads, your experience is our main
             priority, now and ever.
           </Text>

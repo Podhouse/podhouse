@@ -94,15 +94,12 @@ const QueryType = new GraphQLObjectType({
         podcastID: {
           type: GraphQLNonNull(GraphQLID),
         },
-        episodeName: {
-          type: GraphQLNonNull(GraphQLString),
-        },
       },
       resolve: async (_, args, context: GraphQLContext) =>
         await EpisodeLoader.loadAll(
           context,
           withFilter(args, {
-            name: args.episodeName,
+            podcast: args.podcastID,
           }),
         ),
     },

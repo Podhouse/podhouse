@@ -26,7 +26,7 @@ const Main = () => {
         >
           Listen to your favorite podcasts
         </Heading>
-        <Text color="#101010" lineHeight="25px" textAlign="center">
+        <Text color="#101010" lineHeight="30px" textAlign="center">
           A powerful, clean, and intuitive app for you to discover and explore
           podcasts everywhere, anytime with the best podcast experience.
         </Text>

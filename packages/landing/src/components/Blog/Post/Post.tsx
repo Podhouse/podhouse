@@ -19,12 +19,12 @@ const Post = () => (
     >
       What happened to podcasts?
     </Heading>
-    <Text color="#101010" lineHeight="25px" textAlign="start">
+    <Text color="#101010" lineHeight="30px" textAlign="start">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Rhoncus rutrum
       sollicitudin placerat id nisl, sed turpis. Viverra aliquam nibh
       consectetur sed turpis urna.
     </Text>
-    <Text color="#101010" lineHeight="25px" textAlign="start">
+    <Text color="#101010" lineHeight="30px" textAlign="start">
       December 23, 2020
     </Text>
     <Link>Read article</Link>

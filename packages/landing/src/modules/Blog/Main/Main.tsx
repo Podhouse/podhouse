@@ -18,7 +18,7 @@ const Main = () => (
       >
         Blog
       </Heading>
-      <Text color="#101010" lineHeight="25px" textAlign="center">
+      <Text color="#101010" lineHeight="30px" textAlign="center">
         We share blog posts about podcast recommendations, product updates,
         exclusive interviews and many more related to podcasts
       </Text>
