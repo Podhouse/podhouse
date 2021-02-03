@@ -5,7 +5,7 @@ const theme = extendTheme({
     global: {
       "html, body": {
         fontFamily: "Inter",
-        fontSize: 14,
+        fontSize: 16,
       },
     },
   },

@@ -7,6 +7,8 @@ import {
 } from "graphql";
 import { globalIdField, connectionFromArray } from "graphql-relay";
 
+import { IUser } from "./UserModel";
+
 import { load } from "./UserLoader";
 
 import { PodcastConnection } from "../Podcast/PodcastType";
@@ -45,7 +47,10 @@ const UserFavoritedInputType = new GraphQLInputObjectType({
   }),
 });
 
-const UserType: GraphQLObjectType = new GraphQLObjectType({
+const UserType: GraphQLObjectType = new GraphQLObjectType<
+  IUser,
+  GraphQLContext
+>({
   name: "User",
   description: "UserType",
   fields: () => ({
@@ -60,8 +65,8 @@ const UserType: GraphQLObjectType = new GraphQLObjectType({
       args: {
         ...connectionArgs,
       },
-      resolve: async (user, args, context: GraphQLContext) => {
-        const podcasts = user.subscriptions.map((id) =>
+      resolve: async ({ subscriptions }, args, context: GraphQLContext) => {
+        const podcasts = subscriptions.map((id) =>
           PodcastLoader.load(context, id.toString()),
         );
         const result = await Promise.all(podcasts).then((res) => res);
@@ -73,8 +78,8 @@ const UserType: GraphQLObjectType = new GraphQLObjectType({
       args: {
         ...connectionArgs,
       },
-      resolve: async (user, args, context: GraphQLContext) => {
-        const episodes = user.favorites.map((id) =>
+      resolve: async ({ favorites }, args, context: GraphQLContext) => {
+        const episodes = favorites.map((id) =>
           EpisodeLoader.load(context, id.toString()),
         );
         const result = await Promise.all(episodes).then((res) => res);
@@ -82,7 +87,7 @@ const UserType: GraphQLObjectType = new GraphQLObjectType({
       },
     },
     subscribed: {
-      type: GraphQLBoolean,
+      type: GraphQLNonNull(GraphQLBoolean),
       args: {
         input: {
           type: GraphQLNonNull(UserSubscribedInputType),
@@ -97,18 +102,31 @@ const UserType: GraphQLObjectType = new GraphQLObjectType({
       },
     },
     favorited: {
-      type: GraphQLBoolean,
+      type: GraphQLNonNull(GraphQLBoolean),
       args: {
         input: {
-          type: GraphQLNonNull(UserSubscribedInputType),
+          type: GraphQLNonNull(UserFavoritedInputType),
         },
       },
-      resolve: ({ subscriptions }, { input }: { input: { _id: string } }) => {
-        const stringsFavorites: Array<string> = subscriptions.map((x) =>
+      resolve: ({ favorites }, { input }: { input: { _id: string } }) => {
+        const stringsFavorites: Array<string> = favorites.map((x) =>
           x.toString(),
         );
         const uniqueStrings: Array<string> = [...new Set(stringsFavorites)];
         return uniqueStrings.includes(input._id);
+      },
+    },
+    history: {
+      type: GraphQLNonNull(EpisodeConnection.connectionType),
+      args: {
+        ...connectionArgs,
+      },
+      resolve: async ({ history }, args, context: GraphQLContext) => {
+        const episodes = history.map((id) =>
+          EpisodeLoader.load(context, id.toString()),
+        );
+        const result = await Promise.all(episodes).then((res) => res);
+        return connectionFromArray(result, args);
       },
     },
     createdAt: {

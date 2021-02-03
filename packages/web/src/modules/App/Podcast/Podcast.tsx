@@ -88,16 +88,16 @@ const Podcast = () => {
     state._id,
   ]);
 
-  const onResetQueries = () => {
-    podcastLoadQuery({ _id: state._id }, { fetchPolicy: "store-or-network" });
-    userLoadQuery({ input: { _id: state._id } });
-  };
-
   const onLoadMore = (value: ScrollFrameType) => {
     if (value.top === 1) {
       setShouldLoadMore(true);
     }
     setShouldLoadMore(false);
+  };
+
+  const onRefetchQuery = () => {
+    podcastLoadQuery({ _id: state._id }, { fetchPolicy: "store-or-network" });
+    userLoadQuery({ input: { _id: state._id } });
   };
 
   return (
@@ -110,7 +110,7 @@ const Podcast = () => {
       {podcastQueryReference && (
         <ErrorBoundary
           FallbackComponent={ErrorFallback}
-          onReset={onResetQueries}
+          onReset={onRefetchQuery}
         >
           <Suspense fallback={<SkeletonPage episodes={true} />}>
             <PodcastInfo

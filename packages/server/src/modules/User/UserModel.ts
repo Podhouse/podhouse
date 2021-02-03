@@ -1,5 +1,5 @@
-import mongoose, { Schema, Document, Model } from "mongoose";
-import bcrypt from "bcrypt";
+import mongoose, { Schema, Document, Model, Types } from "mongoose";
+import bcrypt from "bcryptjs";
 
 const UserSchema = new Schema(
   {
@@ -27,6 +27,12 @@ const UserSchema = new Schema(
         ref: "Episode",
       },
     ],
+    history: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Episode",
+      },
+    ],
   },
   {
     timestamps: {
@@ -40,8 +46,9 @@ const UserSchema = new Schema(
 export interface IUser extends Document {
   email: string;
   password: string;
-  subscriptions: Array<Schema.Types.ObjectId>;
-  favorites: Array<Schema.Types.ObjectId>;
+  subscriptions: Array<Types.ObjectId>;
+  favorites: Array<Types.ObjectId>;
+  history: Array<Types.ObjectId>;
   createdAt: Date;
   updatedAt: Date;
   authenticate: (plainTextPassword: string) => boolean;

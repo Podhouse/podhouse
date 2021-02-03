@@ -4,69 +4,74 @@ const PodcastSchema = new Schema(
   {
     appleId: {
       type: Number,
-      required: true,
     },
     name: {
       type: String,
-      required: true,
     },
     author: {
       type: String,
-      required: true,
     },
     description: {
       type: String,
-      required: true,
     },
     website: {
       type: String,
     },
     rss: {
       type: String,
-      required: true,
     },
     image: {
       type: String,
-      required: true,
     },
     country: {
       type: String,
-      required: true,
     },
     primaryGenre: {
       type: String,
-      required: true,
     },
     genres: [
       {
         type: String,
-        required: true,
       },
     ],
     genreIds: [
       {
         type: String,
-        required: true,
       },
     ],
+    owner: {
+      name: {
+        type: String,
+      },
+      email: {
+        type: String,
+      },
+    },
   },
   {
     collection: "Podcast",
   },
 );
 
+PodcastSchema.index({ name: "text" });
+PodcastSchema.index({ primaryGenre: "text" });
+
 export interface IPodcast extends Document {
   appleId: number;
   name: string;
   author: string;
   description: string;
-  website?: string;
+  website: string;
   rss: string;
   image: string;
   country: string;
   primaryGenre: string;
   genres: Array<string>;
   genreIds: Array<string>;
+  owner: {
+    name: string;
+    email: string;
+  };
 }
 
 const PodcastModel: Model<IPodcast> = mongoose.model("Podcast", PodcastSchema);

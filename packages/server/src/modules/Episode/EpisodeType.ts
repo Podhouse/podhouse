@@ -2,25 +2,30 @@ import { GraphQLObjectType, GraphQLString, GraphQLNonNull } from "graphql";
 import { globalIdField } from "graphql-relay";
 
 import { load } from "./EpisodeLoader";
-import { IEpisode } from "./EpisodeModel";
 
 import PodcastType from "../Podcast/PodcastType";
 import * as PodcastLoader from "../Podcast/PodcastLoader";
 
 import { nodeInterface, registerTypeLoader } from "../Node/TypeRegister";
 
-import {
-  connectionDefinitions,
-  mongooseIDResolver,
-  withFilter,
-} from "../../common/";
+import { connectionDefinitions, mongooseIDResolver } from "../../common/";
 
-import { GraphQLContext } from "../../types";
+const OwnerType: GraphQLObjectType = new GraphQLObjectType({
+  name: "Owner",
+  description: "OwnerType",
+  fields: () => ({
+    name: {
+      type: GraphQLNonNull(GraphQLString),
+      resolve: ({ name }) => name,
+    },
+    email: {
+      type: GraphQLNonNull(GraphQLString),
+      resolve: ({ email }) => email,
+    },
+  }),
+});
 
-const EpisodeType: GraphQLObjectType = new GraphQLObjectType<
-  IEpisode,
-  GraphQLContext
->({
+const EpisodeType: GraphQLObjectType = new GraphQLObjectType({
   name: "Episode",
   description: "EpisodeType",
   fields: () => ({
@@ -50,9 +55,21 @@ const EpisodeType: GraphQLObjectType = new GraphQLObjectType<
       type: GraphQLNonNull(GraphQLString),
       resolve: ({ audio }) => audio,
     },
+    guid: {
+      type: GraphQLNonNull(GraphQLString),
+      resolve: ({ guid }) => guid,
+    },
     duration: {
       type: GraphQLNonNull(GraphQLString),
       resolve: ({ duration }) => duration,
+    },
+    generator: {
+      type: GraphQLNonNull(GraphQLString),
+      resolve: ({ generator }) => generator,
+    },
+    owner: {
+      type: GraphQLNonNull(OwnerType),
+      resolve: ({ owner }) => owner,
     },
     podcast: {
       type: GraphQLNonNull(PodcastType),

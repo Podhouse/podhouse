@@ -5,6 +5,7 @@ import { fromGlobalId, nodeDefinitions } from "graphql-relay";
 import { GraphQLContext } from "../../types";
 
 type Load = (context: GraphQLContext, id: string) => any;
+
 type TypeLoaders = {
   [key: string]: {
     type: GraphQLObjectType;

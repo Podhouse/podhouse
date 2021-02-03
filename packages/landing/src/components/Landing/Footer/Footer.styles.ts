@@ -17,13 +17,13 @@ export const FooterLinksContainer = styled.div`
   grid-column: 1 / 2;
   grid-row: 1 / 2;
   display: grid;
-  grid-template-columns: max-content max-content;
+  grid-template-columns: max-content max-content max-content max-content max-content;
   grid-column-gap: 30px;
   align-items: center;
   justify-content: center;
 
   @media screen and (min-width: 400px) {
-    grid-template-columns: repeat(2, max-content);
+    grid-template-columns: repeat(5, max-content);
     grid-template-rows: 1fr;
     grid-column-gap: 30px;
   }

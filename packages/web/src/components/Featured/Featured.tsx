@@ -87,7 +87,7 @@ const Featured = ({ featured }: FeaturedProps) => {
                 <Heading as="h2" size="sm" letterSpacing="-0.03em">
                   {author}
                 </Heading>
-                <Text lineHeight="25px">{description}</Text>
+                <Text lineHeight="30px">{description}</Text>
               </FeaturedDetailsContainer>
             </FeaturedItemContainer>
           )

@@ -19,7 +19,7 @@ const Mission = () => (
         Mission
       </Heading>
 
-      <Text color="#101010" lineHeight="25px" textAlign="center">
+      <Text color="#101010" lineHeight="30px" textAlign="center">
         One of the most awesome things about podcasts is that anyone can start
         to listen or create their own podcast. People can literally listen to
         podcasts in any specific situation in their daily-basis, and we have a

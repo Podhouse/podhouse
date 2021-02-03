@@ -62,7 +62,7 @@ const Genre = () => {
     setShouldLoadMore(false);
   };
 
-  const onResetQuery = () => {
+  const onRefetchQuery = () => {
     loadQuery({ primaryGenre: state.primaryGenre });
   };
 
@@ -74,7 +74,10 @@ const Genre = () => {
       autoHideDuration={100}
     >
       {queryReference && (
-        <ErrorBoundary FallbackComponent={ErrorFallback} onReset={onResetQuery}>
+        <ErrorBoundary
+          FallbackComponent={ErrorFallback}
+          onReset={onRefetchQuery}
+        >
           <Suspense
             fallback={
               <GenreContainer>

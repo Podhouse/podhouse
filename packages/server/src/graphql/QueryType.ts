@@ -55,8 +55,9 @@ const QueryType = new GraphQLObjectType({
         },
       },
       resolve: async (_, args, context: GraphQLContext) => {
-        const regex = new RegExp(args.podcastName, "i");
-        const podcasts = await PodcastModel.find({ name: { $regex: regex } });
+        const podcasts = await PodcastModel.find({
+          $text: { $search: args.podcastName },
+        });
         return connectionFromArray(podcasts, args);
       },
     },
@@ -90,18 +91,15 @@ const QueryType = new GraphQLObjectType({
       type: GraphQLNonNull(EpisodeConnection.connectionType),
       args: {
         ...connectionArgs,
-        podcast: {
-          type: GraphQLID,
-        },
-        name: {
-          type: GraphQLString,
+        podcastID: {
+          type: GraphQLNonNull(GraphQLID),
         },
       },
       resolve: async (_, args, context: GraphQLContext) =>
         await EpisodeLoader.loadAll(
           context,
           withFilter(args, {
-            name: args.name,
+            podcast: args.podcastID,
           }),
         ),
     },

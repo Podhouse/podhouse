@@ -1,8 +1,9 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 import { Heading, Button, Link, Image } from "@chakra-ui/react";
 import { ExternalLink } from "react-feather";
-import { GraphQLTaggedNode } from "relay-runtime";
 import { usePreloadedQuery, PreloadedQuery } from "react-relay/hooks";
+import { useLocation } from "react-router-dom";
 
 import {
   EpisodeInfoContainer,
@@ -20,10 +21,12 @@ import { usePlayerContext } from "src/machines/Player/PlayerContext";
 
 interface Props {
   queryReference: PreloadedQuery<EpisodeQuery>;
-  query: GraphQLTaggedNode;
+  query: any;
 }
 
 const EpisodeInfo = ({ queryReference, query }: Props) => {
+  const location = useLocation();
+
   const { episode } = usePreloadedQuery<EpisodeQuery>(query, queryReference);
 
   const {
@@ -140,6 +143,35 @@ const EpisodeInfo = ({ queryReference, query }: Props) => {
 
   return (
     <EpisodeInfoContainer>
+      <Helmet>
+        <title>{episode?.title}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta charSet="utf-8" />
+        <meta name="description" content={episode?.description} />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary" />
+        <meta property="twitter:title" content={episode?.title} />
+        <meta property="twitter:description" content={episode?.description} />
+        <meta property="twitter:image" content={episode?.image} />
+        <meta property="twitter:url" content={location.pathname} />
+
+        {/* Open Graph */}
+        <meta property="og:url" content={location.pathname} key="ogurl" />
+        <meta property="og:image" content={episode?.image} key="ogimage" />
+        <meta
+          property="og:site_name"
+          content={episode?.title}
+          key="ogsitename"
+        />
+        <meta property="og:title" content={episode?.title} key="ogtitle" />
+        <meta
+          property="og:description"
+          content={episode?.description}
+          key="ogdesc"
+        />
+      </Helmet>
+
       <EpisodeInfoHeader>
         <Image
           src={episode?.image}

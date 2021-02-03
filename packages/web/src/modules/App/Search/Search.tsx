@@ -6,7 +6,6 @@ import { ErrorBoundary } from "react-error-boundary";
 import { useDebounce } from "use-debounce";
 
 import SearchPodcast from "./SearchPodcast/SearchPodcast";
-
 import SkeletonPodcastsWithOnlyAvatarList from "src/components/Skeletons/SkeletonPodcastsWithOnlyAvatarList/SkeletonPodcastsWithOnlyAvatarList";
 import ErrorFallback from "src/components/ErrorFallback/ErrorFallback";
 
@@ -58,8 +57,8 @@ const Search = () => {
     };
   }, [loadQuery, disposeQuery, debouncedSearch]);
 
-  const onResetQuery = () => {
-    loadQuery({ podcastName: search });
+  const onRefetchQuery = () => {
+    loadQuery({ podcastName: debouncedSearch });
   };
 
   return (
@@ -70,7 +69,10 @@ const Search = () => {
       autoHideDuration={100}
     >
       {queryReference && (
-        <ErrorBoundary FallbackComponent={ErrorFallback} onReset={onResetQuery}>
+        <ErrorBoundary
+          FallbackComponent={ErrorFallback}
+          onReset={onRefetchQuery}
+        >
           <Suspense
             fallback={
               <SearchContainer>

@@ -26,7 +26,7 @@ const CallToAction = () => {
         >
           Totally yours
         </Heading>
-        <Text color="#101010" lineHeight="25px" textAlign="center">
+        <Text color="#101010" lineHeight="30px" textAlign="center">
           Although there are some premium features planned, we will always be
           free. You won't need to pay anything in order to listen to your
           favorite podcasts with us

@@ -17,7 +17,7 @@ const PodcastsWithDetailsList = ({
 }: PodcastsWithDetailsListProps) => (
   <PodcastsWithDetailsListContainer>
     <PodcastsWithDetailsListHeader>
-      <Heading as="h1" fontSize={14} fontWeight={500} textAlign="start">
+      <Heading as="h1" fontSize={14} fontWeight="500" textAlign="start">
         {title}
       </Heading>
       <Divider orientation="horizontal" />

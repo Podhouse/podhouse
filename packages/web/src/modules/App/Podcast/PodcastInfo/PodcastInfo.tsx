@@ -1,12 +1,14 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 import { Heading, Button, Link, Image, useToast } from "@chakra-ui/react";
 import { ExternalLink } from "react-feather";
-import { GraphQLTaggedNode } from "relay-runtime";
+import { GraphQLTaggedNode } from "react-relay";
 import {
   usePreloadedQuery,
   useMutation,
   PreloadedQuery,
 } from "react-relay/hooks";
+import { useLocation } from "react-router-dom";
 
 import {
   PodcastInfoContainer,
@@ -33,7 +35,7 @@ import { PodcastInfoUserQuery } from "../__generated__/PodcastInfoUserQuery.grap
 interface Props {
   podcastQueryReference: PreloadedQuery<PodcastQuery>;
   podcastQuery: GraphQLTaggedNode;
-  userQueryReference: any;
+  userQueryReference: PreloadedQuery<PodcastInfoUserQuery> | null | undefined;
   userQuery: GraphQLTaggedNode;
   shouldLoadMore: boolean;
 }
@@ -45,15 +47,17 @@ const PodcastInfo = ({
   userQuery,
   shouldLoadMore,
 }: Props) => {
+  const location = useLocation();
+
   const toast = useToast();
 
-  const { podcast } = usePreloadedQuery<PodcastQuery>(
+  const podcastResponse = usePreloadedQuery<PodcastQuery>(
     podcastQuery,
     podcastQueryReference
   );
-  const { currentUser } = usePreloadedQuery<PodcastInfoUserQuery>(
+  const currentUserResponse = usePreloadedQuery<PodcastInfoUserQuery>(
     userQuery,
-    userQueryReference
+    userQueryReference as PreloadedQuery<PodcastInfoUserQuery>
   );
 
   const [
@@ -71,17 +75,17 @@ const PodcastInfo = ({
   );
 
   const onSubscribeOrUnsubscribeToPodcast = () => {
-    if (!currentUser) {
+    if (!currentUserResponse.currentUser) {
       return;
     } else {
-      if (currentUser.subscribed === true) {
+      if (currentUserResponse.currentUser.subscribed === true) {
         userUnsubscribeToPodcast({
           variables: {
             input: {
-              _id: podcast?._id as string,
+              _id: podcastResponse.podcast?._id as string,
             },
             unsubscribedInput: {
-              _id: podcast?._id as string,
+              _id: podcastResponse.podcast?._id as string,
             },
           },
           onCompleted: () => {
@@ -98,10 +102,10 @@ const PodcastInfo = ({
         userSubscribeToPodcast({
           variables: {
             input: {
-              _id: podcast?._id as string,
+              _id: podcastResponse.podcast?._id as string,
             },
             subscribedInput: {
-              _id: podcast?._id as string,
+              _id: podcastResponse.podcast?._id as string,
             },
           },
           onCompleted: () => {
@@ -120,9 +124,57 @@ const PodcastInfo = ({
 
   return (
     <PodcastInfoContainer>
+      <Helmet>
+        <title>{podcastResponse.podcast?.name}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta charSet="utf-8" />
+        <meta
+          name="description"
+          content={podcastResponse.podcast?.description}
+        />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary" />
+        <meta
+          property="twitter:title"
+          content={podcastResponse.podcast?.name}
+        />
+        <meta
+          property="twitter:description"
+          content={podcastResponse.podcast?.description}
+        />
+        <meta
+          property="twitter:image"
+          content={podcastResponse.podcast?.image}
+        />
+        <meta property="twitter:url" content={location.pathname} />
+
+        {/* Open Graph */}
+        <meta property="og:url" content={location.pathname} key="ogurl" />
+        <meta
+          property="og:image"
+          content={podcastResponse.podcast?.image}
+          key="ogimage"
+        />
+        <meta
+          property="og:site_name"
+          content={podcastResponse.podcast?.name}
+          key="ogsitename"
+        />
+        <meta
+          property="og:title"
+          content={podcastResponse.podcast?.name}
+          key="ogtitle"
+        />
+        <meta
+          property="og:description"
+          content={podcastResponse.podcast?.description}
+          key="ogdesc"
+        />
+      </Helmet>
       <PodcastInfoHeader>
         <Image
-          src={podcast?.image}
+          src={podcastResponse.podcast?.image}
           objectFit="cover"
           borderRadius={5}
           maxWidth="200px"
@@ -137,7 +189,7 @@ const PodcastInfo = ({
             letterSpacing="-0.03em"
             textAlign="start"
           >
-            {podcast?.name}
+            {podcastResponse.podcast?.name}
           </Heading>
 
           <Heading
@@ -147,7 +199,7 @@ const PodcastInfo = ({
             letterSpacing="-0.03em"
             textAlign="start"
           >
-            {podcast?.author}
+            {podcastResponse.podcast?.author}
           </Heading>
 
           <PodcastInfoDescription
@@ -155,7 +207,7 @@ const PodcastInfo = ({
             lineHeight="25px"
             textAlign="start"
           >
-            {podcast?.description}
+            {podcastResponse.podcast?.description}
           </PodcastInfoDescription>
         </PodcastInfoDetailsContainer>
 
@@ -182,7 +234,8 @@ const PodcastInfo = ({
               cursor: "not-allowed",
             }}
           >
-            {currentUser && currentUser.subscribed === true
+            {currentUserResponse.currentUser &&
+            currentUserResponse.currentUser.subscribed === true
               ? "Unsubscribe"
               : "Subscribe"}
           </Button>
@@ -190,14 +243,22 @@ const PodcastInfo = ({
 
         <PodcastInfoLinksContainer>
           <PodcastInfoLinkContainer>
-            <Link color="#101010" href={podcast?.website} isExternal>
+            <Link
+              color="#101010"
+              href={podcastResponse.podcast?.website}
+              isExternal
+            >
               Website
             </Link>
             <ExternalLink size={14} />
           </PodcastInfoLinkContainer>
 
           <PodcastInfoLinkContainer>
-            <Link color="#101010" href={podcast?.rss} isExternal>
+            <Link
+              color="#101010"
+              href={podcastResponse.podcast?.rss}
+              isExternal
+            >
               RSS
             </Link>
             <ExternalLink size={14} />
@@ -205,7 +266,7 @@ const PodcastInfo = ({
         </PodcastInfoLinksContainer>
       </PodcastInfoHeader>
 
-      <PodcastEpisodes podcast={podcast} shouldLoadMore={shouldLoadMore} />
+      {/* <PodcastEpisodes query={podcastResponse} shouldLoadMore={shouldLoadMore} /> */}
     </PodcastInfoContainer>
   );
 };

@@ -56,14 +56,17 @@ const Episode = () => {
     };
   }, [loadQuery, disposeQuery, state._id]);
 
-  const onResetQuery = () => {
+  const onRefetchQuery = () => {
     loadQuery({ _id: state._id }, { fetchPolicy: "store-or-network" });
   };
 
   return (
     <Scrollbars autoHide autoHideTimeout={100} autoHideDuration={100}>
       {queryReference && (
-        <ErrorBoundary FallbackComponent={ErrorFallback} onReset={onResetQuery}>
+        <ErrorBoundary
+          FallbackComponent={ErrorFallback}
+          onReset={onRefetchQuery}
+        >
           <Suspense fallback={<SkeletonPage episodes={false} />}>
             <EpisodeInfo queryReference={queryReference} query={query} />
           </Suspense>

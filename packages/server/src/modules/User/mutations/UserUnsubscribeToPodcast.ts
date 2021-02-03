@@ -7,7 +7,9 @@ import { UserConnection } from "../UserType";
 
 import { GraphQLContext } from "../../../types";
 
-type UserSubscribePodcastArgs = {
+import { errorField, successField } from "../../../common/";
+
+type UserUnsubscribeToPodcastArgs = {
   _id: string;
 };
 
@@ -19,12 +21,14 @@ export default mutationWithClientMutationId({
     },
   },
   mutateAndGetPayload: async (
-    { _id }: UserSubscribePodcastArgs,
+    { _id }: UserUnsubscribeToPodcastArgs,
     { user }: GraphQLContext,
   ) => {
     if (!user) {
       return {
+        _id: null,
         error: "User not authenticated",
+        success: null,
       };
     }
 
@@ -42,10 +46,13 @@ export default mutationWithClientMutationId({
       return {
         _id: user._id,
         error: null,
+        success: "Unsubscribed to podcast successfully!",
       };
     } else {
       return {
+        _id: user._id,
         error: "You're not subscribed to this podcast",
+        success: null,
       };
     }
   },
@@ -65,9 +72,7 @@ export default mutationWithClientMutationId({
         };
       },
     },
-    error: {
-      type: GraphQLString,
-      resolve: ({ error }) => error,
-    },
+    ...errorField,
+    ...successField,
   },
 });

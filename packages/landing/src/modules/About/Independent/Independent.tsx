@@ -19,7 +19,7 @@ const Independent = () => (
         Independent
       </Heading>
 
-      <Text color="#101010" lineHeight="25px" textAlign="center">
+      <Text color="#101010" lineHeight="30px" textAlign="center">
         Podhouse has a mission to deliver podcasts for everyone, and a part of
         this goal is that we are not currently interested in raising funds or
         taking any investment. We believe that an independent startup can grow

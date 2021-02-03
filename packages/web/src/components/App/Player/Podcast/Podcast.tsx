@@ -1,4 +1,5 @@
 import React from "react";
+import { Link as ReactRouterLink } from "react-router-dom";
 
 import {
   PodcastContainer,
@@ -11,6 +12,7 @@ import {
 import { PlayerEpisode } from "src/machines/Player/Player.types";
 
 import convertPodcastNameToURL from "src/utils/convertPodcastNameToURL";
+import convertEpisodeNameToURL from "src/utils/convertEpisodeNameToURL";
 
 interface Props {
   ready: boolean;
@@ -26,22 +28,28 @@ const Podcast = ({ ready, episode }: Props) => {
     return null;
   }
 
-  const route: string = convertPodcastNameToURL(
+  const podcastRoute: string = convertPodcastNameToURL(
     episode.podcast.name,
     episode.podcast.appleId
   );
 
-  console.log("route: ", route);
-  console.log("id: ", episode.podcast._id);
+  const episodeRoute: string = convertEpisodeNameToURL(
+    episode.title,
+    episode.podcast.appleId
+  );
 
   return (
     <PodcastContainer>
-      <PodcastImage src={episode.image} />
+      <ReactRouterLink
+        to={{ pathname: episodeRoute, state: { _id: episode._id } }}
+      >
+        <PodcastImage src={episode.image} />
+      </ReactRouterLink>
 
       <PodcastDetails>
         <PodcastNameTitle
           to={{
-            pathname: `/episode/${episode._id}`,
+            pathname: episodeRoute,
             state: { _id: episode._id },
           }}
         >
@@ -50,7 +58,7 @@ const Podcast = ({ ready, episode }: Props) => {
 
         <PodcastNameTitle
           to={{
-            pathname: route,
+            pathname: podcastRoute,
             state: { _id: episode.podcast._id },
           }}
         >

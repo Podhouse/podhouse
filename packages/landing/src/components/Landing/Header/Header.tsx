@@ -36,15 +36,17 @@ const Header = () => {
           </Link>
         </NextLink>
 
-        <Link
-          href="mailto:leonardomso11@gmail.com"
-          target="_blank"
-          rel="noopener"
-          fontWeight="500"
-          color="#101010"
-        >
-          Contact
-        </Link>
+        <NextLink href="/blog" as="/blog">
+          <Link href="/blog" fontWeight="500" color="#101010">
+            Blog
+          </Link>
+        </NextLink>
+
+        <NextLink href="/advertise" as="/advertise">
+          <Link href="/advertise" fontWeight="500" color="#101010">
+            Advertise
+          </Link>
+        </NextLink>
       </HeaderLinksContainer>
 
       <HeaderSignInContainer>

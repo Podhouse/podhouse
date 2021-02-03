@@ -7,7 +7,9 @@ import { UserConnection } from "../UserType";
 
 import { GraphQLContext } from "../../../types";
 
-type UserSubscribePodcastArgs = {
+import { errorField, successField } from "../../../common/";
+
+type UserFavoriteEpisodeArgs = {
   _id: string;
 };
 
@@ -19,20 +21,24 @@ export default mutationWithClientMutationId({
     },
   },
   mutateAndGetPayload: async (
-    { _id }: UserSubscribePodcastArgs,
+    { _id }: UserFavoriteEpisodeArgs,
     { user }: GraphQLContext,
   ) => {
     if (!user) {
       return {
+        _id: null,
         error: "User not authenticated",
+        success: null,
       };
     }
 
-    const hasFavoritedEpisode = user.favorites.includes(_id as any);
+    const hasFavoritedEpisode: boolean = user.favorites.includes(_id as any);
 
     if (hasFavoritedEpisode === true) {
       return {
+        _id: user._id,
         error: "Already favorited this episode",
+        success: null,
       };
     } else {
       user.favorites.push(_id as any);
@@ -41,6 +47,7 @@ export default mutationWithClientMutationId({
       return {
         _id: user._id,
         error: null,
+        success: "Favorited episode successfully!",
       };
     }
   },
@@ -60,9 +67,7 @@ export default mutationWithClientMutationId({
         };
       },
     },
-    error: {
-      type: GraphQLString,
-      resolve: ({ error }) => error,
-    },
+    ...errorField,
+    ...successField,
   },
 });

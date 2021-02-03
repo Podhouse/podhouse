@@ -16,7 +16,7 @@ type Query {
   podcastsByName(after: String, first: Int, before: String, last: Int, podcastName: String): PodcastConnection!
   podcastsByGenre(after: String, first: Int, before: String, last: Int, primaryGenre: String): PodcastConnection!
   podcast(_id: ID!): Podcast
-  episodes(after: String, first: Int, before: String, last: Int, podcast: ID, name: String): EpisodeConnection!
+  episodes(after: String, first: Int, before: String, last: Int, podcastID: ID!): EpisodeConnection!
   episode(_id: ID!): Episode
   userSubscribedToPodcast(_id: ID!): Boolean!
   userFavoritedEpisode(_id: ID!): Boolean!
@@ -33,14 +33,13 @@ interface Node {
 type User implements Node {
   """The ID of an object"""
   id: ID!
-
-  """mongoose _id"""
   _id: String!
   email: String!
   subscriptions(after: String, first: Int, before: String, last: Int): PodcastConnection!
   favorites(after: String, first: Int, before: String, last: Int): EpisodeConnection!
-  subscribed(input: UserSubscribedInput!): Boolean
-  favorited(input: UserSubscribedInput!): Boolean
+  subscribed(input: UserSubscribedInput!): Boolean!
+  favorited(input: UserFavoritedInput!): Boolean!
+  history(after: String, first: Int, before: String, last: Int): EpisodeConnection!
   createdAt: String!
   updatedAt: String!
 }
@@ -99,8 +98,6 @@ type PodcastEdge {
 type Podcast implements Node {
   """The ID of an object"""
   id: ID!
-
-  """mongoose _id"""
   _id: String!
   appleId: Int!
   name: String!
@@ -155,8 +152,6 @@ type EpisodeEdge {
 type Episode implements Node {
   """The ID of an object"""
   id: ID!
-
-  """mongoose _id"""
   _id: String!
   title: String!
   description: String!
@@ -164,12 +159,26 @@ type Episode implements Node {
   link: String!
   image: String!
   audio: String!
+  guid: String!
   duration: String!
+  generator: String!
+  owner: Owner!
   podcast: Podcast!
+}
+
+"""OwnerType"""
+type Owner {
+  name: String!
+  email: String!
 }
 
 """Input payload for checking if user is subscribed to podcast"""
 input UserSubscribedInput {
+  _id: String!
+}
+
+"""Input payload for checking if user has favorited an episode"""
+input UserFavoritedInput {
   _id: String!
 }
 
@@ -181,6 +190,11 @@ type Mutation {
   UserUnsubscribeToPodcast(input: UserUnsubscribeToPodcastInput!): UserUnsubscribeToPodcastPayload
   UserFavoriteEpisode(input: UserFavoriteEpisodeInput!): UserFavoriteEpisodePayload
   UserUnfavoriteEpisode(input: UserUnfavoriteEpisodeInput!): UserUnfavoriteEpisodePayload
+  UserSubscribeToPodcastUsingRssFeed(input: UserSubscribeToPodcastUsingRssFeedInput!): UserSubscribeToPodcastUsingRssFeedPayload
+  UserAddPodcastUsingRssFeed(input: UserAddPodcastUsingRssFeedInput!): UserAddPodcastUsingRssFeedPayload
+  UserAddEpisodeToHistory(input: UserAddEpisodeToHistoryInput!): UserAddEpisodeToHistoryPayload
+  UserRemoveEpisodeFromHistory(input: UserRemoveEpisodeFromHistoryInput!): UserRemoveEpisodeFromHistoryPayload
+  UserCleanHistory(input: UserCleanHistoryInput!): UserCleanHistoryPayload
 }
 
 type UserSignInWithEmailPayload {
@@ -224,6 +238,7 @@ input UserChangePasswordInput {
 type UserSubscribeToPodcastPayload {
   user: UserEdge
   error: String
+  success: String
   clientMutationId: String
 }
 
@@ -244,6 +259,7 @@ input UserSubscribeToPodcastInput {
 type UserUnsubscribeToPodcastPayload {
   user: UserEdge
   error: String
+  success: String
   clientMutationId: String
 }
 
@@ -255,6 +271,7 @@ input UserUnsubscribeToPodcastInput {
 type UserFavoriteEpisodePayload {
   user: UserEdge
   error: String
+  success: String
   clientMutationId: String
 }
 
@@ -266,10 +283,69 @@ input UserFavoriteEpisodeInput {
 type UserUnfavoriteEpisodePayload {
   user: UserEdge
   error: String
+  success: String
   clientMutationId: String
 }
 
 input UserUnfavoriteEpisodeInput {
   _id: String!
+  clientMutationId: String
+}
+
+type UserSubscribeToPodcastUsingRssFeedPayload {
+  user: UserEdge
+  error: String
+  success: String
+  clientMutationId: String
+}
+
+input UserSubscribeToPodcastUsingRssFeedInput {
+  rss: String!
+  clientMutationId: String
+}
+
+type UserAddPodcastUsingRssFeedPayload {
+  error: String
+  success: String
+  clientMutationId: String
+}
+
+input UserAddPodcastUsingRssFeedInput {
+  rss: String!
+  clientMutationId: String
+}
+
+type UserAddEpisodeToHistoryPayload {
+  user: UserEdge
+  error: String
+  success: String
+  clientMutationId: String
+}
+
+input UserAddEpisodeToHistoryInput {
+  _id: String!
+  clientMutationId: String
+}
+
+type UserRemoveEpisodeFromHistoryPayload {
+  user: UserEdge
+  error: String
+  success: String
+  clientMutationId: String
+}
+
+input UserRemoveEpisodeFromHistoryInput {
+  episodeIndex: Int!
+  clientMutationId: String
+}
+
+type UserCleanHistoryPayload {
+  user: UserEdge
+  error: String
+  success: String
+  clientMutationId: String
+}
+
+input UserCleanHistoryInput {
   clientMutationId: String
 }
