@@ -128,24 +128,44 @@ const PodcastInfo = ({
         <title>{podcastResponse.podcast?.name}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta charSet="utf-8" />
-        <meta name="description" content={podcastResponse.podcast?.description} />
+        <meta
+          name="description"
+          content={podcastResponse.podcast?.description}
+        />
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary" />
-        <meta property="twitter:title" content={podcastResponse.podcast?.name} />
-        <meta property="twitter:description" content={podcastResponse.podcast?.description} />
-        <meta property="twitter:image" content={podcastResponse.podcast?.image} />
+        <meta
+          property="twitter:title"
+          content={podcastResponse.podcast?.name}
+        />
+        <meta
+          property="twitter:description"
+          content={podcastResponse.podcast?.description}
+        />
+        <meta
+          property="twitter:image"
+          content={podcastResponse.podcast?.image}
+        />
         <meta property="twitter:url" content={location.pathname} />
 
         {/* Open Graph */}
         <meta property="og:url" content={location.pathname} key="ogurl" />
-        <meta property="og:image" content={podcastResponse.podcast?.image} key="ogimage" />
+        <meta
+          property="og:image"
+          content={podcastResponse.podcast?.image}
+          key="ogimage"
+        />
         <meta
           property="og:site_name"
           content={podcastResponse.podcast?.name}
           key="ogsitename"
         />
-        <meta property="og:title" content={podcastResponse.podcast?.name} key="ogtitle" />
+        <meta
+          property="og:title"
+          content={podcastResponse.podcast?.name}
+          key="ogtitle"
+        />
         <meta
           property="og:description"
           content={podcastResponse.podcast?.description}
@@ -214,7 +234,8 @@ const PodcastInfo = ({
               cursor: "not-allowed",
             }}
           >
-            {currentUserResponse.currentUser && currentUserResponse.currentUser.subscribed === true
+            {currentUserResponse.currentUser &&
+            currentUserResponse.currentUser.subscribed === true
               ? "Unsubscribe"
               : "Subscribe"}
           </Button>
@@ -222,14 +243,22 @@ const PodcastInfo = ({
 
         <PodcastInfoLinksContainer>
           <PodcastInfoLinkContainer>
-            <Link color="#101010" href={podcastResponse.podcast?.website} isExternal>
+            <Link
+              color="#101010"
+              href={podcastResponse.podcast?.website}
+              isExternal
+            >
               Website
             </Link>
             <ExternalLink size={14} />
           </PodcastInfoLinkContainer>
 
           <PodcastInfoLinkContainer>
-            <Link color="#101010" href={podcastResponse.podcast?.rss} isExternal>
+            <Link
+              color="#101010"
+              href={podcastResponse.podcast?.rss}
+              isExternal
+            >
               RSS
             </Link>
             <ExternalLink size={14} />

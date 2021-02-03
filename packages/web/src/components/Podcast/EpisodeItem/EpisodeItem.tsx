@@ -19,7 +19,15 @@ import { usePlayerContext } from "src/machines/Player/PlayerContext";
 import convertEpisodeNameToURL from "src/utils/convertEpisodeNameToURL";
 
 const EpisodeItem = ({ node }: EpisodeItemProps) => {
-  const { _id, image, title, description, publishedDate, duration, podcast } = node;
+  const {
+    _id,
+    image,
+    title,
+    description,
+    publishedDate,
+    duration,
+    podcast,
+  } = node;
 
   const {
     loading,

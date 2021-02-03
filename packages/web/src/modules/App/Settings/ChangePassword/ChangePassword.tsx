@@ -110,7 +110,7 @@ const ChangePassword = () => {
         <SettingsItemHeaderTitle
           as="h1"
           fontSize={14}
-          fontWeight={500}
+          fontWeight="500"
           textAlign="start"
         >
           Password

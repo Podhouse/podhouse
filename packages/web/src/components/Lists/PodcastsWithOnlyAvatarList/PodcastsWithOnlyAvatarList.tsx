@@ -22,7 +22,7 @@ const PodcastsWithOnlyAvatarList = ({
         variant="secondary"
         size="normal"
         fontSize={14}
-        fontWeight={500}
+        fontWeight="500"
         textAlign="start"
       >
         {title}

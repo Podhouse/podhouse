@@ -81,7 +81,9 @@ const Footer = () => (
       </Link>
     </FooterBrandsContainer>
 
-    <Text color="#101010" fontSize="12px">2021 © Podhouse. All rights reserved</Text>
+    <Text color="#101010" fontSize="12px">
+      2021 © Podhouse. All rights reserved
+    </Text>
   </FooterContainer>
 );
 
