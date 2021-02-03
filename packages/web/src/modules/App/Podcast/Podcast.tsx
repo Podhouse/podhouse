@@ -88,6 +88,11 @@ const Podcast = () => {
     state._id,
   ]);
 
+  const onResetQueries = () => {
+    podcastLoadQuery({ _id: state._id }, { fetchPolicy: "store-or-network" });
+    userLoadQuery({ input: { _id: state._id } });
+  };
+
   const onLoadMore = (value: ScrollFrameType) => {
     if (value.top === 1) {
       setShouldLoadMore(true);

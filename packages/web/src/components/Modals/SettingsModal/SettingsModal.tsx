@@ -40,10 +40,6 @@ const SettingsModal = () => {
       </SettingsModalLinkContainer>
 
       <SettingsModalLinkContainer>
-        <ReactRouterLink to="/promote">Promote</ReactRouterLink>
-      </SettingsModalLinkContainer>
-
-      <SettingsModalLinkContainer>
         <ReactRouterLink to="/whats-new">What's New</ReactRouterLink>
       </SettingsModalLinkContainer>
 

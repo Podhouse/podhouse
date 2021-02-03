@@ -5,11 +5,10 @@ import { usePaginationFragment } from "react-relay/hooks";
 import { PodcastEpisodesContainer } from "./PodcastEpisodes.styles";
 
 import { PodcastEpisodesPaginationQuery } from "./__generated__/PodcastEpisodesPaginationQuery.graphql";
-import { PodcastEpisodes_episodes$key } from "./__generated__/PodcastEpisodes_episodes.graphql";
 
 import EpisodeItem from "src/components/Podcast/EpisodeItem/EpisodeItem";
 
-const fragment = graphql`
+const query = graphql`
   fragment PodcastEpisodes_episodes on Podcast
   @argumentDefinitions(
     after: { type: "String" }
@@ -45,15 +44,17 @@ const fragment = graphql`
 `;
 
 interface Props {
-  query: PodcastEpisodes_episodes$key;
+  podcast: any;
   shouldLoadMore: boolean;
 }
 
-const PodcastEpisodes = ({ query, shouldLoadMore }: Props) => {
+const PodcastEpisodes = ({ podcast, shouldLoadMore }: Props) => {
   const { data, loadNext, isLoadingNext } = usePaginationFragment<
     PodcastEpisodesPaginationQuery,
-    PodcastEpisodes_episodes$key
-  >(fragment, query);
+    any
+  >(query, podcast);
+
+  console.log("data: ", data);
 
   const loadMore = useCallback(() => {
     // Don't fetch again if we're already loading the next page

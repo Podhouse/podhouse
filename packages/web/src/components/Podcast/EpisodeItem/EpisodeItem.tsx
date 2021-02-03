@@ -38,10 +38,7 @@ const EpisodeItem = ({ node }: EpisodeItemProps) => {
     onEpisode,
   } = usePlayerContext();
 
-  const route: string = convertEpisodeNameToURL(
-    episode?.title,
-    episode?.podcast.appleId
-  );
+  const route: string = convertEpisodeNameToURL(title, podcast.appleId);
 
   const renderEpisodeButton = () => {
     if (episode && episode.title === title) {
