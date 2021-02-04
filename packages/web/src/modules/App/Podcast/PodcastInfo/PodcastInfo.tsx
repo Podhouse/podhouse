@@ -1,7 +1,7 @@
 import React from "react";
 import { Heading, Button, Link, Image, useToast } from "@chakra-ui/react";
 import { ExternalLink } from "react-feather";
-import { GraphQLTaggedNode } from "react-relay";
+import { GraphQLTaggedNode } from "relay-runtime";
 import {
   usePreloadedQuery,
   useMutation,
@@ -206,7 +206,7 @@ const PodcastInfo = ({
         </PodcastInfoLinksContainer>
       </PodcastInfoHeader>
 
-      {/* <PodcastEpisodes podcast={podcast} shouldLoadMore={shouldLoadMore} /> */}
+      <PodcastEpisodes podcast={podcast} shouldLoadMore={shouldLoadMore} />
     </PodcastInfoContainer>
   );
 };

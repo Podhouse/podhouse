@@ -17,12 +17,9 @@ export type PodcastEpisodes_episodes = {
                 readonly audio: string;
                 readonly duration: string;
                 readonly podcast: {
-                    readonly id: string;
-                    readonly _id: string;
                     readonly name: string;
                     readonly website: string;
                     readonly rss: string;
-                    readonly appleId: number;
                 };
             } | null;
         } | null>;
@@ -41,21 +38,7 @@ export type PodcastEpisodes_episodes$key = {
 const node: ReaderFragment = (function(){
 var v0 = [
   "episodes"
-],
-v1 = {
-  "alias": null,
-  "args": null,
-  "kind": "ScalarField",
-  "name": "_id",
-  "storageKey": null
-},
-v2 = {
-  "alias": null,
-  "args": null,
-  "kind": "ScalarField",
-  "name": "id",
-  "storageKey": null
-};
+];
 return {
   "argumentDefinitions": [
     {
@@ -134,7 +117,13 @@ return {
               "name": "node",
               "plural": false,
               "selections": [
-                (v1/*: any*/),
+                {
+                  "alias": null,
+                  "args": null,
+                  "kind": "ScalarField",
+                  "name": "_id",
+                  "storageKey": null
+                },
                 {
                   "alias": null,
                   "args": null,
@@ -192,8 +181,6 @@ return {
                   "name": "podcast",
                   "plural": false,
                   "selections": [
-                    (v2/*: any*/),
-                    (v1/*: any*/),
                     {
                       "alias": null,
                       "args": null,
@@ -213,13 +200,6 @@ return {
                       "args": null,
                       "kind": "ScalarField",
                       "name": "rss",
-                      "storageKey": null
-                    },
-                    {
-                      "alias": null,
-                      "args": null,
-                      "kind": "ScalarField",
-                      "name": "appleId",
                       "storageKey": null
                     }
                   ],
@@ -287,11 +267,17 @@ return {
       ],
       "storageKey": null
     },
-    (v2/*: any*/)
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "id",
+      "storageKey": null
+    }
   ],
   "type": "Podcast",
   "abstractKey": null
 };
 })();
-(node as any).hash = '285a939e90523092164d36ffaf7b5fad';
+(node as any).hash = '8e803fd5b33028453ebc32f4296375d9';
 export default node;

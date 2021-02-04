@@ -51,12 +51,10 @@ fragment PodcastEpisodes_episodes_pbnwq on Podcast {
         audio
         duration
         podcast {
-          id
-          _id
           name
           website
           rss
-          appleId
+          id
         }
         id
         __typename
@@ -142,13 +140,6 @@ v8 = {
   "kind": "ScalarField",
   "name": "id",
   "storageKey": null
-},
-v9 = {
-  "alias": null,
-  "args": null,
-  "kind": "ScalarField",
-  "name": "_id",
-  "storageKey": null
 };
 return {
   "fragment": {
@@ -232,7 +223,13 @@ return {
                         "name": "node",
                         "plural": false,
                         "selections": [
-                          (v9/*: any*/),
+                          {
+                            "alias": null,
+                            "args": null,
+                            "kind": "ScalarField",
+                            "name": "_id",
+                            "storageKey": null
+                          },
                           {
                             "alias": null,
                             "args": null,
@@ -290,8 +287,6 @@ return {
                             "name": "podcast",
                             "plural": false,
                             "selections": [
-                              (v8/*: any*/),
-                              (v9/*: any*/),
                               {
                                 "alias": null,
                                 "args": null,
@@ -313,13 +308,7 @@ return {
                                 "name": "rss",
                                 "storageKey": null
                               },
-                              {
-                                "alias": null,
-                                "args": null,
-                                "kind": "ScalarField",
-                                "name": "appleId",
-                                "storageKey": null
-                              }
+                              (v8/*: any*/)
                             ],
                             "storageKey": null
                           },
@@ -399,14 +388,14 @@ return {
     ]
   },
   "params": {
-    "cacheID": "21ce62095cbed810c9e5cd828979eeec",
+    "cacheID": "cd4bd4a4fda156e0a2a5fb4a2cb8de18",
     "id": null,
     "metadata": {},
     "name": "PodcastEpisodesPaginationQuery",
     "operationKind": "query",
-    "text": "query PodcastEpisodesPaginationQuery(\n  $after: String\n  $before: String\n  $first: Int = 10\n  $last: Int\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ...PodcastEpisodes_episodes_pbnwq\n    id\n  }\n}\n\nfragment PodcastEpisodes_episodes_pbnwq on Podcast {\n  episodes(after: $after, first: $first, before: $before, last: $last) {\n    edges {\n      node {\n        _id\n        title\n        description\n        publishedDate\n        link\n        image\n        audio\n        duration\n        podcast {\n          id\n          _id\n          name\n          website\n          rss\n          appleId\n        }\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n  id\n}\n"
+    "text": "query PodcastEpisodesPaginationQuery(\n  $after: String\n  $before: String\n  $first: Int = 10\n  $last: Int\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ...PodcastEpisodes_episodes_pbnwq\n    id\n  }\n}\n\nfragment PodcastEpisodes_episodes_pbnwq on Podcast {\n  episodes(after: $after, first: $first, before: $before, last: $last) {\n    edges {\n      node {\n        _id\n        title\n        description\n        publishedDate\n        link\n        image\n        audio\n        duration\n        podcast {\n          name\n          website\n          rss\n          id\n        }\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n  id\n}\n"
   }
 };
 })();
-(node as any).hash = '285a939e90523092164d36ffaf7b5fad';
+(node as any).hash = '8e803fd5b33028453ebc32f4296375d9';
 export default node;

@@ -59,12 +59,10 @@ fragment PodcastEpisodes_episodes on Podcast {
         audio
         duration
         podcast {
-          id
-          _id
           name
           website
           rss
-          appleId
+          id
         }
         id
         __typename
@@ -296,12 +294,10 @@ return {
                         "name": "podcast",
                         "plural": false,
                         "selections": [
-                          (v2/*: any*/),
-                          (v3/*: any*/),
                           (v4/*: any*/),
                           (v8/*: any*/),
                           (v9/*: any*/),
-                          (v5/*: any*/)
+                          (v2/*: any*/)
                         ],
                         "storageKey": null
                       },
@@ -383,12 +379,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "28a438633016a6ab36c9b6768c6b997b",
+    "cacheID": "fc968b41ceccce5a71453bc773a30686",
     "id": null,
     "metadata": {},
     "name": "PodcastQuery",
     "operationKind": "query",
-    "text": "query PodcastQuery(\n  $_id: ID!\n) {\n  podcast(_id: $_id) {\n    id\n    _id\n    name\n    appleId\n    author\n    description\n    website\n    rss\n    image\n    ...PodcastEpisodes_episodes\n  }\n}\n\nfragment PodcastEpisodes_episodes on Podcast {\n  episodes(first: 10) {\n    edges {\n      node {\n        _id\n        title\n        description\n        publishedDate\n        link\n        image\n        audio\n        duration\n        podcast {\n          id\n          _id\n          name\n          website\n          rss\n          appleId\n        }\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n  id\n}\n"
+    "text": "query PodcastQuery(\n  $_id: ID!\n) {\n  podcast(_id: $_id) {\n    id\n    _id\n    name\n    appleId\n    author\n    description\n    website\n    rss\n    image\n    ...PodcastEpisodes_episodes\n  }\n}\n\nfragment PodcastEpisodes_episodes on Podcast {\n  episodes(first: 10) {\n    edges {\n      node {\n        _id\n        title\n        description\n        publishedDate\n        link\n        image\n        audio\n        duration\n        podcast {\n          name\n          website\n          rss\n          id\n        }\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n  id\n}\n"
   }
 };
 })();

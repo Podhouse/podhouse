@@ -49,7 +49,7 @@
     "react-feather": "^2.0.9",
     "react-helmet": "^6.1.0",
     "react-hook-form": "^6.15.1",
-    "react-relay": "^0.0.0-experimental-4c4107dd",
+    "react-relay": "0.0.0-experimental-4ebe0514",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.2",
     "rehawk": "^0.2.3",

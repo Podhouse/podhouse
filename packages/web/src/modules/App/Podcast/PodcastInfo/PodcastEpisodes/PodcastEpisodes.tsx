@@ -1,6 +1,7 @@
 import React, { useCallback } from "react";
 import graphql from "babel-plugin-relay/macro";
 import { usePaginationFragment } from "react-relay/hooks";
+import { FragmentRefs } from "relay-runtime";
 
 import { PodcastEpisodesContainer } from "./PodcastEpisodes.styles";
 
@@ -30,12 +31,9 @@ const query = graphql`
           audio
           duration
           podcast {
-            id
-            _id
             name
             website
             rss
-            appleId
           }
         }
       }
@@ -44,7 +42,18 @@ const query = graphql`
 `;
 
 interface Props {
-  podcast: any;
+  readonly podcast: {
+    readonly id: string;
+    readonly _id: string;
+    readonly name: string;
+    readonly appleId: number;
+    readonly author: string;
+    readonly description: string;
+    readonly website: string;
+    readonly rss: string;
+    readonly image: string;
+    readonly " $fragmentRefs": FragmentRefs<"PodcastEpisodes_episodes">;
+  } | null;
   shouldLoadMore: boolean;
 }
 
@@ -54,7 +63,7 @@ const PodcastEpisodes = ({ podcast, shouldLoadMore }: Props) => {
     any
   >(query, podcast);
 
-  console.log("data: ", data);
+  console.log('data: ', data);
 
   const loadMore = useCallback(() => {
     // Don't fetch again if we're already loading the next page
