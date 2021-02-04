@@ -8,31 +8,38 @@ import {
   PodcastItemInnerContainer,
 } from "./PodcastItemWithDetails.styles";
 
-import { PodcastItemWithDetailsProps } from "./PodcastItemWithDetails.types";
-
 import convertPodcastNameToURL from "src/utils/convertPodcastNameToURL";
 
-const PodcastItemWithDetails = ({ node }: PodcastItemWithDetailsProps) => {
-  const { _id, name, author, appleId, image } = node;
+interface Props {
+  readonly node: {
+    readonly id: string;
+    readonly _id: string;
+    readonly name: string;
+    readonly author: string;
+    readonly image: string;
+    readonly appleId: number;
+  };
+};
 
-  const route: string = convertPodcastNameToURL(name, appleId);
+const PodcastItemWithDetails = ({ node }: Props) => {
+  const route: string = convertPodcastNameToURL(node.name, node.appleId);
 
   return (
     <PodcastItemWithDetailsContainer>
-      <ReactRouterLink to={{ pathname: route, state: { _id } }}>
-        <PodcastItemWithDetailsAvatar src={image} alt="image" loading="lazy" />
+      <ReactRouterLink to={{ pathname: route, state: { _id: node._id } }}>
+        <PodcastItemWithDetailsAvatar src={node.image} alt="image" loading="lazy" />
       </ReactRouterLink>
 
       <PodcastItemInnerContainer>
         <Text
           as={ReactRouterLink}
-          to={{ pathname: route, state: { _id } }}
+          to={{ pathname: route, state: { _id: node._id } }}
           fontWeight="500"
         >
-          {name}
+          {node.name}
         </Text>
 
-        <Text textAlign="start">{author}</Text>
+        <Text textAlign="start">{node.author}</Text>
       </PodcastItemInnerContainer>
     </PodcastItemWithDetailsContainer>
   );

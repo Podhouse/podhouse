@@ -125,7 +125,7 @@ const GenrePodcast = ({
 
       <PodcastsWithOnlyAvatarList
         title={primaryGenre}
-        edges={data.podcastsByGenre.edges}
+        podcasts={data.podcastsByGenre}
       />
     </GenrePodcastContainer>
   );

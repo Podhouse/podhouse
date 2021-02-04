@@ -9,12 +9,25 @@ import {
 
 import PodcastItemWithAvatar from "src/components/Podcast/PodcastItemWithAvatar/PodcastItemWithAvatar";
 
-import { PodcastsWithOnlyAvatarListProps } from "./PodcastsWithOnlyAvatarList.types";
+interface Props {
+  title: string;
+  readonly podcasts: {
+    readonly edges: ReadonlyArray<{
+      readonly node: {
+        readonly id: string;
+        readonly _id: string;
+        readonly name: string;
+        readonly appleId: number;
+        readonly image: string;
+      } | null;
+    } | null>;
+  } | undefined;
+}
 
 const PodcastsWithOnlyAvatarList = ({
   title,
-  edges,
-}: PodcastsWithOnlyAvatarListProps) => (
+  podcasts,
+}: Props) => (
   <PodcastsWithOnlyAvatarListContainer>
     <PodcastsWithOnlyAvatarListHeader>
       <Heading
@@ -31,7 +44,7 @@ const PodcastsWithOnlyAvatarList = ({
     </PodcastsWithOnlyAvatarListHeader>
 
     <PodcastsWithOnlyAvatarListSection>
-      {edges.map(({ node }: any) => (
+      {podcasts === undefined ? null : podcasts.edges.map(({ node }: any) => (
         <PodcastItemWithAvatar key={node._id} node={node} />
       ))}
     </PodcastsWithOnlyAvatarListSection>

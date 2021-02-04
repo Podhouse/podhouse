@@ -69,7 +69,7 @@ const SubscriptionsComponent = () => {
         justifyContent="center"
         w="100%"
         h="100%"
-        bgColor="red"
+        bgColor="white"
       >
         <Stack spacing={4} shouldWrapChildren align="center">
           <Text color="#101010" maxWidth="300px" textAlign="center">
@@ -96,7 +96,7 @@ const SubscriptionsComponent = () => {
       autoHideDuration={100}
     >
       <SubscriptionsPodcast
-        user={currentUser}
+        currentUser={currentUser}
         shouldLoadMore={shouldLoadMore}
       />
     </Scrollbars>

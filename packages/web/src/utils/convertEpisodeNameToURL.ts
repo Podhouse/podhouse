@@ -1,8 +1,8 @@
 const convertEpisodeNameToURL = (
-  title: string,
+  title: string | undefined,
   podcastAppleId: number
 ): string => {
-  if (title === "") {
+  if (title === "" || title === undefined || podcastAppleId === undefined) {
     return `/episode/episode/${podcastAppleId}`;
   } else {
     const episodeNameLower = title.toLowerCase();

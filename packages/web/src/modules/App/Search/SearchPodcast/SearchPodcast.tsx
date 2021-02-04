@@ -121,7 +121,7 @@ const SearchPodcast = ({
 
       <PodcastsWithOnlyAvatarList
         title="Search"
-        edges={data.podcastsByName.edges}
+        podcasts={data.podcastsByName}
       />
     </SearchPodcastContainer>
   );
