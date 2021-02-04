@@ -47,7 +47,10 @@ const EpisodeItem = ({ node }: Props) => {
     onEpisode,
   } = usePlayerContext();
 
-  const route: string = convertEpisodeNameToURL(node.title, node.podcast.appleId);
+  const route: string = convertEpisodeNameToURL(
+    node.title,
+    node.podcast.appleId
+  );
 
   const renderEpisodeButton = () => {
     if (episode && episode.title === node.title) {
@@ -137,7 +140,9 @@ const EpisodeItem = ({ node }: Props) => {
         {node.publishedDate}
       </EpisodeItemPublishedDate>
 
-      <EpisodeItemDuration textAlign="start">{node.duration}</EpisodeItemDuration>
+      <EpisodeItemDuration textAlign="start">
+        {node.duration}
+      </EpisodeItemDuration>
 
       {renderEpisodeButton()}
     </EpisodeItemContainer>

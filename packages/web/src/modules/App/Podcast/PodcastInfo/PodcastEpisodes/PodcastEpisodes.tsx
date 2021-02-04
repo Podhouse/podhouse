@@ -13,7 +13,7 @@ const query = graphql`
   fragment PodcastEpisodes_episodes on Podcast
   @argumentDefinitions(
     after: { type: "String" }
-    first: { type: "Int", defaultValue: 10 }
+    first: { type: "Int", defaultValue: 25 }
     before: { type: "String" }
     last: { type: "Int" }
   )
@@ -22,6 +22,7 @@ const query = graphql`
       @connection(key: "PodcastEpisodes_episodes") {
       edges {
         node {
+          id
           _id
           title
           description
@@ -63,7 +64,7 @@ const PodcastEpisodes = ({ podcast, shouldLoadMore }: Props) => {
     any
   >(query, podcast);
 
-  console.log('data: ', data);
+  console.log("data: ", data);
 
   const loadMore = useCallback(() => {
     // Don't fetch again if we're already loading the next page

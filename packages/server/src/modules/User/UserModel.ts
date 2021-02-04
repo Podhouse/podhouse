@@ -13,7 +13,6 @@ const UserSchema = new Schema(
       type: String,
       hidden: true,
       required: true,
-      minlength: 3,
     },
     subscriptions: [
       {

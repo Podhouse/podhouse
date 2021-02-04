@@ -24,7 +24,11 @@ const PodcastItemWithAvatar = ({ node }: Props) => {
   return (
     <PodcastItemWithAvatarContainer>
       <ReactRouterLink to={{ pathname: route, state: { _id: node._id } }}>
-        <PodcastItemWithAvatarAvatar src={node.image} alt="image" loading="lazy" />
+        <PodcastItemWithAvatarAvatar
+          src={node.image}
+          alt="image"
+          loading="lazy"
+        />
       </ReactRouterLink>
     </PodcastItemWithAvatarContainer>
   );

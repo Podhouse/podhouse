@@ -15,11 +15,11 @@ const OwnerType: GraphQLObjectType = new GraphQLObjectType({
   description: "OwnerType",
   fields: () => ({
     name: {
-      type: GraphQLNonNull(GraphQLString),
+      type: GraphQLString,
       resolve: ({ name }) => name,
     },
     email: {
-      type: GraphQLNonNull(GraphQLString),
+      type: GraphQLString,
       resolve: ({ email }) => email,
     },
   }),
@@ -32,47 +32,47 @@ const EpisodeType: GraphQLObjectType = new GraphQLObjectType({
     id: globalIdField("Episode"),
     ...mongooseIDResolver,
     title: {
-      type: GraphQLNonNull(GraphQLString),
+      type: GraphQLString,
       resolve: ({ title }) => title,
     },
     description: {
-      type: GraphQLNonNull(GraphQLString),
+      type: GraphQLString,
       resolve: ({ description }) => description,
     },
     publishedDate: {
-      type: GraphQLNonNull(GraphQLString),
+      type: GraphQLString,
       resolve: ({ publishedDate }) => publishedDate,
     },
     link: {
-      type: GraphQLNonNull(GraphQLString),
+      type: GraphQLString,
       resolve: ({ link }) => link,
     },
     image: {
-      type: GraphQLNonNull(GraphQLString),
+      type: GraphQLString,
       resolve: ({ image }) => image,
     },
     audio: {
-      type: GraphQLNonNull(GraphQLString),
+      type: GraphQLString,
       resolve: ({ audio }) => audio,
     },
     guid: {
-      type: GraphQLNonNull(GraphQLString),
+      type: GraphQLString,
       resolve: ({ guid }) => guid,
     },
     duration: {
-      type: GraphQLNonNull(GraphQLString),
+      type: GraphQLString,
       resolve: ({ duration }) => duration,
     },
     generator: {
-      type: GraphQLNonNull(GraphQLString),
+      type: GraphQLString,
       resolve: ({ generator }) => generator,
     },
     owner: {
-      type: GraphQLNonNull(OwnerType),
+      type: OwnerType,
       resolve: ({ owner }) => owner,
     },
     podcast: {
-      type: GraphQLNonNull(PodcastType),
+      type: PodcastType,
       resolve: async ({ podcast }, args, context) =>
         await PodcastLoader.load(context, podcast),
     },

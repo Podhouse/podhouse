@@ -39,7 +39,9 @@ const query = graphql`
 
 interface Props {
   readonly currentUser: {
-    readonly " $fragmentRefs": FragmentRefs<"useAuthUser_user" | "SubscriptionsPodcast_subscriptions">;
+    readonly " $fragmentRefs": FragmentRefs<
+      "useAuthUser_user" | "SubscriptionsPodcast_subscriptions"
+    >;
   } | null;
   shouldLoadMore: boolean;
 }

@@ -11,23 +11,22 @@ import PodcastItemWithAvatar from "src/components/Podcast/PodcastItemWithAvatar/
 
 interface Props {
   title: string;
-  readonly podcasts: {
-    readonly edges: ReadonlyArray<{
-      readonly node: {
-        readonly id: string;
-        readonly _id: string;
-        readonly name: string;
-        readonly appleId: number;
-        readonly image: string;
-      } | null;
-    } | null>;
-  } | undefined;
+  readonly podcasts:
+    | {
+        readonly edges: ReadonlyArray<{
+          readonly node: {
+            readonly id: string;
+            readonly _id: string;
+            readonly name: string;
+            readonly appleId: number;
+            readonly image: string;
+          } | null;
+        } | null>;
+      }
+    | undefined;
 }
 
-const PodcastsWithOnlyAvatarList = ({
-  title,
-  podcasts,
-}: Props) => (
+const PodcastsWithOnlyAvatarList = ({ title, podcasts }: Props) => (
   <PodcastsWithOnlyAvatarListContainer>
     <PodcastsWithOnlyAvatarListHeader>
       <Heading
@@ -44,9 +43,11 @@ const PodcastsWithOnlyAvatarList = ({
     </PodcastsWithOnlyAvatarListHeader>
 
     <PodcastsWithOnlyAvatarListSection>
-      {podcasts === undefined ? null : podcasts.edges.map(({ node }: any) => (
-        <PodcastItemWithAvatar key={node._id} node={node} />
-      ))}
+      {podcasts === undefined
+        ? null
+        : podcasts.edges.map(({ node }: any) => (
+            <PodcastItemWithAvatar key={node._id} node={node} />
+          ))}
     </PodcastsWithOnlyAvatarListSection>
   </PodcastsWithOnlyAvatarListContainer>
 );

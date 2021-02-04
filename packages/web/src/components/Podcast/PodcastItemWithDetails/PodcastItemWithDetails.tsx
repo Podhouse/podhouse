@@ -19,7 +19,7 @@ interface Props {
     readonly image: string;
     readonly appleId: number;
   };
-};
+}
 
 const PodcastItemWithDetails = ({ node }: Props) => {
   const route: string = convertPodcastNameToURL(node.name, node.appleId);
@@ -27,7 +27,11 @@ const PodcastItemWithDetails = ({ node }: Props) => {
   return (
     <PodcastItemWithDetailsContainer>
       <ReactRouterLink to={{ pathname: route, state: { _id: node._id } }}>
-        <PodcastItemWithDetailsAvatar src={node.image} alt="image" loading="lazy" />
+        <PodcastItemWithDetailsAvatar
+          src={node.image}
+          alt="image"
+          loading="lazy"
+        />
       </ReactRouterLink>
 
       <PodcastItemInnerContainer>

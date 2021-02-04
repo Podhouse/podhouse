@@ -18,16 +18,14 @@ interface Props {
         readonly _id: string;
         readonly name: string;
         readonly author: string;
+        readonly appleId: number;
         readonly image: string;
       } | null;
     } | null>;
   };
 }
 
-const PodcastsWithDetailsList = ({
-  title,
-  podcasts,
-}: Props) => (
+const PodcastsWithDetailsList = ({ title, podcasts }: Props) => (
   <PodcastsWithDetailsListContainer>
     <PodcastsWithDetailsListHeader>
       <Heading as="h1" fontSize={14} fontWeight="500" textAlign="start">

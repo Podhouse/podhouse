@@ -2,12 +2,9 @@ import {
   GraphQLObjectType,
   GraphQLInputObjectType,
   GraphQLString,
-  GraphQLNonNull,
   GraphQLBoolean,
 } from "graphql";
 import { globalIdField, connectionFromArray } from "graphql-relay";
-
-import { IUser } from "./UserModel";
 
 import { load } from "./UserLoader";
 
@@ -32,7 +29,7 @@ const UserSubscribedInputType = new GraphQLInputObjectType({
   description: "Input payload for checking if user is subscribed to podcast",
   fields: () => ({
     _id: {
-      type: GraphQLNonNull(GraphQLString),
+      type: GraphQLString,
     },
   }),
 });
@@ -42,26 +39,23 @@ const UserFavoritedInputType = new GraphQLInputObjectType({
   description: "Input payload for checking if user has favorited an episode",
   fields: () => ({
     _id: {
-      type: GraphQLNonNull(GraphQLString),
+      type: GraphQLString,
     },
   }),
 });
 
-const UserType: GraphQLObjectType = new GraphQLObjectType<
-  IUser,
-  GraphQLContext
->({
+const UserType: GraphQLObjectType = new GraphQLObjectType({
   name: "User",
   description: "UserType",
   fields: () => ({
     id: globalIdField("User"),
     ...mongooseIDResolver,
     email: {
-      type: GraphQLNonNull(GraphQLString),
+      type: GraphQLString,
       resolve: ({ email }) => email,
     },
     subscriptions: {
-      type: GraphQLNonNull(PodcastConnection.connectionType),
+      type: PodcastConnection.connectionType,
       args: {
         ...connectionArgs,
       },
@@ -74,7 +68,7 @@ const UserType: GraphQLObjectType = new GraphQLObjectType<
       },
     },
     favorites: {
-      type: GraphQLNonNull(EpisodeConnection.connectionType),
+      type: EpisodeConnection.connectionType,
       args: {
         ...connectionArgs,
       },
@@ -87,10 +81,10 @@ const UserType: GraphQLObjectType = new GraphQLObjectType<
       },
     },
     subscribed: {
-      type: GraphQLNonNull(GraphQLBoolean),
+      type: GraphQLBoolean,
       args: {
         input: {
-          type: GraphQLNonNull(UserSubscribedInputType),
+          type: UserSubscribedInputType,
         },
       },
       resolve: ({ subscriptions }, { input }: { input: { _id: string } }) => {
@@ -102,10 +96,10 @@ const UserType: GraphQLObjectType = new GraphQLObjectType<
       },
     },
     favorited: {
-      type: GraphQLNonNull(GraphQLBoolean),
+      type: GraphQLBoolean,
       args: {
         input: {
-          type: GraphQLNonNull(UserFavoritedInputType),
+          type: UserFavoritedInputType,
         },
       },
       resolve: ({ favorites }, { input }: { input: { _id: string } }) => {
@@ -117,7 +111,7 @@ const UserType: GraphQLObjectType = new GraphQLObjectType<
       },
     },
     history: {
-      type: GraphQLNonNull(EpisodeConnection.connectionType),
+      type: EpisodeConnection.connectionType,
       args: {
         ...connectionArgs,
       },
@@ -130,11 +124,11 @@ const UserType: GraphQLObjectType = new GraphQLObjectType<
       },
     },
     createdAt: {
-      type: GraphQLNonNull(GraphQLString),
+      type: GraphQLString,
       resolve: ({ createdAt }) => (createdAt ? createdAt.toISOString() : null),
     },
     updatedAt: {
-      type: GraphQLNonNull(GraphQLString),
+      type: GraphQLString,
       resolve: ({ updatedAt }) => (updatedAt ? updatedAt.toISOString() : null),
     },
   }),
