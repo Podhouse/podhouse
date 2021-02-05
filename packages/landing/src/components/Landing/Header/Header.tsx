@@ -36,12 +36,6 @@ const Header = () => {
           </Link>
         </NextLink>
 
-        <NextLink href="/blog" as="/blog">
-          <Link href="/blog" fontWeight="500" color="#101010">
-            Blog
-          </Link>
-        </NextLink>
-
         <NextLink href="/advertise" as="/advertise">
           <Link href="/advertise" fontWeight="500" color="#101010">
             Advertise
