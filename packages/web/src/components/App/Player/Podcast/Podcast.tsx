@@ -42,6 +42,7 @@ const Podcast = ({ ready, episode }: Props) => {
     <PodcastContainer>
       <ReactRouterLink
         to={{ pathname: episodeRoute, state: { _id: episode._id } }}
+        className="podcast-image"
       >
         <PodcastImage src={episode.image} />
       </ReactRouterLink>

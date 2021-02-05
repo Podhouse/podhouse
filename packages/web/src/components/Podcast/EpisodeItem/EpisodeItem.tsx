@@ -7,6 +7,7 @@ import {
   EpisodeItemAvatar,
   EpisodeItemName,
   EpisodeItemDescription,
+  EpisodeNameDescription,
   EpisodeItemPublishedDate,
   EpisodeItemDuration,
   EpisodeItemButton,
@@ -120,21 +121,23 @@ const EpisodeItem = ({ node }: Props) => {
   return (
     <EpisodeItemContainer>
       <ReactRouterLink to={{ pathname: route, state: { _id: node._id } }}>
-        <EpisodeItemAvatar src={node.image} alt="image" />
+        <EpisodeItemAvatar src={node.image} alt="image" loading="lazy" />
       </ReactRouterLink>
 
-      <EpisodeItemName
-        as={ReactRouterLink}
-        to={{ pathname: route, state: { _id: node._id } }}
-        fontWeight="500"
-        lineHeight="25px"
-      >
-        {node.title}
-      </EpisodeItemName>
+      <EpisodeNameDescription>
+        <EpisodeItemName
+          as={ReactRouterLink}
+          to={{ pathname: route, state: { _id: node._id } }}
+          fontWeight="500"
+          lineHeight="25px"
+        >
+          {node.title}
+        </EpisodeItemName>
 
-      <EpisodeItemDescription lineHeight="25px" textAlign="start">
-        {node.description}
-      </EpisodeItemDescription>
+        <EpisodeItemDescription lineHeight="25px" textAlign="start">
+          {node.description}
+        </EpisodeItemDescription>
+      </EpisodeNameDescription>
 
       <EpisodeItemPublishedDate textAlign="start">
         {node.publishedDate}

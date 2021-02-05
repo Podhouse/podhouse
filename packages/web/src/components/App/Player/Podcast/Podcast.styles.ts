@@ -23,6 +23,10 @@ export const PodcastContainer = styled.div`
     grid-template-rows: 1fr;
     align-items: center;
     margin: 0;
+
+    .podcast-image {
+      display: none;
+    }
   }
 `;
 
