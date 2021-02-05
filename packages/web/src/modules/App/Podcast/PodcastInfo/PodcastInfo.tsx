@@ -125,7 +125,7 @@ const PodcastInfo = ({
     <PodcastInfoContainer>
       <PodcastInfoHeader>
         <Image
-          src={podcast?.image}
+          src={podcast && podcast.image ? podcast.image : ""}
           objectFit="cover"
           borderRadius={5}
           maxWidth="200px"
@@ -140,7 +140,7 @@ const PodcastInfo = ({
             letterSpacing="-0.03em"
             textAlign="start"
           >
-            {podcast?.name}
+            {podcast && podcast.name ? podcast.name : ""}
           </Heading>
 
           <Heading
@@ -150,7 +150,7 @@ const PodcastInfo = ({
             letterSpacing="-0.03em"
             textAlign="start"
           >
-            {podcast?.author}
+            {podcast && podcast.author ? podcast.author : ""}
           </Heading>
 
           <PodcastInfoDescription
@@ -158,7 +158,7 @@ const PodcastInfo = ({
             lineHeight="25px"
             textAlign="start"
           >
-            {podcast?.description}
+            {podcast && podcast.description ? podcast.description : ""}
           </PodcastInfoDescription>
         </PodcastInfoDetailsContainer>
 
@@ -193,14 +193,22 @@ const PodcastInfo = ({
 
         <PodcastInfoLinksContainer>
           <PodcastInfoLinkContainer>
-            <Link color="#101010" href={podcast?.website} isExternal>
+            <Link
+              color="#101010"
+              href={podcast && podcast.website ? podcast.website : ""}
+              isExternal
+            >
               Website
             </Link>
             <ExternalLink size={14} />
           </PodcastInfoLinkContainer>
 
           <PodcastInfoLinkContainer>
-            <Link color="#101010" href={podcast?.rss} isExternal>
+            <Link
+              color="#101010"
+              href={podcast && podcast.rss ? podcast.rss : ""}
+              isExternal
+            >
               RSS
             </Link>
             <ExternalLink size={14} />

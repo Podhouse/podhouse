@@ -9,21 +9,21 @@ export type EpisodeQueryVariables = {
 export type EpisodeQueryResponse = {
   readonly episode: {
     readonly _id: string;
-    readonly title: string;
-    readonly description: string;
-    readonly publishedDate: string;
-    readonly link: string;
-    readonly image: string;
-    readonly audio: string;
-    readonly duration: string;
+    readonly title: string | null;
+    readonly description: string | null;
+    readonly publishedDate: string | null;
+    readonly link: string | null;
+    readonly image: string | null;
+    readonly audio: string | null;
+    readonly duration: string | null;
     readonly podcast: {
       readonly id: string;
       readonly _id: string;
-      readonly name: string;
-      readonly website: string;
-      readonly rss: string;
-      readonly appleId: number;
-    };
+      readonly name: string | null;
+      readonly website: string | null;
+      readonly rss: string | null;
+      readonly appleId: number | null;
+    } | null;
   } | null;
 };
 export type EpisodeQuery = {

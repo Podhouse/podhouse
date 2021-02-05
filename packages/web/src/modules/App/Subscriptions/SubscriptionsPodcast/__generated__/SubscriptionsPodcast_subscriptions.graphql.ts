@@ -10,12 +10,12 @@ export type SubscriptionsPodcast_subscriptions = {
       readonly node: {
         readonly id: string;
         readonly _id: string;
-        readonly name: string;
-        readonly appleId: number;
-        readonly image: string;
+        readonly name: string | null;
+        readonly appleId: number | null;
+        readonly image: string | null;
       } | null;
     } | null>;
-  };
+  } | null;
   readonly id: string;
   readonly " $refType": "SubscriptionsPodcast_subscriptions";
 };

@@ -10,9 +10,9 @@ export type GenrePodcast_podcasts = {
       readonly node: {
         readonly id: string;
         readonly _id: string;
-        readonly name: string;
-        readonly appleId: number;
-        readonly image: string;
+        readonly name: string | null;
+        readonly appleId: number | null;
+        readonly image: string | null;
       } | null;
     } | null>;
   };

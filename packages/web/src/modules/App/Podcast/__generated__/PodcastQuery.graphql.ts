@@ -11,13 +11,13 @@ export type PodcastQueryResponse = {
   readonly podcast: {
     readonly id: string;
     readonly _id: string;
-    readonly name: string;
-    readonly appleId: number;
-    readonly author: string;
-    readonly description: string;
-    readonly website: string;
-    readonly rss: string;
-    readonly image: string;
+    readonly name: string | null;
+    readonly appleId: number | null;
+    readonly author: string | null;
+    readonly description: string | null;
+    readonly website: string | null;
+    readonly rss: string | null;
+    readonly image: string | null;
     readonly " $fragmentRefs": FragmentRefs<"PodcastEpisodes_episodes">;
   } | null;
 };

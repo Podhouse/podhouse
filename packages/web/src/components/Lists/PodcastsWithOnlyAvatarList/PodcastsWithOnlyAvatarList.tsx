@@ -17,12 +17,13 @@ interface Props {
           readonly node: {
             readonly id: string;
             readonly _id: string;
-            readonly name: string;
-            readonly appleId: number;
-            readonly image: string;
+            readonly name: string | null;
+            readonly appleId: number | null;
+            readonly image: string | null;
           } | null;
         } | null>;
       }
+    | null
     | undefined;
 }
 
@@ -43,9 +44,9 @@ const PodcastsWithOnlyAvatarList = ({ title, podcasts }: Props) => (
     </PodcastsWithOnlyAvatarListHeader>
 
     <PodcastsWithOnlyAvatarListSection>
-      {podcasts === undefined
+      {podcasts && !podcasts.edges.length
         ? null
-        : podcasts.edges.map(({ node }: any) => (
+        : podcasts?.edges.map(({ node }: any) => (
             <PodcastItemWithAvatar key={node._id} node={node} />
           ))}
     </PodcastsWithOnlyAvatarListSection>

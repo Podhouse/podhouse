@@ -144,37 +144,63 @@ const EpisodeInfo = ({ queryReference, query }: Props) => {
   return (
     <EpisodeInfoContainer>
       <Helmet>
-        <title>{episode?.title}</title>
+        <title>{episode?.title ? episode.title : "Episode title"}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta charSet="utf-8" />
-        <meta name="description" content={episode?.description} />
+        <meta
+          name="description"
+          content={
+            episode?.description ? episode.description : "Episode description"
+          }
+        />
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary" />
-        <meta property="twitter:title" content={episode?.title} />
-        <meta property="twitter:description" content={episode?.description} />
-        <meta property="twitter:image" content={episode?.image} />
+        <meta
+          property="twitter:title"
+          content={episode?.title ? episode.title : "Episode title"}
+        />
+        <meta
+          property="twitter:description"
+          content={
+            episode?.description ? episode.description : "Episode description"
+          }
+        />
+        <meta
+          property="twitter:image"
+          content={episode?.image ? episode.image : ""}
+        />
         <meta property="twitter:url" content={location.pathname} />
 
         {/* Open Graph */}
         <meta property="og:url" content={location.pathname} key="ogurl" />
-        <meta property="og:image" content={episode?.image} key="ogimage" />
+        <meta
+          property="og:image"
+          content={episode?.image ? episode.image : ""}
+          key="ogimage"
+        />
         <meta
           property="og:site_name"
-          content={episode?.title}
+          content={episode?.title ? episode.title : "Episode title"}
           key="ogsitename"
         />
-        <meta property="og:title" content={episode?.title} key="ogtitle" />
+        <meta
+          property="og:title"
+          content={episode?.title ? episode.title : "Episode title"}
+          key="ogtitle"
+        />
         <meta
           property="og:description"
-          content={episode?.description}
+          content={
+            episode?.description ? episode.description : "Episode description"
+          }
           key="ogdesc"
         />
       </Helmet>
 
       <EpisodeInfoHeader>
         <Image
-          src={episode?.image}
+          src={episode?.image ? episode.image : ""}
           objectFit="cover"
           borderRadius={5}
           maxWidth="200px"
@@ -189,7 +215,7 @@ const EpisodeInfo = ({ queryReference, query }: Props) => {
             letterSpacing="-0.03em"
             textAlign="start"
           >
-            {episode?.title}
+            {episode?.title ? episode.title : ""}
           </Heading>
 
           <Heading
@@ -199,7 +225,9 @@ const EpisodeInfo = ({ queryReference, query }: Props) => {
             letterSpacing="-0.03em"
             textAlign="start"
           >
-            {episode?.podcast.name}
+            {episode && episode.podcast && episode.podcast.name
+              ? episode.podcast.name
+              : ""}
           </Heading>
 
           <EpisodeInfoDescription
@@ -207,7 +235,7 @@ const EpisodeInfo = ({ queryReference, query }: Props) => {
             lineHeight="25px"
             textAlign="start"
           >
-            {episode?.description}
+            {episode?.description ? episode.description : ""}
           </EpisodeInfoDescription>
         </EpisodeInfoDetailsContainer>
 
@@ -217,14 +245,20 @@ const EpisodeInfo = ({ queryReference, query }: Props) => {
 
         <EpisodeInfoLinksContainer>
           <EpisodeInfoLinkContainer>
-            <Link href={episode?.podcast?.website} isExternal>
+            <Link
+              href={episode?.podcast?.website ? episode.podcast.website : ""}
+              isExternal
+            >
               Website
             </Link>
             <ExternalLink size={14} />
           </EpisodeInfoLinkContainer>
 
           <EpisodeInfoLinkContainer>
-            <Link href={episode?.podcast?.rss} isExternal>
+            <Link
+              href={episode?.podcast?.rss ? episode?.podcast?.rss : ""}
+              isExternal
+            >
               RSS
             </Link>
             <ExternalLink size={14} />

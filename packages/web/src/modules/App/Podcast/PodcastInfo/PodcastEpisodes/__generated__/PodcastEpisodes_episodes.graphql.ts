@@ -10,21 +10,21 @@ export type PodcastEpisodes_episodes = {
       readonly node: {
         readonly id: string;
         readonly _id: string;
-        readonly title: string;
-        readonly description: string;
-        readonly publishedDate: string;
-        readonly link: string;
-        readonly image: string;
-        readonly audio: string;
-        readonly duration: string;
+        readonly title: string | null;
+        readonly description: string | null;
+        readonly publishedDate: string | null;
+        readonly link: string | null;
+        readonly image: string | null;
+        readonly audio: string | null;
+        readonly duration: string | null;
         readonly podcast: {
-          readonly name: string;
-          readonly website: string;
-          readonly rss: string;
-        };
+          readonly name: string | null;
+          readonly website: string | null;
+          readonly rss: string | null;
+        } | null;
       } | null;
     } | null>;
-  };
+  } | null;
   readonly id: string;
   readonly " $refType": "PodcastEpisodes_episodes";
 };
