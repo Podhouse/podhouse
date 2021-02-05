@@ -1,11 +1,15 @@
 import React from "react";
 import { Heading, Text } from "@chakra-ui/react";
 import Scrollbars from "react-custom-scrollbars";
+import ReactGA from "react-ga";
 
 import {
   PromoteContainer,
   PromoteContainerHeaderContainer,
 } from "./Promote.styles";
+
+ReactGA.initialize(`${process.env.REACT_APP_GOOGLE_ID}`);
+ReactGA.pageview(window.location.pathname + window.location.search);
 
 const Promote = () => {
   return (

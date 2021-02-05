@@ -18,23 +18,20 @@ const fetchQuery = async (request: RequestParameters, variables: Variables) => {
     // Uncomment to see optimistic update working
     // const fetchFn = fetchWithRetries;
 
-    const response = await fetchFn(
-      "https://podhouse-server.herokuapp.com/graphql",
-      {
-        method: "POST",
-        headers: {
-          authorization,
-          Accept: "application/json",
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify({
-          query: request.text,
-          variables,
-        }),
-        fetchTimeout: 20000,
-        retryDelays: [1000, 3000, 5000],
-      }
-    );
+    const response = await fetchFn(`${process.env.REACT_APP_PODHOUSE_API}`, {
+      method: "POST",
+      headers: {
+        authorization,
+        Accept: "application/json",
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        query: request.text,
+        variables,
+      }),
+      fetchTimeout: 20000,
+      retryDelays: [1000, 3000, 5000],
+    });
 
     const data = await handleData(response);
 

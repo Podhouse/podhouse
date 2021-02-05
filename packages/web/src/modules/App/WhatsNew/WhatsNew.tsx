@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet";
 import { Heading, Text } from "@chakra-ui/react";
 import Scrollbars from "react-custom-scrollbars";
 import { useLocation } from "react-router-dom";
+import ReactGA from "react-ga";
 
 import {
   WhatsNewContainer,
@@ -10,6 +11,9 @@ import {
   WhatsNewUpdatesContainer,
   WhatsNewUpdateItemContainer,
 } from "./WhatsNew.styles";
+
+ReactGA.initialize(`${process.env.REACT_APP_GOOGLE_ID}`);
+ReactGA.pageview(window.location.pathname + window.location.search);
 
 const WhatsNew = () => {
   const location = useLocation();

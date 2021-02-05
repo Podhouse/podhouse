@@ -21,16 +21,6 @@ import convertEpisodeNameToURL from "src/utils/convertEpisodeNameToURL";
 const Menu = () => {
   const { loading, episode } = usePlayerContext();
 
-  const renderEpisodeImageBasedOnData = () => {
-    if (!episode) {
-      return "https://ebwu.education/wp-content/themes/claue/assets/images/placeholder.png";
-    } else if (!episode.image && episode?.podcast?.image) {
-      return episode?.podcast?.image;
-    } else if (episode && episode.image) {
-      return episode?.image;
-    }
-  };
-
   const renderEpisodeImageElement = () => {
     if (loading)
       return (
@@ -44,13 +34,23 @@ const Menu = () => {
       episode.podcast.appleId
     );
 
+    const renderEpisodeImageBasedOnData = () => {
+      if (!episode) {
+        return "https://ebwu.education/wp-content/themes/claue/assets/images/placeholder.png";
+      } else if (!episode.image && episode?.podcast?.image) {
+        return episode?.podcast?.image;
+      } else if (episode && episode.image) {
+        return episode?.image;
+      }
+    };
+
     return (
       <ReactRouterLink
         to={{ pathname: episodeRoute, state: { _id: episode._id } }}
       >
         <MenuPodcastImage
           src={renderEpisodeImageBasedOnData()}
-          alt="Podcast logo"
+          alt="Episode image"
         />
       </ReactRouterLink>
     );
