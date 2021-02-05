@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
 import { Image } from "@chakra-ui/react";
-import { Link as ReactRouterLink } from "react-router-dom";
 
 export const PodcastContainer = styled.div`
   width: 50px;
@@ -62,13 +61,6 @@ export const PodcastDetails = styled.div`
       display: block;
     }
   }
-`;
-
-export const PodcastNameTitle = styled(ReactRouterLink)`
-  max-width: 300px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
 `;
 
 export const PodcastFavoriteContainer = styled.div`
