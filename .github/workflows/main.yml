@@ -13,6 +13,12 @@ jobs:
         with:
           node-version: 12.x
 
+      - name: Cache node_modules
+        uses: actions/cache@v2
+        with:
+          path: "**/node_modules"
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+
       - name: Install dependencies
         run: yarn install --frozen-lockfile
         env:
