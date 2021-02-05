@@ -16,23 +16,42 @@ import { ReactComponent as Logo } from "src/images/logo-2.svg";
 
 import { usePlayerContext } from "src/machines/Player/PlayerContext";
 
+import convertEpisodeNameToURL from "src/utils/convertEpisodeNameToURL";
+
 const Menu = () => {
   const { loading, episode } = usePlayerContext();
 
-  const onRenderPodcastImage = () => {
+  const renderEpisodeImageBasedOnData = () => {
+    if (!episode) {
+      return "https://ebwu.education/wp-content/themes/claue/assets/images/placeholder.png";
+    } else if (!episode.image && episode?.podcast?.image) {
+      return episode?.podcast?.image;
+    } else if (episode && episode.image) {
+      return episode?.image;
+    }
+  };
+
+  const renderEpisodeImageElement = () => {
     if (loading)
       return (
         <MenuSkeletonPodcastImage startColor="#E2E8F0" endColor="#E2E8F0" />
       );
+
     if (!episode) return null;
+
+    const episodeRoute: string = convertEpisodeNameToURL(
+      episode.title,
+      episode.podcast.appleId
+    );
+
     return (
       <ReactRouterLink
-        to={{
-          pathname: `/episode/${episode._id}`,
-          state: { _id: episode._id },
-        }}
+        to={{ pathname: episodeRoute, state: { _id: episode._id } }}
       >
-        <MenuPodcastImage src={episode.image} alt="Podcast logo" />
+        <MenuPodcastImage
+          src={renderEpisodeImageBasedOnData()}
+          alt="Podcast logo"
+        />
       </ReactRouterLink>
     );
   };
@@ -54,7 +73,7 @@ const Menu = () => {
 
           <Navigation />
 
-          {onRenderPodcastImage()}
+          {renderEpisodeImageElement()}
         </MenuInsideContainer>
       </Scrollbars>
     </MenuContainer>

@@ -17,6 +17,10 @@ export type PodcastEpisodes_episodes = {
         readonly audio: string | null;
         readonly duration: string | null;
         readonly podcast: {
+          readonly _id: string;
+          readonly name: string | null;
+          readonly website: string | null;
+          readonly rss: string | null;
           readonly appleId: number | null;
           readonly image: string | null;
         } | null;
@@ -35,6 +39,13 @@ export type PodcastEpisodes_episodes$key = {
 const node: ReaderFragment = (function () {
   var v0 = ["episodes"],
     v1 = {
+      alias: null,
+      args: null,
+      kind: "ScalarField",
+      name: "_id",
+      storageKey: null,
+    },
+    v2 = {
       alias: null,
       args: null,
       kind: "ScalarField",
@@ -117,13 +128,7 @@ const node: ReaderFragment = (function () {
                 name: "node",
                 plural: false,
                 selections: [
-                  {
-                    alias: null,
-                    args: null,
-                    kind: "ScalarField",
-                    name: "_id",
-                    storageKey: null,
-                  },
+                  v1 /*: any*/,
                   {
                     alias: null,
                     args: null,
@@ -152,7 +157,7 @@ const node: ReaderFragment = (function () {
                     name: "link",
                     storageKey: null,
                   },
-                  v1 /*: any*/,
+                  v2 /*: any*/,
                   {
                     alias: null,
                     args: null,
@@ -175,6 +180,28 @@ const node: ReaderFragment = (function () {
                     name: "podcast",
                     plural: false,
                     selections: [
+                      v1 /*: any*/,
+                      {
+                        alias: null,
+                        args: null,
+                        kind: "ScalarField",
+                        name: "name",
+                        storageKey: null,
+                      },
+                      {
+                        alias: null,
+                        args: null,
+                        kind: "ScalarField",
+                        name: "website",
+                        storageKey: null,
+                      },
+                      {
+                        alias: null,
+                        args: null,
+                        kind: "ScalarField",
+                        name: "rss",
+                        storageKey: null,
+                      },
                       {
                         alias: null,
                         args: null,
@@ -182,7 +209,7 @@ const node: ReaderFragment = (function () {
                         name: "appleId",
                         storageKey: null,
                       },
-                      v1 /*: any*/,
+                      v2 /*: any*/,
                     ],
                     storageKey: null,
                   },
@@ -260,5 +287,5 @@ const node: ReaderFragment = (function () {
     abstractKey: null,
   };
 })();
-(node as any).hash = "a03f3a9402f62b39c585b615a8d6f8a1";
+(node as any).hash = "7e8b006d9f7b0b02501f3cd10d8c9bb8";
 export default node;

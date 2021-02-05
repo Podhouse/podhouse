@@ -28,6 +28,10 @@ interface Props {
     readonly audio: string | null;
     readonly duration: string | null;
     readonly podcast: {
+      readonly _id: string;
+      readonly name: string | null;
+      readonly website: string | null;
+      readonly rss: string | null;
       readonly appleId: number | null;
       readonly image: string | null;
     } | null;
@@ -123,6 +127,7 @@ const EpisodeItem = ({ node }: Props) => {
       return node?.image;
     }
   };
+
   return (
     <EpisodeItemContainer>
       <ReactRouterLink to={{ pathname: route, state: { _id: node?._id } }}>

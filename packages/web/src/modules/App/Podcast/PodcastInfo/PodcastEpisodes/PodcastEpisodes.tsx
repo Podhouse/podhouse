@@ -31,6 +31,10 @@ const query = graphql`
           audio
           duration
           podcast {
+            _id
+            name
+            website
+            rss
             appleId
             image
           }
@@ -56,7 +60,7 @@ interface Props {
   shouldLoadMore: boolean;
 }
 
-type Node = {
+type EpisodesNode = {
   readonly node: {
     readonly _id: string;
     readonly title: string | null;
@@ -67,6 +71,10 @@ type Node = {
     readonly audio: string | null;
     readonly duration: string | null;
     readonly podcast: {
+      readonly _id: string;
+      readonly name: string | null;
+      readonly website: string | null;
+      readonly rss: string | null;
       readonly appleId: number | null;
       readonly image: string | null;
     } | null;
@@ -93,7 +101,7 @@ const PodcastEpisodes = ({ podcast, shouldLoadMore }: Props) => {
 
   return (
     <PodcastEpisodesContainer>
-      {data.episodes.edges.map(({ node }: Node) => (
+      {data.episodes.edges.map(({ node }: EpisodesNode) => (
         <EpisodeItem key={node?._id} node={node} />
       ))}
     </PodcastEpisodesContainer>

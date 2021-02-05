@@ -57,6 +57,10 @@ fragment PodcastEpisodes_episodes on Podcast {
         audio
         duration
         podcast {
+          _id
+          name
+          website
+          rss
           appleId
           image
           id
@@ -291,6 +295,10 @@ const node: ConcreteRequest = (function () {
                           name: "podcast",
                           plural: false,
                           selections: [
+                            v3 /*: any*/,
+                            v4 /*: any*/,
+                            v8 /*: any*/,
+                            v9 /*: any*/,
                             v5 /*: any*/,
                             v10 /*: any*/,
                             v2 /*: any*/,
@@ -375,13 +383,13 @@ const node: ConcreteRequest = (function () {
       ],
     },
     params: {
-      cacheID: "0c0c9366b69bfc0fb749a765109d8d4b",
+      cacheID: "057455aad122be288491853860f0f967",
       id: null,
       metadata: {},
       name: "PodcastQuery",
       operationKind: "query",
       text:
-        "query PodcastQuery(\n  $_id: ID!\n) {\n  podcast(_id: $_id) {\n    id\n    _id\n    name\n    appleId\n    author\n    description\n    website\n    rss\n    image\n    ...PodcastEpisodes_episodes\n  }\n}\n\nfragment PodcastEpisodes_episodes on Podcast {\n  episodes(first: 20) {\n    edges {\n      node {\n        _id\n        title\n        description\n        publishedDate\n        link\n        image\n        audio\n        duration\n        podcast {\n          appleId\n          image\n          id\n        }\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n  id\n}\n",
+        "query PodcastQuery(\n  $_id: ID!\n) {\n  podcast(_id: $_id) {\n    id\n    _id\n    name\n    appleId\n    author\n    description\n    website\n    rss\n    image\n    ...PodcastEpisodes_episodes\n  }\n}\n\nfragment PodcastEpisodes_episodes on Podcast {\n  episodes(first: 20) {\n    edges {\n      node {\n        _id\n        title\n        description\n        publishedDate\n        link\n        image\n        audio\n        duration\n        podcast {\n          _id\n          name\n          website\n          rss\n          appleId\n          image\n          id\n        }\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n  id\n}\n",
     },
   };
 })();
