@@ -1,11 +1,11 @@
 import React from "react";
+import { Link } from "@chakra-ui/react";
 import { Link as ReactRouterLink } from "react-router-dom";
 
 import {
   PodcastContainer,
   PodcastImage,
   PodcastDetails,
-  PodcastNameTitle,
   PodcastFavoriteContainer,
 } from "./Podcast.styles";
 
@@ -42,28 +42,32 @@ const Podcast = ({ ready, episode }: Props) => {
     <PodcastContainer>
       <ReactRouterLink
         to={{ pathname: episodeRoute, state: { _id: episode._id } }}
+        className="podcast-image"
       >
         <PodcastImage src={episode.image} />
       </ReactRouterLink>
 
       <PodcastDetails>
-        <PodcastNameTitle
+        <Link
+          as={ReactRouterLink}
           to={{
             pathname: episodeRoute,
             state: { _id: episode._id },
           }}
+          fontWeight="500"
         >
           {episode.title}
-        </PodcastNameTitle>
+        </Link>
 
-        <PodcastNameTitle
+        <Link
+          as={ReactRouterLink}
           to={{
             pathname: podcastRoute,
             state: { _id: episode.podcast._id },
           }}
         >
           {episode.podcast.name}
-        </PodcastNameTitle>
+        </Link>
 
         <PodcastFavoriteContainer>
           {/* <Heart

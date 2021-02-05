@@ -23,7 +23,7 @@ export type SearchPodcastPaginationQuery = {
 query SearchPodcastPaginationQuery(
   $after: String
   $before: String
-  $first: Int = 25
+  $first: Int = 20
   $last: Int
   $podcastName: String
 ) {
@@ -34,11 +34,11 @@ fragment SearchPodcast_podcasts_1yFHIs on Query {
   podcastsByName(podcastName: $podcastName, after: $after, first: $first, before: $before, last: $last) {
     edges {
       node {
-        id
         _id
         name
         appleId
         image
+        id
         __typename
       }
       cursor
@@ -66,7 +66,7 @@ const node: ConcreteRequest = (function () {
         name: "before",
       },
       {
-        defaultValue: 25,
+        defaultValue: 20,
         kind: "LocalArgument",
         name: "first",
       },
@@ -158,13 +158,6 @@ const node: ConcreteRequest = (function () {
                       alias: null,
                       args: null,
                       kind: "ScalarField",
-                      name: "id",
-                      storageKey: null,
-                    },
-                    {
-                      alias: null,
-                      args: null,
-                      kind: "ScalarField",
                       name: "_id",
                       storageKey: null,
                     },
@@ -187,6 +180,13 @@ const node: ConcreteRequest = (function () {
                       args: null,
                       kind: "ScalarField",
                       name: "image",
+                      storageKey: null,
+                    },
+                    {
+                      alias: null,
+                      args: null,
+                      kind: "ScalarField",
+                      name: "id",
                       storageKey: null,
                     },
                     {
@@ -263,15 +263,15 @@ const node: ConcreteRequest = (function () {
       ],
     },
     params: {
-      cacheID: "beac04e8f17c3a828927c3a620b2d03e",
+      cacheID: "c03ccdf3596d234dcac63607f68f7eb5",
       id: null,
       metadata: {},
       name: "SearchPodcastPaginationQuery",
       operationKind: "query",
       text:
-        "query SearchPodcastPaginationQuery(\n  $after: String\n  $before: String\n  $first: Int = 25\n  $last: Int\n  $podcastName: String\n) {\n  ...SearchPodcast_podcasts_1yFHIs\n}\n\nfragment SearchPodcast_podcasts_1yFHIs on Query {\n  podcastsByName(podcastName: $podcastName, after: $after, first: $first, before: $before, last: $last) {\n    edges {\n      node {\n        id\n        _id\n        name\n        appleId\n        image\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n",
+        "query SearchPodcastPaginationQuery(\n  $after: String\n  $before: String\n  $first: Int = 20\n  $last: Int\n  $podcastName: String\n) {\n  ...SearchPodcast_podcasts_1yFHIs\n}\n\nfragment SearchPodcast_podcasts_1yFHIs on Query {\n  podcastsByName(podcastName: $podcastName, after: $after, first: $first, before: $before, last: $last) {\n    edges {\n      node {\n        _id\n        name\n        appleId\n        image\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n",
     },
   };
 })();
-(node as any).hash = "7531b185b1edc5d3fb83ab189b167eaa";
+(node as any).hash = "5d884560793c33c1136dcccf4a31ae81";
 export default node;

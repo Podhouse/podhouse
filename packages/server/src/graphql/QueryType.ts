@@ -47,7 +47,7 @@ const QueryType = new GraphQLObjectType({
         await PodcastLoader.loadAll(context, args),
     },
     podcastsByName: {
-      type: GraphQLNonNull(PodcastConnection.connectionType),
+      type: PodcastConnection.connectionType,
       args: {
         ...connectionArgs,
         podcastName: {
@@ -81,18 +81,18 @@ const QueryType = new GraphQLObjectType({
       type: PodcastType,
       args: {
         _id: {
-          type: GraphQLNonNull(GraphQLID),
+          type: GraphQLID,
         },
       },
       resolve: async (_, { _id }, context: GraphQLContext) =>
         await PodcastLoader.load(context, _id),
     },
     episodes: {
-      type: GraphQLNonNull(EpisodeConnection.connectionType),
+      type: EpisodeConnection.connectionType,
       args: {
         ...connectionArgs,
         podcastID: {
-          type: GraphQLNonNull(GraphQLID),
+          type: GraphQLID,
         },
       },
       resolve: async (_, args, context: GraphQLContext) =>
@@ -107,7 +107,7 @@ const QueryType = new GraphQLObjectType({
       type: EpisodeType,
       args: {
         _id: {
-          type: GraphQLNonNull(GraphQLID),
+          type: GraphQLID,
         },
       },
       resolve: async (_, { _id }, context: GraphQLContext) =>
@@ -117,7 +117,7 @@ const QueryType = new GraphQLObjectType({
       type: GraphQLNonNull(GraphQLBoolean),
       args: {
         _id: {
-          type: GraphQLNonNull(GraphQLID),
+          type: GraphQLID,
         },
       },
       resolve: async (_, { _id }, context: GraphQLContext) => {
@@ -137,7 +137,7 @@ const QueryType = new GraphQLObjectType({
       type: GraphQLNonNull(GraphQLBoolean),
       args: {
         _id: {
-          type: GraphQLNonNull(GraphQLID),
+          type: GraphQLID,
         },
       },
       resolve: async (_, { _id }, context: GraphQLContext) => {
@@ -154,14 +154,14 @@ const QueryType = new GraphQLObjectType({
       },
     },
     searchPodcastEpisode: {
-      type: GraphQLNonNull(EpisodeConnection.connectionType),
+      type: EpisodeConnection.connectionType,
       args: {
         ...connectionArgs,
         podcastID: {
-          type: GraphQLNonNull(GraphQLID),
+          type: GraphQLID,
         },
         episodeName: {
-          type: GraphQLNonNull(GraphQLString),
+          type: GraphQLString,
         },
       },
       resolve: async (_, args, context: GraphQLContext) => {

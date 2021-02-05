@@ -11,13 +11,13 @@ export type PodcastQueryResponse = {
   readonly podcast: {
     readonly id: string;
     readonly _id: string;
-    readonly name: string;
-    readonly appleId: number;
-    readonly author: string;
-    readonly description: string;
-    readonly website: string;
-    readonly rss: string;
-    readonly image: string;
+    readonly name: string | null;
+    readonly appleId: number | null;
+    readonly author: string | null;
+    readonly description: string | null;
+    readonly website: string | null;
+    readonly rss: string | null;
+    readonly image: string | null;
     readonly " $fragmentRefs": FragmentRefs<"PodcastEpisodes_episodes">;
   } | null;
 };
@@ -45,7 +45,7 @@ query PodcastQuery(
 }
 
 fragment PodcastEpisodes_episodes on Podcast {
-  episodes(first: 10) {
+  episodes(first: 20) {
     edges {
       node {
         _id
@@ -57,12 +57,13 @@ fragment PodcastEpisodes_episodes on Podcast {
         audio
         duration
         podcast {
-          id
           _id
           name
           website
           rss
           appleId
+          image
+          id
         }
         id
         __typename
@@ -162,7 +163,7 @@ const node: ConcreteRequest = (function () {
       {
         kind: "Literal",
         name: "first",
-        value: 10,
+        value: 20,
       },
     ];
   return {
@@ -294,12 +295,13 @@ const node: ConcreteRequest = (function () {
                           name: "podcast",
                           plural: false,
                           selections: [
-                            v2 /*: any*/,
                             v3 /*: any*/,
                             v4 /*: any*/,
                             v8 /*: any*/,
                             v9 /*: any*/,
                             v5 /*: any*/,
+                            v10 /*: any*/,
+                            v2 /*: any*/,
                           ],
                           storageKey: null,
                         },
@@ -364,7 +366,7 @@ const node: ConcreteRequest = (function () {
                   storageKey: null,
                 },
               ],
-              storageKey: "episodes(first:10)",
+              storageKey: "episodes(first:20)",
             },
             {
               alias: null,
@@ -381,13 +383,13 @@ const node: ConcreteRequest = (function () {
       ],
     },
     params: {
-      cacheID: "28a438633016a6ab36c9b6768c6b997b",
+      cacheID: "057455aad122be288491853860f0f967",
       id: null,
       metadata: {},
       name: "PodcastQuery",
       operationKind: "query",
       text:
-        "query PodcastQuery(\n  $_id: ID!\n) {\n  podcast(_id: $_id) {\n    id\n    _id\n    name\n    appleId\n    author\n    description\n    website\n    rss\n    image\n    ...PodcastEpisodes_episodes\n  }\n}\n\nfragment PodcastEpisodes_episodes on Podcast {\n  episodes(first: 10) {\n    edges {\n      node {\n        _id\n        title\n        description\n        publishedDate\n        link\n        image\n        audio\n        duration\n        podcast {\n          id\n          _id\n          name\n          website\n          rss\n          appleId\n        }\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n  id\n}\n",
+        "query PodcastQuery(\n  $_id: ID!\n) {\n  podcast(_id: $_id) {\n    id\n    _id\n    name\n    appleId\n    author\n    description\n    website\n    rss\n    image\n    ...PodcastEpisodes_episodes\n  }\n}\n\nfragment PodcastEpisodes_episodes on Podcast {\n  episodes(first: 20) {\n    edges {\n      node {\n        _id\n        title\n        description\n        publishedDate\n        link\n        image\n        audio\n        duration\n        podcast {\n          _id\n          name\n          website\n          rss\n          appleId\n          image\n          id\n        }\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n  id\n}\n",
     },
   };
 })();

@@ -7,28 +7,38 @@ import {
   EpisodeItemAvatar,
   EpisodeItemName,
   EpisodeItemDescription,
+  EpisodeNameDescription,
   EpisodeItemPublishedDate,
   EpisodeItemDuration,
   EpisodeItemButton,
 } from "./EpisodeItem.styles";
 
-import { EpisodeItemProps } from "./EpisodeItem.types";
-
 import { usePlayerContext } from "src/machines/Player/PlayerContext";
 
 import convertEpisodeNameToURL from "src/utils/convertEpisodeNameToURL";
 
-const EpisodeItem = ({ node }: EpisodeItemProps) => {
-  const {
-    _id,
-    image,
-    title,
-    description,
-    publishedDate,
-    duration,
-    podcast,
-  } = node;
+interface Props {
+  readonly node: {
+    readonly _id: string;
+    readonly title: string | null;
+    readonly description: string | null;
+    readonly publishedDate: string | null;
+    readonly link: string | null;
+    readonly image: string | null;
+    readonly audio: string | null;
+    readonly duration: string | null;
+    readonly podcast: {
+      readonly _id: string;
+      readonly name: string | null;
+      readonly website: string | null;
+      readonly rss: string | null;
+      readonly appleId: number | null;
+      readonly image: string | null;
+    } | null;
+  } | null;
+}
 
+const EpisodeItem = ({ node }: Props) => {
   const {
     loading,
     playing,
@@ -39,12 +49,12 @@ const EpisodeItem = ({ node }: EpisodeItemProps) => {
   } = usePlayerContext();
 
   const route: string = convertEpisodeNameToURL(
-    episode?.title,
-    episode?.podcast.appleId
+    node?.title,
+    node?.podcast?.appleId
   );
 
   const renderEpisodeButton = () => {
-    if (episode && episode.title === title) {
+    if (episode && episode.title === node?.title) {
       if (loading) {
         return (
           <EpisodeItemButton type="button" width="90px" isLoading={true}>
@@ -108,30 +118,48 @@ const EpisodeItem = ({ node }: EpisodeItemProps) => {
     );
   };
 
+  const renderEpisodeImage = () => {
+    if (!node) {
+      return "https://ebwu.education/wp-content/themes/claue/assets/images/placeholder.png";
+    } else if (!node.image && node?.podcast?.image) {
+      return node?.podcast?.image;
+    } else if (node && node.image) {
+      return node?.image;
+    }
+  };
+
   return (
     <EpisodeItemContainer>
-      <ReactRouterLink to={{ pathname: route, state: { _id } }}>
-        <EpisodeItemAvatar src={image} alt="image" />
+      <ReactRouterLink to={{ pathname: route, state: { _id: node?._id } }}>
+        <EpisodeItemAvatar
+          src={renderEpisodeImage()}
+          alt="image"
+          loading="lazy"
+        />
       </ReactRouterLink>
 
-      <EpisodeItemName
-        as={ReactRouterLink}
-        to={{ pathname: route, state: { _id } }}
-        fontWeight="500"
-        lineHeight="25px"
-      >
-        {title}
-      </EpisodeItemName>
+      <EpisodeNameDescription>
+        <EpisodeItemName
+          as={ReactRouterLink}
+          to={{ pathname: route, state: { _id: node?._id } }}
+          fontWeight="500"
+          lineHeight="25px"
+        >
+          {node?.title}
+        </EpisodeItemName>
 
-      <EpisodeItemDescription lineHeight="25px" textAlign="start">
-        {description}
-      </EpisodeItemDescription>
+        <EpisodeItemDescription lineHeight="25px" textAlign="start">
+          {node?.description}
+        </EpisodeItemDescription>
+      </EpisodeNameDescription>
 
       <EpisodeItemPublishedDate textAlign="start">
-        {publishedDate}
+        {node?.publishedDate}
       </EpisodeItemPublishedDate>
 
-      <EpisodeItemDuration textAlign="start">{duration}</EpisodeItemDuration>
+      <EpisodeItemDuration textAlign="start">
+        {node?.duration}
+      </EpisodeItemDuration>
 
       {renderEpisodeButton()}
     </EpisodeItemContainer>

@@ -23,14 +23,14 @@ query GenreQuery(
 }
 
 fragment GenrePodcast_podcasts_BPIEN on Query {
-  podcastsByGenre(primaryGenre: $primaryGenre, first: 25) {
+  podcastsByGenre(primaryGenre: $primaryGenre, first: 20) {
     edges {
       node {
-        id
         _id
         name
         appleId
         image
+        id
         __typename
       }
       cursor
@@ -62,7 +62,7 @@ const node: ConcreteRequest = (function () {
       {
         kind: "Literal",
         name: "first",
-        value: 25,
+        value: 20,
       },
       v1 /*: any*/,
     ];
@@ -116,13 +116,6 @@ const node: ConcreteRequest = (function () {
                       alias: null,
                       args: null,
                       kind: "ScalarField",
-                      name: "id",
-                      storageKey: null,
-                    },
-                    {
-                      alias: null,
-                      args: null,
-                      kind: "ScalarField",
                       name: "_id",
                       storageKey: null,
                     },
@@ -145,6 +138,13 @@ const node: ConcreteRequest = (function () {
                       args: null,
                       kind: "ScalarField",
                       name: "image",
+                      storageKey: null,
+                    },
+                    {
+                      alias: null,
+                      args: null,
+                      kind: "ScalarField",
+                      name: "id",
                       storageKey: null,
                     },
                     {
@@ -221,13 +221,13 @@ const node: ConcreteRequest = (function () {
       ],
     },
     params: {
-      cacheID: "2075b37215654c8fbe5a26ce03416b11",
+      cacheID: "b09cc3fbc917ad3af07000940b99fec6",
       id: null,
       metadata: {},
       name: "GenreQuery",
       operationKind: "query",
       text:
-        "query GenreQuery(\n  $primaryGenre: String!\n) {\n  ...GenrePodcast_podcasts_BPIEN\n}\n\nfragment GenrePodcast_podcasts_BPIEN on Query {\n  podcastsByGenre(primaryGenre: $primaryGenre, first: 25) {\n    edges {\n      node {\n        id\n        _id\n        name\n        appleId\n        image\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n",
+        "query GenreQuery(\n  $primaryGenre: String!\n) {\n  ...GenrePodcast_podcasts_BPIEN\n}\n\nfragment GenrePodcast_podcasts_BPIEN on Query {\n  podcastsByGenre(primaryGenre: $primaryGenre, first: 20) {\n    edges {\n      node {\n        _id\n        name\n        appleId\n        image\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n",
     },
   };
 })();

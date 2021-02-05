@@ -1,7 +1,6 @@
 import {
   GraphQLObjectType,
   GraphQLString,
-  GraphQLNonNull,
   GraphQLList,
   GraphQLInt,
 } from "graphql";
@@ -28,35 +27,35 @@ const PodcastType: GraphQLObjectType = new GraphQLObjectType({
     id: globalIdField("Podcast"),
     ...mongooseIDResolver,
     appleId: {
-      type: GraphQLNonNull(GraphQLInt),
+      type: GraphQLInt,
       resolve: ({ appleId }) => appleId,
     },
     name: {
-      type: GraphQLNonNull(GraphQLString),
+      type: GraphQLString,
       resolve: ({ name }) => name,
     },
     author: {
-      type: GraphQLNonNull(GraphQLString),
+      type: GraphQLString,
       resolve: ({ author }) => author,
     },
     description: {
-      type: GraphQLNonNull(GraphQLString),
+      type: GraphQLString,
       resolve: ({ description }) => description,
     },
     website: {
-      type: GraphQLNonNull(GraphQLString),
+      type: GraphQLString,
       resolve: ({ website }) => website,
     },
     rss: {
-      type: GraphQLNonNull(GraphQLString),
+      type: GraphQLString,
       resolve: ({ rss }) => rss,
     },
     image: {
-      type: GraphQLNonNull(GraphQLString),
+      type: GraphQLString,
       resolve: ({ image }) => image,
     },
     episodes: {
-      type: GraphQLNonNull(EpisodeConnection.connectionType),
+      type: EpisodeConnection.connectionType,
       args: {
         ...connectionArgs,
       },
@@ -67,11 +66,11 @@ const PodcastType: GraphQLObjectType = new GraphQLObjectType({
         ),
     },
     country: {
-      type: GraphQLNonNull(GraphQLString),
+      type: GraphQLString,
       resolve: ({ country }) => country,
     },
     primaryGenre: {
-      type: GraphQLNonNull(GraphQLString),
+      type: GraphQLString,
       resolve: ({ primaryGenre }) => primaryGenre,
     },
     genres: {

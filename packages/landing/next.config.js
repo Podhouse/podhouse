@@ -13,7 +13,7 @@ module.exports = withPlugins([
   [
     {
       env: {
-        FATHOM_ID: process.env.FATHOM_ID,
+        GOOGLE_ID: process.env.GOOGLE_ID,
       },
     },
   ],

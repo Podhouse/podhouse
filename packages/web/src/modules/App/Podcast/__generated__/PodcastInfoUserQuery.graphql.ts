@@ -4,7 +4,7 @@
 
 import { ConcreteRequest } from "relay-runtime";
 export type UserSubscribedInput = {
-  _id: string;
+  _id?: string | null;
 };
 export type PodcastInfoUserQueryVariables = {
   input: UserSubscribedInput;
@@ -13,7 +13,7 @@ export type PodcastInfoUserQueryResponse = {
   readonly currentUser: {
     readonly id: string;
     readonly _id: string;
-    readonly subscribed: boolean;
+    readonly subscribed: boolean | null;
   } | null;
 };
 export type PodcastInfoUserQuery = {

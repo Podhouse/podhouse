@@ -8,14 +8,13 @@ export type SubscriptionsPodcast_subscriptions = {
   readonly subscriptions: {
     readonly edges: ReadonlyArray<{
       readonly node: {
-        readonly id: string;
         readonly _id: string;
-        readonly name: string;
-        readonly appleId: number;
-        readonly image: string;
+        readonly name: string | null;
+        readonly appleId: number | null;
+        readonly image: string | null;
       } | null;
     } | null>;
-  };
+  } | null;
   readonly id: string;
   readonly " $refType": "SubscriptionsPodcast_subscriptions";
 };
@@ -26,14 +25,7 @@ export type SubscriptionsPodcast_subscriptions$key = {
 };
 
 const node: ReaderFragment = (function () {
-  var v0 = ["subscriptions"],
-    v1 = {
-      alias: null,
-      args: null,
-      kind: "ScalarField",
-      name: "id",
-      storageKey: null,
-    };
+  var v0 = ["subscriptions"];
   return {
     argumentDefinitions: [
       {
@@ -47,7 +39,7 @@ const node: ReaderFragment = (function () {
         name: "before",
       },
       {
-        defaultValue: 10,
+        defaultValue: 20,
         kind: "LocalArgument",
         name: "first",
       },
@@ -110,7 +102,6 @@ const node: ReaderFragment = (function () {
                 name: "node",
                 plural: false,
                 selections: [
-                  v1 /*: any*/,
                   {
                     alias: null,
                     args: null,
@@ -201,11 +192,17 @@ const node: ReaderFragment = (function () {
         ],
         storageKey: null,
       },
-      v1 /*: any*/,
+      {
+        alias: null,
+        args: null,
+        kind: "ScalarField",
+        name: "id",
+        storageKey: null,
+      },
     ],
     type: "User",
     abstractKey: null,
   };
 })();
-(node as any).hash = "885a5a88d677b4cbbf696a9682af6d9a";
+(node as any).hash = "c4f1237637204b6938eed66e7d532b81";
 export default node;

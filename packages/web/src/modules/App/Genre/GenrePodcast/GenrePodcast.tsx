@@ -27,7 +27,7 @@ const fragment = graphql`
   @argumentDefinitions(
     primaryGenre: { type: "String" }
     after: { type: "String" }
-    first: { type: "Int", defaultValue: 25 }
+    first: { type: "Int", defaultValue: 20 }
     before: { type: "String" }
     last: { type: "Int" }
   )
@@ -41,7 +41,6 @@ const fragment = graphql`
     ) @connection(key: "GenrePodcast_podcastsByGenre") {
       edges {
         node {
-          id
           _id
           name
           appleId
@@ -125,7 +124,7 @@ const GenrePodcast = ({
 
       <PodcastsWithOnlyAvatarList
         title={primaryGenre}
-        edges={data.podcastsByGenre.edges}
+        podcasts={data.podcastsByGenre}
       />
     </GenrePodcastContainer>
   );

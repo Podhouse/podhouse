@@ -9,12 +9,23 @@ import {
 
 import PodcastItemWithDetails from "src/components/Podcast/PodcastItemWithDetails/PodcastItemWithDetails";
 
-import { PodcastsWithDetailsListProps } from "./PodcastsWithDetailsList.types";
+interface Props {
+  title: string;
+  readonly podcasts: {
+    readonly edges: ReadonlyArray<{
+      readonly node: {
+        readonly id: string;
+        readonly _id: string;
+        readonly name: string;
+        readonly author: string;
+        readonly appleId: number;
+        readonly image: string;
+      } | null;
+    } | null>;
+  };
+}
 
-const PodcastsWithDetailsList = ({
-  title,
-  podcasts,
-}: PodcastsWithDetailsListProps) => (
+const PodcastsWithDetailsList = ({ title, podcasts }: Props) => (
   <PodcastsWithDetailsListContainer>
     <PodcastsWithDetailsListHeader>
       <Heading as="h1" fontSize={14} fontWeight="500" textAlign="start">

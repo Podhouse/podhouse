@@ -3,6 +3,7 @@ import { Box, Text, Link, Stack } from "@chakra-ui/react";
 import Scrollbars from "react-custom-scrollbars";
 import graphql from "babel-plugin-relay/macro";
 import { useLazyLoadQuery } from "react-relay/hooks";
+import ReactGA from "react-ga";
 
 import SkeletonPodcastsWithOnlyAvatarList from "src/components/Skeletons/SkeletonPodcastsWithOnlyAvatarList/SkeletonPodcastsWithOnlyAvatarList";
 
@@ -17,6 +18,9 @@ import { useAuthContext } from "src/machines/Auth/AuthContext";
 import { getToken } from "src/utils/auth";
 
 import { SubscriptionsQuery } from "./__generated__/SubscriptionsQuery.graphql";
+
+ReactGA.initialize(`${process.env.REACT_APP_GOOGLE_ID}`);
+ReactGA.pageview(window.location.pathname + window.location.search);
 
 const query = graphql`
   query SubscriptionsQuery {
@@ -69,7 +73,7 @@ const SubscriptionsComponent = () => {
         justifyContent="center"
         w="100%"
         h="100%"
-        bgColor="red"
+        bgColor="white"
       >
         <Stack spacing={4} shouldWrapChildren align="center">
           <Text color="#101010" maxWidth="300px" textAlign="center">
@@ -96,7 +100,7 @@ const SubscriptionsComponent = () => {
       autoHideDuration={100}
     >
       <SubscriptionsPodcast
-        user={currentUser}
+        currentUser={currentUser}
         shouldLoadMore={shouldLoadMore}
       />
     </Scrollbars>

@@ -6,19 +6,28 @@ import {
   PodcastItemWithAvatarAvatar,
 } from "./PodcastItemWithAvatar.styles";
 
-import { PodcastItemWithAvatarProps } from "./PodcastItemWithAvatar.types";
-
 import convertPodcastNameToURL from "src/utils/convertPodcastNameToURL";
 
-const PodcastItemWithAvatar = ({ node }: PodcastItemWithAvatarProps) => {
-  const { _id, name, appleId, image } = node;
+interface Props {
+  readonly node: {
+    readonly _id: string;
+    readonly name: string;
+    readonly appleId: number;
+    readonly image: string;
+  };
+}
 
-  const route: string = convertPodcastNameToURL(name, appleId);
+const PodcastItemWithAvatar = ({ node }: Props) => {
+  const route: string = convertPodcastNameToURL(node.name, node.appleId);
 
   return (
     <PodcastItemWithAvatarContainer>
-      <ReactRouterLink to={{ pathname: route, state: { _id } }}>
-        <PodcastItemWithAvatarAvatar src={image} alt="image" loading="lazy" />
+      <ReactRouterLink to={{ pathname: route, state: { _id: node._id } }}>
+        <PodcastItemWithAvatarAvatar
+          src={node.image}
+          alt="image"
+          loading="lazy"
+        />
       </ReactRouterLink>
     </PodcastItemWithAvatarContainer>
   );

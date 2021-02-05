@@ -114,3 +114,4 @@ differencify_reports
 .env.local
 .env.development
 .env.production
+.env.test

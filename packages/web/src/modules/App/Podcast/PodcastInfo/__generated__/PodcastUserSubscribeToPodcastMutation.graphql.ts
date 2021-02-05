@@ -8,7 +8,7 @@ export type UserSubscribeToPodcastInput = {
   clientMutationId?: string | null;
 };
 export type UserSubscribedInput = {
-  _id: string;
+  _id?: string | null;
 };
 export type PodcastUserSubscribeToPodcastMutationVariables = {
   input: UserSubscribeToPodcastInput;
@@ -19,7 +19,7 @@ export type PodcastUserSubscribeToPodcastMutationResponse = {
     readonly error: string | null;
     readonly user: {
       readonly node: {
-        readonly subscribed: boolean;
+        readonly subscribed: boolean | null;
       } | null;
     } | null;
   } | null;

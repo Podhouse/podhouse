@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet";
 import { Heading, Text } from "@chakra-ui/react";
 import Scrollbars from "react-custom-scrollbars";
 import { useLocation } from "react-router-dom";
+import ReactGA from "react-ga";
 
 import {
   WhatsNewContainer,
@@ -10,6 +11,9 @@ import {
   WhatsNewUpdatesContainer,
   WhatsNewUpdateItemContainer,
 } from "./WhatsNew.styles";
+
+ReactGA.initialize(`${process.env.REACT_APP_GOOGLE_ID}`);
+ReactGA.pageview(window.location.pathname + window.location.search);
 
 const WhatsNew = () => {
   const location = useLocation();
@@ -81,22 +85,19 @@ const WhatsNew = () => {
               letterSpacing="-0.03em"
               textAlign="start"
             >
-              January 2021
+              February 2021
             </Heading>
             <Text color="#101010" lineHeight="25px" textAlign="start">
-              The launching of the app is getting near and the future features
-              and updates for the app are being mapped.
+              We are happy to launch the first version of Podhouse after months
+              of hard work.
               <br />
               <br />
-              There are still a lot of new features that users should expect
-              that will be available in the next couple of months on the app,
-              right now we are focusing only on the essential features that
-              users should have in order to listen to their favorite podcasts on
-              the app.
+              There's still a lot of features and updates that we're going to
+              make in the app throughout the following months.
               <br />
               <br />
-              Don't worry, we are working super hard to get there and make this
-              app the best web app for you to listen to your favorite podcasts.
+              We will work super hard in the next months to make Podhouse the
+              best podcast web app for you to listen to your favorite podcasts.
             </Text>
           </WhatsNewUpdateItemContainer>
         </WhatsNewUpdatesContainer>

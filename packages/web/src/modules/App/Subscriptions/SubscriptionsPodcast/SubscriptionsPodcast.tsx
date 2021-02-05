@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet";
 import graphql from "babel-plugin-relay/macro";
 import { usePaginationFragment } from "react-relay/hooks";
 import { useLocation } from "react-router-dom";
+import { FragmentRefs } from "relay-runtime";
 
 import { SubscriptionsPodcastContainer } from "./SubscriptionsPodcast.styles";
 
@@ -16,7 +17,7 @@ const query = graphql`
   fragment SubscriptionsPodcast_subscriptions on User
   @argumentDefinitions(
     after: { type: "String" }
-    first: { type: "Int", defaultValue: 10 }
+    first: { type: "Int", defaultValue: 20 }
     before: { type: "String" }
     last: { type: "Int" }
   )
@@ -25,7 +26,6 @@ const query = graphql`
       @connection(key: "SubscriptionsPodcast_subscriptions") {
       edges {
         node {
-          id
           _id
           name
           appleId
@@ -37,17 +37,21 @@ const query = graphql`
 `;
 
 interface Props {
-  user: any;
+  readonly currentUser: {
+    readonly " $fragmentRefs": FragmentRefs<
+      "useAuthUser_user" | "SubscriptionsPodcast_subscriptions"
+    >;
+  } | null;
   shouldLoadMore: boolean;
 }
 
-const SubscriptionsPodcast = ({ user, shouldLoadMore }: Props) => {
+const SubscriptionsPodcast = ({ currentUser, shouldLoadMore }: Props) => {
   const location = useLocation();
 
   const { data, loadNext, isLoadingNext } = usePaginationFragment<
     SubscriptionsPodcastPaginationQuery,
     SubscriptionsPodcast_subscriptions$key
-  >(query, user);
+  >(query, currentUser);
 
   const loadMore = useCallback(() => {
     if (isLoadingNext) return;
@@ -98,7 +102,7 @@ const SubscriptionsPodcast = ({ user, shouldLoadMore }: Props) => {
 
       <PodcastsWithOnlyAvatarList
         title="Subscriptions"
-        edges={data.subscriptions.edges}
+        podcasts={data?.subscriptions}
       />
     </SubscriptionsPodcastContainer>
   );
