@@ -20,22 +20,17 @@ import convertEpisodeNameToURL from "src/utils/convertEpisodeNameToURL";
 interface Props {
   readonly node: {
     readonly _id: string;
-    readonly title: string;
-    readonly description: string;
-    readonly publishedDate: string;
-    readonly link: string;
-    readonly image: string;
-    readonly audio: string;
-    readonly duration: string;
+    readonly title: string | null;
+    readonly description: string | null;
+    readonly publishedDate: string | null;
+    readonly link: string | null;
+    readonly image: string | null;
+    readonly audio: string | null;
+    readonly duration: string | null;
     readonly podcast: {
-      readonly id: string;
-      readonly _id: string;
-      readonly name: string;
-      readonly website: string;
-      readonly rss: string;
-      readonly appleId: number;
-    };
-  };
+      readonly appleId: number | null;
+    } | null;
+  } | null;
 }
 
 const EpisodeItem = ({ node }: Props) => {
@@ -49,12 +44,12 @@ const EpisodeItem = ({ node }: Props) => {
   } = usePlayerContext();
 
   const route: string = convertEpisodeNameToURL(
-    node.title,
-    node.podcast.appleId
+    node?.title,
+    node?.podcast?.appleId
   );
 
   const renderEpisodeButton = () => {
-    if (episode && episode.title === node.title) {
+    if (episode && episode.title === node?.title) {
       if (loading) {
         return (
           <EpisodeItemButton type="button" width="90px" isLoading={true}>
@@ -120,31 +115,35 @@ const EpisodeItem = ({ node }: Props) => {
 
   return (
     <EpisodeItemContainer>
-      <ReactRouterLink to={{ pathname: route, state: { _id: node._id } }}>
-        <EpisodeItemAvatar src={node.image} alt="image" loading="lazy" />
+      <ReactRouterLink to={{ pathname: route, state: { _id: node?._id } }}>
+        <EpisodeItemAvatar
+          src={node && node?.image ? node.image : ""}
+          alt="image"
+          loading="lazy"
+        />
       </ReactRouterLink>
 
       <EpisodeNameDescription>
         <EpisodeItemName
           as={ReactRouterLink}
-          to={{ pathname: route, state: { _id: node._id } }}
+          to={{ pathname: route, state: { _id: node?._id } }}
           fontWeight="500"
           lineHeight="25px"
         >
-          {node.title}
+          {node?.title}
         </EpisodeItemName>
 
         <EpisodeItemDescription lineHeight="25px" textAlign="start">
-          {node.description}
+          {node?.description}
         </EpisodeItemDescription>
       </EpisodeNameDescription>
 
       <EpisodeItemPublishedDate textAlign="start">
-        {node.publishedDate}
+        {node?.publishedDate}
       </EpisodeItemPublishedDate>
 
       <EpisodeItemDuration textAlign="start">
-        {node.duration}
+        {node?.duration}
       </EpisodeItemDuration>
 
       {renderEpisodeButton()}

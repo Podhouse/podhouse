@@ -13,7 +13,7 @@ const query = graphql`
   fragment PodcastEpisodes_episodes on Podcast
   @argumentDefinitions(
     after: { type: "String" }
-    first: { type: "Int", defaultValue: 25 }
+    first: { type: "Int", defaultValue: 20 }
     before: { type: "String" }
     last: { type: "Int" }
   )
@@ -22,7 +22,6 @@ const query = graphql`
       @connection(key: "PodcastEpisodes_episodes") {
       edges {
         node {
-          id
           _id
           title
           description
@@ -32,9 +31,7 @@ const query = graphql`
           audio
           duration
           podcast {
-            name
-            website
-            rss
+            appleId
           }
         }
       }
@@ -58,13 +55,27 @@ interface Props {
   shouldLoadMore: boolean;
 }
 
+type Node = {
+  readonly node: {
+    readonly _id: string;
+    readonly title: string | null;
+    readonly description: string | null;
+    readonly publishedDate: string | null;
+    readonly link: string | null;
+    readonly image: string | null;
+    readonly audio: string | null;
+    readonly duration: string | null;
+    readonly podcast: {
+      readonly appleId: number | null;
+    } | null;
+  } | null;
+};
+
 const PodcastEpisodes = ({ podcast, shouldLoadMore }: Props) => {
   const { data, loadNext, isLoadingNext } = usePaginationFragment<
     PodcastEpisodesPaginationQuery,
     any
   >(query, podcast);
-
-  console.log("data: ", data);
 
   const loadMore = useCallback(() => {
     // Don't fetch again if we're already loading the next page
@@ -80,8 +91,8 @@ const PodcastEpisodes = ({ podcast, shouldLoadMore }: Props) => {
 
   return (
     <PodcastEpisodesContainer>
-      {data.episodes.edges.map(({ node }: any) => (
-        <EpisodeItem key={node._id} node={node} />
+      {data.episodes.edges.map(({ node }: Node) => (
+        <EpisodeItem key={node?._id} node={node} />
       ))}
     </PodcastEpisodesContainer>
   );

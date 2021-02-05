@@ -23,7 +23,7 @@ export type GenrePaginationQuery = {
 query GenrePaginationQuery(
   $after: String
   $before: String
-  $first: Int = 25
+  $first: Int = 20
   $last: Int
   $primaryGenre: String
 ) {
@@ -34,11 +34,11 @@ fragment GenrePodcast_podcasts_2w6tXt on Query {
   podcastsByGenre(primaryGenre: $primaryGenre, after: $after, first: $first, before: $before, last: $last) {
     edges {
       node {
-        id
         _id
         name
         appleId
         image
+        id
         __typename
       }
       cursor
@@ -66,7 +66,7 @@ const node: ConcreteRequest = (function () {
         name: "before",
       },
       {
-        defaultValue: 25,
+        defaultValue: 20,
         kind: "LocalArgument",
         name: "first",
       },
@@ -158,13 +158,6 @@ const node: ConcreteRequest = (function () {
                       alias: null,
                       args: null,
                       kind: "ScalarField",
-                      name: "id",
-                      storageKey: null,
-                    },
-                    {
-                      alias: null,
-                      args: null,
-                      kind: "ScalarField",
                       name: "_id",
                       storageKey: null,
                     },
@@ -187,6 +180,13 @@ const node: ConcreteRequest = (function () {
                       args: null,
                       kind: "ScalarField",
                       name: "image",
+                      storageKey: null,
+                    },
+                    {
+                      alias: null,
+                      args: null,
+                      kind: "ScalarField",
+                      name: "id",
                       storageKey: null,
                     },
                     {
@@ -263,15 +263,15 @@ const node: ConcreteRequest = (function () {
       ],
     },
     params: {
-      cacheID: "abe9c6eb233895d246cf035879dad3b0",
+      cacheID: "6c6828783ff398c9359dfe618fda5089",
       id: null,
       metadata: {},
       name: "GenrePaginationQuery",
       operationKind: "query",
       text:
-        "query GenrePaginationQuery(\n  $after: String\n  $before: String\n  $first: Int = 25\n  $last: Int\n  $primaryGenre: String\n) {\n  ...GenrePodcast_podcasts_2w6tXt\n}\n\nfragment GenrePodcast_podcasts_2w6tXt on Query {\n  podcastsByGenre(primaryGenre: $primaryGenre, after: $after, first: $first, before: $before, last: $last) {\n    edges {\n      node {\n        id\n        _id\n        name\n        appleId\n        image\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n",
+        "query GenrePaginationQuery(\n  $after: String\n  $before: String\n  $first: Int = 20\n  $last: Int\n  $primaryGenre: String\n) {\n  ...GenrePodcast_podcasts_2w6tXt\n}\n\nfragment GenrePodcast_podcasts_2w6tXt on Query {\n  podcastsByGenre(primaryGenre: $primaryGenre, after: $after, first: $first, before: $before, last: $last) {\n    edges {\n      node {\n        _id\n        name\n        appleId\n        image\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n",
     },
   };
 })();
-(node as any).hash = "eedd28d8e46c5e3d6e4aff0a036c162b";
+(node as any).hash = "b7c6ae8cd9bf735dd79e10897235dd07";
 export default node;

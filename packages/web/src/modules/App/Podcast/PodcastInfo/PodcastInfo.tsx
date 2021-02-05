@@ -119,8 +119,6 @@ const PodcastInfo = ({
     }
   };
 
-  console.log("podcast: ", podcast);
-
   return (
     <PodcastInfoContainer>
       <PodcastInfoHeader>

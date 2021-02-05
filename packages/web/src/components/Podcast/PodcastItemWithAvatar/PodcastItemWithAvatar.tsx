@@ -10,7 +10,6 @@ import convertPodcastNameToURL from "src/utils/convertPodcastNameToURL";
 
 interface Props {
   readonly node: {
-    readonly id: string;
     readonly _id: string;
     readonly name: string;
     readonly appleId: number;

@@ -81,7 +81,7 @@ const App = () => {
             <Route exact path="/whats-new" component={WhatsNew} />
             <Route exact path="/settings" component={Settings} />
             <Route exact path="/podcast/:id/:id" component={Podcast} />
-            <Route exact path="/episode/:id" component={Episode} />
+            <Route exact path="/episode/:id/:id" component={Episode} />
             <Route exact path="/genre/:id" component={Genre} />
           </Switch>
         </Dashboard>

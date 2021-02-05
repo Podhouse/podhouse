@@ -8,7 +8,6 @@ export type PodcastEpisodes_episodes = {
   readonly episodes: {
     readonly edges: ReadonlyArray<{
       readonly node: {
-        readonly id: string;
         readonly _id: string;
         readonly title: string | null;
         readonly description: string | null;
@@ -18,9 +17,7 @@ export type PodcastEpisodes_episodes = {
         readonly audio: string | null;
         readonly duration: string | null;
         readonly podcast: {
-          readonly name: string | null;
-          readonly website: string | null;
-          readonly rss: string | null;
+          readonly appleId: number | null;
         } | null;
       } | null;
     } | null>;
@@ -35,14 +32,7 @@ export type PodcastEpisodes_episodes$key = {
 };
 
 const node: ReaderFragment = (function () {
-  var v0 = ["episodes"],
-    v1 = {
-      alias: null,
-      args: null,
-      kind: "ScalarField",
-      name: "id",
-      storageKey: null,
-    };
+  var v0 = ["episodes"];
   return {
     argumentDefinitions: [
       {
@@ -56,7 +46,7 @@ const node: ReaderFragment = (function () {
         name: "before",
       },
       {
-        defaultValue: 25,
+        defaultValue: 20,
         kind: "LocalArgument",
         name: "first",
       },
@@ -119,7 +109,6 @@ const node: ReaderFragment = (function () {
                 name: "node",
                 plural: false,
                 selections: [
-                  v1 /*: any*/,
                   {
                     alias: null,
                     args: null,
@@ -188,21 +177,7 @@ const node: ReaderFragment = (function () {
                         alias: null,
                         args: null,
                         kind: "ScalarField",
-                        name: "name",
-                        storageKey: null,
-                      },
-                      {
-                        alias: null,
-                        args: null,
-                        kind: "ScalarField",
-                        name: "website",
-                        storageKey: null,
-                      },
-                      {
-                        alias: null,
-                        args: null,
-                        kind: "ScalarField",
-                        name: "rss",
+                        name: "appleId",
                         storageKey: null,
                       },
                     ],
@@ -270,11 +245,17 @@ const node: ReaderFragment = (function () {
         ],
         storageKey: null,
       },
-      v1 /*: any*/,
+      {
+        alias: null,
+        args: null,
+        kind: "ScalarField",
+        name: "id",
+        storageKey: null,
+      },
     ],
     type: "Podcast",
     abstractKey: null,
   };
 })();
-(node as any).hash = "10a0ff64fd395a5cac698c1745894028";
+(node as any).hash = "45ada373fe2c214b3c75b7e165cf892a";
 export default node;

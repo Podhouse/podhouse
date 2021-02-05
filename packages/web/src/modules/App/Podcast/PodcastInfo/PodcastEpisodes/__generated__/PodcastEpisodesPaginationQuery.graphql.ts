@@ -25,7 +25,7 @@ export type PodcastEpisodesPaginationQuery = {
 query PodcastEpisodesPaginationQuery(
   $after: String
   $before: String
-  $first: Int = 25
+  $first: Int = 20
   $last: Int
   $id: ID!
 ) {
@@ -40,7 +40,6 @@ fragment PodcastEpisodes_episodes_pbnwq on Podcast {
   episodes(after: $after, first: $first, before: $before, last: $last) {
     edges {
       node {
-        id
         _id
         title
         description
@@ -50,11 +49,10 @@ fragment PodcastEpisodes_episodes_pbnwq on Podcast {
         audio
         duration
         podcast {
-          name
-          website
-          rss
+          appleId
           id
         }
+        id
         __typename
       }
       cursor
@@ -82,7 +80,7 @@ const node: ConcreteRequest = (function () {
       name: "before",
     },
     v2 = {
-      defaultValue: 25,
+      defaultValue: 20,
       kind: "LocalArgument",
       name: "first",
     },
@@ -221,7 +219,6 @@ const node: ConcreteRequest = (function () {
                           name: "node",
                           plural: false,
                           selections: [
-                            v8 /*: any*/,
                             {
                               alias: null,
                               args: null,
@@ -290,27 +287,14 @@ const node: ConcreteRequest = (function () {
                                   alias: null,
                                   args: null,
                                   kind: "ScalarField",
-                                  name: "name",
-                                  storageKey: null,
-                                },
-                                {
-                                  alias: null,
-                                  args: null,
-                                  kind: "ScalarField",
-                                  name: "website",
-                                  storageKey: null,
-                                },
-                                {
-                                  alias: null,
-                                  args: null,
-                                  kind: "ScalarField",
-                                  name: "rss",
+                                  name: "appleId",
                                   storageKey: null,
                                 },
                                 v8 /*: any*/,
                               ],
                               storageKey: null,
                             },
+                            v8 /*: any*/,
                             v7 /*: any*/,
                           ],
                           storageKey: null,
@@ -386,15 +370,15 @@ const node: ConcreteRequest = (function () {
       ],
     },
     params: {
-      cacheID: "9c6e053bc623b90bfd76a290a1c2e0ed",
+      cacheID: "890725809baa182471d450a7d2891d2f",
       id: null,
       metadata: {},
       name: "PodcastEpisodesPaginationQuery",
       operationKind: "query",
       text:
-        "query PodcastEpisodesPaginationQuery(\n  $after: String\n  $before: String\n  $first: Int = 25\n  $last: Int\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ...PodcastEpisodes_episodes_pbnwq\n    id\n  }\n}\n\nfragment PodcastEpisodes_episodes_pbnwq on Podcast {\n  episodes(after: $after, first: $first, before: $before, last: $last) {\n    edges {\n      node {\n        id\n        _id\n        title\n        description\n        publishedDate\n        link\n        image\n        audio\n        duration\n        podcast {\n          name\n          website\n          rss\n          id\n        }\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n  id\n}\n",
+        "query PodcastEpisodesPaginationQuery(\n  $after: String\n  $before: String\n  $first: Int = 20\n  $last: Int\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ...PodcastEpisodes_episodes_pbnwq\n    id\n  }\n}\n\nfragment PodcastEpisodes_episodes_pbnwq on Podcast {\n  episodes(after: $after, first: $first, before: $before, last: $last) {\n    edges {\n      node {\n        _id\n        title\n        description\n        publishedDate\n        link\n        image\n        audio\n        duration\n        podcast {\n          appleId\n          id\n        }\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n  id\n}\n",
     },
   };
 })();
-(node as any).hash = "10a0ff64fd395a5cac698c1745894028";
+(node as any).hash = "45ada373fe2c214b3c75b7e165cf892a";
 export default node;

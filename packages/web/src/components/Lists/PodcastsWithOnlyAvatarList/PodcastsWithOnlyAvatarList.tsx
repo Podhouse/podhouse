@@ -15,7 +15,6 @@ interface Props {
     | {
         readonly edges: ReadonlyArray<{
           readonly node: {
-            readonly id: string;
             readonly _id: string;
             readonly name: string | null;
             readonly appleId: number | null;

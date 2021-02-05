@@ -17,7 +17,7 @@ const query = graphql`
   fragment SubscriptionsPodcast_subscriptions on User
   @argumentDefinitions(
     after: { type: "String" }
-    first: { type: "Int", defaultValue: 25 }
+    first: { type: "Int", defaultValue: 20 }
     before: { type: "String" }
     last: { type: "Int" }
   )
@@ -26,7 +26,6 @@ const query = graphql`
       @connection(key: "SubscriptionsPodcast_subscriptions") {
       edges {
         node {
-          id
           _id
           name
           appleId

@@ -1,6 +1,6 @@
 const convertEpisodeNameToURL = (
-  title: string | undefined,
-  podcastAppleId: number
+  title: string | null | undefined,
+  podcastAppleId: number | null | undefined
 ): string => {
   const episodeNameLower = title?.toLowerCase();
   const episodeNameWithoutSpaces = episodeNameLower?.replace(/\s+/g, "-");

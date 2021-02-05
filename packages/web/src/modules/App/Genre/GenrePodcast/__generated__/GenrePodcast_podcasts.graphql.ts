@@ -8,7 +8,6 @@ export type GenrePodcast_podcasts = {
   readonly podcastsByGenre: {
     readonly edges: ReadonlyArray<{
       readonly node: {
-        readonly id: string;
         readonly _id: string;
         readonly name: string | null;
         readonly appleId: number | null;
@@ -39,7 +38,7 @@ const node: ReaderFragment = (function () {
         name: "before",
       },
       {
-        defaultValue: 25,
+        defaultValue: 20,
         kind: "LocalArgument",
         name: "first",
       },
@@ -112,13 +111,6 @@ const node: ReaderFragment = (function () {
                 name: "node",
                 plural: false,
                 selections: [
-                  {
-                    alias: null,
-                    args: null,
-                    kind: "ScalarField",
-                    name: "id",
-                    storageKey: null,
-                  },
                   {
                     alias: null,
                     args: null,
@@ -214,5 +206,5 @@ const node: ReaderFragment = (function () {
     abstractKey: null,
   };
 })();
-(node as any).hash = "eedd28d8e46c5e3d6e4aff0a036c162b";
+(node as any).hash = "b7c6ae8cd9bf735dd79e10897235dd07";
 export default node;
