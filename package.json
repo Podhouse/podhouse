@@ -40,8 +40,6 @@
     "test": "yarn workspace @podhouse/web test & yarn workspace @podhouse/server test"
   },
   "dependencies": {
-    "@babel/plugin-transform-react-jsx": "^7.12.13",
-    "@babel/plugin-transform-react-jsx-self": "^7.12.13",
     "lerna": "^3.22.1"
   },
   "devDependencies": {
