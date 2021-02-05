@@ -18,6 +18,7 @@ export type PodcastEpisodes_episodes = {
         readonly duration: string | null;
         readonly podcast: {
           readonly appleId: number | null;
+          readonly image: string | null;
         } | null;
       } | null;
     } | null>;
@@ -32,7 +33,14 @@ export type PodcastEpisodes_episodes$key = {
 };
 
 const node: ReaderFragment = (function () {
-  var v0 = ["episodes"];
+  var v0 = ["episodes"],
+    v1 = {
+      alias: null,
+      args: null,
+      kind: "ScalarField",
+      name: "image",
+      storageKey: null,
+    };
   return {
     argumentDefinitions: [
       {
@@ -144,13 +152,7 @@ const node: ReaderFragment = (function () {
                     name: "link",
                     storageKey: null,
                   },
-                  {
-                    alias: null,
-                    args: null,
-                    kind: "ScalarField",
-                    name: "image",
-                    storageKey: null,
-                  },
+                  v1 /*: any*/,
                   {
                     alias: null,
                     args: null,
@@ -180,6 +182,7 @@ const node: ReaderFragment = (function () {
                         name: "appleId",
                         storageKey: null,
                       },
+                      v1 /*: any*/,
                     ],
                     storageKey: null,
                   },
@@ -257,5 +260,5 @@ const node: ReaderFragment = (function () {
     abstractKey: null,
   };
 })();
-(node as any).hash = "45ada373fe2c214b3c75b7e165cf892a";
+(node as any).hash = "a03f3a9402f62b39c585b615a8d6f8a1";
 export default node;

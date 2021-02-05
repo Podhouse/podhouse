@@ -50,6 +50,7 @@ fragment PodcastEpisodes_episodes_pbnwq on Podcast {
         duration
         podcast {
           appleId
+          image
           id
         }
         id
@@ -135,6 +136,13 @@ const node: ConcreteRequest = (function () {
       args: null,
       kind: "ScalarField",
       name: "id",
+      storageKey: null,
+    },
+    v9 = {
+      alias: null,
+      args: null,
+      kind: "ScalarField",
+      name: "image",
       storageKey: null,
     };
   return {
@@ -254,13 +262,7 @@ const node: ConcreteRequest = (function () {
                               name: "link",
                               storageKey: null,
                             },
-                            {
-                              alias: null,
-                              args: null,
-                              kind: "ScalarField",
-                              name: "image",
-                              storageKey: null,
-                            },
+                            v9 /*: any*/,
                             {
                               alias: null,
                               args: null,
@@ -290,6 +292,7 @@ const node: ConcreteRequest = (function () {
                                   name: "appleId",
                                   storageKey: null,
                                 },
+                                v9 /*: any*/,
                                 v8 /*: any*/,
                               ],
                               storageKey: null,
@@ -370,15 +373,15 @@ const node: ConcreteRequest = (function () {
       ],
     },
     params: {
-      cacheID: "890725809baa182471d450a7d2891d2f",
+      cacheID: "264c3403b7f9b56ca5064eb41a5ec3e4",
       id: null,
       metadata: {},
       name: "PodcastEpisodesPaginationQuery",
       operationKind: "query",
       text:
-        "query PodcastEpisodesPaginationQuery(\n  $after: String\n  $before: String\n  $first: Int = 20\n  $last: Int\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ...PodcastEpisodes_episodes_pbnwq\n    id\n  }\n}\n\nfragment PodcastEpisodes_episodes_pbnwq on Podcast {\n  episodes(after: $after, first: $first, before: $before, last: $last) {\n    edges {\n      node {\n        _id\n        title\n        description\n        publishedDate\n        link\n        image\n        audio\n        duration\n        podcast {\n          appleId\n          id\n        }\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n  id\n}\n",
+        "query PodcastEpisodesPaginationQuery(\n  $after: String\n  $before: String\n  $first: Int = 20\n  $last: Int\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ...PodcastEpisodes_episodes_pbnwq\n    id\n  }\n}\n\nfragment PodcastEpisodes_episodes_pbnwq on Podcast {\n  episodes(after: $after, first: $first, before: $before, last: $last) {\n    edges {\n      node {\n        _id\n        title\n        description\n        publishedDate\n        link\n        image\n        audio\n        duration\n        podcast {\n          appleId\n          image\n          id\n        }\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n  id\n}\n",
     },
   };
 })();
-(node as any).hash = "45ada373fe2c214b3c75b7e165cf892a";
+(node as any).hash = "a03f3a9402f62b39c585b615a8d6f8a1";
 export default node;

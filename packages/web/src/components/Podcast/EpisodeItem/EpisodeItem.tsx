@@ -29,6 +29,7 @@ interface Props {
     readonly duration: string | null;
     readonly podcast: {
       readonly appleId: number | null;
+      readonly image: string | null;
     } | null;
   } | null;
 }
@@ -113,11 +114,20 @@ const EpisodeItem = ({ node }: Props) => {
     );
   };
 
+  const renderEpisodeImage = () => {
+    if (!node) {
+      return "https://ebwu.education/wp-content/themes/claue/assets/images/placeholder.png";
+    } else if (!node.image && node?.podcast?.image) {
+      return node?.podcast?.image;
+    } else if (node && node.image) {
+      return node?.image;
+    }
+  };
   return (
     <EpisodeItemContainer>
       <ReactRouterLink to={{ pathname: route, state: { _id: node?._id } }}>
         <EpisodeItemAvatar
-          src={node && node?.image ? node.image : ""}
+          src={renderEpisodeImage()}
           alt="image"
           loading="lazy"
         />

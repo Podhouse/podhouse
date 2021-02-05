@@ -32,6 +32,7 @@ const query = graphql`
           duration
           podcast {
             appleId
+            image
           }
         }
       }
@@ -67,6 +68,7 @@ type Node = {
     readonly duration: string | null;
     readonly podcast: {
       readonly appleId: number | null;
+      readonly image: string | null;
     } | null;
   } | null;
 };
