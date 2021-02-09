@@ -28,8 +28,7 @@ const Features = () => (
       </Heading>
 
       <Text color="#101010" lineHeight="30px" textAlign="center">
-        We provide a ton of features so you can listen to your podcasts without
-        having to worry about anything.
+        Listen to your favorite podcasts without having to worry about anything.
       </Text>
     </LandingGridContentContainer>
 
@@ -40,10 +39,10 @@ const Features = () => (
         </FeaturesItemIconContainer>
         <FeaturesItemTextContainer>
           <Text color="#101010" fontWeight="600">
-            Simple, intuitive and clean design
+            Simple, intuitive, and clean design
           </Text>
           <Text color="#101010" lineHeight="30px">
-            We bring a nice, clean and intuitive app for you to listen to your
+            We bring a nice, clean, and intuitive app for you to listen to your
             favorite podcasts.
           </Text>
         </FeaturesItemTextContainer>
@@ -58,8 +57,7 @@ const Features = () => (
             Listen to podcasts anywhere, anytime
           </Text>
           <Text color="#101010" lineHeight="30px">
-            Access and listen to podcasts anywhere and anytime, without having
-            to worry about sync.
+            Access and listen to a variety of podcasts anywhere and anytime.
           </Text>
         </FeaturesItemTextContainer>
       </FeaturesItemContainer>
@@ -73,8 +71,8 @@ const Features = () => (
             Discover new podcasts everyday
           </Text>
           <Text color="#101010" lineHeight="30px">
-            Discover new podcasts every day, know what's trending, and subscribe
-            to podcasts easily.
+            Discover podcasts every day, know what's trending, and subscribe to
+            new podcasts.
           </Text>
         </FeaturesItemTextContainer>
       </FeaturesItemContainer>
@@ -88,8 +86,8 @@ const Features = () => (
             No annoying ads
           </Text>
           <Text color="#101010" lineHeight="30px">
-            You will not see any annoying ads, your experience is our main
-            priority, now and ever.
+            Your experience is our main priority. You will never see annoying
+            ads.
           </Text>
         </FeaturesItemTextContainer>
       </FeaturesItemContainer>

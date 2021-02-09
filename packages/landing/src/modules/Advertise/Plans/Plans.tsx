@@ -38,8 +38,8 @@ const Plans = () => {
           The right price for your podcast
         </Heading>
         <Text color="#101010" lineHeight="30px" textAlign="center">
-          We have the right price for you start to advertise your podcast with
-          us and reach more listeners
+          We have the right price for you to start to advertise your podcast
+          with us and reach more listeners
         </Text>
       </LandingGridContentContainer>
 
@@ -80,7 +80,7 @@ const Plans = () => {
             </ListItem>
             <ListItem>
               <ListIcon as={BsCheck} color="green.500" />
-              Featured in a specific genre page
+              Featured in a specific genre
             </ListItem>
             <ListItem>
               <ListIcon as={BsCheck} color="green.500" />
@@ -132,8 +132,8 @@ const Plans = () => {
           </Heading>
 
           <Text color="#101010" lineHeight="30px" textAlign="start">
-            Podcast listeners are very highly engaged, you can grow your
-            audience by advertising with us
+            Get your podcast <strong>featured on the main page</strong> of the
+            app and reach <strong>10x more listeners</strong>
           </Text>
 
           <List spacing={3}>

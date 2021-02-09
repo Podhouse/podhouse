@@ -21,12 +21,10 @@ const Mission = () => (
 
       <Text color="#101010" lineHeight="30px" textAlign="center">
         One of the most awesome things about podcasts is that anyone can start
-        to listen or create their own podcast. People can literally listen to
-        podcasts in any specific situation in their daily-basis, and we have a
-        mission to improve it. We believe that podcasts should be accessible to
-        anyone anywhere, and our mission is to provide an app where people can
-        discover what's a podcast and listen to the most amazing shows in the
-        world.
+        to listen or create their podcast. People can listen to podcasts in any
+        specific situation in their daily-basis. Podcasts should be accessible
+        to anyone, and our mission is to provide the best web app where people
+        can listen to their favorite podcasts.
       </Text>
     </LandingGridContentContainer>
   </LandingGridContainer>

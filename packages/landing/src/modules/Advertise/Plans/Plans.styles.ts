@@ -20,10 +20,11 @@ export const PlansContainer = styled.div`
 export const PlanContainer = styled.div`
   padding: 20px;
   width: 100%;
+  height: 100%;
   max-width: 300px;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: repeat(auto-fill, max-content);
+  grid-template-rows: max-content max-content auto max-content max-content;
   grid-row-gap: 20px;
   background: white;
   border-radius: 5px;

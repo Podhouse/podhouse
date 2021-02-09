@@ -19,9 +19,9 @@ const Main = () => (
         Our design assets
       </Heading>
       <Text color="#101010" lineHeight="30px" textAlign="center">
-        We take our design experience very seriously, our main goal is to
-        provide a clean, beautiful, and simple experience. You can download our
-        design assets here
+        We aim for a very good design experience. Our goal is to provide the
+        best clean, beautiful and simple experience possible. You can download
+        our design assets here
       </Text>
     </LandingGridContentContainer>
   </LandingGridContainer>

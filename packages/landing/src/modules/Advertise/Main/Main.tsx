@@ -19,8 +19,7 @@ const Main = () => (
         Reach highly engaged listeners
       </Heading>
       <Text color="#101010" lineHeight="30px" textAlign="center">
-        Podcast listeners are very highly engaged, you can grow your audience by
-        advertising with us
+        Reach engaged users by advertising with us and grow your audience
       </Text>
     </LandingGridContentContainer>
   </LandingGridContainer>

@@ -17,12 +17,12 @@ const items = [
   {
     title: "What are the terms of sale to advertise on Podhouse?",
     body:
-      "After you purchase, it will be approved in 24 hours. Ad text and images must be appropriate for a general audience of all ages.",
+      "After you buy, it will be approved in 24 hours. Ad text and images must be appropriate for a general audience of all ages.",
   },
   {
     title: "What if my podcast was not approved?",
     body:
-      "We reserve the right to reject an podcast for any reason, such as quality concerns, content, etc. If your podcast was not approved, your payment will be refunded.",
+      "We reserve the right to reject an podcast for any reason, such as quality concerns, content. If your podcast was not approved, your payment will be refunded.",
   },
   {
     title: "How long my podcast will be featured",
