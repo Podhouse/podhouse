@@ -4,7 +4,7 @@ import ReactGA from "react-ga";
 
 import { FavoritesContainer } from "./Favorites.styles";
 
-ReactGA.initialize(`${process.env.REACT_APP_GOOGLE_ID}`);
+ReactGA.initialize(process.env.REACT_APP_GOOGLE_ID as string);
 ReactGA.pageview(window.location.pathname + window.location.search);
 
 const Favorites = () => (

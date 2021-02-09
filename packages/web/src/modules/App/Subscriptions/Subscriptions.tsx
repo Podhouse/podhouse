@@ -19,7 +19,7 @@ import { getToken } from "src/utils/auth";
 
 import { SubscriptionsQuery } from "./__generated__/SubscriptionsQuery.graphql";
 
-ReactGA.initialize(`${process.env.REACT_APP_GOOGLE_ID}`);
+ReactGA.initialize(process.env.REACT_APP_GOOGLE_ID as string);
 ReactGA.pageview(window.location.pathname + window.location.search);
 
 const query = graphql`

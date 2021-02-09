@@ -12,7 +12,7 @@ import {
   WhatsNewUpdateItemContainer,
 } from "./WhatsNew.styles";
 
-ReactGA.initialize(`${process.env.REACT_APP_GOOGLE_ID}`);
+ReactGA.initialize(process.env.REACT_APP_GOOGLE_ID as string);
 ReactGA.pageview(window.location.pathname + window.location.search);
 
 const WhatsNew = () => {

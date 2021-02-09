@@ -19,7 +19,7 @@ import {
   PlanContainer,
 } from "./Promote.styles";
 
-ReactGA.initialize(`${process.env.REACT_APP_GOOGLE_ID}`);
+ReactGA.initialize(process.env.REACT_APP_GOOGLE_ID as string);
 ReactGA.pageview(window.location.pathname + window.location.search);
 
 const Promote = () => {
@@ -91,7 +91,7 @@ const Promote = () => {
               type="button"
               size="lg"
               bgColor="#101010"
-              onClick={() => {}}
+              onClick={() => { }}
               color="#ffffff"
               _hover={{ bg: "#101010" }}
               _active={{
@@ -154,7 +154,7 @@ const Promote = () => {
               type="button"
               size="lg"
               bgColor="#101010"
-              onClick={() => {}}
+              onClick={() => { }}
               color="#ffffff"
               _hover={{ bg: "#101010" }}
               _active={{

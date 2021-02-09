@@ -14,7 +14,7 @@ import PodcastInfo from "./PodcastInfo/PodcastInfo";
 import { PodcastQuery } from "./__generated__/PodcastQuery.graphql";
 import { PodcastInfoUserQuery } from "./__generated__/PodcastInfoUserQuery.graphql";
 
-ReactGA.initialize(`${process.env.REACT_APP_GOOGLE_ID}`);
+ReactGA.initialize(process.env.REACT_APP_GOOGLE_ID as string);
 ReactGA.pageview(window.location.pathname + window.location.search);
 
 const podcastQuery = graphql`

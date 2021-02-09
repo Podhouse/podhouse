@@ -10,7 +10,7 @@ import reportWebVitals from "./reportWebVitals";
 import "@reach/slider/styles.css";
 import "@reach/combobox/styles.css";
 
-ReactGA.initialize(`${process.env.REACT_APP_GOOGLE_ID}`);
+ReactGA.initialize(process.env.REACT_APP_GOOGLE_ID as string);
 ReactGA.pageview(window.location.pathname + window.location.search);
 
 ReactDOM.render(
