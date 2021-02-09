@@ -78,3 +78,13 @@ jobs:
         run: yarn landing:format
         env:
           CI: true
+
+      - name: Generate web sitemap
+        run: yarn web:generate-sitemap
+        env:
+          CI: true
+
+      - name: Generate landing sitemap
+        run: yarn web:generate-sitemap
+        env:
+          CI: true
