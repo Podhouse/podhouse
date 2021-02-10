@@ -94,6 +94,7 @@ const Plans = () => {
             rel="noreferrer"
           >
             <Button
+              width="100%"
               type="button"
               size="lg"
               bgColor="#101010"
@@ -163,6 +164,7 @@ const Plans = () => {
             rel="noreferrer"
           >
             <Button
+              width="100%"
               type="button"
               size="lg"
               bgColor="#101010"
