@@ -18,7 +18,7 @@ import { GenreQuery } from "./__generated__/GenreQuery.graphql";
 
 import featured from "src/utils/featured";
 
-ReactGA.initialize(process.env.REACT_APP_GOOGLE_ID as string);
+ReactGA.initialize("G-8MV9SXCJQP");
 ReactGA.pageview(window.location.pathname + window.location.search);
 
 const genreQuery = graphql`

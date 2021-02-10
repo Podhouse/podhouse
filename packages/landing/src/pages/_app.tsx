@@ -16,4 +16,4 @@ MyApp.getInitialProps = async (appContext) => ({
   ...(await App.getInitialProps(appContext)),
 });
 
-export default withGA(process.env.GOOGLE_ID, Router)(MyApp);
+export default withGA("G-L7TMTWNEBB", Router)(MyApp);

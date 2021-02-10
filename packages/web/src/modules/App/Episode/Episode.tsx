@@ -13,7 +13,7 @@ import EpisodeInfo from "./EpisodeInfo/EpisodeInfo";
 
 import { EpisodeQuery } from "./__generated__/EpisodeQuery.graphql";
 
-ReactGA.initialize(process.env.REACT_APP_GOOGLE_ID as string);
+ReactGA.initialize("G-8MV9SXCJQP");
 ReactGA.pageview(window.location.pathname + window.location.search);
 
 const query = graphql`
