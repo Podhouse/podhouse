@@ -6,41 +6,38 @@ import {
   List,
   ListItem,
   ListIcon,
-  Button,
 } from "@chakra-ui/react";
 import { BsCheck } from "react-icons/bs";
 import Scrollbars from "react-custom-scrollbars";
-import ReactGA from "react-ga";
 
 import {
-  PromoteContainer,
-  PromoteContainerHeaderContainer,
+  AdvertiseContainer,
+  AdvertiseContainerHeaderContainer,
   PlansContainer,
   PlanContainer,
-} from "./Promote.styles";
+} from "./Advertise.styles";
 
-ReactGA.initialize(`${process.env.REACT_APP_GOOGLE_ID}`);
-ReactGA.pageview(window.location.pathname + window.location.search);
+import CTA from "./CTA/CTA";
 
-const Promote = () => {
+const Advertise = () => {
   return (
     <Scrollbars autoHide autoHideTimeout={100} autoHideDuration={100}>
-      <PromoteContainer>
-        <PromoteContainerHeaderContainer>
+      <AdvertiseContainer>
+        <AdvertiseContainerHeaderContainer>
           <Heading
             color="#101010"
             as="h1"
             fontSize={36}
             letterSpacing="-0.03em"
-            textAlign="start"
+            textAlign="center"
           >
-            Promote on Podhouse
+            Advertise on Podhouse
           </Heading>
           <Text color="#101010" lineHeight="30px" textAlign="center">
             We have the right price for you start to advertise your podcast with
             us and reach more listeners
           </Text>
-        </PromoteContainerHeaderContainer>
+        </AdvertiseContainerHeaderContainer>
 
         <PlansContainer>
           <PlanContainer>
@@ -86,24 +83,6 @@ const Promote = () => {
                 30 days featured
               </ListItem>
             </List>
-
-            <Button
-              type="button"
-              size="lg"
-              bgColor="#101010"
-              onClick={() => {}}
-              color="#ffffff"
-              _hover={{ bg: "#101010" }}
-              _active={{
-                bg: "#101010",
-              }}
-              _focus={{
-                boxShadow:
-                  "0 0 1px 2px rgba(0, 0, 0, .50), 0 1px 1px rgba(0, 0, 0, .15)",
-              }}
-            >
-              Get started
-            </Button>
           </PlanContainer>
 
           <PlanContainer>
@@ -131,8 +110,8 @@ const Promote = () => {
             </Heading>
 
             <Text color="#101010" lineHeight="30px" textAlign="start">
-              Podcast listeners are very highly engaged, you can grow your
-              audience by advertising with us
+              Get your podcast <strong>featured on the main page</strong> of the
+              app and reach <strong>10x more listeners</strong>
             </Text>
 
             <List spacing={3}>
@@ -149,29 +128,13 @@ const Promote = () => {
                 30 days featured
               </ListItem>
             </List>
-
-            <Button
-              type="button"
-              size="lg"
-              bgColor="#101010"
-              onClick={() => {}}
-              color="#ffffff"
-              _hover={{ bg: "#101010" }}
-              _active={{
-                bg: "#101010",
-              }}
-              _focus={{
-                boxShadow:
-                  "0 0 1px 2px rgba(0, 0, 0, .50), 0 1px 1px rgba(0, 0, 0, .15)",
-              }}
-            >
-              Get started
-            </Button>
           </PlanContainer>
         </PlansContainer>
-      </PromoteContainer>
+
+        <CTA />
+      </AdvertiseContainer>
     </Scrollbars>
   );
 };
 
-export default Promote;
+export default Advertise;

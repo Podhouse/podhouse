@@ -17,7 +17,7 @@ const query = graphql`
   fragment SubscriptionsPodcast_subscriptions on User
   @argumentDefinitions(
     after: { type: "String" }
-    first: { type: "Int", defaultValue: 20 }
+    first: { type: "Int", defaultValue: 30 }
     before: { type: "String" }
     last: { type: "Int" }
   )

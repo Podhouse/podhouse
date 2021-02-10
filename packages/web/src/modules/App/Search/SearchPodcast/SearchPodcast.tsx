@@ -23,7 +23,7 @@ const fragment = graphql`
   @argumentDefinitions(
     podcastName: { type: "String" }
     after: { type: "String" }
-    first: { type: "Int", defaultValue: 20 }
+    first: { type: "Int", defaultValue: 30 }
     before: { type: "String" }
     last: { type: "Int" }
   )
@@ -73,7 +73,7 @@ const SearchPodcast = ({
 
   const loadMore = useCallback(() => {
     if (isLoadingNext) return;
-    loadNext(25);
+    loadNext(10);
   }, [isLoadingNext, loadNext]);
 
   if (shouldLoadMore === true) loadMore();

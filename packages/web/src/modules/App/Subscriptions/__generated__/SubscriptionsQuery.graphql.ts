@@ -27,7 +27,7 @@ query SubscriptionsQuery {
 }
 
 fragment SubscriptionsPodcast_subscriptions on User {
-  subscriptions(first: 20) {
+  subscriptions(first: 30) {
     edges {
       node {
         _id
@@ -74,7 +74,7 @@ const node: ConcreteRequest = (function () {
       {
         kind: "Literal",
         name: "first",
-        value: 20,
+        value: 30,
       },
     ];
   return {
@@ -232,7 +232,7 @@ const node: ConcreteRequest = (function () {
                   storageKey: null,
                 },
               ],
-              storageKey: "subscriptions(first:20)",
+              storageKey: "subscriptions(first:30)",
             },
             {
               alias: null,
@@ -249,13 +249,13 @@ const node: ConcreteRequest = (function () {
       ],
     },
     params: {
-      cacheID: "9c7550c7cd8688e8c283dd69e48e4739",
+      cacheID: "6220913e8985adfebea60a4015b3a944",
       id: null,
       metadata: {},
       name: "SubscriptionsQuery",
       operationKind: "query",
       text:
-        "query SubscriptionsQuery {\n  currentUser {\n    ...useAuthUser_user\n    ...SubscriptionsPodcast_subscriptions\n    id\n  }\n}\n\nfragment SubscriptionsPodcast_subscriptions on User {\n  subscriptions(first: 20) {\n    edges {\n      node {\n        _id\n        name\n        appleId\n        image\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n  id\n}\n\nfragment useAuthUser_user on User {\n  _id\n  id\n}\n",
+        "query SubscriptionsQuery {\n  currentUser {\n    ...useAuthUser_user\n    ...SubscriptionsPodcast_subscriptions\n    id\n  }\n}\n\nfragment SubscriptionsPodcast_subscriptions on User {\n  subscriptions(first: 30) {\n    edges {\n      node {\n        _id\n        name\n        appleId\n        image\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n  id\n}\n\nfragment useAuthUser_user on User {\n  _id\n  id\n}\n",
     },
   };
 })();

@@ -25,7 +25,7 @@ export type SubscriptionsPodcastPaginationQuery = {
 query SubscriptionsPodcastPaginationQuery(
   $after: String
   $before: String
-  $first: Int = 20
+  $first: Int = 30
   $last: Int
   $id: ID!
 ) {
@@ -72,7 +72,7 @@ const node: ConcreteRequest = (function () {
       name: "before",
     },
     v2 = {
-      defaultValue: 20,
+      defaultValue: 30,
       kind: "LocalArgument",
       name: "first",
     },
@@ -315,15 +315,15 @@ const node: ConcreteRequest = (function () {
       ],
     },
     params: {
-      cacheID: "c767bc152f9d0819fcf3c5fe7d126956",
+      cacheID: "60072f91cf5fd6dae6a7ab5ee1707085",
       id: null,
       metadata: {},
       name: "SubscriptionsPodcastPaginationQuery",
       operationKind: "query",
       text:
-        "query SubscriptionsPodcastPaginationQuery(\n  $after: String\n  $before: String\n  $first: Int = 20\n  $last: Int\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ...SubscriptionsPodcast_subscriptions_pbnwq\n    id\n  }\n}\n\nfragment SubscriptionsPodcast_subscriptions_pbnwq on User {\n  subscriptions(after: $after, first: $first, before: $before, last: $last) {\n    edges {\n      node {\n        _id\n        name\n        appleId\n        image\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n  id\n}\n",
+        "query SubscriptionsPodcastPaginationQuery(\n  $after: String\n  $before: String\n  $first: Int = 30\n  $last: Int\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ...SubscriptionsPodcast_subscriptions_pbnwq\n    id\n  }\n}\n\nfragment SubscriptionsPodcast_subscriptions_pbnwq on User {\n  subscriptions(after: $after, first: $first, before: $before, last: $last) {\n    edges {\n      node {\n        _id\n        name\n        appleId\n        image\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n  id\n}\n",
     },
   };
 })();
-(node as any).hash = "c4f1237637204b6938eed66e7d532b81";
+(node as any).hash = "f20cd6a08b2589f703a134735d8d2426";
 export default node;

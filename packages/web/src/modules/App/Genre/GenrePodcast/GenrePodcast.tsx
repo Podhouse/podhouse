@@ -20,14 +20,14 @@ import { GenrePodcast_podcasts$key } from "./__generated__/GenrePodcast_podcasts
 
 import { GenreQuery } from "../__generated__/GenreQuery.graphql";
 
-import featured from "src/utils/featured";
+import { browse } from "src/utils/featured";
 
 const fragment = graphql`
   fragment GenrePodcast_podcasts on Query
   @argumentDefinitions(
     primaryGenre: { type: "String" }
     after: { type: "String" }
-    first: { type: "Int", defaultValue: 20 }
+    first: { type: "Int", defaultValue: 15 }
     before: { type: "String" }
     last: { type: "Int" }
   )
@@ -75,7 +75,7 @@ const GenrePodcast = ({
 
   const loadMore = useCallback(() => {
     if (isLoadingNext) return;
-    loadNext(25);
+    loadNext(10);
   }, [isLoadingNext, loadNext]);
 
   if (shouldLoadMore === true) loadMore();
@@ -120,7 +120,7 @@ const GenrePodcast = ({
         />
       </Helmet>
 
-      <Featured featured={featured} />
+      <Featured featured={browse} />
 
       <PodcastsWithOnlyAvatarList
         title={primaryGenre}

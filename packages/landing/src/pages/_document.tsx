@@ -2,11 +2,15 @@ import React from "react";
 import Document, { Head, Main, NextScript } from "next/document";
 import GoogleFonts from "next-google-fonts";
 
+import { GA_TRACKING_ID } from "../utils/gtag";
+
 class MyDocument extends Document {
   render() {
     return (
       <html lang="en-US">
         <Head>
+          <GoogleFonts href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" />
+
           <link
             rel="icon"
             sizes="192x192"
@@ -37,7 +41,24 @@ class MyDocument extends Document {
             name="description"
             content="The best podcast web app to listen to your favorite podcasts"
           />
-          <GoogleFonts href="https://fonts.googleapis.com/css?family=Inter:100,200,300,400,500,600,700,800,900&display=swap" />
+
+          {/* Global Site Tag (gtag.js) - Google Analytics */}
+          <script
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+          />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${GA_TRACKING_ID}', {
+                page_path: window.location.pathname,
+              });
+          `,
+            }}
+          />
         </Head>
         <body>
           <Main />

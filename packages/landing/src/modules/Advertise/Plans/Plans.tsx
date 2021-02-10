@@ -88,23 +88,30 @@ const Plans = () => {
             </ListItem>
           </List>
 
-          <Button
-            type="button"
-            size="lg"
-            bgColor="#101010"
-            onClick={redirectToApp}
-            color="#ffffff"
-            _hover={{ bg: "#101010" }}
-            _active={{
-              bg: "#101010",
-            }}
-            _focus={{
-              boxShadow:
-                "0 0 1px 2px rgba(0, 0, 0, .50), 0 1px 1px rgba(0, 0, 0, .15)",
-            }}
+          <a
+            href="mailto:leonardo@podhouse.app?subject=Advertise%20on%20Podhouse"
+            target="_blank"
+            rel="noreferrer"
           >
-            Get started
-          </Button>
+            <Button
+              width="100%"
+              type="button"
+              size="lg"
+              bgColor="#101010"
+              onClick={redirectToApp}
+              color="#ffffff"
+              _hover={{ bg: "#101010" }}
+              _active={{
+                bg: "#101010",
+              }}
+              _focus={{
+                boxShadow:
+                  "0 0 1px 2px rgba(0, 0, 0, .50), 0 1px 1px rgba(0, 0, 0, .15)",
+              }}
+            >
+              Advertise now
+            </Button>
+          </a>
         </PlanContainer>
 
         <PlanContainer>
@@ -151,23 +158,30 @@ const Plans = () => {
             </ListItem>
           </List>
 
-          <Button
-            type="button"
-            size="lg"
-            bgColor="#101010"
-            onClick={redirectToApp}
-            color="#ffffff"
-            _hover={{ bg: "#101010" }}
-            _active={{
-              bg: "#101010",
-            }}
-            _focus={{
-              boxShadow:
-                "0 0 1px 2px rgba(0, 0, 0, .50), 0 1px 1px rgba(0, 0, 0, .15)",
-            }}
+          <a
+            href="mailto:leonardo@podhouse.app?subject=Advertise%20on%20Podhouse"
+            target="_blank"
+            rel="noreferrer"
           >
-            Get started
-          </Button>
+            <Button
+              width="100%"
+              type="button"
+              size="lg"
+              bgColor="#101010"
+              onClick={redirectToApp}
+              color="#ffffff"
+              _hover={{ bg: "#101010" }}
+              _active={{
+                bg: "#101010",
+              }}
+              _focus={{
+                boxShadow:
+                  "0 0 1px 2px rgba(0, 0, 0, .50), 0 1px 1px rgba(0, 0, 0, .15)",
+              }}
+            >
+              Advertise now
+            </Button>
+          </a>
         </PlanContainer>
       </PlansContainer>
     </LandingGridContainer>

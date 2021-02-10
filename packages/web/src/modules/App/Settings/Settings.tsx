@@ -5,7 +5,6 @@ import Scrollbars from "react-custom-scrollbars";
 import graphql from "babel-plugin-relay/macro";
 import { useLazyLoadQuery } from "react-relay/hooks";
 import { useLocation } from "react-router-dom";
-import ReactGA from "react-ga";
 
 import { SettingsContainer } from "./Settings.styles";
 
@@ -18,9 +17,6 @@ import { useAuthContext } from "src/machines/Auth/AuthContext";
 import { getToken } from "src/utils/auth";
 
 import { SettingsUserQuery } from "./__generated__/SettingsUserQuery.graphql";
-
-ReactGA.initialize(`${process.env.REACT_APP_GOOGLE_ID}`);
-ReactGA.pageview(window.location.pathname + window.location.search);
 
 const query = graphql`
   query SettingsUserQuery {

@@ -9,11 +9,25 @@ import {
   FeaturedDetailsContainer,
 } from "./Featured.styles";
 
-import { FeaturedProps, FeaturedPodcast } from "./Featured.types";
+import convertPodcastNameToURL from "src/utils/convertPodcastNameToURL";
 
-const Featured = ({ featured }: FeaturedProps) => {
+interface FeaturedPodcast {
+  appleId: number;
+  _id: string;
+  name: string;
+  avatar: string;
+  author: string;
+  description: string;
+}
+
+interface Props {
+  featured: Array<FeaturedPodcast>;
+}
+
+const Featured = ({ featured }: Props) => {
   const [pause, setPause] = useState<boolean>(false);
   const timer = useRef<any>();
+
   const [sliderRef, slider] = useKeenSlider<any>({
     loop: true,
     duration: 7000,
@@ -49,48 +63,59 @@ const Featured = ({ featured }: FeaturedProps) => {
     <>
       <FeaturedContainer ref={sliderRef} className="keen-slider">
         {featured.map(
-          ({ id, avatar, name, author, description }: FeaturedPodcast) => (
-            <FeaturedItemContainer
-              key={id}
-              className="keen-slider__slide number-slide1"
-            >
-              <ReactRouterLink to="/podcast/invisible">
-                <Image
-                  borderRadius={5}
-                  src={avatar}
-                  objectFit="cover"
-                  alt="Podcast featured"
-                  loading="lazy"
-                />
-              </ReactRouterLink>
+          ({
+            appleId,
+            _id,
+            avatar,
+            name,
+            author,
+            description,
+          }: FeaturedPodcast) => {
+            const route: string = convertPodcastNameToURL(name, appleId);
 
-              <FeaturedDetailsContainer>
-                <Badge
-                  pl="2"
-                  pr="2"
-                  pt="0.5"
-                  pb="0.5"
-                  borderRadius={2}
-                  fontSize="0.8em"
-                  colorScheme="green"
-                >
-                  Featured
-                </Badge>
+            return (
+              <FeaturedItemContainer
+                key={_id}
+                className="keen-slider__slide number-slide1"
+              >
+                <ReactRouterLink to={{ pathname: route, state: { _id: _id } }}>
+                  <Image
+                    borderRadius={5}
+                    src={avatar}
+                    objectFit="cover"
+                    alt="Podcast featured"
+                    loading="lazy"
+                  />
+                </ReactRouterLink>
 
-                <Heading
-                  as={ReactRouterLink}
-                  letterSpacing="-0.03em"
-                  to="/podcast/invisible"
-                >
-                  {name}
-                </Heading>
-                <Heading as="h2" size="sm" letterSpacing="-0.03em">
-                  {author}
-                </Heading>
-                <Text lineHeight="30px">{description}</Text>
-              </FeaturedDetailsContainer>
-            </FeaturedItemContainer>
-          )
+                <FeaturedDetailsContainer>
+                  <Badge
+                    pl="2"
+                    pr="2"
+                    pt="0.5"
+                    pb="0.5"
+                    borderRadius={2}
+                    fontSize="0.8em"
+                    colorScheme="green"
+                  >
+                    Featured
+                  </Badge>
+
+                  <Heading
+                    as={ReactRouterLink}
+                    letterSpacing="-0.03em"
+                    to={{ pathname: route, state: { _id: _id } }}
+                  >
+                    {name}
+                  </Heading>
+                  <Heading as="h2" size="sm" letterSpacing="-0.03em">
+                    {author}
+                  </Heading>
+                  <Text lineHeight="30px">{description}</Text>
+                </FeaturedDetailsContainer>
+              </FeaturedItemContainer>
+            );
+          }
         )}
       </FeaturedContainer>
     </>
