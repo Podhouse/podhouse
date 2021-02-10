@@ -4,7 +4,6 @@ import graphql from "babel-plugin-relay/macro";
 import { useQueryLoader } from "react-relay/hooks";
 import { useLocation } from "react-router-dom";
 import { ErrorBoundary } from "react-error-boundary";
-import ReactGA from "react-ga";
 
 import SkeletonPage from "src/components/Skeletons/SkeletonPage/SkeletonPage";
 import ErrorFallback from "src/components/ErrorFallback/ErrorFallback";
@@ -13,9 +12,6 @@ import PodcastInfo from "./PodcastInfo/PodcastInfo";
 
 import { PodcastQuery } from "./__generated__/PodcastQuery.graphql";
 import { PodcastInfoUserQuery } from "./__generated__/PodcastInfoUserQuery.graphql";
-
-ReactGA.initialize("G-8MV9SXCJQP");
-ReactGA.pageview(window.location.pathname + window.location.search);
 
 const podcastQuery = graphql`
   query PodcastQuery($_id: ID!) {

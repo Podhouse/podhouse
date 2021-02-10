@@ -4,7 +4,6 @@ import graphql from "babel-plugin-relay/macro";
 import { useQueryLoader } from "react-relay/hooks";
 import { ErrorBoundary } from "react-error-boundary";
 import { useDebounce } from "use-debounce";
-import ReactGA from "react-ga";
 
 import SearchPodcast from "./SearchPodcast/SearchPodcast";
 import SkeletonPodcastsWithOnlyAvatarList from "src/components/Skeletons/SkeletonPodcastsWithOnlyAvatarList/SkeletonPodcastsWithOnlyAvatarList";
@@ -15,9 +14,6 @@ import { SearchContainer } from "./Search.styles";
 import { useSearchContext } from "src/machines/Search/SearchContext";
 
 import { SearchQuery } from "./__generated__/SearchQuery.graphql";
-
-ReactGA.initialize("G-8MV9SXCJQP");
-ReactGA.pageview(window.location.pathname + window.location.search);
 
 const searchQuery = graphql`
   query SearchQuery($podcastName: String!) {

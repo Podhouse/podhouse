@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import ReactGA from "react-ga";
+import GA4R from 'ga-4-react/dist/components/GA4RComponents';
 
 import Provider from "src/components/Provider/Provider";
 
@@ -10,12 +10,11 @@ import reportWebVitals from "./reportWebVitals";
 import "@reach/slider/styles.css";
 import "@reach/combobox/styles.css";
 
-ReactGA.initialize("G-8MV9SXCJQP");
-ReactGA.pageview(window.location.pathname + window.location.search);
-
 ReactDOM.render(
   <React.StrictMode>
-    <Provider />
+    <GA4R code="G-8MV9SXCJQP">
+      <Provider />
+    </GA4R>
   </React.StrictMode>,
   document.getElementById("root")
 );

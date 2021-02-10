@@ -10,7 +10,6 @@ import {
 } from "@chakra-ui/react";
 import { BsCheck } from "react-icons/bs";
 import Scrollbars from "react-custom-scrollbars";
-import ReactGA from "react-ga";
 
 import {
   PromoteContainer,
@@ -18,9 +17,6 @@ import {
   PlansContainer,
   PlanContainer,
 } from "./Promote.styles";
-
-ReactGA.initialize("G-8MV9SXCJQP");
-ReactGA.pageview(window.location.pathname + window.location.search);
 
 const Promote = () => {
   return (

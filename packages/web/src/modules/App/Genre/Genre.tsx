@@ -4,7 +4,6 @@ import graphql from "babel-plugin-relay/macro";
 import { useQueryLoader } from "react-relay/hooks";
 import { useLocation } from "react-router-dom";
 import { ErrorBoundary } from "react-error-boundary";
-import ReactGA from "react-ga";
 
 import GenrePodcast from "./GenrePodcast/GenrePodcast";
 
@@ -17,9 +16,6 @@ import { GenreContainer } from "./Genre.styles";
 import { GenreQuery } from "./__generated__/GenreQuery.graphql";
 
 import { browse } from "src/utils/featured";
-
-ReactGA.initialize("G-8MV9SXCJQP");
-ReactGA.pageview(window.location.pathname + window.location.search);
 
 const genreQuery = graphql`
   query GenreQuery($primaryGenre: String!) {

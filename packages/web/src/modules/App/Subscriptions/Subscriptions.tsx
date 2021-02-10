@@ -3,7 +3,6 @@ import { Box, Text, Link, Stack } from "@chakra-ui/react";
 import Scrollbars from "react-custom-scrollbars";
 import graphql from "babel-plugin-relay/macro";
 import { useLazyLoadQuery } from "react-relay/hooks";
-import ReactGA from "react-ga";
 
 import SkeletonPodcastsWithOnlyAvatarList from "src/components/Skeletons/SkeletonPodcastsWithOnlyAvatarList/SkeletonPodcastsWithOnlyAvatarList";
 
@@ -18,9 +17,6 @@ import { useAuthContext } from "src/machines/Auth/AuthContext";
 import { getToken } from "src/utils/auth";
 
 import { SubscriptionsQuery } from "./__generated__/SubscriptionsQuery.graphql";
-
-ReactGA.initialize("G-8MV9SXCJQP");
-ReactGA.pageview(window.location.pathname + window.location.search);
 
 const query = graphql`
   query SubscriptionsQuery {
