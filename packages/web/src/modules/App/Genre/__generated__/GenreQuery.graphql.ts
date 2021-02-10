@@ -23,7 +23,7 @@ query GenreQuery(
 }
 
 fragment GenrePodcast_podcasts_BPIEN on Query {
-  podcastsByGenre(primaryGenre: $primaryGenre, first: 20) {
+  podcastsByGenre(primaryGenre: $primaryGenre, first: 15) {
     edges {
       node {
         _id
@@ -62,7 +62,7 @@ const node: ConcreteRequest = (function () {
       {
         kind: "Literal",
         name: "first",
-        value: 20,
+        value: 15,
       },
       v1 /*: any*/,
     ];
@@ -221,13 +221,13 @@ const node: ConcreteRequest = (function () {
       ],
     },
     params: {
-      cacheID: "b09cc3fbc917ad3af07000940b99fec6",
+      cacheID: "89c5d5eea2d83cd37125246154c8bd4d",
       id: null,
       metadata: {},
       name: "GenreQuery",
       operationKind: "query",
       text:
-        "query GenreQuery(\n  $primaryGenre: String!\n) {\n  ...GenrePodcast_podcasts_BPIEN\n}\n\nfragment GenrePodcast_podcasts_BPIEN on Query {\n  podcastsByGenre(primaryGenre: $primaryGenre, first: 20) {\n    edges {\n      node {\n        _id\n        name\n        appleId\n        image\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n",
+        "query GenreQuery(\n  $primaryGenre: String!\n) {\n  ...GenrePodcast_podcasts_BPIEN\n}\n\nfragment GenrePodcast_podcasts_BPIEN on Query {\n  podcastsByGenre(primaryGenre: $primaryGenre, first: 15) {\n    edges {\n      node {\n        _id\n        name\n        appleId\n        image\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n",
     },
   };
 })();

@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-export const PromoteContainer = styled.div`
+export const AdvertiseContainer = styled.div`
   width: 100%;
   height: fit-content;
   display: grid;
@@ -10,7 +10,7 @@ export const PromoteContainer = styled.div`
   padding: 30px 30px 30px 30px;
 `;
 
-export const PromoteContainerHeaderContainer = styled.div`
+export const AdvertiseContainerHeaderContainer = styled.div`
   width: 100%;
   height: auto;
   display: grid;

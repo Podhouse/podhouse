@@ -23,7 +23,7 @@ export type GenrePaginationQuery = {
 query GenrePaginationQuery(
   $after: String
   $before: String
-  $first: Int = 20
+  $first: Int = 15
   $last: Int
   $primaryGenre: String
 ) {
@@ -66,7 +66,7 @@ const node: ConcreteRequest = (function () {
         name: "before",
       },
       {
-        defaultValue: 20,
+        defaultValue: 15,
         kind: "LocalArgument",
         name: "first",
       },
@@ -263,15 +263,15 @@ const node: ConcreteRequest = (function () {
       ],
     },
     params: {
-      cacheID: "6c6828783ff398c9359dfe618fda5089",
+      cacheID: "445e8dd742973920f1ea2b8778330999",
       id: null,
       metadata: {},
       name: "GenrePaginationQuery",
       operationKind: "query",
       text:
-        "query GenrePaginationQuery(\n  $after: String\n  $before: String\n  $first: Int = 20\n  $last: Int\n  $primaryGenre: String\n) {\n  ...GenrePodcast_podcasts_2w6tXt\n}\n\nfragment GenrePodcast_podcasts_2w6tXt on Query {\n  podcastsByGenre(primaryGenre: $primaryGenre, after: $after, first: $first, before: $before, last: $last) {\n    edges {\n      node {\n        _id\n        name\n        appleId\n        image\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n",
+        "query GenrePaginationQuery(\n  $after: String\n  $before: String\n  $first: Int = 15\n  $last: Int\n  $primaryGenre: String\n) {\n  ...GenrePodcast_podcasts_2w6tXt\n}\n\nfragment GenrePodcast_podcasts_2w6tXt on Query {\n  podcastsByGenre(primaryGenre: $primaryGenre, after: $after, first: $first, before: $before, last: $last) {\n    edges {\n      node {\n        _id\n        name\n        appleId\n        image\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n",
     },
   };
 })();
-(node as any).hash = "b7c6ae8cd9bf735dd79e10897235dd07";
+(node as any).hash = "3b96c1d38dcb757e558043e10b429a16";
 export default node;

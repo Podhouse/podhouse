@@ -25,7 +25,7 @@ export type PodcastEpisodesPaginationQuery = {
 query PodcastEpisodesPaginationQuery(
   $after: String
   $before: String
-  $first: Int = 20
+  $first: Int = 10
   $last: Int
   $id: ID!
 ) {
@@ -85,7 +85,7 @@ const node: ConcreteRequest = (function () {
       name: "before",
     },
     v2 = {
-      defaultValue: 20,
+      defaultValue: 10,
       kind: "LocalArgument",
       name: "first",
     },
@@ -400,15 +400,15 @@ const node: ConcreteRequest = (function () {
       ],
     },
     params: {
-      cacheID: "35b42434fc0da5cb40091e074241e02b",
+      cacheID: "5eeda4879fc2f6abb928dc2f1e5113af",
       id: null,
       metadata: {},
       name: "PodcastEpisodesPaginationQuery",
       operationKind: "query",
       text:
-        "query PodcastEpisodesPaginationQuery(\n  $after: String\n  $before: String\n  $first: Int = 20\n  $last: Int\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ...PodcastEpisodes_episodes_pbnwq\n    id\n  }\n}\n\nfragment PodcastEpisodes_episodes_pbnwq on Podcast {\n  episodes(after: $after, first: $first, before: $before, last: $last) {\n    edges {\n      node {\n        _id\n        title\n        description\n        publishedDate\n        link\n        image\n        audio\n        duration\n        podcast {\n          _id\n          name\n          website\n          rss\n          appleId\n          image\n          id\n        }\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n  id\n}\n",
+        "query PodcastEpisodesPaginationQuery(\n  $after: String\n  $before: String\n  $first: Int = 10\n  $last: Int\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ...PodcastEpisodes_episodes_pbnwq\n    id\n  }\n}\n\nfragment PodcastEpisodes_episodes_pbnwq on Podcast {\n  episodes(after: $after, first: $first, before: $before, last: $last) {\n    edges {\n      node {\n        _id\n        title\n        description\n        publishedDate\n        link\n        image\n        audio\n        duration\n        podcast {\n          _id\n          name\n          website\n          rss\n          appleId\n          image\n          id\n        }\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n  id\n}\n",
     },
   };
 })();
-(node as any).hash = "7e8b006d9f7b0b02501f3cd10d8c9bb8";
+(node as any).hash = "b9a6a7c845df3024c9a5fe966fee6d64";
 export default node;

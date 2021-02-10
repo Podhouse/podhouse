@@ -23,7 +23,7 @@ query SearchQuery(
 }
 
 fragment SearchPodcast_podcasts_h9Yo2 on Query {
-  podcastsByName(podcastName: $podcastName, first: 20) {
+  podcastsByName(podcastName: $podcastName, first: 30) {
     edges {
       node {
         _id
@@ -62,7 +62,7 @@ const node: ConcreteRequest = (function () {
       {
         kind: "Literal",
         name: "first",
-        value: 20,
+        value: 30,
       },
       v1 /*: any*/,
     ];
@@ -221,13 +221,13 @@ const node: ConcreteRequest = (function () {
       ],
     },
     params: {
-      cacheID: "033130f149371c4d3067167f28d0dc55",
+      cacheID: "557cc40493441a665a3efc3f0c4c0270",
       id: null,
       metadata: {},
       name: "SearchQuery",
       operationKind: "query",
       text:
-        "query SearchQuery(\n  $podcastName: String!\n) {\n  ...SearchPodcast_podcasts_h9Yo2\n}\n\nfragment SearchPodcast_podcasts_h9Yo2 on Query {\n  podcastsByName(podcastName: $podcastName, first: 20) {\n    edges {\n      node {\n        _id\n        name\n        appleId\n        image\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n",
+        "query SearchQuery(\n  $podcastName: String!\n) {\n  ...SearchPodcast_podcasts_h9Yo2\n}\n\nfragment SearchPodcast_podcasts_h9Yo2 on Query {\n  podcastsByName(podcastName: $podcastName, first: 30) {\n    edges {\n      node {\n        _id\n        name\n        appleId\n        image\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n",
     },
   };
 })();

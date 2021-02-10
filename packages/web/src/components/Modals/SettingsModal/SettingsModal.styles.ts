@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 export const SettingsModalContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: repeat(5, 35px);
+  grid-template-rows: repeat(4, 35px);
   grid-row-gap: 5px;
   align-items: center;
   justify-content: center;

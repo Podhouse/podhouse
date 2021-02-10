@@ -65,7 +65,7 @@ const node: ReaderFragment = (function () {
         name: "before",
       },
       {
-        defaultValue: 20,
+        defaultValue: 10,
         kind: "LocalArgument",
         name: "first",
       },
@@ -287,5 +287,5 @@ const node: ReaderFragment = (function () {
     abstractKey: null,
   };
 })();
-(node as any).hash = "7e8b006d9f7b0b02501f3cd10d8c9bb8";
+(node as any).hash = "b9a6a7c845df3024c9a5fe966fee6d64";
 export default node;
