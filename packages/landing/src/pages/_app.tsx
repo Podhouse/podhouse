@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import App from "next/app";
 import { useRouter } from "next/router";
 
-import * as gtag from 'gtag';
+import * as gtag from '../utils/gtag';
 
 import Landing from "src/components/Landing/Landing";
 
