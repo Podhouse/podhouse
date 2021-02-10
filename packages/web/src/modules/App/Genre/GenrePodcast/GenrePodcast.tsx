@@ -20,7 +20,7 @@ import { GenrePodcast_podcasts$key } from "./__generated__/GenrePodcast_podcasts
 
 import { GenreQuery } from "../__generated__/GenreQuery.graphql";
 
-import featured from "src/utils/featured";
+import { browse } from "src/utils/featured";
 
 const fragment = graphql`
   fragment GenrePodcast_podcasts on Query
@@ -120,7 +120,7 @@ const GenrePodcast = ({
         />
       </Helmet>
 
-      <Featured featured={featured} />
+      <Featured featured={browse} />
 
       <PodcastsWithOnlyAvatarList
         title={primaryGenre}

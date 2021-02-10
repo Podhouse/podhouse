@@ -9,7 +9,7 @@ import Featured from "src/components/Featured/Featured";
 
 import Genres from "./Genres/Genres";
 
-import featured from "src/utils/featured";
+import { browse } from "src/utils/featured";
 
 const Browse = () => {
   const location = useLocation();
@@ -55,7 +55,7 @@ const Browse = () => {
           />
         </Helmet>
 
-        <Featured featured={featured} />
+        <Featured featured={browse} />
 
         <Genres />
       </BrowseContainer>
