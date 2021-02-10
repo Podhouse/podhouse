@@ -63,7 +63,14 @@ const Featured = ({ featured }: Props) => {
     <>
       <FeaturedContainer ref={sliderRef} className="keen-slider">
         {featured.map(
-          ({ appleId, _id, avatar, name, author, description }: FeaturedPodcast) => {
+          ({
+            appleId,
+            _id,
+            avatar,
+            name,
+            author,
+            description,
+          }: FeaturedPodcast) => {
             const route: string = convertPodcastNameToURL(name, appleId);
 
             return (
@@ -107,7 +114,7 @@ const Featured = ({ featured }: Props) => {
                   <Text lineHeight="30px">{description}</Text>
                 </FeaturedDetailsContainer>
               </FeaturedItemContainer>
-            )
+            );
           }
         )}
       </FeaturedContainer>

@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import GA4R from 'ga-4-react/dist/components/GA4RComponents';
+import { GA4R } from "ga-4-react";
 
 import Provider from "src/components/Provider/Provider";
 

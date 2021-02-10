@@ -87,7 +87,7 @@ const Promote = () => {
               type="button"
               size="lg"
               bgColor="#101010"
-              onClick={() => { }}
+              onClick={() => {}}
               color="#ffffff"
               _hover={{ bg: "#101010" }}
               _active={{
@@ -150,7 +150,7 @@ const Promote = () => {
               type="button"
               size="lg"
               bgColor="#101010"
-              onClick={() => { }}
+              onClick={() => {}}
               color="#ffffff"
               _hover={{ bg: "#101010" }}
               _active={{
