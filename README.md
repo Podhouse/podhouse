@@ -1,11 +1,12 @@
-<div align="center">
+<p align="center">
+  <a href="https://podhouse.app/" target="_blank" rel="noopener noreferrer">
+    <img width="100" src="https://podhouse.app/logo.svg" alt="Podhouse logo">
+  </a>
+  
+# Podhouse
+</p>
 
-[![Podhouse](https://i.imgur.com/lypbryD.jpg)](https://podhouse.app/)
-
-  ### The best way to listen to your favorite podcasts
-</div>
-
-## What is Podhouse?
+### What is Podhouse?
 
 Podcasts are spreading between internet users and more people are looking for audio-content. We have a lot of podcast apps available nowadays on the Web, but some of them do not care about UI, UX, and performance at all. After my experience using some podcast web apps, I decided to create Podhouse. 
 
