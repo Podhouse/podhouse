@@ -31,7 +31,7 @@ Podcasts should be accessible to anyone, and our mission is to provide the best 
 
 ### Contributing
 
-We encourage you to contribute to Podhouse. Please check out the [Contributing to Podhouse guide](CONTRIBUTING.md) for guidelines about how to proceed.
+We encourage you to contribute to Podhouse. **We heartily welcome any and all contributions that match our standards!**
 
 ### License
 
