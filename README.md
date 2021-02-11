@@ -2,6 +2,9 @@
   <a href="https://podhouse.app/" target="_blank" rel="noopener noreferrer">
     <img width="100" src="https://podhouse.app/logo.svg" alt="Podhouse logo">
   </a>
+  
+  [![Actions Status](https://github.com/podhouse/podhouse/workflows/CI/badge.svg)](https://github.com/podhouse/podhouse/actions)
+  [![LICENSE MIT](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://github.com/podhouse/podhouse)
 </p>
 
 ### What is Podhouse?
