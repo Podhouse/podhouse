@@ -2,9 +2,8 @@
   <a href="https://podhouse.app/" target="_blank" rel="noopener noreferrer">
     <img width="100" src="https://podhouse.app/logo.svg" alt="Podhouse logo">
   </a>
-  
-  [![Actions Status](https://github.com/podhouse/podhouse/workflows/CI/badge.svg)](https://github.com/podhouse/podhouse/actions)
-  [![LICENSE MIT](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://github.com/podhouse/podhouse)
+
+<h1 align="center">Podhouse</h1>
 </p>
 
 ### What is Podhouse?
@@ -14,3 +13,26 @@ Podcasts are spreading between internet users and more people are looking for au
 Podhouse aims to help people discover new podcasts and listen to their favorites. Built for people who want to listen to podcasts combining with a nice experience. 
 
 Podcasts should be accessible to anyone, and our mission is to provide the best web app where people can listen to their favorite podcasts.
+
+
+### Table of Contents
+
+- [What is Podhouse?](#what-is-podhouse)
+- [Table of Contents](#table-of-contents)
+- [Getting Started](#getting-started)
+- [Contributing](#contributing)
+- [License](#license)
+
+### Getting started
+
+1. Clone this repo using `https://github.com/Podhouse/podhouse.git`
+2. Move to the appropriate directory: `cd podhouse`.<br />
+3. Run `yarn` or `npm install` to install dependencies.<br />
+
+### Contributing
+
+We encourage you to contribute to Podhouse. Please check out the [Contributing to Podhouse guide](CONTRIBUTING.md) for guidelines about how to proceed.
+
+### License
+
+MIT
