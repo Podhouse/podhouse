@@ -1,7 +1,14 @@
-# Podhouse
+<div align="center">
 
-[![Actions Status](https://github.com/leonardomso/rehawk/workflows/CI/badge.svg)](https://github.com/leonardomso/rehawk/actions)
+[![Podhouse](https://i.imgur.com/lypbryD.jpg)](https://podhouse.app/)
 
-We have a lot of podcasts apps available nowadays on the Web, but some of them do not care about UI, UX, and performance at all. After noticing it, the idea to create a podcast app that's accessible has a nice UI/UX and an acceptable performance came in mind. 
+  ### The best way to listen to your favorite podcasts
+</div>
 
-Podhouse is a web podcast app created having in mind a nice and clean UI/UX and performance for the users. Bringing the best from a few different apps, Podhouse is intended to be the clearest and best experience for you to listen to your favorite podcasts.
+## What is Podhouse?
+
+Podcasts are spreading between internet users and more people are looking for audio-content. We have a lot of podcast apps available nowadays on the Web, but some of them do not care about UI, UX, and performance at all. After my experience using some podcast web apps, I decided to create Podhouse. 
+
+Podhouse aims to help people discover new podcasts and listen to their favorites. Built for people who want to listen to podcasts combining with a nice experience. 
+
+Podcasts should be accessible to anyone, and our mission is to provide the best web app where people can listen to their favorite podcasts.
