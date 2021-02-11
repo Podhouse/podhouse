@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { GA4R } from "ga-4-react";
 
 import Provider from "src/components/Provider/Provider";
 
@@ -12,9 +11,7 @@ import "@reach/combobox/styles.css";
 
 ReactDOM.render(
   <React.StrictMode>
-    <GA4R code="G-8MV9SXCJQP">
-      <Provider />
-    </GA4R>
+    <Provider />
   </React.StrictMode>,
   document.getElementById("root")
 );
