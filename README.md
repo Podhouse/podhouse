@@ -3,7 +3,7 @@
     <img width="100" src="https://podhouse.app/logo.svg" alt="Podhouse logo">
   </a>
   
-# Podhouse
+  # Podhouse
 </p>
 
 ### What is Podhouse?
