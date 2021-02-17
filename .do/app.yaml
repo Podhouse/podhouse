@@ -1,0 +1,12 @@
+name: podhouse
+
+services:
+  - name: podhouse-api
+    environment_slug: node-js
+    github:
+      repo: podhouse/podhouse
+      branch: master
+      deploy_on_push: true
+    source_dir: packages/server
+    routes:
+      - path: /graphql
