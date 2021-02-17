@@ -1,3 +1,8 @@
+---
+name: 🧠 Feature request
+about: Suggest an idea, feature, or improvement for this project
+---
+
 ### Summary
 
 <!--- One paragraph description of the feature -->

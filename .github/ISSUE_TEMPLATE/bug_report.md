@@ -1,3 +1,8 @@
+---
+name: 🐞 Bug Report
+about: Report a bug to help us improve Podhouse
+---
+
 <!-- Before creating a bug report, try disabling browser extensions to see if the bug is still present. -->
 
 ### Expected behavior
