@@ -29,6 +29,17 @@ Podcasts should be accessible to anyone, and our mission is to provide the best 
 1. Clone this repo using `https://github.com/Podhouse/podhouse.git`
 2. Move to the appropriate directory: `cd podhouse`.<br />
 3. Run `yarn` or `npm install` to install dependencies.<br />
+4. Inside `packages/server`, run the following command:
+
+```
+cp .env.example .env
+```
+
+5. Inside `packages/web`, run the following command:
+
+```
+cp .env.example .env
+```
 
 ## Contributing
 
