@@ -9,10 +9,9 @@
     "start": "webpack --watch --progress --config webpack.config.js",
     "build": "babel src --extensions \".es6,.js,.es,.jsx,.mjs,.ts,.tsx\" --ignore *.spec.js --out-dir dist --copy-files --source-maps --verbose",
     "test": "jest",
-    "serve": "node ./dist/index.js",
-    "update-schema": "babel-node --extensions \".es6,.js,.es,.jsx,.mjs,.ts\" ./scripts/updateSchema.ts",
     "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix",
-    "format": "prettier --write src"
+    "format": "prettier --write src",
+    "update-schema": "babel-node --extensions \".es6,.js,.es,.jsx,.mjs,.ts\" ./scripts/updateSchema.ts"
   },
   "dependencies": {
     "@babel/cli": "^7.12.16",

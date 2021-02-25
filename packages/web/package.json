@@ -7,13 +7,13 @@
     "prebuild": "npm run generate-sitemap",
     "build": "SKIP_PREFLIGHT_CHECK=true react-scripts build",
     "test": "SKIP_PREFLIGHT_CHECK=true react-scripts test",
-    "generate-sitemap": "node src/sitemap-generator.js",
-    "cypress:open": "SKIP_PREFLIGHT_CHECK=true cypress open",
-    "cypress:run": "SKIP_PREFLIGHT_CHECK=true cypress run",
-    "eject": "SKIP_PREFLIGHT_CHECK=true react-scripts eject",
     "lint": "eslint --ext js,ts,tsx src",
     "format": "prettier --write src",
-    "relay": "relay-compiler --src ./src --schema ./schema/schema.graphql --language typescript"
+    "cypress:open": "SKIP_PREFLIGHT_CHECK=true cypress open",
+    "cypress:run": "SKIP_PREFLIGHT_CHECK=true cypress run",
+    "relay": "relay-compiler --src ./src --schema ./schema/schema.graphql --language typescript",
+    "generate-sitemap": "node src/sitemap-generator.js",
+    "eject": "SKIP_PREFLIGHT_CHECK=true react-scripts eject"
   },
   "dependencies": {
     "@babel/plugin-transform-react-jsx": "^7.12.16",
