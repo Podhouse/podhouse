@@ -14226,10 +14226,10 @@ next-ga@^2.3.4:
     debug "^4.0.0"
     react-ga "^2.5.3"
 
-next-google-fonts@^1.3.0:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/next-google-fonts/-/next-google-fonts-1.3.0.tgz#61d3c5c94e3fea3a8a15b979a299f75c8bd059c1"
-  integrity sha512-aoSCjg4ccV+n9M47971lRkpvx8K61FkWaT/U+PQAt6G15HVOC5d8gsHuEGo3Y9sbdakI5HJUNX0GBTXssLYUtA==
+next-google-fonts@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/next-google-fonts/-/next-google-fonts-2.0.0.tgz#ea261b144e41e0a963d00a8178ccebc00f19bd33"
+  integrity sha512-wQmJoEfsX24Hx86cz25tdGfLlNq/mcji9WwXOYGQRQ21A8D7eJg0GH26hEEeBz9kbwB7W2ZC1aWZ7pUgPGXxcg==
 
 next-images@^1.7.0:
   version "1.7.0"
