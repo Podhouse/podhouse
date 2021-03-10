@@ -2,7 +2,9 @@ import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import { Global } from "@emotion/react";
 import { ChakraProvider } from "@chakra-ui/react";
-import { RelayEnvironmentProvider } from "react-relay/hooks";
+import {
+  RelayEnvironmentProvider,
+} from "react-relay/hooks";
 
 import environment from "src/relay/RelayEnvironment";
 

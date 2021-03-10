@@ -36,13 +36,13 @@
     "relay": "yarn workspace @podhouse/web relay"
   },
   "dependencies": {
-    "lerna": "^3.22.1"
+    "lerna": "^4.0.0"
   },
   "devDependencies": {
-    "husky": "^5.1.1",
+    "husky": "^5.1.3",
     "lint-staged": "^10.5.4",
     "prettier": "^2.2.1",
-    "typescript": "^4.2.2"
+    "typescript": "^4.2.3"
   },
   "husky": {
     "hooks": {
