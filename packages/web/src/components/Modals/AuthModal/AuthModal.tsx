@@ -19,7 +19,7 @@ import SignUp from "./SignUp/SignUp";
 import { useAuthContext } from "src/machines/Auth/AuthContext";
 
 const AuthModal = () => {
-  const { current, auth, handleAuth } = useAuthContext();
+  const { current, auth, handleAuth, send } = useAuthContext();
 
   const renderAuth = () => {
     if (current.matches("getstarted")) {
@@ -37,7 +37,7 @@ const AuthModal = () => {
     <Modal isOpen={auth} onClose={handleAuth} isCentered size="lg">
       <ModalOverlay />
       <ModalContent>
-        <ModalCloseButton />
+        <ModalCloseButton onClick={() => send("GET_STARTED")} />
         <ModalBody>
           <AuthContainer>
             <AuthLogoContainer>

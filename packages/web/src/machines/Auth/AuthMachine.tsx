@@ -17,25 +17,21 @@ const AuthMachine = Machine<AuthContext, AuthStateSchema, AuthEvent>({
       on: {
         SIGNUP: "signup",
         FORGOT: "forgot",
-        RESET: "reset",
+        GET_STARTED: "getstarted",
       },
     },
     signup: {
       on: {
         SIGNIN: "signin",
         FORGOT: "forgot",
+        GET_STARTED: "getstarted",
       },
     },
     forgot: {
       on: {
         SIGNIN: "signin",
         SIGNUP: "signup",
-      },
-    },
-    reset: {
-      on: {
-        SUCCESS: "success",
-        ERROR: "signin",
+        GET_STARTED: "getstarted",
       },
     },
     success: {
