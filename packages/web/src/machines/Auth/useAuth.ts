@@ -7,6 +7,14 @@ const useAuth = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [current, send] = useMachine(AuthMachine);
 
+  const handleAuth = () => {
+    if (isOpen) {
+      onClose();
+    } else {
+      onOpen();
+    }
+  };
+
   const onOpenAuth = () => {
     onOpen();
   };
@@ -19,6 +27,7 @@ const useAuth = () => {
   return {
     current,
     auth: isOpen,
+    handleAuth,
     onOpenAuth,
     onCloseAuth,
     send,

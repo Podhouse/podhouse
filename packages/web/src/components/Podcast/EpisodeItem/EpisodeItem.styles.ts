@@ -62,8 +62,9 @@ export const EpisodeItemName = styled(Text)`
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+
   @media screen and (min-width: 800px) {
-    grid-column: 2 / 3;
+    grid-column: 1 / 2;
     grid-row: 1 / 2;
   }
 `;
@@ -77,13 +78,14 @@ export const EpisodeItemDescription = styled(Text)`
   -webkit-box-orient: vertical;
   overflow: hidden;
   align-self: center;
+
   @media screen and (min-width: 800px) {
     width: 100%;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
     align-self: center;
-    grid-column: 2 / 3;
+    grid-column: 1 / 2;
     grid-row: 2 / 3;
   }
 `;
