@@ -34,7 +34,7 @@ const AuthModal = () => {
   };
 
   return (
-    <Modal isOpen={auth} onClose={onCloseAuth} isCentered size="lg" >
+    <Modal isOpen={auth} onClose={onCloseAuth} isCentered size="lg">
       <ModalOverlay />
       <ModalContent>
         <ModalCloseButton onClick={onCloseAuth} />
@@ -48,7 +48,7 @@ const AuthModal = () => {
           </AuthContainer>
         </ModalBody>
       </ModalContent>
-    </Modal >
+    </Modal>
   );
 };
 
