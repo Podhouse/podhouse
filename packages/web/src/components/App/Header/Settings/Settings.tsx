@@ -24,7 +24,7 @@ const query = graphql`
 `;
 
 const Settings = () => {
-  const { handleAuth } = useAuthContext();
+  const { onOpenAuth } = useAuthContext();
   const { handleSettings } = useSettingsContext();
 
   const data = useLazyLoadQuery<SettingsQuery>(
@@ -45,7 +45,7 @@ const Settings = () => {
           color="brand.900"
           fontWeight="bold"
           textTransform="uppercase"
-          onClick={handleAuth}
+          onClick={onOpenAuth}
         >
           Login
         </Link>

@@ -1,7 +1,7 @@
 import React from "react";
 import NextLink from "next/link";
 import { Link, Text } from "@chakra-ui/react";
-import { Twitter, Linkedin, Instagram, Facebook } from "react-feather";
+import { Twitter, Linkedin, Instagram } from "react-feather";
 
 import {
   FooterContainer,
@@ -43,7 +43,7 @@ const Footer = () => (
 
     <FooterBrandsContainer>
       <Link
-        href="https://twitter.com/leonardomso"
+        href="https://twitter.com/podhouseapp"
         target="_blank"
         rel="noopener"
       >
@@ -51,7 +51,7 @@ const Footer = () => (
       </Link>
 
       <Link
-        href="https://twitter.com/leonardomso"
+        href="https://www.linkedin.com/company/podhouseapp"
         target="_blank"
         rel="noopener"
       >
@@ -59,19 +59,11 @@ const Footer = () => (
       </Link>
 
       <Link
-        href="https://twitter.com/leonardomso"
+        href="https://www.instagram.com/podhouseapp/"
         target="_blank"
         rel="noopener"
       >
         <Instagram cursor="pointer" color="#101010" />
-      </Link>
-
-      <Link
-        href="https://twitter.com/leonardomso"
-        target="_blank"
-        rel="noopener"
-      >
-        <Facebook cursor="pointer" color="#101010" />
       </Link>
     </FooterBrandsContainer>
 

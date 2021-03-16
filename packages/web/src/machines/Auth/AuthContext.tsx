@@ -5,9 +5,16 @@ import useAuth from "src/machines/Auth/useAuth";
 const AuthContext = React.createContext(undefined as any);
 
 const AuthProvider = ({ children }: any) => {
-  const { current, auth, handleAuth, send } = useAuth();
+  const {
+    current,
+    auth,
+    handleAuth,
+    onOpenAuth,
+    onCloseAuth,
+    send,
+  } = useAuth();
 
-  const value = { current, auth, handleAuth, send };
+  const value = { current, auth, handleAuth, onOpenAuth, onCloseAuth, send };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };

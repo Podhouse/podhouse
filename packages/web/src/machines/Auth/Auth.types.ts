@@ -6,7 +6,6 @@ export type AuthStateSchema = {
     signin: {};
     signup: {};
     forgot: {};
-    reset: {};
     success: {};
   };
 };
@@ -17,6 +16,6 @@ export type AuthEvent =
   | { type: "SIGNIN" }
   | { type: "SIGNUP" }
   | { type: "FORGOT" }
-  | { type: "RESET" }
+  | { type: "GET_STARTED" }
   | { type: "SUCCESS" }
   | { type: "ERROR" };

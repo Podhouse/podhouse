@@ -20,6 +20,7 @@ import theme from "src/system/theme";
 import "keen-slider/keen-slider.min.css";
 
 const Provider = () => (
+  // @ts-ignore
   <RelayEnvironmentProvider environment={environment}>
     <BrowserRouter>
       <ChakraProvider theme={theme}>
