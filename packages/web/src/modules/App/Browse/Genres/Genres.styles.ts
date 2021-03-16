@@ -2,11 +2,13 @@ import styled from "@emotion/styled";
 
 export const GenresContainer = styled.div`
   width: 100%;
+  max-width: 1000px;
   height: 100%;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: max-content 1fr;
   grid-row-gap: 20px;
+  margin: 0 auto;
 `;
 
 export const GenresHeader = styled.div`
