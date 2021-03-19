@@ -45,7 +45,7 @@
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "framer-motion": "^3.10.5",
+    "framer-motion": "^4.0.0",
     "ga-4-react": "^0.1.281",
     "isomorphic-fetch": "^3.0.0",
     "keen-slider": "^5.4.0",
