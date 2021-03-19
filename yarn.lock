@@ -17257,9 +17257,9 @@ relay-config@^11.0.0:
     cosmiconfig "^5.0.5"
 
 relay-hooks@^4.1.1:
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/relay-hooks/-/relay-hooks-4.1.1.tgz#be32a22bf233c15c5a5f7547cdbd2587a321efe5"
-  integrity sha512-h+H4R75KKZBbC5/AWVX1X2md5xkLTTcd/ddY9UcBU+DbQULSS+hyajwXhc/S/LYLg8rurzAZxVX65TZcXq36tg==
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/relay-hooks/-/relay-hooks-4.2.0.tgz#a36ab620276e6af8a3c76d4a2c6d1e266ec1625f"
+  integrity sha512-TqBLysdah2300IRYETyBbgLVM/bXHqG7KP00JqQQDy9DBmJ3XCeZoDxHGlkFOv8MBqBpXXApRarjMH0T63y2aw==
   dependencies:
     "@restart/hooks" "^0.3.1"
     fbjs "^3.0.0"
