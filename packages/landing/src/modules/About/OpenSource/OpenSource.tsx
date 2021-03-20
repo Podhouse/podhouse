@@ -6,7 +6,7 @@ import {
   LandingGridContentContainer,
 } from "src/components/Landing/Landing.styles";
 
-const Independent = () => (
+const OpenSource = () => (
   <LandingGridContainer>
     <LandingGridContentContainer>
       <Heading
@@ -17,18 +17,18 @@ const Independent = () => (
         letterSpacing="-0.03em"
         textAlign="center"
       >
-        Independent
+        Open source
       </Heading>
 
       <Text color="#6F6F6F" fontSize={16} lineHeight="30px" textAlign="center">
-        Our mission is to spread podcasts for everyone. We are not currently
-        interested in raising funds or taking any investment. We believe that an
-        independent startup can grow faster and focused in the long-time. We
-        plan to be more open as possible, share our revenue, talk more with
-        users and advertisers, etc.
+        One of the most awesome things about podcasts is that anyone can start
+        to listen or create their podcast. People can listen to podcasts in any
+        specific situation in their daily-basis. Podcasts should be accessible
+        to anyone, and our mission is to provide the best web app where people
+        can listen to their favorite podcasts.
       </Text>
     </LandingGridContentContainer>
   </LandingGridContainer>
 );
 
-export default Independent;
+export default OpenSource;

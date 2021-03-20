@@ -1,6 +1,7 @@
 import React from "react";
 import NextLink from "next/link";
-import { Link, Button } from "@chakra-ui/react";
+import { Link, Button, IconButton, Menu, MenuButton, MenuList, MenuItem } from "@chakra-ui/react";
+import { HamburgerIcon } from '@chakra-ui/icons';
 
 import {
   HeaderContainer,
@@ -9,36 +10,77 @@ import {
   HeaderSignInContainer,
 } from "./Header.styles";
 
-import PodhouseDark from "../../../../public/logo.svg";
+import PodhouseLogo from "../../../../public/PodhouseLogo.svg";
 
 const Header = () => (
   <HeaderContainer>
     <HeaderLogoContainer>
       <NextLink href="/" as="/">
-        <Link href="/">
-          <PodhouseDark />
+        <Link aria-label="Podhouse logo" href="/">
+          <PodhouseLogo />
         </Link>
       </NextLink>
     </HeaderLogoContainer>
 
     <HeaderLinksContainer>
-      <NextLink href="/about" as="/about">
-        <Link href="/about" fontWeight="500" color="#101010">
-          About
+      <NextLink href="/features" as="/features">
+        <Link aria-label="Features" href="/features" fontWeight="500" color="#6F6F6F">
+          Features
         </Link>
       </NextLink>
 
       <NextLink href="/advertise" as="/advertise">
-        <Link href="/advertise" fontWeight="500" color="#101010">
+        <Link aria-label="Advertise" href="/advertise" fontWeight="500" color="#6F6F6F">
           Advertise
+        </Link>
+      </NextLink>
+
+      <NextLink href="/blog" as="/blog">
+        <Link aria-label="Blog" href="/blog" fontWeight="500" color="#6F6F6F">
+          Blog
+        </Link>
+      </NextLink>
+
+      <NextLink href="/support" as="/support">
+        <Link aria-label="Support" href="/support" fontWeight="500" color="#6F6F6F">
+          Support
         </Link>
       </NextLink>
     </HeaderLinksContainer>
 
     <HeaderSignInContainer>
-      <Link href="https://play.podhouse.app">
+      <Menu>
+        <MenuButton
+          className="button"
+          as={IconButton}
+          aria-label="Options"
+          icon={<HamburgerIcon />}
+          variant="ghost"
+          size="md"
+        />
+        <MenuList>
+          <MenuItem>
+            Features
+          </MenuItem>
+
+          <MenuItem>
+            Advertise
+          </MenuItem>
+
+          <MenuItem>
+            Blog
+          </MenuItem>
+
+          <MenuItem>
+            Support
+          </MenuItem>
+        </MenuList>
+      </Menu>
+
+      <Link className="button-800" href="https://play.podhouse.app">
         <Button
           type="button"
+          size="md"
           width={120}
           bgColor="#101010"
           color="#ffffff"

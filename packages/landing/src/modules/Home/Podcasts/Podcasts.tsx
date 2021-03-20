@@ -19,11 +19,11 @@ const Podcasts = () => (
         letterSpacing="-0.03em"
         textAlign="center"
       >
-        Listen to your favorite podcasts
+        Listen to podcasts anytime and anywhere
       </Heading>
-      <Text color="#101010" lineHeight="25px" textAlign="center">
-        Get started now and listen to the best podcasts, without having to pay
-        anything for it.
+      <Text color="#6F6F6F" fontSize={16} lineHeight="30px" fontWeight="400" textAlign="center">
+        Listen to the best podcasts available without having to pay
+        anything for it
       </Text>
     </LandingGridContentContainer>
 
@@ -45,6 +45,9 @@ const Podcasts = () => (
           width="100%"
           height="100%"
           layout="responsive"
+          loading="lazy"
+          quality={100}
+          priority={false}
         />
       </PodcastPictureContainer>
 

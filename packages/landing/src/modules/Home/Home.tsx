@@ -11,7 +11,6 @@ const Home = () => (
     <Main />
     <Features />
     <Podcasts />
-    <CallToAction />
   </>
 );
 

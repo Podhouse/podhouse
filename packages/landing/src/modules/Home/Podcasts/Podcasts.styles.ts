@@ -4,8 +4,8 @@ export const PodcastsContainer = styled.div`
   width: 100%;
   height: auto;
   display: grid;
-  grid-template-columns: repeat(3, 20vmin);
-  grid-template-rows: repeat(2, 20vmin);
+  grid-template-columns: repeat(3, 25vmin);
+  grid-template-rows: repeat(2, 25vmin);
   grid-gap: 30px;
   align-items: center;
   justify-content: center;

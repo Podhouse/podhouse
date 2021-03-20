@@ -13,32 +13,34 @@ const Footer = () => (
   <FooterContainer>
     <FooterLinksContainer>
       <NextLink href="/about" as="/about">
-        <Link href="/about" fontWeight="500" color="#101010">
+        <Link href="/about" fontWeight="500" color="#6F6F6F">
           About
         </Link>
       </NextLink>
 
       <NextLink href="/advertise" as="/advertise">
-        <Link href="/advertise" fontWeight="500" color="#101010">
+        <Link href="/advertise" fontWeight="500" color="#6F6F6F">
           Advertise
         </Link>
       </NextLink>
 
-      <NextLink href="/brand" as="/brand">
-        <Link href="/brand" fontWeight="500" color="#101010">
-          Brand
+      <NextLink href="/blog" as="/blog">
+        <Link href="/blog" fontWeight="500" color="#6F6F6F">
+          Blog
         </Link>
       </NextLink>
 
-      <Link
-        href="mailto:leonardomso11@gmail.com"
-        target="_blank"
-        rel="noopener"
-        fontWeight="500"
-        color="#101010"
-      >
-        Contact
-      </Link>
+      <NextLink href="/press" as="/press">
+        <Link href="/press" fontWeight="500" color="#6F6F6F">
+          Press
+        </Link>
+      </NextLink>
+
+      <NextLink href="/contact" as="/contact">
+        <Link href="/contact" fontWeight="500" color="#6F6F6F">
+          Contact
+        </Link>
+      </NextLink>
     </FooterLinksContainer>
 
     <FooterBrandsContainer>
@@ -47,7 +49,7 @@ const Footer = () => (
         target="_blank"
         rel="noopener"
       >
-        <Twitter cursor="pointer" color="#101010" />
+        <Twitter cursor="pointer" color="#6F6F6F" />
       </Link>
 
       <Link
@@ -55,7 +57,7 @@ const Footer = () => (
         target="_blank"
         rel="noopener"
       >
-        <Linkedin cursor="pointer" color="#101010" />
+        <Linkedin cursor="pointer" color="#6F6F6F" />
       </Link>
 
       <Link
@@ -63,12 +65,12 @@ const Footer = () => (
         target="_blank"
         rel="noopener"
       >
-        <Instagram cursor="pointer" color="#101010" />
+        <Instagram cursor="pointer" color="#6F6F6F" />
       </Link>
     </FooterBrandsContainer>
 
-    <Text color="#101010" fontSize="12px">
-      2021 © Podhouse. All rights reserved
+    <Text color="#6F6F6F" fontSize="12px">
+      2021 © Podhouse, Inc. All rights reserved.
     </Text>
   </FooterContainer>
 );

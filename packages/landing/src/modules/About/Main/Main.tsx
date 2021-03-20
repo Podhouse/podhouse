@@ -18,9 +18,9 @@ const Main = () => (
       >
         About Podhouse
       </Heading>
-      <Text color="#101010" lineHeight="30px" textAlign="center">
+      <Text color="#6F6F6F" fontSize={16} lineHeight="30px" fontWeight="400" textAlign="center">
         Our goal is to have the best podcast experience. From podcast listeners
-        to podcast listeners.
+        to podcast listeners
       </Text>
     </LandingGridContentContainer>
   </LandingGridContainer>
