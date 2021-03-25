@@ -24,25 +24,25 @@ const Header = () => (
 
     <HeaderLinksContainer>
       <NextLink href="/features" as="/features">
-        <Link aria-label="Features" href="/features" fontWeight="500" color="#6F6F6F">
+        <Link aria-label="Features" href="/features" color="#6F6F6F" fontSize={16} lineHeight="30px" fontWeight="400">
           Features
         </Link>
       </NextLink>
 
       <NextLink href="/advertise" as="/advertise">
-        <Link aria-label="Advertise" href="/advertise" fontWeight="500" color="#6F6F6F">
+        <Link aria-label="Advertise" href="/advertise" color="#6F6F6F" fontSize={16} lineHeight="30px" fontWeight="400">
           Advertise
         </Link>
       </NextLink>
 
       <NextLink href="/blog" as="/blog">
-        <Link aria-label="Blog" href="/blog" fontWeight="500" color="#6F6F6F">
+        <Link aria-label="Blog" href="/blog" color="#6F6F6F" fontSize={16} lineHeight="30px" fontWeight="400">
           Blog
         </Link>
       </NextLink>
 
       <NextLink href="/support" as="/support">
-        <Link aria-label="Support" href="/support" fontWeight="500" color="#6F6F6F">
+        <Link aria-label="Support" href="/support" color="#6F6F6F" fontSize={16} lineHeight="30px" fontWeight="400">
           Support
         </Link>
       </NextLink>
@@ -84,6 +84,7 @@ const Header = () => (
           width={120}
           bgColor="#101010"
           color="#ffffff"
+          fontWeight="400"
           _hover={{ bg: "#101010" }}
           _active={{
             bg: "#101010",

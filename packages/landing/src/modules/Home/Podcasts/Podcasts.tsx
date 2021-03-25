@@ -18,10 +18,11 @@ const Podcasts = () => (
         fontSize={36}
         letterSpacing="-0.03em"
         textAlign="center"
+        fontWeight="600"
       >
         Listen to podcasts anytime and anywhere
       </Heading>
-      <Text color="#6F6F6F" fontSize={16} lineHeight="30px" fontWeight="400" textAlign="center">
+      <Text color="#6F6F6F" fontSize={16} lineHeight="30px" fontWeight="300" textAlign="center">
         Listen to the best podcasts available without having to pay
         anything for it
       </Text>

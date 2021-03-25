@@ -20,15 +20,15 @@ const CallToAction = () => {
       <LandingGridContentContainer>
         <Heading
           color="#101010"
-          as="h2"
+          as="h3"
           fontSize={36}
-          lineHeight="44px"
           letterSpacing="-0.03em"
           textAlign="center"
+          fontWeight="600"
         >
           Always free. Totally yours.
         </Heading>
-        <Text color="#6F6F6F" fontSize={16} lineHeight="30px" textAlign="center">
+        <Text color="#6F6F6F" fontSize={16} lineHeight="30px" fontWeight="300" textAlign="center">
           We will always be free. You will never need to pay to listen to your favorite podcasts with us
         </Text>
       </LandingGridContentContainer>
@@ -41,6 +41,7 @@ const CallToAction = () => {
         onClick={redirectToApp}
         bgColor="#101010"
         color="#ffffff"
+        fontWeight="400"
         _hover={{ bg: "#101010" }}
         _active={{
           bg: "#101010",

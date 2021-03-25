@@ -21,14 +21,14 @@ const Features = () => (
         color="#101010"
         as="h2"
         fontSize={36}
-        lineHeight="44px"
         letterSpacing="-0.03em"
         textAlign="center"
+        fontWeight="600"
       >
         The best podcast experience
       </Heading>
 
-      <Text color="#6F6F6F" fontSize={16} lineHeight="30px" textAlign="center">
+      <Text color="#6F6F6F" fontSize={16} lineHeight="30px" fontWeight="300" textAlign="center">
         A ton of features that you need to listen to a podcast with the best experience ever
       </Text>
     </LandingGridContentContainer>
@@ -42,7 +42,7 @@ const Features = () => (
           <Text color="#101010" fontSize={16} lineHeight="30px" fontWeight="500">
             Simple, intuitive, and clean
           </Text>
-          <Text color="#6F6F6F" fontSize={16} lineHeight="30px" fontWeight="400">
+          <Text color="#6F6F6F" fontSize={16} lineHeight="30px" fontWeight="300" textAlign="start">
             A nice, clean and intuitive experience for you to listen to your favorite podcasts
           </Text>
         </FeaturesItemTextContainer>
@@ -56,7 +56,7 @@ const Features = () => (
           <Text color="#101010" fontSize={16} lineHeight="30px" fontWeight="500">
             Listen to podcasts anywhere, anytime
           </Text>
-          <Text color="#6F6F6F" fontSize={16} lineHeight="30px" fontWeight="400">
+          <Text color="#6F6F6F" fontSize={16} lineHeight="30px" fontWeight="300" textAlign="start">
             Access and listen to podcasts anywhere and anytime, without having to worry about sync
           </Text>
         </FeaturesItemTextContainer>
@@ -70,7 +70,7 @@ const Features = () => (
           <Text color="#101010" fontSize={16} lineHeight="30px" fontWeight="500">
             Discover new podcasts everyday
           </Text>
-          <Text color="#6F6F6F" fontSize={16} lineHeight="30px" fontWeight="400">
+          <Text color="#6F6F6F" fontSize={16} lineHeight="30px" fontWeight="300" textAlign="start">
             Discover new podcasts every day, know what's trending and subscribe to podcasts easily
           </Text>
         </FeaturesItemTextContainer>
@@ -84,7 +84,7 @@ const Features = () => (
           <Text color="#101010" fontSize={16} lineHeight="30px" fontWeight="500">
             No annoying ads
           </Text>
-          <Text color="#6F6F6F" fontSize={16} lineHeight="30px" fontWeight="400">
+          <Text color="#6F6F6F" fontSize={16} lineHeight="30px" fontWeight="300" textAlign="start">
             You will not see any annoying ads, your experience is our main priority, now and ever
           </Text>
         </FeaturesItemTextContainer>

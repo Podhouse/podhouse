@@ -13,31 +13,31 @@ const Footer = () => (
   <FooterContainer>
     <FooterLinksContainer>
       <NextLink href="/about" as="/about">
-        <Link href="/about" fontWeight="500" color="#6F6F6F">
+        <Link href="/about" color="#6F6F6F" fontSize={16} lineHeight="30px" fontWeight="400">
           About
         </Link>
       </NextLink>
 
       <NextLink href="/advertise" as="/advertise">
-        <Link href="/advertise" fontWeight="500" color="#6F6F6F">
+        <Link href="/advertise" color="#6F6F6F" fontSize={16} lineHeight="30px" fontWeight="400">
           Advertise
         </Link>
       </NextLink>
 
       <NextLink href="/blog" as="/blog">
-        <Link href="/blog" fontWeight="500" color="#6F6F6F">
+        <Link href="/blog" color="#6F6F6F" fontSize={16} lineHeight="30px" fontWeight="400">
           Blog
         </Link>
       </NextLink>
 
       <NextLink href="/press" as="/press">
-        <Link href="/press" fontWeight="500" color="#6F6F6F">
+        <Link href="/press" color="#6F6F6F" fontSize={16} lineHeight="30px" fontWeight="400">
           Press
         </Link>
       </NextLink>
 
       <NextLink href="/contact" as="/contact">
-        <Link href="/contact" fontWeight="500" color="#6F6F6F">
+        <Link href="/contact" color="#6F6F6F" fontSize={16} lineHeight="30px" fontWeight="400">
           Contact
         </Link>
       </NextLink>
@@ -69,7 +69,7 @@ const Footer = () => (
       </Link>
     </FooterBrandsContainer>
 
-    <Text color="#6F6F6F" fontSize="12px">
+    <Text color="#6F6F6F" fontSize={12} lineHeight="30px" fontWeight="300">
       2021 © Podhouse, Inc. All rights reserved.
     </Text>
   </FooterContainer>

@@ -1,19 +1,69 @@
-import NextDocument, { Html, Head, Main, NextScript } from 'next/document'
-import { GoogleFonts } from 'next-google-fonts'
-import { ColorModeScript } from "@chakra-ui/react"
+import React from "react";
+import Document, { Html, Head, Main, NextScript } from "next/document";
 
-export default class MyDocument extends NextDocument {
+import { GA_TRACKING_ID } from "../utils/gtag";
+
+class MyDocument extends Document {
   render() {
     return (
-      <Html lang="en">
-        <GoogleFonts href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" />
-        <Head />
+      <Html>
+        <Head>
+          <link
+            rel="icon"
+            sizes="192x192"
+            type="image/png"
+            href="/icon-192x192.png"
+          />
+          <link
+            rel="icon"
+            sizes="256x256"
+            type="image/png"
+            href="/icon-256x256.png"
+          />
+          <link
+            rel="icon"
+            sizes="384x384"
+            type="image/png"
+            href="/icon-384x384.png"
+          />
+          <link
+            rel="icon"
+            sizes="512x512"
+            type="image/png"
+            href="/icon-512x512.png"
+          />
+          <link rel="manifest" href="/manifest.json" />
+
+          <meta
+            name="description"
+            content="The best podcast web app to listen to your favorite podcasts"
+          />
+
+          {/* Global Site Tag (gtag.js) - Google Analytics */}
+          <script
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+          />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${GA_TRACKING_ID}', {
+                page_path: window.location.pathname,
+              });
+          `,
+            }}
+          />
+        </Head>
         <body>
-          <ColorModeScript />
           <Main />
           <NextScript />
         </body>
       </Html>
-    )
+    );
   }
 }
+
+export default MyDocument;
