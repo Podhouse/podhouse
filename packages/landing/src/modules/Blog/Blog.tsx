@@ -1,13 +1,12 @@
 import React from "react";
 
 import Main from "./Main/Main";
-
-import Post from "src/components/Blog/Post/Post";
+import Posts from "./Posts/Posts";
 
 const About = () => (
   <>
     <Main />
-    <Post />
+    <Posts />
   </>
 );
 

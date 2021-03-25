@@ -1,33 +1,71 @@
 import React from "react";
-import { Heading, Text, Link } from "@chakra-ui/react";
+import { Text, Link, Stack } from "@chakra-ui/react";
+import { ArrowForwardIcon } from "@chakra-ui/icons";
 
 import { PostContainer, PostImage } from "./Post.styles";
 
 const Post = () => (
   <PostContainer>
     <PostImage
-      src="https://source.unsplash.com/assets/photo-1433959352364-9314c5b6eb0b-ef3fe6b0fe97031bbaf5d39b9e9382c4662a45ab1b8bb0f395cb9ddf62d4739a.jpg"
+      src="/post-image.jpeg"
+      alt="Post image"
       width="100%"
-      height="190px"
+      height="250px"
+      layout="responsive"
+      lazy="loading"
     />
-    <Heading
-      color="#101010"
-      as="h2"
-      fontSize={48}
-      letterSpacing="-0.03em"
-      textAlign="start"
-    >
-      What happened to podcasts?
-    </Heading>
-    <Text color="#101010" lineHeight="30px" textAlign="start">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Rhoncus rutrum
-      sollicitudin placerat id nisl, sed turpis. Viverra aliquam nibh
-      consectetur sed turpis urna.
-    </Text>
-    <Text color="#101010" lineHeight="30px" textAlign="start">
-      December 23, 2020
-    </Text>
-    <Link>Read article</Link>
+
+    <Stack direction={["column"]} spacing="10px">
+      <Link
+        color="#101010"
+        fontSize={36}
+        letterSpacing="-0.03em"
+        textAlign="start"
+        fontWeight="600"
+        href="#"
+      >
+        What happened to podcasts?
+      </Link>
+
+      <Text
+        color="#6F6F6F"
+        fontSize={16}
+        lineHeight="30px"
+        fontWeight="300"
+        textAlign="start"
+      >
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Rhoncus rutrum
+        sollicitudin placerat id nisl, sed turpis.
+      </Text>
+
+      <Text
+        color="#6F6F6F"
+        fontSize={16}
+        lineHeight="30px"
+        fontWeight="300"
+        textAlign="start"
+      >
+        December 23, 2020
+      </Text>
+
+      <Link href="#" color="#6f6f6f">
+        Read article <ArrowForwardIcon />
+      </Link>
+
+      {/* <Button
+        type="button"
+        variant="ghost"
+        aria-label="Read article"
+        rightIcon={<ArrowForwardIcon />}
+        size="md"
+        onClick={() => { }}
+        color="#6F6F6F"
+        fontWeight="400"
+        width="fit-content"
+      >
+        Read article
+      </Button> */}
+    </Stack>
   </PostContainer>
 );
 
