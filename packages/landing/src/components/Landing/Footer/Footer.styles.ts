@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 export const FooterContainer = styled.footer`
   width: 100%;
-  height: auto;
+  height: fit-content;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(2, max-content);

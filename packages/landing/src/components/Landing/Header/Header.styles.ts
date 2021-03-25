@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 export const HeaderContainer = styled.header`
   width: 100%;
-  height: auto;
+  height: fit-content;
   display: grid;
   grid-template-columns: minmax(max-content, 1fr) minmax(max-content, 1fr);
   grid-template-rows: 1fr;
