@@ -34,10 +34,17 @@ const Plans = () => {
           fontSize={36}
           letterSpacing="-0.03em"
           textAlign="center"
+          fontWeight="600"
         >
           The right price for your podcast
         </Heading>
-        <Text color="#101010" lineHeight="30px" textAlign="center">
+        <Text
+          color="#6F6F6F"
+          fontSize={16}
+          lineHeight="30px"
+          fontWeight="300"
+          textAlign="center"
+        >
           We have the right price for you to start to advertise your podcast
           with us and reach more listeners
         </Text>
@@ -52,7 +59,8 @@ const Plans = () => {
             pt="0.5"
             pb="0.5"
             borderRadius={2}
-            fontSize="0.8em"
+            fontSize={14}
+            fontWeight="400"
             colorScheme="blue"
           >
             Standard
@@ -61,28 +69,53 @@ const Plans = () => {
           <Heading
             color="#101010"
             as="h3"
-            fontSize={48}
+            fontSize={36}
             letterSpacing="-0.03em"
             textAlign="start"
+            fontWeight="600"
           >
             $99
           </Heading>
 
-          <Text color="#101010" lineHeight="30px" textAlign="start">
+          <Text
+            color="#6F6F6F"
+            fontSize={16}
+            lineHeight="30px"
+            fontWeight="300"
+            textAlign="start"
+          >
             Get your podcast featured on a specific genre page and reach more
             listeners from that genre
           </Text>
 
           <List spacing={3}>
-            <ListItem>
+            <ListItem
+              color="#6F6F6F"
+              fontSize={16}
+              lineHeight="30px"
+              fontWeight="400"
+              textAlign="start"
+            >
               <ListIcon as={BsCheck} color="green.500" />
               Reach potential new listeners
             </ListItem>
-            <ListItem>
+            <ListItem
+              color="#6F6F6F"
+              fontSize={16}
+              lineHeight="30px"
+              fontWeight="400"
+              textAlign="start"
+            >
               <ListIcon as={BsCheck} color="green.500" />
               Featured in a specific genre
             </ListItem>
-            <ListItem>
+            <ListItem
+              color="#6F6F6F"
+              fontSize={16}
+              lineHeight="30px"
+              fontWeight="400"
+              textAlign="start"
+            >
               <ListIcon as={BsCheck} color="green.500" />
               30 days featured
             </ListItem>
@@ -97,9 +130,10 @@ const Plans = () => {
               width="100%"
               type="button"
               size="lg"
-              bgColor="#101010"
               onClick={redirectToApp}
+              bgColor="#101010"
               color="#ffffff"
+              fontWeight="400"
               _hover={{ bg: "#101010" }}
               _active={{
                 bg: "#101010",
@@ -122,7 +156,8 @@ const Plans = () => {
             pt="0.5"
             pb="0.5"
             borderRadius={2}
-            fontSize="0.8em"
+            fontSize={14}
+            fontWeight="400"
             colorScheme="green"
           >
             Premium
@@ -131,28 +166,53 @@ const Plans = () => {
           <Heading
             color="#101010"
             as="h3"
-            fontSize={48}
+            fontSize={36}
             letterSpacing="-0.03em"
             textAlign="start"
+            fontWeight="600"
           >
             $499
           </Heading>
 
-          <Text color="#101010" lineHeight="30px" textAlign="start">
+          <Text
+            color="#6F6F6F"
+            fontSize={16}
+            lineHeight="30px"
+            fontWeight="300"
+            textAlign="start"
+          >
             Get your podcast <strong>featured on the main page</strong> of the
             app and reach <strong>10x more listeners</strong>
           </Text>
 
           <List spacing={3}>
-            <ListItem>
+            <ListItem
+              color="#6F6F6F"
+              fontSize={16}
+              lineHeight="30px"
+              fontWeight="400"
+              textAlign="start"
+            >
               <ListIcon as={BsCheck} color="green.500" />
               Reach potential new listeners
             </ListItem>
-            <ListItem>
+            <ListItem
+              color="#6F6F6F"
+              fontSize={16}
+              lineHeight="30px"
+              fontWeight="400"
+              textAlign="start"
+            >
               <ListIcon as={BsCheck} color="green.500" />
               Featured in the <strong>main</strong> page
             </ListItem>
-            <ListItem>
+            <ListItem
+              color="#6F6F6F"
+              fontSize={16}
+              lineHeight="30px"
+              fontWeight="400"
+              textAlign="start"
+            >
               <ListIcon as={BsCheck} color="green.500" />
               30 days featured
             </ListItem>
@@ -167,9 +227,10 @@ const Plans = () => {
               width="100%"
               type="button"
               size="lg"
-              bgColor="#101010"
               onClick={redirectToApp}
+              bgColor="#101010"
               color="#ffffff"
+              fontWeight="400"
               _hover={{ bg: "#101010" }}
               _active={{
                 bg: "#101010",

@@ -19,7 +19,13 @@ const Main = () => (
       >
         About Podhouse
       </Heading>
-      <Text color="#6F6F6F" fontSize={16} lineHeight="30px" fontWeight="300" textAlign="center">
+      <Text
+        color="#6F6F6F"
+        fontSize={16}
+        lineHeight="30px"
+        fontWeight="300"
+        textAlign="center"
+      >
         Our goal is to have the best podcast experience. From podcast listeners
         to podcast listeners
       </Text>

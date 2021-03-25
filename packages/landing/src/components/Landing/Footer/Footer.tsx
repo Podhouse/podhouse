@@ -13,31 +13,61 @@ const Footer = () => (
   <FooterContainer>
     <FooterLinksContainer>
       <NextLink href="/about" as="/about">
-        <Link href="/about" color="#6F6F6F" fontSize={16} lineHeight="30px" fontWeight="400">
+        <Link
+          href="/about"
+          color="#6F6F6F"
+          fontSize={16}
+          lineHeight="30px"
+          fontWeight="400"
+        >
           About
         </Link>
       </NextLink>
 
       <NextLink href="/advertise" as="/advertise">
-        <Link href="/advertise" color="#6F6F6F" fontSize={16} lineHeight="30px" fontWeight="400">
+        <Link
+          href="/advertise"
+          color="#6F6F6F"
+          fontSize={16}
+          lineHeight="30px"
+          fontWeight="400"
+        >
           Advertise
         </Link>
       </NextLink>
 
       <NextLink href="/blog" as="/blog">
-        <Link href="/blog" color="#6F6F6F" fontSize={16} lineHeight="30px" fontWeight="400">
+        <Link
+          href="/blog"
+          color="#6F6F6F"
+          fontSize={16}
+          lineHeight="30px"
+          fontWeight="400"
+        >
           Blog
         </Link>
       </NextLink>
 
       <NextLink href="/press" as="/press">
-        <Link href="/press" color="#6F6F6F" fontSize={16} lineHeight="30px" fontWeight="400">
+        <Link
+          href="/press"
+          color="#6F6F6F"
+          fontSize={16}
+          lineHeight="30px"
+          fontWeight="400"
+        >
           Press
         </Link>
       </NextLink>
 
       <NextLink href="/contact" as="/contact">
-        <Link href="/contact" color="#6F6F6F" fontSize={16} lineHeight="30px" fontWeight="400">
+        <Link
+          href="/contact"
+          color="#6F6F6F"
+          fontSize={16}
+          lineHeight="30px"
+          fontWeight="400"
+        >
           Contact
         </Link>
       </NextLink>

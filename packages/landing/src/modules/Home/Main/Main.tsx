@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Heading, Text } from "@chakra-ui/react";
-import { ArrowForwardIcon } from '@chakra-ui/icons'
+import { ArrowForwardIcon } from "@chakra-ui/icons";
 import { useRouter } from "next/router";
 
 import {
@@ -28,7 +28,13 @@ const Main = () => {
         >
           Listen to your favorite podcasts
         </Heading>
-        <Text color="#6F6F6F" fontSize={16} lineHeight="30px" fontWeight="300" textAlign="center">
+        <Text
+          color="#6F6F6F"
+          fontSize={16}
+          lineHeight="30px"
+          fontWeight="300"
+          textAlign="center"
+        >
           A clean and intuitive web app for you to listen to your favorite
           podcasts
         </Text>

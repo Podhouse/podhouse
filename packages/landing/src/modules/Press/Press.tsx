@@ -5,7 +5,7 @@ import Download from "./Download/Download";
 
 import CallToAction from "src/components/Landing/CallToAction/CallToAction";
 
-const Brand = () => (
+const Press = () => (
   <>
     <Main />
     <Download />
@@ -13,4 +13,4 @@ const Brand = () => (
   </>
 );
 
-export default Brand;
+export default Press;

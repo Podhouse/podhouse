@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Box,
   Alert,
@@ -6,39 +7,39 @@ import {
   Link,
   Text,
   Divider,
-  useColorMode
-} from '@chakra-ui/react';
-import NextLink from 'next/link'
+  useColorMode,
+} from "@chakra-ui/react";
+import NextLink from "next/link";
 
 const CustomLink = (props) => {
   const { colorMode } = useColorMode();
 
   const color = {
-    light: 'blue.500',
-    dark: 'blue.500'
-  }
+    light: "blue.500",
+    dark: "blue.500",
+  };
 
-  const href = props.href
-  const isInternalLink = href && (href.startsWith('/') || href.startsWith('#'))
+  const href = props.href;
+  const isInternalLink = href && (href.startsWith("/") || href.startsWith("#"));
 
   if (isInternalLink) {
     return (
       <NextLink href={href} passHref>
         <Link color={color[colorMode]} {...props} />
       </NextLink>
-    )
+    );
   }
 
-  return <Link color={color[colorMode]} isExternal {...props} />
-}
+  return <Link color={color[colorMode]} isExternal {...props} />;
+};
 
 const Quote = (props) => {
   const { colorMode } = useColorMode();
 
   const bgColor = {
-    light: 'blue.50',
-    dark: 'blue.900'
-  }
+    light: "blue.50",
+    dark: "blue.900",
+  };
 
   return (
     <Alert
@@ -48,32 +49,32 @@ const Quote = (props) => {
       variant="left-accent"
       status="info"
       css={{
-        '> *:first-of-type': {
+        "> *:first-of-type": {
           marginTop: 0,
-          marginLeft: 8
-        }
+          marginLeft: 8,
+        },
       }}
       {...props}
     />
-  )
-}
+  );
+};
 
 const DocsHeading = (props) => (
   <Heading
     css={{
-      scrollMarginTop: '100px',
-      scrollSnapMargin: '100px', // Safari
-      '&[id]': {
-        pointerEvents: 'none'
+      scrollMarginTop: "100px",
+      scrollSnapMargin: "100px", // Safari
+      "&[id]": {
+        pointerEvents: "none",
       },
-      '&[id]:before': {
-        display: 'block',
-        height: ' 6rem',
-        marginTop: '-6rem',
-        visibility: 'hidden',
-        content: `""`
+      "&[id]:before": {
+        display: "block",
+        height: " 6rem",
+        marginTop: "-6rem",
+        visibility: "hidden",
+        content: `""`,
       },
-      '&[id]:hover a': { opacity: 1 }
+      "&[id]:hover a": { opacity: 1 },
     }}
     {...props}
     mb="1em"
@@ -90,7 +91,7 @@ const DocsHeading = (props) => (
           outline="none"
           _focus={{
             opacity: 1,
-            boxShadow: 'outline'
+            boxShadow: "outline",
           }}
           opacity="0"
           ml="0.375rem"
@@ -101,17 +102,17 @@ const DocsHeading = (props) => (
       )}
     </Box>
   </Heading>
-)
+);
 
 const Hr = () => {
-  const { colorMode } = useColorMode()
+  const { colorMode } = useColorMode();
   const borderColor = {
-    light: 'gray.200',
-    dark: 'gray.600'
-  }
+    light: "gray.200",
+    dark: "gray.600",
+  };
 
-  return <Divider borderColor={borderColor[colorMode]} my={4} w="100%" />
-}
+  return <Divider borderColor={borderColor[colorMode]} my={4} w="100%" />;
+};
 
 const MDXComponents = {
   h1: (props) => <Heading as="h1" size="xl" my={4} {...props} />,
@@ -131,7 +132,7 @@ const MDXComponents = {
   ol: (props) => <Box as="ol" pt={2} pl={4} ml={2} {...props} />,
   li: (props) => <Box as="li" pb={1} {...props} />,
   blockquote: Quote,
-}
+};
 
 export { CustomLink };
 

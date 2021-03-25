@@ -20,7 +20,13 @@ const Independent = () => (
         Independent
       </Heading>
 
-      <Text color="#6F6F6F" fontSize={16} lineHeight="30px" fontWeight="300" textAlign="center">
+      <Text
+        color="#6F6F6F"
+        fontSize={16}
+        lineHeight="30px"
+        fontWeight="300"
+        textAlign="center"
+      >
         Our mission is to spread podcasts for everyone. We are not currently
         interested in raising funds or taking any investment. We believe that an
         independent startup can grow faster and focused in the long-time. We

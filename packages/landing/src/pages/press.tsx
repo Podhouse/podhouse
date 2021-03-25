@@ -2,9 +2,9 @@ import React from "react";
 
 import { getLayout } from "src/components/Landing/Landing";
 
-import Brand from "src/modules/Brand/Brand";
+import Press from "src/modules/Press/Press";
 
-const Index = () => <Brand />;
+const Index = () => <Press />;
 
 Index.getLayout = getLayout;
 

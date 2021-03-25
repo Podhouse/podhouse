@@ -29,4 +29,5 @@ export const PlanContainer = styled.div`
   background: white;
   border-radius: 5px;
   border: 1px solid #f3f3f3;
+  justify-self: center;
 `;

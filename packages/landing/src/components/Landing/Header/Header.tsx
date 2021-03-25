@@ -1,7 +1,15 @@
 import React from "react";
 import NextLink from "next/link";
-import { Link, Button, IconButton, Menu, MenuButton, MenuList, MenuItem } from "@chakra-ui/react";
-import { HamburgerIcon } from '@chakra-ui/icons';
+import {
+  Link,
+  Button,
+  IconButton,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+} from "@chakra-ui/react";
+import { HamburgerIcon } from "@chakra-ui/icons";
 
 import {
   HeaderContainer,
@@ -23,26 +31,54 @@ const Header = () => (
     </HeaderLogoContainer>
 
     <HeaderLinksContainer>
-      <NextLink href="/features" as="/features">
-        <Link aria-label="Features" href="/features" color="#6F6F6F" fontSize={16} lineHeight="30px" fontWeight="400">
-          Features
+      <NextLink href="/about" as="/about">
+        <Link
+          aria-label="About"
+          href="/about"
+          color="#6F6F6F"
+          fontSize={16}
+          lineHeight="30px"
+          fontWeight="400"
+        >
+          About
         </Link>
       </NextLink>
 
       <NextLink href="/advertise" as="/advertise">
-        <Link aria-label="Advertise" href="/advertise" color="#6F6F6F" fontSize={16} lineHeight="30px" fontWeight="400">
+        <Link
+          aria-label="Advertise"
+          href="/advertise"
+          color="#6F6F6F"
+          fontSize={16}
+          lineHeight="30px"
+          fontWeight="400"
+        >
           Advertise
         </Link>
       </NextLink>
 
       <NextLink href="/blog" as="/blog">
-        <Link aria-label="Blog" href="/blog" color="#6F6F6F" fontSize={16} lineHeight="30px" fontWeight="400">
+        <Link
+          aria-label="Blog"
+          href="/blog"
+          color="#6F6F6F"
+          fontSize={16}
+          lineHeight="30px"
+          fontWeight="400"
+        >
           Blog
         </Link>
       </NextLink>
 
       <NextLink href="/support" as="/support">
-        <Link aria-label="Support" href="/support" color="#6F6F6F" fontSize={16} lineHeight="30px" fontWeight="400">
+        <Link
+          aria-label="Support"
+          href="/support"
+          color="#6F6F6F"
+          fontSize={16}
+          lineHeight="30px"
+          fontWeight="400"
+        >
           Support
         </Link>
       </NextLink>
@@ -60,19 +96,59 @@ const Header = () => (
         />
         <MenuList>
           <MenuItem>
-            Features
+            <NextLink href="/about" as="/about">
+              <Link
+                aria-label="About"
+                href="/about"
+                fontSize={16}
+                lineHeight="30px"
+                fontWeight="400"
+              >
+                About
+              </Link>
+            </NextLink>
           </MenuItem>
 
           <MenuItem>
-            Advertise
+            <NextLink href="/advertise" as="/advertise">
+              <Link
+                aria-label="Advertise"
+                href="/advertise"
+                fontSize={16}
+                lineHeight="30px"
+                fontWeight="400"
+              >
+                Advertise
+              </Link>
+            </NextLink>
           </MenuItem>
 
           <MenuItem>
-            Blog
+            <NextLink href="/blog" as="/blog">
+              <Link
+                aria-label="Blog"
+                href="/blog"
+                fontSize={16}
+                lineHeight="30px"
+                fontWeight="400"
+              >
+                Blog
+              </Link>
+            </NextLink>
           </MenuItem>
 
           <MenuItem>
-            Support
+            <NextLink href="/support" as="/support">
+              <Link
+                aria-label="Support"
+                href="/support"
+                fontSize={16}
+                lineHeight="30px"
+                fontWeight="400"
+              >
+                Support
+              </Link>
+            </NextLink>
           </MenuItem>
         </MenuList>
       </Menu>

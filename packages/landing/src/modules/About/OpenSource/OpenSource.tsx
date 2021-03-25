@@ -20,7 +20,13 @@ const OpenSource = () => (
         Open source
       </Heading>
 
-      <Text color="#6F6F6F" fontSize={16} lineHeight="30px" fontWeight="300" textAlign="center">
+      <Text
+        color="#6F6F6F"
+        fontSize={16}
+        lineHeight="30px"
+        fontWeight="300"
+        textAlign="center"
+      >
         One of the most awesome things about podcasts is that anyone can start
         to listen or create their podcast. People can listen to podcasts in any
         specific situation in their daily-basis. Podcasts should be accessible

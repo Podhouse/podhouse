@@ -1,7 +1,7 @@
 import React from "react";
 import { useRouter } from "next/router";
 import { Heading, Text, Button } from "@chakra-ui/react";
-import { ArrowForwardIcon } from '@chakra-ui/icons'
+import { ArrowForwardIcon } from "@chakra-ui/icons";
 
 import {
   LandingGridContainer,
@@ -28,8 +28,15 @@ const CallToAction = () => {
         >
           Always free. Totally yours.
         </Heading>
-        <Text color="#6F6F6F" fontSize={16} lineHeight="30px" fontWeight="300" textAlign="center">
-          We will always be free. You will never need to pay to listen to your favorite podcasts with us
+        <Text
+          color="#6F6F6F"
+          fontSize={16}
+          lineHeight="30px"
+          fontWeight="300"
+          textAlign="center"
+        >
+          We will always be free. You will never need to pay to listen to your
+          favorite podcasts with us
         </Text>
       </LandingGridContentContainer>
 

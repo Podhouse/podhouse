@@ -44,10 +44,17 @@ const FAQ = () => (
         fontSize={36}
         letterSpacing="-0.03em"
         textAlign="center"
+        fontWeight="600"
       >
         Frequently asked questions
       </Heading>
-      <Text color="#101010" lineHeight="30px" textAlign="start">
+      <Text
+        color="#6F6F6F"
+        fontSize={16}
+        lineHeight="30px"
+        fontWeight="300"
+        textAlign="center"
+      >
         Here's some questions about advertising in Podhouse that you might have
       </Text>
     </LandingGridContentContainer>
@@ -56,15 +63,22 @@ const FAQ = () => (
       {items.map(({ title, body }: FAQItem) => (
         <FAQItemContainer key={title}>
           <Heading
-            color="#101010"
             as="h3"
+            color="#101010"
             fontSize={16}
             lineHeight="30px"
+            fontWeight="500"
             textAlign="start"
           >
             {title}
           </Heading>
-          <Text color="#101010" lineHeight="30px" textAlign="start">
+          <Text
+            color="#6F6F6F"
+            fontSize={16}
+            lineHeight="30px"
+            fontWeight="300"
+            textAlign="start"
+          >
             {body}
           </Text>
         </FAQItemContainer>

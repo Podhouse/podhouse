@@ -21,16 +21,18 @@ const Download = () => (
           fontSize={36}
           letterSpacing="-0.03em"
           textAlign="center"
+          fontWeight="600"
         >
           Dark
         </Heading>
 
         <Link
           href="/logo/dark.zip"
-          variant="primary"
-          fontWeight="500"
-          color="#101010"
           download
+          color="#101010"
+          fontSize={16}
+          lineHeight="30px"
+          fontWeight="400"
         >
           download
         </Link>
@@ -49,16 +51,18 @@ const Download = () => (
           fontSize={36}
           letterSpacing="-0.03em"
           textAlign="center"
+          fontWeight="600"
         >
           Light
         </Heading>
 
         <Link
           href="/logo/light.zip"
-          variant="primary"
-          fontWeight="500"
-          color="#101010"
           download
+          color="#101010"
+          fontSize={16}
+          lineHeight="30px"
+          fontWeight="400"
         >
           download
         </Link>
