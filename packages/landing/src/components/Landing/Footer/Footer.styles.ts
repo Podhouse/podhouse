@@ -37,7 +37,7 @@ export const FooterBrandsContainer = styled.div`
   grid-column: 1 / 2;
   grid-row: 2 / 3;
   display: grid;
-  grid-template-columns: repeat(3, max-content);
+  grid-template-columns: repeat(4, max-content);
   grid-template-rows: 1fr;
   grid-column-gap: 30px;
   align-items: center;

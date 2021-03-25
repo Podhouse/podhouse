@@ -1,7 +1,7 @@
 import React from "react";
 import NextLink from "next/link";
 import { Link, Text } from "@chakra-ui/react";
-import { Twitter, Linkedin, Instagram } from "react-feather";
+import { Twitter, Linkedin, Instagram, GitHub } from "react-feather";
 
 import {
   FooterContainer,
@@ -80,6 +80,14 @@ const Footer = () => (
         rel="noopener"
       >
         <Twitter cursor="pointer" color="#6F6F6F" />
+      </Link>
+
+      <Link
+        href="https://github.com/Podhouse/podhouse"
+        target="_blank"
+        rel="noopener"
+      >
+        <GitHub cursor="pointer" color="#6F6F6F" />
       </Link>
 
       <Link
