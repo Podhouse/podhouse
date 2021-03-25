@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
-import { Image } from "@chakra-ui/react";
 
-export const PostContainer = styled.article`
+export const ArticleItemContainer = styled.article`
   width: 100%;
   max-width: 800px;
   height: fit-content;
@@ -17,9 +16,4 @@ export const PostContainer = styled.article`
     grid-column-gap: 20px;
     align-items: center;
   }
-`;
-
-export const PostImage = styled(Image)`
-  border-radius: 5px;
-  object-fit: cover;
 `;

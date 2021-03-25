@@ -18,7 +18,7 @@ import {
   HeaderSignInContainer,
 } from "./Header.styles";
 
-import PodhouseLogo from "../../../../public/PodhouseLogo.svg";
+import PodhouseLogo from "../../../../public/images/logo/PodhouseLogo.svg";
 
 const Header = () => (
   <HeaderContainer>
