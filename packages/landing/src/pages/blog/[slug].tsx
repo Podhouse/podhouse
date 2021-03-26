@@ -3,6 +3,7 @@ import readingTime from "reading-time";
 import mdxPrism from "mdx-prism";
 import renderToString from "next-mdx-remote/render-to-string";
 import hydrate from "next-mdx-remote/hydrate";
+import { ArticleJsonLd, NextSeo } from "next-seo";
 
 import { getLayout } from "src/components/Landing/Landing";
 
@@ -41,16 +42,45 @@ const Index = ({ readingTime, frontMatter, slug, source }: Props) => {
   });
 
   return (
-    <BlogPost
-      readingTime={readingTime}
-      title={frontMatter.title}
-      description={frontMatter.description}
-      date={frontMatter.date}
-      content={content}
-      author={frontMatter.author}
-      ogImage={frontMatter.ogImage}
-      slug={slug}
-    />
+    <>
+      <NextSeo
+        title={frontMatter.title}
+        description={frontMatter.description}
+        canonical={`https://podhouse.app/blog/${slug}`}
+        openGraph={{
+          url: `https://podhouse.app/blog/${slug}`,
+          title: frontMatter.title,
+          description: frontMatter.description,
+          images: [
+            {
+              url: frontMatter.ogImage.url,
+            },
+          ],
+          site_name: frontMatter.title,
+        }}
+      />
+      <ArticleJsonLd
+        url={`https://podhouse.app/blog/${slug}`}
+        title={frontMatter.title}
+        images={[frontMatter.ogImage.url]}
+        datePublished={frontMatter.date}
+        authorName="Leonardo Maldonado"
+        publisherName="Podhouse"
+        publisherLogo="/images/logo/icon-1200x630.jpg"
+        description={frontMatter.description}
+      />
+
+      <BlogPost
+        readingTime={readingTime}
+        title={frontMatter.title}
+        description={frontMatter.description}
+        date={frontMatter.date}
+        content={content}
+        author={frontMatter.author}
+        ogImage={frontMatter.ogImage}
+        slug={slug}
+      />
+    </>
   );
 };
 

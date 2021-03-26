@@ -1,7 +1,7 @@
 import React from "react";
 import Document, { Html, Head, Main, NextScript } from "next/document";
 
-import { GA_TRACKING_ID } from "../utils/gtag";
+import { GA_TRACKING_ID } from "src/utils/gtag";
 
 class MyDocument extends Document {
   render() {
@@ -12,32 +12,27 @@ class MyDocument extends Document {
             rel="icon"
             sizes="192x192"
             type="image/png"
-            href="/icon-192x192.png"
+            href="/images/logo/icon-192x192.png"
           />
           <link
             rel="icon"
             sizes="256x256"
             type="image/png"
-            href="/icon-256x256.png"
+            href="/images/logo/icon-256x256.png"
           />
           <link
             rel="icon"
             sizes="384x384"
             type="image/png"
-            href="/icon-384x384.png"
+            href="/images/logo/icon-384x384.png"
           />
           <link
             rel="icon"
             sizes="512x512"
             type="image/png"
-            href="/icon-512x512.png"
+            href="/images/logo/icon-512x512.png"
           />
           <link rel="manifest" href="/manifest.json" />
-
-          <meta
-            name="description"
-            content="The best podcast web app to listen to your favorite podcasts"
-          />
 
           {/* Global Site Tag (gtag.js) - Google Analytics */}
           <script

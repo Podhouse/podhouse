@@ -28,11 +28,10 @@ const OpenSource = () => (
       fontWeight="300"
       textAlign="center"
     >
-      One of the most awesome things about podcasts is that anyone can start to
-      listen or create their podcast. People can listen to podcasts in any
-      specific situation in their daily-basis. Podcasts should be accessible to
-      anyone, and our mission is to provide the best web app where people can
-      listen to their favorite podcasts.
+      People love to know how their favorite products are built. Our code is
+      open source so anyone can check it out, give comments, make suggestions
+      and feedbacks, and even help us build the next podcast app for listening
+      to podcasts.
     </Text>
   </Stack>
 );
