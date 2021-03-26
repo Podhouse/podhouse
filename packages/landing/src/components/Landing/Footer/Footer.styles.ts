@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 export const FooterContainer = styled.footer`
   width: 100%;
-  height: auto;
+  height: fit-content;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(2, max-content);
@@ -17,13 +17,15 @@ export const FooterLinksContainer = styled.div`
   grid-column: 1 / 2;
   grid-row: 1 / 2;
   display: grid;
-  grid-template-columns: max-content max-content max-content max-content;
-  grid-column-gap: 30px;
+  grid-template-columns: repeat(auto-fill, minmax(100px, max-content));
+  grid-template-rows: repeat(auto-fill, minmax(min-content, max-content));
+  grid-gap: 20px;
   align-items: center;
   justify-content: center;
+  justify-self: center;
 
   @media screen and (min-width: 400px) {
-    grid-template-columns: repeat(4, max-content);
+    grid-template-columns: repeat(5, max-content);
     grid-template-rows: 1fr;
     grid-column-gap: 30px;
   }
@@ -35,7 +37,7 @@ export const FooterBrandsContainer = styled.div`
   grid-column: 1 / 2;
   grid-row: 2 / 3;
   display: grid;
-  grid-template-columns: repeat(3, max-content);
+  grid-template-columns: repeat(4, max-content);
   grid-template-rows: 1fr;
   grid-column-gap: 30px;
   align-items: center;

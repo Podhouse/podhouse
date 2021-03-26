@@ -4,10 +4,13 @@ const theme = extendTheme({
   styles: {
     global: {
       "html, body": {
-        fontFamily: "Inter, sans-serif",
         fontSize: 16,
       },
     },
+  },
+  fonts: {
+    heading: "Passenger Sans",
+    body: "Passenger Sans",
   },
   colors: {
     black: "#101010",

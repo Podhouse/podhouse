@@ -1,6 +1,6 @@
 import React from "react";
+import { Heading, Text, Stack } from "@chakra-ui/react";
 import { Layers, Volume2, Activity, Smile } from "react-feather";
-import { Heading, Text } from "@chakra-ui/react";
 
 import {
   FeaturesContainer,
@@ -9,90 +9,145 @@ import {
   FeaturesItemTextContainer,
 } from "./Features.styles";
 
-import {
-  LandingGridContainer,
-  LandingGridContentContainer,
-} from "src/components/Landing/Landing.styles";
-
 const Features = () => (
-  <LandingGridContainer>
-    <LandingGridContentContainer>
+  <Stack
+    direction="column"
+    spacing="20px"
+    maxW="800px"
+    justifySelf="center"
+    alignItems="center"
+    justifyItems="center"
+  >
+    <Stack direction="column" spacing="20px">
       <Heading
         color="#101010"
         as="h2"
         fontSize={36}
         letterSpacing="-0.03em"
         textAlign="center"
+        fontWeight="600"
       >
         The best podcast experience
       </Heading>
 
-      <Text color="#101010" lineHeight="30px" textAlign="center">
-        Listen to your favorite podcasts without having to worry about anything.
+      <Text
+        color="#6F6F6F"
+        fontSize={16}
+        lineHeight="30px"
+        fontWeight="300"
+        textAlign="center"
+      >
+        A ton of features that you need to listen to a podcast with the best
+        experience ever
       </Text>
-    </LandingGridContentContainer>
+    </Stack>
 
     <FeaturesContainer>
       <FeaturesItemContainer>
         <FeaturesItemIconContainer>
-          <Layers color="#fff" />
+          <Layers color="#FFFFFF" />
         </FeaturesItemIconContainer>
         <FeaturesItemTextContainer>
-          <Text color="#101010" fontWeight="600">
-            Simple, intuitive, and clean design
+          <Text
+            color="#101010"
+            fontSize={16}
+            lineHeight="30px"
+            fontWeight="500"
+          >
+            Simple, intuitive, and clean
           </Text>
-          <Text color="#101010" lineHeight="30px">
-            We bring a nice, clean, and intuitive app for you to listen to your
-            favorite podcasts.
+          <Text
+            color="#6F6F6F"
+            fontSize={16}
+            lineHeight="30px"
+            fontWeight="300"
+            textAlign="start"
+          >
+            A nice, clean and intuitive experience for you to listen to your
+            favorite podcasts
           </Text>
         </FeaturesItemTextContainer>
       </FeaturesItemContainer>
 
       <FeaturesItemContainer>
         <FeaturesItemIconContainer>
-          <Volume2 color="#fff" />
+          <Volume2 color="#FFFFFF" />
         </FeaturesItemIconContainer>
         <FeaturesItemTextContainer>
-          <Text color="#101010" fontWeight="600">
+          <Text
+            color="#101010"
+            fontSize={16}
+            lineHeight="30px"
+            fontWeight="500"
+          >
             Listen to podcasts anywhere, anytime
           </Text>
-          <Text color="#101010" lineHeight="30px">
-            Access and listen to a variety of podcasts anywhere and anytime.
+          <Text
+            color="#6F6F6F"
+            fontSize={16}
+            lineHeight="30px"
+            fontWeight="300"
+            textAlign="start"
+          >
+            Access and listen to podcasts anywhere and anytime, without having
+            to worry about sync
           </Text>
         </FeaturesItemTextContainer>
       </FeaturesItemContainer>
 
       <FeaturesItemContainer>
         <FeaturesItemIconContainer>
-          <Activity color="#fff" />
+          <Activity color="#FFFFFF" />
         </FeaturesItemIconContainer>
         <FeaturesItemTextContainer>
-          <Text color="#101010" fontWeight="600">
+          <Text
+            color="#101010"
+            fontSize={16}
+            lineHeight="30px"
+            fontWeight="500"
+          >
             Discover new podcasts everyday
           </Text>
-          <Text color="#101010" lineHeight="30px">
-            Discover podcasts every day, know what's trending, and subscribe to
-            new podcasts.
+          <Text
+            color="#6F6F6F"
+            fontSize={16}
+            lineHeight="30px"
+            fontWeight="300"
+            textAlign="start"
+          >
+            Discover new podcasts every day, know what's trending and subscribe
+            to podcasts easily
           </Text>
         </FeaturesItemTextContainer>
       </FeaturesItemContainer>
 
       <FeaturesItemContainer>
         <FeaturesItemIconContainer>
-          <Smile color="#fff" />
+          <Smile color="#FFFFFF" />
         </FeaturesItemIconContainer>
         <FeaturesItemTextContainer>
-          <Text color="#101010" fontWeight="600">
+          <Text
+            color="#101010"
+            fontSize={16}
+            lineHeight="30px"
+            fontWeight="500"
+          >
             No annoying ads
           </Text>
-          <Text color="#101010" lineHeight="30px">
-            Your experience is our main priority. You will never see annoying
-            ads.
+          <Text
+            color="#6F6F6F"
+            fontSize={16}
+            lineHeight="30px"
+            fontWeight="300"
+            textAlign="start"
+          >
+            You will not see any annoying ads, your experience is our main
+            priority, now and ever
           </Text>
         </FeaturesItemTextContainer>
       </FeaturesItemContainer>
     </FeaturesContainer>
-  </LandingGridContainer>
+  </Stack>
 );
 
 export default Features;

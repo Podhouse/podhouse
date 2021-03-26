@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 export const HeaderContainer = styled.header`
   width: 100%;
-  height: auto;
+  height: fit-content;
   display: grid;
   grid-template-columns: minmax(max-content, 1fr) minmax(max-content, 1fr);
   grid-template-rows: 1fr;
@@ -36,7 +36,7 @@ export const HeaderLinksContainer = styled.div`
     grid-column: 2 / 3;
     grid-row: 1 / 2;
     display: grid;
-    grid-template-columns: repeat(2, max-content);
+    grid-template-columns: repeat(3, max-content);
     grid-template-rows: 1fr;
     grid-column-gap: 30px;
     align-items: center;
@@ -56,6 +56,14 @@ export const HeaderSignInContainer = styled.div`
   align-items: center;
   justify-items: flex-end;
 
+  .button {
+    display: block;
+  }
+
+  .button-800 {
+    display: none;
+  }
+
   @media screen and (min-width: 800px) {
     grid-column: 3 / 4;
     grid-row: 1 / 2;
@@ -65,5 +73,13 @@ export const HeaderSignInContainer = styled.div`
     grid-column-gap: 30px;
     align-self: center;
     justify-self: flex-end;
+
+    .button {
+      display: none;
+    }
+
+    .button-800 {
+      display: block;
+    }
   }
 `;

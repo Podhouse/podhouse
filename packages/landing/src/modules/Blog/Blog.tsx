@@ -1,13 +1,18 @@
 import React from "react";
 
 import Main from "./Main/Main";
+import Articles from "./Articles/Articles";
 
-import Post from "src/components/Blog/Post/Post";
+import { ArticleType } from "src/types";
 
-const About = () => (
+interface Props {
+  articles: Array<ArticleType>;
+}
+
+const About = ({ articles }: Props) => (
   <>
     <Main />
-    <Post />
+    <Articles articles={articles} />
   </>
 );
 

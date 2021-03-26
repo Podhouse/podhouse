@@ -1,7 +1,7 @@
 import React from "react";
 import NextLink from "next/link";
 import { Link, Text } from "@chakra-ui/react";
-import { Twitter, Linkedin, Instagram } from "react-feather";
+import { Twitter, Linkedin, Instagram, GitHub } from "react-feather";
 
 import {
   FooterContainer,
@@ -13,32 +13,64 @@ const Footer = () => (
   <FooterContainer>
     <FooterLinksContainer>
       <NextLink href="/about" as="/about">
-        <Link href="/about" fontWeight="500" color="#101010">
+        <Link
+          href="/about"
+          color="#6F6F6F"
+          fontSize={16}
+          lineHeight="30px"
+          fontWeight="400"
+        >
           About
         </Link>
       </NextLink>
 
-      <NextLink href="/advertise" as="/advertise">
-        <Link href="/advertise" fontWeight="500" color="#101010">
-          Advertise
+      <NextLink href="/for-podcasters" as="/for-podcasters">
+        <Link
+          href="/for-podcasters"
+          color="#6F6F6F"
+          fontSize={16}
+          lineHeight="30px"
+          fontWeight="400"
+        >
+          For Podcasters
         </Link>
       </NextLink>
 
-      <NextLink href="/brand" as="/brand">
-        <Link href="/brand" fontWeight="500" color="#101010">
-          Brand
+      <NextLink href="/blog" as="/blog">
+        <Link
+          href="/blog"
+          color="#6F6F6F"
+          fontSize={16}
+          lineHeight="30px"
+          fontWeight="400"
+        >
+          Blog
         </Link>
       </NextLink>
 
-      <Link
-        href="mailto:leonardomso11@gmail.com"
-        target="_blank"
-        rel="noopener"
-        fontWeight="500"
-        color="#101010"
-      >
-        Contact
-      </Link>
+      <NextLink href="/press" as="/press">
+        <Link
+          href="/press"
+          color="#6F6F6F"
+          fontSize={16}
+          lineHeight="30px"
+          fontWeight="400"
+        >
+          Press
+        </Link>
+      </NextLink>
+
+      <NextLink href="/contact" as="/contact">
+        <Link
+          href="/contact"
+          color="#6F6F6F"
+          fontSize={16}
+          lineHeight="30px"
+          fontWeight="400"
+        >
+          Contact
+        </Link>
+      </NextLink>
     </FooterLinksContainer>
 
     <FooterBrandsContainer>
@@ -47,7 +79,15 @@ const Footer = () => (
         target="_blank"
         rel="noopener"
       >
-        <Twitter cursor="pointer" color="#101010" />
+        <Twitter cursor="pointer" color="#6F6F6F" />
+      </Link>
+
+      <Link
+        href="https://github.com/Podhouse/podhouse"
+        target="_blank"
+        rel="noopener"
+      >
+        <GitHub cursor="pointer" color="#6F6F6F" />
       </Link>
 
       <Link
@@ -55,7 +95,7 @@ const Footer = () => (
         target="_blank"
         rel="noopener"
       >
-        <Linkedin cursor="pointer" color="#101010" />
+        <Linkedin cursor="pointer" color="#6F6F6F" />
       </Link>
 
       <Link
@@ -63,12 +103,12 @@ const Footer = () => (
         target="_blank"
         rel="noopener"
       >
-        <Instagram cursor="pointer" color="#101010" />
+        <Instagram cursor="pointer" color="#6F6F6F" />
       </Link>
     </FooterBrandsContainer>
 
-    <Text color="#101010" fontSize="12px">
-      2021 © Podhouse. All rights reserved
+    <Text color="#6F6F6F" fontSize={12} lineHeight="30px" fontWeight="300">
+      2021 © Podhouse, Inc. All rights reserved.
     </Text>
   </FooterContainer>
 );

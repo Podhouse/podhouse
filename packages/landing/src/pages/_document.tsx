@@ -1,46 +1,38 @@
 import React from "react";
-import Document, { Head, Main, NextScript } from "next/document";
-import { GoogleFonts } from "next-google-fonts";
+import Document, { Html, Head, Main, NextScript } from "next/document";
 
-import { GA_TRACKING_ID } from "../utils/gtag";
+import { GA_TRACKING_ID } from "src/utils/gtag";
 
 class MyDocument extends Document {
   render() {
     return (
-      <html lang="en-US">
+      <Html>
         <Head>
-          <GoogleFonts href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" />
-
           <link
             rel="icon"
             sizes="192x192"
             type="image/png"
-            href="/icon-192x192.png"
+            href="/images/logo/icon-192x192.png"
           />
           <link
             rel="icon"
             sizes="256x256"
             type="image/png"
-            href="/icon-256x256.png"
+            href="/images/logo/icon-256x256.png"
           />
           <link
             rel="icon"
             sizes="384x384"
             type="image/png"
-            href="/icon-384x384.png"
+            href="/images/logo/icon-384x384.png"
           />
           <link
             rel="icon"
             sizes="512x512"
             type="image/png"
-            href="/icon-512x512.png"
+            href="/images/logo/icon-512x512.png"
           />
           <link rel="manifest" href="/manifest.json" />
-          <title>Podhouse</title>
-          <meta
-            name="description"
-            content="The best podcast web app to listen to your favorite podcasts"
-          />
 
           {/* Global Site Tag (gtag.js) - Google Analytics */}
           <script
@@ -64,7 +56,7 @@ class MyDocument extends Document {
           <Main />
           <NextScript />
         </body>
-      </html>
+      </Html>
     );
   }
 }

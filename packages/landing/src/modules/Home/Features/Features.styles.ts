@@ -47,6 +47,5 @@ export const FeaturesItemTextContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: max-content max-content;
-  grid-row-gap: 10px;
   justify-items: flex-start;
 `;

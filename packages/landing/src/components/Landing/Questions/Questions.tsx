@@ -1,14 +1,9 @@
 import React from "react";
-import { Heading, Link } from "@chakra-ui/react";
-
-import {
-  LandingGridContainer,
-  LandingGridContentContainer,
-} from "../Landing.styles";
+import { Heading, Link, Stack } from "@chakra-ui/react";
 
 const CallToAction = () => (
-  <LandingGridContainer>
-    <LandingGridContentContainer>
+  <Stack direction="column">
+    <Stack direction="column" spacing="20px">
       <Heading
         color="#101010"
         as="h2"
@@ -29,8 +24,8 @@ const CallToAction = () => (
       >
         Reach out via email and I will be happy to help you.
       </Link>
-    </LandingGridContentContainer>
-  </LandingGridContainer>
+    </Stack>
+  </Stack>
 );
 
 export default CallToAction;

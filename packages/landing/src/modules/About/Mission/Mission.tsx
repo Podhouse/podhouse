@@ -1,33 +1,40 @@
 import React from "react";
-import { Heading, Text } from "@chakra-ui/react";
-
-import {
-  LandingGridContainer,
-  LandingGridContentContainer,
-} from "src/components/Landing/Landing.styles";
+import { Heading, Text, Stack } from "@chakra-ui/react";
 
 const Mission = () => (
-  <LandingGridContainer>
-    <LandingGridContentContainer>
-      <Heading
-        color="#101010"
-        as="h2"
-        fontSize={36}
-        letterSpacing="-0.03em"
-        textAlign="center"
-      >
-        Mission
-      </Heading>
+  <Stack
+    direction="column"
+    spacing="20px"
+    maxW="800px"
+    justifySelf="center"
+    alignItems="center"
+    justifyItems="center"
+  >
+    <Heading
+      color="#101010"
+      as="h2"
+      fontSize={36}
+      letterSpacing="-0.03em"
+      textAlign="center"
+      fontWeight="600"
+    >
+      Mission
+    </Heading>
 
-      <Text color="#101010" lineHeight="30px" textAlign="center">
-        One of the most awesome things about podcasts is that anyone can start
-        to listen or create their podcast. People can listen to podcasts in any
-        specific situation in their daily-basis. Podcasts should be accessible
-        to anyone, and our mission is to provide the best web app where people
-        can listen to their favorite podcasts.
-      </Text>
-    </LandingGridContentContainer>
-  </LandingGridContainer>
+    <Text
+      color="#6F6F6F"
+      fontSize={16}
+      lineHeight="30px"
+      fontWeight="300"
+      textAlign="center"
+    >
+      One of the most awesome things about podcasts is that anyone can start to
+      listen or create their podcast. People can listen to podcasts in any
+      specific situation in their daily-basis. Podcasts should be accessible to
+      anyone, and our mission is to provide the best web app where people can
+      listen to their favorite podcasts.
+    </Text>
+  </Stack>
 );
 
 export default Mission;

@@ -1,8 +1,11 @@
 import React, { useEffect } from "react";
 import App from "next/app";
 import { useRouter } from "next/router";
+import { DefaultSeo } from "next-seo";
 
-import * as gtag from "../utils/gtag";
+import SEO from "next-seo.config";
+
+import * as gtag from "src/utils/gtag";
 
 import Landing from "src/components/Landing/Landing";
 
@@ -22,7 +25,12 @@ const MyApp = ({ Component, pageProps }: any) => {
   const getLayout =
     Component.getLayout || ((page) => <Landing>{page}</Landing>);
 
-  return getLayout(<Component {...pageProps} />);
+  return getLayout(
+    <>
+      <DefaultSeo {...SEO} />
+      <Component {...pageProps} />
+    </>,
+  );
 };
 
 MyApp.getInitialProps = async (appContext) => ({
