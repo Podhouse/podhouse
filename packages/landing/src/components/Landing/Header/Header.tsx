@@ -69,19 +69,6 @@ const Header = () => (
           Blog
         </Link>
       </NextLink>
-
-      <NextLink href="/support" as="/support">
-        <Link
-          aria-label="Support"
-          href="/support"
-          color="#6F6F6F"
-          fontSize={16}
-          lineHeight="30px"
-          fontWeight="400"
-        >
-          Support
-        </Link>
-      </NextLink>
     </HeaderLinksContainer>
 
     <HeaderSignInContainer>
@@ -133,20 +120,6 @@ const Header = () => (
                 fontWeight="400"
               >
                 Blog
-              </Link>
-            </NextLink>
-          </MenuItem>
-
-          <MenuItem>
-            <NextLink href="/support" as="/support">
-              <Link
-                aria-label="Support"
-                href="/support"
-                fontSize={16}
-                lineHeight="30px"
-                fontWeight="400"
-              >
-                Support
               </Link>
             </NextLink>
           </MenuItem>

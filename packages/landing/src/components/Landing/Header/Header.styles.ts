@@ -36,7 +36,7 @@ export const HeaderLinksContainer = styled.div`
     grid-column: 2 / 3;
     grid-row: 1 / 2;
     display: grid;
-    grid-template-columns: repeat(4, max-content);
+    grid-template-columns: repeat(3, max-content);
     grid-template-rows: 1fr;
     grid-column-gap: 30px;
     align-items: center;

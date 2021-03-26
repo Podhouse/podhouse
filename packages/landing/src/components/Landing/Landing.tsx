@@ -23,8 +23,7 @@ const Landing = ({ children }: LandingProps) => {
         spacing="120px"
         maxW="1200px"
         margin="0 auto"
-        pt={5}
-        pb={5}
+        p={5}
         alignItems="center"
         justifyItems="center"
       >
