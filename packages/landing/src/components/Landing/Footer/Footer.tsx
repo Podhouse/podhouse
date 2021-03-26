@@ -24,15 +24,15 @@ const Footer = () => (
         </Link>
       </NextLink>
 
-      <NextLink href="/advertise" as="/advertise">
+      <NextLink href="/for-podcasters" as="/for-podcasters">
         <Link
-          href="/advertise"
+          href="/for-podcasters"
           color="#6F6F6F"
           fontSize={16}
           lineHeight="30px"
           fontWeight="400"
         >
-          Advertise
+          For Podcasters
         </Link>
       </NextLink>
 
