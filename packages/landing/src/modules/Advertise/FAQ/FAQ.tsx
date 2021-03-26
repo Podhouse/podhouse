@@ -1,12 +1,7 @@
 import React from "react";
-import { Heading, Text } from "@chakra-ui/react";
+import { Heading, Text, Stack } from "@chakra-ui/react";
 
 import { FAQItemsContainer, FAQItemContainer } from "./FAQ.styles";
-
-import {
-  LandingGridContainer,
-  LandingGridContentContainer,
-} from "src/components/Landing/Landing.styles";
 
 const items = [
   {
@@ -36,8 +31,15 @@ interface FAQItem {
 }
 
 const FAQ = () => (
-  <LandingGridContainer>
-    <LandingGridContentContainer>
+  <Stack
+    direction="column"
+    spacing="20px"
+    maxW="800px"
+    justifySelf="center"
+    alignItems="center"
+    justifyItems="center"
+  >
+    <Stack direction="column" spacing="20px">
       <Heading
         color="#101010"
         as="h2"
@@ -57,7 +59,7 @@ const FAQ = () => (
       >
         Here's some questions about advertising in Podhouse that you might have
       </Text>
-    </LandingGridContentContainer>
+    </Stack>
 
     <FAQItemsContainer>
       {items.map(({ title, body }: FAQItem) => (
@@ -84,7 +86,7 @@ const FAQ = () => (
         </FAQItemContainer>
       ))}
     </FAQItemsContainer>
-  </LandingGridContainer>
+  </Stack>
 );
 
 export default FAQ;

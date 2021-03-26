@@ -6,7 +6,7 @@ interface AssetsContainerProps {
 
 export const DownloadContainer = styled.div`
   width: 100%;
-  max-width: 600px;
+  max-width: 800px;
   height: auto;
   display: grid;
   grid-template-columns: 1fr;
@@ -16,7 +16,7 @@ export const DownloadContainer = styled.div`
 
 export const DownloadItemContainer = styled.div`
   width: 100%;
-  max-width: 600px;
+  max-width: 800px;
   height: auto;
   display: grid;
   grid-template-columns: 1fr;

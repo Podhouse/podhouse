@@ -1,7 +1,7 @@
 import React from "react";
 import { Heading, Text, Stack } from "@chakra-ui/react";
 
-const Mission = () => (
+const Main = () => (
   <Stack
     direction="column"
     spacing="20px"
@@ -12,13 +12,13 @@ const Mission = () => (
   >
     <Heading
       color="#101010"
-      as="h2"
-      fontSize={36}
+      as="h1"
+      fontSize={64}
       letterSpacing="-0.03em"
       textAlign="center"
       fontWeight="600"
     >
-      Mission
+      Get in touch
     </Heading>
 
     <Text
@@ -28,13 +28,9 @@ const Mission = () => (
       fontWeight="300"
       textAlign="center"
     >
-      One of the most awesome things about podcasts is that anyone can start to
-      listen or create their podcast. People can listen to podcasts in any
-      specific situation in their daily-basis. Podcasts should be accessible to
-      anyone, and our mission is to provide the best web app where people can
-      listen to their favorite podcasts.
+      We're very open to feedbacks, get in touch with us and tell us anything
     </Text>
   </Stack>
 );
 
-export default Mission;
+export default Main;

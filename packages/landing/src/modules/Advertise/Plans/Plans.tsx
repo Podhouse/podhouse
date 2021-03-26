@@ -7,14 +7,10 @@ import {
   ListItem,
   ListIcon,
   Button,
+  Stack,
 } from "@chakra-ui/react";
 import { BsCheck } from "react-icons/bs";
 import { useRouter } from "next/router";
-
-import {
-  LandingGridContainer,
-  LandingGridContentContainer,
-} from "src/components/Landing/Landing.styles";
 
 import { PlansContainer, PlanContainer } from "./Plans.styles";
 
@@ -26,8 +22,15 @@ const Plans = () => {
   };
 
   return (
-    <LandingGridContainer>
-      <LandingGridContentContainer>
+    <Stack
+      direction="column"
+      spacing="20px"
+      maxW="800px"
+      justifySelf="center"
+      alignItems="center"
+      justifyItems="center"
+    >
+      <Stack direction="column" spacing="20px">
         <Heading
           color="#101010"
           as="h2"
@@ -48,7 +51,7 @@ const Plans = () => {
           We have the right price for you to start to advertise your podcast
           with us and reach more listeners
         </Text>
-      </LandingGridContentContainer>
+      </Stack>
 
       <PlansContainer>
         <PlanContainer>
@@ -245,7 +248,7 @@ const Plans = () => {
           </a>
         </PlanContainer>
       </PlansContainer>
-    </LandingGridContainer>
+    </Stack>
   );
 };
 

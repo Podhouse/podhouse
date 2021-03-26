@@ -9,14 +9,19 @@ interface Props {
   articles: Array<ArticleType>;
 }
 
-const Articles = ({ articles }: Props) => {
-  return (
-    <Stack direction={["column"]} spacing="50px">
-      {articles.map((article: ArticleType) => (
-        <Post key={article.slug} article={article} />
-      ))}
-    </Stack>
-  );
-};
+const Articles = ({ articles }: Props) => (
+  <Stack
+    direction="column"
+    spacing="50px"
+    maxW="800px"
+    justifySelf="center"
+    alignItems="center"
+    justifyItems="center"
+  >
+    {articles.map((article: ArticleType) => (
+      <Post key={article.slug} article={article} />
+    ))}
+  </Stack>
+);
 
 export default Articles;

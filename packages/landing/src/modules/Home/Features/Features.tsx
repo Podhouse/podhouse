@@ -1,6 +1,6 @@
 import React from "react";
+import { Heading, Text, Stack } from "@chakra-ui/react";
 import { Layers, Volume2, Activity, Smile } from "react-feather";
-import { Heading, Text } from "@chakra-ui/react";
 
 import {
   FeaturesContainer,
@@ -9,14 +9,16 @@ import {
   FeaturesItemTextContainer,
 } from "./Features.styles";
 
-import {
-  LandingGridContainer,
-  LandingGridContentContainer,
-} from "src/components/Landing/Landing.styles";
-
 const Features = () => (
-  <LandingGridContainer>
-    <LandingGridContentContainer>
+  <Stack
+    direction="column"
+    spacing="20px"
+    maxW="800px"
+    justifySelf="center"
+    alignItems="center"
+    justifyItems="center"
+  >
+    <Stack direction="column" spacing="20px">
       <Heading
         color="#101010"
         as="h2"
@@ -38,7 +40,7 @@ const Features = () => (
         A ton of features that you need to listen to a podcast with the best
         experience ever
       </Text>
-    </LandingGridContentContainer>
+    </Stack>
 
     <FeaturesContainer>
       <FeaturesItemContainer>
@@ -145,7 +147,7 @@ const Features = () => (
         </FeaturesItemTextContainer>
       </FeaturesItemContainer>
     </FeaturesContainer>
-  </LandingGridContainer>
+  </Stack>
 );
 
 export default Features;
