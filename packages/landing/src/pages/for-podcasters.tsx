@@ -2,9 +2,9 @@ import React from "react";
 
 import { getLayout } from "src/components/Landing/Landing";
 
-import Advertise from "src/modules/Advertise/Advertise";
+import ForPodcasters from "src/modules/ForPodcasters/ForPodcasters";
 
-const Index = () => <Advertise />;
+const Index = () => <ForPodcasters />;
 
 Index.getLayout = getLayout;
 

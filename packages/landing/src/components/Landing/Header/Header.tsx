@@ -44,16 +44,16 @@ const Header = () => (
         </Link>
       </NextLink>
 
-      <NextLink href="/advertise" as="/advertise">
+      <NextLink href="/for-podcasters" as="/for-podcasters">
         <Link
-          aria-label="Advertise"
-          href="/advertise"
+          aria-label="For Podcasters"
+          href="/for-podcasters"
           color="#6F6F6F"
           fontSize={16}
           lineHeight="30px"
           fontWeight="400"
         >
-          Advertise
+          For Podcasters
         </Link>
       </NextLink>
 
@@ -97,15 +97,15 @@ const Header = () => (
           </MenuItem>
 
           <MenuItem>
-            <NextLink href="/advertise" as="/advertise">
+            <NextLink href="/for-podcasters" as="/for-podcasters">
               <Link
-                aria-label="Advertise"
-                href="/advertise"
+                aria-label="For Podcasters"
+                href="/for-podcasters"
                 fontSize={16}
                 lineHeight="30px"
                 fontWeight="400"
               >
-                Advertise
+                For Podcasters
               </Link>
             </NextLink>
           </MenuItem>

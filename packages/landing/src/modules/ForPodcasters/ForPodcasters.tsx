@@ -6,7 +6,7 @@ import FAQ from "./FAQ/FAQ";
 
 import CallToAction from "src/components/Landing/CallToAction/CallToAction";
 
-const Brand = () => (
+const ForPodcasters = () => (
   <>
     <Main />
     <Plans />
@@ -15,4 +15,4 @@ const Brand = () => (
   </>
 );
 
-export default Brand;
+export default ForPodcasters;
