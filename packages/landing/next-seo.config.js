@@ -9,10 +9,10 @@ export default {
     description: "The best podcast web app to listen to your favorite podcasts",
     images: [
       {
-        url: "/images/logo/icon-1200x630.jpg",
+        url: "https://podhouse.app/podhouse-1200x630.jpg",
         width: 1200,
         height: 630,
-        alt: "Podhouse image alt",
+        alt: "Podhouse logo",
       },
     ],
     site_name: "Podhouse",
