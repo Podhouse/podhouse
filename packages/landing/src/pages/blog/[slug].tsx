@@ -53,7 +53,7 @@ const Index = ({ readingTime, frontMatter, slug, source }: Props) => {
           description: frontMatter.description,
           images: [
             {
-              url: frontMatter.ogImage.url,
+              url: `${process.env.NEXT_PUBLIC_SITE_URL}/api/og?title=${frontMatter.title}`,
             },
           ],
           site_name: frontMatter.title,
