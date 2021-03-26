@@ -8,8 +8,8 @@ import {
   DownloadAssetsContainer,
 } from "./Download.styles";
 
-import PodhouseDark from "../../../../public/logo-dark.svg";
-import PodhouseLight from "../../../../public/light-logo.svg";
+import PodhouseDark from "../../../../public/images/logo/logo-dark.svg";
+import PodhouseLight from "../../../../public/images/logo/light-logo.svg";
 
 const Download = () => (
   <DownloadContainer>
