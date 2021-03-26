@@ -2,18 +2,16 @@ import React from "react";
 import readingTime from "reading-time";
 import mdxPrism from "mdx-prism";
 import renderToString from "next-mdx-remote/render-to-string";
-import externalLinks from "remark-external-links";
 import hydrate from "next-mdx-remote/hydrate";
-import { Text } from "@chakra-ui/react";
 
 import { getLayout } from "src/components/Landing/Landing";
+
+import MDXComponents from "src/components/MDXComponents/MDXComponents";
 
 import BlogPost from "src/modules/BlogPost/BlogPost";
 
 import { api } from "src/lib/lib";
 import { BlogArticleType } from "src/types";
-
-const components = { Text };
 
 interface Props {
   readingTime: {
@@ -38,7 +36,9 @@ interface Props {
 }
 
 const Index = ({ readingTime, frontMatter, slug, source }: Props) => {
-  const content = hydrate(source, { components });
+  const content = hydrate(source, {
+    components: MDXComponents,
+  });
 
   return (
     <BlogPost
@@ -71,11 +71,22 @@ export async function getStaticProps({ params }: Params) {
   const { content, data } = api.getRawArticleBySlug(params.slug);
 
   const mdxSource = await renderToString(content, {
+    components: MDXComponents,
     mdxOptions: {
-      remarkPlugins: [externalLinks],
+      remarkPlugins: [
+        require("remark-autolink-headings"),
+        require("remark-slug"),
+        require("remark-code-titles"),
+        require("remark-autolink-headings"),
+        require("remark-capitalize"),
+        require("remark-code-titles"),
+        require("remark-emoji"),
+        require("remark-external-links"),
+        require("remark-images"),
+        require("remark-slug"),
+      ],
       rehypePlugins: [mdxPrism],
     },
-    scope: data,
   });
 
   const tags = data.tags ?? [];

@@ -59,7 +59,9 @@
     "remark-autolink-headings": "^6.0.1",
     "remark-capitalize": "^1.1.0",
     "remark-code-titles": "^0.1.1",
+    "remark-emoji": "^2.1.0",
     "remark-external-links": "^8.0.0",
+    "remark-images": "^2.0.0",
     "remark-slug": "^6.0.0",
     "webp-loader": "^0.6.0"
   },
