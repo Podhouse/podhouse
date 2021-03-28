@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 export const FeaturesContainer = styled.div`
   width: 100%;
-  height: auto;
+  height: fit-content;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(4, max-content);
@@ -20,7 +20,7 @@ export const FeaturesContainer = styled.div`
 
 export const FeaturesItemContainer = styled.div`
   width: 100%;
-  height: auto;
+  height: fit-content;
   display: grid;
   grid-template-columns: 40px 1fr;
   grid-template-rows: 1fr;

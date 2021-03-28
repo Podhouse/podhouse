@@ -17,11 +17,11 @@ export const FooterLinksContainer = styled.div`
   grid-column: 1 / 2;
   grid-row: 1 / 2;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(100px, max-content));
+  grid-template-columns: repeat(auto-fill, minmax(160px, max-content));
   grid-template-rows: repeat(auto-fill, minmax(min-content, max-content));
   grid-gap: 20px;
   align-items: center;
-  justify-content: center;
+  justify-items: center;
   justify-self: center;
 
   @media screen and (min-width: 400px) {

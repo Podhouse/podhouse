@@ -1,5 +1,5 @@
 import React from "react";
-import { ChakraProvider, Stack } from "@chakra-ui/react";
+import { ChakraProvider } from "@chakra-ui/react";
 import { Global } from "@emotion/react";
 
 import Header from "src/components/Landing/Header/Header";
@@ -7,23 +7,19 @@ import Footer from "src/components/Landing/Footer/Footer";
 
 import theme from "src/system/theme";
 
+import { LandingContainer } from "./Landing.styles";
+
 interface LandingProps {
   children: React.ReactNode;
 }
 
 const Landing = ({ children }: LandingProps) => (
   <ChakraProvider theme={theme}>
-    <Stack
-      direction="column"
-      spacing="120px"
-      maxW="1200px"
-      margin="0 auto"
-      p={5}
-    >
+    <LandingContainer>
       <Header />
       {children}
       <Footer />
-    </Stack>
+    </LandingContainer>
 
     <Global
       styles={`

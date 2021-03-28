@@ -35,6 +35,7 @@ const BlogPost = ({
     direction="column"
     spacing="50px"
     maxW="800px"
+    h="fit-content"
     justifySelf="center"
     alignItems="center"
     justifyItems="center"

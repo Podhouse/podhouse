@@ -4,7 +4,7 @@ import { Twitter, Linkedin, Instagram } from "react-feather";
 
 const ShareThisArticle = () => {
   return (
-    <Stack direction="column" spacing="20px">
+    <Stack direction="column" spacing="20px" h="fit-content">
       <Text color="#101010" fontSize={16} lineHeight="30px" fontWeight="500">
         Share this article
       </Text>

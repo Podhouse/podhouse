@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 export const PodcastsContainer = styled.div`
   width: 100%;
-  height: auto;
+  height: fit-content;
   display: grid;
   grid-template-columns: repeat(3, 25vmin);
   grid-template-rows: repeat(2, 25vmin);
