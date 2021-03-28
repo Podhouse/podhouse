@@ -26,6 +26,7 @@ const Plans = () => {
       direction="column"
       spacing="20px"
       maxW="800px"
+      h="fit-content"
       justifySelf="center"
       alignItems="center"
       justifyItems="center"

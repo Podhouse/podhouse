@@ -18,7 +18,7 @@ interface Props {
 }
 
 const Header = ({ title, description, date, ogImage }: Props) => (
-  <Stack direction="column" spacing="20px" maxW="800px">
+  <Stack direction="column" spacing="20px" maxW="800px" h="fit-content">
     <Text
       color="#6F6F6F"
       fontSize={16}
