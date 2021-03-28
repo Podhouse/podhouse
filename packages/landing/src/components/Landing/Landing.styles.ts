@@ -10,6 +10,6 @@ export const LandingContainer = styled.div`
   grid-row-gap: 120px;
   align-items: center;
   justify-items: center;
-  padding: 20px;
+  padding: 25px;
   margin: 0 auto;
 `;
