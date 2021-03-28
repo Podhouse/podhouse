@@ -1,19 +1,25 @@
 import { extendTheme } from "@chakra-ui/react";
 
 const theme = extendTheme({
+  components: {
+    Button: {
+      baseStyle: {
+        fontFamily: "Passenger Sans",
+        fontStyle: "normal",
+        fontWeight: "normal",
+      },
+    },
+  },
   styles: {
     global: {
       "html, body": {
-        fontFamily: "Inter",
-        fontSize: 14,
-        "@font-face": {
-          fontFamily: "Inter",
-          fontDisplay: "swap",
-          src:
-            "url(fonts/Inter/Inter-VariableFont_slnt,wght.ttf) format('ttf')",
-        },
+        fontSize: 16,
       },
     },
+  },
+  fonts: {
+    heading: "Passenger Sans",
+    body: "Passenger Sans",
   },
   colors: {
     black: "#101010",
@@ -30,6 +36,10 @@ const theme = extendTheme({
       800: "#303030",
       900: "#101010",
     },
+  },
+  config: {
+    initialColorMode: "light",
+    useSystemColorMode: false,
   },
 });
 

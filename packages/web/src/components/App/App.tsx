@@ -70,7 +70,7 @@ const App = () => {
       {renderRateModal()}
 
       <AppContainer>
-        <Dashboard>
+        {/* <Dashboard>
           <Switch>
             <Route exact path="/" component={Browse} />
             <Route exact path="/subscriptions" component={Subscriptions} />
@@ -84,7 +84,7 @@ const App = () => {
           </Switch>
         </Dashboard>
         <Header />
-        <Player />
+        <Player /> */}
         <Menu />
       </AppContainer>
     </>
