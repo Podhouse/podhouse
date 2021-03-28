@@ -19,8 +19,6 @@ const Landing = ({ children }: LandingProps) => (
       maxW="1200px"
       margin="0 auto"
       p={5}
-      alignItems="center"
-      justifyItems="center"
     >
       <Header />
       {children}
