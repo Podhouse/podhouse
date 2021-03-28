@@ -9,6 +9,7 @@ export const FooterContainer = styled.footer`
   grid-row-gap: 20px;
   align-items: center;
   justify-items: center;
+  justify-self: center;
 `;
 
 export const FooterLinksContainer = styled.div`
@@ -28,6 +29,7 @@ export const FooterLinksContainer = styled.div`
     grid-template-columns: repeat(5, max-content);
     grid-template-rows: 1fr;
     grid-column-gap: 30px;
+    justify-content: center;
   }
 `;
 
