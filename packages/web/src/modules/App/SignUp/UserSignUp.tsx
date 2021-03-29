@@ -1,9 +1,12 @@
 import React from "react";
+import graphql from "babel-plugin-relay/macro";
+import { useMutation } from "react-relay/hooks";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
-import { useMutation } from "react-relay/hooks";
 import {
+  Stack,
+  Box,
   Input,
   Button,
   Link,
@@ -12,20 +15,26 @@ import {
   FormErrorMessage,
   useToast,
 } from "@chakra-ui/react";
+import { useHistory } from "react-router-dom";
 
-import { AuthFormContainer, AuthLinksContainer } from "../AuthModal.styles";
-
-import { useAuthContext } from "src/machines/Auth/AuthContext";
-
-import UserSignInWithEmail from "./UserSignInWithEmail";
 import {
-  UserSignInWithEmailMutation,
-  UserSignInWithEmailMutationResponse,
-} from "./__generated__/UserSignInWithEmailMutation.graphql";
+  UserSignUpWithEmailMutation,
+  UserSignUpWithEmailMutationResponse,
+} from "./__generated__/UserSignUpWithEmailMutation.graphql";
 
 import { updateToken } from "src/utils/auth";
 
-interface SignInFormProps {
+const UserSignUpWithEmail = graphql`
+  mutation UserSignUpWithEmailMutation($input: UserSignUpWithEmailInput!) {
+    UserSignUpWithEmail(input: $input) {
+      token
+      success
+      error
+    }
+  }
+`;
+
+interface SignUpFormProps {
   email: string;
   password: string;
 }
@@ -35,13 +44,12 @@ const validationSchema = Yup.object().shape({
   password: Yup.string().required("Password is required"),
 });
 
-const SignIn = () => {
+const SignUp = () => {
   const toast = useToast();
-  const { handleAuth, send } = useAuthContext();
-  const [
-    userSignInWithEmail,
-    isPending,
-  ] = useMutation<UserSignInWithEmailMutation>(UserSignInWithEmail);
+  const [commitMutation, isPending] = useMutation<UserSignUpWithEmailMutation>(
+    UserSignUpWithEmail
+  );
+  const history = useHistory();
 
   const {
     register,
@@ -50,14 +58,14 @@ const SignIn = () => {
     formState,
     getValues,
     setError,
-  } = useForm<SignInFormProps>({
+  } = useForm<SignUpFormProps>({
     mode: "onChange",
     reValidateMode: "onChange",
     resolver: yupResolver(validationSchema),
   });
 
   const onSubmit = () => {
-    userSignInWithEmail({
+    commitMutation({
       variables: {
         input: {
           email: getValues().email,
@@ -65,17 +73,17 @@ const SignIn = () => {
         },
       },
       onCompleted: ({
-        UserSignInWithEmail,
-      }: UserSignInWithEmailMutationResponse) => {
-        if (UserSignInWithEmail?.error) {
-          const error = UserSignInWithEmail.error;
+        UserSignUpWithEmail,
+      }: UserSignUpWithEmailMutationResponse) => {
+        if (UserSignUpWithEmail?.error) {
+          const error = UserSignUpWithEmail.error;
 
           if (error === "Invalid password") {
             setError("password", {
               type: "manual",
               message: error,
             });
-          } else if (error === "Account with this email address not found") {
+          } else if (error === "Email address is already in use") {
             setError("email", {
               type: "manual",
               message: error,
@@ -93,11 +101,10 @@ const SignIn = () => {
           return;
         }
 
-        updateToken(UserSignInWithEmail?.token);
-        handleAuth();
+        updateToken(UserSignUpWithEmail?.token);
         toast({
-          title: "Signed in successfully",
-          description: "You've signed in into your account",
+          title: "Signed up successfully",
+          description: "You've created your account",
           status: "success",
           duration: 3000,
           isClosable: true,
@@ -107,7 +114,18 @@ const SignIn = () => {
   };
 
   return (
-    <AuthFormContainer onSubmit={handleSubmit(onSubmit)}>
+    <Stack
+      as="form"
+      onSubmit={handleSubmit(onSubmit)}
+      direction="column"
+      spacing="10px"
+      w="100%"
+      h="100%"
+      maxW="400px"
+      margin="0 auto"
+      alignItems="center"
+      justifyContent="center"
+    >
       <FormControl isInvalid={errors.email && true}>
         <FormLabel htmlFor="email">Email</FormLabel>
         <Input type="email" name="email" placeholder="Email" ref={register} />
@@ -132,29 +150,20 @@ const SignIn = () => {
       <Button
         type="submit"
         width="100%"
-        isDisabled={!formState.isValid}
         isLoading={formState.isSubmitting || isPending}
-        bgColor="#101010"
-        color="#ffffff"
-        _hover={{ bg: "#101010" }}
-        _active={{
-          bg: "#101010",
-        }}
-        _focus={{
-          boxShadow:
-            "0 0 1px 2px rgba(0, 0, 0, .50), 0 1px 1px rgba(0, 0, 0, .15)",
-        }}
+        isDisabled={!formState.isValid}
       >
-        Sign in
+        Sign up
       </Button>
 
-      <AuthLinksContainer>
-        <Link variant="secondary" size="normal" onClick={() => send("SIGNUP")}>
-          Don't have an account?
+      <Box>
+        <Link onClick={() => history.push("/sign-in")}>
+          {" "}
+          Already have an account?
         </Link>
-      </AuthLinksContainer>
-    </AuthFormContainer>
+      </Box>
+    </Stack>
   );
 };
 
-export default SignIn;
+export default SignUp;

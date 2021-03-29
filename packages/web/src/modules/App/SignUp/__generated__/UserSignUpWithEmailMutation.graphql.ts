@@ -3,32 +3,34 @@
 // @ts-nocheck
 
 import { ConcreteRequest } from "relay-runtime";
-export type UserChangePasswordInput = {
-    oldPassword: string;
-    newPassword: string;
+export type UserSignUpWithEmailInput = {
+    email: string;
+    password: string;
     clientMutationId?: string | null;
 };
-export type UserChangePasswordMutationVariables = {
-    input: UserChangePasswordInput;
+export type UserSignUpWithEmailMutationVariables = {
+    input: UserSignUpWithEmailInput;
 };
-export type UserChangePasswordMutationResponse = {
-    readonly UserChangePassword: {
+export type UserSignUpWithEmailMutationResponse = {
+    readonly UserSignUpWithEmail: {
+        readonly token: string | null;
         readonly success: string | null;
         readonly error: string | null;
     } | null;
 };
-export type UserChangePasswordMutation = {
-    readonly response: UserChangePasswordMutationResponse;
-    readonly variables: UserChangePasswordMutationVariables;
+export type UserSignUpWithEmailMutation = {
+    readonly response: UserSignUpWithEmailMutationResponse;
+    readonly variables: UserSignUpWithEmailMutationVariables;
 };
 
 
 
 /*
-mutation UserChangePasswordMutation(
-  $input: UserChangePasswordInput!
+mutation UserSignUpWithEmailMutation(
+  $input: UserSignUpWithEmailInput!
 ) {
-  UserChangePassword(input: $input) {
+  UserSignUpWithEmail(input: $input) {
+    token
     success
     error
   }
@@ -53,11 +55,18 @@ v1 = [
         "variableName": "input"
       }
     ],
-    "concreteType": "UserChangePasswordPayload",
+    "concreteType": "UserSignUpWithEmailPayload",
     "kind": "LinkedField",
-    "name": "UserChangePassword",
+    "name": "UserSignUpWithEmail",
     "plural": false,
     "selections": [
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "token",
+        "storageKey": null
+      },
       {
         "alias": null,
         "args": null,
@@ -81,7 +90,7 @@ return {
     "argumentDefinitions": (v0/*: any*/),
     "kind": "Fragment",
     "metadata": null,
-    "name": "UserChangePasswordMutation",
+    "name": "UserSignUpWithEmailMutation",
     "selections": (v1/*: any*/),
     "type": "Mutation",
     "abstractKey": null
@@ -90,18 +99,18 @@ return {
   "operation": {
     "argumentDefinitions": (v0/*: any*/),
     "kind": "Operation",
-    "name": "UserChangePasswordMutation",
+    "name": "UserSignUpWithEmailMutation",
     "selections": (v1/*: any*/)
   },
   "params": {
-    "cacheID": "e1233a6a054627cad5492bb70e173dd4",
+    "cacheID": "e2dcc9fef60cfab62e7da652acaf5fc6",
     "id": null,
     "metadata": {},
-    "name": "UserChangePasswordMutation",
+    "name": "UserSignUpWithEmailMutation",
     "operationKind": "mutation",
-    "text": "mutation UserChangePasswordMutation(\n  $input: UserChangePasswordInput!\n) {\n  UserChangePassword(input: $input) {\n    success\n    error\n  }\n}\n"
+    "text": "mutation UserSignUpWithEmailMutation(\n  $input: UserSignUpWithEmailInput!\n) {\n  UserSignUpWithEmail(input: $input) {\n    token\n    success\n    error\n  }\n}\n"
   }
 };
 })();
-(node as any).hash = 'ee8a5fcb903db3611d4853f30aadde6c';
+(node as any).hash = '4fa5f8e6603feb5c68547a28a02608da';
 export default node;

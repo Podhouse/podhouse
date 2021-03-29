@@ -23,12 +23,12 @@ interface VolumeProps {
 const Volume = ({ ready, volume, muted, onVolume, onMute }: VolumeProps) => {
   const renderVolume = () => {
     if (volume === 0 || muted) {
-      return <BsVolumeMute size={16} onClick={onMute} />;
+      return <BsVolumeMute size={20} onClick={onMute} />;
     }
     if (volume > 0.1 && volume < 0.5) {
-      return <BsVolumeDown size={16} onClick={onMute} />;
+      return <BsVolumeDown size={20} onClick={onMute} />;
     }
-    return <BsVolumeUp size={16} onClick={onMute} />;
+    return <BsVolumeUp size={20} onClick={onMute} />;
   };
 
   const onReady = () => {

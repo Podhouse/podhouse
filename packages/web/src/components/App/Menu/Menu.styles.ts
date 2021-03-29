@@ -8,6 +8,8 @@ export const MenuContainer = styled.menu`
   z-index: 100;
   padding: 0;
   margin: 0;
+  grid-column: 1 / 2;
+  grid-row: 3 / 4;
 
   @media screen and (min-width: 800px) {
     width: 100%;

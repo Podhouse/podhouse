@@ -1,5 +1,5 @@
 import React from "react";
-import { Clock, Volume2 } from "react-feather";
+import { BsListUl, BsClock, BsVolumeUp } from "react-icons/bs";
 import {
   SliderInput,
   SliderTrack,
@@ -16,17 +16,12 @@ const iconStyle = { cursor: "pointer" };
 
 const SkeletonRightControls = () => (
   <SkeletonRightControlsContainer>
-    {/* <List
-      size={20}
-      strokeWidth={1.7}
-      color="#101010"
-      style={iconStyle}
-    /> */}
+    <BsListUl size={20} />
 
-    <Clock size={20} strokeWidth={1.7} color="#101010" style={iconStyle} />
+    <BsClock size={20} />
 
     <SkeletonVolumeContainer>
-      <Volume2 size={20} strokeWidth={1.7} color="#101010" style={iconStyle} />
+      <BsVolumeUp size={20} />
 
       <SliderInput defaultValue={0} value={0} disabled={true}>
         <SliderTrack>

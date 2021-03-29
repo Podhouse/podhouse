@@ -3,9 +3,9 @@ import styled from "@emotion/styled";
 export const AppContainer = styled.div`
   width: 100%;
   height: 100vh;
-  min-height: -webkit-fill-available;
-  display: flex;
-  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr max-content 80px;
 
   @media screen and (min-width: 800px) {
     width: 100%;

@@ -7,6 +7,8 @@ export const DashboardContainer = styled.main`
   grid-column: 1 / 2;
   background: #ffffff;
   overflow: auto;
+  padding: 0;
+  margin: 0;
 
   @media screen and (min-width: 800px) {
     width: 100%;
@@ -15,5 +17,7 @@ export const DashboardContainer = styled.main`
     grid-column: 2 / 3;
     background: #ffffff;
     overflow: auto;
+    padding: 0;
+    margin: 0;
   }
 `;

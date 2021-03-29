@@ -67,10 +67,10 @@ const Controls = ({
 }: ControlsProps) => {
   const onPlaying = () => {
     if (playing) {
-      return <BsPause size={28} onClick={onPlay} />;
+      return <BsPause size={42} onClick={onPlay} />;
     }
 
-    return <BsPlay size={28} onClick={onPlay} />;
+    return <BsPlay size={42} onClick={onPlay} />;
   };
 
   if (!ready) return null;
@@ -78,21 +78,21 @@ const Controls = ({
   return (
     <ControlsContainer>
       <ControlsButtonsContainer>
-        <BsArrowCounterclockwise size={18} onClick={() => onBackward(15)} />
+        <BsArrowCounterclockwise size={20} onClick={() => onBackward(15)} />
 
         {onPlaying()}
 
         <BsArrowClockwise
-          size={18}
+          size={20}
           color="#101010"
-          style={iconStyle}
-          strokeWidth={2}
           onClick={() => onForward(15)}
         />
       </ControlsButtonsContainer>
 
       <ControlsSliderContainer>
-        <ControlsTime fontSize="sm">{formatTime(seek)}</ControlsTime>
+        <ControlsTime fontSize="14px" fontWeight="300" lineHeight="30px">
+          {formatTime(seek)}
+        </ControlsTime>
 
         <SliderInput
           value={seek}
@@ -107,7 +107,9 @@ const Controls = ({
           </SliderTrack>
         </SliderInput>
 
-        <ControlsTime fontSize="sm">{episode?.duration}</ControlsTime>
+        <ControlsTime fontSize="14px" fontWeight="300" lineHeight="30px">
+          {episode?.duration}
+        </ControlsTime>
       </ControlsSliderContainer>
     </ControlsContainer>
   );

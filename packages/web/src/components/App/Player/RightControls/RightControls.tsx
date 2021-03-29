@@ -34,7 +34,6 @@ const RightControls = ({
     <RightControlsContainer>
       <BsListUl
         size={20}
-        strokeWidth={1.7}
         color="#101010"
         style={{ cursor: "pointer" }}
         onClick={() => {}}
@@ -42,7 +41,6 @@ const RightControls = ({
 
       <BsClock
         size={20}
-        strokeWidth={1.7}
         color="#101010"
         style={{ cursor: "pointer" }}
         onClick={() => {}}

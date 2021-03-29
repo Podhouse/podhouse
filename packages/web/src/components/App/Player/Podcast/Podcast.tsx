@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "@chakra-ui/react";
 import { Link as ReactRouterLink } from "react-router-dom";
+import { BsHeart } from "react-icons/bs";
 
 import {
   PodcastContainer,
@@ -54,6 +55,7 @@ const Podcast = ({ ready, episode }: Props) => {
             pathname: episodeRoute,
             state: { _id: episode._id },
           }}
+          fontSize="16px"
           fontWeight="500"
         >
           {episode.title}
@@ -65,19 +67,15 @@ const Podcast = ({ ready, episode }: Props) => {
             pathname: podcastRoute,
             state: { _id: episode.podcast._id },
           }}
+          fontSize="16px"
+          fontWeight="300"
+          lineHeight="30px"
         >
           {episode.podcast.name}
         </Link>
 
         <PodcastFavoriteContainer>
-          {/* <Heart
-            className="like-button"
-            size={16}
-            strokeWidth={1.7}
-            color="#101010"
-            style={iconStyle}
-            onClick={() => {}}
-          /> */}
+          <BsHeart className="like-button" size={20} onClick={() => {}} />
         </PodcastFavoriteContainer>
       </PodcastDetails>
     </PodcastContainer>

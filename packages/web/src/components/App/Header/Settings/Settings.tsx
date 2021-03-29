@@ -1,7 +1,8 @@
 import React from "react";
 import graphql from "babel-plugin-relay/macro";
 import { useLazyLoadQuery } from "react-relay/hooks";
-import { Link } from "@chakra-ui/react";
+import { Link as ReactRouterLink } from "react-router-dom";
+import { Link as ChakraLink } from "@chakra-ui/react";
 import { BsPerson } from "react-icons/bs";
 
 import { SettingsContainer } from "./Settings.styles";
@@ -39,7 +40,9 @@ const Settings = () => {
   if (!isAuthenticated) {
     return (
       <SettingsContainer>
-        <Link onClick={onOpenAuth}>Login</Link>
+        <ChakraLink to="/get-started" href="/get-started" as={ReactRouterLink}>
+          Login
+        </ChakraLink>
       </SettingsContainer>
     );
   }
