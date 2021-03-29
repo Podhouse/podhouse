@@ -7,24 +7,19 @@ import {
   SettingsModalLinkContainer,
 } from "./SettingsModal.styles";
 
-import { useSettingsContext } from "src/machines/Settings/SettingsContext";
-
 import useOnClickOutside from "src/hooks/useOnClickOutside";
 
 import { useLogout } from "src/utils/auth";
 
 const SettingsModal = () => {
-  const { handleSettings } = useSettingsContext();
-
   const { onLogout } = useLogout();
 
   const ref = useRef<any>();
 
-  useOnClickOutside(ref, () => handleSettings());
+  useOnClickOutside(ref, () => {});
 
   const onHandleLogout = () => {
     onLogout();
-    handleSettings();
   };
 
   return (

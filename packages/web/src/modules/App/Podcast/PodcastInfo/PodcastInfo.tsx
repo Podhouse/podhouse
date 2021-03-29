@@ -129,12 +129,14 @@ const PodcastInfo = ({
           maxWidth="200px"
           alignSelf="center"
           justifySelf="center"
+          loading="lazy"
         />
 
         <PodcastInfoDetailsContainer>
           <Heading
-            color="#101010"
             as="h1"
+            fontWeight="700"
+            fontSize="36px"
             letterSpacing="-0.03em"
             textAlign="start"
           >
@@ -142,9 +144,9 @@ const PodcastInfo = ({
           </Heading>
 
           <Heading
-            color="#101010"
             as="h2"
-            size="sm"
+            fontSize="16px"
+            fontWeight="500"
             letterSpacing="-0.03em"
             textAlign="start"
           >
@@ -152,8 +154,9 @@ const PodcastInfo = ({
           </Heading>
 
           <PodcastInfoDescription
-            color="#101010"
-            lineHeight="25px"
+            fontSize="16px"
+            fontWeight="300"
+            lineHeight="30px"
             textAlign="start"
           >
             {podcast && podcast.description ? podcast.description : ""}
@@ -192,7 +195,6 @@ const PodcastInfo = ({
         <PodcastInfoLinksContainer>
           <PodcastInfoLinkContainer>
             <Link
-              color="#101010"
               href={podcast && podcast.website ? podcast.website : ""}
               isExternal
             >
@@ -202,11 +204,7 @@ const PodcastInfo = ({
           </PodcastInfoLinkContainer>
 
           <PodcastInfoLinkContainer>
-            <Link
-              color="#101010"
-              href={podcast && podcast.rss ? podcast.rss : ""}
-              isExternal
-            >
+            <Link href={podcast && podcast.rss ? podcast.rss : ""} isExternal>
               RSS
             </Link>
             <ExternalLink size={14} />

@@ -95,7 +95,8 @@ const Featured = ({ featured }: Props) => {
                     pt="0.5"
                     pb="0.5"
                     borderRadius={2}
-                    fontSize="0.8em"
+                    fontSize="12px"
+                    fontWeight="400"
                     colorScheme="green"
                   >
                     Featured
@@ -105,13 +106,22 @@ const Featured = ({ featured }: Props) => {
                     as={ReactRouterLink}
                     letterSpacing="-0.03em"
                     to={{ pathname: route, state: { _id: _id } }}
+                    fontSize="36px"
+                    fontWeight="700"
                   >
                     {name}
                   </Heading>
-                  <Heading as="h2" size="sm" letterSpacing="-0.03em">
+                  <Heading
+                    as="h2"
+                    fontSize="16px"
+                    fontWeight="500"
+                    letterSpacing="-0.03em"
+                  >
                     {author}
                   </Heading>
-                  <Text lineHeight="30px">{description}</Text>
+                  <Text fontSize="16px" fontWeight="300" lineHeight="30px">
+                    {description}
+                  </Text>
                 </FeaturedDetailsContainer>
               </FeaturedItemContainer>
             );

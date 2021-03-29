@@ -1,11 +1,10 @@
 import React from "react";
 import { Clock } from "react-feather";
+import { BsListUl, BsClock } from "react-icons/bs";
 
 import { RightControlsContainer } from "./RightControls.styles";
 
 import Volume from "./Volume/Volume";
-
-import { useRateContext } from "src/machines/Rate/RateContext";
 
 import { PlayerEpisode } from "src/machines/Player/Player.types";
 
@@ -29,26 +28,24 @@ const RightControls = ({
   onVolume,
   onMute,
 }: RightControlsProps) => {
-  const { handleRate } = useRateContext();
-
   if (!episode) return null;
 
   return (
     <RightControlsContainer>
-      {/* <List
+      <BsListUl
         size={20}
         strokeWidth={1.7}
         color="#101010"
         style={{ cursor: "pointer" }}
-        onClick={handleQueue}
-      /> */}
+        onClick={() => {}}
+      />
 
-      <Clock
+      <BsClock
         size={20}
         strokeWidth={1.7}
         color="#101010"
         style={{ cursor: "pointer" }}
-        onClick={handleRate}
+        onClick={() => {}}
       />
 
       <Volume

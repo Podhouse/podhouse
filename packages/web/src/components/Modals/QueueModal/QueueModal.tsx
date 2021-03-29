@@ -10,8 +10,6 @@ import {
 
 import QueueModalItem from "./QueueModalItem/QueueModalItem";
 
-import { useQueueContext } from "src/machines/Queue/QueueContext";
-
 import useOnClickOutside from "src/hooks/useOnClickOutside";
 
 const episodes = [
@@ -48,11 +46,9 @@ const episodes = [
 ];
 
 const QueueModal = () => {
-  const { handleQueue } = useQueueContext();
-
   const ref = useRef<any>();
 
-  useOnClickOutside(ref, () => handleQueue());
+  useOnClickOutside(ref, () => {});
 
   return (
     <QueueModalContainer ref={ref}>

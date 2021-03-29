@@ -1,10 +1,6 @@
 import styled from "@emotion/styled";
 import { Link } from "@chakra-ui/react";
 
-type Props = {
-  active: boolean;
-};
-
 export const RateModalContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr;
@@ -28,7 +24,7 @@ export const RateModalContainer = styled.div`
   -moz-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.05);
 `;
 
-export const RateModalLinkContainer = styled.div<Props>`
+export const RateModalLinkContainer = styled.div`
   display: flex;
   align-items: center;
   width: 100%;

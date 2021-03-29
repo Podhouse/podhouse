@@ -1,6 +1,12 @@
 import React from "react";
 import { Play, Pause, RotateCcw, RotateCw } from "react-feather";
 import {
+  BsPlay,
+  BsPause,
+  BsArrowCounterclockwise,
+  BsArrowClockwise,
+} from "react-icons/bs";
+import {
   SliderInput,
   SliderTrack,
   SliderRange,
@@ -61,26 +67,10 @@ const Controls = ({
 }: ControlsProps) => {
   const onPlaying = () => {
     if (playing) {
-      return (
-        <Pause
-          size={28}
-          color="#101010"
-          strokeWidth={1.7}
-          style={iconStyle}
-          onClick={onPause}
-        />
-      );
+      return <BsPause size={28} onClick={onPlay} />;
     }
 
-    return (
-      <Play
-        size={28}
-        color="#101010"
-        strokeWidth={1.7}
-        style={iconStyle}
-        onClick={onPlay}
-      />
-    );
+    return <BsPlay size={28} onClick={onPlay} />;
   };
 
   if (!ready) return null;
@@ -88,17 +78,11 @@ const Controls = ({
   return (
     <ControlsContainer>
       <ControlsButtonsContainer>
-        <RotateCcw
-          size={18}
-          color="#101010"
-          style={iconStyle}
-          strokeWidth={2}
-          onClick={() => onBackward(15)}
-        />
+        <BsArrowCounterclockwise size={18} onClick={() => onBackward(15)} />
 
         {onPlaying()}
 
-        <RotateCw
+        <BsArrowClockwise
           size={18}
           color="#101010"
           style={iconStyle}

@@ -206,12 +206,14 @@ const EpisodeInfo = ({ queryReference, query }: Props) => {
           maxWidth="200px"
           alignSelf="center"
           justifySelf="center"
+          loading="lazy"
         />
 
         <EpisodeInfoDetailsContainer>
           <Heading
-            color="#101010"
             as="h1"
+            fontWeight="700"
+            fontSize="36px"
             letterSpacing="-0.03em"
             textAlign="start"
           >
@@ -219,9 +221,9 @@ const EpisodeInfo = ({ queryReference, query }: Props) => {
           </Heading>
 
           <Heading
-            color="#101010"
             as="h2"
-            size="sm"
+            fontSize="16px"
+            fontWeight="500"
             letterSpacing="-0.03em"
             textAlign="start"
           >
@@ -231,8 +233,9 @@ const EpisodeInfo = ({ queryReference, query }: Props) => {
           </Heading>
 
           <EpisodeInfoDescription
-            color="#101010"
-            lineHeight="25px"
+            fontSize="16px"
+            fontWeight="300"
+            lineHeight="30px"
             textAlign="start"
           >
             {episode?.description ? episode.description : ""}

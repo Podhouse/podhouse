@@ -72,15 +72,10 @@ const SubscriptionsComponent = () => {
         bgColor="white"
       >
         <Stack spacing={4} shouldWrapChildren align="center">
-          <Text color="#101010" maxWidth="300px" textAlign="center">
+          <Text maxWidth="300px" textAlign="center">
             You should be logged in to see your subscriptions
           </Text>
-          <Link
-            color="brand.900"
-            fontWeight="bold"
-            textTransform="uppercase"
-            onClick={handleAuth}
-          >
+          <Link color="brand.900" onClick={handleAuth}>
             Login
           </Link>
         </Stack>

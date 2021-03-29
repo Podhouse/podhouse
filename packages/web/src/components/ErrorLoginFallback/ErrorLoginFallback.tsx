@@ -5,14 +5,7 @@ import { ErrorLoginFallbackContainer } from "./ErrorLoginFallback.styles";
 
 const ErrorLoginFallback = ({ resetErrorBoundary }: any) => (
   <ErrorLoginFallbackContainer role="alert">
-    <Link
-      color="brand.900"
-      fontWeight="bold"
-      textTransform="uppercase"
-      onClick={resetErrorBoundary}
-    >
-      RETRY
-    </Link>
+    <Link onClick={resetErrorBoundary}>Retry</Link>
   </ErrorLoginFallbackContainer>
 );
 

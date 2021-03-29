@@ -9,9 +9,6 @@ import environment from "src/relay/RelayEnvironment";
 import { SearchProvider } from "src/machines/Search/SearchContext";
 import { PlayerProvider } from "src/machines/Player/PlayerContext";
 import { AuthProvider } from "src/machines/Auth/AuthContext";
-import { SettingsProvider } from "src/machines/Settings/SettingsContext";
-import { QueueProvider } from "src/machines/Queue/QueueContext";
-import { RateProvider } from "src/machines/Rate/RateContext";
 
 import App from "src/components/App/App";
 
@@ -26,13 +23,7 @@ const Provider = () => (
         <PlayerProvider>
           <SearchProvider>
             <AuthProvider>
-              <SettingsProvider>
-                <QueueProvider>
-                  <RateProvider>
-                    <App />
-                  </RateProvider>
-                </QueueProvider>
-              </SettingsProvider>
+              <App />
             </AuthProvider>
           </SearchProvider>
         </PlayerProvider>

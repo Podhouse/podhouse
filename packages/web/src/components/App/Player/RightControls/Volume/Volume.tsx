@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  Volume as VolumeFirst,
-  Volume1,
-  Volume2,
-  VolumeX,
-} from "react-feather";
+import { BsVolumeUp, BsVolumeDown, BsVolumeMute } from "react-icons/bs";
 import {
   SliderInput,
   SliderTrack,
@@ -28,58 +23,12 @@ interface VolumeProps {
 const Volume = ({ ready, volume, muted, onVolume, onMute }: VolumeProps) => {
   const renderVolume = () => {
     if (volume === 0 || muted) {
-      return (
-        <VolumeX
-          size={20}
-          strokeWidth={1.7}
-          color="#101010"
-          style={{ cursor: "pointer" }}
-          onClick={onMute}
-        />
-      );
-    }
-    if (volume === 0.1) {
-      return (
-        <VolumeFirst
-          size={20}
-          strokeWidth={1.7}
-          color="#101010"
-          style={{ cursor: "pointer" }}
-          onClick={onMute}
-        />
-      );
+      return <BsVolumeMute size={16} onClick={onMute} />;
     }
     if (volume > 0.1 && volume < 0.5) {
-      return (
-        <Volume1
-          size={20}
-          strokeWidth={1.7}
-          color="#101010"
-          style={{ cursor: "pointer" }}
-          onClick={onMute}
-        />
-      );
+      return <BsVolumeDown size={16} onClick={onMute} />;
     }
-    if (volume > 0.5 && volume < 0.8) {
-      return (
-        <Volume2
-          size={20}
-          strokeWidth={1.7}
-          color="#101010"
-          style={{ cursor: "pointer" }}
-          onClick={onMute}
-        />
-      );
-    }
-    return (
-      <Volume2
-        size={20}
-        strokeWidth={1.7}
-        color="#101010"
-        style={{ cursor: "pointer" }}
-        onClick={onMute}
-      />
-    );
+    return <BsVolumeUp size={16} onClick={onMute} />;
   };
 
   const onReady = () => {

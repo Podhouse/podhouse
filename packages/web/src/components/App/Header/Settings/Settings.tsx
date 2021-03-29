@@ -1,13 +1,12 @@
 import React from "react";
-import { User } from "react-feather";
 import graphql from "babel-plugin-relay/macro";
 import { useLazyLoadQuery } from "react-relay/hooks";
 import { Link } from "@chakra-ui/react";
+import { BsPerson } from "react-icons/bs";
 
 import { SettingsContainer } from "./Settings.styles";
 
 import { useAuthContext } from "src/machines/Auth/AuthContext";
-import { useSettingsContext } from "src/machines/Settings/SettingsContext";
 
 import useAuthUser from "src/hooks/useAuthUser";
 
@@ -25,7 +24,6 @@ const query = graphql`
 
 const Settings = () => {
   const { onOpenAuth } = useAuthContext();
-  const { handleSettings } = useSettingsContext();
 
   const data = useLazyLoadQuery<SettingsQuery>(
     query,
@@ -41,26 +39,14 @@ const Settings = () => {
   if (!isAuthenticated) {
     return (
       <SettingsContainer>
-        <Link
-          color="brand.900"
-          fontWeight="bold"
-          textTransform="uppercase"
-          onClick={onOpenAuth}
-        >
-          Login
-        </Link>
+        <Link onClick={onOpenAuth}>Login</Link>
       </SettingsContainer>
     );
   }
 
   return (
     <SettingsContainer>
-      <User
-        onClick={handleSettings}
-        size={16}
-        color="#B7B7B7"
-        strokeWidth={1.7}
-      />
+      <BsPerson onClick={() => {}} size={16} />
     </SettingsContainer>
   );
 };

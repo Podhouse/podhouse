@@ -12,8 +12,8 @@ export const AppContainer = styled.div`
     height: 100vh;
     min-height: -webkit-fill-available;
     display: grid;
-    grid-template-rows: 70px 1fr 100px;
-    grid-template-columns: 210px 1fr;
+    grid-template-rows: 80px 1fr 120px;
+    grid-template-columns: 230px 1fr;
     overflow: hidden;
   }
 `;
