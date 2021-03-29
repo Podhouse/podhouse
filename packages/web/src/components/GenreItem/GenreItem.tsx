@@ -5,7 +5,9 @@ import { Flex, Text } from "@chakra-ui/react";
 import { Genre } from "src/utils/genres";
 
 const GenreItem = ({ href, name, primaryGenre }: Genre) => (
-  <ReactRouterLink to={href}>
+  <ReactRouterLink
+    to={{ pathname: href, state: { primaryGenre: primaryGenre } }}
+  >
     <Flex
       w="140px"
       h="140px"

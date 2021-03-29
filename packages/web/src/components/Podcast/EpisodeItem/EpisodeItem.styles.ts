@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Image, Button, Text } from "@chakra-ui/react";
+import { Button, Text } from "@chakra-ui/react";
 
 export const EpisodeItemContainer = styled.div`
   width: 100%;
@@ -9,26 +9,13 @@ export const EpisodeItemContainer = styled.div`
   grid-template-rows: repeat(3, max-content);
   grid-column-gap: 20px;
   grid-row-gap: 10px;
+
   @media screen and (min-width: 800px) {
-    grid-template-columns: 80px 1fr minmax(min-content, 110px) minmax(
+    grid-template-columns: 1fr minmax(min-content, 110px) minmax(
         min-content,
         50px
       );
     grid-template-rows: max-content max-content;
-  }
-`;
-
-export const EpisodeItemAvatar = styled(Image)`
-  display: none;
-  @media screen and (min-width: 800px) {
-    display: block;
-    grid-column: 1 / 2;
-    grid-row: 1 / 3;
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    border-radius: 5px;
-    cursor: pointer;
   }
 `;
 
@@ -44,20 +31,13 @@ export const EpisodeNameDescription = styled.div`
 
   @media screen and (min-width: 800px) {
     grid-row: 1 / 3;
-    grid-column: 2 / 3;
+    grid-column: 1 / 2;
   }
 `;
 
 export const EpisodeItemName = styled(Text)`
   grid-column: 1 / 4;
   grid-row: 1 / 2;
-  font-family: Inter;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 17px;
-  cursor: pointer;
-  text-decoration: none;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -94,12 +74,10 @@ export const EpisodeItemPublishedDate = styled(Text)`
   grid-column: 1 / 2;
   grid-row: 3 / 4;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
   align-self: center;
+
   @media screen and (min-width: 800px) {
-    grid-column: 3 / 4;
+    grid-column: 2 / 3;
     grid-row: 1 / 3;
     align-self: center;
   }
@@ -108,14 +86,11 @@ export const EpisodeItemPublishedDate = styled(Text)`
 export const EpisodeItemDuration = styled(Text)`
   grid-column: 2 / 3;
   grid-row: 3 / 4;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
   align-self: center;
   justify-self: center;
+
   @media screen and (min-width: 800px) {
-    grid-column: 4 / 5;
+    grid-column: 3 / 4;
     grid-row: 1 / 3;
     align-self: center;
   }
@@ -126,8 +101,9 @@ export const EpisodeItemButton = styled(Button)`
   grid-row: 3 / 4;
   align-self: center;
   justify-self: flex-end;
+
   @media screen and (min-width: 800px) {
-    grid-column: 5 / 6;
+    grid-column: 4 / 5;
     grid-row: 1 / 3;
     align-self: center;
   }

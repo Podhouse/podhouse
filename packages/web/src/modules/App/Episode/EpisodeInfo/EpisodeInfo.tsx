@@ -142,8 +142,6 @@ const EpisodeInfo = ({ queryReference, query }: Props) => {
           objectFit="cover"
           borderRadius={5}
           maxWidth="200px"
-          alignSelf="center"
-          justifySelf="center"
           loading="lazy"
         />
 
@@ -171,13 +169,14 @@ const EpisodeInfo = ({ queryReference, query }: Props) => {
           </Heading>
 
           <EpisodeInfoDescription
-            fontSize="16px"
-            fontWeight="300"
-            lineHeight="30px"
-            textAlign="start"
-          >
-            {episode?.description ? episode.description : ""}
-          </EpisodeInfoDescription>
+            text={episode?.description ? episode.description : ""}
+            id="episode-info-description"
+            lines={3}
+            ellipsis="..."
+            moreText="Read more"
+            className="custom-class"
+            innerElement="p"
+          />
         </EpisodeInfoDetailsContainer>
 
         <EpisodeInfoButtonsContainer>

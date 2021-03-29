@@ -7,5 +7,5 @@ export const FavoritesContainer = styled.div`
   grid-template-columns: 1fr;
   grid-template-rows: repeat(auto-fill, max-content);
   grid-row-gap: 20px;
-  padding: 30px 30px 0px 30px;
+  padding: 20px 20px 0px 20px;
 `;

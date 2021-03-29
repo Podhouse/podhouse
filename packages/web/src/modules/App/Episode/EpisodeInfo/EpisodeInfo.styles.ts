@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Text } from "@chakra-ui/react";
+import ClampLines from "react-clamp-lines";
 
 export const EpisodeInfoContainer = styled.div`
   width: 100%;
@@ -9,7 +9,7 @@ export const EpisodeInfoContainer = styled.div`
   grid-template-columns: 1fr;
   grid-template-rows: repeat(2, max-content);
   grid-row-gap: 30px;
-  padding: 30px 30px 0px 30px;
+  padding: 20px 20px 0px 20px;
   margin: 0 auto;
 
   @media screen and (min-width: 800px) {
@@ -17,7 +17,7 @@ export const EpisodeInfoContainer = styled.div`
     grid-template-columns: 1fr;
     grid-template-rows: repeat(2, max-content);
     grid-column-gap: 20px;
-    padding: 30px 30px 0px 30px;
+    padding: 20px 20px 0px 20px;
   }
 `;
 
@@ -30,6 +30,7 @@ export const EpisodeInfoHeader = styled.div`
   grid-template-rows: 200px max-content 40px 40px;
   grid-template-columns: 1fr;
   grid-row-gap: 20px;
+
   @media screen and (min-width: 800px) {
     display: grid;
     grid-template-columns: 200px 1fr;
@@ -58,12 +59,10 @@ export const EpisodeInfoDetailsContainer = styled.div`
   }
 `;
 
-export const EpisodeInfoDescription = styled(Text)`
-  width: 100%;
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+export const EpisodeInfoDescription = styled(ClampLines)`
+  font-size: 16px;
+  line-height: 30px;
+  font-weight: 300;
 `;
 
 export const EpisodeInfoButtonsContainer = styled.div`

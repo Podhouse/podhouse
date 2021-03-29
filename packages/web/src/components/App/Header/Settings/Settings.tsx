@@ -7,8 +7,6 @@ import { BsPerson } from "react-icons/bs";
 
 import { SettingsContainer } from "./Settings.styles";
 
-import { useAuthContext } from "src/machines/Auth/AuthContext";
-
 import useAuthUser from "src/hooks/useAuthUser";
 
 import { getToken } from "src/utils/auth";
@@ -24,8 +22,6 @@ const query = graphql`
 `;
 
 const Settings = () => {
-  const { onOpenAuth } = useAuthContext();
-
   const data = useLazyLoadQuery<SettingsQuery>(
     query,
     {},

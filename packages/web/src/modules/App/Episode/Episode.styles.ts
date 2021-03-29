@@ -9,7 +9,7 @@ export const EpisodeContainer = styled.div`
   grid-template-columns: 1fr;
   grid-template-rows: repeat(2, max-content);
   grid-row-gap: 30px;
-  padding: 30px 30px 0px 30px;
+  padding: 20px 20px 0px 20px;
   margin: 0 auto;
 
   @media screen and (min-width: 800px) {
@@ -17,7 +17,7 @@ export const EpisodeContainer = styled.div`
     grid-template-columns: 1fr;
     grid-template-rows: repeat(2, max-content);
     grid-column-gap: 20px;
-    padding: 30px 30px 0px 30px;
+    padding: 20px 20px 0px 20px;
   }
 `;
 

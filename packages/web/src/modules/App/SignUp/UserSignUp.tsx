@@ -109,6 +109,7 @@ const SignUp = () => {
           duration: 3000,
           isClosable: true,
         });
+        history.push("/");
       },
     });
   };

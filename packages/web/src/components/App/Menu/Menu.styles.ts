@@ -17,7 +17,7 @@ export const MenuContainer = styled.menu`
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 80px 1fr;
-    grid-row-gap: 30px;
+    grid-row-gap: 20px;
     grid-column: 1 / 2;
     grid-row: 1 / 3;
     position: inherit;

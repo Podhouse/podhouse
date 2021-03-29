@@ -12,3 +12,5 @@ declare module "babel-plugin-relay/macro" {
 }
 
 declare module "react-router-sitemap";
+
+declare module "read-more-react";

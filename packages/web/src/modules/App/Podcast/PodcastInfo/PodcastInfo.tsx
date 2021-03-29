@@ -127,8 +127,6 @@ const PodcastInfo = ({
           objectFit="cover"
           borderRadius={5}
           maxWidth="200px"
-          alignSelf="center"
-          justifySelf="center"
           loading="lazy"
         />
 
@@ -154,13 +152,14 @@ const PodcastInfo = ({
           </Heading>
 
           <PodcastInfoDescription
-            fontSize="16px"
-            fontWeight="300"
-            lineHeight="30px"
-            textAlign="start"
-          >
-            {podcast && podcast.description ? podcast.description : ""}
-          </PodcastInfoDescription>
+            text={podcast && podcast.description ? podcast.description : ""}
+            id="podcast-info-description"
+            lines={3}
+            ellipsis="..."
+            moreText="Read more"
+            className="custom-class"
+            innerElement="p"
+          />
         </PodcastInfoDetailsContainer>
 
         <PodcastInfoButtonsContainer>
