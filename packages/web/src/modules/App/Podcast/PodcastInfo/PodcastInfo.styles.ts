@@ -36,6 +36,10 @@ export const PodcastInfoHeader = styled.div`
     grid-template-columns: 200px 1fr;
     grid-template-rows: max-content 40px;
     grid-gap: 20px;
+
+    .img {
+      justify-self: center;
+    }
   }
 `;
 

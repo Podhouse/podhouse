@@ -52,8 +52,8 @@ const fragment = graphql`
 `;
 
 interface Props {
-  searchQuery: GraphQLTaggedNode;
   queryReference: PreloadedQuery<SearchQuery>;
+  searchQuery: GraphQLTaggedNode;
   shouldLoadMore: boolean;
 }
 

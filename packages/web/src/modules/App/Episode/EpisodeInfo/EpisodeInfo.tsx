@@ -4,6 +4,7 @@ import { Heading, Button, Link, Image } from "@chakra-ui/react";
 import { ExternalLink } from "react-feather";
 import { usePreloadedQuery, PreloadedQuery } from "react-relay/hooks";
 import { useLocation } from "react-router-dom";
+import { GraphQLTaggedNode } from "relay-runtime";
 
 import {
   EpisodeInfoContainer,
@@ -21,7 +22,7 @@ import { usePlayerContext } from "src/machines/Player/PlayerContext";
 
 interface Props {
   queryReference: PreloadedQuery<EpisodeQuery>;
-  query: any;
+  query: GraphQLTaggedNode;
 }
 
 const EpisodeInfo = ({ queryReference, query }: Props) => {
@@ -143,6 +144,7 @@ const EpisodeInfo = ({ queryReference, query }: Props) => {
           borderRadius={5}
           maxWidth="200px"
           loading="lazy"
+          justifySelf="center"
         />
 
         <EpisodeInfoDetailsContainer>

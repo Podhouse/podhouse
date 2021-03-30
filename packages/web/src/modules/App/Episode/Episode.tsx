@@ -24,7 +24,6 @@ const query = graphql`
       audio
       duration
       podcast {
-        id
         _id
         name
         website

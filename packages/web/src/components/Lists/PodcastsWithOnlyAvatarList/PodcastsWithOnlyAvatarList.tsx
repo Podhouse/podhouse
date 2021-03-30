@@ -31,10 +31,10 @@ const PodcastsWithOnlyAvatarList = ({ title, podcasts }: Props) => (
     <PodcastsWithOnlyAvatarListHeader>
       <Heading
         as="h1"
-        variant="secondary"
-        size="normal"
-        fontSize={14}
-        fontWeight="500"
+        fontSize={16}
+        fontWeight="600"
+        letterSpacing="-0.03em"
+        lineHeight="30px"
         textAlign="start"
       >
         {title}

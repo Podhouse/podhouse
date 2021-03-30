@@ -128,6 +128,7 @@ const PodcastInfo = ({
           borderRadius={5}
           maxWidth="200px"
           loading="lazy"
+          justifySelf="center"
         />
 
         <PodcastInfoDetailsContainer>

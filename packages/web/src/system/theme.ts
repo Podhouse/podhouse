@@ -26,6 +26,7 @@ const theme = extendTheme({
         fontStyle: "normal",
         fontWeight: "500",
         fontSize: "16px",
+        lineHeight: "30px",
       },
     },
     Link: {
@@ -34,6 +35,16 @@ const theme = extendTheme({
         fontStyle: "normal",
         fontWeight: "500",
         fontSize: "16px",
+        lineHeight: "30px",
+      },
+    },
+    Text: {
+      baseStyle: {
+        fontFamily: "Passenger Sans",
+        fontStyle: "normal",
+        fontWeight: "300",
+        fontSize: "16px",
+        lineHeight: "30px",
       },
     },
   },

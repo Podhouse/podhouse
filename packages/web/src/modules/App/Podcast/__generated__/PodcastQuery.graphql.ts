@@ -9,7 +9,6 @@ export type PodcastQueryVariables = {
 };
 export type PodcastQueryResponse = {
     readonly podcast: {
-        readonly id: string;
         readonly _id: string;
         readonly name: string | null;
         readonly appleId: number | null;
@@ -33,7 +32,6 @@ query PodcastQuery(
   $_id: ID!
 ) {
   podcast(_id: $_id) {
-    id
     _id
     name
     appleId
@@ -43,11 +41,12 @@ query PodcastQuery(
     rss
     image
     ...PodcastEpisodes_episodes
+    id
   }
 }
 
 fragment PodcastEpisodes_episodes on Podcast {
-  episodes(first: 10) {
+  episodes(first: 20) {
     edges {
       node {
         _id
@@ -102,72 +101,72 @@ v2 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "id",
+  "name": "_id",
   "storageKey": null
 },
 v3 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "_id",
+  "name": "name",
   "storageKey": null
 },
 v4 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "name",
+  "name": "appleId",
   "storageKey": null
 },
 v5 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "appleId",
+  "name": "author",
   "storageKey": null
 },
 v6 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "author",
+  "name": "description",
   "storageKey": null
 },
 v7 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "description",
+  "name": "website",
   "storageKey": null
 },
 v8 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "website",
+  "name": "rss",
   "storageKey": null
 },
 v9 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "rss",
-  "storageKey": null
-},
-v10 = {
-  "alias": null,
-  "args": null,
-  "kind": "ScalarField",
   "name": "image",
   "storageKey": null
 },
-v11 = [
+v10 = [
   {
     "kind": "Literal",
     "name": "first",
-    "value": 10
+    "value": 20
   }
-];
+],
+v11 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "id",
+  "storageKey": null
+};
 return {
   "fragment": {
     "argumentDefinitions": (v0/*: any*/),
@@ -191,7 +190,6 @@ return {
           (v7/*: any*/),
           (v8/*: any*/),
           (v9/*: any*/),
-          (v10/*: any*/),
           {
             "args": null,
             "kind": "FragmentSpread",
@@ -226,10 +224,9 @@ return {
           (v7/*: any*/),
           (v8/*: any*/),
           (v9/*: any*/),
-          (v10/*: any*/),
           {
             "alias": null,
-            "args": (v11/*: any*/),
+            "args": (v10/*: any*/),
             "concreteType": "EpisodeConnection",
             "kind": "LinkedField",
             "name": "episodes",
@@ -251,7 +248,7 @@ return {
                     "name": "node",
                     "plural": false,
                     "selections": [
-                      (v3/*: any*/),
+                      (v2/*: any*/),
                       {
                         "alias": null,
                         "args": null,
@@ -259,7 +256,7 @@ return {
                         "name": "title",
                         "storageKey": null
                       },
-                      (v7/*: any*/),
+                      (v6/*: any*/),
                       {
                         "alias": null,
                         "args": null,
@@ -274,7 +271,7 @@ return {
                         "name": "link",
                         "storageKey": null
                       },
-                      (v10/*: any*/),
+                      (v9/*: any*/),
                       {
                         "alias": null,
                         "args": null,
@@ -297,17 +294,17 @@ return {
                         "name": "podcast",
                         "plural": false,
                         "selections": [
+                          (v2/*: any*/),
                           (v3/*: any*/),
-                          (v4/*: any*/),
+                          (v7/*: any*/),
                           (v8/*: any*/),
+                          (v4/*: any*/),
                           (v9/*: any*/),
-                          (v5/*: any*/),
-                          (v10/*: any*/),
-                          (v2/*: any*/)
+                          (v11/*: any*/)
                         ],
                         "storageKey": null
                       },
-                      (v2/*: any*/),
+                      (v11/*: any*/),
                       {
                         "alias": null,
                         "args": null,
@@ -368,31 +365,32 @@ return {
                 "storageKey": null
               }
             ],
-            "storageKey": "episodes(first:10)"
+            "storageKey": "episodes(first:20)"
           },
           {
             "alias": null,
-            "args": (v11/*: any*/),
+            "args": (v10/*: any*/),
             "filters": null,
             "handle": "connection",
             "key": "PodcastEpisodes_episodes",
             "kind": "LinkedHandle",
             "name": "episodes"
-          }
+          },
+          (v11/*: any*/)
         ],
         "storageKey": null
       }
     ]
   },
   "params": {
-    "cacheID": "46a011074a98403f8e2e0f1f90e3c7f0",
+    "cacheID": "f30c757473196eee6c24159d58d6efe8",
     "id": null,
     "metadata": {},
     "name": "PodcastQuery",
     "operationKind": "query",
-    "text": "query PodcastQuery(\n  $_id: ID!\n) {\n  podcast(_id: $_id) {\n    id\n    _id\n    name\n    appleId\n    author\n    description\n    website\n    rss\n    image\n    ...PodcastEpisodes_episodes\n  }\n}\n\nfragment PodcastEpisodes_episodes on Podcast {\n  episodes(first: 10) {\n    edges {\n      node {\n        _id\n        title\n        description\n        publishedDate\n        link\n        image\n        audio\n        duration\n        podcast {\n          _id\n          name\n          website\n          rss\n          appleId\n          image\n          id\n        }\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n  id\n}\n"
+    "text": "query PodcastQuery(\n  $_id: ID!\n) {\n  podcast(_id: $_id) {\n    _id\n    name\n    appleId\n    author\n    description\n    website\n    rss\n    image\n    ...PodcastEpisodes_episodes\n    id\n  }\n}\n\nfragment PodcastEpisodes_episodes on Podcast {\n  episodes(first: 20) {\n    edges {\n      node {\n        _id\n        title\n        description\n        publishedDate\n        link\n        image\n        audio\n        duration\n        podcast {\n          _id\n          name\n          website\n          rss\n          appleId\n          image\n          id\n        }\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n  id\n}\n"
   }
 };
 })();
-(node as any).hash = 'e75178f75f87f10ffb8e1bc9fccd6a7e';
+(node as any).hash = '0253a69e15c33370c32af564684d550e';
 export default node;

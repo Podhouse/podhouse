@@ -15,7 +15,15 @@ const GenreItem = ({ href, name, primaryGenre }: Genre) => (
       alignItems="center"
       justifyContent="center"
     >
-      <Text>{name}</Text>
+      <Text
+        fontSize={16}
+        fontWeight="600"
+        letterSpacing="-0.03em"
+        lineHeight="30px"
+        textAlign="start"
+      >
+        {name}
+      </Text>
     </Flex>
   </ReactRouterLink>
 );

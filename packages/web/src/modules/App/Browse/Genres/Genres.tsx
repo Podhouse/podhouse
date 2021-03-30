@@ -10,7 +10,14 @@ import genres, { Genre } from "src/utils/genres";
 const Genres = () => (
   <GenresContainer>
     <GenresHeader>
-      <Heading as="h1" fontSize={14} fontWeight="500" textAlign="start">
+      <Heading
+        as="h1"
+        fontSize={16}
+        fontWeight="600"
+        letterSpacing="-0.03em"
+        lineHeight="30px"
+        textAlign="start"
+      >
         Genres
       </Heading>
       <Divider orientation="horizontal" />

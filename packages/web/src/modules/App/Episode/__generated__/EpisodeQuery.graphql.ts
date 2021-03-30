@@ -17,7 +17,6 @@ export type EpisodeQueryResponse = {
         readonly audio: string | null;
         readonly duration: string | null;
         readonly podcast: {
-            readonly id: string;
             readonly _id: string;
             readonly name: string | null;
             readonly website: string | null;
@@ -47,12 +46,12 @@ query EpisodeQuery(
     audio
     duration
     podcast {
-      id
       _id
       name
       website
       rss
       appleId
+      id
     }
     id
   }
@@ -134,48 +133,35 @@ v10 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "id",
+  "name": "name",
   "storageKey": null
 },
 v11 = {
   "alias": null,
   "args": null,
-  "concreteType": "Podcast",
-  "kind": "LinkedField",
-  "name": "podcast",
-  "plural": false,
-  "selections": [
-    (v10/*: any*/),
-    (v2/*: any*/),
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
-      "name": "name",
-      "storageKey": null
-    },
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
-      "name": "website",
-      "storageKey": null
-    },
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
-      "name": "rss",
-      "storageKey": null
-    },
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
-      "name": "appleId",
-      "storageKey": null
-    }
-  ],
+  "kind": "ScalarField",
+  "name": "website",
+  "storageKey": null
+},
+v12 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "rss",
+  "storageKey": null
+},
+v13 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "appleId",
+  "storageKey": null
+},
+v14 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "id",
   "storageKey": null
 };
 return {
@@ -201,7 +187,22 @@ return {
           (v7/*: any*/),
           (v8/*: any*/),
           (v9/*: any*/),
-          (v11/*: any*/)
+          {
+            "alias": null,
+            "args": null,
+            "concreteType": "Podcast",
+            "kind": "LinkedField",
+            "name": "podcast",
+            "plural": false,
+            "selections": [
+              (v2/*: any*/),
+              (v10/*: any*/),
+              (v11/*: any*/),
+              (v12/*: any*/),
+              (v13/*: any*/)
+            ],
+            "storageKey": null
+          }
         ],
         "storageKey": null
       }
@@ -231,22 +232,38 @@ return {
           (v7/*: any*/),
           (v8/*: any*/),
           (v9/*: any*/),
-          (v11/*: any*/),
-          (v10/*: any*/)
+          {
+            "alias": null,
+            "args": null,
+            "concreteType": "Podcast",
+            "kind": "LinkedField",
+            "name": "podcast",
+            "plural": false,
+            "selections": [
+              (v2/*: any*/),
+              (v10/*: any*/),
+              (v11/*: any*/),
+              (v12/*: any*/),
+              (v13/*: any*/),
+              (v14/*: any*/)
+            ],
+            "storageKey": null
+          },
+          (v14/*: any*/)
         ],
         "storageKey": null
       }
     ]
   },
   "params": {
-    "cacheID": "d98086ffac01b053dc4b3645bd5d6f4f",
+    "cacheID": "94e7be6cafa191e7d89ad3b560b223e9",
     "id": null,
     "metadata": {},
     "name": "EpisodeQuery",
     "operationKind": "query",
-    "text": "query EpisodeQuery(\n  $_id: ID!\n) {\n  episode(_id: $_id) {\n    _id\n    title\n    description\n    publishedDate\n    link\n    image\n    audio\n    duration\n    podcast {\n      id\n      _id\n      name\n      website\n      rss\n      appleId\n    }\n    id\n  }\n}\n"
+    "text": "query EpisodeQuery(\n  $_id: ID!\n) {\n  episode(_id: $_id) {\n    _id\n    title\n    description\n    publishedDate\n    link\n    image\n    audio\n    duration\n    podcast {\n      _id\n      name\n      website\n      rss\n      appleId\n      id\n    }\n    id\n  }\n}\n"
   }
 };
 })();
-(node as any).hash = 'ae2cf0331ee83b3d36f30a73dc2c910e';
+(node as any).hash = '048048f828bb382c799f27967ed4f857';
 export default node;

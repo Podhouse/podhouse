@@ -4,6 +4,7 @@ import { useLazyLoadQuery } from "react-relay/hooks";
 import { Link as ReactRouterLink } from "react-router-dom";
 import { Link as ChakraLink } from "@chakra-ui/react";
 import { BsPerson } from "react-icons/bs";
+import { useLocation } from "react-router-dom";
 
 import { SettingsContainer } from "./Settings.styles";
 
@@ -31,12 +32,21 @@ const Settings = () => {
     }
   );
 
+  const location = useLocation();
+
   const isAuthenticated = useAuthUser(data?.currentUser);
 
   if (!isAuthenticated) {
     return (
       <SettingsContainer>
-        <ChakraLink to="/get-started" href="/get-started" as={ReactRouterLink}>
+        <ChakraLink
+          to={{
+            pathname: "/get-started",
+            state: { from: location },
+          }}
+          href="/get-started"
+          as={ReactRouterLink}
+        >
           Login
         </ChakraLink>
       </SettingsContainer>

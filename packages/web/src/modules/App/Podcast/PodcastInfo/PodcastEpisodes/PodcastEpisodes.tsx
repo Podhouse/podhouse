@@ -13,7 +13,7 @@ const query = graphql`
   fragment PodcastEpisodes_episodes on Podcast
   @argumentDefinitions(
     after: { type: "String" }
-    first: { type: "Int", defaultValue: 10 }
+    first: { type: "Int", defaultValue: 20 }
     before: { type: "String" }
     last: { type: "Int" }
   )
@@ -46,7 +46,6 @@ const query = graphql`
 
 interface Props {
   readonly podcast: {
-    readonly id: string | null;
     readonly _id: string | null;
     readonly name: string | null;
     readonly appleId: number | null;

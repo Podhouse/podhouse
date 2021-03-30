@@ -1,8 +1,11 @@
 import React from "react";
 import { Stack, IconButton } from "@chakra-ui/react";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
+import { useHistory } from "react-router-dom";
 
 const Navigation = () => {
+  const history = useHistory();
+
   return (
     <Stack
       direction="row"
@@ -16,12 +19,14 @@ const Navigation = () => {
         variant="ghost"
         aria-label="Go backward"
         icon={<BsChevronLeft size={16} />}
+        onClick={() => history.goBack()}
       />
       <IconButton
         w="fit-content"
         variant="ghost"
         aria-label="Go forward"
         icon={<BsChevronRight size={16} />}
+        onClick={() => history.goForward()}
       />
     </Stack>
   );

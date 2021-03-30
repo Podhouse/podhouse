@@ -1,9 +1,26 @@
 import React from "react";
 import { Stack, Box, Button, Text } from "@chakra-ui/react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
+
+type State = {
+  from: {
+    pathname: string;
+  };
+};
 
 const GetStarted = () => {
   const history = useHistory();
+  const location = useLocation<State>();
+
+  const signUpRedirect = {
+    pathname: "/sign-up",
+    state: { from: location },
+  };
+
+  const signInRedirect = {
+    pathname: "/sign-in",
+    state: { from: location },
+  };
 
   return (
     <Stack
@@ -19,7 +36,7 @@ const GetStarted = () => {
       <Button
         type="button"
         width="100%"
-        onClick={() => history.push("/sign-up")}
+        onClick={() => history.push(signUpRedirect)}
       >
         Sign up with email
       </Button>
@@ -31,7 +48,7 @@ const GetStarted = () => {
       <Button
         type="button"
         width="100%"
-        onClick={() => history.push("/sign-in")}
+        onClick={() => history.push(signInRedirect)}
       >
         Sign in with email
       </Button>

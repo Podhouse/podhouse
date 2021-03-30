@@ -16,7 +16,6 @@ import { PodcastInfoUserQuery } from "./__generated__/PodcastInfoUserQuery.graph
 const podcastQuery = graphql`
   query PodcastQuery($_id: ID!) {
     podcast(_id: $_id) {
-      id
       _id
       name
       appleId
@@ -33,7 +32,6 @@ const podcastQuery = graphql`
 const userQuery = graphql`
   query PodcastInfoUserQuery($input: UserSubscribedInput!) {
     currentUser {
-      id
       _id
       subscribed(input: $input)
     }
