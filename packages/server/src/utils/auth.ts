@@ -1,6 +1,7 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
+import { Types } from "mongoose";
 
 import UserModel, { IUser } from "../modules/User/UserModel";
 
@@ -24,8 +25,8 @@ export async function getUser(token: string) {
   }
 }
 
-export function generateToken(user: { _id: string }) {
-  return `JWT ${jwt.sign({ id: user._id }, process.env.JWT_SECRET)}`;
+export function generateToken(_id: string | Types.ObjectId) {
+  return `JWT ${jwt.sign({ id: _id }, process.env.JWT_SECRET)}`;
 }
 
 export function authenticate(this: IUser, plainTextPassword: string) {

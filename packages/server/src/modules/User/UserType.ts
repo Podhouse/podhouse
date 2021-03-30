@@ -20,9 +20,11 @@ import {
   connectionDefinitions,
   connectionArgs,
   mongooseIDResolver,
+  timestamps,
 } from "../../common/";
 
 import { GraphQLContext } from "../../types";
+import { IUser } from "./UserModel";
 
 const UserSubscribedInputType = new GraphQLInputObjectType({
   name: "UserSubscribedInput",
@@ -44,7 +46,10 @@ const UserFavoritedInputType = new GraphQLInputObjectType({
   }),
 });
 
-const UserType: GraphQLObjectType = new GraphQLObjectType({
+const UserType: GraphQLObjectType = new GraphQLObjectType<
+  IUser,
+  GraphQLContext
+>({
   name: "User",
   description: "UserType",
   fields: () => ({
@@ -123,14 +128,7 @@ const UserType: GraphQLObjectType = new GraphQLObjectType({
         return connectionFromArray(result, args);
       },
     },
-    createdAt: {
-      type: GraphQLString,
-      resolve: ({ createdAt }) => (createdAt ? createdAt.toISOString() : null),
-    },
-    updatedAt: {
-      type: GraphQLString,
-      resolve: ({ updatedAt }) => (updatedAt ? updatedAt.toISOString() : null),
-    },
+    ...timestamps,
   }),
   interfaces: () => [nodeInterface],
 });

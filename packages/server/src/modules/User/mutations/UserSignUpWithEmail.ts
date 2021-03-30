@@ -23,11 +23,11 @@ export default mutationWithClientMutationId({
     },
   },
   mutateAndGetPayload: async ({ email, password }: UserSignUpWithEmailArgs) => {
-    const userExists = await UserModel.findOne({
+    const currentUser = await UserModel.findOne({
       email: email.trim().toLowerCase(),
     });
 
-    if (userExists) {
+    if (currentUser) {
       return {
         token: null,
         error: "Email address is already in use",
@@ -35,13 +35,13 @@ export default mutationWithClientMutationId({
       };
     }
 
-    const user: IUser = await new UserModel({
+    const newUser: IUser = await new UserModel({
       email,
       password,
     }).save();
 
     return {
-      token: generateToken(user._id),
+      token: generateToken(newUser._id),
       success: "Signed up succcessfully",
       error: null,
     };

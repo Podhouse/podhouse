@@ -43,6 +43,7 @@ const UserSchema = new Schema(
 );
 
 export interface IUser extends Document {
+  _id: Types.ObjectId;
   email: string;
   password: string;
   subscriptions: Array<Types.ObjectId>;
@@ -63,13 +64,12 @@ UserSchema.pre<IUser>("save", function (next) {
   });
 });
 
-UserSchema.methods = {
-  authenticate(plainTextPassword: string) {
-    return bcrypt.compareSync(plainTextPassword, this.password);
-  },
-  encryptPassword(password: string) {
-    return bcrypt.hashSync(password, 8);
-  },
+UserSchema.methods.encryptPassword = async (password: string) => {
+  return bcrypt.hashSync(password, 8);
+};
+
+UserSchema.methods.authenticate = async function (password: string) {
+  return bcrypt.compareSync(password, this.password);
 };
 
 const UserModel: Model<IUser> = mongoose.model("User", UserSchema);

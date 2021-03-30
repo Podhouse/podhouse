@@ -23,11 +23,11 @@ export default mutationWithClientMutationId({
     },
   },
   mutateAndGetPayload: async ({ email, password }: UserSignInWithEmailArgs) => {
-    const user: IUser = await UserModel.findOne({
+    const currentUser: IUser = await UserModel.findOne({
       email: email.trim().toLowerCase(),
     });
 
-    if (!user) {
+    if (!currentUser) {
       return {
         token: null,
         error: "Account with this email address not found",
@@ -35,7 +35,7 @@ export default mutationWithClientMutationId({
       };
     }
 
-    const correctPassword = await user.authenticate(password);
+    const correctPassword = await currentUser.authenticate(password);
 
     if (!correctPassword) {
       return {
@@ -46,7 +46,7 @@ export default mutationWithClientMutationId({
     }
 
     return {
-      token: generateToken(user._id),
+      token: generateToken(currentUser._id),
       success: "Logged in successfully",
       error: null,
     };
