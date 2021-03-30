@@ -3,8 +3,8 @@ import styled from "@emotion/styled";
 export const PlayerContainer = styled.div`
   width: 100%;
   height: 80px;
-  grid-column: 1 / 2;
-  grid-row: 2 / 3;
+  position: fixed;
+  bottom: 80px;
   display: grid;
   grid-template-columns: max-content 1fr;
   grid-template-rows: 14px 1fr;
