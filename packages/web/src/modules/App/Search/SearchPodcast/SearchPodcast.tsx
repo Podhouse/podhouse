@@ -23,7 +23,7 @@ const fragment = graphql`
   @argumentDefinitions(
     podcastName: { type: "String" }
     after: { type: "String" }
-    first: { type: "Int", defaultValue: 30 }
+    first: { type: "Int", defaultValue: 50 }
     before: { type: "String" }
     last: { type: "Int" }
   )

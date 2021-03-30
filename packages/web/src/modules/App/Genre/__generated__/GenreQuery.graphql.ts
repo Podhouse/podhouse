@@ -25,7 +25,7 @@ query GenreQuery(
 }
 
 fragment GenrePodcast_podcasts_BPIEN on Query {
-  podcastsByGenre(primaryGenre: $primaryGenre, first: 15) {
+  podcastsByGenre(primaryGenre: $primaryGenre, first: 50) {
     edges {
       node {
         _id
@@ -64,7 +64,7 @@ v2 = [
   {
     "kind": "Literal",
     "name": "first",
-    "value": 15
+    "value": 50
   },
   (v1/*: any*/)
 ];
@@ -227,12 +227,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "89c5d5eea2d83cd37125246154c8bd4d",
+    "cacheID": "04237b6f6ffc32f0a3ced033089c1ed6",
     "id": null,
     "metadata": {},
     "name": "GenreQuery",
     "operationKind": "query",
-    "text": "query GenreQuery(\n  $primaryGenre: String!\n) {\n  ...GenrePodcast_podcasts_BPIEN\n}\n\nfragment GenrePodcast_podcasts_BPIEN on Query {\n  podcastsByGenre(primaryGenre: $primaryGenre, first: 15) {\n    edges {\n      node {\n        _id\n        name\n        appleId\n        image\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n"
+    "text": "query GenreQuery(\n  $primaryGenre: String!\n) {\n  ...GenrePodcast_podcasts_BPIEN\n}\n\nfragment GenrePodcast_podcasts_BPIEN on Query {\n  podcastsByGenre(primaryGenre: $primaryGenre, first: 50) {\n    edges {\n      node {\n        _id\n        name\n        appleId\n        image\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n"
   }
 };
 })();

@@ -27,7 +27,7 @@ const fragment = graphql`
   @argumentDefinitions(
     primaryGenre: { type: "String" }
     after: { type: "String" }
-    first: { type: "Int", defaultValue: 15 }
+    first: { type: "Int", defaultValue: 50 }
     before: { type: "String" }
     last: { type: "Int" }
   )

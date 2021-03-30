@@ -46,7 +46,7 @@ query PodcastQuery(
 }
 
 fragment PodcastEpisodes_episodes on Podcast {
-  episodes(first: 20) {
+  episodes(first: 30) {
     edges {
       node {
         _id
@@ -157,7 +157,7 @@ v10 = [
   {
     "kind": "Literal",
     "name": "first",
-    "value": 20
+    "value": 30
   }
 ],
 v11 = {
@@ -365,7 +365,7 @@ return {
                 "storageKey": null
               }
             ],
-            "storageKey": "episodes(first:20)"
+            "storageKey": "episodes(first:30)"
           },
           {
             "alias": null,
@@ -383,12 +383,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "f30c757473196eee6c24159d58d6efe8",
+    "cacheID": "4c8e362477f27ac466787f70a7d70662",
     "id": null,
     "metadata": {},
     "name": "PodcastQuery",
     "operationKind": "query",
-    "text": "query PodcastQuery(\n  $_id: ID!\n) {\n  podcast(_id: $_id) {\n    _id\n    name\n    appleId\n    author\n    description\n    website\n    rss\n    image\n    ...PodcastEpisodes_episodes\n    id\n  }\n}\n\nfragment PodcastEpisodes_episodes on Podcast {\n  episodes(first: 20) {\n    edges {\n      node {\n        _id\n        title\n        description\n        publishedDate\n        link\n        image\n        audio\n        duration\n        podcast {\n          _id\n          name\n          website\n          rss\n          appleId\n          image\n          id\n        }\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n  id\n}\n"
+    "text": "query PodcastQuery(\n  $_id: ID!\n) {\n  podcast(_id: $_id) {\n    _id\n    name\n    appleId\n    author\n    description\n    website\n    rss\n    image\n    ...PodcastEpisodes_episodes\n    id\n  }\n}\n\nfragment PodcastEpisodes_episodes on Podcast {\n  episodes(first: 30) {\n    edges {\n      node {\n        _id\n        title\n        description\n        publishedDate\n        link\n        image\n        audio\n        duration\n        podcast {\n          _id\n          name\n          website\n          rss\n          appleId\n          image\n          id\n        }\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n  id\n}\n"
   }
 };
 })();

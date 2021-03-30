@@ -25,7 +25,7 @@ query SearchQuery(
 }
 
 fragment SearchPodcast_podcasts_h9Yo2 on Query {
-  podcastsByName(podcastName: $podcastName, first: 30) {
+  podcastsByName(podcastName: $podcastName, first: 50) {
     edges {
       node {
         _id
@@ -64,7 +64,7 @@ v2 = [
   {
     "kind": "Literal",
     "name": "first",
-    "value": 30
+    "value": 50
   },
   (v1/*: any*/)
 ];
@@ -227,12 +227,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "557cc40493441a665a3efc3f0c4c0270",
+    "cacheID": "1c5eaa91d908f044b02c1bee6cec8ca4",
     "id": null,
     "metadata": {},
     "name": "SearchQuery",
     "operationKind": "query",
-    "text": "query SearchQuery(\n  $podcastName: String!\n) {\n  ...SearchPodcast_podcasts_h9Yo2\n}\n\nfragment SearchPodcast_podcasts_h9Yo2 on Query {\n  podcastsByName(podcastName: $podcastName, first: 30) {\n    edges {\n      node {\n        _id\n        name\n        appleId\n        image\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n"
+    "text": "query SearchQuery(\n  $podcastName: String!\n) {\n  ...SearchPodcast_podcasts_h9Yo2\n}\n\nfragment SearchPodcast_podcasts_h9Yo2 on Query {\n  podcastsByName(podcastName: $podcastName, first: 50) {\n    edges {\n      node {\n        _id\n        name\n        appleId\n        image\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n"
   }
 };
 })();

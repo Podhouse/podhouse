@@ -27,7 +27,7 @@ export type SubscriptionsPodcastPaginationQuery = {
 query SubscriptionsPodcastPaginationQuery(
   $after: String
   $before: String
-  $first: Int = 30
+  $first: Int = 50
   $last: Int
   $id: ID!
 ) {
@@ -74,7 +74,7 @@ v1 = {
   "name": "before"
 },
 v2 = {
-  "defaultValue": 30,
+  "defaultValue": 50,
   "kind": "LocalArgument",
   "name": "first"
 },
@@ -317,14 +317,14 @@ return {
     ]
   },
   "params": {
-    "cacheID": "60072f91cf5fd6dae6a7ab5ee1707085",
+    "cacheID": "0be531b2e59a7cb9b06017b39f6f71f9",
     "id": null,
     "metadata": {},
     "name": "SubscriptionsPodcastPaginationQuery",
     "operationKind": "query",
-    "text": "query SubscriptionsPodcastPaginationQuery(\n  $after: String\n  $before: String\n  $first: Int = 30\n  $last: Int\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ...SubscriptionsPodcast_subscriptions_pbnwq\n    id\n  }\n}\n\nfragment SubscriptionsPodcast_subscriptions_pbnwq on User {\n  subscriptions(after: $after, first: $first, before: $before, last: $last) {\n    edges {\n      node {\n        _id\n        name\n        appleId\n        image\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n  id\n}\n"
+    "text": "query SubscriptionsPodcastPaginationQuery(\n  $after: String\n  $before: String\n  $first: Int = 50\n  $last: Int\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ...SubscriptionsPodcast_subscriptions_pbnwq\n    id\n  }\n}\n\nfragment SubscriptionsPodcast_subscriptions_pbnwq on User {\n  subscriptions(after: $after, first: $first, before: $before, last: $last) {\n    edges {\n      node {\n        _id\n        name\n        appleId\n        image\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n  id\n}\n"
   }
 };
 })();
-(node as any).hash = 'f20cd6a08b2589f703a134735d8d2426';
+(node as any).hash = '9218261c6ab6797383809f5d777e9f35';
 export default node;

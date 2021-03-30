@@ -27,7 +27,7 @@ query SubscriptionsQuery {
 }
 
 fragment SubscriptionsPodcast_subscriptions on User {
-  subscriptions(first: 30) {
+  subscriptions(first: 50) {
     edges {
       node {
         _id
@@ -74,7 +74,7 @@ v2 = [
   {
     "kind": "Literal",
     "name": "first",
-    "value": 30
+    "value": 50
   }
 ];
 return {
@@ -235,7 +235,7 @@ return {
                 "storageKey": null
               }
             ],
-            "storageKey": "subscriptions(first:30)"
+            "storageKey": "subscriptions(first:50)"
           },
           {
             "alias": null,
@@ -252,12 +252,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "6220913e8985adfebea60a4015b3a944",
+    "cacheID": "4a73937236cd0d0b05a1e0766094eaa9",
     "id": null,
     "metadata": {},
     "name": "SubscriptionsQuery",
     "operationKind": "query",
-    "text": "query SubscriptionsQuery {\n  currentUser {\n    ...useAuthUser_user\n    ...SubscriptionsPodcast_subscriptions\n    id\n  }\n}\n\nfragment SubscriptionsPodcast_subscriptions on User {\n  subscriptions(first: 30) {\n    edges {\n      node {\n        _id\n        name\n        appleId\n        image\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n  id\n}\n\nfragment useAuthUser_user on User {\n  _id\n  id\n}\n"
+    "text": "query SubscriptionsQuery {\n  currentUser {\n    ...useAuthUser_user\n    ...SubscriptionsPodcast_subscriptions\n    id\n  }\n}\n\nfragment SubscriptionsPodcast_subscriptions on User {\n  subscriptions(first: 50) {\n    edges {\n      node {\n        _id\n        name\n        appleId\n        image\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n  id\n}\n\nfragment useAuthUser_user on User {\n  _id\n  id\n}\n"
   }
 };
 })();

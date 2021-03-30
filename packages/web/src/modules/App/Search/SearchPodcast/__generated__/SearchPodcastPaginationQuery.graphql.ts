@@ -25,7 +25,7 @@ export type SearchPodcastPaginationQuery = {
 query SearchPodcastPaginationQuery(
   $after: String
   $before: String
-  $first: Int = 30
+  $first: Int = 50
   $last: Int
   $podcastName: String
 ) {
@@ -68,7 +68,7 @@ var v0 = [
     "name": "before"
   },
   {
-    "defaultValue": 30,
+    "defaultValue": 50,
     "kind": "LocalArgument",
     "name": "first"
   },
@@ -267,14 +267,14 @@ return {
     ]
   },
   "params": {
-    "cacheID": "9cfee2dae6c487fc2718f3b2cc8db254",
+    "cacheID": "2218b1067c16cd54c1c7a5b7705b64e5",
     "id": null,
     "metadata": {},
     "name": "SearchPodcastPaginationQuery",
     "operationKind": "query",
-    "text": "query SearchPodcastPaginationQuery(\n  $after: String\n  $before: String\n  $first: Int = 30\n  $last: Int\n  $podcastName: String\n) {\n  ...SearchPodcast_podcasts_1yFHIs\n}\n\nfragment SearchPodcast_podcasts_1yFHIs on Query {\n  podcastsByName(podcastName: $podcastName, after: $after, first: $first, before: $before, last: $last) {\n    edges {\n      node {\n        _id\n        name\n        appleId\n        image\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n"
+    "text": "query SearchPodcastPaginationQuery(\n  $after: String\n  $before: String\n  $first: Int = 50\n  $last: Int\n  $podcastName: String\n) {\n  ...SearchPodcast_podcasts_1yFHIs\n}\n\nfragment SearchPodcast_podcasts_1yFHIs on Query {\n  podcastsByName(podcastName: $podcastName, after: $after, first: $first, before: $before, last: $last) {\n    edges {\n      node {\n        _id\n        name\n        appleId\n        image\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n"
   }
 };
 })();
-(node as any).hash = '998637743e9079e7ea98aa8f6dfbc054';
+(node as any).hash = '1740d6aed87f7ea87b1229d2efabf9bf';
 export default node;
