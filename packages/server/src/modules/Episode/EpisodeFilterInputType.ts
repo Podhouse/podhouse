@@ -6,27 +6,34 @@ import { getObjectId } from "../../common/";
 import escapeRegex from "../../utils/escapeRegex";
 
 export const episodeFilterMapping = {
+  title: {
+    type: FILTER_CONDITION_TYPE.MATCH_1_TO_1,
+    format: (val: string) => new RegExp(`^${escapeRegex(val)}`),
+  },
+  description: {
+    type: FILTER_CONDITION_TYPE.MATCH_1_TO_1,
+    format: (val: string) => new RegExp(`^${escapeRegex(val)}`),
+  },
   podcast: {
     type: FILTER_CONDITION_TYPE.MATCH_1_TO_1,
     format: (val: string) => val && getObjectId(val),
   },
-  name: {
-    type: FILTER_CONDITION_TYPE.MATCH_1_TO_1,
-    format: (val: string) => new RegExp(`^${escapeRegex(val)}`),
-  },
 };
 
-const CommentFilterInputType = new GraphQLInputObjectType({
-  name: "CommentFilter",
+const EpisodeFilterInputType = new GraphQLInputObjectType({
+  name: "EpisodeFilter",
   description: "Used to filter episodes",
   fields: () => ({
+    title: {
+      type: GraphQLString,
+    },
+    description: {
+      type: GraphQLString,
+    },
     podcast: {
       type: GraphQLID,
-    },
-    name: {
-      type: GraphQLString,
     },
   }),
 });
 
-export default CommentFilterInputType;
+export default EpisodeFilterInputType;

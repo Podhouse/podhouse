@@ -1,6 +1,9 @@
 import { GraphQLString, GraphQLNonNull } from "graphql";
 import { mutationWithClientMutationId } from "graphql-relay";
 
+import UserType from "../UserType";
+import * as UserLoader from "../UserLoader";
+
 import { GraphQLContext } from "../../../types";
 
 import { errorField, successField } from "../../../common/";
@@ -49,6 +52,12 @@ export default mutationWithClientMutationId({
     };
   },
   outputFields: {
+    currentUser: {
+      type: UserType,
+      resolve: async ({ id }, _, context) => {
+        return await UserLoader.load(context, id);
+      },
+    },
     ...errorField,
     ...successField,
   },

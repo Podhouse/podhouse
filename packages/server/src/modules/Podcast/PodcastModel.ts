@@ -1,4 +1,4 @@
-import mongoose, { Schema, Document, Model } from "mongoose";
+import mongoose, { Schema, Document, Model, Types } from "mongoose";
 
 const PodcastSchema = new Schema(
   {
@@ -53,10 +53,15 @@ const PodcastSchema = new Schema(
   },
 );
 
-PodcastSchema.index({ name: "text" });
-PodcastSchema.index({ primaryGenre: "text" });
+PodcastSchema.index({
+  name: "text",
+  author: "text",
+  country: "text",
+  primaryGenre: "text",
+});
 
 export interface IPodcast extends Document {
+  _id: Types.ObjectId;
   appleId: number;
   name: string;
   author: string;

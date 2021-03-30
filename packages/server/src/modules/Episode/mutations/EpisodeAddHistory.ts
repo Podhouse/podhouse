@@ -1,27 +1,26 @@
 import { GraphQLString, GraphQLNonNull } from "graphql";
 import { mutationWithClientMutationId, toGlobalId } from "graphql-relay";
 
-import * as UserLoader from "../UserLoader";
-
-import { UserConnection } from "../UserType";
+import { EpisodeConnection } from "../EpisodeType";
+import * as EpisodeLoader from "../EpisodeLoader";
 
 import { GraphQLContext } from "../../../types";
 
 import { errorField, successField } from "../../../common";
 
-type UserAddEpisodeToHistoryArgs = {
+type EpisodeAddHistoryArgs = {
   _id: string;
 };
 
 export default mutationWithClientMutationId({
-  name: "UserAddEpisodeToHistory",
+  name: "EpisodeAddHistory",
   inputFields: {
     _id: {
-      type: new GraphQLNonNull(GraphQLString),
+      type: GraphQLNonNull(GraphQLString),
     },
   },
   mutateAndGetPayload: async (
-    { _id }: UserAddEpisodeToHistoryArgs,
+    { _id }: EpisodeAddHistoryArgs,
     { user }: GraphQLContext,
   ) => {
     if (!user) {
@@ -38,22 +37,22 @@ export default mutationWithClientMutationId({
     return {
       _id: user._id,
       error: null,
-      success: "Added episode to history successfully",
+      success: "Episode added to history successfully",
     };
   },
   outputFields: {
-    user: {
-      type: UserConnection.edgeType,
-      resolve: async ({ _id }, _, context) => {
-        const currentUser = await UserLoader.load(context, _id);
+    episode: {
+      type: EpisodeConnection.edgeType,
+      resolve: async ({ id }, _, context) => {
+        const episode = await EpisodeLoader.load(context, id);
 
-        if (!currentUser) {
+        if (!episode) {
           return null;
         }
 
         return {
-          cursor: toGlobalId("User", currentUser._id),
-          node: currentUser,
+          cursor: toGlobalId("Episode", episode._id),
+          node: episode,
         };
       },
     },

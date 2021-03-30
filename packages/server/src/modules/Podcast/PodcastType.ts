@@ -19,8 +19,13 @@ import {
   mongooseIDResolver,
   withFilter,
 } from "../../common/";
+import { IPodcast } from "./PodcastModel";
+import { GraphQLContext } from "src/types";
 
-const PodcastType: GraphQLObjectType = new GraphQLObjectType({
+const PodcastType: GraphQLObjectType = new GraphQLObjectType<
+  IPodcast,
+  GraphQLContext
+>({
   name: "Podcast",
   description: "PodcastType",
   fields: () => ({

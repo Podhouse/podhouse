@@ -12,10 +12,10 @@ type Query {
     ids: [ID!]!
   ): [Node]!
   currentUser: User
+  podcast(_id: ID): Podcast
   podcasts(after: String, first: Int, before: String, last: Int): PodcastConnection!
   podcastsByName(after: String, first: Int, before: String, last: Int, podcastName: String): PodcastConnection
   podcastsByGenre(after: String, first: Int, before: String, last: Int, primaryGenre: String): PodcastConnection!
-  podcast(_id: ID): Podcast
   episodes(after: String, first: Int, before: String, last: Int, podcastID: ID): EpisodeConnection
   episode(_id: ID): Episode
   userSubscribedToPodcast(_id: ID): Boolean!
@@ -186,18 +186,15 @@ type Mutation {
   UserSignInWithEmail(input: UserSignInWithEmailInput!): UserSignInWithEmailPayload
   UserSignUpWithEmail(input: UserSignUpWithEmailInput!): UserSignUpWithEmailPayload
   UserChangePassword(input: UserChangePasswordInput!): UserChangePasswordPayload
-  UserSubscribeToPodcast(input: UserSubscribeToPodcastInput!): UserSubscribeToPodcastPayload
-  UserUnsubscribeToPodcast(input: UserUnsubscribeToPodcastInput!): UserUnsubscribeToPodcastPayload
-  UserFavoriteEpisode(input: UserFavoriteEpisodeInput!): UserFavoriteEpisodePayload
-  UserUnfavoriteEpisode(input: UserUnfavoriteEpisodeInput!): UserUnfavoriteEpisodePayload
-  UserSubscribeToPodcastUsingRssFeed(input: UserSubscribeToPodcastUsingRssFeedInput!): UserSubscribeToPodcastUsingRssFeedPayload
-  UserAddPodcastUsingRssFeed(input: UserAddPodcastUsingRssFeedInput!): UserAddPodcastUsingRssFeedPayload
-  UserAddEpisodeToHistory(input: UserAddEpisodeToHistoryInput!): UserAddEpisodeToHistoryPayload
-  UserRemoveEpisodeFromHistory(input: UserRemoveEpisodeFromHistoryInput!): UserRemoveEpisodeFromHistoryPayload
-  UserCleanHistory(input: UserCleanHistoryInput!): UserCleanHistoryPayload
+  UserSendResetPasswordLink(input: UserSendResetPasswordLinkInput!): UserSendResetPasswordLinkPayload
+  EpisodeAddHistory(input: EpisodeAddHistoryInput!): EpisodeAddHistoryPayload
+  EpisodeRemoveHistory(input: EpisodeRemoveHistoryInput!): EpisodeRemoveHistoryPayload
+  EpisodeFavorite(input: EpisodeFavoriteInput!): EpisodeFavoritePayload
+  EpisodeUnfavorite(input: EpisodeUnfavoriteInput!): EpisodeUnfavoritePayload
 }
 
 type UserSignInWithEmailPayload {
+  currentUser: User
   token: String
   error: String
   success: String
@@ -211,6 +208,7 @@ input UserSignInWithEmailInput {
 }
 
 type UserSignUpWithEmailPayload {
+  currentUser: User
   token: String
   error: String
   success: String
@@ -224,6 +222,7 @@ input UserSignUpWithEmailInput {
 }
 
 type UserChangePasswordPayload {
+  currentUser: User
   error: String
   success: String
   clientMutationId: String
@@ -235,117 +234,61 @@ input UserChangePasswordInput {
   clientMutationId: String
 }
 
-type UserSubscribeToPodcastPayload {
-  user: UserEdge
+type UserSendResetPasswordLinkPayload {
   error: String
   success: String
   clientMutationId: String
 }
 
-"""An edge in a connection."""
-type UserEdge {
-  """The item at the end of the edge"""
-  node: User
-
-  """A cursor for use in pagination"""
-  cursor: String!
+input UserSendResetPasswordLinkInput {
+  email: String!
+  clientMutationId: String
 }
 
-input UserSubscribeToPodcastInput {
+type EpisodeAddHistoryPayload {
+  episode: EpisodeEdge
+  error: String
+  success: String
+  clientMutationId: String
+}
+
+input EpisodeAddHistoryInput {
   _id: String!
   clientMutationId: String
 }
 
-type UserUnsubscribeToPodcastPayload {
-  user: UserEdge
+type EpisodeRemoveHistoryPayload {
+  episode: EpisodeEdge
   error: String
   success: String
   clientMutationId: String
 }
 
-input UserUnsubscribeToPodcastInput {
+input EpisodeRemoveHistoryInput {
+  index: Int!
+  clientMutationId: String
+}
+
+type EpisodeFavoritePayload {
+  episode: EpisodeEdge
+  error: String
+  success: String
+  clientMutationId: String
+}
+
+input EpisodeFavoriteInput {
   _id: String!
   clientMutationId: String
 }
 
-type UserFavoriteEpisodePayload {
-  user: UserEdge
+type EpisodeUnfavoritePayload {
+  episode: EpisodeEdge
   error: String
   success: String
   clientMutationId: String
 }
 
-input UserFavoriteEpisodeInput {
+input EpisodeUnfavoriteInput {
   _id: String!
-  clientMutationId: String
-}
-
-type UserUnfavoriteEpisodePayload {
-  user: UserEdge
-  error: String
-  success: String
-  clientMutationId: String
-}
-
-input UserUnfavoriteEpisodeInput {
-  _id: String!
-  clientMutationId: String
-}
-
-type UserSubscribeToPodcastUsingRssFeedPayload {
-  user: UserEdge
-  error: String
-  success: String
-  clientMutationId: String
-}
-
-input UserSubscribeToPodcastUsingRssFeedInput {
-  rss: String!
-  clientMutationId: String
-}
-
-type UserAddPodcastUsingRssFeedPayload {
-  error: String
-  success: String
-  clientMutationId: String
-}
-
-input UserAddPodcastUsingRssFeedInput {
-  rss: String!
-  clientMutationId: String
-}
-
-type UserAddEpisodeToHistoryPayload {
-  user: UserEdge
-  error: String
-  success: String
-  clientMutationId: String
-}
-
-input UserAddEpisodeToHistoryInput {
-  _id: String!
-  clientMutationId: String
-}
-
-type UserRemoveEpisodeFromHistoryPayload {
-  user: UserEdge
-  error: String
-  success: String
-  clientMutationId: String
-}
-
-input UserRemoveEpisodeFromHistoryInput {
-  episodeIndex: Int!
-  clientMutationId: String
-}
-
-type UserCleanHistoryPayload {
-  user: UserEdge
-  error: String
-  success: String
-  clientMutationId: String
-}
-
-input UserCleanHistoryInput {
   clientMutationId: String
 }

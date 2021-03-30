@@ -1,27 +1,26 @@
 import { GraphQLString, GraphQLNonNull } from "graphql";
-import { mutationWithClientMutationId, toGlobalId } from "graphql-relay";
+import { mutationWithClientMutationId } from "graphql-relay";
 
+import UserType from "../UserType";
 import * as UserLoader from "../UserLoader";
-
-import { UserConnection } from "../UserType";
 
 import { GraphQLContext } from "../../../types";
 
-import { errorField, successField } from "../../../common/";
+import { errorField, successField } from "../../../common";
 
-type UserSubscribeToPodcastArgs = {
+type UserSubscribePodcastArgs = {
   _id: string;
 };
 
 export default mutationWithClientMutationId({
-  name: "UserSubscribeToPodcast",
+  name: "UserSubscribePodcast",
   inputFields: {
     _id: {
       type: new GraphQLNonNull(GraphQLString),
     },
   },
   mutateAndGetPayload: async (
-    { _id }: UserSubscribeToPodcastArgs,
+    { _id }: UserSubscribePodcastArgs,
     { user }: GraphQLContext,
   ) => {
     if (!user) {
@@ -52,19 +51,10 @@ export default mutationWithClientMutationId({
     }
   },
   outputFields: {
-    user: {
-      type: UserConnection.edgeType,
-      resolve: async ({ _id }, _, context) => {
-        const currentUser = await UserLoader.load(context, _id);
-
-        if (!currentUser) {
-          return null;
-        }
-
-        return {
-          cursor: toGlobalId("User", currentUser._id),
-          node: currentUser,
-        };
+    currentUser: {
+      type: UserType,
+      resolve: async ({ id }, _, context) => {
+        return await UserLoader.load(context, id);
       },
     },
     ...errorField,

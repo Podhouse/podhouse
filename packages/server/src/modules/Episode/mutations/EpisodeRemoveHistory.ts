@@ -1,27 +1,26 @@
 import { GraphQLInt, GraphQLNonNull } from "graphql";
 import { mutationWithClientMutationId, toGlobalId } from "graphql-relay";
 
-import * as UserLoader from "../UserLoader";
-
-import { UserConnection } from "../UserType";
+import { EpisodeConnection } from "../EpisodeType";
+import * as EpisodeLoader from "../EpisodeLoader";
 
 import { GraphQLContext } from "../../../types";
 
 import { errorField, successField } from "../../../common";
 
-type UserRemoveEpisodeFromHistoryArgs = {
-  episodeIndex: number;
+type EpisodeRemoveHistoryArgs = {
+  index: number;
 };
 
 export default mutationWithClientMutationId({
-  name: "UserRemoveEpisodeFromHistory",
+  name: "EpisodeRemoveHistory",
   inputFields: {
-    episodeIndex: {
-      type: new GraphQLNonNull(GraphQLInt),
+    index: {
+      type: GraphQLNonNull(GraphQLInt),
     },
   },
   mutateAndGetPayload: async (
-    { episodeIndex }: UserRemoveEpisodeFromHistoryArgs,
+    { index }: EpisodeRemoveHistoryArgs,
     { user }: GraphQLContext,
   ) => {
     if (!user) {
@@ -32,10 +31,10 @@ export default mutationWithClientMutationId({
       };
     }
 
-    const arrayHasIndex = user.history.hasOwnProperty(episodeIndex);
+    const arrayHasIndex = user.history.hasOwnProperty(index);
 
     if (arrayHasIndex === true) {
-      const history = user.history.filter((_, index) => index !== episodeIndex);
+      const history = user.history.filter((_, index) => index !== index);
 
       user.history = history;
       await user.save();
@@ -43,7 +42,7 @@ export default mutationWithClientMutationId({
       return {
         _id: user._id,
         error: null,
-        success: "Removed episode from history successfully!",
+        success: "Episode removed from history successfully!",
       };
     } else {
       return {
@@ -54,18 +53,18 @@ export default mutationWithClientMutationId({
     }
   },
   outputFields: {
-    user: {
-      type: UserConnection.edgeType,
-      resolve: async ({ _id }, _, context) => {
-        const currentUser = await UserLoader.load(context, _id);
+    episode: {
+      type: EpisodeConnection.edgeType,
+      resolve: async ({ id }, _, context) => {
+        const episode = await EpisodeLoader.load(context, id);
 
-        if (!currentUser) {
+        if (!episode) {
           return null;
         }
 
         return {
-          cursor: toGlobalId("User", currentUser._id),
-          node: currentUser,
+          cursor: toGlobalId("Episode", episode._id),
+          node: episode,
         };
       },
     },

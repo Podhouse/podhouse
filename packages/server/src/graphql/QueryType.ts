@@ -38,6 +38,16 @@ const QueryType = new GraphQLObjectType({
       resolve: (root, args, context: GraphQLContext) =>
         UserLoader.load(context, context.user?._id),
     },
+    podcast: {
+      type: PodcastType,
+      args: {
+        _id: {
+          type: GraphQLID,
+        },
+      },
+      resolve: async (_, { _id }, context: GraphQLContext) =>
+        await PodcastLoader.load(context, _id),
+    },
     podcasts: {
       type: GraphQLNonNull(PodcastConnection.connectionType),
       args: {
@@ -76,16 +86,6 @@ const QueryType = new GraphQLObjectType({
             primaryGenre: args.primaryGenre,
           }),
         ),
-    },
-    podcast: {
-      type: PodcastType,
-      args: {
-        _id: {
-          type: GraphQLID,
-        },
-      },
-      resolve: async (_, { _id }, context: GraphQLContext) =>
-        await PodcastLoader.load(context, _id),
     },
     episodes: {
       type: EpisodeConnection.connectionType,

@@ -53,6 +53,7 @@ const EpisodeSchema = new Schema(
 );
 
 export interface IEpisode extends Document {
+  _id: Types.ObjectId;
   title: string;
   description: string;
   publishedDate: string;

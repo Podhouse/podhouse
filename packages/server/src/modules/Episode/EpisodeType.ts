@@ -9,6 +9,8 @@ import * as PodcastLoader from "../Podcast/PodcastLoader";
 import { nodeInterface, registerTypeLoader } from "../Node/TypeRegister";
 
 import { connectionDefinitions, mongooseIDResolver } from "../../common/";
+import { IEpisode } from "./EpisodeModel";
+import { GraphQLContext } from "src/types";
 
 const OwnerType: GraphQLObjectType = new GraphQLObjectType({
   name: "Owner",
@@ -25,7 +27,10 @@ const OwnerType: GraphQLObjectType = new GraphQLObjectType({
   }),
 });
 
-const EpisodeType: GraphQLObjectType = new GraphQLObjectType({
+const EpisodeType: GraphQLObjectType = new GraphQLObjectType<
+  IEpisode,
+  GraphQLContext
+>({
   name: "Episode",
   description: "EpisodeType",
   fields: () => ({
