@@ -1,8 +1,7 @@
-import { mutationWithClientMutationId, toGlobalId } from "graphql-relay";
+import { mutationWithClientMutationId } from "graphql-relay";
 
+import UserType from "../UserType";
 import * as UserLoader from "../UserLoader";
-
-import { UserConnection } from "../UserType";
 
 import { GraphQLContext } from "../../../types";
 
@@ -14,7 +13,7 @@ export default mutationWithClientMutationId({
   mutateAndGetPayload: async (args, { user }: GraphQLContext) => {
     if (!user) {
       return {
-        _id: null,
+        id: null,
         error: "User not authenticated",
         success: null,
       };
@@ -24,25 +23,16 @@ export default mutationWithClientMutationId({
     await user.save();
 
     return {
-      _id: user._id,
+      id: user._id,
       error: null,
       success: "History cleaned successfully",
     };
   },
   outputFields: {
-    user: {
-      type: UserConnection.edgeType,
-      resolve: async ({ _id }, _, context) => {
-        const currentUser = await UserLoader.load(context, _id);
-
-        if (!currentUser) {
-          return null;
-        }
-
-        return {
-          cursor: toGlobalId("User", currentUser._id),
-          node: currentUser,
-        };
+    currentUser: {
+      type: UserType,
+      resolve: async ({ id }, _, context) => {
+        return await UserLoader.load(context, id);
       },
     },
     ...errorField,

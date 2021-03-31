@@ -1,31 +1,31 @@
 import { GraphQLString, GraphQLNonNull } from "graphql";
-import { mutationWithClientMutationId, toGlobalId } from "graphql-relay";
+import { mutationWithClientMutationId } from "graphql-relay";
 
-import { EpisodeConnection } from "../EpisodeType";
-import * as EpisodeLoader from "../EpisodeLoader";
+import UserType from "../UserType";
+import * as UserLoader from "../UserLoader";
 
 import { GraphQLContext } from "../../../types";
 
 import { errorField, successField } from "../../../common/";
 
-type EpisodeUnfavoriteArgs = {
+type UserUnfavoriteEpisodeArgs = {
   _id: string;
 };
 
 export default mutationWithClientMutationId({
-  name: "EpisodeUnfavorite",
+  name: "UserUnfavoriteEpisode",
   inputFields: {
     _id: {
       type: GraphQLNonNull(GraphQLString),
     },
   },
   mutateAndGetPayload: async (
-    { _id }: EpisodeUnfavoriteArgs,
+    { _id }: UserUnfavoriteEpisodeArgs,
     { user }: GraphQLContext,
   ) => {
     if (!user) {
       return {
-        _id: user._id,
+        id: null,
         error: "User not authenticated",
         success: null,
       };
@@ -43,32 +43,23 @@ export default mutationWithClientMutationId({
       await user.save();
 
       return {
-        _id: user._id,
+        id: user._id,
         error: null,
         success: "Unfavorited episode successfully!",
       };
     } else {
       return {
-        _id: user._id,
+        id: user._id,
         error: "You have not favorited this episode",
         success: null,
       };
     }
   },
   outputFields: {
-    episode: {
-      type: EpisodeConnection.edgeType,
+    currentUser: {
+      type: UserType,
       resolve: async ({ id }, _, context) => {
-        const episode = await EpisodeLoader.load(context, id);
-
-        if (!episode) {
-          return null;
-        }
-
-        return {
-          cursor: toGlobalId("Episode", episode._id),
-          node: episode,
-        };
+        return await UserLoader.load(context, id);
       },
     },
     ...errorField,

@@ -5,8 +5,10 @@ import UserSendResetPasswordLink from "./UserSendResetPasswordLink";
 
 import UserSubscribePodcast from "./UserSubscribePodcast";
 import UserUnsubscribePodcast from "./UserUnsubscribePodcast";
-import UserSubscribePodcastRssFeed from "./UserSubscribePodcastRssFeed";
-import UserAddPodcastRssFeed from "./UserAddPodcastRssFeed";
+import UserFavoriteEpisode from "./UserFavoriteEpisode";
+import UserUnfavoriteEpisode from "./UserUnfavoriteEpisode";
+import UserAddHistory from "./UserAddHistory";
+import UserRemoveHistory from "./UserRemoveHistory";
 import UserCleanHistory from "./UserCleanHistory";
 
 export default {
@@ -16,4 +18,9 @@ export default {
   UserSendResetPasswordLink,
   UserSubscribePodcast,
   UserUnsubscribePodcast,
+  UserFavoriteEpisode,
+  UserUnfavoriteEpisode,
+  UserAddHistory,
+  UserRemoveHistory,
+  UserCleanHistory,
 };

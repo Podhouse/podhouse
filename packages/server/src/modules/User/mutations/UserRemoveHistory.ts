@@ -1,31 +1,31 @@
 import { GraphQLInt, GraphQLNonNull } from "graphql";
-import { mutationWithClientMutationId, toGlobalId } from "graphql-relay";
+import { mutationWithClientMutationId } from "graphql-relay";
 
-import { EpisodeConnection } from "../EpisodeType";
-import * as EpisodeLoader from "../EpisodeLoader";
+import UserType from "../UserType";
+import * as UserLoader from "../UserLoader";
 
 import { GraphQLContext } from "../../../types";
 
 import { errorField, successField } from "../../../common";
 
-type EpisodeRemoveHistoryArgs = {
+type UserRemoveHistoryArgs = {
   index: number;
 };
 
 export default mutationWithClientMutationId({
-  name: "EpisodeRemoveHistory",
+  name: "UserRemoveHistory",
   inputFields: {
     index: {
       type: GraphQLNonNull(GraphQLInt),
     },
   },
   mutateAndGetPayload: async (
-    { index }: EpisodeRemoveHistoryArgs,
+    { index }: UserRemoveHistoryArgs,
     { user }: GraphQLContext,
   ) => {
     if (!user) {
       return {
-        _id: null,
+        id: null,
         error: "User not authenticated",
         success: null,
       };
@@ -40,32 +40,23 @@ export default mutationWithClientMutationId({
       await user.save();
 
       return {
-        _id: user._id,
+        id: user._id,
         error: null,
         success: "Episode removed from history successfully!",
       };
     } else {
       return {
-        _id: user._id,
+        id: user._id,
         error: "Episode does not exist on history",
         success: null,
       };
     }
   },
   outputFields: {
-    episode: {
-      type: EpisodeConnection.edgeType,
+    currentUser: {
+      type: UserType,
       resolve: async ({ id }, _, context) => {
-        const episode = await EpisodeLoader.load(context, id);
-
-        if (!episode) {
-          return null;
-        }
-
-        return {
-          cursor: toGlobalId("Episode", episode._id),
-          node: episode,
-        };
+        return await UserLoader.load(context, id);
       },
     },
     ...errorField,
