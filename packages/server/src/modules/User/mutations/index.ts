@@ -14,4 +14,6 @@ export default {
   UserSignUpWithEmail,
   UserChangePassword,
   UserSendResetPasswordLink,
+  UserSubscribePodcast,
+  UserUnsubscribePodcast,
 };

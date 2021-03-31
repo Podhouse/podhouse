@@ -25,7 +25,7 @@ export default mutationWithClientMutationId({
   ) => {
     if (!user) {
       return {
-        user: null,
+        id: null,
         error: "User not authenticated",
         success: null,
       };
@@ -35,7 +35,7 @@ export default mutationWithClientMutationId({
 
     if (subscribedToPodcast === true) {
       return {
-        user: null,
+        id: null,
         error: "Already subscribed to podcast",
         success: null,
       };
@@ -44,7 +44,7 @@ export default mutationWithClientMutationId({
       await user.save();
 
       return {
-        _id: user._id,
+        id: user._id,
         error: null,
         success: "Subscribed to podcast succcessfully",
       };
