@@ -29,6 +29,7 @@ export default mutationWithClientMutationId({
   ) => {
     if (!user) {
       return {
+        id: null,
         error: "User not authenticated",
         success: null,
       };
@@ -38,6 +39,7 @@ export default mutationWithClientMutationId({
 
     if (!correctPassword) {
       return {
+        id: null,
         error: "Invalid password",
         success: null,
       };
@@ -47,6 +49,7 @@ export default mutationWithClientMutationId({
     await user.save();
 
     return {
+      id: user._id,
       success: "Password updated successfully",
       error: null,
     };

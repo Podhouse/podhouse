@@ -34,6 +34,7 @@
     "@sendgrid/mail": "^7.4.2",
     "babel-plugin-relay": "^11.0.1",
     "bcryptjs": "^2.4.3",
+    "blurhash": "^1.1.3",
     "dataloader": "^2.0.0",
     "date-fns": "^2.19.0",
     "dotenv": "^8.2.0",

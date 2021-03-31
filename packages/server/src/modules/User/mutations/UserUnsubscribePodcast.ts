@@ -7,21 +7,21 @@ import { UserConnection } from "../UserType";
 
 import { GraphQLContext } from "../../../types";
 
-import { errorField, successField } from "../../../common/";
+import { errorField, successField } from "../../../common";
 
-type UserUnsubscribeToPodcastArgs = {
+type UserUnsubscribePodcastArgs = {
   _id: string;
 };
 
 export default mutationWithClientMutationId({
-  name: "UserUnsubscribeToPodcast",
+  name: "UserUnsubscribePodcast",
   inputFields: {
     _id: {
       type: new GraphQLNonNull(GraphQLString),
     },
   },
   mutateAndGetPayload: async (
-    { _id }: UserUnsubscribeToPodcastArgs,
+    { _id }: UserUnsubscribePodcastArgs,
     { user }: GraphQLContext,
   ) => {
     if (!user) {

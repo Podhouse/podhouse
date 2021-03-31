@@ -31,6 +31,7 @@ export default mutationWithClientMutationId({
 
     if (!currentUser) {
       return {
+        id: null,
         token: null,
         error: "Account with this email address not found",
         success: null,
@@ -41,6 +42,7 @@ export default mutationWithClientMutationId({
 
     if (!correctPassword) {
       return {
+        id: null,
         token: null,
         error: "Invalid password",
         success: null,
@@ -48,6 +50,7 @@ export default mutationWithClientMutationId({
     }
 
     return {
+      id: currentUser._id,
       token: generateToken(currentUser._id),
       success: "Logged in successfully",
       error: null,

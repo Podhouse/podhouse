@@ -11,24 +11,24 @@ import parsePodcastFeed from "../../../utils/parsePodcastFeed";
 import searchPodcastOnItunes from "../../../utils/searchPodcastOnItunes";
 import saveEpisodeToDatabase from "../../../utils/saveEpisodeToDatabase";
 
-import { errorField, successField } from "../../../common/";
+import { errorField, successField } from "../../../common";
 import { GraphQLContext, Podcast, FeedPodcast } from "../../../types";
 
 const parser = new Parser();
 
-type UserSubscribeToPodcastUsingRssFeedArgs = {
+type UserSubscribePodcastRssFeedArgs = {
   rss: string;
 };
 
 export default mutationWithClientMutationId({
-  name: "UserSubscribeToPodcastUsingRssFeed",
+  name: "UserSubscribePodcastRssFeed",
   inputFields: {
     rss: {
       type: new GraphQLNonNull(GraphQLString),
     },
   },
   mutateAndGetPayload: async (
-    { rss }: UserSubscribeToPodcastUsingRssFeedArgs,
+    { rss }: UserSubscribePodcastRssFeedArgs,
     { user }: GraphQLContext,
   ) => {
     if (!user) {

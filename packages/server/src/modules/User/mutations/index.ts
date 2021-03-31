@@ -3,10 +3,10 @@ import UserSignUpWithEmail from "./UserSignUpWithEmail";
 import UserChangePassword from "./UserChangePassword";
 import UserSendResetPasswordLink from "./UserSendResetPasswordLink";
 
-import UserSubscribeToPodcast from "./UserSubscribePodcast";
-import UserUnsubscribeToPodcast from "./UserUnsubscribeToPodcast";
-import UserSubscribeToPodcastUsingRssFeed from "./UserSubscribeToPodcastUsingRssFeed";
-import UserAddPodcastUsingRssFeed from "./UserAddPodcastUsingRssFeed";
+import UserSubscribePodcast from "./UserSubscribePodcast";
+import UserUnsubscribePodcast from "./UserUnsubscribePodcast";
+import UserSubscribePodcastRssFeed from "./UserSubscribePodcastRssFeed";
+import UserAddPodcastRssFeed from "./UserAddPodcastRssFeed";
 import UserCleanHistory from "./UserCleanHistory";
 
 export default {

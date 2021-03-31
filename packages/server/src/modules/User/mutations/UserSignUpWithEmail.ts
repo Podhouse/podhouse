@@ -31,6 +31,7 @@ export default mutationWithClientMutationId({
 
     if (currentUser) {
       return {
+        id: null,
         token: null,
         error: "Email address is already in use",
         success: null,
@@ -43,6 +44,7 @@ export default mutationWithClientMutationId({
     }).save();
 
     return {
+      id: currentUser._id,
       token: generateToken(newUser._id),
       success: "Signed up succcessfully",
       error: null,

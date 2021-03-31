@@ -8,23 +8,23 @@ import parsePodcastFeed from "../../../utils/parsePodcastFeed";
 import searchPodcastOnItunes from "../../../utils/searchPodcastOnItunes";
 import saveEpisodeToDatabase from "../../../utils/saveEpisodeToDatabase";
 
-import { errorField, successField } from "../../../common/";
+import { errorField, successField } from "../../../common";
 import { Podcast, FeedPodcast } from "../../../types";
 
 const parser = new Parser();
 
-type UserAddPodcastUsingRssFeedArgs = {
+type UserAddPodcastRssFeedArgs = {
   rss: string;
 };
 
 export default mutationWithClientMutationId({
-  name: "UserAddPodcastUsingRssFeed",
+  name: "UserAddPodcastRssFeed",
   inputFields: {
     rss: {
       type: new GraphQLNonNull(GraphQLString),
     },
   },
-  mutateAndGetPayload: async ({ rss }: UserAddPodcastUsingRssFeedArgs) => {
+  mutateAndGetPayload: async ({ rss }: UserAddPodcastRssFeedArgs) => {
     const podcastsExists: boolean = await PodcastModel.exists({ rss: rss });
 
     if (podcastsExists === true) {
