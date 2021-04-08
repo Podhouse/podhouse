@@ -1,26 +1,27 @@
 import { GraphQLString, GraphQLNonNull } from "graphql";
 import { mutationWithClientMutationId } from "graphql-relay";
+import remove from "lodash.remove";
 
 import UserType from "../UserType";
 import * as UserLoader from "../UserLoader";
 
 import { GraphQLContext } from "../../../types";
 
-import { errorField, successField } from "../../../common/";
+import { errorField, successField } from "../../../common";
 
-type UserUnfavoriteEpisodeArgs = {
+type UserRemoveFavoriteEpisodeArgs = {
   _id: string;
 };
 
 export default mutationWithClientMutationId({
-  name: "UserUnfavoriteEpisode",
+  name: "UserRemoveFavoriteEpisode",
   inputFields: {
     _id: {
-      type: GraphQLNonNull(GraphQLString),
+      type: new GraphQLNonNull(GraphQLString),
     },
   },
   mutateAndGetPayload: async (
-    { _id }: UserUnfavoriteEpisodeArgs,
+    { _id }: UserRemoveFavoriteEpisodeArgs,
     { user }: GraphQLContext,
   ) => {
     if (!user) {
@@ -31,27 +32,28 @@ export default mutationWithClientMutationId({
       };
     }
 
-    const subscribedToPodcast = user.favorites.includes(_id as any);
+    const hasFavoritedEpisode: number = user.favorites.findIndex(
+      (el) => el._id.toString() === _id,
+    );
 
-    if (subscribedToPodcast === true) {
-      const podcastIdIndex = user.favorites.indexOf(_id as any);
-      const favorites = user.favorites.filter(
-        (_, index) => index !== podcastIdIndex,
-      );
+    if (hasFavoritedEpisode === -1) {
+      return {
+        id: user._id,
+        error: "Episode was not favorited",
+        success: null,
+      };
+    } else {
+      const newHistory = remove(user.favorites, (el) => {
+        return el._id.toString() !== _id;
+      });
 
-      user.favorites = favorites;
+      user.favorites = newHistory;
       await user.save();
 
       return {
         id: user._id,
         error: null,
-        success: "Unfavorited episode successfully!",
-      };
-    } else {
-      return {
-        id: user._id,
-        error: "You have not favorited this episode",
-        success: null,
+        success: "Episode removed from favorites successfully!",
       };
     }
   },

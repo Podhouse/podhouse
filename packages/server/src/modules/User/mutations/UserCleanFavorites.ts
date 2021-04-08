@@ -1,6 +1,4 @@
-import { GraphQLString, GraphQLNonNull } from "graphql";
 import { mutationWithClientMutationId } from "graphql-relay";
-import remove from "lodash.remove";
 
 import UserType from "../UserType";
 import * as UserLoader from "../UserLoader";
@@ -9,21 +7,10 @@ import { GraphQLContext } from "../../../types";
 
 import { errorField, successField } from "../../../common";
 
-type UserRemoveHistoryArgs = {
-  _id: string;
-};
-
 export default mutationWithClientMutationId({
-  name: "UserRemoveHistory",
-  inputFields: {
-    _id: {
-      type: new GraphQLNonNull(GraphQLString),
-    },
-  },
-  mutateAndGetPayload: async (
-    { _id }: UserRemoveHistoryArgs,
-    { user }: GraphQLContext,
-  ) => {
+  name: "UserCleanFavorites",
+  inputFields: {},
+  mutateAndGetPayload: async (args, { user }: GraphQLContext) => {
     if (!user) {
       return {
         id: null,
@@ -32,17 +19,13 @@ export default mutationWithClientMutationId({
       };
     }
 
-    const newHistory = remove(user.history, (el) => {
-      return el._id.toString() !== _id;
-    });
-
-    user.history = newHistory;
+    user.favorites = [];
     await user.save();
 
     return {
       id: user._id,
-      error: "Episode removed from history successfully!",
-      success: null,
+      error: null,
+      success: "Favorites cleaned successfully",
     };
   },
   outputFields: {

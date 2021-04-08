@@ -22,14 +22,26 @@ const UserSchema = new Schema(
     ],
     favorites: [
       {
-        type: Schema.Types.ObjectId,
-        ref: "Episode",
+        _id: {
+          type: Schema.Types.ObjectId,
+          ref: "Episode",
+        },
+        date: {
+          type: Number,
+          required: true,
+        },
       },
     ],
     history: [
       {
-        type: Schema.Types.ObjectId,
-        ref: "Episode",
+        _id: {
+          type: Schema.Types.ObjectId,
+          ref: "Episode",
+        },
+        date: {
+          type: Number,
+          required: true,
+        },
       },
     ],
   },
@@ -47,8 +59,14 @@ export interface IUser extends Document {
   email: string;
   password: string;
   subscriptions: Array<Types.ObjectId>;
-  favorites: Array<Types.ObjectId>;
-  history: Array<Types.ObjectId>;
+  favorites: Array<{
+    _id: Types.ObjectId;
+    date: number;
+  }>;
+  history: Array<{
+    _id: Types.ObjectId;
+    date: number;
+  }>;
   createdAt: Date;
   updatedAt: Date;
   authenticate: (plainTextPassword: string) => boolean;

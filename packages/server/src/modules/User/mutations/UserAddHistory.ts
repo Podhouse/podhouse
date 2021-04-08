@@ -16,7 +16,7 @@ export default mutationWithClientMutationId({
   name: "UserAddHistory",
   inputFields: {
     _id: {
-      type: GraphQLNonNull(GraphQLString),
+      type: new GraphQLNonNull(GraphQLString),
     },
   },
   mutateAndGetPayload: async (
@@ -31,7 +31,12 @@ export default mutationWithClientMutationId({
       };
     }
 
-    user.history.push(_id as any);
+    const episode = {
+      _id: _id as any,
+      date: Date.now(),
+    };
+
+    user.history.push(episode);
     await user.save();
 
     return {

@@ -1,26 +1,27 @@
 import { GraphQLString, GraphQLNonNull } from "graphql";
 import { mutationWithClientMutationId } from "graphql-relay";
+import remove from "lodash.remove";
 
 import UserType from "../UserType";
 import * as UserLoader from "../UserLoader";
 
 import { GraphQLContext } from "../../../types";
 
-import { errorField, successField } from "../../../common/";
+import { errorField, successField } from "../../../common";
 
-type UserFavoriteEpisodeArgs = {
+type UserAddFavoriteEpisodeArgs = {
   _id: string;
 };
 
 export default mutationWithClientMutationId({
-  name: "UserFavoriteEpisode",
+  name: "UserAddFavoriteEpisode",
   inputFields: {
     _id: {
-      type: GraphQLNonNull(GraphQLString),
+      type: new GraphQLNonNull(GraphQLString),
     },
   },
   mutateAndGetPayload: async (
-    { _id }: UserFavoriteEpisodeArgs,
+    { _id }: UserAddFavoriteEpisodeArgs,
     { user }: GraphQLContext,
   ) => {
     if (!user) {
@@ -31,22 +32,29 @@ export default mutationWithClientMutationId({
       };
     }
 
-    const hasFavoritedEpisode: boolean = user.favorites.includes(_id as any);
+    const hasFavoritedEpisode: number = user.favorites.findIndex(
+      (el) => el._id.toString() === _id,
+    );
 
-    if (hasFavoritedEpisode === true) {
-      return {
-        id: user._id,
-        error: "You've already favorited this episode",
-        success: null,
+    if (hasFavoritedEpisode === -1) {
+      const episode = {
+        _id: _id as any,
+        date: Date.now(),
       };
-    } else {
-      user.favorites.push(_id as any);
+
+      user.favorites.push(episode);
       await user.save();
 
       return {
         id: user._id,
         error: null,
         success: "Episode favorited successfully!",
+      };
+    } else {
+      return {
+        id: user._id,
+        error: "Episode already favorited",
+        success: null,
       };
     }
   },
