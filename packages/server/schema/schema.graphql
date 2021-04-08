@@ -14,13 +14,13 @@ type Query {
   currentUser: User
   podcast(_id: ID): Podcast
   podcasts(after: String, first: Int, before: String, last: Int): PodcastConnection!
-  podcastsByName(after: String, first: Int, before: String, last: Int, podcastName: String): PodcastConnection
-  podcastsByGenre(after: String, first: Int, before: String, last: Int, primaryGenre: String): PodcastConnection!
+  searchPodcastsByName(after: String, first: Int, before: String, last: Int, name: String): PodcastConnection
+  searchPodcastsByPrimaryGenre(after: String, first: Int, before: String, last: Int, primaryGenre: String): PodcastConnection!
   episodes(after: String, first: Int, before: String, last: Int, podcastID: ID): EpisodeConnection
   episode(_id: ID): Episode
   userSubscribedToPodcast(_id: ID): Boolean!
   userFavoritedEpisode(_id: ID): Boolean!
-  searchPodcastEpisode(after: String, first: Int, before: String, last: Int, podcastID: ID, episodeName: String): EpisodeConnection
+  searchPodcastEpisodes(after: String, first: Int, before: String, last: Int, podcastID: ID, episodeName: String): EpisodeConnection
 }
 
 """An object with an ID"""

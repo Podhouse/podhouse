@@ -35,8 +35,8 @@ const QueryType = new GraphQLObjectType({
     nodes: nodesField,
     currentUser: {
       type: UserType,
-      resolve: (root, args, context: GraphQLContext) =>
-        UserLoader.load(context, context.user?._id),
+      resolve: async (root, args, context: GraphQLContext) =>
+        await UserLoader.load(context, context.user?._id),
     },
     podcast: {
       type: PodcastType,
@@ -56,22 +56,22 @@ const QueryType = new GraphQLObjectType({
       resolve: async (_, args, context: GraphQLContext) =>
         await PodcastLoader.loadAll(context, args),
     },
-    podcastsByName: {
+    searchPodcastsByName: {
       type: PodcastConnection.connectionType,
       args: {
         ...connectionArgs,
-        podcastName: {
+        name: {
           type: GraphQLString,
         },
       },
-      resolve: async (_, args, context: GraphQLContext) => {
+      resolve: async (_, args) => {
         const podcasts = await PodcastModel.find({
-          $text: { $search: args.podcastName },
+          $text: { $search: args.name },
         });
         return connectionFromArray(podcasts, args);
       },
     },
-    podcastsByGenre: {
+    searchPodcastsByPrimaryGenre: {
       type: GraphQLNonNull(PodcastConnection.connectionType),
       args: {
         ...connectionArgs,
@@ -153,7 +153,7 @@ const QueryType = new GraphQLObjectType({
         }
       },
     },
-    searchPodcastEpisode: {
+    searchPodcastEpisodes: {
       type: EpisodeConnection.connectionType,
       args: {
         ...connectionArgs,

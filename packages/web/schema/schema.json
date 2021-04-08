@@ -177,7 +177,7 @@
               "deprecationReason": null
             },
             {
-              "name": "podcastsByName",
+              "name": "searchPodcastsByName",
               "description": null,
               "args": [
                 {
@@ -221,7 +221,7 @@
                   "defaultValue": null
                 },
                 {
-                  "name": "podcastName",
+                  "name": "name",
                   "description": null,
                   "type": {
                     "kind": "SCALAR",
@@ -240,7 +240,7 @@
               "deprecationReason": null
             },
             {
-              "name": "podcastsByGenre",
+              "name": "searchPodcastsByPrimaryGenre",
               "description": null,
               "args": [
                 {
@@ -447,7 +447,7 @@
               "deprecationReason": null
             },
             {
-              "name": "searchPodcastEpisode",
+              "name": "searchPodcastEpisodes",
               "description": null,
               "args": [
                 {
