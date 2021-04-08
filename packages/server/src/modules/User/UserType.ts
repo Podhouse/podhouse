@@ -6,6 +6,7 @@ import {
   GraphQLNonNull,
 } from "graphql";
 import { globalIdField, connectionFromArray } from "graphql-relay";
+import { format, compareAsc } from "date-fns";
 
 import { load } from "./UserLoader";
 
@@ -58,7 +59,7 @@ const EpisodeFavoriteAndHistoryType = new GraphQLObjectType({
     },
     date: {
       type: new GraphQLNonNull(GraphQLString),
-      resolve: ({ date }) => date,
+      resolve: ({ date }) => format(date, "MM/dd/yyyy"),
     },
   }),
 });
@@ -112,7 +113,8 @@ const UserType: GraphQLObjectType = new GraphQLObjectType<
           };
         });
         const result = await Promise.all(favoritedEpisodes).then((res) => res);
-        return connectionFromArray(result, args);
+        const sortedResult = result.sort((a, b) => b.date - a.date);
+        return connectionFromArray(sortedResult, args);
       },
     },
     history: {
@@ -133,7 +135,8 @@ const UserType: GraphQLObjectType = new GraphQLObjectType<
           };
         });
         const result = await Promise.all(historyEpisodes).then((res) => res);
-        return connectionFromArray(result, args);
+        const sortedResult = result.sort((a, b) => b.date - a.date);
+        return connectionFromArray(sortedResult, args);
       },
     },
     subscribed: {

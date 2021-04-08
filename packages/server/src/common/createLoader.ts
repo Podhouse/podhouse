@@ -105,7 +105,7 @@ export const createLoader = <
       };
 
       const sort = {
-        createdAt: -1,
+        publishedDate: 1,
       };
 
       return {

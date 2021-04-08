@@ -95,13 +95,16 @@ const QueryType = new GraphQLObjectType({
           type: GraphQLID,
         },
       },
-      resolve: async (_, args, context: GraphQLContext) =>
-        await EpisodeLoader.loadAll(
+      resolve: async (_, args, context: GraphQLContext) => {
+        const result = await EpisodeLoader.loadAll(
           context,
           withFilter(args, {
             podcast: args.podcastID,
           }),
-        ),
+        );
+        console.log("result: ", result);
+        return result;
+      },
     },
     episode: {
       type: EpisodeType,

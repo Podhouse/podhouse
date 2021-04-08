@@ -1,4 +1,4 @@
-import { GraphQLObjectType, GraphQLString, GraphQLNonNull } from "graphql";
+import { GraphQLObjectType, GraphQLString } from "graphql";
 import { globalIdField } from "graphql-relay";
 
 import { load } from "./EpisodeLoader";
