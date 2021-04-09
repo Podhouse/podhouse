@@ -19,6 +19,9 @@ const EpisodeSchema = new Schema(
     image: {
       type: String,
     },
+    hashedImage: {
+      type: String,
+    },
     guid: {
       type: String,
     },
@@ -59,6 +62,7 @@ export interface IEpisode extends Document {
   publishedDate: string;
   link: string;
   image: string;
+  hashedImage: string;
   audio: string;
   guid: string;
   duration: string;

@@ -106,6 +106,7 @@ type Podcast implements Node {
   website: String
   rss: String
   image: String
+  hashedImage: String
   episodes(after: String, first: Int, before: String, last: Int): EpisodeConnection
   country: String
   primaryGenre: String
@@ -158,6 +159,7 @@ type Episode implements Node {
   publishedDate: String
   link: String
   image: String
+  hashedImage: String
   audio: String
   guid: String
   duration: String

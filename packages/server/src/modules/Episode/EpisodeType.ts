@@ -56,6 +56,10 @@ const EpisodeType: GraphQLObjectType = new GraphQLObjectType<
       type: GraphQLString,
       resolve: ({ image }) => image,
     },
+    hashedImage: {
+      type: GraphQLString,
+      resolve: ({ image }) => image,
+    },
     audio: {
       type: GraphQLString,
       resolve: ({ audio }) => audio,

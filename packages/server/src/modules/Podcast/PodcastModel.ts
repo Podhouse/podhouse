@@ -23,6 +23,9 @@ const PodcastSchema = new Schema(
     image: {
       type: String,
     },
+    hashedImage: {
+      type: String,
+    },
     country: {
       type: String,
     },
@@ -69,6 +72,7 @@ export interface IPodcast extends Document {
   website: string;
   rss: string;
   image: string;
+  hashedImage: string;
   country: string;
   primaryGenre: string;
   genres: Array<string>;

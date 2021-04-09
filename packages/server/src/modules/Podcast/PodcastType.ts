@@ -59,6 +59,10 @@ const PodcastType: GraphQLObjectType = new GraphQLObjectType<
       type: GraphQLString,
       resolve: ({ image }) => image,
     },
+    hashedImage: {
+      type: GraphQLString,
+      resolve: ({ image }) => image,
+    },
     episodes: {
       type: EpisodeConnection.connectionType,
       args: {

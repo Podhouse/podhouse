@@ -55,7 +55,7 @@ export default mutationWithClientMutationId({
           success: null,
         };
       } else {
-        user.subscriptions.push(podcast._id.toString());
+        user.subscriptions.push(podcast._id as any);
         await user.save();
 
         return {
@@ -88,7 +88,7 @@ export default mutationWithClientMutationId({
 
       await saveEpisodeToDatabase(episodes);
 
-      user.subscriptions.push(podcast._id.toString());
+      user.subscriptions.push(podcast._id as any);
       await user.save();
 
       return {
