@@ -16,19 +16,19 @@ import { GraphQLContext, Podcast, FeedPodcast } from "../../../types";
 
 const parser = new Parser();
 
-type UserSubscribePodcastUsingRssFeedArgs = {
+type UserSubscribePodcastRssFeedArgs = {
   rss: string;
 };
 
 export default mutationWithClientMutationId({
-  name: "UserSubscribePodcastUsingRssFeed",
+  name: "UserSubscribePodcastRssFeed",
   inputFields: {
     rss: {
       type: new GraphQLNonNull(GraphQLString),
     },
   },
   mutateAndGetPayload: async (
-    { rss }: UserSubscribePodcastUsingRssFeedArgs,
+    { rss }: UserSubscribePodcastRssFeedArgs,
     { user }: GraphQLContext,
   ) => {
     if (!user) {

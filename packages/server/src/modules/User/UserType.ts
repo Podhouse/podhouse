@@ -6,14 +6,13 @@ import {
   GraphQLNonNull,
 } from "graphql";
 import { globalIdField, connectionFromArray } from "graphql-relay";
-import { format, compareAsc } from "date-fns";
+import { format } from "date-fns";
 
 import { load } from "./UserLoader";
 
 import { PodcastConnection } from "../Podcast/PodcastType";
 import * as PodcastLoader from "../Podcast/PodcastLoader";
 
-import { EpisodeConnection } from "../Episode/EpisodeType";
 import * as EpisodeLoader from "../Episode/EpisodeLoader";
 import EpisodeType from "../Episode/EpisodeType";
 
@@ -34,7 +33,7 @@ const UserSubscribedInputType = new GraphQLInputObjectType({
   description: "Input payload for checking if user is subscribed to podcast",
   fields: () => ({
     _id: {
-      type: GraphQLString,
+      type: GraphQLNonNull(GraphQLString),
     },
   }),
 });
@@ -44,7 +43,7 @@ const UserFavoritedInputType = new GraphQLInputObjectType({
   description: "Input payload for checking if user has favorited an episode",
   fields: () => ({
     _id: {
-      type: GraphQLString,
+      type: GraphQLNonNull(GraphQLString),
     },
   }),
 });
@@ -79,7 +78,7 @@ const UserType: GraphQLObjectType = new GraphQLObjectType<
     id: globalIdField("User"),
     ...mongooseIDResolver,
     email: {
-      type: GraphQLString,
+      type: GraphQLNonNull(GraphQLString),
       resolve: ({ email }) => email,
     },
     subscriptions: {
@@ -139,34 +138,32 @@ const UserType: GraphQLObjectType = new GraphQLObjectType<
         return connectionFromArray(sortedResult, args);
       },
     },
-    subscribed: {
-      type: GraphQLBoolean,
+    hasSubscribed: {
+      type: GraphQLNonNull(GraphQLBoolean),
       args: {
         input: {
           type: UserSubscribedInputType,
         },
       },
       resolve: ({ subscriptions }, { input }: { input: { _id: string } }) => {
-        const stringsSubscriptions: Array<string> = subscriptions.map((x) =>
-          x.toString(),
-        );
-        const uniqueStrings: Array<string> = [...new Set(stringsSubscriptions)];
-        return uniqueStrings.includes(input._id);
+        const subscriptionsStrings = [
+          ...new Set(subscriptions.map((x) => x.toString())),
+        ];
+        return subscriptionsStrings.includes(input._id);
       },
     },
-    favorited: {
-      type: GraphQLBoolean,
+    hasFavorited: {
+      type: GraphQLNonNull(GraphQLBoolean),
       args: {
         input: {
           type: UserFavoritedInputType,
         },
       },
       resolve: ({ favorites }, { input }: { input: { _id: string } }) => {
-        const stringsFavorites: Array<string> = favorites.map((x) =>
-          x.toString(),
-        );
-        const uniqueStrings: Array<string> = [...new Set(stringsFavorites)];
-        return uniqueStrings.includes(input._id);
+        const favoritesStrings = [
+          ...new Set(favorites.map((item) => item._id.toString())),
+        ];
+        return favoritesStrings.includes(input._id);
       },
     },
     ...timestamps,

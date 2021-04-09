@@ -34,12 +34,12 @@ type User implements Node {
   """The ID of an object"""
   id: ID!
   _id: String!
-  email: String
+  email: String!
   subscriptions(after: String, first: Int, before: String, last: Int): PodcastConnection
   favorites(after: String, first: Int, before: String, last: Int): EpisodeFavoriteAndHistoryConnection
   history(after: String, first: Int, before: String, last: Int): EpisodeFavoriteAndHistoryConnection
-  subscribed(input: UserSubscribedInput): Boolean
-  favorited(input: UserFavoritedInput): Boolean
+  hasSubscribed(input: UserSubscribedInput): Boolean!
+  hasFavorited(input: UserFavoritedInput): Boolean!
   createdAt: String
   updatedAt: String
 }
@@ -217,12 +217,12 @@ type EpisodeFavoriteAndHistoryType {
 
 """Input payload for checking if user is subscribed to podcast"""
 input UserSubscribedInput {
-  _id: String
+  _id: String!
 }
 
 """Input payload for checking if user has favorited an episode"""
 input UserFavoritedInput {
-  _id: String
+  _id: String!
 }
 
 type Mutation {
@@ -238,6 +238,8 @@ type Mutation {
   UserAddHistory(input: UserAddHistoryInput!): UserAddHistoryPayload
   UserRemoveHistory(input: UserRemoveHistoryInput!): UserRemoveHistoryPayload
   UserCleanHistory(input: UserCleanHistoryInput!): UserCleanHistoryPayload
+  UserSubscribePodcastRssFeed(input: UserSubscribePodcastRssFeedInput!): UserSubscribePodcastRssFeedPayload
+  UserAddPodcastRssFeed(input: UserAddPodcastRssFeedInput!): UserAddPodcastRssFeedPayload
 }
 
 type UserSignInWithEmailPayload {
@@ -383,5 +385,28 @@ type UserCleanHistoryPayload {
 }
 
 input UserCleanHistoryInput {
+  clientMutationId: String
+}
+
+type UserSubscribePodcastRssFeedPayload {
+  currentUser: User
+  error: String
+  success: String
+  clientMutationId: String
+}
+
+input UserSubscribePodcastRssFeedInput {
+  rss: String!
+  clientMutationId: String
+}
+
+type UserAddPodcastRssFeedPayload {
+  error: String
+  success: String
+  clientMutationId: String
+}
+
+input UserAddPodcastRssFeedInput {
+  rss: String!
   clientMutationId: String
 }
