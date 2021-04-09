@@ -6,7 +6,9 @@ import UserModel, { IUser } from "../UserModel";
 
 import { errorField, successField } from "../../../common/";
 
-sgMail.setApiKey("SENDGRID_API_KEY");
+sgMail.setApiKey(
+  "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",
+);
 
 type UserSendResetPasswordLinkArgs = {
   email: string;
@@ -35,7 +37,7 @@ export default mutationWithClientMutationId({
     const message = {
       to: email,
       from: process.env.SENGRID_MAIL_SENDER,
-      subject: "Reset your account password",
+      subject: "Reset your Podhouse account password",
       text: "and easy to do anywhere, even with Node.js",
       html: "<strong>and easy to do anywhere, even with Node.js</strong>",
     };
