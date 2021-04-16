@@ -11,9 +11,9 @@ import Dashboard from "./Dashboard/Dashboard";
 import Browse from "src/modules/App/Browse/Browse";
 
 import GetStarted from "src/modules/App/GetStarted/GetStarted";
-import SignIn from "src/modules/App/SignIn/UserSignIn";
-import SignUp from "src/modules/App/SignUp/UserSignUp";
-import ForgotPassword from "src/modules/App/ForgotPassword/UserForgotPassword";
+import SignIn from "src/modules/App/SignIn/SignIn";
+import SignUp from "src/modules/App/SignUp/SignUp";
+import ForgotPassword from "src/modules/App/ForgotPassword/ForgotPassword";
 
 import Search from "src/modules/App/Search/Search";
 import Subscriptions from "src/modules/App/Subscriptions/Subscriptions";

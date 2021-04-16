@@ -1,119 +1,17 @@
 import React, { useState, Suspense } from "react";
-import { Box, Text, Link, Stack } from "@chakra-ui/react";
 import Scrollbars from "react-custom-scrollbars";
-import graphql from "babel-plugin-relay/macro";
-import { useLazyLoadQuery } from "react-relay/hooks";
 
-import SkeletonPodcastsWithOnlyAvatarList from "src/components/Skeletons/SkeletonPodcastsWithOnlyAvatarList/SkeletonPodcastsWithOnlyAvatarList";
-
-import { SubscriptionsContainer } from "./Subscriptions.styles";
-
-import SubscriptionsPodcast from "./SubscriptionsPodcast/SubscriptionsPodcast";
-
-import useAuthUser from "src/hooks/useAuthUser";
-
-import { useAuthContext } from "src/machines/Auth/AuthContext";
-
-import { getToken } from "src/utils/auth";
-
-import { SubscriptionsQuery } from "./__generated__/SubscriptionsQuery.graphql";
-
-const query = graphql`
-  query SubscriptionsQuery {
-    currentUser {
-      ...useAuthUser_user
-      ...SubscriptionsPodcast_subscriptions
-    }
-  }
-`;
-
-type ScrollFrameType = {
-  clientHeight: number;
-  clientWidth: number;
-  left: number;
-  scrollHeight: number;
-  scrollLeft: number;
-  scrollTop: number;
-  scrollWidth: number;
-  top: number;
-};
-
-const SubscriptionsComponent = () => {
-  const { handleAuth } = useAuthContext();
-
-  const [shouldLoadMore, setShouldLoadMore] = useState<boolean>(false);
-
-  const { currentUser } = useLazyLoadQuery<SubscriptionsQuery>(
-    query,
-    {},
-    {
-      fetchPolicy: "store-and-network",
-      fetchKey: getToken(),
-    }
-  );
-
-  const onLoadMore = (value: ScrollFrameType) => {
-    if (value.top === 1) {
-      setShouldLoadMore(true);
-    }
-    setShouldLoadMore(false);
-  };
-
-  const user = useAuthUser(currentUser);
-
-  if (!user) {
-    return (
-      <Box
-        d="flex"
-        alignItems="center"
-        justifyContent="center"
-        w="100%"
-        h="100%"
-        bgColor="white"
-      >
-        <Stack spacing={4} shouldWrapChildren align="center">
-          <Text
-            maxWidth="300px"
-            fontSize="16px"
-            fontWeight="300"
-            lineHeight="30px"
-            textAlign="center"
-          >
-            You should be logged in to see your subscriptions
-          </Text>
-          <Link color="brand.900" onClick={handleAuth}>
-            Login
-          </Link>
-        </Stack>
-      </Box>
-    );
-  }
-
+const Subscriptions = () => {
   return (
     <Scrollbars
-      onScrollFrame={onLoadMore}
+      onScrollFrame={() => {}}
       autoHide
       autoHideTimeout={100}
       autoHideDuration={100}
     >
-      <SubscriptionsPodcast
-        currentUser={currentUser}
-        shouldLoadMore={shouldLoadMore}
-      />
+      <h1>Subscriptions...</h1>
     </Scrollbars>
   );
 };
-
-const Subscriptions = () => (
-  <Suspense
-    fallback={
-      <SubscriptionsContainer>
-        <SkeletonPodcastsWithOnlyAvatarList />
-      </SubscriptionsContainer>
-    }
-  >
-    <SubscriptionsComponent />
-  </Suspense>
-);
 
 export default Subscriptions;

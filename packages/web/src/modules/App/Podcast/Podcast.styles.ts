@@ -1,14 +1,14 @@
 import styled from "@emotion/styled";
 import ClampLines from "react-clamp-lines";
 
-export const EpisodeContainer = styled.div`
+export const PodcastContainer = styled.div`
   width: 100%;
-  height: 100%;
   max-width: 1000px;
+  height: 100%;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(2, max-content);
-  grid-row-gap: 30px;
+  grid-row-gap: 20px;
   padding: 20px 20px 0px 20px;
   margin: 0 auto;
 
@@ -21,7 +21,7 @@ export const EpisodeContainer = styled.div`
   }
 `;
 
-export const EpisodeHeader = styled.div`
+export const PodcastHeader = styled.div`
   width: 100%;
   height: 100%;
   grid-row: 1 / 2;
@@ -36,10 +36,14 @@ export const EpisodeHeader = styled.div`
     grid-template-columns: 200px 1fr;
     grid-template-rows: max-content 40px;
     grid-gap: 20px;
+
+    .img {
+      justify-self: center;
+    }
   }
 `;
 
-export const EpisodeDetailsContainer = styled.div`
+export const PodcastDetailsContainer = styled.div`
   width: auto;
   height: auto;
   grid-row: 2 / 3;
@@ -50,6 +54,7 @@ export const EpisodeDetailsContainer = styled.div`
   grid-row-gap: 10px;
   align-items: center;
   justify-items: center;
+
   @media screen and (min-width: 800px) {
     grid-row: 1 / 2;
     grid-column: 2 / 3;
@@ -59,13 +64,13 @@ export const EpisodeDetailsContainer = styled.div`
   }
 `;
 
-export const EpisodeDescription = styled(ClampLines)`
+export const PodcastDescription = styled(ClampLines)`
   font-size: 16px;
   line-height: 30px;
   font-weight: 300;
 `;
 
-export const EpisodeButtonsContainer = styled.div`
+export const PodcastButtonsContainer = styled.div`
   width: 100%;
   height: 100%;
   grid-row: 3 / 4;
@@ -82,7 +87,7 @@ export const EpisodeButtonsContainer = styled.div`
   }
 `;
 
-export const EpisodeShareButton = styled.button`
+export const PodcastShareButton = styled.button`
   display: none;
 
   @media screen and (min-width: 800px) {
@@ -108,7 +113,7 @@ export const EpisodeShareButton = styled.button`
   }
 `;
 
-export const EpisodeItemsContainer = styled.div`
+export const PodcastItemsContainer = styled.div`
   width: 100%;
   height: 100%;
   grid-column: 1 / 2;
@@ -123,7 +128,7 @@ export const EpisodeItemsContainer = styled.div`
   }
 `;
 
-export const EpisodeLinksContainer = styled.div`
+export const PodcastLinksContainer = styled.div`
   grid-row: 4 / 5;
   grid-column: 1 / 2;
   display: grid;
@@ -141,7 +146,7 @@ export const EpisodeLinksContainer = styled.div`
   }
 `;
 
-export const EpisodeLinkContainer = styled.div`
+export const PodcastLinkContainer = styled.div`
   display: none;
 
   @media screen and (min-width: 800px) {
@@ -155,17 +160,7 @@ export const EpisodeLinkContainer = styled.div`
   }
 `;
 
-export const EpisodeLink = styled.a`
-  font-family: Inter;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 17px;
-  color: #b7b7b7;
-  text-decoration: none;
-`;
-
-export const EpisodeSearchInputContainer = styled.form`
+export const PodcastSearchInputContainer = styled.form`
   grid-row: 1 / 2;
   grid-column: 1 / 2;
   @media screen and (min-width: 800px) {

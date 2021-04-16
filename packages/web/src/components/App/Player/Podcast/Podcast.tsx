@@ -12,66 +12,31 @@ import {
 
 import { PlayerEpisode } from "src/machines/Player/Player.types";
 
-import convertPodcastNameToURL from "src/utils/convertPodcastNameToURL";
-import convertEpisodeNameToURL from "src/utils/convertEpisodeNameToURL";
-
 interface Props {
   ready: boolean;
   episode: PlayerEpisode | null;
 }
 
 const Podcast = ({ ready, episode }: Props) => {
-  if (!ready) {
-    return null;
-  }
-
-  if (!episode) {
-    return null;
-  }
-
-  const podcastRoute: string = convertPodcastNameToURL(
-    episode.podcast.name,
-    episode.podcast.appleId
-  );
-
-  const episodeRoute: string = convertEpisodeNameToURL(
-    episode.title,
-    episode.podcast.appleId
-  );
-
   return (
     <PodcastContainer>
-      <ReactRouterLink
-        to={{ pathname: episodeRoute, state: { _id: episode._id } }}
-        className="podcast-image"
-      >
-        <PodcastImage src={episode.image} />
+      <ReactRouterLink to="/" className="podcast-image">
+        <PodcastImage src="https://bit.ly/sage-adebayo" />
       </ReactRouterLink>
 
       <PodcastDetails>
-        <Link
-          as={ReactRouterLink}
-          to={{
-            pathname: episodeRoute,
-            state: { _id: episode._id },
-          }}
-          fontSize="16px"
-          fontWeight="500"
-        >
-          {episode.title}
+        <Link as={ReactRouterLink} to="/" fontSize="16px" fontWeight="500">
+          Implementation with React Query
         </Link>
 
         <Link
           as={ReactRouterLink}
-          to={{
-            pathname: podcastRoute,
-            state: { _id: episode.podcast._id },
-          }}
+          to="/"
           fontSize="16px"
           fontWeight="300"
           lineHeight="30px"
         >
-          {episode.podcast.name}
+          Implementation with React Query
         </Link>
 
         <PodcastFavoriteContainer>

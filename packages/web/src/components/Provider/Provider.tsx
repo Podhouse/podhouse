@@ -1,31 +1,24 @@
 import React from "react";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
 import { BrowserRouter } from "react-router-dom";
 import { Global } from "@emotion/react";
 import { ChakraProvider, ColorModeScript } from "@chakra-ui/react";
-import { RelayEnvironmentProvider } from "react-relay/hooks";
 
-import environment from "src/relay/RelayEnvironment";
-
-import { SearchProvider } from "src/machines/Search/SearchContext";
 import { PlayerProvider } from "src/machines/Player/PlayerContext";
-import { AuthProvider } from "src/machines/Auth/AuthContext";
 
 import App from "src/components/App/App";
 
 import theme from "src/system/theme";
 
-import "keen-slider/keen-slider.min.css";
+const queryClient = new QueryClient();
 
 const Provider = () => (
-  <RelayEnvironmentProvider environment={environment}>
-    <BrowserRouter>
+  <BrowserRouter>
+    <QueryClientProvider client={queryClient}>
       <ChakraProvider theme={theme}>
         <PlayerProvider>
-          <SearchProvider>
-            <AuthProvider>
-              <App />
-            </AuthProvider>
-          </SearchProvider>
+          <App />
         </PlayerProvider>
       </ChakraProvider>
 
@@ -194,8 +187,9 @@ const Provider = () => (
       />
 
       <ColorModeScript initialColorMode={theme.config.initialColorMode} />
-    </BrowserRouter>
-  </RelayEnvironmentProvider>
+      <ReactQueryDevtools initialIsOpen />
+    </QueryClientProvider>
+  </BrowserRouter>
 );
 
 export default Provider;

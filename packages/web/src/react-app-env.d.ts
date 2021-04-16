@@ -7,10 +7,6 @@ interface Window {
   detachEvent(event: string, listener: EventListener): void;
 }
 
-declare module "babel-plugin-relay/macro" {
-  export { graphql as default } from "react-relay";
-}
-
 declare module "react-router-sitemap";
 declare module "read-more-react";
 declare module "react-truncate";

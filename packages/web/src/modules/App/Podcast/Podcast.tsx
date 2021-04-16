@@ -1,126 +1,96 @@
-import React, { useState, useEffect, Suspense } from "react";
+import React from "react";
 import Scrollbars from "react-custom-scrollbars";
-import graphql from "babel-plugin-relay/macro";
-import { useQueryLoader } from "react-relay/hooks";
-import { useLocation } from "react-router-dom";
-import { ErrorBoundary } from "react-error-boundary";
+import { Heading, Button, Link, Image } from "@chakra-ui/react";
+import { ExternalLink } from "react-feather";
 
-import SkeletonPage from "src/components/Skeletons/SkeletonPage/SkeletonPage";
-import ErrorFallback from "src/components/ErrorFallback/ErrorFallback";
+import PodcastEpisodes from "./PodcastEpisodes/PodcastEpisodes";
 
-import PodcastInfo from "./PodcastInfo/PodcastInfo";
-
-import { PodcastQuery } from "./__generated__/PodcastQuery.graphql";
-import { PodcastInfoUserQuery } from "./__generated__/PodcastInfoUserQuery.graphql";
-
-const podcastQuery = graphql`
-  query PodcastQuery($_id: ID!) {
-    podcast(_id: $_id) {
-      _id
-      name
-      appleId
-      author
-      description
-      website
-      rss
-      image
-      ...PodcastEpisodes_episodes
-    }
-  }
-`;
-
-const userQuery = graphql`
-  query PodcastInfoUserQuery($input: UserSubscribedInput!) {
-    currentUser {
-      _id
-      subscribed(input: $input)
-    }
-  }
-`;
-
-type ScrollFrameType = {
-  clientHeight: number;
-  clientWidth: number;
-  left: number;
-  scrollHeight: number;
-  scrollLeft: number;
-  scrollTop: number;
-  scrollWidth: number;
-  top: number;
-};
-
-type LocationState = {
-  _id: string;
-};
+import {
+  PodcastContainer,
+  PodcastHeader,
+  PodcastDetailsContainer,
+  PodcastDescription,
+  PodcastButtonsContainer,
+  PodcastLinksContainer,
+  PodcastLinkContainer,
+} from "./Podcast.styles";
 
 const Podcast = () => {
-  const [shouldLoadMore, setShouldLoadMore] = useState<boolean>(false);
-
-  const { state } = useLocation<LocationState>();
-
-  const [
-    podcastQueryReference,
-    podcastLoadQuery,
-    podcastDisposeQuery,
-  ] = useQueryLoader<PodcastQuery>(podcastQuery);
-
-  const [
-    userQueryReference,
-    userLoadQuery,
-    userDisposeQuery,
-  ] = useQueryLoader<PodcastInfoUserQuery>(userQuery);
-
-  useEffect(() => {
-    podcastLoadQuery({ _id: state._id }, { fetchPolicy: "store-or-network" });
-    userLoadQuery({ input: { _id: state._id } });
-
-    return () => {
-      podcastDisposeQuery();
-      userDisposeQuery();
-    };
-  }, [
-    podcastLoadQuery,
-    userLoadQuery,
-    podcastDisposeQuery,
-    userDisposeQuery,
-    state._id,
-  ]);
-
-  const onLoadMore = (value: ScrollFrameType) => {
-    if (value.top === 1) {
-      setShouldLoadMore(true);
-    }
-    setShouldLoadMore(false);
-  };
-
-  const onRefetchQuery = () => {
-    podcastLoadQuery({ _id: state._id }, { fetchPolicy: "store-or-network" });
-    userLoadQuery({ input: { _id: state._id } });
-  };
-
   return (
     <Scrollbars
-      onScrollFrame={onLoadMore}
+      onScrollFrame={() => {}}
       autoHide
       autoHideTimeout={100}
       autoHideDuration={100}
     >
-      {podcastQueryReference && (
-        <ErrorBoundary
-          FallbackComponent={ErrorFallback}
-          onReset={onRefetchQuery}
-        >
-          <Suspense fallback={<SkeletonPage episodes={true} />}>
-            <PodcastInfo
-              podcastQueryReference={podcastQueryReference}
-              podcastQuery={podcastQuery}
-              userQueryReference={userQueryReference}
-              userQuery={userQuery}
-              shouldLoadMore={shouldLoadMore}
+      <PodcastContainer>
+        <PodcastHeader>
+          <Image
+            src="https://bit.ly/sage-adebayo"
+            objectFit="cover"
+            borderRadius={5}
+            maxWidth="200px"
+            loading="lazy"
+            justifySelf="center"
+          />
+
+          <PodcastDetailsContainer>
+            <Heading
+              as="h1"
+              fontWeight="700"
+              fontSize="36px"
+              letterSpacing="-0.03em"
+              textAlign="start"
+            >
+              Podcast
+            </Heading>
+
+            <Heading
+              as="h2"
+              fontSize="16px"
+              fontWeight="500"
+              letterSpacing="-0.03em"
+              textAlign="start"
+            >
+              Podcast
+            </Heading>
+
+            <PodcastDescription
+              text="Podcast"
+              id="podcast-info-description"
+              lines={3}
+              ellipsis="..."
+              moreText="Read more"
+              className="custom-class"
+              innerElement="p"
             />
-          </Suspense>
-        </ErrorBoundary>
-      )}
+          </PodcastDetailsContainer>
+
+          <PodcastButtonsContainer>
+            <Button type="button" width="100%">
+              Subscribe
+            </Button>
+          </PodcastButtonsContainer>
+
+          <PodcastLinksContainer>
+            <PodcastLinkContainer>
+              <Link href="/" isExternal>
+                Website
+              </Link>
+              <ExternalLink size={14} />
+            </PodcastLinkContainer>
+
+            <PodcastLinkContainer>
+              <Link href="/" isExternal>
+                RSS
+              </Link>
+              <ExternalLink size={14} />
+            </PodcastLinkContainer>
+          </PodcastLinksContainer>
+        </PodcastHeader>
+
+        <PodcastEpisodes />
+      </PodcastContainer>
     </Scrollbars>
   );
 };

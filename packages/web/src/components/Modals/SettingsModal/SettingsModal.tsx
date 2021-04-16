@@ -9,18 +9,10 @@ import {
 
 import useOnClickOutside from "src/hooks/useOnClickOutside";
 
-import { useLogout } from "src/utils/auth";
-
 const SettingsModal = () => {
-  const { onLogout } = useLogout();
-
   const ref = useRef<any>();
 
   useOnClickOutside(ref, () => {});
-
-  const onHandleLogout = () => {
-    onLogout();
-  };
 
   return (
     <SettingsModalContainer ref={ref}>
@@ -42,8 +34,8 @@ const SettingsModal = () => {
         <ReactRouterLink to="/settings">Settings</ReactRouterLink>
       </SettingsModalLinkContainer>
 
-      <SettingsModalLinkContainer onClick={onHandleLogout}>
-        <Link onClick={onHandleLogout}>Logout</Link>
+      <SettingsModalLinkContainer onClick={() => {}}>
+        <Link onClick={() => {}}>Logout</Link>
       </SettingsModalLinkContainer>
     </SettingsModalContainer>
   );

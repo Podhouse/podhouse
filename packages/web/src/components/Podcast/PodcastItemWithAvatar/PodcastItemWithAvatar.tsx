@@ -6,25 +6,12 @@ import {
   PodcastItemWithAvatarAvatar,
 } from "./PodcastItemWithAvatar.styles";
 
-import convertPodcastNameToURL from "src/utils/convertPodcastNameToURL";
-
-interface Props {
-  readonly node: {
-    readonly _id: string;
-    readonly name: string;
-    readonly appleId: number;
-    readonly image: string;
-  };
-}
-
-const PodcastItemWithAvatar = ({ node }: Props) => {
-  const route: string = convertPodcastNameToURL(node.name, node.appleId);
-
+const PodcastItemWithAvatar = () => {
   return (
     <PodcastItemWithAvatarContainer>
-      <ReactRouterLink to={{ pathname: route, state: { _id: node._id } }}>
+      <ReactRouterLink to="/">
         <PodcastItemWithAvatarAvatar
-          src={node.image}
+          src="https://bit.ly/sage-adebayo"
           alt="image"
           loading="lazy"
         />

@@ -26,14 +26,7 @@
     "web:cypress:run": "yarn workspace @podhouse/web cypress:run",
     "web:relay": "yarn workspace @podhouse/web relay",
     "web:generate-sitemap": "yarn workspace @podhouse/web generate-sitemap",
-    "server:start": "yarn workspace @podhouse/server start",
-    "server:build": "yarn workspace @podhouse/server build",
-    "server:test": "yarn workspace @podhouse/server test",
-    "server:lint": "yarn workspace @podhouse/server lint",
-    "server:format": "yarn workspace @podhouse/server format",
-    "lint:staged": "lint-staged",
-    "update-schema": "yarn workspace @podhouse/server update-schema",
-    "relay": "yarn workspace @podhouse/web relay"
+    "lint:staged": "lint-staged"
   },
   "dependencies": {
     "lerna": "^4.0.0"
@@ -51,13 +44,8 @@
   },
   "lint-staged": {
     "*.{js,ts,tsx}": [
-      "yarn update-schema",
-      "yarn relay",
-      "yarn server:build",
       "yarn web:build",
-      "yarn server:lint",
       "yarn web:lint",
-      "yarn server:format",
       "yarn web:format",
       "yarn web:generate-sitemap",
       "yarn landing:generate-sitemap",

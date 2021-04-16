@@ -9,35 +9,20 @@ import {
 
 import PodcastItemWithDetails from "src/components/Podcast/PodcastItemWithDetails/PodcastItemWithDetails";
 
-interface Props {
-  title: string;
-  readonly podcasts: {
-    readonly edges: ReadonlyArray<{
-      readonly node: {
-        readonly id: string;
-        readonly _id: string;
-        readonly name: string;
-        readonly author: string;
-        readonly appleId: number;
-        readonly image: string;
-      } | null;
-    } | null>;
-  };
-}
-
-const PodcastsWithDetailsList = ({ title, podcasts }: Props) => (
+const PodcastsWithDetailsList = () => (
   <PodcastsWithDetailsListContainer>
     <PodcastsWithDetailsListHeader>
       <Heading as="h1" fontSize={14} fontWeight="500" textAlign="start">
-        {title}
+        PodcastsWithDetailsList
       </Heading>
       <Divider orientation="horizontal" />
     </PodcastsWithDetailsListHeader>
 
     <PodcastsWithDetailsListSection>
-      {podcasts.edges.map(({ node }: any) => (
-        <PodcastItemWithDetails key={node.id} node={node} />
-      ))}
+      <PodcastItemWithDetails key="1" />
+      <PodcastItemWithDetails key="2" />
+      <PodcastItemWithDetails key="3" />
+      <PodcastItemWithDetails key="4" />
     </PodcastsWithDetailsListSection>
   </PodcastsWithDetailsListContainer>
 );
