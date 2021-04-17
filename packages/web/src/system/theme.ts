@@ -23,8 +23,8 @@ const theme = extendTheme({
     Button: {
       baseStyle: {
         fontFamily: "Passenger Sans",
+        fontWeight: "normal",
         fontStyle: "normal",
-        fontWeight: "500",
         fontSize: "16px",
         lineHeight: "30px",
       },
@@ -32,8 +32,8 @@ const theme = extendTheme({
     Link: {
       baseStyle: {
         fontFamily: "Passenger Sans",
+        fontWeight: "normal",
         fontStyle: "normal",
-        fontWeight: "500",
         fontSize: "16px",
         lineHeight: "30px",
       },
@@ -41,8 +41,8 @@ const theme = extendTheme({
     Text: {
       baseStyle: {
         fontFamily: "Passenger Sans",
-        fontStyle: "normal",
         fontWeight: "300",
+        fontStyle: "normal",
         fontSize: "16px",
         lineHeight: "30px",
       },

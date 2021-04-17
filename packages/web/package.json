@@ -28,10 +28,12 @@
     "@reach/slider": "^0.15.0",
     "@testing-library/jest-dom": "^5.11.10",
     "@testing-library/react": "^11.2.6",
+    "@testing-library/react-hooks": "^5.1.1",
     "@testing-library/user-event": "^13.1.3",
     "@typescript-eslint/eslint-plugin": "^4.22.0",
     "@typescript-eslint/parser": "^4.22.0",
     "@xstate/react": "^1.3.1",
+    "@xstate/test": "^0.4.2",
     "axios": "^0.21.1",
     "babel-eslint": "^10.1.0",
     "babel-preset-es2015": "^6.24.1",
@@ -88,7 +90,7 @@
     "workbox-routing": "^6.1.5",
     "workbox-strategies": "^6.1.5",
     "workbox-streams": "^6.1.5",
-    "xstate": "^4.17.1",
+    "xstate": "^4.18.0",
     "yup": "^0.32.9"
   },
   "devDependencies": {
