@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-export const PodcastEpisodesContainer = styled.div`
+export const EpisodesContainer = styled.div`
   width: 100%;
   height: auto;
   display: grid;

@@ -9,7 +9,14 @@ import {
 
 import PodcastItemWithAvatar from "src/components/Podcast/PodcastItemWithAvatar/PodcastItemWithAvatar";
 
-const PodcastsWithOnlyAvatarList = () => (
+import { TrendingItem } from "src/queries/types";
+
+interface Props {
+  title: string;
+  feeds: Array<TrendingItem>;
+}
+
+const PodcastsWithOnlyAvatarList = ({ title, feeds }: Props) => (
   <PodcastsWithOnlyAvatarListContainer>
     <PodcastsWithOnlyAvatarListHeader>
       <Heading
@@ -20,16 +27,15 @@ const PodcastsWithOnlyAvatarList = () => (
         lineHeight="30px"
         textAlign="start"
       >
-        PodcastsWithOnlyAvatarList
+        {title}
       </Heading>
       <Divider orientation="horizontal" />
     </PodcastsWithOnlyAvatarListHeader>
 
     <PodcastsWithOnlyAvatarListSection>
-      <PodcastItemWithAvatar key="1" />
-      <PodcastItemWithAvatar key="2" />
-      <PodcastItemWithAvatar key="3" />
-      <PodcastItemWithAvatar key="4" />
+      {feeds.map(({ id, image }: TrendingItem) => (
+        <PodcastItemWithAvatar key={id} id={id} image={image} />
+      ))}
     </PodcastsWithOnlyAvatarListSection>
   </PodcastsWithOnlyAvatarListContainer>
 );

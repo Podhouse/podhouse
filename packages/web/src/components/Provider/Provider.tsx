@@ -11,7 +11,14 @@ import App from "src/components/App/App";
 
 import theme from "src/system/theme";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: 0,
+      suspense: true,
+    },
+  },
+});
 
 const Provider = () => (
   <BrowserRouter>

@@ -6,15 +6,16 @@ import {
   PodcastItemWithAvatarAvatar,
 } from "./PodcastItemWithAvatar.styles";
 
-const PodcastItemWithAvatar = () => {
+interface Props {
+  id: number;
+  image: string;
+}
+
+const PodcastItemWithAvatar = ({ id, image }: Props) => {
   return (
     <PodcastItemWithAvatarContainer>
-      <ReactRouterLink to="/">
-        <PodcastItemWithAvatarAvatar
-          src="https://bit.ly/sage-adebayo"
-          alt="image"
-          loading="lazy"
-        />
+      <ReactRouterLink to={{ pathname: `/podcast/${id}`, state: { id } }}>
+        <PodcastItemWithAvatarAvatar src={image} alt="image" loading="lazy" />
       </ReactRouterLink>
     </PodcastItemWithAvatarContainer>
   );
