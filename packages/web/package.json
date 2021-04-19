@@ -72,6 +72,7 @@
     "react-router-sitemap": "^1.2.0",
     "react-scripts": "^4.0.3",
     "react-truncate": "^2.4.0",
+    "react-virtual": "^2.7.1",
     "read-more-react": "^1.0.10",
     "rehawk": "^0.2.4",
     "relay-hooks": "^4.2.0",
