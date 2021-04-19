@@ -74,14 +74,14 @@ const Header = () => {
 
       <HeaderLinksContainer>
         <HeaderLinkContainer>
-          <Link href="/" isExternal>
+          <Link href={data.feed.url} isExternal>
             Website
           </Link>
           <ExternalLink size={14} />
         </HeaderLinkContainer>
 
         <HeaderLinkContainer>
-          <Link href="/" isExternal>
+          <Link href={data.feed.originalUrl} isExternal>
             RSS
           </Link>
           <ExternalLink size={14} />

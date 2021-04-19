@@ -1,8 +1,6 @@
 import React from "react";
 import { Link as ReactRouterLink } from "react-router-dom";
 import { BsPlay } from "react-icons/bs";
-import { format } from "date-fns";
-import fromUnixTime from "date-fns/fromUnixTime";
 
 import {
   EpisodeItemContainer,
@@ -13,6 +11,8 @@ import {
   EpisodeItemDuration,
   EpisodeItemButton,
 } from "./EpisodeItem.styles";
+
+import { formatTime, formatDate } from "src/utils/";
 
 interface Props {
   id: number;
@@ -29,9 +29,6 @@ const EpisodeItem = ({
   datePublished,
   duration,
 }: Props) => {
-  const date = fromUnixTime(datePublished);
-  const formattedDate = format(date, "dd MMM yyy");
-
   return (
     <EpisodeItemContainer>
       <EpisodeNameDescription>
@@ -59,7 +56,7 @@ const EpisodeItem = ({
         lineHeight="30px"
         textAlign="start"
       >
-        {formattedDate}
+        {formatDate(datePublished)}
       </EpisodeItemPublishedDate>
 
       <EpisodeItemDuration
@@ -68,7 +65,7 @@ const EpisodeItem = ({
         lineHeight="30px"
         textAlign="start"
       >
-        {duration}
+        {formatTime(duration)}
       </EpisodeItemDuration>
 
       <EpisodeItemButton
