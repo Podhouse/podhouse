@@ -15,7 +15,7 @@ export const EpisodeItemContainer = styled.div`
         min-content,
         50px
       );
-    grid-template-rows: max-content max-content;
+    grid-template-rows: max-content max-content max-content;
   }
 `;
 
@@ -25,7 +25,7 @@ export const EpisodeNameDescription = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: max-content max-content;
-  grid-row-gap: 10px;
+  grid-row-gap: 5px;
   grid-row: 1 / 2;
   grid-column: 1 / 4;
 
@@ -107,4 +107,9 @@ export const EpisodeItemButton = styled(Button)`
     grid-row: 1 / 3;
     align-self: center;
   }
+`;
+
+export const EpisodeDividerContainer = styled.div`
+  grid-column: 1 / 5;
+  grid-row: 4 / 5;
 `;

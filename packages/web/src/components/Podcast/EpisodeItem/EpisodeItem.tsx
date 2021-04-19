@@ -1,4 +1,5 @@
 import React from "react";
+import { Divider } from "@chakra-ui/react";
 import { Link as ReactRouterLink } from "react-router-dom";
 import { BsPlay } from "react-icons/bs";
 
@@ -10,6 +11,7 @@ import {
   EpisodeItemPublishedDate,
   EpisodeItemDuration,
   EpisodeItemButton,
+  EpisodeDividerContainer
 } from "./EpisodeItem.styles";
 
 import { formatTime, formatDate } from "src/utils/";
@@ -75,6 +77,10 @@ const EpisodeItem = ({
       >
         Play
       </EpisodeItemButton>
+
+      <EpisodeDividerContainer>
+        <Divider />
+      </EpisodeDividerContainer>
     </EpisodeItemContainer>
   );
 };
