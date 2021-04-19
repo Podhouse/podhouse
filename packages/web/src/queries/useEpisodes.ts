@@ -26,10 +26,16 @@ const useEpisodes = (id: number) => {
     },
   };
 
-  return useQuery<PodcastEpisodesResult, Episode, any>("episodes", async () => {
-    const { data } = await axios(options);
-    return data;
-  });
+  return useQuery<PodcastEpisodesResult, Episode, any>(
+    "episodes",
+    async () => {
+      const { data } = await axios(options);
+      return data;
+    },
+    {
+      retry: 10,
+    }
+  );
 };
 
 export default useEpisodes;

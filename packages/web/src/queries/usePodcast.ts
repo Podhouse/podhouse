@@ -26,10 +26,16 @@ const usePodcast = (id: number) => {
     },
   };
 
-  return useQuery<PodcastsResult, Podcast, any>("podcast", async () => {
-    const { data } = await axios(options);
-    return data;
-  });
+  return useQuery<PodcastsResult, Podcast, any>(
+    "podcast",
+    async () => {
+      const { data } = await axios(options);
+      return data;
+    },
+    {
+      retry: 10,
+    }
+  );
 };
 
 export default usePodcast;
