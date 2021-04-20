@@ -16,13 +16,7 @@ const Browse = () => {
   return (
     <Scrollbars autoHide autoHideTimeout={100} autoHideDuration={100}>
       <ErrorBoundary FallbackComponent={ErrorFallback} onReset={reset}>
-        <Suspense
-          fallback={
-            <BrowseSkeletonContainer>
-              <SkeletonPodcastsWithOnlyAvatarList />
-            </BrowseSkeletonContainer>
-          }
-        >
+        <Suspense fallback={<SkeletonPodcastsWithOnlyAvatarList />}>
           <BrowseContainer>
             <Trending />
           </BrowseContainer>

@@ -1,7 +1,25 @@
 import React, { useState, useEffect, Suspense } from "react";
 import Scrollbars from "react-custom-scrollbars";
+import { ErrorBoundary } from "react-error-boundary";
+import { useQueryErrorResetBoundary } from "react-query";
+import { Input, Stack, Button, Heading, Text } from "@chakra-ui/react";
+
+import ErrorFallback from "src/components/ErrorFallback/ErrorFallback";
+import SkeletonPodcastsWithOnlyAvatarList from "src/components/Skeletons/SkeletonPodcastsWithOnlyAvatarList/SkeletonPodcastsWithOnlyAvatarList";
+
+import { SearchContainer, SearchSkeletonContainer } from "./Search.styles";
+
+import Results from "./Results/Results";
 
 const Search = () => {
+  const [text, setText] = useState<string>("");
+
+  const { reset } = useQueryErrorResetBoundary();
+
+  const onHandleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setText(e.target.value);
+  };
+
   return (
     <Scrollbars
       onScrollFrame={() => {}}
@@ -9,7 +27,65 @@ const Search = () => {
       autoHideTimeout={100}
       autoHideDuration={100}
     >
-      <h1>Search...</h1>
+      <SearchContainer>
+        <Stack direction="column" spacing="10px">
+          <Heading
+            color="#101010"
+            as="h2"
+            fontSize={36}
+            letterSpacing="-0.03em"
+            textAlign="center"
+            fontWeight="600"
+          >
+            Search
+          </Heading>
+
+          <Text
+            color="#6F6F6F"
+            fontSize={16}
+            lineHeight="30px"
+            fontWeight="300"
+            textAlign="center"
+          >
+            You can search your podcasts here and we'll help you to find the
+            right one.
+          </Text>
+
+          <Stack direction="row" spacing="0px">
+            <Input
+              pr="4.5rem"
+              type="text"
+              size="lg"
+              placeholder="Enter password"
+              onChange={onHandleChange}
+              borderTopRightRadius="0px"
+              borderBottomRightRadius="0px"
+            />
+
+            <Button
+              type="submit"
+              size="lg"
+              borderTopLeftRadius="0px"
+              borderBottomLeftRadius="0px"
+              onClick={() => {}}
+            >
+              Search
+            </Button>
+          </Stack>
+        </Stack>
+
+        {/* <ErrorBoundary FallbackComponent={ErrorFallback} onReset={reset}>
+          <Suspense
+            fallback={
+              <SearchSkeletonContainer>
+                <SkeletonPodcastsWithOnlyAvatarList />
+              </SearchSkeletonContainer>
+            }
+          >
+            <Results text={text} />
+          </Suspense>
+        </ErrorBoundary> */}
+      </SearchContainer>
     </Scrollbars>
   );
 };

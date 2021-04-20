@@ -1,15 +1,16 @@
 import styled from "@emotion/styled";
 
-export const SkeletonPodcastsWithDetailsListContainer = styled.div`
+export const Container = styled.div`
   width: 100%;
-  height: 100%;
+  height: fit-content;
+  max-width: 1000px;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: max-content 1fr;
   grid-row-gap: 20px;
 `;
 
-export const SkeletonPodcastsWithDetailsListHeader = styled.div`
+export const ListHeader = styled.div`
   width: 100%;
   height: auto;
   grid-column: 1 / 2;
@@ -20,7 +21,7 @@ export const SkeletonPodcastsWithDetailsListHeader = styled.div`
   grid-template-rows: max-content max-content;
 `;
 
-export const SkeletonPodcastsWithDetailsListSection = styled.div`
+export const ListSection = styled.div`
   width: 100%;
   height: auto;
   grid-column: 1 / 2;

@@ -27,13 +27,14 @@ const usePodcast = (id: number) => {
   };
 
   return useQuery<PodcastsResult, Podcast, any>(
-    "podcast",
+    ["podcast", id],
     async () => {
       const { data } = await axios(options);
       return data;
     },
     {
       retry: 10,
+      enabled: Boolean(id),
     }
   );
 };

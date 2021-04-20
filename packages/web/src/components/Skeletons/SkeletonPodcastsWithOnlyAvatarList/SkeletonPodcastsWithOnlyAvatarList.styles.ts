@@ -2,14 +2,17 @@ import styled from "@emotion/styled";
 
 export const Container = styled.div`
   width: 100%;
-  height: 100%;
+  max-width: 1000px;
+  height: fit-content;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(auto-fill, max-content);
-  grid-row-gap: 20px;
+  grid-row-gap: 30px;
+  padding: 20px;
+  margin: 0 auto;
 `;
 
-export const SkeletonPodcastsWithOnlyAvatarListContainer = styled.div`
+export const ListContainer = styled.div`
   width: 100%;
   height: 100%;
   display: grid;
@@ -18,7 +21,7 @@ export const SkeletonPodcastsWithOnlyAvatarListContainer = styled.div`
   grid-row-gap: 20px;
 `;
 
-export const SkeletonPodcastsWithOnlyAvatarListHeader = styled.div`
+export const ListHeader = styled.div`
   width: 100%;
   height: auto;
   grid-column: 1 / 2;
@@ -29,7 +32,7 @@ export const SkeletonPodcastsWithOnlyAvatarListHeader = styled.div`
   grid-template-rows: max-content max-content;
 `;
 
-export const SkeletonPodcastsWithOnlyAvatarListSection = styled.div`
+export const ListSection = styled.div`
   width: 100%;
   height: auto;
   grid-column: 1 / 2;

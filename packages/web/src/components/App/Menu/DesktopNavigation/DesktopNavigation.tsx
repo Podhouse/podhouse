@@ -30,7 +30,7 @@ const DesktopNavigation = () => (
         justifyContent="flex-start"
       >
         Search
-        </Button>
+      </Button>
     </GridItem>
 
     <GridItem w="100%" h="35px">

@@ -11,7 +11,7 @@ import {
   EpisodeItemPublishedDate,
   EpisodeItemDuration,
   EpisodeItemButton,
-  EpisodeDividerContainer
+  EpisodeDividerContainer,
 } from "./EpisodeItem.styles";
 
 import { formatTime, formatDate } from "src/utils/";

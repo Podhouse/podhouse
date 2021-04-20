@@ -3,7 +3,7 @@ import ClampLines from "react-clamp-lines";
 
 export const EpisodeContainer = styled.div`
   width: 100%;
-  height: 100%;
+  height: fit-content;
   max-width: 1000px;
   display: grid;
   grid-template-columns: 1fr;

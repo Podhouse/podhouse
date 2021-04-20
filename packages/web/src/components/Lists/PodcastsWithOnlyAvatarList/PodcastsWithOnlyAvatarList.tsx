@@ -16,28 +16,30 @@ interface Props {
   feeds: Array<TrendingItem>;
 }
 
-const PodcastsWithOnlyAvatarList = ({ title, feeds }: Props) => (
-  <PodcastsWithOnlyAvatarListContainer>
-    <PodcastsWithOnlyAvatarListHeader>
-      <Heading
-        as="h1"
-        fontSize={16}
-        fontWeight="600"
-        letterSpacing="-0.03em"
-        lineHeight="30px"
-        textAlign="start"
-      >
-        {title}
-      </Heading>
-      <Divider orientation="horizontal" />
-    </PodcastsWithOnlyAvatarListHeader>
+const PodcastsWithOnlyAvatarList = ({ title, feeds }: Props) => {
+  return (
+    <PodcastsWithOnlyAvatarListContainer>
+      <PodcastsWithOnlyAvatarListHeader>
+        <Heading
+          as="h1"
+          fontSize={16}
+          fontWeight="600"
+          letterSpacing="-0.03em"
+          lineHeight="30px"
+          textAlign="start"
+        >
+          {title}
+        </Heading>
+        <Divider orientation="horizontal" />
+      </PodcastsWithOnlyAvatarListHeader>
 
-    <PodcastsWithOnlyAvatarListSection>
-      {feeds.map(({ id, image }: TrendingItem) => (
-        <PodcastItemWithAvatar key={id} id={id} image={image} />
-      ))}
-    </PodcastsWithOnlyAvatarListSection>
-  </PodcastsWithOnlyAvatarListContainer>
-);
+      <PodcastsWithOnlyAvatarListSection>
+        {feeds.map(({ id, image }: TrendingItem) => (
+          <PodcastItemWithAvatar key={id} id={id} image={image} />
+        ))}
+      </PodcastsWithOnlyAvatarListSection>
+    </PodcastsWithOnlyAvatarListContainer>
+  );
+};
 
 export default PodcastsWithOnlyAvatarList;

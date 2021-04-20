@@ -13,7 +13,12 @@ type Location = {
   id: number;
 };
 
-const VirtualizedList = ({ size, children, scrollToIndexRef, ...props }: any) => {
+const VirtualizedList = ({
+  size,
+  children,
+  scrollToIndexRef,
+  ...props
+}: any) => {
   const parentRef = useRef<HTMLDivElement>(null);
   const rowVirtualizer = useVirtual({
     size,
@@ -27,11 +32,11 @@ const VirtualizedList = ({ size, children, scrollToIndexRef, ...props }: any) =>
   return (
     <EpisodesContainer ref={parentRef} {...props}>
       {rowVirtualizer.virtualItems.map(({ index }) => {
-        return children(index)
+        return children(index);
       })}
     </EpisodesContainer>
   );
-}
+};
 
 const Episodes = () => {
   const { state } = useLocation<Location>();
@@ -39,7 +44,7 @@ const Episodes = () => {
   const parentRef = useRef<any>();
   const rowVirtualizer = useVirtual({
     size: data.count,
-    parentRef
+    parentRef,
   });
 
   return (
@@ -48,7 +53,7 @@ const Episodes = () => {
         style={{
           height: `${rowVirtualizer.totalSize}px`,
           width: "100%",
-          position: "relative"
+          position: "relative",
         }}
       >
         <VirtualizedList size={data.count}>
@@ -64,7 +69,7 @@ const Episodes = () => {
                 datePublished={item.datePublished}
                 duration={item.duration}
               />
-            )
+            );
           }}
         </VirtualizedList>
       </div>
