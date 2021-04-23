@@ -1,11 +1,5 @@
 import React from "react";
-import { Heading, Divider } from "@chakra-ui/react";
-
-import {
-  PodcastsWithOnlyAvatarListContainer,
-  PodcastsWithOnlyAvatarListSection,
-  PodcastsWithOnlyAvatarListHeader,
-} from "./PodcastsWithOnlyAvatarList.styles";
+import { Stack, Heading, Divider, Grid } from "@chakra-ui/react";
 
 import PodcastItemWithAvatar from "src/components/Podcast/PodcastItemWithAvatar/PodcastItemWithAvatar";
 
@@ -18,8 +12,8 @@ interface Props {
 
 const PodcastsWithOnlyAvatarList = ({ title, feeds }: Props) => {
   return (
-    <PodcastsWithOnlyAvatarListContainer>
-      <PodcastsWithOnlyAvatarListHeader>
+    <Stack direction="column" spacing="20px">
+      <Stack direction="column" spacing="5px">
         <Heading
           as="h1"
           fontSize={16}
@@ -31,14 +25,14 @@ const PodcastsWithOnlyAvatarList = ({ title, feeds }: Props) => {
           {title}
         </Heading>
         <Divider orientation="horizontal" />
-      </PodcastsWithOnlyAvatarListHeader>
+      </Stack>
 
-      <PodcastsWithOnlyAvatarListSection>
+      <Grid templateColumns="repeat(auto-fill, 140px)" gap={5}>
         {feeds.map(({ id, image }: TrendingItem) => (
           <PodcastItemWithAvatar key={id} id={id} image={image} />
         ))}
-      </PodcastsWithOnlyAvatarListSection>
-    </PodcastsWithOnlyAvatarListContainer>
+      </Grid>
+    </Stack>
   );
 };
 

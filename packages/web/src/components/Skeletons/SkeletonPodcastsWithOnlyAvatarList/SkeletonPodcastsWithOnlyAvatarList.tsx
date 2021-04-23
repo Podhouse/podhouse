@@ -1,44 +1,35 @@
 import React from "react";
-import { Divider, Skeleton } from "@chakra-ui/react";
-
-import {
-  Container,
-  ListContainer,
-  ListHeader,
-  ListSection,
-} from "./SkeletonPodcastsWithOnlyAvatarList.styles";
+import { Divider, Skeleton, Stack, Grid } from "@chakra-ui/react";
 
 const SkeletonPodcastsWithOnlyAvatarList = () => {
   const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
   return (
-    <Container>
-      <ListContainer>
-        <ListHeader>
+    <Stack direction="column" spacing="20px">
+      <Stack direction="column" spacing="5px">
+        <Skeleton
+          startColor="#E2E8F0"
+          endColor="#E2E8F0"
+          borderRadius={3}
+          width="120px"
+          height="30px"
+        />
+        <Divider orientation="horizontal" />
+      </Stack>
+
+      <Grid templateColumns="repeat(auto-fill, 140px)" gap={5}>
+        {array.map((item) => (
           <Skeleton
+            key={item}
             startColor="#E2E8F0"
             endColor="#E2E8F0"
             borderRadius={3}
-            width="120px"
-            height="30px"
+            width="140px"
+            height="140px"
           />
-          <Divider orientation="horizontal" />
-        </ListHeader>
-
-        <ListSection>
-          {array.map((item) => (
-            <Skeleton
-              key={item}
-              startColor="#E2E8F0"
-              endColor="#E2E8F0"
-              borderRadius={3}
-              width="140px"
-              height="140px"
-            />
-          ))}
-        </ListSection>
-      </ListContainer>
-    </Container>
+        ))}
+      </Grid>
+    </Stack>
   );
 };
 

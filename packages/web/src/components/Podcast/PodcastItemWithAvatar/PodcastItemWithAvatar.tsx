@@ -1,10 +1,6 @@
 import React from "react";
 import { Link as ReactRouterLink } from "react-router-dom";
-
-import {
-  PodcastItemWithAvatarContainer,
-  PodcastItemWithAvatarAvatar,
-} from "./PodcastItemWithAvatar.styles";
+import { Image } from "@chakra-ui/react";
 
 interface Props {
   id: number;
@@ -13,11 +9,18 @@ interface Props {
 
 const PodcastItemWithAvatar = ({ id, image }: Props) => {
   return (
-    <PodcastItemWithAvatarContainer>
-      <ReactRouterLink to={{ pathname: `/podcast/${id}`, state: { id } }}>
-        <PodcastItemWithAvatarAvatar src={image} alt="image" loading="lazy" />
-      </ReactRouterLink>
-    </PodcastItemWithAvatarContainer>
+    <ReactRouterLink to={{ pathname: `/podcast/${id}`, state: { id } }}>
+      <Image
+        width="140px"
+        height="140px"
+        cursor="pointer"
+        borderRadius="5px"
+        src={image}
+        alt="image"
+        loading="lazy"
+        objectFit="cover"
+      />
+    </ReactRouterLink>
   );
 };
 
