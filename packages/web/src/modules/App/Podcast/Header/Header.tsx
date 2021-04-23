@@ -28,7 +28,6 @@ type Location = {
 
 const Header = () => {
   const { state } = useLocation<Location>();
-
   const { data } = usePodcast(state.id);
 
   return (

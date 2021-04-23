@@ -1,5 +1,16 @@
 import React from "react";
-import { Divider, Image, Stack, Text, Box, IconButton } from "@chakra-ui/react";
+import {
+  Divider,
+  Image,
+  Stack,
+  Text,
+  Box,
+  IconButton,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+} from "@chakra-ui/react";
 import { Link as ReactRouterLink } from "react-router-dom";
 import { BsHeart, BsThreeDots, BsPlay } from "react-icons/bs";
 
@@ -68,12 +79,23 @@ const FavoriteItem = ({
         {formatTime(duration)}
       </Text>
 
-      <IconButton
-        aria-label="Options"
-        icon={<BsThreeDots size="30px" />}
-        variant="ghost"
-        width="fit-content"
-      />
+      <Box alignSelf="center">
+        <Menu>
+          <MenuButton
+            as={IconButton}
+            aria-label="Options"
+            variant="ghost"
+            icon={<BsThreeDots size="30px" />}
+            alignSelf="center"
+          />
+          <MenuList>
+            <MenuItem>Play next</MenuItem>
+            <MenuItem>Play last</MenuItem>
+            <MenuItem>Mark as played</MenuItem>
+            <MenuItem>Share</MenuItem>
+          </MenuList>
+        </Menu>
+      </Box>
 
       <IconButton
         aria-label="Play episode"

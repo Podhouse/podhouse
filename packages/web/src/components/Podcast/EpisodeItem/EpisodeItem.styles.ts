@@ -96,7 +96,7 @@ export const EpisodeItemDuration = styled(Text)`
   }
 `;
 
-export const EpisodeMenuButton = styled(Menu)`
+export const EpisodeMenuButton = styled.div`
   grid-column: 3 / 4;
   grid-row: 3 / 4;
   align-self: center;

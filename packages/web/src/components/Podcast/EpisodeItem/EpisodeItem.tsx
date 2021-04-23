@@ -5,12 +5,6 @@ import {
   MenuButton,
   MenuList,
   MenuItem,
-  MenuItemOption,
-  MenuGroup,
-  MenuOptionGroup,
-  MenuIcon,
-  MenuCommand,
-  MenuDivider,
   IconButton,
 } from "@chakra-ui/react";
 import { Link as ReactRouterLink } from "react-router-dom";
@@ -84,20 +78,23 @@ const EpisodeItem = ({
         {formatTime(duration)}
       </EpisodeItemDuration>
 
-      <Menu>
-        <MenuButton
-          as={IconButton}
-          aria-label="Options"
-          variant="ghost"
-          icon={<BsThreeDots size="30px" />}
-        />
-        <MenuList>
-          <MenuItem>Play next</MenuItem>
-          <MenuItem>Play last</MenuItem>
-          <MenuItem>Mark as played</MenuItem>
-          <MenuItem>Share</MenuItem>
-        </MenuList>
-      </Menu>
+      <EpisodeMenuButton>
+        <Menu>
+          <MenuButton
+            as={IconButton}
+            aria-label="Options"
+            variant="ghost"
+            icon={<BsThreeDots size="30px" />}
+            alignSelf="center"
+          />
+          <MenuList>
+            <MenuItem>Play next</MenuItem>
+            <MenuItem>Play last</MenuItem>
+            <MenuItem>Mark as played</MenuItem>
+            <MenuItem>Share</MenuItem>
+          </MenuList>
+        </Menu>
+      </EpisodeMenuButton>
 
       <EpisodeItemButton
         aria-label="Play episode"
