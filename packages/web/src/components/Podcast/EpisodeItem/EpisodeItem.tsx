@@ -1,5 +1,18 @@
 import React from "react";
-import { Divider } from "@chakra-ui/react";
+import {
+  Divider,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  MenuItemOption,
+  MenuGroup,
+  MenuOptionGroup,
+  MenuIcon,
+  MenuCommand,
+  MenuDivider,
+  IconButton,
+} from "@chakra-ui/react";
 import { Link as ReactRouterLink } from "react-router-dom";
 import { BsPlay, BsThreeDots } from "react-icons/bs";
 
@@ -71,11 +84,20 @@ const EpisodeItem = ({
         {formatTime(duration)}
       </EpisodeItemDuration>
 
-      <EpisodeMenuButton
-        aria-label="Options"
-        icon={<BsThreeDots size="30px" />}
-        variant="ghost"
-      />
+      <Menu>
+        <MenuButton
+          as={IconButton}
+          aria-label="Options"
+          variant="ghost"
+          icon={<BsThreeDots size="30px" />}
+        />
+        <MenuList>
+          <MenuItem>Play next</MenuItem>
+          <MenuItem>Play last</MenuItem>
+          <MenuItem>Mark as played</MenuItem>
+          <MenuItem>Share</MenuItem>
+        </MenuList>
+      </Menu>
 
       <EpisodeItemButton
         aria-label="Play episode"

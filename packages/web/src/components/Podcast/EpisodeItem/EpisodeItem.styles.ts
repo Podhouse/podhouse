@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Button, Text, IconButton } from "@chakra-ui/react";
+import { Text, IconButton, Menu } from "@chakra-ui/react";
 
 export const EpisodeItemContainer = styled.div`
   width: 100%;
@@ -96,7 +96,7 @@ export const EpisodeItemDuration = styled(Text)`
   }
 `;
 
-export const EpisodeMenuButton = styled(IconButton)`
+export const EpisodeMenuButton = styled(Menu)`
   grid-column: 3 / 4;
   grid-row: 3 / 4;
   align-self: center;
