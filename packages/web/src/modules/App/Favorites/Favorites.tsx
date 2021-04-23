@@ -1,42 +1,66 @@
 import React from "react";
 import Scrollbars from "react-custom-scrollbars";
-import { Stack } from "@chakra-ui/react";
+import { Stack, Heading, Divider } from "@chakra-ui/react";
 
 import FavoriteItem from "src/components/FavoriteItem/FavoriteItem";
 
-import { FavoritesContainer } from "./Favorites.styles";
+const Favorites = () => {
+  return (
+    <Scrollbars autoHide autoHideTimeout={100} autoHideDuration={100}>
+      <Stack
+        direction="column"
+        spacing="20px"
+        w="100%"
+        maxW="1000px"
+        p="20px"
+        margin="0 auto"
+      >
+        <Stack direction="column" spacing="5px">
+          <Heading
+            as="h1"
+            fontSize={16}
+            fontWeight="600"
+            letterSpacing="-0.03em"
+            lineHeight="30px"
+            textAlign="start"
+          >
+            Favorites
+          </Heading>
 
-const Favorites = () => (
-  <Scrollbars autoHide autoHideTimeout={100} autoHideDuration={100}>
-    <Stack direction="column" spacing="20px">
-      <FavoriteItem
-        id={745392}
-        image="https://bit.ly/sage-adebayo"
-        title="A new from Serial!"
-        author="Serial"
-        datePublished={1617098400}
-        duration={225}
-      />
+          <Divider orientation="horizontal" />
+        </Stack>
 
-      <FavoriteItem
-        id={745392}
-        image="https://bit.ly/sage-adebayo"
-        title="A new from Serial!"
-        author="Serial"
-        datePublished={1617098400}
-        duration={225}
-      />
+        <Stack direction="column" spacing="20px">
+          <FavoriteItem
+            id={745392}
+            image="https://bit.ly/sage-adebayo"
+            title="A new from Serial!"
+            author="Serial"
+            datePublished={1617098400}
+            duration={225}
+          />
 
-      <FavoriteItem
-        id={745392}
-        image="https://bit.ly/sage-adebayo"
-        title="A new from Serial!"
-        author="Serial"
-        datePublished={1617098400}
-        duration={225}
-      />
-    </Stack>
-  </Scrollbars>
-);
+          <FavoriteItem
+            id={745392}
+            image="https://bit.ly/sage-adebayo"
+            title="A new from Serial!"
+            author="Serial"
+            datePublished={1617098400}
+            duration={225}
+          />
+
+          <FavoriteItem
+            id={745392}
+            image="https://bit.ly/sage-adebayo"
+            title="A new from Serial!"
+            author="Serial"
+            datePublished={1617098400}
+            duration={225}
+          />
+        </Stack>
+      </Stack>
+    </Scrollbars>
+  );
+};
 
 export default Favorites;

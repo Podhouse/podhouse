@@ -1,16 +1,10 @@
 import React from "react";
 import { Divider, Image, Stack, Text, Box, IconButton } from "@chakra-ui/react";
 import { Link as ReactRouterLink } from "react-router-dom";
-import { BsHeart, BsListUl, BsPlay } from "react-icons/bs";
+import { BsHeart, BsThreeDots, BsPlay } from "react-icons/bs";
 
 import {
   FavoriteItemContainer,
-  FavoriteItemName,
-  FavoriteItemDescription,
-  FavoriteNameDescription,
-  FavoriteItemPublishedDate,
-  FavoriteItemDuration,
-  FavoriteItemButton,
   FavoriteDividerContainer,
 } from "./FavoriteItem.styles";
 
@@ -35,7 +29,14 @@ const FavoriteItem = ({
 }: Props) => {
   return (
     <FavoriteItemContainer>
-      <Box width="60px" height="60px" bgColor="black" />
+      <Image
+        width="60px"
+        height="60px"
+        src={image}
+        loading="lazy"
+        objectFit="cover"
+        borderRadius="5px"
+      />
 
       <Stack direction="column" spacing="0px">
         <Text
@@ -53,33 +54,37 @@ const FavoriteItem = ({
       </Stack>
 
       <IconButton
-        aria-label="Favorite"
-        icon={<BsHeart size="16px" />}
-        width="fit-content"
+        aria-label="Play episode"
+        icon={<BsHeart size="20px" />}
         variant="ghost"
+        width="fit-content"
       />
 
       <Text fontSize="16px" fontWeight="300" lineHeight="30px">
-        {datePublished}
+        {formatDate(datePublished)}
       </Text>
 
       <Text fontSize="16px" fontWeight="300" lineHeight="30px">
-        {duration}
+        {formatTime(duration)}
       </Text>
 
       <IconButton
-        aria-label="Favorite"
-        icon={<BsListUl size="16px" />}
-        width="fit-content"
+        aria-label="Options"
+        icon={<BsThreeDots size="30px" />}
         variant="ghost"
+        width="fit-content"
       />
 
       <IconButton
-        aria-label="Favorite"
-        icon={<BsPlay size="16px" />}
-        width="fit-content"
+        aria-label="Play episode"
+        icon={<BsPlay size="30px" />}
         variant="ghost"
+        width="fit-content"
       />
+
+      <FavoriteDividerContainer>
+        <Divider />
+      </FavoriteDividerContainer>
     </FavoriteItemContainer>
   );
 };
