@@ -1,7 +1,15 @@
 import React from "react";
-import { Heading, Button, Link, Image } from "@chakra-ui/react";
+import {
+  Stack,
+  Heading,
+  Button,
+  Link,
+  Image,
+  IconButton,
+} from "@chakra-ui/react";
 import { ExternalLink } from "react-feather";
 import { useLocation } from "react-router-dom";
+import { BsBoxArrowUp } from "react-icons/bs";
 
 import { usePodcast } from "src/queries/";
 
@@ -35,15 +43,28 @@ const Header = () => {
       />
 
       <HeaderDetailsContainer>
-        <Heading
-          as="h1"
-          fontWeight="700"
-          fontSize="36px"
-          letterSpacing="-0.03em"
-          textAlign="start"
+        <Stack
+          direction="row"
+          spacing="10px"
+          alignItems="center"
+          justifyItems="center"
         >
-          {data.feed.title}
-        </Heading>
+          <Heading
+            as="h1"
+            fontWeight="700"
+            fontSize="36px"
+            letterSpacing="-0.03em"
+            textAlign="start"
+          >
+            {data.feed.title}
+          </Heading>
+          <IconButton
+            aria-label="Share podcast"
+            icon={<BsBoxArrowUp size="24px" />}
+            variant="ghost"
+          />
+          BsBoxArrowUp
+        </Stack>
 
         <Heading
           as="h2"

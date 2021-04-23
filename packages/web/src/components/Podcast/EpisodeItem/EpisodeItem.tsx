@@ -1,7 +1,7 @@
 import React from "react";
 import { Divider } from "@chakra-ui/react";
 import { Link as ReactRouterLink } from "react-router-dom";
-import { BsPlay } from "react-icons/bs";
+import { BsPlay, BsThreeDots } from "react-icons/bs";
 
 import {
   EpisodeItemContainer,
@@ -10,6 +10,7 @@ import {
   EpisodeNameDescription,
   EpisodeItemPublishedDate,
   EpisodeItemDuration,
+  EpisodeMenuButton,
   EpisodeItemButton,
   EpisodeDividerContainer,
 } from "./EpisodeItem.styles";
@@ -70,13 +71,17 @@ const EpisodeItem = ({
         {formatTime(duration)}
       </EpisodeItemDuration>
 
+      <EpisodeMenuButton
+        aria-label="Options"
+        icon={<BsThreeDots size="30px" />}
+        variant="ghost"
+      />
+
       <EpisodeItemButton
-        type="button"
-        width="90px"
-        leftIcon={<BsPlay size={16} />}
-      >
-        Play
-      </EpisodeItemButton>
+        aria-label="Play episode"
+        icon={<BsPlay size="30px" />}
+        variant="ghost"
+      />
 
       <EpisodeDividerContainer>
         <Divider />

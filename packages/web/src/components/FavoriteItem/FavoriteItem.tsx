@@ -1,7 +1,7 @@
 import React from "react";
-import { Divider } from "@chakra-ui/react";
+import { Divider, Image, Stack, Text, Box, IconButton } from "@chakra-ui/react";
 import { Link as ReactRouterLink } from "react-router-dom";
-import { BsPlay } from "react-icons/bs";
+import { BsHeart, BsListUl, BsPlay } from "react-icons/bs";
 
 import {
   FavoriteItemContainer,
@@ -20,7 +20,7 @@ interface Props {
   id: number;
   image: string;
   title: string;
-  description: string;
+  author: string;
   datePublished: number;
   duration: number;
 }
@@ -29,60 +29,57 @@ const FavoriteItem = ({
   id,
   image,
   title,
-  description,
+  author,
   datePublished,
   duration,
 }: Props) => {
   return (
     <FavoriteItemContainer>
-      <FavoriteNameDescription>
-        <FavoriteItemName
+      <Box width="60px" height="60px" bgColor="black" />
+
+      <Stack direction="column" spacing="0px">
+        <Text
           as={ReactRouterLink}
           to={{ pathname: `/episode/${id}`, state: { id } }}
           fontSize="16px"
           fontWeight="500"
         >
           {title}
-        </FavoriteItemName>
+        </Text>
 
-        <FavoriteItemDescription
-          fontSize="16px"
-          fontWeight="300"
-          lineHeight="30px"
-        >
-          {description}
-        </FavoriteItemDescription>
-      </FavoriteNameDescription>
+        <Text fontSize="16px" fontWeight="300" lineHeight="30px">
+          {author}
+        </Text>
+      </Stack>
 
-      <FavoriteItemPublishedDate
-        fontSize="16px"
-        fontWeight="300"
-        lineHeight="30px"
-        textAlign="start"
-      >
-        {formatDate(datePublished)}
-      </FavoriteItemPublishedDate>
+      <IconButton
+        aria-label="Favorite"
+        icon={<BsHeart size="16px" />}
+        width="fit-content"
+        variant="ghost"
+      />
 
-      <FavoriteItemDuration
-        fontSize="16px"
-        fontWeight="300"
-        lineHeight="30px"
-        textAlign="start"
-      >
-        {formatTime(duration)}
-      </FavoriteItemDuration>
+      <Text fontSize="16px" fontWeight="300" lineHeight="30px">
+        {datePublished}
+      </Text>
 
-      <FavoriteItemButton
-        type="button"
-        width="90px"
-        leftIcon={<BsPlay size={16} />}
-      >
-        Play
-      </FavoriteItemButton>
+      <Text fontSize="16px" fontWeight="300" lineHeight="30px">
+        {duration}
+      </Text>
 
-      <FavoriteDividerContainer>
-        <Divider />
-      </FavoriteDividerContainer>
+      <IconButton
+        aria-label="Favorite"
+        icon={<BsListUl size="16px" />}
+        width="fit-content"
+        variant="ghost"
+      />
+
+      <IconButton
+        aria-label="Favorite"
+        icon={<BsPlay size="16px" />}
+        width="fit-content"
+        variant="ghost"
+      />
     </FavoriteItemContainer>
   );
 };

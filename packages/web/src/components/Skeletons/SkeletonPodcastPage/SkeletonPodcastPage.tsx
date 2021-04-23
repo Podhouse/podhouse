@@ -2,24 +2,20 @@ import React from "react";
 import { Skeleton } from "@chakra-ui/react";
 
 import {
-  SkeletonPageContainer,
-  SkeletonPageHeader,
-  SkeletonPageDetailsContainer,
-  SkeletonPageButtonsContainer,
-  SkeletonPageLinksContainer,
-  SkeletonPageLinkContainer,
-  SkeletonPageEpisodesContainer,
-} from "./SkeletonPage.styles";
+  SkeletonPodcastPageContainer,
+  SkeletonPodcastPageHeader,
+  SkeletonPodcastPageDetailsContainer,
+  SkeletonPodcastPageButtonsContainer,
+  SkeletonPodcastPageLinksContainer,
+  SkeletonPodcastPageLinkContainer,
+  SkeletonPodcastPageEpisodesContainer,
+} from "./SkeletonPodcastPage.styles";
 
 import SkeletonEpisode from "../SkeletonEpisode/SkeletonEpisode";
 
-interface Props {
-  episodes: boolean;
-}
-
-const SkeletonPage = ({ episodes }: Props) => (
-  <SkeletonPageContainer>
-    <SkeletonPageHeader>
+const SkeletonPodcastPage = () => (
+  <SkeletonPodcastPageContainer>
+    <SkeletonPodcastPageHeader>
       <Skeleton
         startColor="#E2E8F0"
         endColor="#E2E8F0"
@@ -29,7 +25,7 @@ const SkeletonPage = ({ episodes }: Props) => (
         justifySelf="center"
       />
 
-      <SkeletonPageDetailsContainer>
+      <SkeletonPodcastPageDetailsContainer>
         <Skeleton
           startColor="#E2E8F0"
           endColor="#E2E8F0"
@@ -53,9 +49,9 @@ const SkeletonPage = ({ episodes }: Props) => (
           width="100%"
           height="80px"
         />
-      </SkeletonPageDetailsContainer>
+      </SkeletonPodcastPageDetailsContainer>
 
-      <SkeletonPageButtonsContainer>
+      <SkeletonPodcastPageButtonsContainer>
         <Skeleton
           startColor="#E2E8F0"
           endColor="#E2E8F0"
@@ -63,10 +59,10 @@ const SkeletonPage = ({ episodes }: Props) => (
           width="100%"
           height="30px"
         />
-      </SkeletonPageButtonsContainer>
+      </SkeletonPodcastPageButtonsContainer>
 
-      <SkeletonPageLinksContainer>
-        <SkeletonPageLinkContainer>
+      <SkeletonPodcastPageLinksContainer>
+        <SkeletonPodcastPageLinkContainer>
           <Skeleton
             startColor="#E2E8F0"
             endColor="#E2E8F0"
@@ -74,9 +70,9 @@ const SkeletonPage = ({ episodes }: Props) => (
             width="100px"
             height="30px"
           />
-        </SkeletonPageLinkContainer>
+        </SkeletonPodcastPageLinkContainer>
 
-        <SkeletonPageLinkContainer>
+        <SkeletonPodcastPageLinkContainer>
           <Skeleton
             startColor="#E2E8F0"
             endColor="#E2E8F0"
@@ -84,18 +80,16 @@ const SkeletonPage = ({ episodes }: Props) => (
             width="100px"
             height="30px"
           />
-        </SkeletonPageLinkContainer>
-      </SkeletonPageLinksContainer>
-    </SkeletonPageHeader>
+        </SkeletonPodcastPageLinkContainer>
+      </SkeletonPodcastPageLinksContainer>
+    </SkeletonPodcastPageHeader>
 
-    {episodes === true ? (
-      <SkeletonPageEpisodesContainer>
-        <SkeletonEpisode />
-        <SkeletonEpisode />
-        <SkeletonEpisode />
-      </SkeletonPageEpisodesContainer>
-    ) : null}
-  </SkeletonPageContainer>
+    <SkeletonPodcastPageEpisodesContainer>
+      <SkeletonEpisode />
+      <SkeletonEpisode />
+      <SkeletonEpisode />
+    </SkeletonPodcastPageEpisodesContainer>
+  </SkeletonPodcastPageContainer>
 );
 
-export default SkeletonPage;
+export default SkeletonPodcastPage;

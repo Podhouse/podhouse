@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-export const SkeletonPageContainer = styled.div`
+export const SkeletonPodcastPageContainer = styled.div`
   width: 100%;
   height: fit-content;
   max-width: 1000px;
@@ -20,7 +20,7 @@ export const SkeletonPageContainer = styled.div`
   }
 `;
 
-export const SkeletonPageHeader = styled.div`
+export const SkeletonPodcastPageHeader = styled.div`
   width: 100%;
   height: 100%;
   grid-row: 1 / 2;
@@ -37,7 +37,7 @@ export const SkeletonPageHeader = styled.div`
   }
 `;
 
-export const SkeletonPageDetailsContainer = styled.div`
+export const SkeletonPodcastPageDetailsContainer = styled.div`
   width: auto;
   height: auto;
   grid-row: 2 / 3;
@@ -57,7 +57,7 @@ export const SkeletonPageDetailsContainer = styled.div`
   }
 `;
 
-export const SkeletonPageButtonsContainer = styled.div`
+export const SkeletonPodcastPageButtonsContainer = styled.div`
   width: 100%;
   height: 100%;
   grid-row: 3 / 4;
@@ -74,7 +74,7 @@ export const SkeletonPageButtonsContainer = styled.div`
   }
 `;
 
-export const SkeletonPageShareButton = styled.button`
+export const SkeletonPodcastPageShareButton = styled.button`
   display: none;
 
   @media screen and (min-width: 800px) {
@@ -100,7 +100,7 @@ export const SkeletonPageShareButton = styled.button`
   }
 `;
 
-export const SkeletonPageItemsContainer = styled.div`
+export const SkeletonPodcastPageItemsContainer = styled.div`
   width: 100%;
   height: 100%;
   grid-column: 1 / 2;
@@ -115,7 +115,7 @@ export const SkeletonPageItemsContainer = styled.div`
   }
 `;
 
-export const SkeletonPageLinksContainer = styled.div`
+export const SkeletonPodcastPageLinksContainer = styled.div`
   grid-row: 4 / 5;
   grid-column: 1 / 2;
   display: grid;
@@ -133,7 +133,7 @@ export const SkeletonPageLinksContainer = styled.div`
   }
 `;
 
-export const SkeletonPageLinkContainer = styled.div`
+export const SkeletonPodcastPageLinkContainer = styled.div`
   display: none;
 
   @media screen and (min-width: 800px) {
@@ -147,7 +147,7 @@ export const SkeletonPageLinkContainer = styled.div`
   }
 `;
 
-export const SkeletonPageLink = styled.a`
+export const SkeletonPodcastPageLink = styled.a`
   font-family: Inter;
   font-style: normal;
   font-weight: normal;
@@ -157,7 +157,7 @@ export const SkeletonPageLink = styled.a`
   text-decoration: none;
 `;
 
-export const SkeletonPageSearchInputContainer = styled.form`
+export const SkeletonPodcastPageSearchInputContainer = styled.form`
   grid-row: 1 / 2;
   grid-column: 1 / 2;
   @media screen and (min-width: 800px) {
@@ -169,7 +169,7 @@ export const SkeletonPageSearchInputContainer = styled.form`
   }
 `;
 
-export const SkeletonPageEpisodesContainer = styled.div`
+export const SkeletonPodcastPageEpisodesContainer = styled.div`
   width: 100%;
   height: auto;
   display: grid;

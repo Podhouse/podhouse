@@ -1,21 +1,20 @@
 import styled from "@emotion/styled";
-import { Button, Text } from "@chakra-ui/react";
+import { Button, Text, IconButton } from "@chakra-ui/react";
 
 export const EpisodeItemContainer = styled.div`
   width: 100%;
   height: fit-content;
   max-width: 1000px;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(3, max-content);
   grid-column-gap: 20px;
   grid-row-gap: 10px;
 
   @media screen and (min-width: 800px) {
-    grid-template-columns: 1fr minmax(min-content, 110px) minmax(
-        min-content,
-        50px
-      );
+    grid-template-columns:
+      1fr minmax(min-content, 110px) minmax(min-content, 50px)
+      minmax(min-content, 50px);
     grid-template-rows: max-content max-content max-content;
   }
 `;
@@ -28,7 +27,7 @@ export const EpisodeNameDescription = styled.div`
   grid-template-rows: max-content max-content;
   grid-row-gap: 5px;
   grid-row: 1 / 2;
-  grid-column: 1 / 4;
+  grid-column: 1 / 5;
 
   @media screen and (min-width: 800px) {
     grid-row: 1 / 3;
@@ -52,7 +51,7 @@ export const EpisodeItemName = styled(Text)`
 
 export const EpisodeItemDescription = styled(Text)`
   width: 100%;
-  grid-column: 1 / 4;
+  grid-column: 1 / 5;
   grid-row: 2 / 3;
   display: -webkit-box;
   -webkit-line-clamp: 3;
@@ -62,7 +61,7 @@ export const EpisodeItemDescription = styled(Text)`
 
   @media screen and (min-width: 800px) {
     width: 100%;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
     align-self: center;
@@ -97,7 +96,7 @@ export const EpisodeItemDuration = styled(Text)`
   }
 `;
 
-export const EpisodeItemButton = styled(Button)`
+export const EpisodeMenuButton = styled(IconButton)`
   grid-column: 3 / 4;
   grid-row: 3 / 4;
   align-self: center;
@@ -105,6 +104,19 @@ export const EpisodeItemButton = styled(Button)`
 
   @media screen and (min-width: 800px) {
     grid-column: 4 / 5;
+    grid-row: 1 / 3;
+    align-self: center;
+  }
+`;
+
+export const EpisodeItemButton = styled(IconButton)`
+  grid-column: 4 / 5;
+  grid-row: 3 / 4;
+  align-self: center;
+  justify-self: flex-end;
+
+  @media screen and (min-width: 800px) {
+    grid-column: 5 / 6;
     grid-row: 1 / 3;
     align-self: center;
   }

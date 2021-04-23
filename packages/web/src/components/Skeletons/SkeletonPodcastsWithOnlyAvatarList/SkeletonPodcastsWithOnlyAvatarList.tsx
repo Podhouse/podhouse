@@ -5,7 +5,7 @@ const SkeletonPodcastsWithOnlyAvatarList = () => {
   const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
   return (
-    <Stack direction="column" spacing="20px">
+    <Stack direction="column" spacing="20px" p="20px">
       <Stack direction="column" spacing="5px">
         <Skeleton
           startColor="#E2E8F0"

@@ -6,19 +6,16 @@ export const FavoriteItemContainer = styled.div`
   height: fit-content;
   max-width: 1000px;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, max-content);
+  grid-template-columns: 60px 1fr 80px;
   grid-column-gap: 20px;
-  grid-row-gap: 10px;
+  align-items: center;
 
   @media screen and (min-width: 800px) {
-    grid-template-columns: 1fr minmax(min-content, 110px) minmax(
-        min-content,
-        50px
-      );
-    grid-template-rows: max-content max-content max-content;
+    grid-template-columns: 60px 1fr 60px 100px 100px 60px 80px;
   }
 `;
+
+export const FavoriteImageContainer = styled.div``;
 
 export const FavoriteNameDescription = styled.div`
   width: 100%;

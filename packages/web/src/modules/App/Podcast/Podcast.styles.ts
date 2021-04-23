@@ -6,9 +6,9 @@ export const PodcastContainer = styled.div`
   height: 100%;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: repeat(2, max-content);
+  grid-template-rows: repeat(3, max-content);
   grid-row-gap: 20px;
-  padding: 20px 20px 0px 20px;
+  padding: 20px;
   margin: 0 auto;
 
   @media screen and (min-width: 800px) {
@@ -16,6 +16,6 @@ export const PodcastContainer = styled.div`
     grid-template-columns: 1fr;
     grid-template-rows: repeat(2, max-content);
     grid-column-gap: 20px;
-    padding: 20px 20px 0px 20px;
+    padding: 20px;
   }
 `;

@@ -12,9 +12,8 @@ import { SearchContainer, SearchSkeletonContainer } from "./Search.styles";
 import Results from "./Results/Results";
 
 const Search = () => {
-  const [text, setText] = useState<string>("");
-
   const { reset } = useQueryErrorResetBoundary();
+  const [text, setText] = useState<string>("");
 
   const onHandleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setText(e.target.value);
