@@ -56,7 +56,7 @@ const Search = () => {
               pr="4.5rem"
               type="text"
               size="lg"
-              placeholder="Enter password"
+              placeholder="Search for a podcast by title, author or owner"
               onChange={onHandleChange}
               borderTopRightRadius="0px"
               borderBottomRightRadius="0px"
@@ -67,24 +67,25 @@ const Search = () => {
               size="lg"
               borderTopLeftRadius="0px"
               borderBottomLeftRadius="0px"
-              onClick={() => {}}
             >
               Search
             </Button>
           </Stack>
         </Stack>
 
-        {/* <ErrorBoundary FallbackComponent={ErrorFallback} onReset={reset}>
-          <Suspense
-            fallback={
-              <SearchSkeletonContainer>
-                <SkeletonPodcastsWithOnlyAvatarList />
-              </SearchSkeletonContainer>
-            }
-          >
-            <Results text={text} />
-          </Suspense>
-        </ErrorBoundary> */}
+        {text && (
+          <ErrorBoundary FallbackComponent={ErrorFallback} onReset={reset}>
+            <Suspense
+              fallback={
+                <SearchSkeletonContainer>
+                  <SkeletonPodcastsWithOnlyAvatarList />
+                </SearchSkeletonContainer>
+              }
+            >
+              <Results text={text} />
+            </Suspense>
+          </ErrorBoundary>
+        )}
       </SearchContainer>
     </Scrollbars>
   );

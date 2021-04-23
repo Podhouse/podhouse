@@ -1,5 +1,4 @@
 import React, { Suspense } from "react";
-import { useDebounce } from "use-debounce";
 
 import { useSearchPodcast } from "src/queries/";
 
@@ -10,8 +9,7 @@ interface Props {
 }
 
 const Results = ({ text }: Props) => {
-  const [debouncedText] = useDebounce(text, 200);
-  const { data } = useSearchPodcast(debouncedText);
+  const { data } = useSearchPodcast(text);
 
   return (
     <PodcastsWithOnlyAvatarList

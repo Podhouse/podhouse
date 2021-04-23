@@ -17,7 +17,7 @@ const hash4Header: string = sha1Hash.digest("hex");
 const useTrending = () => {
   const options: AxiosRequestConfig = {
     method: "get",
-    url: `https://api.podcastindex.org/api/1.0/podcasts/trending?max=12`,
+    url: `https://api.podcastindex.org/api/1.0/podcasts/trending?max=36`,
     headers: {
       "X-Auth-Date": "" + apiHeaderTime,
       "X-Auth-Key": process.env.REACT_APP_API_KEY,

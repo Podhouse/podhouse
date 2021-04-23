@@ -35,6 +35,7 @@ const useSearchPodcast = (text: string) => {
     {
       retry: 10,
       enabled: Boolean(text),
+      suspense: true,
     }
   );
 };

@@ -35,6 +35,7 @@ const usePodcast = (id: number) => {
     {
       retry: 10,
       enabled: Boolean(id),
+      suspense: true,
     }
   );
 };

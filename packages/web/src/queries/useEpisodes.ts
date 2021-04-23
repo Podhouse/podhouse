@@ -35,6 +35,7 @@ const useEpisodes = (id: number) => {
     {
       retry: 10,
       enabled: Boolean(id),
+      suspense: true,
     }
   );
 };
