@@ -24,23 +24,13 @@ import {
 
 import { formatTime, formatDate } from "src/utils/";
 
+import { Episode } from "src/queries/types";
+
 interface Props {
-  id: number;
-  image: string;
-  title: string;
-  author: string;
-  datePublished: number;
-  duration: number;
+  episode: Episode;
 }
 
-const FavoriteItem = ({
-  id,
-  image,
-  title,
-  author,
-  datePublished,
-  duration,
-}: Props) => {
+const FavoriteItem = ({ episode }: Props) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -49,7 +39,7 @@ const FavoriteItem = ({
         <Image
           width="60px"
           height="60px"
-          src={image}
+          src={episode.image}
           loading="lazy"
           objectFit="cover"
           borderRadius="5px"
@@ -58,15 +48,18 @@ const FavoriteItem = ({
         <Stack direction="column" spacing="0px">
           <Text
             as={ReactRouterLink}
-            to={{ pathname: `/episode/${id}`, state: { id } }}
+            to={{
+              pathname: `/episode/${episode.id}`,
+              state: { id: episode.id },
+            }}
             fontSize="16px"
             fontWeight="500"
           >
-            {title}
+            {episode.title}
           </Text>
 
           <Text fontSize="16px" fontWeight="300" lineHeight="30px">
-            {author}
+            {episode.title}
           </Text>
         </Stack>
 
@@ -78,11 +71,11 @@ const FavoriteItem = ({
         />
 
         <Text fontSize="16px" fontWeight="300" lineHeight="30px">
-          {formatDate(datePublished)}
+          {formatDate(episode.datePublished)}
         </Text>
 
         <Text fontSize="16px" fontWeight="300" lineHeight="30px">
-          {formatTime(duration)}
+          {formatTime(episode.duration)}
         </Text>
 
         <Box alignSelf="center">
@@ -115,7 +108,7 @@ const FavoriteItem = ({
         </FavoriteDividerContainer>
       </FavoriteItemContainer>
 
-      <ShareEpisodeModal isOpen={isOpen} onClose={onClose} />
+      <ShareEpisodeModal isOpen={isOpen} onClose={onClose} episode={episode} />
     </>
   );
 };

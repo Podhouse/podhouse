@@ -12,31 +12,35 @@ import {
   Image,
   Heading,
   Input,
-  Text,
   useClipboard,
 } from "@chakra-ui/react";
+
+import { Episode } from "src/queries/";
 
 interface Props {
   isOpen: boolean;
   onClose: () => void;
+  episode: Episode | undefined;
 }
 
-const ShareEpisodeModal = ({ isOpen, onClose }: Props) => {
-  const { hasCopied, onCopy } = useClipboard("https://99percentinvisible.org");
+const ShareEpisodeModal = ({ isOpen, onClose, episode }: Props) => {
+  const episodeLink = `https://play.podhouse.app/episode/${episode?.id}`;
+  const { hasCopied, onCopy } = useClipboard(episode ? episodeLink : "");
 
   return (
-    <Modal size="xl" isOpen={isOpen} onClose={onClose} isCentered>
+    <Modal isOpen={isOpen} onClose={onClose} isCentered>
       <ModalOverlay />
-      <ModalContent width="400px" alignSelf="center">
+      <ModalContent>
         <ModalHeader>Share</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
           <Stack direction="row" spacing="20px">
             <Image
-              src="https://bit.ly/dan-abramov"
+              src={episode?.image}
               objectFit="cover"
               borderRadius={5}
-              maxWidth="160px"
+              width="120px"
+              height="120px"
               loading="lazy"
               justifySelf="center"
             />
@@ -49,31 +53,18 @@ const ShareEpisodeModal = ({ isOpen, onClose }: Props) => {
                 letterSpacing="-0.03em"
                 textAlign="start"
               >
-                99% Invisible
+                {episode?.title}
               </Heading>
-
-              <Heading
-                as="h2"
-                fontSize="16px"
-                fontWeight="500"
-                letterSpacing="-0.03em"
-                textAlign="start"
-              >
-                Roman Mars
-              </Heading>
-
-              <Text>May 22, 2021</Text>
             </Stack>
           </Stack>
         </ModalBody>
 
         <ModalFooter>
-          <Stack direction="row" spacing="0px">
+          <Stack width="100%" direction="row" spacing="0px">
             <Input
               pr="4.5rem"
               type="text"
-              value="https://99percentinvisible.org"
-              placeholder="Search for a podcast by title, author or owner"
+              value={episodeLink}
               borderTopRightRadius="0px"
               borderBottomRightRadius="0px"
               isReadOnly

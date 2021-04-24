@@ -108,7 +108,7 @@ const EpisodeItem = ({ episode }: Props) => {
         </EpisodeDividerContainer>
       </EpisodeItemContainer>
 
-      <ShareEpisodeModal isOpen={isOpen} onClose={onClose} />
+      <ShareEpisodeModal isOpen={isOpen} onClose={onClose} episode={episode} />
     </>
   );
 };

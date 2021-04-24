@@ -75,7 +75,6 @@ const SharePodcastModal = ({ isOpen, onClose, podcast }: Props) => {
               pr="4.5rem"
               type="text"
               value={podcastLink}
-              placeholder="Search for a podcast by title, author or owner"
               borderTopRightRadius="0px"
               borderBottomRightRadius="0px"
               isReadOnly

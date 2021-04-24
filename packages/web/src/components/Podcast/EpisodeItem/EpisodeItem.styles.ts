@@ -1,12 +1,12 @@
 import styled from "@emotion/styled";
-import { Text, IconButton, Menu } from "@chakra-ui/react";
+import { Text, IconButton } from "@chakra-ui/react";
 
 export const EpisodeItemContainer = styled.div`
   width: 100%;
   height: fit-content;
   max-width: 1000px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 1fr 1fr max-content max-content;
   grid-template-rows: repeat(3, max-content);
   grid-column-gap: 20px;
   grid-row-gap: 10px;
