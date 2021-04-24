@@ -1,8 +1,8 @@
 import axios, { AxiosRequestConfig } from "axios";
 import crypto from "crypto";
-import { useQuery } from "react-query";
+import { useQuery, UseQueryResult } from "react-query";
 
-import { PodcastsResult, Podcast } from "./types";
+import { PodcastResult, Podcast } from "./types";
 
 const API_SECRET: string = "x6QP5r$YqsUQdBfKuqUB4rdn8cSbNT9fTccBcjx2";
 
@@ -14,7 +14,7 @@ const data4Hash: string =
 sha1Hash.update(data4Hash);
 const hash4Header: string = sha1Hash.digest("hex");
 
-const usePodcast = (id: number) => {
+const usePodcast = (id: number): UseQueryResult<PodcastResult, Podcast> => {
   const options: AxiosRequestConfig = {
     method: "get",
     url: `https://api.podcastindex.org/api/1.0/podcasts/byfeedid?id=${id}`,
@@ -26,7 +26,7 @@ const usePodcast = (id: number) => {
     },
   };
 
-  return useQuery<PodcastsResult, Podcast, any>(
+  return useQuery<PodcastResult, Podcast, any>(
     ["podcast", id],
     async () => {
       const { data } = await axios(options);

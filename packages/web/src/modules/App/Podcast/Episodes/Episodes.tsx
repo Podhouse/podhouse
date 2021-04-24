@@ -18,17 +18,8 @@ const Episodes = () => {
 
   return (
     <EpisodesContainer>
-      {data.items.map((item: Episode) => {
-        return (
-          <EpisodeItem
-            key={item.id}
-            id={item.id}
-            title={item.title}
-            description={item.description}
-            datePublished={item.datePublished}
-            duration={item.duration}
-          />
-        );
+      {data.items.map((episode: Episode) => {
+        return <EpisodeItem episode={episode} />;
       })}
     </EpisodesContainer>
   );

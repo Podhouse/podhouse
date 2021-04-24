@@ -10,9 +10,12 @@ import {
   MenuButton,
   MenuList,
   MenuItem,
+  useDisclosure,
 } from "@chakra-ui/react";
 import { Link as ReactRouterLink } from "react-router-dom";
 import { BsHeart, BsThreeDots, BsPlay } from "react-icons/bs";
+
+import ShareEpisodeModal from "src/components/Modals/ShareEpisodeModal/ShareEpisodeModal";
 
 import {
   FavoriteItemContainer,
@@ -38,76 +41,82 @@ const FavoriteItem = ({
   datePublished,
   duration,
 }: Props) => {
-  return (
-    <FavoriteItemContainer>
-      <Image
-        width="60px"
-        height="60px"
-        src={image}
-        loading="lazy"
-        objectFit="cover"
-        borderRadius="5px"
-      />
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
-      <Stack direction="column" spacing="0px">
-        <Text
-          as={ReactRouterLink}
-          to={{ pathname: `/episode/${id}`, state: { id } }}
-          fontSize="16px"
-          fontWeight="500"
-        >
-          {title}
+  return (
+    <>
+      <FavoriteItemContainer>
+        <Image
+          width="60px"
+          height="60px"
+          src={image}
+          loading="lazy"
+          objectFit="cover"
+          borderRadius="5px"
+        />
+
+        <Stack direction="column" spacing="0px">
+          <Text
+            as={ReactRouterLink}
+            to={{ pathname: `/episode/${id}`, state: { id } }}
+            fontSize="16px"
+            fontWeight="500"
+          >
+            {title}
+          </Text>
+
+          <Text fontSize="16px" fontWeight="300" lineHeight="30px">
+            {author}
+          </Text>
+        </Stack>
+
+        <IconButton
+          aria-label="Play episode"
+          icon={<BsHeart size="20px" />}
+          variant="ghost"
+          width="fit-content"
+        />
+
+        <Text fontSize="16px" fontWeight="300" lineHeight="30px">
+          {formatDate(datePublished)}
         </Text>
 
         <Text fontSize="16px" fontWeight="300" lineHeight="30px">
-          {author}
+          {formatTime(duration)}
         </Text>
-      </Stack>
 
-      <IconButton
-        aria-label="Play episode"
-        icon={<BsHeart size="20px" />}
-        variant="ghost"
-        width="fit-content"
-      />
+        <Box alignSelf="center">
+          <Menu>
+            <MenuButton
+              as={IconButton}
+              aria-label="Options"
+              variant="ghost"
+              icon={<BsThreeDots size="30px" />}
+              alignSelf="center"
+            />
+            <MenuList>
+              <MenuItem>Play next</MenuItem>
+              <MenuItem>Play last</MenuItem>
+              <MenuItem>Mark as played</MenuItem>
+              <MenuItem onClick={onOpen}>Share</MenuItem>
+            </MenuList>
+          </Menu>
+        </Box>
 
-      <Text fontSize="16px" fontWeight="300" lineHeight="30px">
-        {formatDate(datePublished)}
-      </Text>
+        <IconButton
+          aria-label="Play episode"
+          icon={<BsPlay size="30px" />}
+          variant="ghost"
+          width="fit-content"
+        />
 
-      <Text fontSize="16px" fontWeight="300" lineHeight="30px">
-        {formatTime(duration)}
-      </Text>
+        <FavoriteDividerContainer>
+          <Divider />
+        </FavoriteDividerContainer>
+      </FavoriteItemContainer>
 
-      <Box alignSelf="center">
-        <Menu>
-          <MenuButton
-            as={IconButton}
-            aria-label="Options"
-            variant="ghost"
-            icon={<BsThreeDots size="30px" />}
-            alignSelf="center"
-          />
-          <MenuList>
-            <MenuItem>Play next</MenuItem>
-            <MenuItem>Play last</MenuItem>
-            <MenuItem>Mark as played</MenuItem>
-            <MenuItem>Share</MenuItem>
-          </MenuList>
-        </Menu>
-      </Box>
-
-      <IconButton
-        aria-label="Play episode"
-        icon={<BsPlay size="30px" />}
-        variant="ghost"
-        width="fit-content"
-      />
-
-      <FavoriteDividerContainer>
-        <Divider />
-      </FavoriteDividerContainer>
-    </FavoriteItemContainer>
+      <ShareEpisodeModal isOpen={isOpen} onClose={onClose} />
+    </>
   );
 };
 
