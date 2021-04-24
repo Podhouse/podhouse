@@ -12,10 +12,10 @@ const Settings = () => {
     <SettingsContainer>
       <ChakraLink
         to={{
-          pathname: "/get-started",
+          pathname: "/sign-in",
           state: { from: location },
         }}
-        href="/get-started"
+        href="/sign-in"
         as={ReactRouterLink}
       >
         Login

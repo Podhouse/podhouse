@@ -11,7 +11,6 @@ import Dashboard from "./Dashboard/Dashboard";
 
 const Browse = lazy(() => import("src/modules/App/Browse/Browse"));
 
-const GetStarted = lazy(() => import("src/modules/App/GetStarted/GetStarted"));
 const SignIn = lazy(() => import("src/modules/App/SignIn/SignIn"));
 const SignUp = lazy(() => import("src/modules/App/SignUp/SignUp"));
 const ForgotPassword = lazy(
@@ -40,7 +39,6 @@ const App = () => {
           <Switch>
             <Route exact path="/" component={Browse} />
 
-            <Route exact path="/get-started" component={GetStarted} />
             <Route exact path="/sign-in" component={SignIn} />
             <Route exact path="/sign-up" component={SignUp} />
             <Route exact path="/forgot-password" component={ForgotPassword} />

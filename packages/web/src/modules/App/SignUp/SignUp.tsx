@@ -12,10 +12,12 @@ import {
   FormLabel,
   FormErrorMessage,
   useToast,
+  Heading,
+  Text,
 } from "@chakra-ui/react";
 import { useHistory } from "react-router-dom";
 
-interface SignUpFormProps {
+interface SignInFormProps {
   email: string;
   password: string;
 }
@@ -25,7 +27,7 @@ const validationSchema = Yup.object().shape({
   password: Yup.string().required("Password is required"),
 });
 
-const SignUp = () => {
+const SignIn = () => {
   const toast = useToast();
   const history = useHistory();
 
@@ -36,7 +38,7 @@ const SignUp = () => {
     formState,
     getValues,
     setError,
-  } = useForm<SignUpFormProps>({
+  } = useForm<SignInFormProps>({
     mode: "onChange",
     reValidateMode: "onChange",
     resolver: yupResolver(validationSchema),
@@ -48,17 +50,31 @@ const SignUp = () => {
 
   return (
     <Stack
-      as="form"
-      onSubmit={handleSubmit(onSubmit)}
       direction="column"
-      spacing="10px"
+      spacing="20px"
       w="100%"
       h="100%"
-      maxW="400px"
+      maxW="500px"
       margin="0 auto"
       alignItems="center"
       justifyContent="center"
     >
+      <Stack direction="column" spacing="10px">
+        <Heading
+          as="h1"
+          fontWeight="700"
+          fontSize="36px"
+          letterSpacing="-0.03em"
+          textAlign="center"
+        >
+          Podhouse
+        </Heading>
+
+        <Text fontSize="16px" lineHeight="30px" textAlign="center">
+          The best podcast in the web to listen to your favorites podcasts
+        </Text>
+      </Stack>
+
       <FormControl isInvalid={errors.email && true}>
         <FormLabel htmlFor="email">Email</FormLabel>
         <Input type="email" name="email" placeholder="Email" ref={register} />
@@ -89,14 +105,12 @@ const SignUp = () => {
         Sign up
       </Button>
 
-      <Box>
-        <Link onClick={() => history.push("/sign-in")}>
-          {" "}
-          Already have an account?
-        </Link>
-      </Box>
+      <Stack direction="row" spacing="3px">
+        <Text>Already have an account?</Text>
+        <Link onClick={() => history.push("/sign-in")}>Sign in now</Link>
+      </Stack>
     </Stack>
   );
 };
 
-export default SignUp;
+export default SignIn;
