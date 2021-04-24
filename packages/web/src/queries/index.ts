@@ -1,6 +1,7 @@
 import useTrending from "./useTrending";
 import usePodcast from "./usePodcast";
 import useEpisodes from "./useEpisodes";
+import useEpisode from "./useEpisode";
 import useSearchPodcast from "./useSearchPodcast";
 
 import {
@@ -9,12 +10,12 @@ import {
   Podcast,
   TrendingResult,
   TrendingItem,
-  PodcastEpisodesResult,
-  PodcastEpisodeResult,
+  EpisodesResult,
+  EpisodeResult,
   Episode,
 } from "./types";
 
-export { useTrending, usePodcast, useEpisodes, useSearchPodcast };
+export { useTrending, usePodcast, useEpisodes, useEpisode, useSearchPodcast };
 
 export type {
   PodcastsResult,
@@ -22,7 +23,7 @@ export type {
   Podcast,
   TrendingResult,
   TrendingItem,
-  PodcastEpisodesResult,
-  PodcastEpisodeResult,
+  EpisodesResult,
+  EpisodeResult,
   Episode,
 };

@@ -2,7 +2,7 @@ import axios, { AxiosRequestConfig } from "axios";
 import crypto from "crypto";
 import { useQuery } from "react-query";
 
-import { EpisodesResult, Episode } from "./types";
+import { EpisodeResult, Episode } from "./types";
 
 const API_SECRET: string = "x6QP5r$YqsUQdBfKuqUB4rdn8cSbNT9fTccBcjx2";
 
@@ -14,10 +14,10 @@ const data4Hash: string =
 sha1Hash.update(data4Hash);
 const hash4Header: string = sha1Hash.digest("hex");
 
-const useEpisodes = (id: number) => {
+const useEpisode = (id: number) => {
   const options: AxiosRequestConfig = {
     method: "get",
-    url: `https://api.podcastindex.org/api/1.0/episodes/byfeedid?id=${id}&max=25`,
+    url: `https://api.podcastindex.org/api/1.0/episodes/byid?id=${id}`,
     headers: {
       "X-Auth-Date": "" + apiHeaderTime,
       "X-Auth-Key": process.env.REACT_APP_API_KEY,
@@ -26,8 +26,8 @@ const useEpisodes = (id: number) => {
     },
   };
 
-  return useQuery<EpisodesResult, Episode, any>(
-    ["episodes", id],
+  return useQuery<EpisodeResult, Episode, any>(
+    ["episode", id],
     async () => {
       const { data } = await axios(options);
       return data;
@@ -40,4 +40,4 @@ const useEpisodes = (id: number) => {
   );
 };
 
-export default useEpisodes;
+export default useEpisode;

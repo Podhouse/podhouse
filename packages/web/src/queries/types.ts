@@ -65,14 +65,14 @@ export type TrendingItem = {
   categories: Array<any>;
 };
 
-export type PodcastEpisodesResult = {
+export type EpisodesResult = {
   status: true | false;
   id: number;
   items: Array<Episode>;
   description: string;
 };
 
-export type PodcastEpisodeResult = {
+export type EpisodeResult = {
   status: true | false;
   id: number;
   episode: Episode;

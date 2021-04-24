@@ -1,85 +1,28 @@
-import React from "react";
-import { Heading, Button, Link, Image } from "@chakra-ui/react";
-import { ExternalLink } from "react-feather";
+import React, { Suspense } from "react";
+import Scrollbars from "react-custom-scrollbars";
+import { ErrorBoundary } from "react-error-boundary";
+import { useQueryErrorResetBoundary } from "react-query";
 
-import {
-  EpisodeContainer,
-  EpisodeHeader,
-  EpisodeDetailsContainer,
-  EpisodeDescription,
-  EpisodeButtonsContainer,
-  EpisodeLinksContainer,
-  EpisodeLinkContainer,
-} from "./Episode.styles";
+import ErrorFallback from "src/components/ErrorFallback/ErrorFallback";
+import SkeletonPodcastPage from "src/components/Skeletons/SkeletonPodcastPage/SkeletonPodcastPage";
+
+import Header from "./Header/Header";
+
+import { EpisodeContainer } from "./Episode.styles";
 
 const Episode = () => {
+  const { reset } = useQueryErrorResetBoundary();
+
   return (
-    <EpisodeContainer>
-      <EpisodeHeader>
-        <Image
-          src="https://bit.ly/sage-adebayo"
-          objectFit="cover"
-          borderRadius={5}
-          maxWidth="200px"
-          loading="lazy"
-          justifySelf="center"
-        />
-
-        <EpisodeDetailsContainer>
-          <Heading
-            as="h1"
-            fontWeight="700"
-            fontSize="36px"
-            letterSpacing="-0.03em"
-            textAlign="start"
-          >
-            Episode
-          </Heading>
-
-          <Heading
-            as="h2"
-            fontSize="16px"
-            fontWeight="500"
-            letterSpacing="-0.03em"
-            textAlign="start"
-          >
-            Episode
-          </Heading>
-
-          <EpisodeDescription
-            text="Episode"
-            id="episode-info-description"
-            lines={3}
-            ellipsis="..."
-            moreText="Read more"
-            className="custom-class"
-            innerElement="p"
-          />
-        </EpisodeDetailsContainer>
-
-        <EpisodeButtonsContainer>
-          <Button type="button" width="100%">
-            Play
-          </Button>
-        </EpisodeButtonsContainer>
-
-        <EpisodeLinksContainer>
-          <EpisodeLinkContainer>
-            <Link href="/" isExternal>
-              Website
-            </Link>
-            <ExternalLink size={14} />
-          </EpisodeLinkContainer>
-
-          <EpisodeLinkContainer>
-            <Link href="/" isExternal>
-              RSS
-            </Link>
-            <ExternalLink size={14} />
-          </EpisodeLinkContainer>
-        </EpisodeLinksContainer>
-      </EpisodeHeader>
-    </EpisodeContainer>
+    <Scrollbars autoHide autoHideTimeout={100} autoHideDuration={100}>
+      <ErrorBoundary FallbackComponent={ErrorFallback} onReset={reset}>
+        <Suspense fallback={<SkeletonPodcastPage />}>
+          <EpisodeContainer>
+            <Header />
+          </EpisodeContainer>
+        </Suspense>
+      </ErrorBoundary>
+    </Scrollbars>
   );
 };
 
