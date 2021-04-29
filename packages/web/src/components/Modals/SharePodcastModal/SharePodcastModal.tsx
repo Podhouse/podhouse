@@ -72,6 +72,7 @@ const SharePodcastModal = ({ isOpen, onClose, podcast }: Props) => {
         <ModalFooter>
           <Stack width="100%" direction="row" spacing="0px">
             <Input
+              variant="light"
               pr="4.5rem"
               type="text"
               value={podcastLink}
@@ -81,6 +82,7 @@ const SharePodcastModal = ({ isOpen, onClose, podcast }: Props) => {
             />
 
             <Button
+              variant="main"
               onClick={onCopy}
               borderTopLeftRadius="0px"
               borderBottomLeftRadius="0px"

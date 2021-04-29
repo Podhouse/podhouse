@@ -8,8 +8,7 @@ const SkeletonPodcastsWithOnlyAvatarList = () => {
     <Stack direction="column" spacing="20px" p="20px">
       <Stack direction="column" spacing="5px">
         <Skeleton
-          startColor="#E2E8F0"
-          endColor="#E2E8F0"
+          variant="light"
           borderRadius={3}
           width="120px"
           height="30px"
@@ -20,9 +19,8 @@ const SkeletonPodcastsWithOnlyAvatarList = () => {
       <Grid templateColumns="repeat(auto-fill, 140px)" gap={5}>
         {array.map((item) => (
           <Skeleton
+            variant="light"
             key={item}
-            startColor="#E2E8F0"
-            endColor="#E2E8F0"
             borderRadius={3}
             width="140px"
             height="140px"

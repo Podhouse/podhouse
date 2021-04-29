@@ -28,14 +28,7 @@ const Search = () => {
     >
       <SearchContainer>
         <Stack direction="column" spacing="10px">
-          <Heading
-            color="#101010"
-            as="h2"
-            fontSize={36}
-            letterSpacing="-0.03em"
-            textAlign="center"
-            fontWeight="600"
-          >
+          <Heading as="h2" fontSize={36} textAlign="center">
             Search
           </Heading>
 
@@ -52,6 +45,7 @@ const Search = () => {
 
           <Stack direction="row" spacing="0px">
             <Input
+              variant="light"
               pr="4.5rem"
               type="text"
               size="lg"
@@ -63,6 +57,8 @@ const Search = () => {
 
             <Button
               type="submit"
+              variant="main"
+              disabled={!text}
               size="lg"
               borderTopLeftRadius="0px"
               borderBottomLeftRadius="0px"

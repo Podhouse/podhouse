@@ -8,6 +8,7 @@ const Heading = {
     fontFamily: "Passenger Sans",
     fontWeight: "600",
     fontStyle: "normal",
+    letterSpacing: "-0.03em",
     lineHeight: "30px",
   }),
 };

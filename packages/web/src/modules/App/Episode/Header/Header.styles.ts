@@ -44,12 +44,6 @@ export const HeaderDetailsContainer = styled.div`
   }
 `;
 
-export const HeaderDescription = styled(ClampLines)`
-  font-size: 16px;
-  line-height: 30px;
-  font-weight: 300;
-`;
-
 export const HeaderButtonsContainer = styled.div`
   width: 100%;
   height: 100%;
@@ -133,8 +127,8 @@ export const HeaderLinkContainer = styled.div`
     display: grid;
     grid-template-columns: max-content max-content;
     grid-template-rows: 1fr;
-    grid-column-gap: 4px;
     align-items: center;
+    grid-column-gap: 5px;
   }
 `;
 

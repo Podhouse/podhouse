@@ -30,15 +30,7 @@ const SkeletonControls = () => {
     if (initial) {
       return null;
     } else if (loading) {
-      return (
-        <Skeleton
-          width="30px"
-          height="15px"
-          startColor="#E2E8F0"
-          endColor="#E2E8F0"
-          borderRadius={3}
-        />
-      );
+      return <Skeleton width="30px" height="15px" borderRadius={3} />;
     }
   };
 

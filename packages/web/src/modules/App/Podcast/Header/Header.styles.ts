@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import ClampLines from "react-clamp-lines";
 
 export const HeaderContainer = styled.div`
   width: 100%;
@@ -127,8 +126,8 @@ export const HeaderLinkContainer = styled.div`
     display: grid;
     grid-template-columns: max-content max-content;
     grid-template-rows: 1fr;
-    grid-column-gap: 4px;
     align-items: center;
+    grid-column-gap: 5px;
   }
 `;
 

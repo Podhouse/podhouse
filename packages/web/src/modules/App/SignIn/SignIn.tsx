@@ -60,13 +60,7 @@ const SignIn = () => {
       justifyContent="center"
     >
       <Stack direction="column" spacing="10px">
-        <Heading
-          as="h1"
-          fontWeight="700"
-          fontSize="36px"
-          letterSpacing="-0.03em"
-          textAlign="center"
-        >
+        <Heading as="h1" fontSize="36px" textAlign="center">
           Podhouse
         </Heading>
 
@@ -77,7 +71,13 @@ const SignIn = () => {
 
       <FormControl isInvalid={errors.email && true}>
         <FormLabel htmlFor="email">Email</FormLabel>
-        <Input type="email" name="email" placeholder="Email" ref={register} />
+        <Input
+          variant="light"
+          type="email"
+          name="email"
+          placeholder="Email"
+          ref={register}
+        />
         <FormErrorMessage>
           {errors.email && errors.email.message}
         </FormErrorMessage>
@@ -86,6 +86,7 @@ const SignIn = () => {
       <FormControl isInvalid={errors.password && true}>
         <FormLabel htmlFor="password">Password</FormLabel>
         <Input
+          variant="light"
           type="password"
           name="password"
           placeholder="Password"
@@ -98,6 +99,7 @@ const SignIn = () => {
 
       <Button
         type="submit"
+        variant="main"
         width="100%"
         isLoading={formState.isSubmitting}
         isDisabled={!formState.isValid}

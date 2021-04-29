@@ -3,16 +3,16 @@ import {
   Stack,
   Heading,
   Button,
-  Link,
   Image,
   Text,
   IconButton,
   useDisclosure,
   useColorMode,
 } from "@chakra-ui/react";
-import { ExternalLink } from "react-feather";
+import { Link as ReactRouterLink } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-import { BsBoxArrowUp } from "react-icons/bs";
+import { BsBoxArrowUp, BsBoxArrowUpRight } from "react-icons/bs";
+import ClampLines from "react-clamp-lines";
 
 import SharePodcastModal from "src/components/Modals/SharePodcastModal/SharePodcastModal";
 
@@ -25,7 +25,6 @@ import {
 } from "./Header.styles";
 
 import { usePodcast } from "src/queries/";
-import ClampLines from "react-clamp-lines";
 
 type Location = {
   id: number;
@@ -58,8 +57,6 @@ const Header = () => {
           >
             <Heading
               as="h1"
-              variant="light"
-              fontWeight="700"
               fontSize="36px"
               letterSpacing="-0.03em"
               textAlign="start"
@@ -102,7 +99,7 @@ const Header = () => {
           <Button
             type="button"
             width="100%"
-            variant="light"
+            variant="main"
             onClick={toggleColorMode}
           >
             Subscribe
@@ -111,17 +108,29 @@ const Header = () => {
 
         <HeaderLinksContainer>
           <HeaderLinkContainer>
-            <Link href={data?.feed?.link} isExternal>
+            <Button
+              variant="light"
+              as={ReactRouterLink}
+              to={`${data?.feed?.link}`}
+              leftIcon={<BsBoxArrowUpRight size={16} />}
+              w="100%"
+              h="100%"
+              justifyContent="flex-start"
+            >
               Website
-            </Link>
-            <ExternalLink size={14} />
-          </HeaderLinkContainer>
+            </Button>
 
-          <HeaderLinkContainer>
-            <Link href={data?.feed?.url} isExternal>
+            <Button
+              variant="light"
+              as={ReactRouterLink}
+              to={`${data?.feed?.url}`}
+              leftIcon={<BsBoxArrowUpRight size={16} />}
+              w="100%"
+              h="100%"
+              justifyContent="flex-start"
+            >
               RSS
-            </Link>
-            <ExternalLink size={14} />
+            </Button>
           </HeaderLinkContainer>
         </HeaderLinksContainer>
       </HeaderContainer>

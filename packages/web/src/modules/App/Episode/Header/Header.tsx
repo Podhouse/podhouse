@@ -3,21 +3,21 @@ import {
   Stack,
   Heading,
   Button,
-  Link,
+  Text,
   Image,
   IconButton,
   useDisclosure,
 } from "@chakra-ui/react";
-import { ExternalLink } from "react-feather";
+import { Link as ReactRouterLink } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-import { BsBoxArrowUp } from "react-icons/bs";
+import { BsBoxArrowUp, BsBoxArrowUpRight } from "react-icons/bs";
+import ClampLines from "react-clamp-lines";
 
 import ShareEpisodeModal from "src/components/Modals/ShareEpisodeModal/ShareEpisodeModal";
 
 import {
   HeaderContainer,
   HeaderDetailsContainer,
-  HeaderDescription,
   HeaderButtonsContainer,
   HeaderLinksContainer,
   HeaderLinkContainer,
@@ -53,13 +53,7 @@ const Header = () => {
             alignItems="center"
             justifyItems="center"
           >
-            <Heading
-              as="h1"
-              fontWeight="700"
-              fontSize="36px"
-              letterSpacing="-0.03em"
-              textAlign="start"
-            >
+            <Heading as="h1" fontSize="36px" textAlign="start">
               {data?.episode?.title}
             </Heading>
 
@@ -81,7 +75,8 @@ const Header = () => {
             {data?.episode?.author}
           </Heading>
 
-          <HeaderDescription
+          <Text
+            as={ClampLines}
             text={data ? data?.episode?.description : ""}
             id="podcast-info-description"
             lines={3}
@@ -93,24 +88,36 @@ const Header = () => {
         </HeaderDetailsContainer>
 
         <HeaderButtonsContainer>
-          <Button type="button" width="100%">
+          <Button type="button" variant="main" width="100%">
             Listen
           </Button>
         </HeaderButtonsContainer>
 
         <HeaderLinksContainer>
           <HeaderLinkContainer>
-            <Link href={data?.episode?.link} isExternal>
+            <Button
+              variant="light"
+              as={ReactRouterLink}
+              to={`${data?.feed?.link}`}
+              leftIcon={<BsBoxArrowUpRight size={16} />}
+              w="100%"
+              h="100%"
+              justifyContent="flex-start"
+            >
               Website
-            </Link>
-            <ExternalLink size={14} />
-          </HeaderLinkContainer>
+            </Button>
 
-          <HeaderLinkContainer>
-            <Link href={data?.episode?.url} isExternal>
+            <Button
+              variant="light"
+              as={ReactRouterLink}
+              to={`${data?.feed?.url}`}
+              leftIcon={<BsBoxArrowUpRight size={16} />}
+              w="100%"
+              h="100%"
+              justifyContent="flex-start"
+            >
               RSS
-            </Link>
-            <ExternalLink size={14} />
+            </Button>
           </HeaderLinkContainer>
         </HeaderLinksContainer>
       </HeaderContainer>
