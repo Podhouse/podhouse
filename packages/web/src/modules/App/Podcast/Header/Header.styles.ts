@@ -44,12 +44,6 @@ export const HeaderDetailsContainer = styled.div`
   }
 `;
 
-export const HeaderDescription = styled(ClampLines)`
-  font-size: 16px;
-  line-height: 30px;
-  font-weight: 300;
-`;
-
 export const HeaderButtonsContainer = styled.div`
   width: 100%;
   height: 100%;

@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
+import { Box } from "@chakra-ui/react";
 
-export const PlayerContainer = styled.div`
+export const PlayerContainer = styled(Box)`
   width: 100%;
   height: 80px;
   position: fixed;
@@ -10,7 +11,6 @@ export const PlayerContainer = styled.div`
   grid-template-rows: 14px 1fr;
   grid-column-gap: 20px;
   grid-area: "player";
-  background: #ffffff;
   box-sizing: border-box;
   cursor: pointer;
   padding: 0;
@@ -66,7 +66,6 @@ export const PlayerContainer = styled.div`
     grid-area: "player";
     padding: 15px 30px;
     box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.05);
-    background: #ffffff;
     z-index: 1;
     cursor: default;
     position: inherit;

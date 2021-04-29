@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Text, IconButton } from "@chakra-ui/react";
+import { Text, Link, IconButton } from "@chakra-ui/react";
 
 export const EpisodeItemContainer = styled.div`
   width: 100%;
@@ -35,7 +35,7 @@ export const EpisodeNameDescription = styled.div`
   }
 `;
 
-export const EpisodeItemName = styled(Text)`
+export const EpisodeItemName = styled(Link)`
   grid-column: 1 / 4;
   grid-row: 1 / 2;
   display: -webkit-box;

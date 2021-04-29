@@ -7,10 +7,10 @@ const DesktopNavigation = () => (
   <Grid templateRows="repeat(4, 35px)" gap={2}>
     <GridItem w="100%" h="35px">
       <Button
+        variant="light"
         as={ReactRouterLink}
         to="/"
         leftIcon={<BsHouse size={16} />}
-        variant="ghost"
         w="100%"
         h="100%"
         justifyContent="flex-start"
@@ -21,10 +21,10 @@ const DesktopNavigation = () => (
 
     <GridItem w="100%" h="35px">
       <Button
+        variant="light"
         as={ReactRouterLink}
         to="/search"
         leftIcon={<BsSearch size={16} />}
-        variant="ghost"
         w="100%"
         h="100%"
         justifyContent="flex-start"
@@ -35,10 +35,10 @@ const DesktopNavigation = () => (
 
     <GridItem w="100%" h="35px">
       <Button
+        variant="light"
         as={ReactRouterLink}
         to="/subscriptions"
         leftIcon={<BsMic size={16} />}
-        variant="ghost"
         w="100%"
         h="100%"
         justifyContent="flex-start"
@@ -49,10 +49,10 @@ const DesktopNavigation = () => (
 
     <GridItem w="100%" h="35px">
       <Button
+        variant="light"
         as={ReactRouterLink}
         to="/favorites"
         leftIcon={<BsHeart size={16} />}
-        variant="ghost"
         w="100%"
         h="100%"
         justifyContent="flex-start"

@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
+import { Box } from "@chakra-ui/react";
 
-export const MenuContainer = styled.menu`
+export const MenuContainer = styled(Box)`
   width: 100%;
   height: 80px;
   bottom: 0px;
@@ -22,7 +23,6 @@ export const MenuContainer = styled.menu`
     grid-row: 1 / 3;
     position: inherit;
     z-index: 0;
-    border-right: 1px solid #f3f3f3;
   }
 `;
 

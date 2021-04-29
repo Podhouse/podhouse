@@ -1,6 +1,7 @@
 import React, { Suspense } from "react";
 import { Skeleton } from "@chakra-ui/react";
 import { ErrorBoundary } from "react-error-boundary";
+import { mode } from "@chakra-ui/theme-tools";
 
 import Navigation from "./Navigation/Navigation";
 import Settings from "./Settings/Settings";

@@ -46,36 +46,18 @@ const EpisodeItem = ({ episode }: Props) => {
               pathname: `/episode/${episode.id}`,
               state: { id: episode.id },
             }}
-            fontSize="16px"
-            fontWeight="500"
           >
             {episode.title}
           </EpisodeItemName>
 
-          <EpisodeItemDescription
-            fontSize="16px"
-            fontWeight="300"
-            lineHeight="30px"
-          >
-            {episode.description}
-          </EpisodeItemDescription>
+          <EpisodeItemDescription>{episode.description}</EpisodeItemDescription>
         </EpisodeNameDescription>
 
-        <EpisodeItemPublishedDate
-          fontSize="16px"
-          fontWeight="300"
-          lineHeight="30px"
-          textAlign="start"
-        >
+        <EpisodeItemPublishedDate>
           {formatDate(episode.datePublished)}
         </EpisodeItemPublishedDate>
 
-        <EpisodeItemDuration
-          fontSize="16px"
-          fontWeight="300"
-          lineHeight="30px"
-          textAlign="start"
-        >
+        <EpisodeItemDuration>
           {formatTime(episode.duration)}
         </EpisodeItemDuration>
 
@@ -84,7 +66,7 @@ const EpisodeItem = ({ episode }: Props) => {
             <MenuButton
               as={IconButton}
               aria-label="Options"
-              variant="ghost"
+              variant="light"
               icon={<BsThreeDots size="30px" />}
               alignSelf="center"
             />
@@ -100,7 +82,7 @@ const EpisodeItem = ({ episode }: Props) => {
         <EpisodeItemButton
           aria-label="Play episode"
           icon={<BsPlay size="30px" />}
-          variant="ghost"
+          variant="light"
         />
 
         <EpisodeDividerContainer>

@@ -16,14 +16,14 @@ const Navigation = () => {
     >
       <IconButton
         w="fit-content"
-        variant="ghost"
+        variant="light"
         aria-label="Go backward"
         icon={<BsChevronLeft size={16} />}
         onClick={() => history.goBack()}
       />
       <IconButton
         w="fit-content"
-        variant="ghost"
+        variant="light"
         aria-label="Go forward"
         icon={<BsChevronRight size={16} />}
         onClick={() => history.goForward()}

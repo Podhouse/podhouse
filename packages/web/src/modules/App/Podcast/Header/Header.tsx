@@ -5,8 +5,10 @@ import {
   Button,
   Link,
   Image,
+  Text,
   IconButton,
   useDisclosure,
+  useColorMode,
 } from "@chakra-ui/react";
 import { ExternalLink } from "react-feather";
 import { useLocation } from "react-router-dom";
@@ -17,13 +19,13 @@ import SharePodcastModal from "src/components/Modals/SharePodcastModal/SharePodc
 import {
   HeaderContainer,
   HeaderDetailsContainer,
-  HeaderDescription,
   HeaderButtonsContainer,
   HeaderLinksContainer,
   HeaderLinkContainer,
 } from "./Header.styles";
 
 import { usePodcast } from "src/queries/";
+import ClampLines from "react-clamp-lines";
 
 type Location = {
   id: number;
@@ -33,6 +35,7 @@ const Header = () => {
   const { state } = useLocation<Location>();
   const { data } = usePodcast(state.id);
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { colorMode, toggleColorMode } = useColorMode();
 
   return (
     <>
@@ -55,6 +58,7 @@ const Header = () => {
           >
             <Heading
               as="h1"
+              variant="light"
               fontWeight="700"
               fontSize="36px"
               letterSpacing="-0.03em"
@@ -66,13 +70,14 @@ const Header = () => {
             <IconButton
               aria-label="Share podcast"
               icon={<BsBoxArrowUp size="24px" />}
-              variant="ghost"
+              variant="light"
               onClick={onOpen}
             />
           </Stack>
 
           <Heading
             as="h2"
+            variant="light"
             fontSize="16px"
             fontWeight="500"
             letterSpacing="-0.03em"
@@ -81,7 +86,8 @@ const Header = () => {
             {data?.feed?.author}
           </Heading>
 
-          <HeaderDescription
+          <Text
+            as={ClampLines}
             text={data ? data?.feed?.description : ""}
             id="podcast-info-description"
             lines={3}
@@ -93,7 +99,12 @@ const Header = () => {
         </HeaderDetailsContainer>
 
         <HeaderButtonsContainer>
-          <Button type="button" width="100%">
+          <Button
+            type="button"
+            width="100%"
+            variant="light"
+            onClick={toggleColorMode}
+          >
             Subscribe
           </Button>
         </HeaderButtonsContainer>
