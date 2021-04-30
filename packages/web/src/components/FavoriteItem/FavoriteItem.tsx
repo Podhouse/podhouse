@@ -104,7 +104,7 @@ const FavoriteItem = ({ episode }: Props) => {
         />
 
         <FavoriteDividerContainer>
-          <Divider />
+          <Divider variant="light" orientation="horizontal" />
         </FavoriteDividerContainer>
       </FavoriteItemContainer>
 

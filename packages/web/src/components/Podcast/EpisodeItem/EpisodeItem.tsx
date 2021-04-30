@@ -7,6 +7,7 @@ import {
   MenuItem,
   IconButton,
   useDisclosure,
+  Link as ChakraLink,
 } from "@chakra-ui/react";
 import { Link as ReactRouterLink } from "react-router-dom";
 import { BsPlay, BsThreeDots } from "react-icons/bs";
@@ -40,15 +41,16 @@ const EpisodeItem = ({ episode }: Props) => {
     <>
       <EpisodeItemContainer>
         <EpisodeNameDescription>
-          <EpisodeItemName
-            as={ReactRouterLink}
+          <ChakraLink
             to={{
               pathname: `/episode/${episode.id}`,
               state: { id: episode.id },
             }}
+            href={`/episode/${episode.id}`}
+            as={ReactRouterLink}
           >
             {episode.title}
-          </EpisodeItemName>
+          </ChakraLink>
 
           <EpisodeItemDescription>{episode.description}</EpisodeItemDescription>
         </EpisodeNameDescription>
@@ -86,7 +88,7 @@ const EpisodeItem = ({ episode }: Props) => {
         />
 
         <EpisodeDividerContainer>
-          <Divider />
+          <Divider variant="light" orientation="horizontal" />
         </EpisodeDividerContainer>
       </EpisodeItemContainer>
 

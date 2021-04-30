@@ -123,6 +123,6 @@ export const EpisodeItemButton = styled(IconButton)`
 `;
 
 export const EpisodeDividerContainer = styled.div`
-  grid-column: 1 / 5;
+  grid-column: 1 / 6;
   grid-row: 4 / 5;
 `;

@@ -39,7 +39,7 @@ export const fonts = {
 };
 
 const theme = extendTheme({
-  initialColorMode: "dark",
+  initialColorMode: "light",
   useSystemColorMode: true,
   styles,
   colors,

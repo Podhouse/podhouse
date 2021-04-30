@@ -24,7 +24,7 @@ const PodcastsWithOnlyAvatarList = ({ title, feeds }: Props) => {
         >
           {title}
         </Heading>
-        <Divider orientation="horizontal" />
+        <Divider variant="light" orientation="horizontal" />
       </Stack>
 
       <Grid templateColumns="repeat(auto-fill, 140px)" gap={5}>

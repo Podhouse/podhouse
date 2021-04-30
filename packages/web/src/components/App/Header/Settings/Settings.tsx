@@ -16,7 +16,6 @@ const Settings = () => {
           state: { from: location },
         }}
         href="/sign-in"
-        as={ReactRouterLink}
       >
         Login
       </ChakraLink>

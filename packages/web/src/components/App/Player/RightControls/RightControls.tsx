@@ -1,5 +1,16 @@
 import React from "react";
-import { IconButton } from "@chakra-ui/react";
+import {
+  Stack,
+  Image,
+  IconButton,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  MenuGroup,
+  Link,
+  Text,
+} from "@chakra-ui/react";
 import { BsListUl, BsClock } from "react-icons/bs";
 
 import { RightControlsContainer } from "./RightControls.styles";
@@ -30,21 +41,54 @@ const RightControls = ({
 }: RightControlsProps) => {
   return (
     <RightControlsContainer>
-      <IconButton
-        aria-label="Forward 15 seconds"
-        icon={<BsListUl size="20px" />}
-        variant="light"
-        size="sm"
-        onClick={() => {}}
-      />
+      <Menu>
+        <MenuButton
+          as={IconButton}
+          aria-label="Rate options"
+          variant="light"
+          icon={<BsClock size="20px" />}
+          alignSelf="center"
+        />
+        <MenuList>
+          <MenuItem>0.5x</MenuItem>
+          <MenuItem>1.0x</MenuItem>
+          <MenuItem>1.5x</MenuItem>
+          <MenuItem>2.0x</MenuItem>
+          <MenuItem>2.5x</MenuItem>
+          <MenuItem>3.0x</MenuItem>
+        </MenuList>
+      </Menu>
 
-      <IconButton
-        aria-label="Forward 15 seconds"
-        icon={<BsClock size="20px" />}
-        variant="light"
-        size="sm"
-        onClick={() => {}}
-      />
+      <Menu>
+        <MenuButton
+          as={IconButton}
+          aria-label="Queue options"
+          variant="light"
+          icon={<BsListUl size="20px" />}
+          alignSelf="center"
+        />
+        <MenuList>
+          <MenuGroup title="Queue">
+            <MenuItem>
+              <Stack direction="row" spacing="10px">
+                <Image
+                  width="50px"
+                  height="50px"
+                  borderRadius="5px"
+                  src="https://yt3.ggpht.com/ytc/AAUvwnjtZ27pIbLoaHBRgDTeCSZ5yiH7CWqKbjhpL-TgLA=s900-c-k-c0x00ffffff-no-rj"
+                  lazy="loading"
+                />
+
+                <Stack direction="column" spacing="10px">
+                  <Link>403 - Return of Jedai</Link>
+                  <Text>99% Invisible</Text>
+                </Stack>
+              </Stack>
+            </MenuItem>
+            <MenuItem>Payments </MenuItem>
+          </MenuGroup>
+        </MenuList>
+      </Menu>
 
       <Volume
         ready={ready}
