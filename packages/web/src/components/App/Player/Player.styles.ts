@@ -35,12 +35,6 @@ export const PlayerContainer = styled(Box)`
     height: 7px;
   }
 
-  /* [data-reach-slider-track-highlight][data-orientation="horizontal"] {
-    width: 100%;
-    height: 7px;
-    background: #101010;
-  } */
-
   [data-reach-slider-range] {
     width: 100%;
     height: 7px;
@@ -61,7 +55,10 @@ export const PlayerContainer = styled(Box)`
     max-height: 140px;
     grid-row: 3 / 4;
     grid-column: 1 / 3;
-    grid-template-columns: 1fr minmax(auto, 390px) 1fr;
+    grid-template-columns: minmax(100px, 300px) minmax(200px, 1fr) minmax(
+        auto,
+        300px
+      );
     grid-template-rows: 1fr;
     grid-area: "player";
     padding: 15px 30px;
@@ -72,7 +69,10 @@ export const PlayerContainer = styled(Box)`
   }
 
   @media screen and (min-width: 1020px) {
-    grid-template-columns: 1fr minmax(auto, 390px) 1fr;
+    grid-template-columns: minmax(100px, 300px) minmax(200px, 1fr) minmax(
+        auto,
+        300px
+      );
     grid-template-rows: 1fr;
     position: inherit;
   }

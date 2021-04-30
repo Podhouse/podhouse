@@ -1,50 +1,29 @@
 import React from "react";
 import { Link } from "@chakra-ui/react";
 import { Link as ReactRouterLink } from "react-router-dom";
-import { BsHeart } from "react-icons/bs";
 
-import {
-  PodcastContainer,
-  PodcastImage,
-  PodcastDetails,
-  PodcastFavoriteContainer,
-} from "./Podcast.styles";
+import DesktopPodcast from "./DesktopPodcast/DesktopPodcast";
+import MobilePodcast from "./MobilePodcast/MobilePodcast";
 
-import { PlayerEpisode } from "src/machines/Player/Player.types";
+import useWindowSize from "src/hooks/useWindowSize";
 
 interface Props {
   ready: boolean;
-  episode: PlayerEpisode | null;
+  episode: any;
 }
 
 const Podcast = ({ ready, episode }: Props) => {
-  return (
-    <PodcastContainer>
-      <ReactRouterLink to="/" className="podcast-image">
-        <PodcastImage src="https://bit.ly/sage-adebayo" />
-      </ReactRouterLink>
+  const { innerWidth } = useWindowSize();
 
-      <PodcastDetails>
-        <Link as={ReactRouterLink} to="/" fontSize="16px" fontWeight="500">
-          Implementation with React Query
-        </Link>
+  const renderPodcast = () => {
+    if (innerWidth >= 800) {
+      return <DesktopPodcast />;
+    } else {
+      return <MobilePodcast />;
+    }
+  };
 
-        <Link
-          as={ReactRouterLink}
-          to="/"
-          fontSize="16px"
-          fontWeight="300"
-          lineHeight="30px"
-        >
-          Implementation with React Query
-        </Link>
-
-        <PodcastFavoriteContainer>
-          <BsHeart className="like-button" size={20} onClick={() => {}} />
-        </PodcastFavoriteContainer>
-      </PodcastDetails>
-    </PodcastContainer>
-  );
+  return renderPodcast();
 };
 
 export default Podcast;

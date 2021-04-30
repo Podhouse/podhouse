@@ -1,3 +1,4 @@
+import Box from "./Box/Box";
 import Input from "./Input/Input";
 import Button from "./Button/Button";
 import IconButton from "./IconButton/IconButton";
@@ -9,8 +10,10 @@ import Skeleton from "./Skeleton/Skeleton";
 import Label from "./Label/Label";
 import FormLabel from "./FormLabel/FormLabel";
 import Menu from "./Menu/Menu";
+import Slider from "./Slider/Slider";
 
 const components = {
+  Box,
   Input,
   Button,
   IconButton,
@@ -22,6 +25,7 @@ const components = {
   Label,
   FormLabel,
   Menu,
+  Slider,
 };
 
 export default components;

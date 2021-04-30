@@ -1,5 +1,5 @@
 import React from "react";
-import { Clock } from "react-feather";
+import { IconButton } from "@chakra-ui/react";
 import { BsListUl, BsClock } from "react-icons/bs";
 
 import { RightControlsContainer } from "./RightControls.styles";
@@ -28,21 +28,21 @@ const RightControls = ({
   onVolume,
   onMute,
 }: RightControlsProps) => {
-  if (!episode) return null;
-
   return (
     <RightControlsContainer>
-      <BsListUl
-        size={20}
-        color="#101010"
-        style={{ cursor: "pointer" }}
+      <IconButton
+        aria-label="Forward 15 seconds"
+        icon={<BsListUl size="20px" />}
+        variant="light"
+        size="sm"
         onClick={() => {}}
       />
 
-      <BsClock
-        size={20}
-        color="#101010"
-        style={{ cursor: "pointer" }}
+      <IconButton
+        aria-label="Forward 15 seconds"
+        icon={<BsClock size="20px" />}
+        variant="light"
+        size="sm"
         onClick={() => {}}
       />
 

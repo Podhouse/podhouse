@@ -1,11 +1,12 @@
 import React from "react";
-import { BsVolumeUp, BsVolumeDown, BsVolumeMute } from "react-icons/bs";
 import {
-  SliderInput,
+  IconButton,
+  Slider,
   SliderTrack,
-  SliderRange,
-  SliderHandle,
-} from "@reach/slider";
+  SliderFilledTrack,
+  SliderThumb,
+} from "@chakra-ui/react";
+import { BsVolumeUp, BsVolumeDown, BsVolumeMute } from "react-icons/bs";
 
 import { VolumeContainer } from "./Volume.styles";
 
@@ -23,33 +24,50 @@ interface VolumeProps {
 const Volume = ({ ready, volume, muted, onVolume, onMute }: VolumeProps) => {
   const renderVolume = () => {
     if (volume === 0 || muted) {
-      return <BsVolumeMute size={20} onClick={onMute} />;
+      return (
+        <IconButton
+          aria-label="Forward 15 seconds"
+          icon={<BsVolumeMute size="20px" />}
+          variant="light"
+          size="sm"
+          onClick={onMute}
+        />
+      );
     }
     if (volume > 0.1 && volume < 0.5) {
-      return <BsVolumeDown size={20} onClick={onMute} />;
+      return (
+        <IconButton
+          aria-label="Forward 15 seconds"
+          icon={<BsVolumeDown size="20px" />}
+          variant="light"
+          size="sm"
+          onClick={onMute}
+        />
+      );
     }
-    return <BsVolumeUp size={20} onClick={onMute} />;
+
+    return (
+      <IconButton
+        aria-label="Forward 15 seconds"
+        icon={<BsVolumeUp size="20px" />}
+        variant="light"
+        size="sm"
+        onClick={onMute}
+      />
+    );
   };
 
   const onReady = () => {
-    if (!ready) return null;
-
     return (
       <VolumeContainer>
         {renderVolume()}
 
-        <SliderInput
-          value={volume}
-          min={0}
-          max={1}
-          step={0.1}
-          onChange={onVolume}
-        >
+        <Slider aria-label="slider-ex-1" defaultValue={30}>
           <SliderTrack>
-            <SliderRange />
-            <SliderHandle />
+            <SliderFilledTrack />
           </SliderTrack>
-        </SliderInput>
+          <SliderThumb />
+        </Slider>
       </VolumeContainer>
     );
   };

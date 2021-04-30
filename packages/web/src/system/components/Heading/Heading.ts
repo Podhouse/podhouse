@@ -4,7 +4,7 @@ type Props = Record<string, any>;
 
 const Heading = {
   baseStyle: (props: Props) => ({
-    color: mode("black", `white`)(props),
+    color: mode("#101010", `#FFFFFF`)(props),
     fontFamily: "Passenger Sans",
     fontWeight: "600",
     fontStyle: "normal",

@@ -33,40 +33,28 @@ const Player = () => {
 
   return (
     <PlayerContainer>
-      {loading ? (
-        <SkeletonPodcast />
-      ) : (
-        <Podcast ready={ready} episode={episode} />
-      )}
+      <Podcast ready={ready} episode={episode} />
 
-      {initial || loading ? (
-        <SkeletonControls />
-      ) : (
-        <Controls
-          ready={ready}
-          playing={playing}
-          seek={seek}
-          episode={episode}
-          onPlay={onPlay}
-          onPause={onPause}
-          onSeek={onSeek}
-          onBackward={onBackward}
-          onForward={onForward}
-        />
-      )}
+      <Controls
+        ready={true}
+        playing={playing}
+        seek={seek}
+        episode={episode}
+        onPlay={onPlay}
+        onPause={onPause}
+        onSeek={onSeek}
+        onBackward={onBackward}
+        onForward={onForward}
+      />
 
-      {initial || loading ? (
-        <SkeletonRightControls />
-      ) : (
-        <RightControls
-          ready={ready}
-          volume={volume}
-          muted={muted}
-          episode={episode}
-          onVolume={onVolume}
-          onMute={onMute}
-        />
-      )}
+      <RightControls
+        ready={ready}
+        volume={volume}
+        muted={muted}
+        episode={episode}
+        onVolume={onVolume}
+        onMute={onMute}
+      />
     </PlayerContainer>
   );
 };
