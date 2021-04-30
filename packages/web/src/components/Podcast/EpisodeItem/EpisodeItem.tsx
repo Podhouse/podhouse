@@ -88,7 +88,7 @@ const EpisodeItem = ({ episode }: Props) => {
         />
 
         <EpisodeDividerContainer>
-          <Divider variant="light" orientation="horizontal" />
+          <Divider orientation="horizontal" />
         </EpisodeDividerContainer>
       </EpisodeItemContainer>
 

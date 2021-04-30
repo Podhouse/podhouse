@@ -9,6 +9,7 @@ import Divider from "./Divider/Divider";
 import Skeleton from "./Skeleton/Skeleton";
 import Label from "./Label/Label";
 import FormLabel from "./FormLabel/FormLabel";
+import FormErrorMessage from "./FormErrorMessage/FormErrorMessage";
 import Menu from "./Menu/Menu";
 import Slider from "./Slider/Slider";
 
@@ -24,6 +25,7 @@ const components = {
   Skeleton,
   Label,
   FormLabel,
+  FormErrorMessage,
   Menu,
   Slider,
 };

@@ -5,7 +5,7 @@ type Props = Record<string, any>;
 const light = (props: Props) => ({
   field: {
     bg: "inherit",
-    color: mode("gray.400", "white")(props),
+    color: mode("gray.400", "#B7B7B7")(props),
     borderWidth: "1px",
     borderColor: mode("gray.50", "#1A1C20")(props),
     fontFamily: "Passenger Sans",

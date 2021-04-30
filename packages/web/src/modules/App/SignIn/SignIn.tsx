@@ -13,6 +13,7 @@ import {
   FormErrorMessage,
   Heading,
   Text,
+  useColorMode,
 } from "@chakra-ui/react";
 import { useHistory } from "react-router-dom";
 
@@ -28,6 +29,7 @@ const validationSchema = Yup.object().shape({
 
 const SignIn = () => {
   const history = useHistory();
+  const { toggleColorMode } = useColorMode();
 
   const {
     register,
@@ -92,13 +94,7 @@ const SignIn = () => {
           </FormErrorMessage>
         </FormControl>
 
-        <Button
-          type="submit"
-          variant="main"
-          width="100%"
-          isLoading={isSubmitting}
-          isDisabled={!isValid}
-        >
+        <Button onClick={toggleColorMode} variant="main" width="100%">
           Sign in
         </Button>
 

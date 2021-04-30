@@ -1,15 +1,14 @@
+import {
+  ComponentSingleStyleConfig,
+  ThemeComponentProps,
+} from "@chakra-ui/react";
 import { mode } from "@chakra-ui/theme-tools";
 
-type Props = Record<string, any>;
-
-const light = (props: Props) => ({
-  borderColor: mode("gray.50", "purple.100")(props),
-});
-
-const Divider = {
-  variants: {
-    light,
-  },
+const Divider: ComponentSingleStyleConfig = {
+  baseStyle: (props: ThemeComponentProps) => ({
+    borderWidth: "1px",
+    borderColor: mode("gray.50", "#2C2E34")(props),
+  }),
 };
 
 export default Divider;

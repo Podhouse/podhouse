@@ -19,6 +19,7 @@ export const styles: Styles = {
 export const colors = {
   white: "#FFFFFF",
   black: "#101010",
+  blackLight: "#2C2E34",
   gray: {
     "50": "#f2f2f2",
     "100": "#d9d9d9",

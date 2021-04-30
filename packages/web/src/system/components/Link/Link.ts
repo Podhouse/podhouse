@@ -1,9 +1,11 @@
+import {
+  ComponentSingleStyleConfig,
+  ThemeComponentProps,
+} from "@chakra-ui/react";
 import { mode } from "@chakra-ui/theme-tools";
 
-type Props = Record<string, any>;
-
-const Link = {
-  baseStyle: (props: Props) => ({
+const Link: ComponentSingleStyleConfig = {
+  baseStyle: (props: ThemeComponentProps) => ({
     color: mode("gray.500", "#E7E7E7")(props),
     fontFamily: "Passenger Sans",
     fontSize: "16px",
