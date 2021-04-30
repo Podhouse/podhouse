@@ -10,7 +10,7 @@ import Label from "./Label/Label";
 import FormLabel from "./FormLabel/FormLabel";
 import Menu from "./Menu/Menu";
 
-export default {
+const components = {
   Input,
   Button,
   IconButton,
@@ -23,3 +23,5 @@ export default {
   FormLabel,
   Menu,
 };
+
+export default components;

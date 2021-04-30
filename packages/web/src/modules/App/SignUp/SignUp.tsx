@@ -4,14 +4,12 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import {
   Stack,
-  Box,
   Input,
   Button,
   Link,
   FormControl,
   FormLabel,
   FormErrorMessage,
-  useToast,
   Heading,
   Text,
 } from "@chakra-ui/react";
@@ -28,16 +26,11 @@ const validationSchema = Yup.object().shape({
 });
 
 const SignIn = () => {
-  const toast = useToast();
   const history = useHistory();
 
   const {
     register,
-    handleSubmit,
-    errors,
-    formState,
-    getValues,
-    setError,
+    formState: { errors, isSubmitting, isValid },
   } = useForm<SignInFormProps>({
     mode: "onChange",
     reValidateMode: "onChange",
@@ -50,6 +43,8 @@ const SignIn = () => {
 
   return (
     <Stack
+      as="form"
+      onSubmit={onSubmit}
       direction="column"
       spacing="20px"
       w="100%"
@@ -60,13 +55,7 @@ const SignIn = () => {
       justifyContent="center"
     >
       <Stack direction="column" spacing="10px">
-        <Heading
-          as="h1"
-          fontWeight="700"
-          fontSize="36px"
-          letterSpacing="-0.03em"
-          textAlign="center"
-        >
+        <Heading as="h1" fontSize="36px" textAlign="center">
           Podhouse
         </Heading>
 
@@ -77,7 +66,12 @@ const SignIn = () => {
 
       <FormControl isInvalid={errors.email && true}>
         <FormLabel htmlFor="email">Email</FormLabel>
-        <Input type="email" name="email" placeholder="Email" ref={register} />
+        <Input
+          variant="light"
+          type="email"
+          placeholder="Email"
+          {...register("email")}
+        />
         <FormErrorMessage>
           {errors.email && errors.email.message}
         </FormErrorMessage>
@@ -86,10 +80,10 @@ const SignIn = () => {
       <FormControl isInvalid={errors.password && true}>
         <FormLabel htmlFor="password">Password</FormLabel>
         <Input
+          variant="light"
           type="password"
-          name="password"
           placeholder="Password"
-          ref={register}
+          {...register("password")}
         />
         <FormErrorMessage>
           {errors.password && errors.password.message}
@@ -98,9 +92,10 @@ const SignIn = () => {
 
       <Button
         type="submit"
+        variant="main"
         width="100%"
-        isLoading={formState.isSubmitting}
-        isDisabled={!formState.isValid}
+        isLoading={isSubmitting}
+        isDisabled={!isValid}
       >
         Sign up
       </Button>

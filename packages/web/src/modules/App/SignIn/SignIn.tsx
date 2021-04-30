@@ -4,14 +4,12 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import {
   Stack,
-  Box,
   Input,
   Button,
   Link,
   FormControl,
   FormLabel,
   FormErrorMessage,
-  useToast,
   Heading,
   Text,
 } from "@chakra-ui/react";
@@ -28,16 +26,11 @@ const validationSchema = Yup.object().shape({
 });
 
 const SignIn = () => {
-  const toast = useToast();
   const history = useHistory();
 
   const {
     register,
-    handleSubmit,
-    errors,
-    formState,
-    getValues,
-    setError,
+    formState: { errors, isSubmitting, isValid },
   } = useForm<SignInFormProps>({
     mode: "onChange",
     reValidateMode: "onChange",
@@ -50,6 +43,8 @@ const SignIn = () => {
 
   return (
     <Stack
+      as="form"
+      onSubmit={onSubmit}
       direction="column"
       spacing="20px"
       w="100%"
@@ -74,9 +69,8 @@ const SignIn = () => {
         <Input
           variant="light"
           type="email"
-          name="email"
           placeholder="Email"
-          ref={register}
+          {...register("email")}
         />
         <FormErrorMessage>
           {errors.email && errors.email.message}
@@ -88,9 +82,8 @@ const SignIn = () => {
         <Input
           variant="light"
           type="password"
-          name="password"
           placeholder="Password"
-          ref={register}
+          {...register("password")}
         />
         <FormErrorMessage>
           {errors.password && errors.password.message}
@@ -101,8 +94,8 @@ const SignIn = () => {
         type="submit"
         variant="main"
         width="100%"
-        isLoading={formState.isSubmitting}
-        isDisabled={!formState.isValid}
+        isLoading={isSubmitting}
+        isDisabled={!isValid}
       >
         Sign in
       </Button>

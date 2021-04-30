@@ -4,14 +4,11 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import {
   Stack,
-  Box,
   Input,
   Button,
-  Link,
   FormControl,
   FormLabel,
   FormErrorMessage,
-  useToast,
 } from "@chakra-ui/react";
 
 interface ForgotPasswordFormProps {
@@ -23,15 +20,9 @@ const validationSchema = Yup.object().shape({
 });
 
 const ForgotPassword = () => {
-  const toast = useToast();
-
   const {
     register,
-    handleSubmit,
-    errors,
-    formState,
-    getValues,
-    setError,
+    formState: { errors, isSubmitting, isValid },
   } = useForm<ForgotPasswordFormProps>({
     mode: "onChange",
     reValidateMode: "onChange",
@@ -45,7 +36,7 @@ const ForgotPassword = () => {
   return (
     <Stack
       as="form"
-      onSubmit={handleSubmit(onSubmit)}
+      onSubmit={onSubmit}
       direction="column"
       spacing="10px"
       w="100%"
@@ -57,7 +48,12 @@ const ForgotPassword = () => {
     >
       <FormControl isInvalid={errors.email && true}>
         <FormLabel htmlFor="email">Email</FormLabel>
-        <Input type="email" name="email" placeholder="Email" ref={register} />
+        <Input
+          variant="light"
+          type="email"
+          placeholder="Email"
+          {...register("email")}
+        />
         <FormErrorMessage>
           {errors.email && errors.email.message}
         </FormErrorMessage>
@@ -65,16 +61,13 @@ const ForgotPassword = () => {
 
       <Button
         type="submit"
+        variant="main"
         width="100%"
-        isLoading={formState.isSubmitting}
-        isDisabled={!formState.isValid}
+        isLoading={isSubmitting}
+        isDisabled={!isValid}
       >
         Send reset link
       </Button>
-
-      <Box>
-        <Link onClick={() => {}}>Don't have an account?</Link>
-      </Box>
     </Stack>
   );
 };
