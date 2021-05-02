@@ -32,10 +32,10 @@
     "lerna": "^4.0.0"
   },
   "devDependencies": {
-    "husky": "^5.1.3",
+    "husky": "^6.0.0",
     "lint-staged": "^10.5.4",
     "prettier": "^2.2.1",
-    "typescript": "^4.2.3"
+    "typescript": "^4.2.4"
   },
   "husky": {
     "hooks": {
@@ -43,10 +43,13 @@
     }
   },
   "lint-staged": {
-    "*.{js,ts,tsx}": [
+    "**/*.ts?(x)": [
       "yarn web:build",
+      "yarn landing:build",
       "yarn web:lint",
+      "yarn landing:lint",
       "yarn web:format",
+      "yarn landing:format",
       "yarn web:generate-sitemap",
       "yarn landing:generate-sitemap",
       "git add"
