@@ -26,6 +26,11 @@
     "web:cypress:run": "yarn workspace @podhouse/web cypress:run",
     "web:relay": "yarn workspace @podhouse/web relay",
     "web:generate-sitemap": "yarn workspace @podhouse/web generate-sitemap",
+    "server:start": "yarn workspace @podhouse/server start",
+    "server:build": "yarn workspace @podhouse/server build",
+    "server:test": "yarn workspace @podhouse/server test",
+    "server:lint": "yarn workspace @podhouse/server lint",
+    "server:format": "yarn workspace @podhouse/server format",
     "lint:staged": "lint-staged"
   },
   "dependencies": {

@@ -9,7 +9,7 @@ const cwd = process.cwd();
 module.exports = {
   mode: "development",
   entry: {
-    server: ["./src/index.ts"],
+    server: ["./src/app.ts"],
   },
   output: {
     path: path.resolve("build"),
