@@ -1,36 +1,51 @@
 import { extendTheme } from "@chakra-ui/react";
+import type { Styles } from "@chakra-ui/theme-tools";
+import { mode } from "@chakra-ui/theme-tools";
+
+import components from "./components/";
+
+export const styles: Styles = {
+  global: (props) => ({
+    body: {
+      bg: mode("#FFFFFF", "#151419")(props),
+      fontFeatureSettings: "pnum",
+      fontVariantNumeric: "proportional-nums",
+      fontSize: 16,
+      fontFamily: "Passenger Sans",
+    },
+  }),
+};
+
+export const colors = {
+  white: "#FFFFFF",
+  black: "#101010",
+  blackLight: "#2C2E34",
+  gray: {
+    "50": "#f2f2f2",
+    "100": "#d9d9d9",
+    "200": "#bfbfbf",
+    "300": "#a6a6a6",
+    "400": "#8c8c8c",
+    "500": "#737373",
+    "600": "#595959",
+    "700": "#404040",
+    "800": "#262626",
+    "900": "#0d0d0d",
+  },
+};
+
+export const fonts = {
+  heading: "Passenger Sans",
+  body: "Passenger Sans",
+};
 
 const theme = extendTheme({
-  styles: {
-    global: {
-      "html, body": {
-        fontFamily: "Inter",
-        fontSize: 14,
-        "@font-face": {
-          fontFamily: "Inter",
-          fontDisplay: "swap",
-          src:
-            "url(fonts/Inter/Inter-VariableFont_slnt,wght.ttf) format('ttf')",
-        },
-      },
-    },
-  },
-  colors: {
-    black: "#101010",
-    white: "#FFFFFF",
-    brand: {
-      50: "#f7f7f7",
-      100: "#ededed",
-      200: "#e1e1e1",
-      300: "#cecece",
-      400: "#a9a9a9",
-      500: "#888888",
-      600: "#616161",
-      700: "#4e4e4e",
-      800: "#303030",
-      900: "#101010",
-    },
-  },
+  initialColorMode: "light",
+  useSystemColorMode: true,
+  styles,
+  colors,
+  components,
+  fonts,
 });
 
 export default theme;

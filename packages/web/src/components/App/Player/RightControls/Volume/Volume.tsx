@@ -1,16 +1,12 @@
 import React from "react";
 import {
-  Volume as VolumeFirst,
-  Volume1,
-  Volume2,
-  VolumeX,
-} from "react-feather";
-import {
-  SliderInput,
+  IconButton,
+  Slider,
   SliderTrack,
-  SliderRange,
-  SliderHandle,
-} from "@reach/slider";
+  SliderFilledTrack,
+  SliderThumb,
+} from "@chakra-ui/react";
+import { BsVolumeUp, BsVolumeDown, BsVolumeMute } from "react-icons/bs";
 
 import { VolumeContainer } from "./Volume.styles";
 
@@ -29,78 +25,49 @@ const Volume = ({ ready, volume, muted, onVolume, onMute }: VolumeProps) => {
   const renderVolume = () => {
     if (volume === 0 || muted) {
       return (
-        <VolumeX
-          size={20}
-          strokeWidth={1.7}
-          color="#101010"
-          style={{ cursor: "pointer" }}
-          onClick={onMute}
-        />
-      );
-    }
-    if (volume === 0.1) {
-      return (
-        <VolumeFirst
-          size={20}
-          strokeWidth={1.7}
-          color="#101010"
-          style={{ cursor: "pointer" }}
+        <IconButton
+          aria-label="Forward 15 seconds"
+          icon={<BsVolumeMute size="20px" />}
+          variant="light"
+          size="sm"
           onClick={onMute}
         />
       );
     }
     if (volume > 0.1 && volume < 0.5) {
       return (
-        <Volume1
-          size={20}
-          strokeWidth={1.7}
-          color="#101010"
-          style={{ cursor: "pointer" }}
+        <IconButton
+          aria-label="Forward 15 seconds"
+          icon={<BsVolumeDown size="20px" />}
+          variant="light"
+          size="sm"
           onClick={onMute}
         />
       );
     }
-    if (volume > 0.5 && volume < 0.8) {
-      return (
-        <Volume2
-          size={20}
-          strokeWidth={1.7}
-          color="#101010"
-          style={{ cursor: "pointer" }}
-          onClick={onMute}
-        />
-      );
-    }
+
     return (
-      <Volume2
-        size={20}
-        strokeWidth={1.7}
-        color="#101010"
-        style={{ cursor: "pointer" }}
+      <IconButton
+        aria-label="Forward 15 seconds"
+        icon={<BsVolumeUp size="20px" />}
+        variant="light"
+        size="sm"
         onClick={onMute}
       />
     );
   };
 
   const onReady = () => {
-    if (!ready) return null;
-
     return (
       <VolumeContainer>
         {renderVolume()}
 
-        <SliderInput
-          value={volume}
-          min={0}
-          max={1}
-          step={0.1}
-          onChange={onVolume}
-        >
+        <Slider aria-label="slider-ex-1" defaultValue={30}>
           <SliderTrack>
-            <SliderRange />
-            <SliderHandle />
+            <SliderFilledTrack />
           </SliderTrack>
-        </SliderInput>
+          <SliderThumb />
+        </Slider>
       </VolumeContainer>
     );
   };

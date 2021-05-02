@@ -1,115 +1,34 @@
 import React from "react";
-import { Divider, Skeleton } from "@chakra-ui/react";
+import { Divider, Skeleton, Stack, Grid } from "@chakra-ui/react";
 
-import {
-  Container,
-  SkeletonPodcastsWithOnlyAvatarListContainer,
-  SkeletonPodcastsWithOnlyAvatarListSection,
-  SkeletonPodcastsWithOnlyAvatarListHeader,
-} from "./SkeletonPodcastsWithOnlyAvatarList.styles";
+const SkeletonPodcastsWithOnlyAvatarList = () => {
+  const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
-const SkeletonPodcastsWithOnlyAvatarList = () => (
-  <Container>
-    <SkeletonPodcastsWithOnlyAvatarListContainer>
-      <SkeletonPodcastsWithOnlyAvatarListHeader>
+  return (
+    <Stack direction="column" spacing="20px" p="20px">
+      <Stack direction="column" spacing="5px">
         <Skeleton
-          startColor="#E2E8F0"
-          endColor="#E2E8F0"
+          variant="light"
           borderRadius={3}
           width="120px"
           height="30px"
         />
         <Divider orientation="horizontal" />
-      </SkeletonPodcastsWithOnlyAvatarListHeader>
+      </Stack>
 
-      <SkeletonPodcastsWithOnlyAvatarListSection>
-        <Skeleton
-          startColor="#E2E8F0"
-          endColor="#E2E8F0"
-          borderRadius={3}
-          width="140px"
-          height="140px"
-        />
-        <Skeleton
-          startColor="#E2E8F0"
-          endColor="#E2E8F0"
-          borderRadius={3}
-          width="140px"
-          height="140px"
-        />
-        <Skeleton
-          startColor="#E2E8F0"
-          endColor="#E2E8F0"
-          borderRadius={3}
-          width="140px"
-          height="140px"
-        />
-        <Skeleton
-          startColor="#E2E8F0"
-          endColor="#E2E8F0"
-          borderRadius={3}
-          width="140px"
-          height="140px"
-        />
-        <Skeleton
-          startColor="#E2E8F0"
-          endColor="#E2E8F0"
-          borderRadius={3}
-          width="140px"
-          height="140px"
-        />
-        <Skeleton
-          startColor="#E2E8F0"
-          endColor="#E2E8F0"
-          borderRadius={3}
-          width="140px"
-          height="140px"
-        />
-        <Skeleton
-          startColor="#E2E8F0"
-          endColor="#E2E8F0"
-          borderRadius={3}
-          width="140px"
-          height="140px"
-        />
-        <Skeleton
-          startColor="#E2E8F0"
-          endColor="#E2E8F0"
-          borderRadius={3}
-          width="140px"
-          height="140px"
-        />
-        <Skeleton
-          startColor="#E2E8F0"
-          endColor="#E2E8F0"
-          borderRadius={3}
-          width="140px"
-          height="140px"
-        />
-        <Skeleton
-          startColor="#E2E8F0"
-          endColor="#E2E8F0"
-          borderRadius={3}
-          width="140px"
-          height="140px"
-        />
-        <Skeleton
-          startColor="#E2E8F0"
-          endColor="#E2E8F0"
-          borderRadius={3}
-          width="140px"
-          height="140px"
-        />
-        <Skeleton
-          startColor="#E2E8F0"
-          endColor="#E2E8F0"
-          borderRadius={3}
-          width="140px"
-          height="140px"
-        />
-      </SkeletonPodcastsWithOnlyAvatarListSection>
-    </SkeletonPodcastsWithOnlyAvatarListContainer>
-  </Container>
-);
+      <Grid templateColumns="repeat(auto-fill, 140px)" gap={5}>
+        {array.map((item) => (
+          <Skeleton
+            variant="light"
+            key={item}
+            borderRadius={3}
+            width="140px"
+            height="140px"
+          />
+        ))}
+      </Grid>
+    </Stack>
+  );
+};
 
 export default SkeletonPodcastsWithOnlyAvatarList;

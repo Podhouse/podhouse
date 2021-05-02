@@ -1,168 +1,99 @@
 import React from "react";
+import {
+  Divider,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  IconButton,
+  useDisclosure,
+  Link as ChakraLink,
+} from "@chakra-ui/react";
 import { Link as ReactRouterLink } from "react-router-dom";
-import { Play, Pause } from "react-feather";
+import { BsPlay, BsThreeDots } from "react-icons/bs";
+
+import ShareEpisodeModal from "src/components/Modals/ShareEpisodeModal/ShareEpisodeModal";
 
 import {
   EpisodeItemContainer,
-  EpisodeItemAvatar,
   EpisodeItemName,
   EpisodeItemDescription,
   EpisodeNameDescription,
   EpisodeItemPublishedDate,
   EpisodeItemDuration,
+  EpisodeMenuButton,
   EpisodeItemButton,
+  EpisodeDividerContainer,
 } from "./EpisodeItem.styles";
 
-import { usePlayerContext } from "src/machines/Player/PlayerContext";
+import { formatTime, formatDate } from "src/utils/";
 
-import convertEpisodeNameToURL from "src/utils/convertEpisodeNameToURL";
+import { Episode } from "src/queries/types";
 
 interface Props {
-  readonly node: {
-    readonly _id: string;
-    readonly title: string | null;
-    readonly description: string | null;
-    readonly publishedDate: string | null;
-    readonly link: string | null;
-    readonly image: string | null;
-    readonly audio: string | null;
-    readonly duration: string | null;
-    readonly podcast: {
-      readonly _id: string;
-      readonly name: string | null;
-      readonly website: string | null;
-      readonly rss: string | null;
-      readonly appleId: number | null;
-      readonly image: string | null;
-    } | null;
-  } | null;
+  episode: Episode;
 }
 
-const EpisodeItem = ({ node }: Props) => {
-  const {
-    loading,
-    playing,
-    paused,
-    onToggle,
-    episode,
-    onEpisode,
-  } = usePlayerContext();
-
-  const route: string = convertEpisodeNameToURL(
-    node?.title,
-    node?.podcast?.appleId
-  );
-
-  const renderEpisodeButton = () => {
-    if (episode && episode.title === node?.title) {
-      if (loading) {
-        return (
-          <EpisodeItemButton type="button" width="90px" isLoading={true}>
-            Loading
-          </EpisodeItemButton>
-        );
-      } else if (playing) {
-        return (
-          <EpisodeItemButton
-            type="button"
-            width="90px"
-            leftIcon={<Pause size={14} />}
-            onClick={onToggle}
-            bgColor="#101010"
-            color="#ffffff"
-            _hover={{ bg: "#101010" }}
-            _active={{
-              bg: "#101010",
-            }}
-            _focus={{
-              boxShadow:
-                "0 0 1px 2px rgba(0, 0, 0, .50), 0 1px 1px rgba(0, 0, 0, .15)",
-            }}
-          >
-            Pause
-          </EpisodeItemButton>
-        );
-      } else if (paused) {
-        return (
-          <EpisodeItemButton
-            type="button"
-            width="90px"
-            leftIcon={<Play size={14} />}
-            onClick={onToggle}
-            bgColor="#101010"
-            color="#ffffff"
-            _hover={{ bg: "#101010" }}
-            _active={{
-              bg: "#101010",
-            }}
-            _focus={{
-              boxShadow:
-                "0 0 1px 2px rgba(0, 0, 0, .50), 0 1px 1px rgba(0, 0, 0, .15)",
-            }}
-          >
-            Play
-          </EpisodeItemButton>
-        );
-      }
-    }
-
-    return (
-      <EpisodeItemButton
-        type="button"
-        width="90px"
-        leftIcon={<Play size={14} />}
-        onClick={() => onEpisode(node)}
-      >
-        Play
-      </EpisodeItemButton>
-    );
-  };
-
-  const renderEpisodeImage = () => {
-    if (!node) {
-      return "https://ebwu.education/wp-content/themes/claue/assets/images/placeholder.png";
-    } else if (!node.image && node?.podcast?.image) {
-      return node?.podcast?.image;
-    } else if (node && node.image) {
-      return node?.image;
-    }
-  };
+const EpisodeItem = ({ episode }: Props) => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
-    <EpisodeItemContainer>
-      <ReactRouterLink to={{ pathname: route, state: { _id: node?._id } }}>
-        <EpisodeItemAvatar
-          src={renderEpisodeImage()}
-          alt="image"
-          loading="lazy"
+    <>
+      <EpisodeItemContainer>
+        <EpisodeNameDescription>
+          <ChakraLink
+            to={{
+              pathname: `/episode/${episode.id}`,
+              state: { id: episode.id },
+            }}
+            href={`/episode/${episode.id}`}
+            as={ReactRouterLink}
+          >
+            {episode.title}
+          </ChakraLink>
+
+          <EpisodeItemDescription>{episode.description}</EpisodeItemDescription>
+        </EpisodeNameDescription>
+
+        <EpisodeItemPublishedDate>
+          {formatDate(episode.datePublished)}
+        </EpisodeItemPublishedDate>
+
+        <EpisodeItemDuration>
+          {formatTime(episode.duration)}
+        </EpisodeItemDuration>
+
+        <EpisodeMenuButton>
+          <Menu>
+            <MenuButton
+              as={IconButton}
+              aria-label="Options"
+              variant="light"
+              icon={<BsThreeDots size="30px" />}
+              alignSelf="center"
+            />
+            <MenuList>
+              <MenuItem>Play next</MenuItem>
+              <MenuItem>Play last</MenuItem>
+              <MenuItem>Mark as played</MenuItem>
+              <MenuItem onClick={onOpen}>Share</MenuItem>
+            </MenuList>
+          </Menu>
+        </EpisodeMenuButton>
+
+        <EpisodeItemButton
+          aria-label="Play episode"
+          icon={<BsPlay size="30px" />}
+          variant="light"
         />
-      </ReactRouterLink>
 
-      <EpisodeNameDescription>
-        <EpisodeItemName
-          as={ReactRouterLink}
-          to={{ pathname: route, state: { _id: node?._id } }}
-          fontWeight="500"
-          lineHeight="25px"
-        >
-          {node?.title}
-        </EpisodeItemName>
+        <EpisodeDividerContainer>
+          <Divider orientation="horizontal" />
+        </EpisodeDividerContainer>
+      </EpisodeItemContainer>
 
-        <EpisodeItemDescription lineHeight="25px" textAlign="start">
-          {node?.description}
-        </EpisodeItemDescription>
-      </EpisodeNameDescription>
-
-      <EpisodeItemPublishedDate textAlign="start">
-        {node?.publishedDate}
-      </EpisodeItemPublishedDate>
-
-      <EpisodeItemDuration textAlign="start">
-        {node?.duration}
-      </EpisodeItemDuration>
-
-      {renderEpisodeButton()}
-    </EpisodeItemContainer>
+      <ShareEpisodeModal isOpen={isOpen} onClose={onClose} episode={episode} />
+    </>
   );
 };
 

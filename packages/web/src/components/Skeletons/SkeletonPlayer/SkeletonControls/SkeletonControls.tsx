@@ -1,5 +1,9 @@
 import React from "react";
-import { Play, RotateCcw, RotateCw } from "react-feather";
+import {
+  BsPlay,
+  BsArrowCounterclockwise,
+  BsArrowClockwise,
+} from "react-icons/bs";
 import { Skeleton } from "@chakra-ui/react";
 import {
   SliderInput,
@@ -26,31 +30,18 @@ const SkeletonControls = () => {
     if (initial) {
       return null;
     } else if (loading) {
-      return (
-        <Skeleton
-          width="30px"
-          height="15px"
-          startColor="#E2E8F0"
-          endColor="#E2E8F0"
-          borderRadius={3}
-        />
-      );
+      return <Skeleton width="30px" height="15px" borderRadius={3} />;
     }
   };
 
   return (
     <SkeletonControlsContainer>
       <SkeletonControlsButtonsContainer>
-        <RotateCcw
-          size={18}
-          color="#101010"
-          style={iconStyle}
-          strokeWidth={2}
-        />
+        <BsArrowCounterclockwise size={20} />
 
-        <Play size={28} color="#101010" strokeWidth={1.7} style={iconStyle} />
+        <BsPlay size={42} />
 
-        <RotateCw size={18} color="#101010" style={iconStyle} strokeWidth={2} />
+        <BsArrowClockwise size={20} />
       </SkeletonControlsButtonsContainer>
 
       <SkeletonControlsSliderContainer>

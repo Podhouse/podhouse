@@ -1,5 +1,6 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import { Switch, Route } from "react-router-dom";
+import { Spinner } from "@chakra-ui/react";
 
 import { AppContainer } from "./App.styles";
 
@@ -8,86 +9,58 @@ import Menu from "./Menu/Menu";
 import Player from "./Player/Player";
 import Dashboard from "./Dashboard/Dashboard";
 
-import Browse from "src/modules/App/Browse/Browse";
-import Subscriptions from "src/modules/App/Subscriptions/Subscriptions";
-import Search from "src/modules/App/Search/Search";
-import Favorites from "src/modules/App/Favorites/Favorites";
-import Advertise from "src/modules/App/Advertise/Advertise";
-import Settings from "src/modules/App/Settings/Settings";
-import Podcast from "src/modules/App/Podcast/Podcast";
-import Episode from "src/modules/App/Episode/Episode";
-import Genre from "src/modules/App/Genre/Genre";
+const Browse = lazy(() => import("src/modules/App/Browse/Browse"));
 
-import AuthModal from "src/components/Modals/AuthModal/AuthModal";
-import SettingsModal from "src/components/Modals/SettingsModal/SettingsModal";
-import QueueModal from "src/components/Modals/QueueModal/QueueModal";
-import RateModal from "src/components/Modals/RateModal/RateModal";
+const SignIn = lazy(() => import("src/modules/App/SignIn/SignIn"));
+const SignUp = lazy(() => import("src/modules/App/SignUp/SignUp"));
+const ForgotPassword = lazy(
+  () => import("src/modules/App/ForgotPassword/ForgotPassword")
+);
 
-import { useAuthContext } from "src/machines/Auth/AuthContext";
-import { useSettingsContext } from "src/machines/Settings/SettingsContext";
-import { useQueueContext } from "src/machines/Queue/QueueContext";
-import { useRateContext } from "src/machines/Rate/RateContext";
+const Podcast = lazy(() => import("src/modules/App/Podcast/Podcast"));
+const Episode = lazy(() => import("src/modules/App/Episode/Episode"));
+const Genre = lazy(() => import("src/modules/App/Genre/Genre"));
+
+const Search = lazy(() => import("src/modules/App/Search/Search"));
+const Subscriptions = lazy(
+  () => import("src/modules/App/Subscriptions/Subscriptions")
+);
+const Favorites = lazy(() => import("src/modules/App/Favorites/Favorites"));
+const Filters = lazy(() => import("src/modules/App/Filters/Filters"));
+
+const Settings = lazy(() => import("src/modules/App/Settings/Settings"));
+const Advertise = lazy(() => import("src/modules/App/Advertise/Advertise"));
 
 const App = () => {
-  const { auth } = useAuthContext();
-  const { settings } = useSettingsContext();
-  const { queue } = useQueueContext();
-  const { rate, handleRate } = useRateContext();
-
-  const renderAuthModal = () => {
-    if (auth === true) {
-      return <AuthModal />;
-    }
-    return null;
-  };
-
-  const renderSettingsModal = () => {
-    if (settings.matches("open")) {
-      return <SettingsModal />;
-    }
-    return null;
-  };
-
-  const renderQueueModal = () => {
-    if (queue.matches("open")) {
-      return <QueueModal />;
-    }
-    return null;
-  };
-
-  const renderRateModal = () => {
-    if (rate.matches("open")) {
-      return <RateModal handleRate={handleRate} />;
-    }
-    return null;
-  };
-
   return (
-    <>
-      {renderAuthModal()}
-      {renderSettingsModal()}
-      {renderQueueModal()}
-      {renderRateModal()}
-
+    <Suspense fallback={<Spinner />}>
       <AppContainer>
         <Dashboard>
           <Switch>
             <Route exact path="/" component={Browse} />
-            <Route exact path="/subscriptions" component={Subscriptions} />
-            <Route exact path="/search" component={Search} />
-            <Route exact path="/favorites" component={Favorites} />
-            <Route exact path="/advertise" component={Advertise} />
-            <Route exact path="/settings" component={Settings} />
-            <Route exact path="/podcast/:id/:id" component={Podcast} />
-            <Route exact path="/episode/:id/:id" component={Episode} />
+
+            <Route exact path="/sign-in" component={SignIn} />
+            <Route exact path="/sign-up" component={SignUp} />
+            <Route exact path="/forgot-password" component={ForgotPassword} />
+
+            <Route exact path="/podcast/:id" component={Podcast} />
+            <Route exact path="/episode/:id" component={Episode} />
             <Route exact path="/genre/:id" component={Genre} />
+
+            <Route exact path="/search" component={Search} />
+            <Route exact path="/subscriptions" component={Subscriptions} />
+            <Route exact path="/favorites" component={Favorites} />
+            <Route exact path="/filters" component={Filters} />
+
+            <Route exact path="/settings" component={Settings} />
+            <Route exact path="/advertise" component={Advertise} />
           </Switch>
         </Dashboard>
         <Header />
         <Player />
         <Menu />
       </AppContainer>
-    </>
+    </Suspense>
   );
 };
 

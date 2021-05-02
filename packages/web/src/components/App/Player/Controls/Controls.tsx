@@ -1,11 +1,17 @@
 import React from "react";
-import { Play, Pause, RotateCcw, RotateCw } from "react-feather";
 import {
-  SliderInput,
+  IconButton,
+  Slider,
   SliderTrack,
-  SliderRange,
-  SliderHandle,
-} from "@reach/slider";
+  SliderFilledTrack,
+  SliderThumb,
+} from "@chakra-ui/react";
+import {
+  BsPlay,
+  BsPause,
+  BsArrowCounterclockwise,
+  BsArrowClockwise,
+} from "react-icons/bs";
 
 import {
   ControlsContainer,
@@ -15,6 +21,8 @@ import {
 } from "./Controls.styles";
 
 import { PlayerEpisode } from "src/machines/Player/Player.types";
+
+import { formatTime, convertDurationToSeconds } from "src/utils/";
 
 interface ControlsProps {
   ready: boolean;
@@ -31,23 +39,6 @@ interface ControlsProps {
   onForward: (value?: number) => void;
 }
 
-const iconStyle = { cursor: "pointer" };
-
-const formatTime = (seconds: number) => {
-  const h = Math.floor(seconds / 3600);
-  const m = Math.floor((seconds % 3600) / 60);
-  const s = Math.round(seconds % 60);
-  return [h, m > 9 ? m : h ? "0" + m : m || "0", s > 9 ? s : "0" + s]
-    .filter(Boolean)
-    .join(":");
-};
-
-const convertDurationToSeconds = (duration: string | undefined) => {
-  if (!duration) return 0;
-  const [hours, minutes, seconds] = duration.split(":");
-  return Number(hours) * 60 * 60 + Number(minutes) * 60 + Number(seconds);
-};
-
 const Controls = ({
   ready,
   playing,
@@ -62,23 +53,23 @@ const Controls = ({
   const onPlaying = () => {
     if (playing) {
       return (
-        <Pause
-          size={28}
-          color="#101010"
-          strokeWidth={1.7}
-          style={iconStyle}
-          onClick={onPause}
+        <IconButton
+          aria-label="Pause episode"
+          icon={<BsPause size="20px" />}
+          variant="light"
+          size="sm"
+          onClick={() => {}}
         />
       );
     }
 
     return (
-      <Play
-        size={28}
-        color="#101010"
-        strokeWidth={1.7}
-        style={iconStyle}
-        onClick={onPlay}
+      <IconButton
+        aria-label="Play episode"
+        icon={<BsPlay size="42px" />}
+        variant="light"
+        size="lg"
+        onClick={() => {}}
       />
     );
   };
@@ -88,42 +79,40 @@ const Controls = ({
   return (
     <ControlsContainer>
       <ControlsButtonsContainer>
-        <RotateCcw
-          size={18}
-          color="#101010"
-          style={iconStyle}
-          strokeWidth={2}
-          onClick={() => onBackward(15)}
+        <IconButton
+          aria-label="Backward 15 seconds"
+          icon={<BsArrowCounterclockwise size="20px" />}
+          variant="light"
+          size="sm"
+          onClick={() => {}}
         />
 
         {onPlaying()}
 
-        <RotateCw
-          size={18}
-          color="#101010"
-          style={iconStyle}
-          strokeWidth={2}
-          onClick={() => onForward(15)}
+        <IconButton
+          aria-label="Forward 15 seconds"
+          icon={<BsArrowClockwise size="20px" />}
+          variant="light"
+          size="sm"
+          onClick={() => {}}
         />
       </ControlsButtonsContainer>
 
       <ControlsSliderContainer>
-        <ControlsTime fontSize="sm">{formatTime(seek)}</ControlsTime>
+        <ControlsTime fontSize="14px" fontWeight="300" lineHeight="30px">
+          18:29
+        </ControlsTime>
 
-        <SliderInput
-          value={seek}
-          min={0}
-          max={convertDurationToSeconds(episode?.duration)}
-          step={0.1}
-          onChange={onSeek}
-        >
+        <Slider aria-label="slider-ex-1" defaultValue={30}>
           <SliderTrack>
-            <SliderRange />
-            <SliderHandle />
+            <SliderFilledTrack />
           </SliderTrack>
-        </SliderInput>
+          <SliderThumb />
+        </Slider>
 
-        <ControlsTime fontSize="sm">{episode?.duration}</ControlsTime>
+        <ControlsTime fontSize="14px" fontWeight="300" lineHeight="30px">
+          59:23
+        </ControlsTime>
       </ControlsSliderContainer>
     </ControlsContainer>
   );

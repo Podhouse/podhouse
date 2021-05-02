@@ -20,6 +20,8 @@ export const SkeletonPodcastContainer = styled.div`
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
     align-items: center;
+    align-self: center;
+    justify-self: center;
     margin: 0;
   }
 `;

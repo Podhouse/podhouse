@@ -1,17 +1,18 @@
 import React, { Suspense } from "react";
 import { Skeleton } from "@chakra-ui/react";
 import { ErrorBoundary } from "react-error-boundary";
+import { mode } from "@chakra-ui/theme-tools";
+
+import Navigation from "./Navigation/Navigation";
+import Settings from "./Settings/Settings";
 
 import ErrorLoginFallback from "src/components/ErrorLoginFallback/ErrorLoginFallback";
 
 import { HeaderContainer, SkeletonContainer } from "./Header.styles";
 
-import Search from "./Search/Search";
-import Settings from "./Settings/Settings";
-
 const Header = () => (
   <HeaderContainer>
-    <Search />
+    <Navigation />
     <ErrorBoundary FallbackComponent={ErrorLoginFallback}>
       <Suspense
         fallback={

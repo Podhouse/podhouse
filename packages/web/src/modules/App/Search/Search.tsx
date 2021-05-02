@@ -1,93 +1,87 @@
 import React, { useState, useEffect, Suspense } from "react";
 import Scrollbars from "react-custom-scrollbars";
-import graphql from "babel-plugin-relay/macro";
-import { useQueryLoader } from "react-relay/hooks";
 import { ErrorBoundary } from "react-error-boundary";
-import { useDebounce } from "use-debounce";
+import { useQueryErrorResetBoundary } from "react-query";
+import { Input, Stack, Button, Heading, Text } from "@chakra-ui/react";
 
-import SearchPodcast from "./SearchPodcast/SearchPodcast";
-import SkeletonPodcastsWithOnlyAvatarList from "src/components/Skeletons/SkeletonPodcastsWithOnlyAvatarList/SkeletonPodcastsWithOnlyAvatarList";
 import ErrorFallback from "src/components/ErrorFallback/ErrorFallback";
+import SkeletonPodcastsWithOnlyAvatarList from "src/components/Skeletons/SkeletonPodcastsWithOnlyAvatarList/SkeletonPodcastsWithOnlyAvatarList";
 
-import { SearchContainer } from "./Search.styles";
+import { SearchContainer, SearchSkeletonContainer } from "./Search.styles";
 
-import { useSearchContext } from "src/machines/Search/SearchContext";
-
-import { SearchQuery } from "./__generated__/SearchQuery.graphql";
-
-const searchQuery = graphql`
-  query SearchQuery($podcastName: String!) {
-    ...SearchPodcast_podcasts @arguments(podcastName: $podcastName)
-  }
-`;
-
-type ScrollFrameType = {
-  clientHeight: number;
-  clientWidth: number;
-  left: number;
-  scrollHeight: number;
-  scrollLeft: number;
-  scrollTop: number;
-  scrollWidth: number;
-  top: number;
-};
+import Results from "./Results/Results";
 
 const Search = () => {
-  const [shouldLoadMore, setShouldLoadMore] = useState<boolean>(false);
+  const { reset } = useQueryErrorResetBoundary();
+  const [text, setText] = useState<string>("");
 
-  const [queryReference, loadQuery, disposeQuery] = useQueryLoader<SearchQuery>(
-    searchQuery
-  );
-
-  const { search }: { search: string } = useSearchContext();
-  const [debouncedSearch] = useDebounce(search, 500);
-
-  const onLoadMore = (value: ScrollFrameType) => {
-    if (value.top === 1) {
-      setShouldLoadMore(true);
-    }
-    setShouldLoadMore(false);
-  };
-
-  useEffect(() => {
-    loadQuery({ podcastName: debouncedSearch });
-
-    return () => {
-      disposeQuery();
-    };
-  }, [loadQuery, disposeQuery, debouncedSearch]);
-
-  const onRefetchQuery = () => {
-    loadQuery({ podcastName: debouncedSearch });
+  const onHandleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setText(e.target.value);
   };
 
   return (
     <Scrollbars
-      onScrollFrame={onLoadMore}
+      onScrollFrame={() => {}}
       autoHide
       autoHideTimeout={100}
       autoHideDuration={100}
     >
-      {queryReference && (
-        <ErrorBoundary
-          FallbackComponent={ErrorFallback}
-          onReset={onRefetchQuery}
-        >
-          <Suspense
-            fallback={
-              <SearchContainer>
-                <SkeletonPodcastsWithOnlyAvatarList />
-              </SearchContainer>
-            }
+      <SearchContainer>
+        <Stack direction="column" spacing="10px">
+          <Heading as="h2" fontSize={36} textAlign="center">
+            Search
+          </Heading>
+
+          <Text
+            color="#6F6F6F"
+            fontSize={16}
+            lineHeight="30px"
+            fontWeight="300"
+            textAlign="center"
           >
-            <SearchPodcast
-              searchQuery={searchQuery}
-              queryReference={queryReference}
-              shouldLoadMore={shouldLoadMore}
+            You can search your podcasts here and we'll help you to find the
+            right one.
+          </Text>
+
+          <Stack direction="row" spacing="0px">
+            <Input
+              variant="light"
+              pr="4.5rem"
+              type="text"
+              size="lg"
+              placeholder="Search for a podcast by title, author or owner"
+              onChange={onHandleChange}
+              borderTopRightRadius="0px"
+              borderBottomRightRadius="0px"
             />
-          </Suspense>
-        </ErrorBoundary>
-      )}
+
+            <Button
+              type="submit"
+              variant="main"
+              disabled={!text}
+              size="lg"
+              borderTopLeftRadius="0px"
+              borderBottomLeftRadius="0px"
+            >
+              Search
+            </Button>
+          </Stack>
+        </Stack>
+
+        {text && (
+          <ErrorBoundary FallbackComponent={ErrorFallback} onReset={reset}>
+            <Suspense
+              fallback={
+                <SearchSkeletonContainer>
+                  <SkeletonPodcastsWithOnlyAvatarList />
+                </SearchSkeletonContainer>
+              }
+            >
+              <Results text={text} />
+            </Suspense>
+          </ErrorBoundary>
+        )}
+      </SearchContainer>
     </Scrollbars>
   );
 };
