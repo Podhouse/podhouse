@@ -39,7 +39,7 @@
     "typescript": "^4.2.4"
   },
   "lint-staged": {
-    "*.{js,ts,tsx}": [
+    "*.{js,jsx,ts,tsx}": [
       "yarn web:build",
       "yarn landing:build",
       "yarn web:lint",
@@ -51,5 +51,5 @@
       "git add"
     ]
   },
-  "pre-commit": "lint-staged"
+  "pre-commit": "lint:staged"
 }
