@@ -25,8 +25,7 @@
     "web:cypress:open": "yarn workspace @podhouse/web cypress:open",
     "web:cypress:run": "yarn workspace @podhouse/web cypress:run",
     "web:relay": "yarn workspace @podhouse/web relay",
-    "web:generate-sitemap": "yarn workspace @podhouse/web generate-sitemap",
-    "pre-commit": "lint-staged"
+    "web:generate-sitemap": "yarn workspace @podhouse/web generate-sitemap"
   },
   "dependencies": {
     "lerna": "^4.0.0",
@@ -40,20 +39,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lerna run precommit --since HEAD"
+      "pre-commit": "yarn web:format"
     }
-  },
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "yarn web:build",
-      "yarn landing:build",
-      "yarn web:lint",
-      "yarn landing:lint",
-      "yarn web:format",
-      "yarn landing:format",
-      "yarn web:generate-sitemap",
-      "yarn landing:generate-sitemap",
-      "git add"
-    ]
   }
 }
