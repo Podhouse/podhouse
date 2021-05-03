@@ -10,6 +10,9 @@ import {
   FormControl,
   FormLabel,
   FormErrorMessage,
+  Heading,
+  Text,
+  useColorMode,
 } from "@chakra-ui/react";
 
 interface ForgotPasswordFormProps {
@@ -21,6 +24,8 @@ const validationSchema = Yup.object().shape({
 });
 
 const ForgotPassword = () => {
+  const { toggleColorMode } = useColorMode();
+
   const {
     register,
     formState: { errors, isSubmitting, isValid },
@@ -31,7 +36,7 @@ const ForgotPassword = () => {
   });
 
   const onSubmit = () => {
-    console.log("submitted");
+    console.log("submitted!");
   };
 
   return (
@@ -40,7 +45,7 @@ const ForgotPassword = () => {
         as="form"
         onSubmit={onSubmit}
         direction="column"
-        spacing="10px"
+        spacing="20px"
         w="100%"
         h="100%"
         maxW="500px"
@@ -48,6 +53,16 @@ const ForgotPassword = () => {
         alignItems="center"
         justifyContent="center"
       >
+        <Stack direction="column" spacing="10px">
+          <Heading as="h1" fontSize="36px" textAlign="center">
+            Podhouse
+          </Heading>
+
+          <Text fontSize="16px" lineHeight="30px" textAlign="center">
+            The best podcast in the web to listen to your favorites podcasts
+          </Text>
+        </Stack>
+
         <FormControl isInvalid={errors.email && true}>
           <FormLabel htmlFor="email">Email</FormLabel>
           <Input
@@ -61,13 +76,7 @@ const ForgotPassword = () => {
           </FormErrorMessage>
         </FormControl>
 
-        <Button
-          type="submit"
-          variant="main"
-          width="100%"
-          isLoading={isSubmitting}
-          isDisabled={!isValid}
-        >
+        <Button onClick={toggleColorMode} variant="main" width="100%">
           Send reset link
         </Button>
       </Stack>

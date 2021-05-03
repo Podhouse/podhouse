@@ -16,6 +16,9 @@ const SignUp = lazy(() => import("src/modules/App/SignUp/SignUp"));
 const ForgotPassword = lazy(
   () => import("src/modules/App/ForgotPassword/ForgotPassword")
 );
+const ResetPassword = lazy(
+  () => import("src/modules/App/ResetPassword/ResetPassword")
+);
 
 const Podcast = lazy(() => import("src/modules/App/Podcast/Podcast"));
 const Episode = lazy(() => import("src/modules/App/Episode/Episode"));
@@ -42,6 +45,7 @@ const App = () => {
             <Route exact path="/sign-in" component={SignIn} />
             <Route exact path="/sign-up" component={SignUp} />
             <Route exact path="/forgot-password" component={ForgotPassword} />
+            <Route exact path="/reset-password" component={ResetPassword} />
 
             <Route exact path="/podcast/:id" component={Podcast} />
             <Route exact path="/episode/:id" component={Episode} />
