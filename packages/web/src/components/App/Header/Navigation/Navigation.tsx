@@ -1,5 +1,5 @@
 import React from "react";
-import { Stack, IconButton } from "@chakra-ui/react";
+import { Stack, IconButton, Tooltip } from "@chakra-ui/react";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import { useHistory } from "react-router-dom";
 
@@ -14,20 +14,25 @@ const Navigation = () => {
       h="100%"
       alignItems="center"
     >
-      <IconButton
-        w="fit-content"
-        variant="light"
-        aria-label="Go backward"
-        icon={<BsChevronLeft size={16} />}
-        onClick={() => history.goBack()}
-      />
-      <IconButton
-        w="fit-content"
-        variant="light"
-        aria-label="Go forward"
-        icon={<BsChevronRight size={16} />}
-        onClick={() => history.goForward()}
-      />
+      <Tooltip label="Back" aria-label="Back">
+        <IconButton
+          w="fit-content"
+          variant="light"
+          aria-label="Back"
+          icon={<BsChevronLeft size={16} />}
+          onClick={() => history.goBack()}
+        />
+      </Tooltip>
+
+      <Tooltip label="Forward" aria-label="Forward">
+        <IconButton
+          w="fit-content"
+          variant="light"
+          aria-label="Forward"
+          icon={<BsChevronRight size={16} />}
+          onClick={() => history.goForward()}
+        />
+      </Tooltip>
     </Stack>
   );
 };

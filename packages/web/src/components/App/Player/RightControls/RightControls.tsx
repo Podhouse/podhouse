@@ -10,6 +10,7 @@ import {
   MenuGroup,
   Link,
   Text,
+  Tooltip,
 } from "@chakra-ui/react";
 import { BsListUl, BsClock } from "react-icons/bs";
 
@@ -42,13 +43,15 @@ const RightControls = ({
   return (
     <RightControlsContainer>
       <Menu>
-        <MenuButton
-          as={IconButton}
-          aria-label="Rate options"
-          variant="light"
-          icon={<BsClock size="20px" />}
-          alignSelf="center"
-        />
+        <Tooltip label="Rate" aria-label="Rate">
+          <MenuButton
+            as={IconButton}
+            aria-label="Rate options"
+            variant="light"
+            icon={<BsClock size="20px" />}
+            alignSelf="center"
+          />
+        </Tooltip>
         <MenuList>
           <MenuItem>0.5x</MenuItem>
           <MenuItem>1.0x</MenuItem>
@@ -60,13 +63,15 @@ const RightControls = ({
       </Menu>
 
       <Menu>
-        <MenuButton
-          as={IconButton}
-          aria-label="Queue options"
-          variant="light"
-          icon={<BsListUl size="20px" />}
-          alignSelf="center"
-        />
+        <Tooltip label="Queue" aria-label="Queue">
+          <MenuButton
+            as={IconButton}
+            aria-label="Queue options"
+            variant="light"
+            icon={<BsListUl size="20px" />}
+            alignSelf="center"
+          />
+        </Tooltip>
         <MenuList>
           <MenuGroup title="Queue">
             <MenuItem>

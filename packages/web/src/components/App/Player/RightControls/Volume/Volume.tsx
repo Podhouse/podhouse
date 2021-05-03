@@ -5,6 +5,7 @@ import {
   SliderTrack,
   SliderFilledTrack,
   SliderThumb,
+  Tooltip,
 } from "@chakra-ui/react";
 import { BsVolumeUp, BsVolumeDown, BsVolumeMute } from "react-icons/bs";
 
@@ -25,35 +26,41 @@ const Volume = ({ ready, volume, muted, onVolume, onMute }: VolumeProps) => {
   const renderVolume = () => {
     if (volume === 0 || muted) {
       return (
-        <IconButton
-          aria-label="Forward 15 seconds"
-          icon={<BsVolumeMute size="20px" />}
-          variant="light"
-          size="sm"
-          onClick={onMute}
-        />
+        <Tooltip label="Mute" aria-label="Mute">
+          <IconButton
+            aria-label="Mute"
+            icon={<BsVolumeMute size="20px" />}
+            variant="light"
+            size="sm"
+            onClick={onMute}
+          />
+        </Tooltip>
       );
     }
     if (volume > 0.1 && volume < 0.5) {
       return (
-        <IconButton
-          aria-label="Forward 15 seconds"
-          icon={<BsVolumeDown size="20px" />}
-          variant="light"
-          size="sm"
-          onClick={onMute}
-        />
+        <Tooltip label="Mute" aria-label="Mute">
+          <IconButton
+            aria-label="Mute"
+            icon={<BsVolumeDown size="20px" />}
+            variant="light"
+            size="sm"
+            onClick={onMute}
+          />
+        </Tooltip>
       );
     }
 
     return (
-      <IconButton
-        aria-label="Forward 15 seconds"
-        icon={<BsVolumeUp size="20px" />}
-        variant="light"
-        size="sm"
-        onClick={onMute}
-      />
+      <Tooltip label="Mute" aria-label="Mute">
+        <IconButton
+          aria-label="Mute"
+          icon={<BsVolumeUp size="20px" />}
+          variant="light"
+          size="sm"
+          onClick={onMute}
+        />
+      </Tooltip>
     );
   };
 
