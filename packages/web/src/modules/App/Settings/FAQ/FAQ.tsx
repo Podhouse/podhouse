@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Stack, Heading, Text } from "@chakra-ui/react";
 
-const Support = () => {
+const FAQ = () => {
   return (
     <Box w="100%" h="100%" p="20px">
       <Stack
@@ -13,12 +13,20 @@ const Support = () => {
         margin="0 auto"
       >
         <Stack direction="column" spacing="10px">
-          <Heading fontSize="24px">Support</Heading>
+          <Heading fontSize="24px">Frequently Asked Questions</Heading>
           <Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text>
+        </Stack>
+
+        <Stack direction="column" spacing="30px">
+          <Text>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Rhoncus
+            rutrum sollicitudin placerat id nisl, sed turpis. Viverra aliquam
+            nibh consectetur sed turpis urna.
+          </Text>
         </Stack>
       </Stack>
     </Box>
   );
 };
 
-export default Support;
+export default FAQ;

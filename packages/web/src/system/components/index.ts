@@ -12,6 +12,7 @@ import FormLabel from "./FormLabel/FormLabel";
 import FormErrorMessage from "./FormErrorMessage/FormErrorMessage";
 import Menu from "./Menu/Menu";
 import Slider from "./Slider/Slider";
+import Textarea from "./Textarea/Textarea";
 
 const components = {
   Box,
@@ -28,6 +29,7 @@ const components = {
   FormErrorMessage,
   Menu,
   Slider,
+  Textarea,
 };
 
 export default components;

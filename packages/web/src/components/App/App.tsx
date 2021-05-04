@@ -60,7 +60,10 @@ const App = () => {
             <Route exact path="/settings/account" component={Settings} />
             <Route exact path="/settings/password" component={Settings} />
             <Route exact path="/settings/about" component={Settings} />
-            <Route exact path="/settings/support" component={Settings} />
+            <Route exact path="/settings/feedback" component={Settings} />
+            <Route exact path="/settings/faq" component={Settings} />
+            <Route exact path="/settings/privacy" component={Settings} />
+            <Route exact path="/settings/terms" component={Settings} />
 
             <Route exact path="/advertise" component={Advertise} />
           </Switch>

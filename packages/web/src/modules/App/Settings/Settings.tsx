@@ -6,7 +6,10 @@ import { Stack, Heading, Divider } from "@chakra-ui/react";
 import Account from "./Account/Account";
 import Password from "./Password/Password";
 import About from "./About/About";
-import Support from "./Support/Support";
+import Feedback from "./Feedback/Feedback";
+import FAQ from "./FAQ/FAQ";
+import PrivacyPolicy from "./PrivacyPolicy/PrivacyPolicy";
+import Terms from "./Terms/Terms";
 
 const Settings = () => {
   return (
@@ -35,11 +38,14 @@ const Settings = () => {
         </Stack>
 
         <Switch>
-          <Route exact path="/settings" component={Support} />
+          <Route exact path="/settings" component={Feedback} />
           <Route exact path="/settings/account" component={Account} />
           <Route exact path="/settings/password" component={Password} />
           <Route exact path="/settings/about" component={About} />
-          <Route exact path="/settings/support" component={Support} />
+          <Route exact path="/settings/feedback" component={Feedback} />
+          <Route exact path="/settings/faq" component={FAQ} />
+          <Route exact path="/settings/privacy" component={PrivacyPolicy} />
+          <Route exact path="/settings/terms" component={Terms} />
         </Switch>
       </Stack>
     </Scrollbars>
