@@ -32,6 +32,16 @@ const Favorites = lazy(() => import("src/modules/App/Favorites/Favorites"));
 const Filters = lazy(() => import("src/modules/App/Filters/Filters"));
 
 const Settings = lazy(() => import("src/modules/App/Settings/Settings"));
+const Account = lazy(() => import("src/modules/App/Account/Account"));
+const Password = lazy(() => import("src/modules/App/Password/Password"));
+const About = lazy(() => import("src/modules/App/About/About"));
+const FAQ = lazy(() => import("src/modules/App/FAQ/FAQ"));
+const Feedback = lazy(() => import("src/modules/App/Feedback/Feedback"));
+const PrivacyPolicy = lazy(
+  () => import("src/modules/App/PrivacyPolicy/PrivacyPolicy")
+);
+const Terms = lazy(() => import("src/modules/App/Terms/Terms"));
+
 const Advertise = lazy(() => import("src/modules/App/Advertise/Advertise"));
 
 const App = () => {
@@ -57,13 +67,13 @@ const App = () => {
             <Route exact path="/filters" component={Filters} />
 
             <Route exact path="/settings" component={Settings} />
-            <Route exact path="/settings/account" component={Settings} />
-            <Route exact path="/settings/password" component={Settings} />
-            <Route exact path="/settings/about" component={Settings} />
-            <Route exact path="/settings/feedback" component={Settings} />
-            <Route exact path="/settings/faq" component={Settings} />
-            <Route exact path="/settings/privacy" component={Settings} />
-            <Route exact path="/settings/terms" component={Settings} />
+            <Route exact path="/settings/account" component={Account} />
+            <Route exact path="/settings/password" component={Password} />
+            <Route exact path="/settings/about" component={About} />
+            <Route exact path="/settings/faq" component={FAQ} />
+            <Route exact path="/settings/feedback" component={Feedback} />
+            <Route exact path="/settings/privacy" component={PrivacyPolicy} />
+            <Route exact path="/settings/terms" component={Terms} />
 
             <Route exact path="/advertise" component={Advertise} />
           </Switch>

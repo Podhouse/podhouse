@@ -71,6 +71,7 @@ const SignIn = () => {
         <FormControl isInvalid={errors.email && true}>
           <FormLabel htmlFor="email">Email</FormLabel>
           <Input
+            id="email"
             variant="light"
             type="email"
             placeholder="Email"
@@ -84,6 +85,7 @@ const SignIn = () => {
         <FormControl isInvalid={errors.password && true}>
           <FormLabel htmlFor="password">Password</FormLabel>
           <Input
+            id="password"
             variant="light"
             type="password"
             placeholder="Password"

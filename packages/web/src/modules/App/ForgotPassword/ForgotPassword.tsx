@@ -66,6 +66,7 @@ const ForgotPassword = () => {
         <FormControl isInvalid={errors.email && true}>
           <FormLabel htmlFor="email">Email</FormLabel>
           <Input
+            id="email"
             variant="light"
             type="email"
             placeholder="Email"

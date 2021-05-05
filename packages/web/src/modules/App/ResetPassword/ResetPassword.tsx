@@ -76,6 +76,7 @@ const ResetPassword = () => {
         <FormControl isInvalid={errors.currentPassword && true}>
           <FormLabel htmlFor="currentPassword">Current password</FormLabel>
           <Input
+            id="currentPassword"
             variant="light"
             type="password"
             placeholder="Current password"
@@ -87,8 +88,9 @@ const ResetPassword = () => {
         </FormControl>
 
         <FormControl isInvalid={errors.password && true}>
-          <FormLabel htmlFor="password">New password</FormLabel>
+          <FormLabel htmlFor="newPassword">New password</FormLabel>
           <Input
+            id="newPassword"
             variant="light"
             type="password"
             placeholder="New password"
@@ -104,6 +106,7 @@ const ResetPassword = () => {
             Confirm new password
           </FormLabel>
           <Input
+            id="confirmNewPassword"
             variant="light"
             type="password"
             placeholder="Confirm new password"

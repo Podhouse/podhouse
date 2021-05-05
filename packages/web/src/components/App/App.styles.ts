@@ -5,7 +5,7 @@ export const AppContainer = styled.div`
   height: 100vh;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr max-content 80px;
+  grid-template-rows: 1fr 80px 80px;
 
   @media screen and (min-width: 800px) {
     width: 100%;

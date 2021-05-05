@@ -1,10 +1,10 @@
 import React from "react";
-import { Box, Stack, Heading, Text, Link } from "@chakra-ui/react";
+import { Stack, Heading, Text } from "@chakra-ui/react";
 
 const ReleaseItem = () => {
   return (
     <Stack direction="column" spacing="10px">
-      <Heading fontSize="18px">January 2021</Heading>
+      <Heading fontSize="24px">January 2021</Heading>
 
       <Stack direction="row" spacing="10px">
         <Text>Version 2.4</Text>

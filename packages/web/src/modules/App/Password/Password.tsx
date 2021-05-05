@@ -3,7 +3,6 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import {
-  Box,
   Stack,
   Input,
   Button,
@@ -50,26 +49,39 @@ const Password = () => {
   };
 
   return (
-    <Box w="100%" h="100%" p="20px">
-      <Stack
-        as="form"
-        onSubmit={onSubmit}
-        direction="column"
-        spacing="20px"
-        w="100%"
-        h="100%"
-        maxW="500px"
-        margin="0 auto"
-      >
+    <Stack
+      as="form"
+      onSubmit={onSubmit}
+      direction="column"
+      spacing="20px"
+      p="20px"
+      w="100%"
+      h="100%"
+      maxW="500px"
+      margin="0 auto"
+    >
+      <Stack direction="column" spacing="10px">
         <Stack direction="column" spacing="10px">
-          <Heading fontSize="24px">Password</Heading>
-          <Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text>
+          <Heading as="h1" fontSize={36} textAlign="start">
+            Password
+          </Heading>
+
+          <Text
+            color="#6F6F6F"
+            fontSize={16}
+            lineHeight="30px"
+            fontWeight="300"
+            textAlign="start"
+          >
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          </Text>
         </Stack>
 
         <Stack direction="column" spacing="10px">
           <FormControl isInvalid={errors.currentPassword && true}>
             <FormLabel htmlFor="currentPassword">Current password</FormLabel>
             <Input
+              id="currentPassword"
               variant="light"
               type="password"
               placeholder="Current password"
@@ -81,8 +93,9 @@ const Password = () => {
           </FormControl>
 
           <FormControl isInvalid={errors.password && true}>
-            <FormLabel htmlFor="password">New password</FormLabel>
+            <FormLabel htmlFor="newPassword">New password</FormLabel>
             <Input
+              id="newPassword"
               variant="light"
               type="password"
               placeholder="New password"
@@ -98,6 +111,7 @@ const Password = () => {
               Confirm new password
             </FormLabel>
             <Input
+              id="confirmNewPassword"
               variant="light"
               type="password"
               placeholder="Confirm new password"
@@ -113,7 +127,7 @@ const Password = () => {
           </Button>
         </Stack>
       </Stack>
-    </Box>
+    </Stack>
   );
 };
 

@@ -1,54 +1,127 @@
 import React from "react";
-import { Switch, Route } from "react-router-dom";
-import Scrollbars from "react-custom-scrollbars";
-import { Stack, Heading, Divider } from "@chakra-ui/react";
-
-import Account from "./Account/Account";
-import Password from "./Password/Password";
-import About from "./About/About";
-import Feedback from "./Feedback/Feedback";
-import FAQ from "./FAQ/FAQ";
-import PrivacyPolicy from "./PrivacyPolicy/PrivacyPolicy";
-import Terms from "./Terms/Terms";
+import { Stack, Heading, Text, Button, Grid, GridItem } from "@chakra-ui/react";
+import { Link as ReactRouterLink } from "react-router-dom";
 
 const Settings = () => {
   return (
-    <Scrollbars autoHide autoHideTimeout={100} autoHideDuration={100}>
-      <Stack
-        direction="column"
-        spacing="20px"
-        w="100%"
-        maxW="1000px"
-        p="20px"
-        margin="0 auto"
-      >
-        <Stack direction="column" spacing="5px">
-          <Heading
-            as="h1"
-            fontSize={16}
-            fontWeight="600"
-            letterSpacing="-0.03em"
-            lineHeight="30px"
-            textAlign="start"
-          >
-            Settings
-          </Heading>
+    <Stack
+      direction="column"
+      spacing="20px"
+      p="20px"
+      w="100%"
+      h="100%"
+      maxW="500px"
+      margin="0 auto"
+    >
+      <Stack direction="column" spacing="10px">
+        <Heading as="h1" fontSize={36} textAlign="start">
+          Settings
+        </Heading>
 
-          <Divider orientation="horizontal" />
-        </Stack>
-
-        <Switch>
-          <Route exact path="/settings" component={Feedback} />
-          <Route exact path="/settings/account" component={Account} />
-          <Route exact path="/settings/password" component={Password} />
-          <Route exact path="/settings/about" component={About} />
-          <Route exact path="/settings/feedback" component={Feedback} />
-          <Route exact path="/settings/faq" component={FAQ} />
-          <Route exact path="/settings/privacy" component={PrivacyPolicy} />
-          <Route exact path="/settings/terms" component={Terms} />
-        </Switch>
+        <Text
+          color="#6F6F6F"
+          fontSize={16}
+          lineHeight="30px"
+          fontWeight="300"
+          textAlign="start"
+        >
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </Text>
       </Stack>
-    </Scrollbars>
+
+      <Grid templateRows="repeat(7, max-content)" gap={2}>
+        <GridItem w="100%" h="35px">
+          <Button
+            variant="light"
+            as={ReactRouterLink}
+            to="/settings/account"
+            w="100%"
+            h="100%"
+            justifyContent="flex-start"
+          >
+            Account
+          </Button>
+        </GridItem>
+
+        <GridItem w="100%" h="35px">
+          <Button
+            variant="light"
+            as={ReactRouterLink}
+            to="/settings/password"
+            w="100%"
+            h="100%"
+            justifyContent="flex-start"
+          >
+            Password
+          </Button>
+        </GridItem>
+
+        <GridItem w="100%" h="35px">
+          <Button
+            variant="light"
+            as={ReactRouterLink}
+            to="/settings/about"
+            w="100%"
+            h="100%"
+            justifyContent="flex-start"
+          >
+            About
+          </Button>
+        </GridItem>
+
+        <GridItem w="100%" h="35px">
+          <Button
+            variant="light"
+            as={ReactRouterLink}
+            to="/settings/faq"
+            w="100%"
+            h="100%"
+            justifyContent="flex-start"
+          >
+            Frequently Asked Questions
+          </Button>
+        </GridItem>
+
+        <GridItem w="100%" h="35px">
+          <Button
+            variant="light"
+            as={ReactRouterLink}
+            to="/settings/feedback"
+            w="100%"
+            h="100%"
+            justifyContent="flex-start"
+          >
+            Feedback
+          </Button>
+        </GridItem>
+
+        <GridItem w="100%" h="35px">
+          <Button
+            variant="light"
+            as={ReactRouterLink}
+            to="/settings/privacy"
+            w="100%"
+            h="100%"
+            justifyContent="flex-start"
+          >
+            Privacy Policy
+          </Button>
+        </GridItem>
+
+        <GridItem w="100%" h="35px">
+          <Button
+            variant="light"
+            as={ReactRouterLink}
+            to="/settings/terms"
+            w="100%"
+            h="100%"
+            justifyContent="flex-start"
+          >
+            Terms
+          </Button>
+        </GridItem>
+      </Grid>
+    </Stack>
   );
 };
 

@@ -1,4 +1,5 @@
 import React from "react";
+import { useColorMode } from "@chakra-ui/react";
 
 import { PlayerContainer } from "./Player.styles";
 
@@ -13,6 +14,10 @@ import SkeletonRightControls from "src/components/Skeletons/SkeletonPlayer/Skele
 import { usePlayerContext } from "src/machines/Player/PlayerContext";
 
 const Player = () => {
+  const { colorMode } = useColorMode();
+
+  const backgroundColor = colorMode === "dark" ? "#151419" : "white";
+
   const {
     initial,
     loading,
@@ -32,7 +37,7 @@ const Player = () => {
   } = usePlayerContext();
 
   return (
-    <PlayerContainer>
+    <PlayerContainer bgColor={backgroundColor}>
       <Podcast ready={ready} episode={episode} />
 
       <Controls

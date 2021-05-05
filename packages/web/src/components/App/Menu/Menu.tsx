@@ -20,6 +20,8 @@ const Menu = () => {
   const { colorMode } = useColorMode();
   const { innerWidth } = useWindowSize();
 
+  const borderColor = colorMode === "dark" ? "2C2E34" : "#f2f2f2";
+
   const renderLogo = () => {
     if (colorMode === "light") {
       return <PodhouseDarkLogo />;
@@ -37,7 +39,7 @@ const Menu = () => {
   };
 
   return (
-    <MenuContainer>
+    <MenuContainer borderRightWidth="1px" borderRightColor={borderColor}>
       <MenuLogoContainer>
         <ReactRouterLink to="/">{renderLogo()}</ReactRouterLink>
       </MenuLogoContainer>
