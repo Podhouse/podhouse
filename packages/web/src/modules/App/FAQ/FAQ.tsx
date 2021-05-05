@@ -1,5 +1,15 @@
 import React from "react";
-import { Stack, Heading, Text } from "@chakra-ui/react";
+import {
+  Stack,
+  Heading,
+  Text,
+  Box,
+  Accordion,
+  AccordionItem,
+  AccordionButton,
+  AccordionPanel,
+  AccordionIcon,
+} from "@chakra-ui/react";
 
 const FAQ = () => {
   return (
@@ -28,13 +38,41 @@ const FAQ = () => {
         </Text>
       </Stack>
 
-      <Stack direction="column" spacing="30px">
-        <Text>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Rhoncus
-          rutrum sollicitudin placerat id nisl, sed turpis. Viverra aliquam nibh
-          consectetur sed turpis urna.
-        </Text>
-      </Stack>
+      <Accordion allowToggle>
+        <AccordionItem>
+          <h2>
+            <AccordionButton>
+              <Box flex="1" textAlign="left">
+                Section 1 title
+              </Box>
+              <AccordionIcon />
+            </AccordionButton>
+          </h2>
+          <AccordionPanel pb={4}>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat.
+          </AccordionPanel>
+        </AccordionItem>
+
+        <AccordionItem>
+          <h2>
+            <AccordionButton>
+              <Box flex="1" textAlign="left">
+                Section 2 title
+              </Box>
+              <AccordionIcon />
+            </AccordionButton>
+          </h2>
+          <AccordionPanel pb={4}>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat.
+          </AccordionPanel>
+        </AccordionItem>
+      </Accordion>
     </Stack>
   );
 };

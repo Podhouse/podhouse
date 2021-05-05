@@ -1,3 +1,4 @@
+import Accordion from "./Accordion/Accordion";
 import Box from "./Box/Box";
 import Input from "./Input/Input";
 import Button from "./Button/Button";
@@ -15,6 +16,7 @@ import Slider from "./Slider/Slider";
 import Textarea from "./Textarea/Textarea";
 
 const components = {
+  Accordion,
   Box,
   Input,
   Button,
