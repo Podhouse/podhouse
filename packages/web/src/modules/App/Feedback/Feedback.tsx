@@ -22,7 +22,7 @@ interface FeedbackFormProps {
 }
 
 const validationSchema = Yup.object().shape({
-  email: Yup.string().required("Email is required"),
+  email: Yup.string().email("Email is invalid").required("Email is required"),
   feedback: Yup.string().required("Message is required"),
 });
 
@@ -66,7 +66,7 @@ const Feedback = () => {
           fontWeight="300"
           textAlign="start"
         >
-          Please let us know if you have any issues, feature requests, etc.
+          Please let us know if you have any issues, feature requests, etc
         </Text>
       </Stack>
 

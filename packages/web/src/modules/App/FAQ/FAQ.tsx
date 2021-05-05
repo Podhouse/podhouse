@@ -34,7 +34,7 @@ const FAQ = () => {
           fontWeight="300"
           textAlign="start"
         >
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          Find all the questions you might have about us here
         </Text>
       </Stack>
 

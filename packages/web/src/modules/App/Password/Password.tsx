@@ -9,7 +9,6 @@ import {
   FormControl,
   FormLabel,
   FormErrorMessage,
-  useColorMode,
   Heading,
   Text,
 } from "@chakra-ui/react";
@@ -17,24 +16,19 @@ import {
 interface PasswordFormProps {
   currentPassword: string;
   password: string;
-  confirmNewPassword: string;
+  passwordConfirmation: string;
 }
 
 const validationSchema = Yup.object().shape({
   currentPassword: Yup.string().required("Current password is required"),
   password: Yup.string().required("Password is required"),
-  passwordConfirmation: Yup.string().when("password", {
-    is: (val: string) => (val && val.length > 0 ? true : false),
-    then: Yup.string().oneOf(
-      [Yup.ref("password")],
-      "Both password need to be the same"
-    ),
-  }),
+  passwordConfirmation: Yup.string().oneOf(
+    [Yup.ref("password"), null],
+    "Passwords must match"
+  ),
 });
 
 const Password = () => {
-  const { toggleColorMode } = useColorMode();
-
   const {
     register,
     formState: { errors, isSubmitting, isValid },
@@ -44,8 +38,9 @@ const Password = () => {
     resolver: yupResolver(validationSchema),
   });
 
-  const onSubmit = () => {
-    console.log("submitted!");
+  const onSubmit = (e: any) => {
+    e.preventDefault();
+    alert("submitted!!!");
   };
 
   return (
@@ -72,7 +67,7 @@ const Password = () => {
           fontWeight="300"
           textAlign="start"
         >
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          We'll send you a confirmation email for your new password
         </Text>
       </Stack>
 
@@ -91,9 +86,9 @@ const Password = () => {
       </FormControl>
 
       <FormControl isInvalid={errors.password && true}>
-        <FormLabel htmlFor="newPassword">New password</FormLabel>
+        <FormLabel htmlFor="password">New password</FormLabel>
         <Input
-          id="newPassword"
+          id="password"
           variant="light"
           type="password"
           placeholder="New password"
@@ -104,21 +99,28 @@ const Password = () => {
         </FormErrorMessage>
       </FormControl>
 
-      <FormControl isInvalid={errors.confirmNewPassword && true}>
-        <FormLabel htmlFor="confirmNewPassword">Confirm new password</FormLabel>
+      <FormControl isInvalid={errors.passwordConfirmation && true}>
+        <FormLabel htmlFor="passwordConfirmation">
+          Confirm new password
+        </FormLabel>
         <Input
-          id="confirmNewPassword"
+          id="passwordConfirmation"
           variant="light"
           type="password"
           placeholder="Confirm new password"
-          {...register("confirmNewPassword")}
+          {...register("passwordConfirmation")}
         />
         <FormErrorMessage>
-          {errors.confirmNewPassword && errors.confirmNewPassword.message}
+          {errors.passwordConfirmation && errors.passwordConfirmation.message}
         </FormErrorMessage>
       </FormControl>
 
-      <Button onClick={toggleColorMode} variant="main" width="100%">
+      <Button
+        type="submit"
+        variant="main"
+        width="100%"
+        isDisabled={isSubmitting || !isValid}
+      >
         Change password
       </Button>
     </Stack>

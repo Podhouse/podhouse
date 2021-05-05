@@ -26,7 +26,7 @@ const About = () => {
           fontWeight="300"
           textAlign="start"
         >
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          Here you can learn more about our latest releases
         </Text>
       </Stack>
 
@@ -34,9 +34,7 @@ const About = () => {
         monthAndYearDate="June 2021"
         version="1.0"
         dayDate="01th June, 2021"
-        text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Rhoncus rutrum
-        sollicitudin placerat id nisl, sed turpis. Viverra aliquam nibh
-        consectetur sed turpis urna."
+        text="Podhouse aims to help people discover new podcasts and listen to their favorites. Built for people who want to listen to podcasts combining with a nice experience. The first stable version of Podhouse available. We brought to our users a lot of features such as new UI design, dark mode, queue episodes, favorite episodes. We fixed a lot of bugs that were on our beta release."
       />
     </Stack>
   );
