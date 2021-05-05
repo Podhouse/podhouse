@@ -30,12 +30,14 @@ const About = () => {
         </Text>
       </Stack>
 
-      <Stack direction="column" spacing="30px">
-        <ReleaseItem />
-        <ReleaseItem />
-        <ReleaseItem />
-        <ReleaseItem />
-      </Stack>
+      <ReleaseItem
+        monthAndYearDate="June 2021"
+        version="1.0"
+        dayDate="01th June, 2021"
+        text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Rhoncus rutrum
+        sollicitudin placerat id nisl, sed turpis. Viverra aliquam nibh
+        consectetur sed turpis urna."
+      />
     </Stack>
   );
 };

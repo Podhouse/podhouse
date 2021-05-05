@@ -61,72 +61,66 @@ const Password = () => {
       margin="0 auto"
     >
       <Stack direction="column" spacing="10px">
-        <Stack direction="column" spacing="10px">
-          <Heading as="h1" fontSize={36} textAlign="start">
-            Password
-          </Heading>
+        <Heading as="h1" fontSize={36} textAlign="start">
+          Password
+        </Heading>
 
-          <Text
-            color="#6F6F6F"
-            fontSize={16}
-            lineHeight="30px"
-            fontWeight="300"
-            textAlign="start"
-          >
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          </Text>
-        </Stack>
-
-        <Stack direction="column" spacing="10px">
-          <FormControl isInvalid={errors.currentPassword && true}>
-            <FormLabel htmlFor="currentPassword">Current password</FormLabel>
-            <Input
-              id="currentPassword"
-              variant="light"
-              type="password"
-              placeholder="Current password"
-              {...register("currentPassword")}
-            />
-            <FormErrorMessage>
-              {errors.currentPassword && errors.currentPassword.message}
-            </FormErrorMessage>
-          </FormControl>
-
-          <FormControl isInvalid={errors.password && true}>
-            <FormLabel htmlFor="newPassword">New password</FormLabel>
-            <Input
-              id="newPassword"
-              variant="light"
-              type="password"
-              placeholder="New password"
-              {...register("password")}
-            />
-            <FormErrorMessage>
-              {errors.password && errors.password.message}
-            </FormErrorMessage>
-          </FormControl>
-
-          <FormControl isInvalid={errors.confirmNewPassword && true}>
-            <FormLabel htmlFor="confirmNewPassword">
-              Confirm new password
-            </FormLabel>
-            <Input
-              id="confirmNewPassword"
-              variant="light"
-              type="password"
-              placeholder="Confirm new password"
-              {...register("confirmNewPassword")}
-            />
-            <FormErrorMessage>
-              {errors.confirmNewPassword && errors.confirmNewPassword.message}
-            </FormErrorMessage>
-          </FormControl>
-
-          <Button onClick={toggleColorMode} variant="main" width="100%">
-            Change password
-          </Button>
-        </Stack>
+        <Text
+          color="#6F6F6F"
+          fontSize={16}
+          lineHeight="30px"
+          fontWeight="300"
+          textAlign="start"
+        >
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </Text>
       </Stack>
+
+      <FormControl isInvalid={errors.currentPassword && true}>
+        <FormLabel htmlFor="currentPassword">Current password</FormLabel>
+        <Input
+          id="currentPassword"
+          variant="light"
+          type="password"
+          placeholder="Current password"
+          {...register("currentPassword")}
+        />
+        <FormErrorMessage>
+          {errors.currentPassword && errors.currentPassword.message}
+        </FormErrorMessage>
+      </FormControl>
+
+      <FormControl isInvalid={errors.password && true}>
+        <FormLabel htmlFor="newPassword">New password</FormLabel>
+        <Input
+          id="newPassword"
+          variant="light"
+          type="password"
+          placeholder="New password"
+          {...register("password")}
+        />
+        <FormErrorMessage>
+          {errors.password && errors.password.message}
+        </FormErrorMessage>
+      </FormControl>
+
+      <FormControl isInvalid={errors.confirmNewPassword && true}>
+        <FormLabel htmlFor="confirmNewPassword">Confirm new password</FormLabel>
+        <Input
+          id="confirmNewPassword"
+          variant="light"
+          type="password"
+          placeholder="Confirm new password"
+          {...register("confirmNewPassword")}
+        />
+        <FormErrorMessage>
+          {errors.confirmNewPassword && errors.confirmNewPassword.message}
+        </FormErrorMessage>
+      </FormControl>
+
+      <Button onClick={toggleColorMode} variant="main" width="100%">
+        Change password
+      </Button>
     </Stack>
   );
 };

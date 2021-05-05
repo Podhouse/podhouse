@@ -1,26 +1,24 @@
 import React from "react";
 import { Stack, Heading, Text } from "@chakra-ui/react";
 
-const ReleaseItem = () => {
+interface Props {
+  monthAndYearDate: string;
+  version: string;
+  dayDate: string;
+  text: string;
+}
+
+const ReleaseItem = ({ monthAndYearDate, version, dayDate, text }: Props) => {
   return (
     <Stack direction="column" spacing="10px">
-      <Heading fontSize="24px">January 2021</Heading>
+      <Heading fontSize="24px">{monthAndYearDate}</Heading>
 
       <Stack direction="row" spacing="10px">
-        <Text>Version 2.4</Text>
-        <Text>29th January, 2021</Text>
+        <Text>Version {version}</Text>
+        <Text>{dayDate}</Text>
       </Stack>
 
-      <Text>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Rhoncus rutrum
-        sollicitudin placerat id nisl, sed turpis. Viverra aliquam nibh
-        consectetur sed turpis urna.
-      </Text>
-      <Text>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Rhoncus rutrum
-        sollicitudin placerat id nisl, sed turpis. Viverra aliquam nibh
-        consectetur sed turpis urna.
-      </Text>
+      <Text>{text}</Text>
     </Stack>
   );
 };

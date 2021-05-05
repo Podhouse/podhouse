@@ -70,44 +70,42 @@ const Feedback = () => {
         </Text>
       </Stack>
 
-      <Stack direction="column" spacing="10px">
-        <FormControl isInvalid={errors.email && true}>
-          <FormLabel htmlFor="email">Email address</FormLabel>
-          <Input
-            id="email"
-            variant="light"
-            type="email"
-            placeholder="Email address"
-            {...register("email")}
-          />
-          <FormErrorMessage>
-            {errors.email && errors.email.message}
-          </FormErrorMessage>
-        </FormControl>
+      <FormControl isInvalid={errors.email && true}>
+        <FormLabel htmlFor="email">Email address</FormLabel>
+        <Input
+          id="email"
+          variant="light"
+          type="email"
+          placeholder="Email address"
+          {...register("email")}
+        />
+        <FormErrorMessage>
+          {errors.email && errors.email.message}
+        </FormErrorMessage>
+      </FormControl>
 
-        <FormControl isInvalid={errors.feedback && true}>
-          <FormLabel htmlFor="feedback">Feedback</FormLabel>
-          <Textarea
-            id="feedback"
-            variant="light"
-            type="text"
-            placeholder="Leave your feedback, suggestion, or comment here"
-            {...register("feedback")}
-          />
-          <FormErrorMessage>
-            {errors.feedback && errors.feedback.message}
-          </FormErrorMessage>
-        </FormControl>
+      <FormControl isInvalid={errors.feedback && true}>
+        <FormLabel htmlFor="feedback">Feedback</FormLabel>
+        <Textarea
+          id="feedback"
+          variant="light"
+          type="text"
+          placeholder="Leave your feedback, suggestion, or comment here"
+          {...register("feedback")}
+        />
+        <FormErrorMessage>
+          {errors.feedback && errors.feedback.message}
+        </FormErrorMessage>
+      </FormControl>
 
-        <Button
-          onClick={toggleColorMode}
-          variant="main"
-          width="100%"
-          isDisabled={isSubmitting || !isValid}
-        >
-          Send feedback
-        </Button>
-      </Stack>
+      <Button
+        onClick={toggleColorMode}
+        variant="main"
+        width="100%"
+        isDisabled={isSubmitting || !isValid}
+      >
+        Send feedback
+      </Button>
     </Stack>
   );
 };
