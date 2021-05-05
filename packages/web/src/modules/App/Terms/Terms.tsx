@@ -17,15 +17,7 @@ const Terms = () => {
           Terms
         </Heading>
 
-        <Text
-          color="#6F6F6F"
-          fontSize={16}
-          lineHeight="30px"
-          fontWeight="300"
-          textAlign="start"
-        >
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        </Text>
+        <Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text>
       </Stack>
 
       <Stack direction="column" spacing="30px">

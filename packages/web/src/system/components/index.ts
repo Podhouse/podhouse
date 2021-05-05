@@ -14,6 +14,8 @@ import FormErrorMessage from "./FormErrorMessage/FormErrorMessage";
 import Menu from "./Menu/Menu";
 import Slider from "./Slider/Slider";
 import Textarea from "./Textarea/Textarea";
+import ListItem from "./ListItem/ListItem";
+import UnorderedList from "./UnorderedList/UnorderedList";
 
 const components = {
   Accordion,
@@ -32,6 +34,8 @@ const components = {
   Menu,
   Slider,
   Textarea,
+  UnorderedList,
+  ListItem,
 };
 
 export default components;

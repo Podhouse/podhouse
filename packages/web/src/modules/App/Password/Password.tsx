@@ -60,15 +60,7 @@ const Password = () => {
           Password
         </Heading>
 
-        <Text
-          color="#6F6F6F"
-          fontSize={16}
-          lineHeight="30px"
-          fontWeight="300"
-          textAlign="start"
-        >
-          We'll send you a confirmation email for your new password
-        </Text>
+        <Text>We'll send you a confirmation email for your new password</Text>
       </Stack>
 
       <FormControl isInvalid={errors.currentPassword && true}>

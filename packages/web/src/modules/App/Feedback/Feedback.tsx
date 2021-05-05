@@ -59,13 +59,7 @@ const Feedback = () => {
           Feedback
         </Heading>
 
-        <Text
-          color="#6F6F6F"
-          fontSize={16}
-          lineHeight="30px"
-          fontWeight="300"
-          textAlign="start"
-        >
+        <Text>
           Please let us know if you have any issues, feature requests, etc
         </Text>
       </Stack>

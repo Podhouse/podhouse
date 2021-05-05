@@ -27,15 +27,7 @@ const FAQ = () => {
           Frequently Asked Questions
         </Heading>
 
-        <Text
-          color="#6F6F6F"
-          fontSize={16}
-          lineHeight="30px"
-          fontWeight="300"
-          textAlign="start"
-        >
-          Find all the questions you might have about us here
-        </Text>
+        <Text>Find all the questions you might have about us here</Text>
       </Stack>
 
       <Accordion allowToggle>

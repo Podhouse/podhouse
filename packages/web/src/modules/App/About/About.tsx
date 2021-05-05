@@ -19,15 +19,7 @@ const About = () => {
           About
         </Heading>
 
-        <Text
-          color="#6F6F6F"
-          fontSize={16}
-          lineHeight="30px"
-          fontWeight="300"
-          textAlign="start"
-        >
-          Here you can learn more about our latest releases
-        </Text>
+        <Text>Here you can learn more about our latest releases</Text>
       </Stack>
 
       <ReleaseItem
