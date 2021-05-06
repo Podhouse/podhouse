@@ -14,27 +14,27 @@ import {
 const SkeletonEpisode = () => (
   <SkeletonEpisodeContainer>
     <SkeletonEpisodeAvatar>
-      <Skeleton borderRadius={3} width="80px" height="80px" />
+      <Skeleton width="80px" height="80px" />
     </SkeletonEpisodeAvatar>
 
     <SkeletonEpisodeName>
-      <Skeleton borderRadius={3} width="100%" height="20px" />
+      <Skeleton width="100%" height="20px" />
     </SkeletonEpisodeName>
 
     <SkeletonEpisodeDescription>
-      <Skeleton borderRadius={3} width="100%" height="50px" />
+      <Skeleton width="100%" height="50px" />
     </SkeletonEpisodeDescription>
 
     <SkeletonEpisodePublishedDate>
-      <Skeleton borderRadius={3} width="100%" height="20px" />
+      <Skeleton width="100%" height="20px" />
     </SkeletonEpisodePublishedDate>
 
     <SkeletonEpisodeDuration>
-      <Skeleton borderRadius={3} width="100%" height="20px" />
+      <Skeleton width="100%" height="20px" />
     </SkeletonEpisodeDuration>
 
     <SkeletonEpisodeButton>
-      <Skeleton borderRadius={3} width="100%" height="20px" />
+      <Skeleton width="100%" height="20px" />
     </SkeletonEpisodeButton>
   </SkeletonEpisodeContainer>
 );

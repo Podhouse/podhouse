@@ -31,7 +31,6 @@ const Favorites = lazy(() => import("src/modules/App/Favorites/Favorites"));
 const Filters = lazy(() => import("src/modules/App/Filters/Filters"));
 
 const Settings = lazy(() => import("src/modules/App/Settings/Settings"));
-const Account = lazy(() => import("src/modules/App/Account/Account"));
 const Password = lazy(() => import("src/modules/App/Password/Password"));
 const About = lazy(() => import("src/modules/App/About/About"));
 const FAQ = lazy(() => import("src/modules/App/FAQ/FAQ"));
@@ -65,7 +64,6 @@ const App = () => {
             <Route exact path="/filters" component={Filters} />
 
             <Route exact path="/settings" component={Settings} />
-            <Route exact path="/settings/account" component={Account} />
             <Route exact path="/settings/password" component={Password} />
             <Route exact path="/settings/about" component={About} />
             <Route exact path="/settings/faq" component={FAQ} />

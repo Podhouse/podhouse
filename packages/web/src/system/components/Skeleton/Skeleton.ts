@@ -1,10 +1,14 @@
+import {
+  ComponentSingleStyleConfig,
+  ThemeComponentProps,
+} from "@chakra-ui/react";
 import { mode } from "@chakra-ui/theme-tools";
 
-type Props = Record<string, any>;
-
-const Skeleton = {
-  baseStyle: (props: Props) => ({
-    bg: mode("gray.50", `gray.900`)(props),
+const Skeleton: ComponentSingleStyleConfig = {
+  baseStyle: (props: ThemeComponentProps) => ({
+    animation: "none",
+    bg: mode("gray.50", `blackLight`)(props),
+    borderRadius: "3px",
   }),
 };
 

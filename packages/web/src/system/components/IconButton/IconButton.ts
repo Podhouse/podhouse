@@ -1,8 +1,10 @@
+import {
+  ComponentSingleStyleConfig,
+  ThemeComponentProps,
+} from "@chakra-ui/react";
 import { mode } from "@chakra-ui/theme-tools";
 
-type Props = Record<string, any>;
-
-const light = (props: Props) => ({
+const light = (props: ThemeComponentProps) => ({
   bg: mode("white", "#151419")(props),
   color: mode("gray.300", "gray.300")(props),
   fontFamily: "Passenger Sans",
@@ -15,8 +17,8 @@ const light = (props: Props) => ({
   },
 });
 
-const IconButton = {
-  baseStyle: (props: Props) => ({
+const IconButton: ComponentSingleStyleConfig = {
+  baseStyle: (props: ThemeComponentProps) => ({
     bg: mode("gray.800", "white")(props),
     color: mode("white", "black")(props),
     fontFamily: "Passenger Sans",

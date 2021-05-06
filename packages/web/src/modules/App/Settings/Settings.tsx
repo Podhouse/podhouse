@@ -29,20 +29,7 @@ const Settings = () => {
         </Text>
       </Stack>
 
-      <Grid templateRows="repeat(7, max-content)" gap={2}>
-        <GridItem w="100%" h="35px">
-          <Button
-            variant="light"
-            as={ReactRouterLink}
-            to="/settings/account"
-            w="100%"
-            h="100%"
-            justifyContent="flex-start"
-          >
-            Account
-          </Button>
-        </GridItem>
-
+      <Grid templateRows="repeat(6, max-content)" gap={2}>
         <GridItem w="100%" h="35px">
           <Button
             variant="light"

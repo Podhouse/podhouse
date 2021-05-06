@@ -1,8 +1,10 @@
+import {
+  ComponentSingleStyleConfig,
+  ThemeComponentProps,
+} from "@chakra-ui/react";
 import { mode, orient } from "@chakra-ui/theme-tools";
 
-type Props = Record<string, any>;
-
-function thumbOrientation(props: Record<string, any>) {
+function thumbOrientation(props: ThemeComponentProps) {
   return orient({
     orientation: props.orientation,
     vertical: {
@@ -22,8 +24,8 @@ function thumbOrientation(props: Record<string, any>) {
   });
 }
 
-const Slider = {
-  baseStyle: ({ orientation, ...props }: Props) => ({
+const Slider: ComponentSingleStyleConfig = {
+  baseStyle: ({ orientation, ...props }: ThemeComponentProps) => ({
     container: {
       _disabled: {
         opacity: 0.6,

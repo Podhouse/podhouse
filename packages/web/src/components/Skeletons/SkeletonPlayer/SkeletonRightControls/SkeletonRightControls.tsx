@@ -12,8 +12,6 @@ import {
   SkeletonVolumeContainer,
 } from "./SkeletonRightControls.styles";
 
-const iconStyle = { cursor: "pointer" };
-
 const SkeletonRightControls = () => (
   <SkeletonRightControlsContainer>
     <BsListUl size={20} />

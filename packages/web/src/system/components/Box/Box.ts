@@ -1,9 +1,11 @@
+import {
+  ComponentSingleStyleConfig,
+  ThemeComponentProps,
+} from "@chakra-ui/react";
 import { mode } from "@chakra-ui/theme-tools";
 
-type Props = Record<string, any>;
-
-const Box = {
-  baseStyle: (props: Props) => ({
+const Box: ComponentSingleStyleConfig = {
+  baseStyle: (props: ThemeComponentProps) => ({
     bg: mode("white", `#151419`)(props),
   }),
 };

@@ -1,9 +1,11 @@
+import {
+  ComponentSingleStyleConfig,
+  ThemeComponentProps,
+} from "@chakra-ui/react";
 import { mode } from "@chakra-ui/theme-tools";
 
-type Props = Record<string, any>;
-
-const Menu = {
-  baseStyle: (props: Props) => ({
+const Menu: ComponentSingleStyleConfig = {
+  baseStyle: (props: ThemeComponentProps) => ({
     list: {
       bg: mode("white", `#151419`)(props),
       border: "1px solid",

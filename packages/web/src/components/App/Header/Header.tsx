@@ -1,5 +1,5 @@
 import React, { Suspense } from "react";
-import { Skeleton, useColorMode } from "@chakra-ui/react";
+import { Skeleton } from "@chakra-ui/react";
 import { ErrorBoundary } from "react-error-boundary";
 
 import Navigation from "./Navigation/Navigation";
@@ -9,13 +9,14 @@ import ErrorLoginFallback from "src/components/ErrorLoginFallback/ErrorLoginFall
 
 import { HeaderContainer, SkeletonContainer } from "./Header.styles";
 
+import useColor from "src/hooks/useColor";
+
 const Header = () => {
-  const { colorMode } = useColorMode();
-
-  const borderColor = colorMode === "dark" ? "2C2E34" : "#f2f2f2";
-
   return (
-    <HeaderContainer borderBottomWidth="1px" borderBottomColor={borderColor}>
+    <HeaderContainer
+      borderBottomWidth="1px"
+      borderBottomColor={useColor("2C2E34", "#f2f2f2")}
+    >
       <Navigation />
       <ErrorBoundary FallbackComponent={ErrorLoginFallback}>
         <Suspense

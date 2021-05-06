@@ -12,16 +12,16 @@ import {
 const SkeletonPodcast = () => (
   <SkeletonPodcastContainer>
     <SkeletonPodcastAvatar>
-      <Skeleton width="40px" height="40px" borderRadius={3} />
+      <Skeleton width="40px" height="40px" />
     </SkeletonPodcastAvatar>
 
     <SkeletonPodcastDetails>
       <SkeletonPodcastNameTitle>
-        <Skeleton width="100%" height="20px" borderRadius={3} />
+        <Skeleton width="100%" height="20px" />
       </SkeletonPodcastNameTitle>
 
       <SkeletonPodcastNameTitle>
-        <Skeleton width="100%" height="20px" borderRadius={3} />
+        <Skeleton width="100%" height="20px" />
       </SkeletonPodcastNameTitle>
 
       <SkeletonPodcastFavoriteContainer>

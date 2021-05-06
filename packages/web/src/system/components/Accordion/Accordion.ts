@@ -1,9 +1,11 @@
+import {
+  ComponentSingleStyleConfig,
+  ThemeComponentProps,
+} from "@chakra-ui/react";
 import { mode } from "@chakra-ui/theme-tools";
 
-type Props = Record<string, any>;
-
-const Accordion = {
-  baseStyle: (props: Props) => ({
+const Accordion: ComponentSingleStyleConfig = {
+  baseStyle: (props: ThemeComponentProps) => ({
     container: {
       bg: "inherit",
       borderTopWidth: "1px",

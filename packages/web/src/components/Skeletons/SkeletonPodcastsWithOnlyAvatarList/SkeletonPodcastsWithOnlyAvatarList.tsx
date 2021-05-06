@@ -7,24 +7,13 @@ const SkeletonPodcastsWithOnlyAvatarList = () => {
   return (
     <Stack direction="column" spacing="20px" p="20px">
       <Stack direction="column" spacing="5px">
-        <Skeleton
-          variant="light"
-          borderRadius={3}
-          width="120px"
-          height="30px"
-        />
-        <Divider orientation="horizontal" />
+        <Skeleton width="120px" height="30px" />
+        <Divider variant="solid" orientation="horizontal" />
       </Stack>
 
       <Grid templateColumns="repeat(auto-fill, 140px)" gap={5}>
         {array.map((item) => (
-          <Skeleton
-            variant="light"
-            key={item}
-            borderRadius={3}
-            width="140px"
-            height="140px"
-          />
+          <Skeleton key={item} width="140px" height="140px" />
         ))}
       </Grid>
     </Stack>

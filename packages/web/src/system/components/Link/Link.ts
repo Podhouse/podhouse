@@ -11,7 +11,7 @@ const Link: ComponentSingleStyleConfig = {
     fontSize: "16px",
     fontWeight: "500",
     fontStyle: "normal",
-    lineHeight: "30px",
+    lineHeight: "base",
     _hover: {
       color: mode("gray.600", "white")(props),
     },

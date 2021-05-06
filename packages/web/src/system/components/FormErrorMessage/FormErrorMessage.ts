@@ -1,9 +1,10 @@
-import { mode } from "@chakra-ui/theme-tools";
+import {
+  ComponentSingleStyleConfig,
+  ThemeComponentProps,
+} from "@chakra-ui/react";
 
-type Props = Record<string, any>;
-
-const FormErrorMessage = {
-  baseStyle: (props: Props) => ({
+const FormErrorMessage: ComponentSingleStyleConfig = {
+  baseStyle: (props: ThemeComponentProps) => ({
     color: "red.500",
     fontFamily: "Passenger Sans",
     fontSize: "16px",

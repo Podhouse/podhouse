@@ -1,8 +1,10 @@
+import {
+  ComponentSingleStyleConfig,
+  ThemeComponentProps,
+} from "@chakra-ui/react";
 import { mode } from "@chakra-ui/theme-tools";
 
-type Props = Record<string, any>;
-
-const light = (props: Props) => ({
+const light = (props: ThemeComponentProps) => ({
   color: mode("gray.400", `#B7B7B7`)(props),
   fontFamily: "Passenger Sans",
   fontSize: "16px",
@@ -11,7 +13,7 @@ const light = (props: Props) => ({
   lineHeight: "30px",
 });
 
-const ListItem = {
+const ListItem: ComponentSingleStyleConfig = {
   variants: {
     light,
   },

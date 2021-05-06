@@ -1,8 +1,10 @@
+import {
+  ComponentSingleStyleConfig,
+  ThemeComponentProps,
+} from "@chakra-ui/react";
 import { mode } from "@chakra-ui/theme-tools";
 
-type Props = Record<string, any>;
-
-const light = (props: Props) => ({
+const light = (props: ThemeComponentProps) => ({
   field: {
     bg: "inherit",
     color: mode("gray.400", "#B7B7B7")(props),
@@ -41,7 +43,7 @@ const light = (props: Props) => ({
   },
 });
 
-const Input = {
+const Input: ComponentSingleStyleConfig = {
   variants: {
     light,
   },

@@ -21,8 +21,6 @@ import {
   SkeletonControlsTime,
 } from "./SkeletonControls.styles";
 
-const iconStyle = { cursor: "pointer" };
-
 const SkeletonControls = () => {
   const { initial, loading } = usePlayerContext();
 

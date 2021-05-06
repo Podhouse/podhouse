@@ -26,6 +26,8 @@ import { formatTime, formatDate } from "src/utils/";
 
 import { Episode } from "src/queries/types";
 
+import useColor from "src/hooks/useColor";
+
 interface Props {
   episode: Episode;
 }
@@ -104,7 +106,11 @@ const FavoriteItem = ({ episode }: Props) => {
         />
 
         <FavoriteDividerContainer>
-          <Divider orientation="horizontal" />
+          <Divider
+            orientation="horizontal"
+            borderBottomWidth="1px"
+            borderBottomColor={useColor("2C2E34", "#f2f2f2")}
+          />
         </FavoriteDividerContainer>
       </FavoriteItemContainer>
 
