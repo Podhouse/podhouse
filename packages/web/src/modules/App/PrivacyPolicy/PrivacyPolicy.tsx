@@ -31,7 +31,7 @@ const PrivacyPolicy = () => {
           </Heading>
 
           <Text
-            fontSize={16}
+            fontSize={20}
             lineHeight="30px"
             fontWeight="300"
             textAlign="start"
@@ -56,7 +56,7 @@ const PrivacyPolicy = () => {
           </Text>
 
           <Stack direction="column" spacing="10px">
-            <Heading as="h2" fontSize={16} textAlign="start">
+            <Heading as="h2" fontSize={20} textAlign="start">
               Consent
             </Heading>
             <Text lineHeight="30px">
@@ -66,7 +66,7 @@ const PrivacyPolicy = () => {
           </Stack>
 
           <Stack direction="column" spacing="10px">
-            <Heading as="h2" fontSize={16} textAlign="start">
+            <Heading as="h2" fontSize={20} textAlign="start">
               Information we collect
             </Heading>
             <Text lineHeight="30px">
@@ -84,7 +84,7 @@ const PrivacyPolicy = () => {
           </Stack>
 
           <Stack direction="column" spacing="10px">
-            <Heading as="h2" fontSize={16} textAlign="start">
+            <Heading as="h2" fontSize={20} textAlign="start">
               How we use your information{" "}
             </Heading>
             <Text lineHeight="30px">
@@ -169,7 +169,7 @@ const PrivacyPolicy = () => {
           </Stack>
 
           <Stack direction="column" spacing="10px">
-            <Heading as="h2" fontSize={16} textAlign="start">
+            <Heading as="h2" fontSize={20} textAlign="start">
               Log Files
             </Heading>
             <Text lineHeight="30px">
@@ -187,7 +187,7 @@ const PrivacyPolicy = () => {
           </Stack>
 
           <Stack direction="column" spacing="10px">
-            <Heading as="h2" fontSize={16} textAlign="start">
+            <Heading as="h2" fontSize={20} textAlign="start">
               Advertising Partners Privacy Policies
             </Heading>
             <Text lineHeight="30px">
@@ -206,7 +206,7 @@ const PrivacyPolicy = () => {
           </Stack>
 
           <Stack direction="column" spacing="10px">
-            <Heading as="h2" fontSize={16} textAlign="start">
+            <Heading as="h2" fontSize={20} textAlign="start">
               Third Party Privacy Policies
             </Heading>
             <Text lineHeight="30px">
@@ -222,7 +222,7 @@ const PrivacyPolicy = () => {
           </Stack>
 
           <Stack direction="column" spacing="10px">
-            <Heading as="h2" fontSize={16} textAlign="start">
+            <Heading as="h2" fontSize={20} textAlign="start">
               CCPA Privacy Rights (Do Not Sell My Personal Information)
             </Heading>
             <Text lineHeight="30px">
@@ -240,7 +240,7 @@ const PrivacyPolicy = () => {
           </Stack>
 
           <Stack direction="column" spacing="10px">
-            <Heading as="h2" fontSize={16} textAlign="start">
+            <Heading as="h2" fontSize={20} textAlign="start">
               GDPR Data Protection Rights
             </Heading>
             <Text lineHeight="30px">
@@ -267,7 +267,7 @@ const PrivacyPolicy = () => {
           </Stack>
 
           <Stack direction="column" spacing="10px">
-            <Heading as="h2" fontSize={16} textAlign="start">
+            <Heading as="h2" fontSize={20} textAlign="start">
               Children's Information
             </Heading>
             <Text lineHeight="30px">

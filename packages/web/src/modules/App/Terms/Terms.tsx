@@ -54,7 +54,7 @@ const Terms = () => {
           </Text>
 
           <Stack direction="column" spacing="10px">
-            <Heading as="h2" fontSize={16} textAlign="start">
+            <Heading as="h2" fontSize={20} textAlign="start">
               Access to the Site
             </Heading>
             <Text>
@@ -107,7 +107,7 @@ const Terms = () => {
           </Stack>
 
           <Stack direction="column" spacing="10px">
-            <Heading as="h2" fontSize={16} textAlign="start">
+            <Heading as="h2" fontSize={20} textAlign="start">
               Third-Party Links & Ads; Other Users
             </Heading>
 
@@ -156,7 +156,7 @@ const Terms = () => {
           </Stack>
 
           <Stack direction="column" spacing="10px">
-            <Heading as="h2" fontSize={16} textAlign="start">
+            <Heading as="h2" fontSize={20} textAlign="start">
               Disclaimers
             </Heading>
             <Text>
@@ -184,7 +184,7 @@ const Terms = () => {
           </Stack>
 
           <Stack direction="column" spacing="10px">
-            <Heading as="h2" fontSize={16} textAlign="start">
+            <Heading as="h2" fontSize={20} textAlign="start">
               Limitation on Liability
             </Heading>
             <Text>
@@ -235,7 +235,7 @@ const Terms = () => {
           </Stack>
 
           <Stack direction="column" spacing="10px">
-            <Heading as="h2" fontSize={16} textAlign="start">
+            <Heading as="h2" fontSize={20} textAlign="start">
               Copyright Policy.
             </Heading>
             <Text>
@@ -274,7 +274,7 @@ const Terms = () => {
           </Stack>
 
           <Stack direction="column" spacing="10px">
-            <Heading as="h2" fontSize={16} textAlign="start">
+            <Heading as="h2" fontSize={20} textAlign="start">
               General
             </Heading>
             <Text>
