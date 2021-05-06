@@ -3,6 +3,7 @@ import {
   Stack,
   Heading,
   Box,
+  Link,
   Accordion,
   AccordionItem,
   AccordionButton,
@@ -26,10 +27,17 @@ const Podcasters = () => {
             <AccordionIcon />
           </AccordionButton>
           <AccordionPanel pb={4}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.
+            Shoot us an email at{" "}
+            <Link
+              target="_blank"
+              rel="noopener"
+              href="mailto:podhouse@podhouse.app?subject=I%20want%20to%20feature%20my%20podcast%20on%20Podhouse"
+            >
+              podhouse@podhouse.app
+            </Link>{" "}
+            to feature your podcast on Podhouse. We're building a feature where
+            podcast creators will be able to feature their podcasts on Podhouse
+            very easily, choosing the feature plan and many more options.
           </AccordionPanel>
         </AccordionItem>
 
@@ -41,10 +49,7 @@ const Podcasters = () => {
             <AccordionIcon />
           </AccordionButton>
           <AccordionPanel pb={4}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.
+            Your podcast will be featured for 30 days from the date of purchase.
           </AccordionPanel>
         </AccordionItem>
 
@@ -56,10 +61,11 @@ const Podcasters = () => {
             <AccordionIcon />
           </AccordionButton>
           <AccordionPanel pb={4}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.
+            All sales are final. No refunds. The price and quantity of ads sold
+            may change at any time. Your podcast must be approved before it goes
+            live, it usually occurs within 24 hours. We reserve the right to
+            reject a podcast to be featured for any reasons such as billing
+            issues, miscategorization, quality concerns, or content.
           </AccordionPanel>
         </AccordionItem>
       </Accordion>

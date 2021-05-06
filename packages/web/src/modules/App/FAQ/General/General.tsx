@@ -88,7 +88,11 @@ const General = () => {
           </AccordionButton>
           <AccordionPanel pb={4}>
             We're using the{" "}
-            <Link target="_blank" href="https://podcastindex.org/">
+            <Link
+              target="_blank"
+              rel="noopener"
+              href="https://podcastindex.org/"
+            >
               Podcast Index API
             </Link>{" "}
             for fetching the podcasts and episodes. In the future, we're
