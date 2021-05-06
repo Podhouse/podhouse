@@ -111,7 +111,8 @@ const Password = () => {
         type="submit"
         variant="main"
         width="100%"
-        isDisabled={isSubmitting || !isValid}
+        isLoading={isSubmitting}
+        isDisabled={!isValid}
       >
         Change password
       </Button>

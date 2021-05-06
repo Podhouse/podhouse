@@ -20,12 +20,7 @@ const Search = () => {
   };
 
   return (
-    <Scrollbars
-      onScrollFrame={() => {}}
-      autoHide
-      autoHideTimeout={100}
-      autoHideDuration={100}
-    >
+    <Scrollbars autoHide autoHideTimeout={100} autoHideDuration={100}>
       <SearchContainer>
         <Stack direction="column" spacing="10px">
           <Heading as="h2" fontSize={36} textAlign="center">

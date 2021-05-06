@@ -3,14 +3,12 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import {
-  Box,
   Stack,
   Input,
   Button,
   FormControl,
   FormLabel,
   FormErrorMessage,
-  useColorMode,
   Heading,
   Text,
   Textarea,
@@ -27,8 +25,6 @@ const validationSchema = Yup.object().shape({
 });
 
 const Feedback = () => {
-  const { toggleColorMode } = useColorMode();
-
   const {
     register,
     formState: { errors, isSubmitting, isValid },
@@ -85,6 +81,7 @@ const Feedback = () => {
           variant="light"
           type="text"
           placeholder="Leave your feedback, suggestion, or comment here"
+          resize="none"
           {...register("feedback")}
         />
         <FormErrorMessage>
@@ -93,10 +90,11 @@ const Feedback = () => {
       </FormControl>
 
       <Button
-        onClick={toggleColorMode}
+        type="submit"
         variant="main"
         width="100%"
-        isDisabled={isSubmitting || !isValid}
+        isLoading={isSubmitting}
+        isDisabled={!isValid}
       >
         Send feedback
       </Button>

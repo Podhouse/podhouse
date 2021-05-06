@@ -22,7 +22,6 @@ const ResetPassword = lazy(
 
 const Podcast = lazy(() => import("src/modules/App/Podcast/Podcast"));
 const Episode = lazy(() => import("src/modules/App/Episode/Episode"));
-const Genre = lazy(() => import("src/modules/App/Genre/Genre"));
 
 const Search = lazy(() => import("src/modules/App/Search/Search"));
 const Subscriptions = lazy(
@@ -59,7 +58,6 @@ const App = () => {
 
             <Route exact path="/podcast/:id" component={Podcast} />
             <Route exact path="/episode/:id" component={Episode} />
-            <Route exact path="/genre/:id" component={Genre} />
 
             <Route exact path="/search" component={Search} />
             <Route exact path="/subscriptions" component={Subscriptions} />
