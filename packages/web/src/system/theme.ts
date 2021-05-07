@@ -4,7 +4,7 @@ import { mode } from "@chakra-ui/theme-tools";
 
 import components from "./components/";
 
-export const styles: Styles = {
+const styles: Styles = {
   global: (props) => ({
     body: {
       bg: mode("#FFFFFF", "#151419")(props),
@@ -16,7 +16,7 @@ export const styles: Styles = {
   }),
 };
 
-export const colors = {
+const colors = {
   white: "#FFFFFF",
   black: "#101010",
   blackLight: "#2C2E34",
@@ -34,7 +34,7 @@ export const colors = {
   },
 };
 
-export const fonts = {
+const fonts = {
   heading: "Passenger Sans",
   body: "Passenger Sans",
 };

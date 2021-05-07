@@ -4,6 +4,8 @@ import { Stack, Heading, Divider } from "@chakra-ui/react";
 
 import FavoriteItem from "src/components/FavoriteItem/FavoriteItem";
 
+import useColor from "src/hooks/useColor";
+
 const Favorites = () => {
   return (
     <Scrollbars autoHide autoHideTimeout={100} autoHideDuration={100}>
@@ -27,7 +29,11 @@ const Favorites = () => {
             Favorites
           </Heading>
 
-          <Divider orientation="horizontal" />
+          <Divider
+            orientation="horizontal"
+            borderBottomWidth="1px"
+            borderBottomColor={useColor("2C2E34", "#f2f2f2")}
+          />
         </Stack>
 
         <Stack direction="column" spacing="20px"></Stack>

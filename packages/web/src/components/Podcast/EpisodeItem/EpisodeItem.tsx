@@ -50,6 +50,7 @@ const EpisodeItem = ({ episode }: Props) => {
             }}
             href={`/episode/${episode.id}`}
             as={ReactRouterLink}
+            color={useColor("#e7e7e7", "#6F6F6F")}
           >
             {episode.title}
           </ChakraLink>
