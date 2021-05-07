@@ -12,8 +12,7 @@ import "@reach/slider/styles.css";
 import "@reach/combobox/styles.css";
 
 Sentry.init({
-  dsn:
-    "https://622597cbeb68466eb8f9b0a03180a1aa@o316575.ingest.sentry.io/1799747",
+  dsn: process.env.REACT_APP_SENTRY_DSN,
   integrations: [new Integrations.BrowserTracing()],
   // Set tracesSampleRate to 1.0 to capture 100%
   // of transactions for performance monitoring.

@@ -15,6 +15,10 @@ const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       suspense: true,
+      useErrorBoundary: true,
+    },
+    mutations: {
+      useErrorBoundary: true,
     },
   },
 });
@@ -193,7 +197,9 @@ const Provider = () => (
       />
 
       <ColorModeScript initialColorMode={theme.config.initialColorMode} />
-      <ReactQueryDevtools initialIsOpen />
+      {process.env.NODE_ENV === "development" && (
+        <ReactQueryDevtools initialIsOpen={false} position={"top-right"} />
+      )}
     </QueryClientProvider>
   </BrowserRouter>
 );

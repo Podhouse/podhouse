@@ -32,7 +32,13 @@ const useTrending = () => {
       const { data } = await axios(options);
       return data;
     },
-    { suspense: true }
+    {
+      retry: 1,
+      retryDelay: 1000,
+      suspense: true,
+      useErrorBoundary: true,
+      refetchOnWindowFocus: false,
+    }
   );
 };
 
