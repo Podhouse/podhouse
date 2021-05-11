@@ -7,10 +7,6 @@ import Podcast from "./Podcast/Podcast";
 import Controls from "./Controls/Controls";
 import RightControls from "./RightControls/RightControls";
 
-import SkeletonPodcast from "src/components/Skeletons/SkeletonPlayer/SkeletonPodcast/SkeletonPodcast";
-import SkeletonControls from "src/components/Skeletons/SkeletonPlayer/SkeletonControls/SkeletonControls";
-import SkeletonRightControls from "src/components/Skeletons/SkeletonPlayer/SkeletonRightControls/SkeletonRightControls";
-
 import { usePlayerContext } from "src/machines/Player/PlayerContext";
 
 const Player = () => {

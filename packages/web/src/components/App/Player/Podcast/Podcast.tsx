@@ -1,6 +1,4 @@
 import React from "react";
-import { Link } from "@chakra-ui/react";
-import { Link as ReactRouterLink } from "react-router-dom";
 
 import DesktopPodcast from "./DesktopPodcast/DesktopPodcast";
 import MobilePodcast from "./MobilePodcast/MobilePodcast";

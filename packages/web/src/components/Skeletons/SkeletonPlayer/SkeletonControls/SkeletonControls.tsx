@@ -4,15 +4,14 @@ import {
   BsArrowCounterclockwise,
   BsArrowClockwise,
 } from "react-icons/bs";
-import { Skeleton } from "@chakra-ui/react";
 import {
-  SliderInput,
+  Skeleton,
+  IconButton,
+  Slider,
   SliderTrack,
-  SliderRange,
-  SliderHandle,
-} from "@reach/slider";
-
-import { usePlayerContext } from "src/machines/Player/PlayerContext";
+  SliderFilledTrack,
+  SliderThumb,
+} from "@chakra-ui/react";
 
 import {
   SkeletonControlsContainer,
@@ -22,37 +21,49 @@ import {
 } from "./SkeletonControls.styles";
 
 const SkeletonControls = () => {
-  const { initial, loading } = usePlayerContext();
-
-  const onRenderTime = () => {
-    if (initial) {
-      return null;
-    } else if (loading) {
-      return <Skeleton width="30px" height="15px" borderRadius={3} />;
-    }
-  };
-
   return (
     <SkeletonControlsContainer>
       <SkeletonControlsButtonsContainer>
-        <BsArrowCounterclockwise size={20} />
+        <IconButton
+          aria-label="-15"
+          icon={<BsArrowCounterclockwise size="20px" />}
+          variant="light"
+          size="sm"
+          isDisabled={true}
+        />
 
-        <BsPlay size={42} />
+        <IconButton
+          aria-label="Play episode"
+          icon={<BsPlay size="42px" />}
+          variant="light"
+          size="lg"
+          isDisabled={true}
+        />
 
-        <BsArrowClockwise size={20} />
+        <IconButton
+          aria-label="+15"
+          icon={<BsArrowClockwise size="20px" />}
+          variant="light"
+          size="sm"
+          isDisabled={true}
+        />
       </SkeletonControlsButtonsContainer>
 
       <SkeletonControlsSliderContainer>
-        <SkeletonControlsTime>{onRenderTime()}</SkeletonControlsTime>
+        <SkeletonControlsTime>
+          <Skeleton width="30px" height="15px" borderRadius={3} />
+        </SkeletonControlsTime>
 
-        <SliderInput defaultValue={0} value={0} disabled={true}>
+        <Slider defaultValue={0} isDisabled={true}>
           <SliderTrack>
-            <SliderRange />
-            <SliderHandle />
+            <SliderFilledTrack />
           </SliderTrack>
-        </SliderInput>
+          <SliderThumb />
+        </Slider>
 
-        <SkeletonControlsTime>{onRenderTime()}</SkeletonControlsTime>
+        <SkeletonControlsTime>
+          <Skeleton width="30px" height="15px" borderRadius={3} />
+        </SkeletonControlsTime>
       </SkeletonControlsSliderContainer>
     </SkeletonControlsContainer>
   );
