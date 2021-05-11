@@ -8,9 +8,6 @@ import Provider from "src/components/Provider/Provider";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
 
-import "@reach/slider/styles.css";
-import "@reach/combobox/styles.css";
-
 Sentry.init({
   dsn: process.env.REACT_APP_SENTRY_DSN,
   integrations: [new Integrations.BrowserTracing()],
