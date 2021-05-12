@@ -2,11 +2,11 @@ import React from "react";
 import { screen, render, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
-import SignIn from "./SignIn";
+import SignUp from "./SignUp";
 
-describe("SignIn", () => {
+describe("SignUp", () => {
   it("should render the fields", () => {
-    render(<SignIn />);
+    render(<SignUp />);
 
     expect(screen.getByText(/Podhouse/i)).toBeInTheDocument();
     expect(
@@ -22,12 +22,12 @@ describe("SignIn", () => {
     expect(screen.getByLabelText(/password/i)).toBeInTheDocument();
 
     expect(
-      screen.getByRole("button", { name: /sign in/i })
+      screen.getByRole("button", { name: /sign up/i })
     ).toBeInTheDocument();
   });
 
   it("should validate email field when not passing a valid email", async () => {
-    render(<SignIn />);
+    render(<SignUp />);
     fireEvent.input(screen.getByRole("textbox", { name: /email/i }), {
       target: {
         value: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed",
@@ -44,7 +44,7 @@ describe("SignIn", () => {
   });
 
   it("should validate password field when not passing a password", async () => {
-    render(<SignIn />);
+    render(<SignUp />);
     fireEvent.input(screen.getByRole("textbox", { name: /email/i }), {
       target: {
         value: "leo@gmail.com",
