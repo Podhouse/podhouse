@@ -16,19 +16,15 @@ import {
 interface ResetPasswordFormProps {
   currentPassword: string;
   password: string;
-  confirmNewPassword: string;
 }
 
 const validationSchema = Yup.object().shape({
-  currentPassword: Yup.string().required("Current password is required"),
-  password: Yup.string().required("Password is required"),
-  passwordConfirmation: Yup.string().when("password", {
-    is: (val: string) => (val && val.length > 0 ? true : false),
-    then: Yup.string().oneOf(
-      [Yup.ref("password")],
-      "Both password need to be the same"
-    ),
-  }),
+  currentPassword: Yup.string()
+    .required("Current password is required")
+    .min(8, "Current password should be 8 chars minimum"),
+  password: Yup.string()
+    .required("Password is required")
+    .min(8, "New password should be 8 chars minimum"),
 });
 
 const ResetPassword = () => {
@@ -84,9 +80,9 @@ const ResetPassword = () => {
       </FormControl>
 
       <FormControl isInvalid={errors.password && true}>
-        <FormLabel htmlFor="newPassword">New password</FormLabel>
+        <FormLabel htmlFor="password">New password</FormLabel>
         <Input
-          id="newPassword"
+          id="password"
           variant="light"
           type="password"
           placeholder="New password"
@@ -94,20 +90,6 @@ const ResetPassword = () => {
         />
         <FormErrorMessage>
           {errors.password && errors.password.message}
-        </FormErrorMessage>
-      </FormControl>
-
-      <FormControl isInvalid={errors.confirmNewPassword && true}>
-        <FormLabel htmlFor="confirmNewPassword">Confirm new password</FormLabel>
-        <Input
-          id="confirmNewPassword"
-          variant="light"
-          type="password"
-          placeholder="Confirm new password"
-          {...register("confirmNewPassword")}
-        />
-        <FormErrorMessage>
-          {errors.confirmNewPassword && errors.confirmNewPassword.message}
         </FormErrorMessage>
       </FormControl>
 
