@@ -72,6 +72,7 @@ const SignIn = () => {
           variant="light"
           type="email"
           placeholder="Email"
+          aria-label="email"
           {...register("email")}
         />
         <FormErrorMessage>
@@ -86,6 +87,7 @@ const SignIn = () => {
           variant="light"
           type="password"
           placeholder="Password"
+          aria-label="password"
           {...register("password")}
         />
         <FormErrorMessage>
