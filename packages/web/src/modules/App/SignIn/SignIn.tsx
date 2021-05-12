@@ -22,7 +22,9 @@ interface SignInFormProps {
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().email("Email is invalid").required("Email is required"),
-  password: Yup.string().required("Password is required"),
+  password: Yup.string()
+    .required("Password is required")
+    .min(8, "Password should be 8 chars minimum"),
 });
 
 const SignIn = () => {
