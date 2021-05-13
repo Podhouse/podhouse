@@ -12,9 +12,10 @@ export const EpisodeItemContainer = styled.div`
   grid-row-gap: 10px;
 
   @media screen and (min-width: 800px) {
-    grid-template-columns:
-      1fr minmax(min-content, 110px) minmax(min-content, 50px)
-      minmax(min-content, 50px);
+    grid-template-columns: 1fr minmax(min-content, 110px) minmax(
+        min-content,
+        50px
+      );
     grid-template-rows: max-content max-content max-content;
   }
 `;

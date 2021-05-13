@@ -28,7 +28,7 @@ const SharePodcastModal = ({ isOpen, onClose, podcast }: Props) => {
   const { hasCopied, onCopy } = useClipboard(podcast ? podcastLink : "");
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} isCentered>
+    <Modal size="xl" isOpen={isOpen} onClose={onClose} isCentered>
       <ModalOverlay />
       <ModalContent>
         <ModalHeader>Share</ModalHeader>

@@ -66,7 +66,7 @@ const EpisodeItem = ({ episode }: Props) => {
           {formatTime(episode.duration)}
         </EpisodeItemDuration>
 
-        <EpisodeMenuButton>
+        {/* <EpisodeMenuButton>
           <Menu>
             <MenuButton
               as={IconButton}
@@ -82,7 +82,7 @@ const EpisodeItem = ({ episode }: Props) => {
               <MenuItem onClick={onOpen}>Share</MenuItem>
             </MenuList>
           </Menu>
-        </EpisodeMenuButton>
+        </EpisodeMenuButton> */}
 
         <EpisodeItemButton
           aria-label="Play episode"

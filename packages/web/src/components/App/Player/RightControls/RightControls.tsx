@@ -62,39 +62,6 @@ const RightControls = ({
         </MenuList>
       </Menu>
 
-      <Menu>
-        <Tooltip label="Queue" aria-label="Queue">
-          <MenuButton
-            as={IconButton}
-            aria-label="Queue options"
-            variant="light"
-            icon={<BsListUl size="20px" />}
-            alignSelf="center"
-          />
-        </Tooltip>
-        <MenuList>
-          <MenuGroup title="Queue">
-            <MenuItem>
-              <Stack direction="row" spacing="10px">
-                <Image
-                  width="50px"
-                  height="50px"
-                  borderRadius="5px"
-                  src="https://yt3.ggpht.com/ytc/AAUvwnjtZ27pIbLoaHBRgDTeCSZ5yiH7CWqKbjhpL-TgLA=s900-c-k-c0x00ffffff-no-rj"
-                  lazy="loading"
-                />
-
-                <Stack direction="column" spacing="10px">
-                  <Link>403 - Return of Jedai</Link>
-                  <Text>99% Invisible</Text>
-                </Stack>
-              </Stack>
-            </MenuItem>
-            <MenuItem>Payments </MenuItem>
-          </MenuGroup>
-        </MenuList>
-      </Menu>
-
       <Volume
         ready={ready}
         volume={volume}
