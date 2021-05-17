@@ -1,40 +1,28 @@
 import { useState, useEffect, useRef } from "react";
 import raf from "raf";
 
-import { UsePlayerOptions, PlayerEpisode } from "./Player.types";
+import { Episode } from "./Player.types";
 
 import useAudioPlayer from "./useAudioPlayer";
 
-const usePlayer = ({
-  volume = 0.5,
-  muted = false,
-  loop = false,
-  rate = 1.0,
-  onReady = () => {},
-  onPlaying = () => {},
-  onPaused = () => {},
-  onStopped = () => {},
-  onMuted = () => {},
-  onLooped = () => {},
-  onEnded = () => {},
-}: UsePlayerOptions) => {
+const usePlayer = (src: string) => {
   const {
     audio,
     load,
-    initial,
+    idle,
     loading,
     ready,
-    playing: playerPlaying,
-    paused: playerPaused,
-    stopped: playerStopped,
-    muted: playerMuted,
-    loop: playerLoop,
+    playing,
+    paused,
+    stopped,
+    episode,
+    volume,
+    rate,
+    muted,
+    loop,
     send,
   } = useAudioPlayer();
 
-  const [episode, setEpisode] = useState<PlayerEpisode | null>(null);
-  const [playerVolume, setPlayerVolume] = useState<number>(volume);
-  const [playerRate, setPlayerRate] = useState<number>(rate);
   const [playerSeek, setPlayerSeek] = useState<number>(0);
 
   const playerSeekRef = useRef<number>();
@@ -48,7 +36,7 @@ const usePlayer = ({
       playerSeekRef.current = raf(animate);
     };
 
-    if (audio && playerPlaying) {
+    if (audio && playing) {
       playerSeekRef.current = raf(animate);
     }
 
@@ -57,74 +45,25 @@ const usePlayer = ({
         raf.cancel(playerSeekRef.current);
       }
     };
-  }, [audio, playerPlaying, playerStopped]);
+  }, [audio, playing, stopped]);
 
-  useEffect(() => {
-    if (ready) {
-      onReady();
-    }
-    // eslint-disable-next-line
-  }, [ready]);
-
-  useEffect(() => {
-    if (playerPlaying) {
-      onPlaying();
-    }
-    // eslint-disable-next-line
-  }, [playerPlaying]);
-
-  useEffect(() => {
-    if (playerPaused) {
-      onPaused();
-    }
-    // eslint-disable-next-line
-  }, [playerPaused]);
-
-  useEffect(() => {
-    if (playerStopped) {
-      onStopped();
-    }
-    // eslint-disable-next-line
-  }, [playerStopped]);
-
-  useEffect(() => {
-    if (playerMuted) {
-      onMuted();
-    }
-    // eslint-disable-next-line
-  }, [playerMuted]);
-
-  useEffect(() => {
-    if (playerLoop) {
-      onLooped();
-    }
-    // eslint-disable-next-line
-  }, [playerLoop]);
-
-  useEffect(() => {
-    if (episodeHasEnded) {
-      onEnded();
-    }
-    // eslint-disable-next-line
-  }, [episodeHasEnded]);
-
-  const onToggle = () => {
+  const onToggle = (): void => {
     if (!audio) return;
     if (ready) audio.play();
-    if (playerPlaying) audio.pause();
+    if (playing) audio.pause();
   };
 
-  const onPlay = () => {
+  const onPlay = (): void => {
     if (!audio) return;
     audio.play();
   };
 
-  const onPause = () => {
+  const onPause = (): void => {
     if (!audio) return;
     audio.pause();
   };
 
-  const onStop = () => {
+  const onStop = (): void => {
     if (!audio) return;
     audio.pause();
     send("STOP");
@@ -132,15 +71,15 @@ const usePlayer = ({
     audio.currentTime = 0;
   };
 
-  const onMute = () => {
+  const onMute = (): void => {
     if (!audio) return;
-    audio.muted = !playerMuted;
+    audio.muted = !muted;
     send("MUTE");
   };
 
-  const onLoop = () => {
+  const onLoop = (): void => {
     if (!audio) return;
-    audio.loop = !playerLoop;
+    audio.loop = !loop;
     send("LOOP");
   };
 
@@ -149,14 +88,14 @@ const usePlayer = ({
     props?: { min?: number; max?: number; handlePosition?: string }
   ): void => {
     if (!audio) return;
-    setPlayerVolume(newValue);
+    send({ type: "VOLUME", volume: newValue });
     audio.volume = newValue;
   };
 
   const onRate = (value: any): void => {
     if (!audio) return;
     const rate = parseFloat(value);
-    setPlayerRate(rate);
+    send({ type: "RATE", rate });
     audio.playbackRate = rate;
   };
 
@@ -179,33 +118,33 @@ const usePlayer = ({
 
   const onBackward = (value: number = 15): void => {
     if (!audio) return;
-    if (initial) return;
+    if (idle) return;
     const seek = playerSeek - value;
     setPlayerSeek(seek);
     audio.currentTime = seek;
   };
 
-  const onEpisode = (newEpisode: PlayerEpisode): void => {
-    if (newEpisode !== null) {
-      load({ src: newEpisode.audio, volume, muted, loop, rate });
-      setEpisode(newEpisode);
+  const onEpisode = (episode: Episode): void => {
+    if (episode !== null) {
+      load(src);
+      send({ type: "EPISODE", episode });
       onToggle();
     }
   };
 
   return {
-    initial,
+    idle,
     loading,
     ready,
-    playing: playerPlaying,
-    paused: playerPaused,
-    stopped: playerStopped,
+    playing,
+    paused,
+    stopped,
     episode,
     seek: playerSeek,
-    volume: playerVolume,
-    muted: playerMuted,
-    rate: playerRate,
-    loop: playerLoop,
+    volume,
+    muted,
+    rate,
+    loop,
     ended: episodeHasEnded,
     load,
     onToggle,

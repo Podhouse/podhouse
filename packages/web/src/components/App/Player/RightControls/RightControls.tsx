@@ -1,30 +1,25 @@
 import React from "react";
 import {
-  Stack,
-  Image,
   IconButton,
   Menu,
   MenuButton,
   MenuList,
   MenuItem,
-  MenuGroup,
-  Link,
-  Text,
   Tooltip,
 } from "@chakra-ui/react";
-import { BsListUl, BsClock } from "react-icons/bs";
+import { BsClock } from "react-icons/bs";
 
 import { RightControlsContainer } from "./RightControls.styles";
 
 import Volume from "./Volume/Volume";
 
-import { PlayerEpisode } from "src/machines/Player/Player.types";
+import { Episode } from "src/machines/Player/Player.types";
 
 interface RightControlsProps {
   ready: boolean;
   volume: number;
   muted: boolean;
-  episode: PlayerEpisode | null;
+  episode: null | Episode;
   onVolume: (
     newValue: number,
     props?: { min?: number; max?: number; handlePosition?: string }

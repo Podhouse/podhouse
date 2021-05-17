@@ -14,15 +14,21 @@ const Player = Machine<
 >(
   {
     id: "player",
-    initial: "initial",
+    initial: "idle",
     context: {
+      episode: null,
+      volume: 0.5,
+      rate: 1.0,
       muted: false,
       loop: false,
     },
     states: {
-      initial: {
+      idle: {
         on: {
-          LOADING: "loading",
+          LOADING: {
+            target: "loading",
+            actions: "onLoading",
+          },
           ERROR: {
             target: "error",
             actions: "onError",
@@ -48,67 +54,65 @@ const Player = Machine<
             on: {
               PAUSE: "paused",
               STOP: "stopped",
-              MUTE: {
-                target: "",
-                actions: "onMute",
-              },
-              LOOP: {
-                target: "",
-                actions: "onLoop",
-              },
             },
           },
           paused: {
             on: {
               PLAY: "playing",
               STOP: "stopped",
-              MUTE: {
-                target: "",
-                actions: "onMute",
-              },
-              LOOP: {
-                target: "",
-                actions: "onLoop",
-              },
             },
           },
           stopped: {
             on: {
               PLAY: "playing",
-              MUTE: {
-                target: "",
-                actions: "onMute",
-              },
-              LOOP: {
-                target: "",
-                actions: "onLoop",
-              },
             },
           },
         },
         on: {
-          RELOAD: "initial",
-          END: "end",
-          ERROR: "initial",
+          RELOAD: "idle",
+          END: "ended",
+          ERROR: "error",
+          MUTE: {
+            target: "",
+            actions: "onMute",
+          },
+          LOOP: {
+            target: "",
+            actions: "onLoop",
+          },
         },
       },
-      end: {
+      ended: {
+        entry: "onEnded",
         on: {
-          RELOAD: "initial",
+          RELOAD: "idle",
           PLAY: "ready",
-          ERROR: "initial",
         },
       },
       error: {
-        type: "final",
+        on: {
+          RETRY: "loading",
+        },
       },
     },
   },
   {
     actions: {
+      onLoading: (context, event) => {
+        console.log("onLoading...");
+      },
       onReady: assign<PlayerMachineContext, any>({
-        muted: (_, event) => (event as PlayerOnReadyEvent).muted,
-        loop: (_, event) => (event as PlayerOnReadyEvent).loop,
+        muted: (context, event) => (event as PlayerOnReadyEvent).muted,
+        loop: (context, event) => (event as PlayerOnReadyEvent).loop,
+      }),
+      onEpisode: assign<PlayerMachineContext, any>({
+        episode: (context, event) => event.episode,
+      }),
+      onVolume: assign<PlayerMachineContext, any>({
+        volume: (context, event) => event.volume,
+      }),
+      onRate: assign<PlayerMachineContext, any>({
+        rate: (context, event) => event.rate,
       }),
       onMute: assign<PlayerMachineContext, PlayerMachineEvents>({
         muted: (context) => !context.muted,
@@ -116,6 +120,12 @@ const Player = Machine<
       onLoop: assign<PlayerMachineContext, PlayerMachineEvents>({
         loop: (context) => !context.loop,
       }),
+      onEnded: (context, event) => {
+        console.log("onAudioEnded...");
+      },
+      onError: (context, event) => {
+        console.log("onAudioEnded...");
+      },
     },
   }
 );

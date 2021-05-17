@@ -6,7 +6,7 @@ const PlayerContext = React.createContext(undefined as any);
 
 const PlayerProvider = ({ children }: any) => {
   const {
-    initial,
+    idle,
     loading,
     ready,
     playing,
@@ -32,15 +32,10 @@ const PlayerProvider = ({ children }: any) => {
     onForward,
     onBackward,
     onEpisode,
-  } = usePlayer({
-    volume: 0.5,
-    muted: false,
-    loop: false,
-    rate: 1.0,
-  });
+  } = usePlayer("");
 
   const value = {
-    initial,
+    idle,
     loading,
     ready,
     playing,

@@ -1,11 +1,23 @@
+export type Episode = {
+  id: number;
+  title: string;
+  enclosureUrl: string;
+  enclosureLength: number;
+  duration: number;
+  image: string;
+};
+
 export type PlayerMachineContext = {
+  episode: null | Episode;
+  volume: number;
+  rate: number;
   muted: boolean;
   loop: boolean;
 };
 
 export type PlayerMachineState = {
   states: {
-    initial: {};
+    idle: {};
     loading: {};
     ready: {
       states: {
@@ -14,7 +26,7 @@ export type PlayerMachineState = {
         stopped: {};
       };
     };
-    end: {};
+    ended: {};
     error: {};
   };
 };
@@ -47,7 +59,7 @@ export type PlayerLoopEvent = {
   type: "LOOP";
 };
 
-export type PlayerEndEvent = {
+export type PlayerEndedEvent = {
   type: "END";
 };
 
@@ -69,6 +81,21 @@ export type PlayerRetryEvent = {
   type: "RETRY";
 };
 
+export type PlayerVolumeEvent = {
+  type: "VOLUME";
+  volume: number;
+};
+
+export type PlayerRateEvent = {
+  type: "RATE";
+  rate: number;
+};
+
+export type PlayerEpisodeEvent = {
+  type: "EPISODE";
+  episode: Episode;
+};
+
 export type PlayerMachineEvents =
   | PlayerLoadingEvent
   | PlayerReadyEvent
@@ -77,63 +104,11 @@ export type PlayerMachineEvents =
   | PlayerStopEvent
   | PlayerMuteEvent
   | PlayerLoopEvent
-  | PlayerEndEvent
+  | PlayerEndedEvent
   | PlayerReloadEvent
   | PlayerOnErrorEvent
   | PlayerOnReadyEvent
-  | PlayerRetryEvent;
-
-export interface UsePlayerOptions {
-  volume?: number;
-  muted?: boolean;
-  loop?: boolean;
-  rate?: number;
-  onReady?: () => void;
-  onError?: () => void;
-  onPlaying?: () => void;
-  onPaused?: () => void;
-  onStopped?: () => void;
-  onMuted?: () => void;
-  onLooped?: () => void;
-  onEnded?: () => void;
-}
-
-export interface NewAudioOptions {
-  src: string;
-  volume: number;
-  muted: boolean;
-  loop: boolean;
-  rate: number;
-}
-
-export interface PlayerStateContext {
-  audio: HTMLAudioElement | null;
-  load: (args: NewAudioOptions) => void;
-  idle: boolean;
-  ready: boolean;
-  error: string | null;
-  playing: boolean;
-  paused: boolean;
-  stopped: boolean;
-  muted: boolean;
-  loop: boolean;
-  send: any;
-}
-
-export type PlayerEpisode = {
-  readonly _id: string;
-  readonly title: string;
-  readonly description: string;
-  readonly publishedDate: string;
-  readonly link: string;
-  readonly image: string;
-  readonly audio: string;
-  readonly duration: string;
-  readonly podcast: {
-    readonly _id: string;
-    readonly name: string;
-    readonly website: string;
-    readonly rss: string;
-    readonly appleId: number;
-  };
-} | null;
+  | PlayerRetryEvent
+  | PlayerVolumeEvent
+  | PlayerRateEvent
+  | PlayerEpisodeEvent;

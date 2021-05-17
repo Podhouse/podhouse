@@ -21,7 +21,7 @@ import {
   ControlsTime,
 } from "./Controls.styles";
 
-import { PlayerEpisode } from "src/machines/Player/Player.types";
+import { Episode } from "src/machines/Player/Player.types";
 
 import { formatTime, convertDurationToSeconds } from "src/utils/";
 
@@ -29,7 +29,7 @@ interface ControlsProps {
   ready: boolean;
   playing: boolean;
   seek: number;
-  episode: PlayerEpisode | null;
+  episode: null | Episode;
   onPlay: () => void;
   onPause: () => void;
   onSeek: (
