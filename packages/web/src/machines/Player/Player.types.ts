@@ -1,11 +1,4 @@
-export type Episode = {
-  id: number;
-  title: string;
-  enclosureUrl: string;
-  enclosureLength: number;
-  duration: number;
-  image: string;
-};
+import { Episode } from "src/queries/types";
 
 export type PlayerMachineContext = {
   episode: null | Episode;
@@ -37,6 +30,7 @@ export type PlayerLoadingEvent = {
 
 export type PlayerReadyEvent = {
   type: "READY";
+  episode: Episode;
 };
 
 export type PlayerPlayEvent = {
@@ -71,12 +65,6 @@ export type PlayerOnErrorEvent = {
   type: "ERROR";
 };
 
-export type PlayerOnReadyEvent = {
-  type: "READY";
-  muted: boolean;
-  loop: boolean;
-};
-
 export type PlayerRetryEvent = {
   type: "RETRY";
 };
@@ -107,7 +95,6 @@ export type PlayerMachineEvents =
   | PlayerEndedEvent
   | PlayerReloadEvent
   | PlayerOnErrorEvent
-  | PlayerOnReadyEvent
   | PlayerRetryEvent
   | PlayerVolumeEvent
   | PlayerRateEvent

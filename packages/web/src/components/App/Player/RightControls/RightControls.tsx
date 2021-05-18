@@ -13,28 +13,11 @@ import { RightControlsContainer } from "./RightControls.styles";
 
 import Volume from "./Volume/Volume";
 
-import { Episode } from "src/machines/Player/Player.types";
+import { usePlayerContext } from "src/machines/Player/PlayerContext";
 
-interface RightControlsProps {
-  ready: boolean;
-  volume: number;
-  muted: boolean;
-  episode: null | Episode;
-  onVolume: (
-    newValue: number,
-    props?: { min?: number; max?: number; handlePosition?: string }
-  ) => void;
-  onMute: () => void;
-}
+const RightControls = () => {
+  const { onRate } = usePlayerContext();
 
-const RightControls = ({
-  ready,
-  volume,
-  muted,
-  episode,
-  onVolume,
-  onMute,
-}: RightControlsProps) => {
   return (
     <RightControlsContainer>
       <Menu>
@@ -57,13 +40,7 @@ const RightControls = ({
         </MenuList>
       </Menu>
 
-      <Volume
-        ready={ready}
-        volume={volume}
-        muted={muted}
-        onVolume={onVolume}
-        onMute={onMute}
-      />
+      <Volume />
     </RightControlsContainer>
   );
 };

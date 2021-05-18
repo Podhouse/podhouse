@@ -1,11 +1,11 @@
 import { useState, useEffect, useRef } from "react";
 import raf from "raf";
 
-import { Episode } from "./Player.types";
+import { Episode } from "src/queries/types";
 
 import useAudioPlayer from "./useAudioPlayer";
 
-const usePlayer = (src: string) => {
+const usePlayer = () => {
   const {
     audio,
     load,
@@ -126,8 +126,7 @@ const usePlayer = (src: string) => {
 
   const onEpisode = (episode: Episode): void => {
     if (episode !== null) {
-      load(src);
-      send({ type: "EPISODE", episode });
+      load(episode);
       onToggle();
     }
   };

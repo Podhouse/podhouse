@@ -7,6 +7,10 @@ import Podcast from "./Podcast/Podcast";
 import Controls from "./Controls/Controls";
 import RightControls from "./RightControls/RightControls";
 
+import SkeletonPodcast from "src/components/Skeletons/SkeletonPlayer/SkeletonPodcast/SkeletonPodcast";
+import SkeletonControls from "src/components/Skeletons/SkeletonPlayer/SkeletonControls/SkeletonControls";
+import SkeletonRightControls from "src/components/Skeletons/SkeletonPlayer/SkeletonRightControls/SkeletonRightControls";
+
 import { usePlayerContext } from "src/machines/Player/PlayerContext";
 
 const Player = () => {
@@ -15,7 +19,7 @@ const Player = () => {
   const backgroundColor = colorMode === "dark" ? "#151419" : "white";
 
   const {
-    initial,
+    idle,
     loading,
     ready,
     playing,
@@ -32,30 +36,17 @@ const Player = () => {
     onBackward,
   } = usePlayerContext();
 
+  if (idle) {
+    return <PlayerContainer bgColor={backgroundColor}></PlayerContainer>;
+  }
+
   return (
     <PlayerContainer bgColor={backgroundColor}>
-      <Podcast ready={ready} episode={episode} />
+      {loading ? <SkeletonPodcast /> : <Podcast />}
 
-      <Controls
-        ready={true}
-        playing={playing}
-        seek={seek}
-        episode={episode}
-        onPlay={onPlay}
-        onPause={onPause}
-        onSeek={onSeek}
-        onBackward={onBackward}
-        onForward={onForward}
-      />
+      {loading ? <SkeletonControls /> : <Controls />}
 
-      <RightControls
-        ready={ready}
-        volume={volume}
-        muted={muted}
-        episode={episode}
-        onVolume={onVolume}
-        onMute={onMute}
-      />
+      {loading ? <SkeletonRightControls /> : <RightControls />}
     </PlayerContainer>
   );
 };

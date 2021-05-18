@@ -62,11 +62,3 @@ export const SkeletonPodcastNameTitle = styled.div`
   width: 100%;
   max-width: 300px;
 `;
-
-export const SkeletonPodcastFavoriteContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  grid-row: 1 / 2;
-  grid-column: 2 / 3;
-`;

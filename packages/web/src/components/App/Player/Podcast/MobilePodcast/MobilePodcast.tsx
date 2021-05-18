@@ -6,13 +6,21 @@ import {
   MobilePodcastImage,
 } from "./MobilePodcast.styles";
 
+import { usePlayerContext } from "src/machines/Player/PlayerContext";
+
 const MobilePodcast = () => {
+  const { episode } = usePlayerContext();
+
   return (
     <MobilePodcastContainer>
       <MobilePodcastImage
+        to={{
+          pathname: `/episode/${episode.id}`,
+          state: { id: episode.id },
+        }}
+        href={`/episode/${episode.id}`}
         as={ReactRouterLink}
-        to="/"
-        src="https://yt3.ggpht.com/ytc/AAUvwnjtZ27pIbLoaHBRgDTeCSZ5yiH7CWqKbjhpL-TgLA=s900-c-k-c0x00ffffff-no-rj"
+        src={episode.image}
         lazy="loading"
       />
     </MobilePodcastContainer>

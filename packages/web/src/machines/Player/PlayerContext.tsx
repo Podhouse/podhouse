@@ -32,7 +32,7 @@ const PlayerProvider = ({ children }: any) => {
     onForward,
     onBackward,
     onEpisode,
-  } = usePlayer("");
+  } = usePlayer();
 
   const value = {
     idle,

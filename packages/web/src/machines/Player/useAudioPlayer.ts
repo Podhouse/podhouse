@@ -5,9 +5,12 @@ import PlayerMachine from "./PlayerMachine";
 
 import { PlayerMachineContext, PlayerMachineEvents } from "./Player.types";
 
+import { Episode } from "src/queries/types";
+
 const useAudioPlayer = () => {
   const [current, send] = useMachine<PlayerMachineContext, PlayerMachineEvents>(
-    PlayerMachine
+    PlayerMachine,
+    { devTools: true }
   );
 
   const [audio, setAudio] = useState<HTMLAudioElement | null>(null);
@@ -26,36 +29,9 @@ const useAudioPlayer = () => {
   const muted = current.context.muted;
   const loop = current.context.loop;
 
-  const createAndSetNewAudioElement = (src: string) => {
-    const audioElement = new Audio(src);
-
-    audioElement.autoplay = true;
-    audioElement.volume = volume;
-    audioElement.muted = muted;
-    audioElement.loop = loop;
-    audioElement.playbackRate = rate;
-
-    audioElement.addEventListener("abort", () => send({ type: "ERROR" }));
-    audioElement.addEventListener("error", () => send({ type: "ERROR" }));
-    audioElement.addEventListener("loadstart", () => {
-      send({ type: "LOADING" });
-    });
-    audioElement.addEventListener("loadeddata", () => {
-      send({ type: "READY" });
-    });
-    audioElement.addEventListener("play", () => send("PLAY"));
-    audioElement.addEventListener("pause", () => send("PAUSE"));
-    audioElement.addEventListener("ended", () => {
-      send("END");
-    });
-
-    setAudio(audioElement);
-    playerRef.current = audioElement;
-  };
-
-  const load = (src: string) => {
+  const load = (episode: Episode) => {
     if (playerRef.current) {
-      if (playerRef.current.currentSrc === src) {
+      if (playerRef.current.currentSrc === episode.enclosureUrl) {
         return;
       } else {
         playerRef.current.pause();
@@ -63,9 +39,32 @@ const useAudioPlayer = () => {
         playerRef.current.removeAttribute("src");
         playerRef.current = null;
       }
-    }
+    } else {
+      const audioElement = new Audio(episode.enclosureUrl);
 
-    createAndSetNewAudioElement(src);
+      audioElement.autoplay = true;
+      audioElement.volume = volume;
+      audioElement.muted = muted;
+      audioElement.loop = loop;
+      audioElement.playbackRate = rate;
+
+      audioElement.addEventListener("abort", () => send({ type: "ERROR" }));
+      audioElement.addEventListener("error", () => send({ type: "ERROR" }));
+      audioElement.addEventListener("loadstart", () => {
+        send({ type: "LOADING" });
+      });
+      audioElement.addEventListener("loadeddata", () => {
+        send({ type: "READY", episode });
+      });
+      audioElement.addEventListener("play", () => send("PLAY"));
+      audioElement.addEventListener("pause", () => send("PAUSE"));
+      audioElement.addEventListener("ended", () => {
+        send("END");
+      });
+
+      setAudio(audioElement);
+      playerRef.current = audioElement;
+    }
   };
 
   useEffect(() => {

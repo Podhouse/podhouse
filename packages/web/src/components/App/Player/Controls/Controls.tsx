@@ -21,46 +21,33 @@ import {
   ControlsTime,
 } from "./Controls.styles";
 
-import { Episode } from "src/machines/Player/Player.types";
+import { usePlayerContext } from "src/machines/Player/PlayerContext";
 
-import { formatTime, convertDurationToSeconds } from "src/utils/";
+import { formatTime } from "src/utils/";
 
-interface ControlsProps {
-  ready: boolean;
-  playing: boolean;
-  seek: number;
-  episode: null | Episode;
-  onPlay: () => void;
-  onPause: () => void;
-  onSeek: (
-    newValue: number,
-    props?: { min?: number; max?: number; handlePosition?: string }
-  ) => void;
-  onBackward: (value?: number) => void;
-  onForward: (value?: number) => void;
-}
+const Controls = () => {
+  const {
+    ready,
+    playing,
+    episode,
+    seek,
+    onPlay,
+    onPause,
+    onSeek,
+    onForward,
+    onBackward,
+  } = usePlayerContext();
 
-const Controls = ({
-  ready,
-  playing,
-  seek,
-  episode,
-  onPlay,
-  onPause,
-  onSeek,
-  onBackward,
-  onForward,
-}: ControlsProps) => {
-  const onPlaying = () => {
+  const renderControlButton = () => {
     if (playing) {
       return (
         <Tooltip label="Pause" aria-label="Pause audio">
           <IconButton
             aria-label="Pause episode"
-            icon={<BsPause size="20px" />}
+            icon={<BsPause size="42px" />}
             variant="light"
-            size="sm"
-            onClick={() => {}}
+            size="lg"
+            onClick={onPause}
           />
         </Tooltip>
       );
@@ -73,7 +60,7 @@ const Controls = ({
           icon={<BsPlay size="42px" />}
           variant="light"
           size="lg"
-          onClick={() => {}}
+          onClick={onPlay}
         />
       </Tooltip>
     );
@@ -90,11 +77,11 @@ const Controls = ({
             icon={<BsArrowCounterclockwise size="20px" />}
             variant="light"
             size="sm"
-            onClick={() => {}}
+            onClick={onBackward}
           />
         </Tooltip>
 
-        {onPlaying()}
+        {renderControlButton()}
 
         <Tooltip label="+15" aria-label="+15">
           <IconButton
@@ -102,17 +89,25 @@ const Controls = ({
             icon={<BsArrowClockwise size="20px" />}
             variant="light"
             size="sm"
-            onClick={() => {}}
+            onClick={onForward}
           />
         </Tooltip>
       </ControlsButtonsContainer>
 
       <ControlsSliderContainer>
         <ControlsTime fontSize="14px" fontWeight="300" lineHeight="30px">
-          18:29
+          {formatTime(seek)}
         </ControlsTime>
 
-        <Slider aria-label="slider-ex-1" defaultValue={30}>
+        <Slider
+          aria-label="slider-ex-1"
+          defaultValue={0}
+          value={seek}
+          onChange={onSeek}
+          min={0}
+          max={episode.duration}
+          step={0.1}
+        >
           <SliderTrack>
             <SliderFilledTrack />
           </SliderTrack>
@@ -120,7 +115,7 @@ const Controls = ({
         </Slider>
 
         <ControlsTime fontSize="14px" fontWeight="300" lineHeight="30px">
-          59:23
+          {formatTime(episode.duration)}
         </ControlsTime>
       </ControlsSliderContainer>
     </ControlsContainer>

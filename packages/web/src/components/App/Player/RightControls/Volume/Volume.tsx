@@ -11,18 +11,11 @@ import { BsVolumeUp, BsVolumeDown, BsVolumeMute } from "react-icons/bs";
 
 import { VolumeContainer } from "./Volume.styles";
 
-interface VolumeProps {
-  ready: boolean;
-  volume: number;
-  muted: boolean;
-  onVolume: (
-    newValue: number,
-    props?: { min?: number; max?: number; handlePosition?: string }
-  ) => void;
-  onMute: () => void;
-}
+import { usePlayerContext } from "src/machines/Player/PlayerContext";
 
-const Volume = ({ ready, volume, muted, onVolume, onMute }: VolumeProps) => {
+const Volume = () => {
+  const { volume, muted, onVolume, onMute } = usePlayerContext();
+
   const renderVolume = () => {
     if (volume === 0 || muted) {
       return (
@@ -69,7 +62,14 @@ const Volume = ({ ready, volume, muted, onVolume, onMute }: VolumeProps) => {
       <VolumeContainer>
         {renderVolume()}
 
-        <Slider aria-label="slider-ex-1" defaultValue={30}>
+        <Slider
+          aria-label="slider-ex-1"
+          value={volume}
+          min={0}
+          max={1}
+          step={0.1}
+          onChange={onVolume}
+        >
           <SliderTrack>
             <SliderFilledTrack />
           </SliderTrack>

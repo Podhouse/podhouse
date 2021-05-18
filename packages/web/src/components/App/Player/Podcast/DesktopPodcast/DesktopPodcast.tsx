@@ -2,7 +2,11 @@ import React from "react";
 import { Link, Box, Stack } from "@chakra-ui/react";
 import { Link as ReactRouterLink } from "react-router-dom";
 
+import { usePlayerContext } from "src/machines/Player/PlayerContext";
+
 const DesktopPodcast = () => {
+  const { episode } = usePlayerContext();
+
   return (
     <Box
       width="100%"
@@ -17,19 +21,22 @@ const DesktopPodcast = () => {
         <Link
           width="100%"
           maxWidth="300px"
+          to={{
+            pathname: `/episode/${episode.id}`,
+            state: { id: episode.id },
+          }}
+          href={`/episode/${episode.id}`}
           as={ReactRouterLink}
-          to="/"
           fontWeight="500"
           textOverflow="ellipsis"
           whiteSpace="nowrap"
           overflow="hidden"
         >
-          Implementation with React Query Implementation with React Query
-          Implementation with React Query
+          {episode.title}
         </Link>
 
         <Link as={ReactRouterLink} to="/" fontWeight="300">
-          Implementation with React Query
+          {episode.title}
         </Link>
       </Stack>
     </Box>

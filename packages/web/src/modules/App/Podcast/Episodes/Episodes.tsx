@@ -19,7 +19,7 @@ const Episodes = () => {
   return (
     <EpisodesContainer>
       {data.items.map((episode: Episode) => {
-        return <EpisodeItem episode={episode} />;
+        return <EpisodeItem key={episode.id} episode={episode} />;
       })}
     </EpisodesContainer>
   );

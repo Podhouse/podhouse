@@ -1,30 +1,19 @@
 import React from "react";
-import {
-  Divider,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  IconButton,
-  useDisclosure,
-  Link as ChakraLink,
-} from "@chakra-ui/react";
+import { Divider, Link as ChakraLink } from "@chakra-ui/react";
 import { Link as ReactRouterLink } from "react-router-dom";
-import { BsPlay, BsThreeDots } from "react-icons/bs";
-
-import ShareEpisodeModal from "src/components/Modals/ShareEpisodeModal/ShareEpisodeModal";
+import { BsPlay } from "react-icons/bs";
 
 import {
   EpisodeItemContainer,
-  EpisodeItemName,
   EpisodeItemDescription,
   EpisodeNameDescription,
   EpisodeItemPublishedDate,
   EpisodeItemDuration,
-  EpisodeMenuButton,
   EpisodeItemButton,
   EpisodeDividerContainer,
 } from "./EpisodeItem.styles";
+
+import { usePlayerContext } from "src/machines/Player/PlayerContext";
 
 import { formatTime, formatDate } from "src/utils/";
 
@@ -37,7 +26,43 @@ interface Props {
 }
 
 const EpisodeItem = ({ episode }: Props) => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { playing, onEpisode, onPlay, onPause } = usePlayerContext();
+
+  // const renderControlButton = () => {
+  //   if (playing) {
+  //     return (
+  //       <Tooltip label="Pause" aria-label="Pause audio">
+  //         <IconButton
+  //           aria-label="Pause episode"
+  //           icon={<BsPause size="42px" />}
+  //           variant="light"
+  //           size="lg"
+  //           onClick={onPause}
+  //         />
+  //       </Tooltip>
+  //     );
+  //   }
+
+  //   return (
+
+  //     <Tooltip label="Play" aria-label="Play audio">
+  //       <EpisodeItemButton
+  //         aria-label="Play episode"
+  //         icon={<BsPlay size="30px" />}
+  //         variant="light"
+  //         onClick={() => onEpisode(episode)}
+  //       />
+
+  //       <IconButton
+  //         aria-label="Play episode"
+  //         icon={<BsPlay size="42px" />}
+  //         variant="light"
+  //         size="lg"
+  //         onClick={onPlay}
+  //       />
+  //     </Tooltip>
+  //   );
+  // };
 
   return (
     <>
@@ -66,28 +91,11 @@ const EpisodeItem = ({ episode }: Props) => {
           {formatTime(episode.duration)}
         </EpisodeItemDuration>
 
-        {/* <EpisodeMenuButton>
-          <Menu>
-            <MenuButton
-              as={IconButton}
-              aria-label="Options"
-              variant="light"
-              icon={<BsThreeDots size="30px" />}
-              alignSelf="center"
-            />
-            <MenuList>
-              <MenuItem>Play next</MenuItem>
-              <MenuItem>Play last</MenuItem>
-              <MenuItem>Mark as played</MenuItem>
-              <MenuItem onClick={onOpen}>Share</MenuItem>
-            </MenuList>
-          </Menu>
-        </EpisodeMenuButton> */}
-
         <EpisodeItemButton
           aria-label="Play episode"
           icon={<BsPlay size="30px" />}
           variant="light"
+          onClick={() => onEpisode(episode)}
         />
 
         <EpisodeDividerContainer>
@@ -98,8 +106,6 @@ const EpisodeItem = ({ episode }: Props) => {
           />
         </EpisodeDividerContainer>
       </EpisodeItemContainer>
-
-      <ShareEpisodeModal isOpen={isOpen} onClose={onClose} episode={episode} />
     </>
   );
 };

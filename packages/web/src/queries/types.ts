@@ -103,6 +103,14 @@ export type Episode = {
   feedLanguage: string;
   chaptersUrl: string;
   transcriptUrl: string;
-  soundbite: any;
-  soundbites: any;
+  soundbite: {
+    startTime: number;
+    duration: number;
+    title: string;
+  };
+  soundbites: Array<{
+    startTime: number;
+    duration: number;
+    title: string;
+  }>;
 };

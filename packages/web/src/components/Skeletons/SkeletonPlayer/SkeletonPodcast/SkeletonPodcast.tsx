@@ -6,7 +6,6 @@ import {
   SkeletonPodcastAvatar,
   SkeletonPodcastDetails,
   SkeletonPodcastNameTitle,
-  SkeletonPodcastFavoriteContainer,
 } from "./SkeletonPodcast.styles";
 
 const SkeletonPodcast = () => (
@@ -23,17 +22,6 @@ const SkeletonPodcast = () => (
       <SkeletonPodcastNameTitle>
         <Skeleton width="100%" height="20px" />
       </SkeletonPodcastNameTitle>
-
-      <SkeletonPodcastFavoriteContainer>
-        {/* <Heart
-          className="like-button"
-          size={16}
-          strokeWidth={1.7}
-          color="#101010"
-          style={iconStyle}
-          onClick={() => {}}
-        /> */}
-      </SkeletonPodcastFavoriteContainer>
     </SkeletonPodcastDetails>
   </SkeletonPodcastContainer>
 );

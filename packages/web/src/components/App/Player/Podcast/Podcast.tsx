@@ -5,12 +5,7 @@ import MobilePodcast from "./MobilePodcast/MobilePodcast";
 
 import useWindowSize from "src/hooks/useWindowSize";
 
-interface Props {
-  ready: boolean;
-  episode: any;
-}
-
-const Podcast = ({ ready, episode }: Props) => {
+const Podcast = () => {
   const { innerWidth } = useWindowSize();
 
   const renderPodcast = () => {

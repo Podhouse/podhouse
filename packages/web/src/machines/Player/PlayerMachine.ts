@@ -4,7 +4,6 @@ import {
   PlayerMachineContext,
   PlayerMachineState,
   PlayerMachineEvents,
-  PlayerOnReadyEvent,
 } from "./Player.types";
 
 const Player = Machine<
@@ -72,6 +71,10 @@ const Player = Machine<
           RELOAD: "idle",
           END: "ended",
           ERROR: "error",
+          EPISODE: {
+            target: "",
+            actions: "onEpisode",
+          },
           MUTE: {
             target: "",
             actions: "onMute",
@@ -102,10 +105,6 @@ const Player = Machine<
         console.log("onLoading...");
       },
       onReady: assign<PlayerMachineContext, any>({
-        muted: (context, event) => (event as PlayerOnReadyEvent).muted,
-        loop: (context, event) => (event as PlayerOnReadyEvent).loop,
-      }),
-      onEpisode: assign<PlayerMachineContext, any>({
         episode: (context, event) => event.episode,
       }),
       onVolume: assign<PlayerMachineContext, any>({
@@ -125,6 +124,12 @@ const Player = Machine<
       },
       onError: (context, event) => {
         console.log("onAudioEnded...");
+      },
+    },
+    guards: {
+      episodeExists: (context: PlayerMachineContext, event) => {
+        // Check if episode is not null
+        return context.episode !== null;
       },
     },
   }
