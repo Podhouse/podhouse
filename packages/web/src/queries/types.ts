@@ -86,8 +86,8 @@ export type Episode = {
   description: string;
   guid: string;
   datePublished: number;
-  datePublishedPretty: number;
-  dateCrawled: string;
+  datePublishedPretty: string;
+  dateCrawled: number;
   enclosureUrl: string;
   enclosureType: string;
   enclosureLength: number;
