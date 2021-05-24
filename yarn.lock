@@ -10725,6 +10725,11 @@ hosted-git-info@^4.0.1:
   dependencies:
     lru-cache "^6.0.0"
 
+howler@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/howler/-/howler-2.2.1.tgz#a521a9b495841e8bb9aa12e651bebba0affc179e"
+  integrity sha512-0iIXvuBO/81CcrQ/HSSweYmbT50fT2mIc9XMFb+kxIfk2pW/iKzDbX1n3fZmDXMEIpYvyyfrB+gXwPYSDqUxIQ==
+
 hpack.js@^2.1.6:
   version "2.1.6"
   resolved "https://registry.yarnpkg.com/hpack.js/-/hpack.js-2.1.6.tgz#87774c0949e513f42e84575b3c45681fade2a0b2"
@@ -16384,6 +16389,13 @@ react-style-singleton@^2.1.0:
     get-nonce "^1.0.0"
     invariant "^2.2.4"
     tslib "^1.0.0"
+
+react-use-audio-player@^1.2.4:
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/react-use-audio-player/-/react-use-audio-player-1.2.4.tgz#6c72851a2cedd5378fb0a9a34154863b7f98805a"
+  integrity sha512-J1Ho2xXtD2R2k2+/By5g/JCoe/X0u554t0aqSwGmuQlLEyL4AVWPKm40O451TU1ATeRAeZWG7DSlhXhG0kJN4g==
+  dependencies:
+    howler "^2.2.1"
 
 react@^17.0.2:
   version "17.0.2"
