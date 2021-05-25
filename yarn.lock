@@ -16725,6 +16725,11 @@ regjsparser@^0.6.4:
   dependencies:
     jsesc "~0.5.0"
 
+rehowl@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/rehowl/-/rehowl-0.6.0.tgz#52a9c3c0de65a025a9a90ddb196ae75114733974"
+  integrity sha512-dBVrMe3fHt3omsMnHcvZltVh4V/xY33CamYTVowSPpuq63t5wlKSGMXYO7qdH8Ht723qdBvnZYouwT1B/JF6Og==
+
 rehype-parse@^7.0.0:
   version "7.0.1"
   resolved "https://registry.yarnpkg.com/rehype-parse/-/rehype-parse-7.0.1.tgz#58900f6702b56767814afc2a9efa2d42b1c90c57"

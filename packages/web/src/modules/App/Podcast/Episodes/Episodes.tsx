@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { useLocation } from "react-router-dom";
 
 import EpisodeItem from "src/components/Podcast/EpisodeItem/EpisodeItem";
@@ -25,4 +25,4 @@ const Episodes = () => {
   );
 };
 
-export default Episodes;
+export default memo(Episodes);

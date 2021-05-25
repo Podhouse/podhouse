@@ -1,9 +1,11 @@
 import { Machine, assign } from "xstate";
 
 import {
-  PlayerMachineContext,
   PlayerMachineState,
+  PlayerMachineContext,
   PlayerMachineEvents,
+  PlayerReadyEvent,
+  PlayerVolumeEvent,
 } from "./Player.types";
 
 const Player = Machine<
@@ -16,6 +18,7 @@ const Player = Machine<
     initial: "idle",
     context: {
       episode: null,
+      duration: 0,
       volume: 0.5,
       rate: 1.0,
       muted: false,
@@ -24,14 +27,8 @@ const Player = Machine<
     states: {
       idle: {
         on: {
-          LOADING: {
-            target: "loading",
-            actions: "onLoading",
-          },
-          ERROR: {
-            target: "error",
-            actions: "onError",
-          },
+          LOADING: "loading",
+          ERROR: "error",
         },
       },
       loading: {
@@ -40,9 +37,9 @@ const Player = Machine<
             target: "ready",
             actions: "onReady",
           },
-          ERROR: {
-            target: "error",
-            actions: "onError",
+          ERROR: "error",
+          RELOAD: {
+            target: "",
           },
         },
       },
@@ -68,13 +65,9 @@ const Player = Machine<
           },
         },
         on: {
-          RELOAD: "idle",
+          RELOAD: "loading",
           END: "ended",
           ERROR: "error",
-          EPISODE: {
-            target: "",
-            actions: "onEpisode",
-          },
           MUTE: {
             target: "",
             actions: "onMute",
@@ -83,12 +76,15 @@ const Player = Machine<
             target: "",
             actions: "onLoop",
           },
+          VOLUME: {
+            target: "",
+            actions: "onVolume",
+          },
         },
       },
       ended: {
-        entry: "onEnded",
         on: {
-          RELOAD: "idle",
+          RELOAD: "loading",
           PLAY: "ready",
         },
       },
@@ -101,14 +97,12 @@ const Player = Machine<
   },
   {
     actions: {
-      onLoading: (context, event) => {
-        console.log("onLoading...");
-      },
       onReady: assign<PlayerMachineContext, any>({
-        episode: (context, event) => event.episode,
+        episode: (context, event) => (event as PlayerReadyEvent).episode,
+        duration: (context, event) => (event as PlayerReadyEvent).duration,
       }),
       onVolume: assign<PlayerMachineContext, any>({
-        volume: (context, event) => event.volume,
+        volume: (context, event) => (event as PlayerVolumeEvent).volume,
       }),
       onRate: assign<PlayerMachineContext, any>({
         rate: (context, event) => event.rate,
@@ -119,18 +113,6 @@ const Player = Machine<
       onLoop: assign<PlayerMachineContext, PlayerMachineEvents>({
         loop: (context) => !context.loop,
       }),
-      onEnded: (context, event) => {
-        console.log("onAudioEnded...");
-      },
-      onError: (context, event) => {
-        console.log("onAudioEnded...");
-      },
-    },
-    guards: {
-      episodeExists: (context: PlayerMachineContext, event) => {
-        // Check if episode is not null
-        return context.episode !== null;
-      },
     },
   }
 );

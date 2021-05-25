@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { Link as ReactRouterLink } from "react-router-dom";
 import { Image } from "@chakra-ui/react";
 
@@ -24,4 +24,4 @@ const PodcastItemWithAvatar = ({ id, image }: Props) => {
   );
 };
 
-export default PodcastItemWithAvatar;
+export default memo(PodcastItemWithAvatar);

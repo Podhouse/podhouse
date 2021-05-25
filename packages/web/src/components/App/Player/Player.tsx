@@ -11,7 +11,7 @@ import SkeletonPodcast from "src/components/Skeletons/SkeletonPlayer/SkeletonPod
 import SkeletonControls from "src/components/Skeletons/SkeletonPlayer/SkeletonControls/SkeletonControls";
 import SkeletonRightControls from "src/components/Skeletons/SkeletonPlayer/SkeletonRightControls/SkeletonRightControls";
 
-import { usePlayerContext } from "src/machines/Player/PlayerContext";
+import { usePlayer } from "src/machines/Player/";
 
 const Player = () => {
   const { colorMode } = useColorMode();
@@ -23,18 +23,29 @@ const Player = () => {
     loading,
     ready,
     playing,
+    paused,
+    stopped,
     episode,
     seek,
     volume,
     muted,
+    rate,
+    loop,
+    duration,
+    ended,
+    onLoad,
+    onToggle,
     onPlay,
     onPause,
+    onStop,
     onMute,
+    onLoop,
     onVolume,
+    onRate,
     onSeek,
     onForward,
     onBackward,
-  } = usePlayerContext();
+  } = usePlayer();
 
   if (idle) {
     return <PlayerContainer bgColor={backgroundColor}></PlayerContainer>;
@@ -42,11 +53,23 @@ const Player = () => {
 
   return (
     <PlayerContainer bgColor={backgroundColor}>
-      {loading ? <SkeletonPodcast /> : <Podcast />}
-
-      {loading ? <SkeletonControls /> : <Controls />}
-
-      {loading ? <SkeletonRightControls /> : <RightControls />}
+      {loading || !episode ? (
+        <SkeletonPodcast />
+      ) : (
+        <Podcast episode={episode} />
+      )}
+      {loading || !episode ? <SkeletonControls /> : <Controls />}
+      {loading || !episode ? (
+        <SkeletonRightControls />
+      ) : (
+        <RightControls
+          volume={volume}
+          muted={muted}
+          onMute={onMute}
+          onVolume={onVolume}
+          onRate={onRate}
+        />
+      )}
     </PlayerContainer>
   );
 };

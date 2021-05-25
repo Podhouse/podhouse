@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import {
   IconButton,
   Slider,
@@ -21,22 +21,39 @@ import {
   ControlsTime,
 } from "./Controls.styles";
 
-import { usePlayerContext } from "src/machines/Player/PlayerContext";
+import { usePlayer } from "src/machines/Player/";
 
 import { formatTime } from "src/utils/";
 
 const Controls = () => {
   const {
+    idle,
+    loading,
     ready,
     playing,
+    paused,
+    stopped,
     episode,
     seek,
+    volume,
+    muted,
+    rate,
+    loop,
+    duration,
+    ended,
+    onLoad,
+    onToggle,
     onPlay,
     onPause,
+    onStop,
+    onMute,
+    onLoop,
+    onVolume,
+    onRate,
     onSeek,
     onForward,
     onBackward,
-  } = usePlayerContext();
+  } = usePlayer();
 
   const renderControlButton = () => {
     if (playing) {
@@ -47,7 +64,7 @@ const Controls = () => {
             icon={<BsPause size="42px" />}
             variant="light"
             size="lg"
-            onClick={onPause}
+            onClick={onToggle}
           />
         </Tooltip>
       );
@@ -60,13 +77,11 @@ const Controls = () => {
           icon={<BsPlay size="42px" />}
           variant="light"
           size="lg"
-          onClick={onPlay}
+          onClick={onToggle}
         />
       </Tooltip>
     );
   };
-
-  if (!ready) return null;
 
   return (
     <ControlsContainer>
@@ -105,7 +120,7 @@ const Controls = () => {
           value={seek}
           onChange={onSeek}
           min={0}
-          max={episode.duration}
+          max={duration}
           step={0.1}
         >
           <SliderTrack>
@@ -115,11 +130,11 @@ const Controls = () => {
         </Slider>
 
         <ControlsTime fontSize="14px" fontWeight="300" lineHeight="30px">
-          {formatTime(episode.duration)}
+          {formatTime(duration)}
         </ControlsTime>
       </ControlsSliderContainer>
     </ControlsContainer>
   );
 };
 
-export default Controls;
+export default memo(Controls);

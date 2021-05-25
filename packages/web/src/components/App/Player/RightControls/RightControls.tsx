@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import {
   IconButton,
   Menu,
@@ -13,10 +13,16 @@ import { RightControlsContainer } from "./RightControls.styles";
 
 import Volume from "./Volume/Volume";
 
-import { usePlayerContext } from "src/machines/Player/PlayerContext";
+interface Props {
+  volume: number;
+  muted: boolean;
+  onMute: () => void;
+  onVolume: (value: number) => void;
+  onRate: (value: string) => void;
+}
 
-const RightControls = () => {
-  const { onRate } = usePlayerContext();
+const RightControls = ({ volume, muted, onMute, onVolume, onRate }: Props) => {
+  console.log("rerendering from modal!!");
 
   return (
     <RightControlsContainer>
@@ -31,18 +37,23 @@ const RightControls = () => {
           />
         </Tooltip>
         <MenuList>
-          <MenuItem>0.5x</MenuItem>
-          <MenuItem>1.0x</MenuItem>
-          <MenuItem>1.5x</MenuItem>
-          <MenuItem>2.0x</MenuItem>
-          <MenuItem>2.5x</MenuItem>
-          <MenuItem>3.0x</MenuItem>
+          <MenuItem onClick={() => onRate("0.5")}>0.5x</MenuItem>
+          <MenuItem onClick={() => onRate("1.0")}>1.0x</MenuItem>
+          <MenuItem onClick={() => onRate("1.5")}>1.5x</MenuItem>
+          <MenuItem onClick={() => onRate("2.0")}>2.0x</MenuItem>
+          <MenuItem onClick={() => onRate("2.5")}>2.5x</MenuItem>
+          <MenuItem onClick={() => onRate("3.0")}>3.0x</MenuItem>
         </MenuList>
       </Menu>
 
-      <Volume />
+      <Volume
+        volume={volume}
+        muted={muted}
+        onMute={onMute}
+        onVolume={onVolume}
+      />
     </RightControlsContainer>
   );
 };
 
-export default RightControls;
+export default memo(RightControls);

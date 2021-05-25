@@ -5,9 +5,9 @@ import { BrowserRouter } from "react-router-dom";
 import { Global } from "@emotion/react";
 import { ChakraProvider, ColorModeScript } from "@chakra-ui/react";
 
-import { PlayerProvider } from "src/machines/Player/PlayerContext";
-
 import App from "src/components/App/App";
+
+import { PlayerProvider } from "src/machines/Player/";
 
 import theme from "src/system/theme";
 
@@ -15,9 +15,6 @@ const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       suspense: true,
-      useErrorBoundary: true,
-    },
-    mutations: {
       useErrorBoundary: true,
     },
   },

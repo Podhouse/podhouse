@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { Link as ReactRouterLink } from "react-router-dom";
 
 import {
@@ -6,25 +6,27 @@ import {
   MobilePodcastImage,
 } from "./MobilePodcast.styles";
 
-import { usePlayerContext } from "src/machines/Player/PlayerContext";
+import { Episode } from "src/queries/types";
 
-const MobilePodcast = () => {
-  const { episode } = usePlayerContext();
+interface Props {
+  episode: Episode;
+}
 
+const MobilePodcast = ({ episode }: Props) => {
   return (
     <MobilePodcastContainer>
       <MobilePodcastImage
         to={{
-          pathname: `/episode/${episode.id}`,
-          state: { id: episode.id },
+          pathname: `/episode/${episode?.id}`,
+          state: { id: episode?.id },
         }}
-        href={`/episode/${episode.id}`}
+        href={`/episode/${episode?.id}`}
         as={ReactRouterLink}
-        src={episode.image}
+        src={episode?.image}
         lazy="loading"
       />
     </MobilePodcastContainer>
   );
 };
 
-export default MobilePodcast;
+export default memo(MobilePodcast);

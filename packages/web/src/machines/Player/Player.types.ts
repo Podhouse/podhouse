@@ -1,7 +1,42 @@
-import { Episode } from "src/queries/types";
+export type Episode = {
+  id: number;
+  title: string;
+  link: string;
+  description: string;
+  guid: string;
+  datePublished: number;
+  datePublishedPretty: string;
+  dateCrawled: number;
+  enclosureUrl: string;
+  enclosureType: string;
+  enclosureLength: number;
+  duration: number;
+  explicit: 0 | 1;
+  episode: number;
+  episodeType: "full" | "trailer" | "bonus";
+  season: number;
+  image: string;
+  feedItunesId: number;
+  feedImage: string;
+  feedId: number;
+  feedLanguage: string;
+  chaptersUrl: string;
+  transcriptUrl: string;
+  soundbite: {
+    startTime: number;
+    duration: number;
+    title: string;
+  };
+  soundbites: Array<{
+    startTime: number;
+    duration: number;
+    title: string;
+  }>;
+};
 
 export type PlayerMachineContext = {
   episode: null | Episode;
+  duration: number;
   volume: number;
   rate: number;
   muted: boolean;
@@ -31,6 +66,7 @@ export type PlayerLoadingEvent = {
 export type PlayerReadyEvent = {
   type: "READY";
   episode: Episode;
+  duration: number;
 };
 
 export type PlayerPlayEvent = {
@@ -99,3 +135,34 @@ export type PlayerMachineEvents =
   | PlayerVolumeEvent
   | PlayerRateEvent
   | PlayerEpisodeEvent;
+
+export type UseAudioPlayerOptions = {
+  idle: boolean;
+  loading: boolean;
+  ready: boolean;
+  playing: boolean;
+  paused: boolean;
+  stopped: boolean;
+  episode: Episode | null;
+  seek: number;
+  volume: number;
+  muted: boolean;
+  rate: number;
+  loop: boolean;
+  duration: number;
+  ended: boolean;
+  onLoad: (episode: Episode) => void;
+  onToggle: () => void;
+  onPlay: () => void;
+  onPause: () => void;
+  onStop: () => void;
+  onMute: () => void;
+  onLoop: () => void;
+  onVolume: (value: number) => void;
+  onRate: (value: string) => void;
+  onSeek: (value: number) => void;
+  onForward: () => void;
+  onBackward: () => void;
+};
+
+export type UseAudioPlayer = () => UseAudioPlayerOptions;

@@ -1,12 +1,14 @@
-import React from "react";
+import React, { memo } from "react";
 import { Link, Box, Stack } from "@chakra-ui/react";
 import { Link as ReactRouterLink } from "react-router-dom";
 
-import { usePlayerContext } from "src/machines/Player/PlayerContext";
+import { Episode } from "src/queries/types";
 
-const DesktopPodcast = () => {
-  const { episode } = usePlayerContext();
+interface Props {
+  episode: Episode;
+}
 
+const DesktopPodcast = ({ episode }: Props) => {
   return (
     <Box
       width="100%"
@@ -35,7 +37,20 @@ const DesktopPodcast = () => {
           {episode.title}
         </Link>
 
-        <Link as={ReactRouterLink} to="/" fontWeight="300">
+        <Link
+          width="100%"
+          maxWidth="300px"
+          to={{
+            pathname: `/episode/${episode.id}`,
+            state: { id: episode.id },
+          }}
+          href={`/episode/${episode.id}`}
+          as={ReactRouterLink}
+          fontWeight="500"
+          textOverflow="ellipsis"
+          whiteSpace="nowrap"
+          overflow="hidden"
+        >
           {episode.title}
         </Link>
       </Stack>
@@ -43,4 +58,4 @@ const DesktopPodcast = () => {
   );
 };
 
-export default DesktopPodcast;
+export default memo(DesktopPodcast);

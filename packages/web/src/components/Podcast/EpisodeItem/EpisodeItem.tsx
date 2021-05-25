@@ -1,7 +1,7 @@
-import React from "react";
-import { Divider, Link as ChakraLink } from "@chakra-ui/react";
+import React, { memo, useMemo, useCallback } from "react";
+import { Divider, Link as ChakraLink, Tooltip, Button } from "@chakra-ui/react";
 import { Link as ReactRouterLink } from "react-router-dom";
-import { BsPlay } from "react-icons/bs";
+import { BsPlay, BsPause } from "react-icons/bs";
 
 import {
   EpisodeItemContainer,
@@ -13,7 +13,7 @@ import {
   EpisodeDividerContainer,
 } from "./EpisodeItem.styles";
 
-import { usePlayerContext } from "src/machines/Player/PlayerContext";
+import { usePlayer } from "src/machines/Player/";
 
 import { formatTime, formatDate } from "src/utils/";
 
@@ -26,43 +26,59 @@ interface Props {
 }
 
 const EpisodeItem = ({ episode }: Props) => {
-  const { playing, onEpisode, onPlay, onPause } = usePlayerContext();
+  const {
+    idle,
+    loading,
+    ready,
+    playing,
+    paused,
+    stopped,
+    episode: playerEpisode,
+    onLoad,
+    onToggle,
+  } = usePlayer();
 
-  // const renderControlButton = () => {
-  //   if (playing) {
-  //     return (
-  //       <Tooltip label="Pause" aria-label="Pause audio">
-  //         <IconButton
-  //           aria-label="Pause episode"
-  //           icon={<BsPause size="42px" />}
-  //           variant="light"
-  //           size="lg"
-  //           onClick={onPause}
-  //         />
-  //       </Tooltip>
-  //     );
-  //   }
+  console.log(`re-rendering!!`);
 
-  //   return (
-
-  //     <Tooltip label="Play" aria-label="Play audio">
-  //       <EpisodeItemButton
-  //         aria-label="Play episode"
-  //         icon={<BsPlay size="30px" />}
-  //         variant="light"
-  //         onClick={() => onEpisode(episode)}
-  //       />
-
-  //       <IconButton
-  //         aria-label="Play episode"
-  //         icon={<BsPlay size="42px" />}
-  //         variant="light"
-  //         size="lg"
-  //         onClick={onPlay}
-  //       />
-  //     </Tooltip>
-  //   );
-  // };
+  const onRenderButton = () => {
+    if (playerEpisode === episode) {
+      if (playing) {
+        return (
+          <Tooltip label="Pause" aria-label="Pause audio">
+            <EpisodeItemButton
+              aria-label="Pause episode"
+              icon={<BsPause size="30px" />}
+              variant="light"
+              size="lg"
+              onClick={onToggle}
+            />
+          </Tooltip>
+        );
+      } else {
+        return (
+          <Tooltip label="Play" aria-label="Play audio">
+            <EpisodeItemButton
+              aria-label="Play episode"
+              icon={<BsPlay size="30px" />}
+              variant="light"
+              onClick={onToggle}
+            />
+          </Tooltip>
+        );
+      }
+    } else {
+      return (
+        <Tooltip label="Play" aria-label="Play audio">
+          <EpisodeItemButton
+            aria-label="Play episode"
+            icon={<BsPlay size="30px" />}
+            variant="light"
+            onClick={() => onLoad(episode)}
+          />
+        </Tooltip>
+      );
+    }
+  };
 
   return (
     <>
@@ -91,12 +107,7 @@ const EpisodeItem = ({ episode }: Props) => {
           {formatTime(episode.duration)}
         </EpisodeItemDuration>
 
-        <EpisodeItemButton
-          aria-label="Play episode"
-          icon={<BsPlay size="30px" />}
-          variant="light"
-          onClick={() => onEpisode(episode)}
-        />
+        {onRenderButton()}
 
         <EpisodeDividerContainer>
           <Divider
@@ -110,4 +121,4 @@ const EpisodeItem = ({ episode }: Props) => {
   );
 };
 
-export default EpisodeItem;
+export default memo(EpisodeItem);

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import {
   IconButton,
   Slider,
@@ -11,13 +11,18 @@ import { BsVolumeUp, BsVolumeDown, BsVolumeMute } from "react-icons/bs";
 
 import { VolumeContainer } from "./Volume.styles";
 
-import { usePlayerContext } from "src/machines/Player/PlayerContext";
+interface Props {
+  volume: number;
+  muted: boolean;
+  onMute: () => void;
+  onVolume: (value: number) => void;
+}
 
-const Volume = () => {
-  const { volume, muted, onVolume, onMute } = usePlayerContext();
+const Volume = ({ volume, muted, onMute, onVolume }: Props) => {
+  console.log("rerendering from volume!!");
 
   const renderVolume = () => {
-    if (volume === 0 || muted) {
+    if (volume === 0) {
       return (
         <Tooltip label="Mute" aria-label="Mute">
           <IconButton
@@ -57,29 +62,25 @@ const Volume = () => {
     );
   };
 
-  const onReady = () => {
-    return (
-      <VolumeContainer>
-        {renderVolume()}
+  return (
+    <VolumeContainer>
+      {renderVolume()}
 
-        <Slider
-          aria-label="slider-ex-1"
-          value={volume}
-          min={0}
-          max={1}
-          step={0.1}
-          onChange={onVolume}
-        >
-          <SliderTrack>
-            <SliderFilledTrack />
-          </SliderTrack>
-          <SliderThumb />
-        </Slider>
-      </VolumeContainer>
-    );
-  };
-
-  return onReady();
+      <Slider
+        aria-label="slider-ex-1"
+        value={volume}
+        min={0}
+        max={1}
+        step={0.1}
+        onChange={onVolume}
+      >
+        <SliderTrack>
+          <SliderFilledTrack />
+        </SliderTrack>
+        <SliderThumb />
+      </Slider>
+    </VolumeContainer>
+  );
 };
 
-export default Volume;
+export default memo(Volume);

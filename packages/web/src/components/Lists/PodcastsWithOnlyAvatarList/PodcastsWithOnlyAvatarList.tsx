@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { Stack, Heading, Divider, Grid } from "@chakra-ui/react";
 
 import PodcastItemWithAvatar from "src/components/Podcast/PodcastItemWithAvatar/PodcastItemWithAvatar";
@@ -35,4 +35,4 @@ const PodcastsWithOnlyAvatarList = ({ title, feeds }: Props) => {
   );
 };
 
-export default PodcastsWithOnlyAvatarList;
+export default memo(PodcastsWithOnlyAvatarList);

@@ -1,6 +1,8 @@
 import React, { useContext } from "react";
 
-import usePlayer from "./usePlayer";
+import useAudioPlayer from "./useAudioPlayer";
+
+import { UseAudioPlayer, UseAudioPlayerOptions } from "./Player.types";
 
 const PlayerContext = React.createContext(undefined as any);
 
@@ -18,8 +20,9 @@ const PlayerProvider = ({ children }: any) => {
     muted,
     rate,
     loop,
+    duration,
     ended,
-    load,
+    onLoad,
     onToggle,
     onPlay,
     onPause,
@@ -31,10 +34,9 @@ const PlayerProvider = ({ children }: any) => {
     onSeek,
     onForward,
     onBackward,
-    onEpisode,
-  } = usePlayer();
+  } = useAudioPlayer();
 
-  const value = {
+  const value: UseAudioPlayerOptions = {
     idle,
     loading,
     ready,
@@ -47,8 +49,9 @@ const PlayerProvider = ({ children }: any) => {
     muted,
     rate,
     loop,
+    duration,
     ended,
-    load,
+    onLoad,
     onToggle,
     onPlay,
     onPause,
@@ -60,7 +63,6 @@ const PlayerProvider = ({ children }: any) => {
     onSeek,
     onForward,
     onBackward,
-    onEpisode,
   };
 
   return (
@@ -68,12 +70,14 @@ const PlayerProvider = ({ children }: any) => {
   );
 };
 
-const usePlayerContext = () => {
-  const context = useContext(PlayerContext);
+const usePlayer: UseAudioPlayer = () => {
+  const context: UseAudioPlayerOptions = useContext<UseAudioPlayerOptions>(
+    PlayerContext
+  );
   if (context === undefined) {
     throw new Error("usePlayer can only be used inside PlayerProvider");
   }
   return context;
 };
 
-export { PlayerProvider, usePlayerContext };
+export { PlayerProvider, usePlayer };
