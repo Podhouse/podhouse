@@ -5,7 +5,6 @@
     "module": "esnext",
     "jsx": "preserve",
     "allowJs": true,
-    "rootDir": "src",
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "noUnusedLocals": true,
@@ -22,8 +21,8 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "strictNullChecks": false,
-    "baseUrl": ".",
+    "baseUrl": "."
   },
-  "exclude": ["node_modules"],
+  "exclude": ["node_modules", "lib", "tests"],
   "include": ["next-env.d.ts", "src"]
 }
