@@ -71,9 +71,8 @@ const PlayerProvider = ({ children }: any) => {
 };
 
 const usePlayer: UseAudioPlayer = () => {
-  const context: UseAudioPlayerOptions = useContext<UseAudioPlayerOptions>(
-    PlayerContext
-  );
+  const context: UseAudioPlayerOptions =
+    useContext<UseAudioPlayerOptions>(PlayerContext);
   if (context === undefined) {
     throw new Error("usePlayer can only be used inside PlayerProvider");
   }
