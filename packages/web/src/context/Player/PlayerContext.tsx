@@ -1,65 +1,62 @@
 import React, { useContext } from "react";
 
-import useAudioPlayer from "./useAudioPlayer";
-
-import { UseAudioPlayer, UseAudioPlayerOptions } from "./Player.types";
+import usePlayer from "src/hooks/usePlayer/usePlayer";
+import { ReturnArgs } from "src/hooks/usePlayer/usePlayer.types";
 
 const PlayerContext = React.createContext(undefined as any);
 
 const PlayerProvider = ({ children }: any) => {
   const {
-    idle,
+    initial,
     loading,
     ready,
+    idle,
     playing,
     paused,
-    stopped,
+    end,
     episode,
     seek,
     volume,
-    muted,
     rate,
-    loop,
     duration,
-    ended,
-    onLoad,
+    mute,
+    loop,
+    error,
     onToggle,
     onPlay,
     onPause,
-    onStop,
-    onMute,
-    onLoop,
     onVolume,
     onRate,
+    onMute,
+    onLoop,
     onSeek,
     onForward,
     onBackward,
-  } = useAudioPlayer();
+  } = usePlayer();
 
-  const value: UseAudioPlayerOptions = {
-    idle,
+  const value: ReturnArgs = {
+    initial,
     loading,
     ready,
+    idle,
     playing,
     paused,
-    stopped,
+    end,
     episode,
     seek,
     volume,
-    muted,
     rate,
-    loop,
     duration,
-    ended,
-    onLoad,
+    mute,
+    loop,
+    error,
     onToggle,
     onPlay,
     onPause,
-    onStop,
-    onMute,
-    onLoop,
     onVolume,
     onRate,
+    onMute,
+    onLoop,
     onSeek,
     onForward,
     onBackward,
@@ -70,13 +67,12 @@ const PlayerProvider = ({ children }: any) => {
   );
 };
 
-const usePlayer: UseAudioPlayer = () => {
-  const context: UseAudioPlayerOptions =
-    useContext<UseAudioPlayerOptions>(PlayerContext);
+const usePlayerContext = () => {
+  const context: ReturnArgs = useContext<ReturnArgs>(PlayerContext);
   if (context === undefined) {
-    throw new Error("usePlayer can only be used inside PlayerProvider");
+    throw new Error("usePlayerContext can only be used inside PlayerProvider");
   }
   return context;
 };
 
-export { PlayerProvider, usePlayer };
+export { PlayerProvider, usePlayerContext };

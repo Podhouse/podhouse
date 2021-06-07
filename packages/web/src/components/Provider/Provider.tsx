@@ -7,7 +7,7 @@ import { ChakraProvider, ColorModeScript } from "@chakra-ui/react";
 
 import App from "src/components/App/App";
 
-import { PlayerProvider } from "src/machines/Player/";
+import { PlayerProvider } from "src/context/Player/PlayerContext";
 
 import theme from "src/system/theme";
 

@@ -1,5 +1,5 @@
-import React, { memo, useMemo, useCallback } from "react";
-import { Divider, Link as ChakraLink, Tooltip, Button } from "@chakra-ui/react";
+import { memo } from "react";
+import { Divider, Link as ChakraLink, Tooltip } from "@chakra-ui/react";
 import { Link as ReactRouterLink } from "react-router-dom";
 import { BsPlay, BsPause } from "react-icons/bs";
 
@@ -13,7 +13,7 @@ import {
   EpisodeDividerContainer,
 } from "./EpisodeItem.styles";
 
-import { usePlayer } from "src/machines/Player/";
+import { usePlayerContext } from "src/context/Player/PlayerContext";
 
 import { formatTime, formatDate } from "src/utils/";
 
@@ -27,21 +27,15 @@ interface Props {
 
 const EpisodeItem = ({ episode }: Props) => {
   const {
-    idle,
-    loading,
-    ready,
     playing,
-    paused,
-    stopped,
     episode: playerEpisode,
-    onLoad,
     onToggle,
-  } = usePlayer();
-
-  console.log(`re-rendering!!`);
+    onPlay,
+    onPause,
+  } = usePlayerContext();
 
   const onRenderButton = () => {
-    if (playerEpisode === episode) {
+    if (playerEpisode?.enclosureUrl === episode.enclosureUrl) {
       if (playing) {
         return (
           <Tooltip label="Pause" aria-label="Pause audio">
@@ -49,8 +43,7 @@ const EpisodeItem = ({ episode }: Props) => {
               aria-label="Pause episode"
               icon={<BsPause size="30px" />}
               variant="light"
-              size="lg"
-              onClick={onToggle}
+              onClick={onPause}
             />
           </Tooltip>
         );
@@ -61,7 +54,7 @@ const EpisodeItem = ({ episode }: Props) => {
               aria-label="Play episode"
               icon={<BsPlay size="30px" />}
               variant="light"
-              onClick={onToggle}
+              onClick={onPlay}
             />
           </Tooltip>
         );
@@ -73,7 +66,7 @@ const EpisodeItem = ({ episode }: Props) => {
             aria-label="Play episode"
             icon={<BsPlay size="30px" />}
             variant="light"
-            onClick={() => onLoad(episode)}
+            onClick={() => onToggle(episode)}
           />
         </Tooltip>
       );

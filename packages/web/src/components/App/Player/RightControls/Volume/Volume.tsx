@@ -13,12 +13,12 @@ import { VolumeContainer } from "./Volume.styles";
 
 interface Props {
   volume: number;
-  muted: boolean;
+  mute: boolean;
   onMute: () => void;
   onVolume: (value: number) => void;
 }
 
-const Volume = ({ volume, muted, onMute, onVolume }: Props) => {
+const Volume = ({ volume, mute, onMute, onVolume }: Props) => {
   console.log("rerendering from volume!!");
 
   const renderVolume = () => {

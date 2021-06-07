@@ -1,73 +1,83 @@
-import { Machine, assign } from "xstate";
+import { createMachine, assign } from "xstate";
 
 import {
-  PlayerMachineState,
-  PlayerMachineContext,
-  PlayerMachineEvents,
-  PlayerReadyEvent,
-  PlayerVolumeEvent,
-} from "./Player.types";
+  MachineContext,
+  MachineEvent,
+  MachineLoadEvent,
+  MachineErrorEvent,
+  MachineRateEvent,
+  MachineVolumeEvent,
+} from "./PlayerMachine.types";
 
-const Player = Machine<
-  PlayerMachineContext,
-  PlayerMachineState,
-  PlayerMachineEvents
->(
+const Machine = createMachine<MachineContext, MachineEvent>(
   {
     id: "player",
-    initial: "idle",
+    initial: "initial",
     context: {
       episode: null,
-      duration: 0,
-      volume: 0.5,
+      volume: 1.0,
       rate: 1.0,
-      muted: false,
+      duration: 0,
+      mute: false,
       loop: false,
+      error: null,
     },
     states: {
-      idle: {
+      initial: {
+        id: "initial",
         on: {
-          LOADING: "loading",
+          LOAD: {
+            target: "loading",
+            actions: "onLoad",
+          },
           ERROR: "error",
         },
       },
       loading: {
         on: {
-          READY: {
-            target: "ready",
-            actions: "onReady",
-          },
-          ERROR: "error",
-          RELOAD: {
-            target: "",
+          READY: "ready",
+          ERROR: {
+            target: "error",
+            actions: "onError",
           },
         },
       },
       ready: {
-        initial: "playing",
+        id: "ready",
+        initial: "idle",
         states: {
+          idle: {
+            on: {
+              PLAY: "playing",
+              PAUSE: "paused",
+            },
+          },
           playing: {
             on: {
               PAUSE: "paused",
-              STOP: "stopped",
             },
           },
           paused: {
-            on: {
-              PLAY: "playing",
-              STOP: "stopped",
-            },
-          },
-          stopped: {
             on: {
               PLAY: "playing",
             },
           },
         },
         on: {
-          RELOAD: "loading",
-          END: "ended",
+          LOAD: {
+            target: "loading",
+            actions: "onLoad",
+          },
+          END: "end",
           ERROR: "error",
+          VOLUME: {
+            target: "",
+            actions: "onVolume",
+          },
+          RATE: {
+            target: "",
+            actions: "onRate",
+          },
           MUTE: {
             target: "",
             actions: "onMute",
@@ -76,45 +86,55 @@ const Player = Machine<
             target: "",
             actions: "onLoop",
           },
-          VOLUME: {
-            target: "",
-            actions: "onVolume",
-          },
         },
       },
-      ended: {
+      end: {
+        id: "end",
         on: {
-          RELOAD: "loading",
-          PLAY: "ready",
+          LOAD: {
+            target: "loading",
+            actions: "onLoad",
+          },
+          PLAY: "ready.playing",
         },
       },
       error: {
+        id: "error",
         on: {
-          RETRY: "loading",
+          LOAD: {
+            target: "loading",
+            actions: "onLoad",
+          },
         },
       },
     },
   },
   {
     actions: {
-      onReady: assign<PlayerMachineContext, any>({
-        episode: (context, event) => (event as PlayerReadyEvent).episode,
-        duration: (context, event) => (event as PlayerReadyEvent).duration,
+      onLoad: assign<MachineContext, MachineEvent>({
+        volume: (_, event) => (event as MachineLoadEvent).volume,
+        rate: (_, event) => (event as MachineLoadEvent).rate,
+        duration: (_, event) => (event as MachineLoadEvent).duration,
+        mute: (_, event) => (event as MachineLoadEvent).mute,
+        loop: (_, event) => (event as MachineLoadEvent).loop,
       }),
-      onVolume: assign<PlayerMachineContext, any>({
-        volume: (context, event) => (event as PlayerVolumeEvent).volume,
+      onVolume: assign<MachineContext, MachineEvent>({
+        volume: (_, event) => (event as MachineVolumeEvent).volume,
       }),
-      onRate: assign<PlayerMachineContext, any>({
-        rate: (context, event) => event.rate,
+      onRate: assign<MachineContext, MachineEvent>({
+        rate: (_, event) => (event as MachineRateEvent).rate,
       }),
-      onMute: assign<PlayerMachineContext, PlayerMachineEvents>({
-        muted: (context) => !context.muted,
+      onMute: assign<MachineContext, MachineEvent>({
+        mute: (context, _) => !context.mute,
       }),
-      onLoop: assign<PlayerMachineContext, PlayerMachineEvents>({
-        loop: (context) => !context.loop,
+      onLoop: assign<MachineContext, MachineEvent>({
+        loop: (context, _) => !context.loop,
+      }),
+      onError: assign<MachineContext, MachineEvent>({
+        error: (_, event) => (event as MachineErrorEvent).error,
       }),
     },
   }
 );
 
-export default Player;
+export default Machine;

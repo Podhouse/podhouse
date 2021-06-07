@@ -11,7 +11,7 @@ import SkeletonPodcast from "src/components/Skeletons/SkeletonPlayer/SkeletonPod
 import SkeletonControls from "src/components/Skeletons/SkeletonPlayer/SkeletonControls/SkeletonControls";
 import SkeletonRightControls from "src/components/Skeletons/SkeletonPlayer/SkeletonRightControls/SkeletonRightControls";
 
-import { usePlayer } from "src/machines/Player/";
+import { usePlayerContext } from "src/context/Player/PlayerContext";
 
 const Player = () => {
   const { colorMode } = useColorMode();
@@ -19,57 +19,70 @@ const Player = () => {
   const backgroundColor = colorMode === "dark" ? "#151419" : "white";
 
   const {
-    idle,
+    initial,
     loading,
     ready,
+    idle,
     playing,
     paused,
-    stopped,
+    end,
     episode,
     seek,
     volume,
-    muted,
     rate,
-    loop,
     duration,
-    ended,
-    onLoad,
+    mute,
+    loop,
+    error,
     onToggle,
     onPlay,
     onPause,
-    onStop,
-    onMute,
-    onLoop,
     onVolume,
     onRate,
+    onMute,
+    onLoop,
     onSeek,
     onForward,
     onBackward,
-  } = usePlayer();
+  } = usePlayerContext();
 
-  if (idle) {
+  if (initial) {
     return <PlayerContainer bgColor={backgroundColor}></PlayerContainer>;
+  }
+
+  if (loading || !episode) {
+    return (
+      <PlayerContainer bgColor={backgroundColor}>
+        <SkeletonPodcast />
+        <SkeletonControls />
+        <SkeletonRightControls />
+      </PlayerContainer>
+    );
   }
 
   return (
     <PlayerContainer bgColor={backgroundColor}>
-      {loading || !episode ? (
-        <SkeletonPodcast />
-      ) : (
-        <Podcast episode={episode} />
-      )}
-      {loading || !episode ? <SkeletonControls /> : <Controls />}
-      {loading || !episode ? (
-        <SkeletonRightControls />
-      ) : (
-        <RightControls
-          volume={volume}
-          muted={muted}
-          onMute={onMute}
-          onVolume={onVolume}
-          onRate={onRate}
-        />
-      )}
+      <Podcast episode={episode} />
+
+      <Controls
+        playing={playing}
+        seek={seek}
+        duration={duration}
+        onToggle={onToggle}
+        onPlay={onPlay}
+        onPause={onPause}
+        onSeek={onSeek}
+        onForward={onForward}
+        onBackward={onBackward}
+      />
+
+      <RightControls
+        volume={volume}
+        mute={mute}
+        onVolume={onVolume}
+        onMute={onMute}
+        onRate={onRate}
+      />
     </PlayerContainer>
   );
 };

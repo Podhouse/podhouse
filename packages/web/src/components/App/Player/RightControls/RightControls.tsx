@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import { memo } from "react";
 import {
   IconButton,
   Menu,
@@ -15,15 +15,13 @@ import Volume from "./Volume/Volume";
 
 interface Props {
   volume: number;
-  muted: boolean;
+  mute: boolean;
   onMute: () => void;
   onVolume: (value: number) => void;
   onRate: (value: string) => void;
 }
 
-const RightControls = ({ volume, muted, onMute, onVolume, onRate }: Props) => {
-  console.log("rerendering from modal!!");
-
+const RightControls = ({ volume, mute, onMute, onVolume, onRate }: Props) => {
   return (
     <RightControlsContainer>
       <Menu>
@@ -46,12 +44,7 @@ const RightControls = ({ volume, muted, onMute, onVolume, onRate }: Props) => {
         </MenuList>
       </Menu>
 
-      <Volume
-        volume={volume}
-        muted={muted}
-        onMute={onMute}
-        onVolume={onVolume}
-      />
+      <Volume volume={volume} mute={mute} onMute={onMute} onVolume={onVolume} />
     </RightControlsContainer>
   );
 };

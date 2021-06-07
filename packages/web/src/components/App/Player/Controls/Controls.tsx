@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import { memo } from "react";
 import {
   IconButton,
   Slider,
@@ -21,40 +21,33 @@ import {
   ControlsTime,
 } from "./Controls.styles";
 
-import { usePlayer } from "src/machines/Player/";
-
 import { formatTime } from "src/utils/";
 
-const Controls = () => {
-  const {
-    idle,
-    loading,
-    ready,
-    playing,
-    paused,
-    stopped,
-    episode,
-    seek,
-    volume,
-    muted,
-    rate,
-    loop,
-    duration,
-    ended,
-    onLoad,
-    onToggle,
-    onPlay,
-    onPause,
-    onStop,
-    onMute,
-    onLoop,
-    onVolume,
-    onRate,
-    onSeek,
-    onForward,
-    onBackward,
-  } = usePlayer();
+import { Episode } from "src/machines/Player/PlayerMachine.types";
 
+interface Props {
+  playing: boolean;
+  seek: number;
+  duration: number;
+  onToggle: (episode: Episode) => void;
+  onPlay: () => void;
+  onPause: () => void;
+  onSeek: (value: number) => void;
+  onForward: (value: number) => void;
+  onBackward: (value: number) => void;
+}
+
+const Controls = ({
+  playing,
+  duration,
+  seek,
+  onToggle,
+  onPlay,
+  onPause,
+  onSeek,
+  onForward,
+  onBackward,
+}: Props) => {
   const renderControlButton = () => {
     if (playing) {
       return (
@@ -64,7 +57,7 @@ const Controls = () => {
             icon={<BsPause size="42px" />}
             variant="light"
             size="lg"
-            onClick={onToggle}
+            onClick={onPause}
           />
         </Tooltip>
       );
@@ -77,7 +70,7 @@ const Controls = () => {
           icon={<BsPlay size="42px" />}
           variant="light"
           size="lg"
-          onClick={onToggle}
+          onClick={onPlay}
         />
       </Tooltip>
     );
@@ -92,7 +85,7 @@ const Controls = () => {
             icon={<BsArrowCounterclockwise size="20px" />}
             variant="light"
             size="sm"
-            onClick={onBackward}
+            onClick={() => onBackward(15)}
           />
         </Tooltip>
 
@@ -104,7 +97,7 @@ const Controls = () => {
             icon={<BsArrowClockwise size="20px" />}
             variant="light"
             size="sm"
-            onClick={onForward}
+            onClick={() => onForward(15)}
           />
         </Tooltip>
       </ControlsButtonsContainer>
