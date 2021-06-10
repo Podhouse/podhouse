@@ -3,7 +3,7 @@ import { Text, Link, IconButton } from "@chakra-ui/react";
 
 export const EpisodeItemContainer = styled.div`
   width: 100%;
-  height: fit-content;
+  height: 140px;
   max-width: 1000px;
   display: grid;
   grid-template-columns: 1fr 1fr max-content max-content;

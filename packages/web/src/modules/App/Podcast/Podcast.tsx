@@ -15,6 +15,9 @@ import { Episode } from "src/machines/Player/PlayerMachine.types";
 
 interface Props {
   currentEpisode: Episode | null;
+  loading: boolean;
+  ready: boolean;
+  idle: boolean;
   playing: boolean;
   onToggle: (episode: Episode) => void;
   onPlay: () => void;
@@ -23,6 +26,9 @@ interface Props {
 
 const Podcast = ({
   currentEpisode,
+  loading,
+  ready,
+  idle,
   playing,
   onToggle,
   onPlay,
@@ -38,6 +44,9 @@ const Podcast = ({
             <Header />
             <Episodes
               currentEpisode={currentEpisode}
+              loading={loading}
+              ready={ready}
+              idle={idle}
               playing={playing}
               onToggle={onToggle}
               onPlay={onPlay}

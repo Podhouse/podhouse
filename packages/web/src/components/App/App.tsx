@@ -80,6 +80,9 @@ const App = () => {
             component={() => (
               <Podcast
                 currentEpisode={episode}
+                loading={loading}
+                ready={ready}
+                idle={idle}
                 playing={playing}
                 onToggle={onToggle}
                 onPlay={onPlay}

@@ -10,6 +10,9 @@ import { EpisodesContainer } from "./Episodes.styles";
 
 interface Props {
   currentEpisode: Episode | null;
+  loading: boolean;
+  ready: boolean;
+  idle: boolean;
   playing: boolean;
   onToggle: (episode: Episode) => void;
   onPlay: () => void;
@@ -22,6 +25,9 @@ type Location = {
 
 const Episodes = ({
   currentEpisode,
+  loading,
+  ready,
+  idle,
   playing,
   onToggle,
   onPlay,
@@ -32,19 +38,20 @@ const Episodes = ({
 
   return (
     <EpisodesContainer>
-      {data.items.map((episode: Episode) => {
-        return (
-          <EpisodeItem
-            key={episode.id}
-            episode={episode}
-            currentEpisode={currentEpisode}
-            playing={playing}
-            onToggle={onToggle}
-            onPlay={onPlay}
-            onPause={onPause}
-          />
-        );
-      })}
+      {data.items.map((episode: Episode) => (
+        <EpisodeItem
+          key={episode.id}
+          episode={episode}
+          currentEpisode={currentEpisode}
+          loading={loading}
+          ready={ready}
+          idle={idle}
+          playing={playing}
+          onToggle={onToggle}
+          onPlay={onPlay}
+          onPause={onPause}
+        />
+      ))}
     </EpisodesContainer>
   );
 };

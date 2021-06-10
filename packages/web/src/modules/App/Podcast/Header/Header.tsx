@@ -34,7 +34,7 @@ const Header = () => {
   const { state } = useLocation<Location>();
   const { data } = usePodcast(state.id);
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { colorMode, toggleColorMode } = useColorMode();
+  const { toggleColorMode } = useColorMode();
 
   return (
     <>

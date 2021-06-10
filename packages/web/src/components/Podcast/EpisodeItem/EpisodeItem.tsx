@@ -22,6 +22,9 @@ import useColor from "src/hooks/useColor";
 interface Props {
   episode: Episode;
   currentEpisode: Episode | null;
+  loading: boolean;
+  ready: boolean;
+  idle: boolean;
   playing: boolean;
   onToggle: (episode: Episode) => void;
   onPlay: () => void;
@@ -31,16 +34,18 @@ interface Props {
 const EpisodeItem = ({
   episode,
   currentEpisode,
+  loading,
+  ready,
+  idle,
   playing,
   onToggle,
   onPlay,
   onPause,
 }: Props) => {
-  const handleRenderButton = () => {
-    if (
-      currentEpisode === null ||
-      currentEpisode.enclosureUrl !== episode.enclosureUrl
-    ) {
+  console.log("EpisodeItem rerender!");
+
+  const onRenderButton = () => {
+    if (currentEpisode === null) {
       return (
         <Tooltip label="Play" aria-label="Play audio">
           <EpisodeItemButton
@@ -51,7 +56,21 @@ const EpisodeItem = ({
           />
         </Tooltip>
       );
-    } else {
+    }
+
+    if (currentEpisode.enclosureUrl === episode.enclosureUrl) {
+      if (loading) {
+        return (
+          <Tooltip label="Loading" aria-label="Loading">
+            <EpisodeItemButton
+              aria-label="Loading"
+              variant="light"
+              isLoading={true}
+            />
+          </Tooltip>
+        );
+      }
+
       if (playing) {
         return (
           <Tooltip label="Pause" aria-label="Pause audio">
@@ -63,18 +82,31 @@ const EpisodeItem = ({
             />
           </Tooltip>
         );
-      } else {
-        return (
-          <Tooltip label="Play" aria-label="Play audio">
-            <EpisodeItemButton
-              aria-label="Play episode"
-              icon={<BsPlay size="30px" />}
-              variant="light"
-              onClick={onPlay}
-            />
-          </Tooltip>
-        );
       }
+
+      return (
+        <Tooltip label="Play" aria-label="Play audio">
+          <EpisodeItemButton
+            aria-label="Play episode"
+            icon={<BsPlay size="30px" />}
+            variant="light"
+            onClick={onPlay}
+          />
+        </Tooltip>
+      );
+    }
+
+    if (currentEpisode.enclosureUrl !== episode.enclosureUrl) {
+      return (
+        <Tooltip label="Play" aria-label="Play audio">
+          <EpisodeItemButton
+            aria-label="Play episode"
+            icon={<BsPlay size="30px" />}
+            variant="light"
+            onClick={() => onToggle(episode)}
+          />
+        </Tooltip>
+      );
     }
   };
 
@@ -105,7 +137,7 @@ const EpisodeItem = ({
           {formatTime(episode.duration)}
         </EpisodeItemDuration>
 
-        {handleRenderButton()}
+        {onRenderButton()}
 
         <EpisodeDividerContainer>
           <Divider
@@ -119,8 +151,4 @@ const EpisodeItem = ({
   );
 };
 
-const comparisonFn = (prevProps: Props, nextProps: Props) => {
-  return prevProps.playing === nextProps.playing;
-};
-
-export default memo(EpisodeItem, comparisonFn);
+export default memo(EpisodeItem);
