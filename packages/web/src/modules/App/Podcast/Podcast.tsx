@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React, { Suspense, memo } from "react";
 import Scrollbars from "react-custom-scrollbars";
 import { ErrorBoundary } from "react-error-boundary";
 import { useQueryErrorResetBoundary } from "react-query";
@@ -11,7 +11,23 @@ import Episodes from "./Episodes/Episodes";
 
 import { PodcastContainer } from "./Podcast.styles";
 
-const Podcast = () => {
+import { Episode } from "src/machines/Player/PlayerMachine.types";
+
+interface Props {
+  currentEpisode: Episode | null;
+  playing: boolean;
+  onToggle: (episode: Episode) => void;
+  onPlay: () => void;
+  onPause: () => void;
+}
+
+const Podcast = ({
+  currentEpisode,
+  playing,
+  onToggle,
+  onPlay,
+  onPause,
+}: Props) => {
   const { reset } = useQueryErrorResetBoundary();
 
   return (
@@ -20,7 +36,13 @@ const Podcast = () => {
         <Suspense fallback={<SkeletonPodcastPage />}>
           <PodcastContainer>
             <Header />
-            <Episodes />
+            <Episodes
+              currentEpisode={currentEpisode}
+              playing={playing}
+              onToggle={onToggle}
+              onPlay={onPlay}
+              onPause={onPause}
+            />
           </PodcastContainer>
         </Suspense>
       </ErrorBoundary>
@@ -28,4 +50,4 @@ const Podcast = () => {
   );
 };
 
-export default Podcast;
+export default memo(Podcast);

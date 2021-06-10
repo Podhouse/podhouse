@@ -7,8 +7,6 @@ import { ChakraProvider, ColorModeScript } from "@chakra-ui/react";
 
 import App from "src/components/App/App";
 
-import { PlayerProvider } from "src/context/Player/PlayerContext";
-
 import theme from "src/system/theme";
 
 const queryClient = new QueryClient({
@@ -24,9 +22,7 @@ const Provider = () => (
   <BrowserRouter>
     <QueryClientProvider client={queryClient}>
       <ChakraProvider theme={theme}>
-        <PlayerProvider>
-          <App />
-        </PlayerProvider>
+        <App />
       </ChakraProvider>
 
       <Global

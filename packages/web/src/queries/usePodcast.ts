@@ -22,7 +22,6 @@ const usePodcast = (id: number): UseQueryResult<PodcastResult, Podcast> => {
       "X-Auth-Date": "" + apiHeaderTime,
       "X-Auth-Key": process.env.REACT_APP_API_KEY,
       Authorization: hash4Header,
-      "User-Agent": "Podhouse",
     },
   };
 
@@ -35,7 +34,10 @@ const usePodcast = (id: number): UseQueryResult<PodcastResult, Podcast> => {
     {
       retry: 10,
       enabled: Boolean(id),
+      retryDelay: 1000,
       suspense: true,
+      useErrorBoundary: true,
+      refetchOnWindowFocus: false,
     }
   );
 };

@@ -18,9 +18,7 @@ interface Props {
   onVolume: (value: number) => void;
 }
 
-const Volume = ({ volume, mute, onMute, onVolume }: Props) => {
-  console.log("rerendering from volume!!");
-
+const Volume = ({ volume, onMute, onVolume }: Props) => {
   const renderVolume = () => {
     if (volume === 0) {
       return (

@@ -1,4 +1,4 @@
-import React from "react";
+import { useCallback } from "react";
 import { useColorMode } from "@chakra-ui/react";
 import { Link as ReactRouterLink } from "react-router-dom";
 
@@ -20,23 +20,23 @@ const Menu = () => {
   const { colorMode } = useColorMode();
   const { innerWidth } = useWindowSize();
 
-  const borderColor = colorMode === "dark" ? "2C2E34" : "#f2f2f2";
+  const borderColor: string = colorMode === "dark" ? "2C2E34" : "#f2f2f2";
 
-  const renderLogo = () => {
+  const renderLogo = useCallback(() => {
     if (colorMode === "light") {
       return <PodhouseDarkLogo />;
     } else {
       return <PodhouseWhiteLogo />;
     }
-  };
+  }, [colorMode]);
 
-  const renderNavigation = () => {
+  const renderNavigation = useCallback(() => {
     if (innerWidth <= 800) {
       return <MobileNavigation />;
     } else {
       return <DesktopNavigation />;
     }
-  };
+  }, [innerWidth]);
 
   return (
     <MenuContainer borderRightWidth="1px" borderRightColor={borderColor}>

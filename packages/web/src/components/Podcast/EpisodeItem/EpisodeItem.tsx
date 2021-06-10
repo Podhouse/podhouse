@@ -13,8 +13,6 @@ import {
   EpisodeDividerContainer,
 } from "./EpisodeItem.styles";
 
-import { usePlayerContext } from "src/context/Player/PlayerContext";
-
 import { formatTime, formatDate } from "src/utils/";
 
 import { Episode } from "src/queries/types";
@@ -23,19 +21,37 @@ import useColor from "src/hooks/useColor";
 
 interface Props {
   episode: Episode;
+  currentEpisode: Episode | null;
+  playing: boolean;
+  onToggle: (episode: Episode) => void;
+  onPlay: () => void;
+  onPause: () => void;
 }
 
-const EpisodeItem = ({ episode }: Props) => {
-  const {
-    playing,
-    episode: playerEpisode,
-    onToggle,
-    onPlay,
-    onPause,
-  } = usePlayerContext();
-
-  const onRenderButton = () => {
-    if (playerEpisode?.enclosureUrl === episode.enclosureUrl) {
+const EpisodeItem = ({
+  episode,
+  currentEpisode,
+  playing,
+  onToggle,
+  onPlay,
+  onPause,
+}: Props) => {
+  const handleRenderButton = () => {
+    if (
+      currentEpisode === null ||
+      currentEpisode.enclosureUrl !== episode.enclosureUrl
+    ) {
+      return (
+        <Tooltip label="Play" aria-label="Play audio">
+          <EpisodeItemButton
+            aria-label="Play episode"
+            icon={<BsPlay size="30px" />}
+            variant="light"
+            onClick={() => onToggle(episode)}
+          />
+        </Tooltip>
+      );
+    } else {
       if (playing) {
         return (
           <Tooltip label="Pause" aria-label="Pause audio">
@@ -59,17 +75,6 @@ const EpisodeItem = ({ episode }: Props) => {
           </Tooltip>
         );
       }
-    } else {
-      return (
-        <Tooltip label="Play" aria-label="Play audio">
-          <EpisodeItemButton
-            aria-label="Play episode"
-            icon={<BsPlay size="30px" />}
-            variant="light"
-            onClick={() => onToggle(episode)}
-          />
-        </Tooltip>
-      );
     }
   };
 
@@ -100,7 +105,7 @@ const EpisodeItem = ({ episode }: Props) => {
           {formatTime(episode.duration)}
         </EpisodeItemDuration>
 
-        {onRenderButton()}
+        {handleRenderButton()}
 
         <EpisodeDividerContainer>
           <Divider
@@ -114,4 +119,8 @@ const EpisodeItem = ({ episode }: Props) => {
   );
 };
 
-export default memo(EpisodeItem);
+const comparisonFn = (prevProps: Props, nextProps: Props) => {
+  return prevProps.playing === nextProps.playing;
+};
+
+export default memo(EpisodeItem, comparisonFn);

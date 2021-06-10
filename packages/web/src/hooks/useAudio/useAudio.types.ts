@@ -1,4 +1,4 @@
-import { State } from "xstate";
+import { Interpreter } from "xstate";
 
 import {
   MachineContext,
@@ -6,16 +6,7 @@ import {
 } from "src/machines/Player/PlayerMachine.types";
 
 export type UseAudio = () => {
-  state: State<
-    MachineContext,
-    MachineEvent,
-    any,
-    {
-      value: any;
-      context: MachineContext;
-    }
-  >;
-  send: any;
+  service: Interpreter<MachineContext, any, MachineEvent>;
   onCreateAudio: (args: CreateAudioArgs) => HTMLAudioElement;
   onLoadAudio: (
     audio: HTMLAudioElement | undefined,

@@ -22,7 +22,6 @@ const useTrending = () => {
       "X-Auth-Date": "" + apiHeaderTime,
       "X-Auth-Key": process.env.REACT_APP_API_KEY,
       Authorization: hash4Header,
-      "User-Agent": "Podhouse",
     },
   };
 
@@ -33,7 +32,7 @@ const useTrending = () => {
       return data;
     },
     {
-      retry: 1,
+      retry: 10,
       retryDelay: 1000,
       suspense: true,
       useErrorBoundary: true,

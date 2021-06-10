@@ -29,4 +29,8 @@ const MobilePodcast = ({ episode }: Props) => {
   );
 };
 
-export default memo(MobilePodcast);
+const comparisonFn = (prevProps: Props, nextProps: Props) => {
+  return prevProps.episode === nextProps.episode;
+};
+
+export default memo(MobilePodcast, comparisonFn);

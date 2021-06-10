@@ -78,13 +78,13 @@ export type MachineLoadEvent = {
   type: "LOAD";
   volume: number;
   rate: number;
-  duration: number;
   mute: boolean;
   loop: boolean;
 };
 
 export type MachineReadyEvent = {
   type: "READY";
+  duration: number;
 };
 
 export type MachinePlayEvent = {

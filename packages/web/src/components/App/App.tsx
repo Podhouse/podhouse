@@ -32,7 +32,37 @@ import Terms from "src/modules/App/Terms/Terms";
 
 import Advertise from "src/modules/App/Advertise/Advertise";
 
+import usePlayer from "src/hooks/usePlayer/usePlayer";
+
 const App = () => {
+  const {
+    initial,
+    loading,
+    ready,
+    idle,
+    playing,
+    paused,
+    end,
+    episode,
+    seek,
+    volume,
+    rate,
+    duration,
+    mute,
+    loop,
+    error,
+    onToggle,
+    onPlay,
+    onPause,
+    onVolume,
+    onRate,
+    onMute,
+    onLoop,
+    onSeek,
+    onForward,
+    onBackward,
+  } = usePlayer();
+
   return (
     <AppContainer>
       <Dashboard>
@@ -44,7 +74,19 @@ const App = () => {
           <Route exact path="/forgot-password" component={ForgotPassword} />
           <Route exact path="/reset-password" component={ResetPassword} />
 
-          <Route exact path="/podcast/:id" component={Podcast} />
+          <Route
+            exact
+            path="/podcast/:id"
+            component={() => (
+              <Podcast
+                currentEpisode={episode}
+                playing={playing}
+                onToggle={onToggle}
+                onPlay={onPlay}
+                onPause={onPause}
+              />
+            )}
+          />
           <Route exact path="/episode/:id" component={Episode} />
 
           <Route exact path="/search" component={Search} />
@@ -64,7 +106,33 @@ const App = () => {
         </Switch>
       </Dashboard>
       <Header />
-      <Player />
+      <Player
+        initial={initial}
+        loading={loading}
+        ready={ready}
+        idle={idle}
+        playing={playing}
+        paused={paused}
+        end={end}
+        episode={episode}
+        seek={seek}
+        volume={volume}
+        rate={rate}
+        duration={duration}
+        mute={mute}
+        loop={loop}
+        error={error}
+        onToggle={onToggle}
+        onPlay={onPlay}
+        onPause={onPause}
+        onVolume={onVolume}
+        onRate={onRate}
+        onMute={onMute}
+        onLoop={onLoop}
+        onSeek={onSeek}
+        onForward={onForward}
+        onBackward={onBackward}
+      />
       <Menu />
     </AppContainer>
   );

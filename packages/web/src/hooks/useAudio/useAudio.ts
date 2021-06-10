@@ -1,4 +1,4 @@
-import { useMachine } from "@xstate/react";
+import { useInterpret } from "@xstate/react";
 
 import { UseAudio, CreateAudioArgs } from "./useAudio.types";
 
@@ -9,10 +9,9 @@ import {
 } from "src/machines/Player/PlayerMachine.types";
 
 const useAudio: UseAudio = () => {
-  const [state, send] = useMachine<MachineContext, MachineEvent>(
-    PlayerMachine,
-    { devTools: process.env.NODE_ENV === "development" }
-  );
+  const service = useInterpret<MachineContext, MachineEvent>(PlayerMachine, {
+    devTools: process.env.NODE_ENV === "development",
+  });
 
   /**
    * Create a new Audio element and returns it.
@@ -47,47 +46,46 @@ const useAudio: UseAudio = () => {
 
     // When the audio has started to load, it will trigger a 'LOAD' event.
     audioElement.addEventListener("loadstart", () => {
-      send("LOAD", {
+      service.send("LOAD", {
         volume: volume,
         rate: rate,
-        duration: audioElement.duration,
         mute: mute,
         loop: loop,
       });
     });
     // When the audio has loaded successfully, it will triger a 'READY' event and change values in the context.
     audioElement.addEventListener("loadeddata", () => {
-      send("READY");
+      service.send("READY", { duration: audioElement.duration });
     });
     // When the audio has a loading error, it will trigger a 'ERROR' event.
     audioElement.addEventListener("error", () => {
-      send("ERROR", {
+      service.send("ERROR", {
         error: `Error while loading: ${src}`,
       });
     });
     // When the audio plays, it will trigger a 'PLAY' event.
     audioElement.addEventListener("play", () => {
-      send("PLAY");
+      service.send("PLAY");
     });
     // When the audio has paused, it will trigger a 'PAUSE' event.
     audioElement.addEventListener("pause", () => {
-      send("PAUSE");
+      service.send("PAUSE");
     });
     // When the volume has changed, will trigger a 'VOLUME' event and set the new value in the context.
     audioElement.addEventListener("volumechange", () => {
-      send("VOLUME", {
+      service.send("VOLUME", {
         volume: audioElement.volume,
       });
     });
     // When the rate has changed, it will trigger a 'RATE' event and set the new value in the context.
     audioElement.addEventListener("ratechange", () => {
-      send("RATE", {
+      service.send("RATE", {
         rate: audioElement.playbackRate,
       });
     });
     // When the audio has ended, it will trigger a 'END' event.
     audioElement.addEventListener("ended", () => {
-      send("END");
+      service.send("END");
     });
 
     return audioElement;
@@ -113,10 +111,9 @@ const useAudio: UseAudio = () => {
         return audio;
       }
 
-      send("LOAD", {
+      service.send("LOAD", {
         volume: args.volume,
         rate: args.rate,
-        duration: audio.duration,
         mute: args.mute,
         loop: args.loop,
       });
@@ -145,8 +142,7 @@ const useAudio: UseAudio = () => {
   };
 
   return {
-    state,
-    send,
+    service,
     onCreateAudio,
     onLoadAudio,
     onDestroyAudio,

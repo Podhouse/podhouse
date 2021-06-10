@@ -1,4 +1,4 @@
-import React from "react";
+import { memo, useCallback } from "react";
 
 import DesktopPodcast from "./DesktopPodcast/DesktopPodcast";
 import MobilePodcast from "./MobilePodcast/MobilePodcast";
@@ -14,15 +14,19 @@ interface Props {
 const Podcast = ({ episode }: Props) => {
   const { innerWidth } = useWindowSize();
 
-  const renderPodcast = () => {
+  const renderPodcast = useCallback(() => {
     if (innerWidth >= 800) {
       return <DesktopPodcast episode={episode} />;
     } else {
       return <MobilePodcast episode={episode} />;
     }
-  };
+  }, [episode, innerWidth]);
 
   return renderPodcast();
 };
 
-export default Podcast;
+const comparisonFn = (prevProps: Props, nextProps: Props) => {
+  return prevProps.episode === nextProps.episode;
+};
+
+export default memo(Podcast, comparisonFn);

@@ -22,7 +22,6 @@ const useSearchPodcast = (text: string) => {
       "X-Auth-Date": "" + apiHeaderTime,
       "X-Auth-Key": process.env.REACT_APP_API_KEY,
       Authorization: hash4Header,
-      "User-Agent": "Podhouse",
     },
   };
 
@@ -35,7 +34,10 @@ const useSearchPodcast = (text: string) => {
     {
       retry: 10,
       enabled: Boolean(text),
+      retryDelay: 1000,
       suspense: true,
+      useErrorBoundary: true,
+      refetchOnWindowFocus: false,
     }
   );
 };

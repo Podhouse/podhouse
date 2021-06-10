@@ -1,4 +1,4 @@
-import React from "react";
+import { memo } from "react";
 import { useColorMode } from "@chakra-ui/react";
 
 import { PlayerContainer } from "./Player.styles";
@@ -11,46 +11,20 @@ import SkeletonPodcast from "src/components/Skeletons/SkeletonPlayer/SkeletonPod
 import SkeletonControls from "src/components/Skeletons/SkeletonPlayer/SkeletonControls/SkeletonControls";
 import SkeletonRightControls from "src/components/Skeletons/SkeletonPlayer/SkeletonRightControls/SkeletonRightControls";
 
-import { usePlayerContext } from "src/context/Player/PlayerContext";
+import { ReturnArgs } from "src/hooks/usePlayer/usePlayer.types";
 
-const Player = () => {
+type Props = ReturnArgs;
+
+const Player = (props: Props) => {
   const { colorMode } = useColorMode();
 
   const backgroundColor = colorMode === "dark" ? "#151419" : "white";
 
-  const {
-    initial,
-    loading,
-    ready,
-    idle,
-    playing,
-    paused,
-    end,
-    episode,
-    seek,
-    volume,
-    rate,
-    duration,
-    mute,
-    loop,
-    error,
-    onToggle,
-    onPlay,
-    onPause,
-    onVolume,
-    onRate,
-    onMute,
-    onLoop,
-    onSeek,
-    onForward,
-    onBackward,
-  } = usePlayerContext();
-
-  if (initial) {
+  if (props.initial) {
     return <PlayerContainer bgColor={backgroundColor}></PlayerContainer>;
   }
 
-  if (loading || !episode) {
+  if (props.loading || !props.episode) {
     return (
       <PlayerContainer bgColor={backgroundColor}>
         <SkeletonPodcast />
@@ -62,29 +36,36 @@ const Player = () => {
 
   return (
     <PlayerContainer bgColor={backgroundColor}>
-      <Podcast episode={episode} />
+      <Podcast episode={props.episode} />
 
-      <Controls
-        playing={playing}
-        seek={seek}
-        duration={duration}
-        onToggle={onToggle}
-        onPlay={onPlay}
-        onPause={onPause}
-        onSeek={onSeek}
-        onForward={onForward}
-        onBackward={onBackward}
+      {/* <Controls
+        playing={props.playing}
+        seek={props.seek}
+        duration={props.duration}
+        onToggle={props.onToggle}
+        onPlay={props.onPlay}
+        onPause={props.onPause}
+        onSeek={props.onSeek}
+        onForward={props.onForward}
+        onBackward={props.onBackward}
       />
 
       <RightControls
-        volume={volume}
-        mute={mute}
-        onVolume={onVolume}
-        onMute={onMute}
-        onRate={onRate}
-      />
+        volume={props.volume}
+        mute={props.mute}
+        onVolume={props.onVolume}
+        onMute={props.onMute}
+        onRate={props.onRate}
+      /> */}
     </PlayerContainer>
   );
 };
 
-export default Player;
+const comparisonFn = (prevProps: Props, nextProps: Props) => {
+  return (
+    prevProps.initial === nextProps.initial &&
+    prevProps.loading === nextProps.loading
+  );
+};
+
+export default memo(Player, comparisonFn);
