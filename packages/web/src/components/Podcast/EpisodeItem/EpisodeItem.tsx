@@ -1,7 +1,9 @@
 import { memo } from "react";
-import { Divider, Link as ChakraLink, Tooltip } from "@chakra-ui/react";
+import { Divider, Link as ChakraLink } from "@chakra-ui/react";
 import { Link as ReactRouterLink } from "react-router-dom";
 import { BsPlay, BsPause } from "react-icons/bs";
+import { Interpreter } from "xstate";
+import { useSelector } from "@xstate/react";
 
 import {
   EpisodeItemContainer,
@@ -19,95 +21,75 @@ import { Episode } from "src/queries/types";
 
 import useColor from "src/hooks/useColor";
 
-interface Props {
+import {
+  MachineContext,
+  MachineEvent,
+} from "src/machines/Player/PlayerMachine.types";
+
+type Props = {
   episode: Episode;
-  currentEpisode: Episode | null;
-  loading: boolean;
-  ready: boolean;
-  idle: boolean;
-  playing: boolean;
+  service: Interpreter<MachineContext, any, MachineEvent>;
   onToggle: (episode: Episode) => void;
   onPlay: () => void;
   onPause: () => void;
-}
+};
 
 const EpisodeItem = ({
   episode,
-  currentEpisode,
-  loading,
-  ready,
-  idle,
-  playing,
+  service,
   onToggle,
   onPlay,
   onPause,
 }: Props) => {
+  const loading = useSelector(service, (state) => state.matches("loading"));
+  const playing = useSelector(service, (state) =>
+    state.matches("ready.playing")
+  );
+  const currentEpisode = useSelector(service, (state) => state.context.episode);
+
   console.log("EpisodeItem rerender!");
 
   const onRenderButton = () => {
-    if (currentEpisode === null) {
-      return (
-        <Tooltip label="Play" aria-label="Play audio">
-          <EpisodeItemButton
-            aria-label="Play episode"
-            icon={<BsPlay size="30px" />}
-            variant="light"
-            onClick={() => onToggle(episode)}
-          />
-        </Tooltip>
-      );
-    }
-
-    if (currentEpisode.enclosureUrl === episode.enclosureUrl) {
+    if (currentEpisode?.enclosureUrl === episode.enclosureUrl) {
       if (loading) {
         return (
-          <Tooltip label="Loading" aria-label="Loading">
-            <EpisodeItemButton
-              aria-label="Loading"
-              variant="light"
-              isLoading={true}
-            />
-          </Tooltip>
+          <EpisodeItemButton
+            aria-label="Loading"
+            variant="light"
+            isLoading={true}
+          />
         );
       }
 
       if (playing) {
         return (
-          <Tooltip label="Pause" aria-label="Pause audio">
-            <EpisodeItemButton
-              aria-label="Pause episode"
-              icon={<BsPause size="30px" />}
-              variant="light"
-              onClick={onPause}
-            />
-          </Tooltip>
+          <EpisodeItemButton
+            aria-label="Pause episode"
+            icon={<BsPause size="30px" />}
+            variant="light"
+            onClick={onPause}
+          />
         );
       }
 
       return (
-        <Tooltip label="Play" aria-label="Play audio">
-          <EpisodeItemButton
-            aria-label="Play episode"
-            icon={<BsPlay size="30px" />}
-            variant="light"
-            onClick={onPlay}
-          />
-        </Tooltip>
+        <EpisodeItemButton
+          aria-label="Play episode"
+          icon={<BsPlay size="30px" />}
+          variant="light"
+          onClick={onPlay}
+        />
       );
     }
 
-    if (currentEpisode.enclosureUrl !== episode.enclosureUrl) {
-      return (
-        <Tooltip label="Play" aria-label="Play audio">
-          <EpisodeItemButton
-            aria-label="Play episode"
-            icon={<BsPlay size="30px" />}
-            variant="light"
-            onClick={() => onToggle(episode)}
-          />
-        </Tooltip>
-      );
-    }
+    return (
+      <EpisodeItemButton
+        aria-label="Play episode"
+        icon={<BsPlay size="30px" />}
+        variant="light"
+        onClick={() => onToggle(episode)}
+      />
+    );
   };
 
   return (

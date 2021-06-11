@@ -13,28 +13,41 @@ import { PodcastContainer } from "./Podcast.styles";
 
 import { Episode } from "src/machines/Player/PlayerMachine.types";
 
-interface Props {
-  currentEpisode: Episode | null;
-  loading: boolean;
-  ready: boolean;
-  idle: boolean;
-  playing: boolean;
+import { State, Interpreter } from "xstate";
+
+import {
+  MachineContext,
+  MachineEvent,
+} from "src/machines/Player/PlayerMachine.types";
+
+type Props = {
+  state: State<
+    MachineContext,
+    MachineEvent,
+    any,
+    {
+      value: any;
+      context: MachineContext;
+    }
+  >;
+  send: any;
+  service: Interpreter<MachineContext, any, MachineEvent>;
   onToggle: (episode: Episode) => void;
   onPlay: () => void;
   onPause: () => void;
-}
+};
 
 const Podcast = ({
-  currentEpisode,
-  loading,
-  ready,
-  idle,
-  playing,
+  state,
+  send,
+  service,
   onToggle,
   onPlay,
   onPause,
 }: Props) => {
   const { reset } = useQueryErrorResetBoundary();
+
+  console.log("renrerder epiosdessss");
 
   return (
     <Scrollbars autoHide autoHideTimeout={100} autoHideDuration={100}>
@@ -43,11 +56,7 @@ const Podcast = ({
           <PodcastContainer>
             <Header />
             <Episodes
-              currentEpisode={currentEpisode}
-              loading={loading}
-              ready={ready}
-              idle={idle}
-              playing={playing}
+              service={service}
               onToggle={onToggle}
               onPlay={onPlay}
               onPause={onPause}
@@ -59,4 +68,4 @@ const Podcast = ({
   );
 };
 
-export default memo(Podcast);
+export default Podcast;

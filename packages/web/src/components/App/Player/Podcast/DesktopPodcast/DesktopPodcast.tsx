@@ -1,14 +1,20 @@
-import React, { memo } from "react";
 import { Link, Box, Stack } from "@chakra-ui/react";
 import { Link as ReactRouterLink } from "react-router-dom";
+import { Interpreter } from "xstate";
+import { useSelector } from "@xstate/react";
 
-import { Episode } from "src/queries/types";
+import {
+  MachineContext,
+  MachineEvent,
+} from "src/machines/Player/PlayerMachine.types";
 
-interface Props {
-  episode: Episode;
-}
+type Props = {
+  service: Interpreter<MachineContext, any, MachineEvent>;
+};
 
-const DesktopPodcast = ({ episode }: Props) => {
+const DesktopPodcast = ({ service }: Props) => {
+  const episode = useSelector(service, (state) => state.context.episode);
+
   return (
     <Box
       width="100%"
@@ -24,42 +30,38 @@ const DesktopPodcast = ({ episode }: Props) => {
           width="100%"
           maxWidth="300px"
           to={{
-            pathname: `/episode/${episode.id}`,
-            state: { id: episode.id },
+            pathname: `/episode/${episode?.id}`,
+            state: { id: episode?.id },
           }}
-          href={`/episode/${episode.id}`}
+          href={`/episode/${episode?.id}`}
           as={ReactRouterLink}
           fontWeight="500"
           textOverflow="ellipsis"
           whiteSpace="nowrap"
           overflow="hidden"
         >
-          {episode.title}
+          {episode?.title}
         </Link>
 
         <Link
           width="100%"
           maxWidth="300px"
           to={{
-            pathname: `/episode/${episode.id}`,
-            state: { id: episode.id },
+            pathname: `/episode/${episode?.id}`,
+            state: { id: episode?.id },
           }}
-          href={`/episode/${episode.id}`}
+          href={`/episode/${episode?.id}`}
           as={ReactRouterLink}
           fontWeight="500"
           textOverflow="ellipsis"
           whiteSpace="nowrap"
           overflow="hidden"
         >
-          {episode.title}
+          {episode?.title}
         </Link>
       </Stack>
     </Box>
   );
 };
 
-const comparisonFn = (prevProps: Props, nextProps: Props) => {
-  return prevProps.episode === nextProps.episode;
-};
-
-export default memo(DesktopPodcast, comparisonFn);
+export default DesktopPodcast;

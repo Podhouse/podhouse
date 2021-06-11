@@ -116,10 +116,7 @@ const Machine = createMachine<MachineContext, MachineEvent>(
   {
     actions: {
       onLoad: assign<MachineContext, MachineEvent>({
-        volume: (_, event) => (event as MachineLoadEvent).volume,
-        rate: (_, event) => (event as MachineLoadEvent).rate,
-        mute: (_, event) => (event as MachineLoadEvent).mute,
-        loop: (_, event) => (event as MachineLoadEvent).loop,
+        episode: (_, event) => (event as MachineLoadEvent).episode,
       }),
       onReady: assign<MachineContext, MachineEvent>({
         duration: (_, event) => (event as MachineReadyEvent).duration,

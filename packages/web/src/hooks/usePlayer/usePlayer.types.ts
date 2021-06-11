@@ -1,4 +1,10 @@
-import { Episode } from "src/machines/Player/PlayerMachine.types";
+import { State, Interpreter } from "xstate";
+
+import {
+  MachineContext,
+  MachineEvent,
+  Episode,
+} from "src/machines/Player/PlayerMachine.types";
 
 export interface Args {
   src: string;
@@ -11,21 +17,18 @@ export interface Args {
 }
 
 export type ReturnArgs = {
-  initial: boolean;
-  loading: boolean;
-  ready: boolean;
-  idle: boolean;
-  playing: boolean;
-  paused: boolean;
-  end: boolean;
-  episode: Episode | null;
+  state: State<
+    MachineContext,
+    MachineEvent,
+    any,
+    {
+      value: any;
+      context: MachineContext;
+    }
+  >;
+  send: any;
+  service: Interpreter<MachineContext, any, MachineEvent>;
   seek: number;
-  volume: number;
-  rate: number;
-  duration: number;
-  mute: boolean;
-  loop: boolean;
-  error: string | null;
   onToggle: (episode: Episode) => void;
   onPlay: () => void;
   onPause: () => void;

@@ -1,17 +1,21 @@
-import { useInterpret } from "@xstate/react";
+import { useMachine } from "@xstate/react";
 
-import { UseAudio, CreateAudioArgs } from "./useAudio.types";
+import { UseAudio } from "./useAudio.types";
 
 import PlayerMachine from "src/machines/Player/PlayerMachine";
 import {
   MachineContext,
   MachineEvent,
+  Episode,
 } from "src/machines/Player/PlayerMachine.types";
 
 const useAudio: UseAudio = () => {
-  const service = useInterpret<MachineContext, MachineEvent>(PlayerMachine, {
-    devTools: process.env.NODE_ENV === "development",
-  });
+  const [state, send, service] = useMachine<MachineContext, MachineEvent>(
+    PlayerMachine,
+    {
+      devTools: process.env.NODE_ENV === "development",
+    }
+  );
 
   /**
    * Create a new Audio element and returns it.
@@ -24,68 +28,55 @@ const useAudio: UseAudio = () => {
    * @param {boolean} loop - The loop property for the audio.
    * @returns HTMLAudioElement
    */
-  const onCreateAudio = ({
-    src = "",
-    preload = "auto",
-    autoplay = false,
-    volume = 1.0,
-    rate = 1.0,
-    mute = false,
-    loop = false,
-  }: CreateAudioArgs): HTMLAudioElement => {
+  const onCreateAudio = (src: string, episode: Episode): HTMLAudioElement => {
     const audioElement: HTMLAudioElement = new Audio(src);
 
     // Autoplay should be 'false' by default.
     // Read more here: https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/autoplay
-    audioElement.autoplay = autoplay;
-    audioElement.volume = volume;
-    audioElement.muted = mute;
-    audioElement.loop = loop;
-    audioElement.playbackRate = rate;
-    audioElement.preload = preload;
+    audioElement.autoplay = true;
+    audioElement.volume = 1.0;
+    audioElement.muted = false;
+    audioElement.loop = false;
+    audioElement.playbackRate = 1.0;
+    audioElement.preload = "auto";
 
     // When the audio has started to load, it will trigger a 'LOAD' event.
     audioElement.addEventListener("loadstart", () => {
-      service.send("LOAD", {
-        volume: volume,
-        rate: rate,
-        mute: mute,
-        loop: loop,
-      });
+      send("LOAD", { episode });
     });
     // When the audio has loaded successfully, it will triger a 'READY' event and change values in the context.
     audioElement.addEventListener("loadeddata", () => {
-      service.send("READY", { duration: audioElement.duration });
+      send("READY", { duration: audioElement.duration });
     });
     // When the audio has a loading error, it will trigger a 'ERROR' event.
     audioElement.addEventListener("error", () => {
-      service.send("ERROR", {
+      send("ERROR", {
         error: `Error while loading: ${src}`,
       });
     });
     // When the audio plays, it will trigger a 'PLAY' event.
     audioElement.addEventListener("play", () => {
-      service.send("PLAY");
+      send("PLAY");
     });
     // When the audio has paused, it will trigger a 'PAUSE' event.
     audioElement.addEventListener("pause", () => {
-      service.send("PAUSE");
+      send("PAUSE");
     });
     // When the volume has changed, will trigger a 'VOLUME' event and set the new value in the context.
     audioElement.addEventListener("volumechange", () => {
-      service.send("VOLUME", {
+      send("VOLUME", {
         volume: audioElement.volume,
       });
     });
     // When the rate has changed, it will trigger a 'RATE' event and set the new value in the context.
     audioElement.addEventListener("ratechange", () => {
-      service.send("RATE", {
+      send("RATE", {
         rate: audioElement.playbackRate,
       });
     });
     // When the audio has ended, it will trigger a 'END' event.
     audioElement.addEventListener("ended", () => {
-      service.send("END");
+      send("END");
     });
 
     return audioElement;
@@ -102,26 +93,22 @@ const useAudio: UseAudio = () => {
    */
   const onLoadAudio = (
     audio: HTMLAudioElement | undefined,
-    args: CreateAudioArgs
+    src: string,
+    episode: Episode
   ): HTMLAudioElement => {
     if (audio instanceof HTMLAudioElement) {
       const currentSrc: string = audio.currentSrc;
 
-      if (currentSrc === args.src) {
+      if (currentSrc === src) {
         return audio;
       }
 
-      service.send("LOAD", {
-        volume: args.volume,
-        rate: args.rate,
-        mute: args.mute,
-        loop: args.loop,
-      });
-      audio.setAttribute("src", audio.src);
+      send("LOAD", { episode });
+      audio.setAttribute("src", src);
       audio.load();
       return audio;
     } else {
-      const newAudio: HTMLAudioElement = onCreateAudio(args);
+      const newAudio: HTMLAudioElement = onCreateAudio(src, episode);
       return newAudio;
     }
   };
@@ -142,6 +129,8 @@ const useAudio: UseAudio = () => {
   };
 
   return {
+    state,
+    send,
     service,
     onCreateAudio,
     onLoadAudio,

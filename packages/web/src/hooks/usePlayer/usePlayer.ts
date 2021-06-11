@@ -1,4 +1,10 @@
-import { useState, useEffect, useRef, MutableRefObject } from "react";
+import {
+  useState,
+  useCallback,
+  useEffect,
+  useRef,
+  MutableRefObject,
+} from "react";
 import { useSelector } from "@xstate/react";
 import raf from "raf";
 
@@ -44,59 +50,24 @@ import { Episode } from "src/machines/Player/PlayerMachine.types";
  */
 
 const usePlayer = (): ReturnArgs => {
-  const { service, onLoadAudio } = useAudio();
+  const { state, send, service, onLoadAudio } = useAudio();
 
   const [audio, setAudio] = useState<HTMLAudioElement | undefined>(undefined);
   const playerRef: MutableRefObject<HTMLAudioElement | undefined> = useRef<
     HTMLAudioElement | undefined
   >(undefined);
 
-  const [episode, setEpisode] = useState<Episode | null>(null);
-
   const [seek, setSeek] = useState<number>(0);
   const seekRef: MutableRefObject<number> = useRef<number>(0);
 
-  const initial = useSelector(service, (state) => state.matches("initial"));
-  const loading: boolean = useSelector(service, (state) =>
-    state.matches("loading")
-  );
   const ready: boolean = useSelector(service, (state) =>
     state.matches("ready")
-  );
-  const idle: boolean = useSelector(service, (state) =>
-    state.matches("ready.idle")
   );
   const playing: boolean = useSelector(service, (state) =>
     state.matches("ready.playing")
   );
   const paused: boolean = useSelector(service, (state) =>
     state.matches("ready.paused")
-  );
-  const end: boolean = useSelector(service, (state) => state.matches("end"));
-
-  const playerContextVolume: number = useSelector(
-    service,
-    (state) => state.context.volume
-  );
-  const playerContextRate: number = useSelector(
-    service,
-    (state) => state.context.rate
-  );
-  const playerContextDuration: number = useSelector(
-    service,
-    (state) => state.context.duration
-  );
-  const playerContextMute: boolean = useSelector(
-    service,
-    (state) => state.context.mute
-  );
-  const playerContextLoop: boolean = useSelector(
-    service,
-    (state) => state.context.loop
-  );
-  const playerContextError: string | null = useSelector(
-    service,
-    (state) => state.context.error
   );
 
   useEffect(() => {
@@ -122,51 +93,45 @@ const usePlayer = (): ReturnArgs => {
    * In case audio exists, it will play or pause based on the current state.
    * @returns void
    */
-  const onToggle = (episode: Episode): void => {
-    if (!audio) {
-      const newAudio = onLoadAudio(audio, {
-        src: episode.enclosureUrl,
-        preload: "auto",
-        autoplay: true,
-        volume: 1.0,
-        rate: 1.0,
-        mute: false,
-        loop: false,
-      });
-      setAudio(newAudio);
-      setEpisode(episode);
-      playerRef.current = newAudio;
-    } else {
-      if (ready || paused) {
-        audio.play();
-        service.send("PLAY");
+  const onToggle = useCallback(
+    (episode: Episode) => {
+      if (!audio) {
+        const newAudio = onLoadAudio(audio, episode.enclosureUrl, episode);
+        setAudio(newAudio);
+        playerRef.current = newAudio;
+      } else {
+        if (ready || paused) {
+          audio.play();
+          send("PLAY");
+        }
+        if (playing) {
+          audio.pause();
+          send("PAUSE");
+        }
       }
-      if (playing) {
-        audio.pause();
-        service.send("PAUSE");
-      }
-    }
-  };
+    },
+    [audio, onLoadAudio, paused, playing, ready, send]
+  );
 
   /**
    * Play the audio.
    * @returns void
    */
-  const onPlay = (): void => {
+  const onPlay = useCallback(() => {
     if (!audio) return;
-    service.send("PLAY");
+    send("PLAY");
     audio.play();
-  };
+  }, [audio, send]);
 
   /**
    * Pause the audio.
    * @returns void
    */
-  const onPause = (): void => {
+  const onPause = useCallback(() => {
     if (!audio) return;
-    service.send("PAUSE");
+    send("PAUSE");
     audio.pause();
-  };
+  }, [audio, send]);
 
   /**
    * Set 'mute' to true or false depending of the current value.
@@ -174,8 +139,8 @@ const usePlayer = (): ReturnArgs => {
    */
   const onMute = (): void => {
     if (!audio) return;
-    service.send("MUTE");
-    audio.muted = !playerContextMute;
+    send("MUTE");
+    audio.muted = !state.context.mute;
   };
 
   /**
@@ -184,8 +149,8 @@ const usePlayer = (): ReturnArgs => {
    */
   const onLoop = (): void => {
     if (!audio) return;
-    service.send("LOOP");
-    audio.loop = !playerContextLoop;
+    send("LOOP");
+    audio.loop = !state.context.loop;
   };
 
   /**
@@ -195,7 +160,7 @@ const usePlayer = (): ReturnArgs => {
    */
   const onVolume = (value: number): void => {
     if (!audio) return;
-    service.send({ type: "VOLUME", volume: value });
+    send({ type: "VOLUME", volume: value });
     audio.volume = value;
   };
 
@@ -207,7 +172,7 @@ const usePlayer = (): ReturnArgs => {
   const onRate = (value: string): void => {
     if (!audio) return;
     const rate: number = parseFloat(value);
-    service.send({ type: "RATE", rate });
+    send({ type: "RATE", rate });
     audio.playbackRate = rate;
   };
 
@@ -247,21 +212,10 @@ const usePlayer = (): ReturnArgs => {
   };
 
   return {
-    initial,
-    loading,
-    ready,
-    idle,
-    playing,
-    paused,
-    end,
-    episode,
+    state,
+    send,
+    service,
     seek,
-    volume: playerContextVolume,
-    rate: playerContextRate,
-    duration: playerContextDuration,
-    mute: playerContextMute,
-    loop: playerContextLoop,
-    error: playerContextError,
     onToggle,
     onPlay,
     onPause,

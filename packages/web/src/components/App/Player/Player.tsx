@@ -1,5 +1,6 @@
 import { memo } from "react";
 import { useColorMode } from "@chakra-ui/react";
+import { useSelector } from "@xstate/react";
 
 import { PlayerContainer } from "./Player.styles";
 
@@ -16,15 +17,22 @@ import { ReturnArgs } from "src/hooks/usePlayer/usePlayer.types";
 type Props = ReturnArgs;
 
 const Player = (props: Props) => {
+  const initial = useSelector(props.service, (state) =>
+    props.state.matches("initial")
+  );
+  const loading = useSelector(props.service, (state) =>
+    props.state.matches("loading")
+  );
+
   const { colorMode } = useColorMode();
 
   const backgroundColor = colorMode === "dark" ? "#151419" : "white";
 
-  if (props.initial) {
+  if (initial) {
     return <PlayerContainer bgColor={backgroundColor}></PlayerContainer>;
   }
 
-  if (props.loading || !props.episode) {
+  if (loading) {
     return (
       <PlayerContainer bgColor={backgroundColor}>
         <SkeletonPodcast />
@@ -36,12 +44,11 @@ const Player = (props: Props) => {
 
   return (
     <PlayerContainer bgColor={backgroundColor}>
-      <Podcast episode={props.episode} />
+      <Podcast service={props.service} />
 
-      {/* <Controls
-        playing={props.playing}
+      <Controls
+        service={props.service}
         seek={props.seek}
-        duration={props.duration}
         onToggle={props.onToggle}
         onPlay={props.onPlay}
         onPause={props.onPause}
@@ -51,21 +58,13 @@ const Player = (props: Props) => {
       />
 
       <RightControls
-        volume={props.volume}
-        mute={props.mute}
+        service={props.service}
         onVolume={props.onVolume}
         onMute={props.onMute}
         onRate={props.onRate}
-      /> */}
+      />
     </PlayerContainer>
   );
 };
 
-const comparisonFn = (prevProps: Props, nextProps: Props) => {
-  return (
-    prevProps.initial === nextProps.initial &&
-    prevProps.loading === nextProps.loading
-  );
-};
-
-export default memo(Player, comparisonFn);
+export default Player;

@@ -76,10 +76,7 @@ export type MachineEvent =
 
 export type MachineLoadEvent = {
   type: "LOAD";
-  volume: number;
-  rate: number;
-  mute: boolean;
-  loop: boolean;
+  episode: Episode;
 };
 
 export type MachineReadyEvent = {

@@ -8,20 +8,25 @@ import {
   Tooltip,
 } from "@chakra-ui/react";
 import { BsClock } from "react-icons/bs";
+import { Interpreter } from "xstate";
 
 import { RightControlsContainer } from "./RightControls.styles";
 
 import Volume from "./Volume/Volume";
 
-interface Props {
-  volume: number;
-  mute: boolean;
+import {
+  MachineContext,
+  MachineEvent,
+} from "src/machines/Player/PlayerMachine.types";
+
+type Props = {
+  service: Interpreter<MachineContext, any, MachineEvent>;
   onMute: () => void;
   onVolume: (value: number) => void;
   onRate: (value: string) => void;
-}
+};
 
-const RightControls = ({ volume, mute, onMute, onVolume, onRate }: Props) => {
+const RightControls = ({ service, onMute, onVolume, onRate }: Props) => {
   return (
     <RightControlsContainer>
       <Menu>
@@ -44,7 +49,7 @@ const RightControls = ({ volume, mute, onMute, onVolume, onRate }: Props) => {
         </MenuList>
       </Menu>
 
-      <Volume volume={volume} mute={mute} onMute={onMute} onVolume={onVolume} />
+      <Volume service={service} onVolume={onVolume} onMute={onMute} />
     </RightControlsContainer>
   );
 };

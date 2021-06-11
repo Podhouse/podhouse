@@ -1,32 +1,29 @@
-import { memo, useCallback } from "react";
+import { useMemo } from "react";
+import { Interpreter } from "xstate";
+import { useSelector } from "@xstate/react";
 
 import DesktopPodcast from "./DesktopPodcast/DesktopPodcast";
 import MobilePodcast from "./MobilePodcast/MobilePodcast";
 
 import useWindowSize from "src/hooks/useWindowSize";
 
-import { Episode } from "src/queries/types";
+import {
+  MachineContext,
+  MachineEvent,
+} from "src/machines/Player/PlayerMachine.types";
 
-interface Props {
-  episode: Episode;
-}
+type Props = {
+  service: Interpreter<MachineContext, any, MachineEvent>;
+};
 
-const Podcast = ({ episode }: Props) => {
+const Podcast = ({ service }: Props) => {
   const { innerWidth } = useWindowSize();
 
-  const renderPodcast = useCallback(() => {
-    if (innerWidth >= 800) {
-      return <DesktopPodcast episode={episode} />;
-    } else {
-      return <MobilePodcast episode={episode} />;
-    }
-  }, [episode, innerWidth]);
-
-  return renderPodcast();
+  if (innerWidth >= 800) {
+    return <DesktopPodcast service={service} />;
+  } else {
+    return <MobilePodcast service={service} />;
+  }
 };
 
-const comparisonFn = (prevProps: Props, nextProps: Props) => {
-  return prevProps.episode === nextProps.episode;
-};
-
-export default memo(Podcast, comparisonFn);
+export default Podcast;

@@ -1,5 +1,6 @@
 import React, { memo } from "react";
 import { useLocation } from "react-router-dom";
+import { Interpreter } from "xstate";
 
 import EpisodeItem from "src/components/Podcast/EpisodeItem/EpisodeItem";
 
@@ -8,33 +9,25 @@ import { Episode } from "src/queries/types";
 
 import { EpisodesContainer } from "./Episodes.styles";
 
-interface Props {
-  currentEpisode: Episode | null;
-  loading: boolean;
-  ready: boolean;
-  idle: boolean;
-  playing: boolean;
+import {
+  MachineContext,
+  MachineEvent,
+} from "src/machines/Player/PlayerMachine.types";
+
+type Props = {
+  service: Interpreter<MachineContext, any, MachineEvent>;
   onToggle: (episode: Episode) => void;
   onPlay: () => void;
   onPause: () => void;
-}
+};
 
 type Location = {
   id: number;
 };
 
-const Episodes = ({
-  currentEpisode,
-  loading,
-  ready,
-  idle,
-  playing,
-  onToggle,
-  onPlay,
-  onPause,
-}: Props) => {
-  const { state } = useLocation<Location>();
-  const { data } = useEpisodes(state.id);
+const Episodes = ({ service, onToggle, onPlay, onPause }: Props) => {
+  const { state: locationState } = useLocation<Location>();
+  const { data } = useEpisodes(locationState.id);
 
   return (
     <EpisodesContainer>
@@ -42,11 +35,7 @@ const Episodes = ({
         <EpisodeItem
           key={episode.id}
           episode={episode}
-          currentEpisode={currentEpisode}
-          loading={loading}
-          ready={ready}
-          idle={idle}
-          playing={playing}
+          service={service}
           onToggle={onToggle}
           onPlay={onPlay}
           onPause={onPause}

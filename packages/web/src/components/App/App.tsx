@@ -36,21 +36,10 @@ import usePlayer from "src/hooks/usePlayer/usePlayer";
 
 const App = () => {
   const {
-    initial,
-    loading,
-    ready,
-    idle,
-    playing,
-    paused,
-    end,
-    episode,
+    state,
+    send,
+    service,
     seek,
-    volume,
-    rate,
-    duration,
-    mute,
-    loop,
-    error,
     onToggle,
     onPlay,
     onPause,
@@ -79,11 +68,9 @@ const App = () => {
             path="/podcast/:id"
             component={() => (
               <Podcast
-                currentEpisode={episode}
-                loading={loading}
-                ready={ready}
-                idle={idle}
-                playing={playing}
+                state={state}
+                send={send}
+                service={service}
                 onToggle={onToggle}
                 onPlay={onPlay}
                 onPause={onPause}
@@ -108,23 +95,14 @@ const App = () => {
           <Route exact path="/advertise" component={Advertise} />
         </Switch>
       </Dashboard>
+
       <Header />
+
       <Player
-        initial={initial}
-        loading={loading}
-        ready={ready}
-        idle={idle}
-        playing={playing}
-        paused={paused}
-        end={end}
-        episode={episode}
+        state={state}
+        send={send}
+        service={service}
         seek={seek}
-        volume={volume}
-        rate={rate}
-        duration={duration}
-        mute={mute}
-        loop={loop}
-        error={error}
         onToggle={onToggle}
         onPlay={onPlay}
         onPause={onPause}

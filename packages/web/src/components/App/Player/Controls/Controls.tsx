@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { memo, useMemo } from "react";
 import {
   IconButton,
   Slider,
@@ -13,6 +13,8 @@ import {
   BsArrowCounterclockwise,
   BsArrowClockwise,
 } from "react-icons/bs";
+import { Interpreter } from "xstate";
+import { useSelector } from "@xstate/react";
 
 import {
   ControlsContainer,
@@ -25,21 +27,24 @@ import { formatTime } from "src/utils/";
 
 import { Episode } from "src/machines/Player/PlayerMachine.types";
 
-interface Props {
-  playing: boolean;
+import {
+  MachineContext,
+  MachineEvent,
+} from "src/machines/Player/PlayerMachine.types";
+
+type Props = {
+  service: Interpreter<MachineContext, any, MachineEvent>;
   seek: number;
-  duration: number;
   onToggle: (episode: Episode) => void;
   onPlay: () => void;
   onPause: () => void;
   onSeek: (value: number) => void;
   onForward: (value: number) => void;
   onBackward: (value: number) => void;
-}
+};
 
 const Controls = ({
-  playing,
-  duration,
+  service,
   seek,
   onToggle,
   onPlay,
@@ -48,7 +53,12 @@ const Controls = ({
   onForward,
   onBackward,
 }: Props) => {
-  const renderControlButton = () => {
+  const playing = useSelector(service, (state) =>
+    state.matches("ready.playing")
+  );
+  const duration = useSelector(service, (state) => state.context.duration);
+
+  const renderControlButton = useMemo(() => {
     if (playing) {
       return (
         <Tooltip label="Pause" aria-label="Pause audio">
@@ -74,7 +84,7 @@ const Controls = ({
         />
       </Tooltip>
     );
-  };
+  }, [playing, onPlay, onPause]);
 
   return (
     <ControlsContainer>
@@ -89,7 +99,7 @@ const Controls = ({
           />
         </Tooltip>
 
-        {renderControlButton()}
+        {renderControlButton}
 
         <Tooltip label="+15" aria-label="+15">
           <IconButton

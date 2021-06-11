@@ -8,19 +8,28 @@ import {
   Tooltip,
 } from "@chakra-ui/react";
 import { BsVolumeUp, BsVolumeDown, BsVolumeMute } from "react-icons/bs";
+import { Interpreter } from "xstate";
+import { useSelector } from "@xstate/react";
 
 import { VolumeContainer } from "./Volume.styles";
 
-interface Props {
-  volume: number;
-  mute: boolean;
+import {
+  MachineContext,
+  MachineEvent,
+} from "src/machines/Player/PlayerMachine.types";
+
+type Props = {
+  service: Interpreter<MachineContext, any, MachineEvent>;
   onMute: () => void;
   onVolume: (value: number) => void;
-}
+};
 
-const Volume = ({ volume, onMute, onVolume }: Props) => {
+const Volume = ({ service, onMute, onVolume }: Props) => {
+  const volume: number = useSelector(service, (state) => state.context.volume);
+  const mute: boolean = useSelector(service, (state) => state.context.mute);
+
   const renderVolume = () => {
-    if (volume === 0) {
+    if (volume === 0 || mute) {
       return (
         <Tooltip label="Mute" aria-label="Mute">
           <IconButton

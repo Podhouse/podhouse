@@ -1,18 +1,24 @@
-import React, { memo } from "react";
 import { Link as ReactRouterLink } from "react-router-dom";
+import { Interpreter } from "xstate";
+import { useSelector } from "@xstate/react";
 
 import {
   MobilePodcastContainer,
   MobilePodcastImage,
 } from "./MobilePodcast.styles";
 
-import { Episode } from "src/queries/types";
+import {
+  MachineContext,
+  MachineEvent,
+} from "src/machines/Player/PlayerMachine.types";
 
-interface Props {
-  episode: Episode;
-}
+type Props = {
+  service: Interpreter<MachineContext, any, MachineEvent>;
+};
 
-const MobilePodcast = ({ episode }: Props) => {
+const MobilePodcast = ({ service }: Props) => {
+  const episode = useSelector(service, (state) => state.context.episode);
+
   return (
     <MobilePodcastContainer>
       <MobilePodcastImage
@@ -29,8 +35,4 @@ const MobilePodcast = ({ episode }: Props) => {
   );
 };
 
-const comparisonFn = (prevProps: Props, nextProps: Props) => {
-  return prevProps.episode === nextProps.episode;
-};
-
-export default memo(MobilePodcast, comparisonFn);
+export default MobilePodcast;
