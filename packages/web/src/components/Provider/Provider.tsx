@@ -190,9 +190,6 @@ const Provider = () => (
       />
 
       <ColorModeScript initialColorMode={theme.config.initialColorMode} />
-      {process.env.NODE_ENV === "development" && (
-        <ReactQueryDevtools initialIsOpen={false} position={"top-right"} />
-      )}
     </QueryClientProvider>
   </BrowserRouter>
 );
