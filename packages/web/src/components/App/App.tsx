@@ -9,85 +9,113 @@ import Player from "./Player/Player";
 import Dashboard from "./Dashboard/Dashboard";
 
 import Browse from "src/modules/App/Browse/Browse";
-import Subscriptions from "src/modules/App/Subscriptions/Subscriptions";
-import Search from "src/modules/App/Search/Search";
-import Favorites from "src/modules/App/Favorites/Favorites";
-import Advertise from "src/modules/App/Advertise/Advertise";
-import Settings from "src/modules/App/Settings/Settings";
+
+import SignIn from "src/modules/App/SignIn/SignIn";
+import SignUp from "src/modules/App/SignUp/SignUp";
+import ForgotPassword from "src/modules/App/ForgotPassword/ForgotPassword";
+import ResetPassword from "src/modules/App/ResetPassword/ResetPassword";
+
 import Podcast from "src/modules/App/Podcast/Podcast";
 import Episode from "src/modules/App/Episode/Episode";
-import Genre from "src/modules/App/Genre/Genre";
+import Search from "src/modules/App/Search/Search";
+import Subscriptions from "src/modules/App/Subscriptions/Subscriptions";
+import Favorites from "src/modules/App/Favorites/Favorites";
+import Filters from "src/modules/App/Filters/Filters";
 
-import AuthModal from "src/components/Modals/AuthModal/AuthModal";
-import SettingsModal from "src/components/Modals/SettingsModal/SettingsModal";
-import QueueModal from "src/components/Modals/QueueModal/QueueModal";
-import RateModal from "src/components/Modals/RateModal/RateModal";
+import Settings from "src/modules/App/Settings/Settings";
+import Password from "src/modules/App/Password/Password";
+import About from "src/modules/App/About/About";
+import FAQ from "src/modules/App/FAQ/FAQ";
+import Feedback from "src/modules/App/Feedback/Feedback";
+import PrivacyPolicy from "src/modules/App/PrivacyPolicy/PrivacyPolicy";
+import Terms from "src/modules/App/Terms/Terms";
 
-import { useAuthContext } from "src/machines/Auth/AuthContext";
-import { useSettingsContext } from "src/machines/Settings/SettingsContext";
-import { useQueueContext } from "src/machines/Queue/QueueContext";
-import { useRateContext } from "src/machines/Rate/RateContext";
+import Advertise from "src/modules/App/Advertise/Advertise";
+
+import usePlayer from "src/hooks/usePlayer/usePlayer";
 
 const App = () => {
-  const { auth } = useAuthContext();
-  const { settings } = useSettingsContext();
-  const { queue } = useQueueContext();
-  const { rate, handleRate } = useRateContext();
-
-  const renderAuthModal = () => {
-    if (auth === true) {
-      return <AuthModal />;
-    }
-    return null;
-  };
-
-  const renderSettingsModal = () => {
-    if (settings.matches("open")) {
-      return <SettingsModal />;
-    }
-    return null;
-  };
-
-  const renderQueueModal = () => {
-    if (queue.matches("open")) {
-      return <QueueModal />;
-    }
-    return null;
-  };
-
-  const renderRateModal = () => {
-    if (rate.matches("open")) {
-      return <RateModal handleRate={handleRate} />;
-    }
-    return null;
-  };
+  const {
+    state,
+    send,
+    service,
+    seek,
+    onToggle,
+    onPlay,
+    onPause,
+    onVolume,
+    onRate,
+    onMute,
+    onLoop,
+    onSeek,
+    onForward,
+    onBackward,
+  } = usePlayer();
 
   return (
-    <>
-      {renderAuthModal()}
-      {renderSettingsModal()}
-      {renderQueueModal()}
-      {renderRateModal()}
+    <AppContainer>
+      <Dashboard>
+        <Switch>
+          <Route exact path="/" component={Browse} />
 
-      <AppContainer>
-        <Dashboard>
-          <Switch>
-            <Route exact path="/" component={Browse} />
-            <Route exact path="/subscriptions" component={Subscriptions} />
-            <Route exact path="/search" component={Search} />
-            <Route exact path="/favorites" component={Favorites} />
-            <Route exact path="/advertise" component={Advertise} />
-            <Route exact path="/settings" component={Settings} />
-            <Route exact path="/podcast/:id/:id" component={Podcast} />
-            <Route exact path="/episode/:id/:id" component={Episode} />
-            <Route exact path="/genre/:id" component={Genre} />
-          </Switch>
-        </Dashboard>
-        <Header />
-        <Player />
-        <Menu />
-      </AppContainer>
-    </>
+          <Route exact path="/sign-in" component={SignIn} />
+          <Route exact path="/sign-up" component={SignUp} />
+          <Route exact path="/forgot-password" component={ForgotPassword} />
+          <Route exact path="/reset-password" component={ResetPassword} />
+
+          <Route
+            exact
+            path="/podcast/:id"
+            component={() => (
+              <Podcast
+                state={state}
+                send={send}
+                service={service}
+                onToggle={onToggle}
+                onPlay={onPlay}
+                onPause={onPause}
+              />
+            )}
+          />
+          <Route exact path="/episode/:id" component={Episode} />
+
+          <Route exact path="/search" component={Search} />
+          <Route exact path="/subscriptions" component={Subscriptions} />
+          <Route exact path="/favorites" component={Favorites} />
+          <Route exact path="/filters" component={Filters} />
+
+          <Route exact path="/settings" component={Settings} />
+          <Route exact path="/settings/password" component={Password} />
+          <Route exact path="/settings/about" component={About} />
+          <Route exact path="/settings/faq" component={FAQ} />
+          <Route exact path="/settings/feedback" component={Feedback} />
+          <Route exact path="/settings/privacy" component={PrivacyPolicy} />
+          <Route exact path="/settings/terms" component={Terms} />
+
+          <Route exact path="/advertise" component={Advertise} />
+        </Switch>
+      </Dashboard>
+
+      <Header />
+
+      <Player
+        state={state}
+        send={send}
+        service={service}
+        seek={seek}
+        onToggle={onToggle}
+        onPlay={onPlay}
+        onPause={onPause}
+        onVolume={onVolume}
+        onRate={onRate}
+        onMute={onMute}
+        onLoop={onLoop}
+        onSeek={onSeek}
+        onForward={onForward}
+        onBackward={onBackward}
+      />
+      <Menu />
+    </AppContainer>
   );
 };
 

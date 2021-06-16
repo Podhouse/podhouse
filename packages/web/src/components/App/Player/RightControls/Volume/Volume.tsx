@@ -1,111 +1,93 @@
-import React from "react";
+import React, { memo } from "react";
 import {
-  Volume as VolumeFirst,
-  Volume1,
-  Volume2,
-  VolumeX,
-} from "react-feather";
-import {
-  SliderInput,
+  IconButton,
+  Slider,
   SliderTrack,
-  SliderRange,
-  SliderHandle,
-} from "@reach/slider";
+  SliderFilledTrack,
+  SliderThumb,
+  Tooltip,
+} from "@chakra-ui/react";
+import { BsVolumeUp, BsVolumeDown, BsVolumeMute } from "react-icons/bs";
+import { Interpreter } from "xstate";
+import { useSelector } from "@xstate/react";
 
 import { VolumeContainer } from "./Volume.styles";
 
-interface VolumeProps {
-  ready: boolean;
-  volume: number;
-  muted: boolean;
-  onVolume: (
-    newValue: number,
-    props?: { min?: number; max?: number; handlePosition?: string }
-  ) => void;
-  onMute: () => void;
-}
+import {
+  MachineContext,
+  MachineEvent,
+} from "src/machines/Player/PlayerMachine.types";
 
-const Volume = ({ ready, volume, muted, onVolume, onMute }: VolumeProps) => {
+type Props = {
+  service: Interpreter<MachineContext, any, MachineEvent>;
+  onMute: () => void;
+  onVolume: (value: number) => void;
+};
+
+const Volume = ({ service, onMute, onVolume }: Props) => {
+  const volume: number = useSelector(service, (state) => state.context.volume);
+  const mute: boolean = useSelector(service, (state) => state.context.mute);
+
   const renderVolume = () => {
-    if (volume === 0 || muted) {
+    if (volume === 0 || mute) {
       return (
-        <VolumeX
-          size={20}
-          strokeWidth={1.7}
-          color="#101010"
-          style={{ cursor: "pointer" }}
-          onClick={onMute}
-        />
-      );
-    }
-    if (volume === 0.1) {
-      return (
-        <VolumeFirst
-          size={20}
-          strokeWidth={1.7}
-          color="#101010"
-          style={{ cursor: "pointer" }}
-          onClick={onMute}
-        />
+        <Tooltip label="Mute" aria-label="Mute">
+          <IconButton
+            aria-label="Mute"
+            icon={<BsVolumeMute size="20px" />}
+            variant="light"
+            size="sm"
+            onClick={onMute}
+          />
+        </Tooltip>
       );
     }
     if (volume > 0.1 && volume < 0.5) {
       return (
-        <Volume1
-          size={20}
-          strokeWidth={1.7}
-          color="#101010"
-          style={{ cursor: "pointer" }}
-          onClick={onMute}
-        />
+        <Tooltip label="Mute" aria-label="Mute">
+          <IconButton
+            aria-label="Mute"
+            icon={<BsVolumeDown size="20px" />}
+            variant="light"
+            size="sm"
+            onClick={onMute}
+          />
+        </Tooltip>
       );
     }
-    if (volume > 0.5 && volume < 0.8) {
-      return (
-        <Volume2
-          size={20}
-          strokeWidth={1.7}
-          color="#101010"
-          style={{ cursor: "pointer" }}
-          onClick={onMute}
-        />
-      );
-    }
+
     return (
-      <Volume2
-        size={20}
-        strokeWidth={1.7}
-        color="#101010"
-        style={{ cursor: "pointer" }}
-        onClick={onMute}
-      />
+      <Tooltip label="Mute" aria-label="Mute">
+        <IconButton
+          aria-label="Mute"
+          icon={<BsVolumeUp size="20px" />}
+          variant="light"
+          size="sm"
+          onClick={onMute}
+        />
+      </Tooltip>
     );
   };
 
-  const onReady = () => {
-    if (!ready) return null;
+  return (
+    <VolumeContainer>
+      {renderVolume()}
 
-    return (
-      <VolumeContainer>
-        {renderVolume()}
-
-        <SliderInput
-          value={volume}
-          min={0}
-          max={1}
-          step={0.1}
-          onChange={onVolume}
-        >
-          <SliderTrack>
-            <SliderRange />
-            <SliderHandle />
-          </SliderTrack>
-        </SliderInput>
-      </VolumeContainer>
-    );
-  };
-
-  return onReady();
+      <Slider
+        aria-label="slider-ex-1"
+        value={volume}
+        min={0}
+        max={1}
+        step={0.1}
+        onChange={onVolume}
+      >
+        <SliderTrack>
+          <SliderFilledTrack />
+        </SliderTrack>
+        <SliderThumb />
+      </Slider>
+    </VolumeContainer>
+  );
 };
 
-export default Volume;
+export default memo(Volume);

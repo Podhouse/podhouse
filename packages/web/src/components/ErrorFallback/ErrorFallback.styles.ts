@@ -17,5 +17,5 @@ export const ErrorFallbackInnerContainer = styled.div`
   grid-row-gap: 20px;
   align-items: center;
   justify-items: center;
-  padding: 30px;
+  padding: 20px;
 `;

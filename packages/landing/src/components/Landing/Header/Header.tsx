@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import NextLink from "next/link";
 import {
   Link,
@@ -18,14 +19,12 @@ import {
   HeaderSignInContainer,
 } from "./Header.styles";
 
-import PodhouseLogo from "../../../../public/images/logo/PodhouseLogo.svg";
-
 const Header = () => (
   <HeaderContainer>
     <HeaderLogoContainer>
       <NextLink href="/" as="/">
         <Link aria-label="Podhouse logo" href="/">
-          <PodhouseLogo />
+          <Image src="/images/logo/PodhouseLogo.svg" width={150} height={43} alt="Podhouse logo" />
         </Link>
       </NextLink>
     </HeaderLogoContainer>

@@ -1,14 +1,17 @@
 import React from "react";
-import { Play, RotateCcw, RotateCw } from "react-feather";
-import { Skeleton } from "@chakra-ui/react";
 import {
-  SliderInput,
+  BsPlay,
+  BsArrowCounterclockwise,
+  BsArrowClockwise,
+} from "react-icons/bs";
+import {
+  Skeleton,
+  IconButton,
+  Slider,
   SliderTrack,
-  SliderRange,
-  SliderHandle,
-} from "@reach/slider";
-
-import { usePlayerContext } from "src/machines/Player/PlayerContext";
+  SliderFilledTrack,
+  SliderThumb,
+} from "@chakra-ui/react";
 
 import {
   SkeletonControlsContainer,
@@ -17,53 +20,50 @@ import {
   SkeletonControlsTime,
 } from "./SkeletonControls.styles";
 
-const iconStyle = { cursor: "pointer" };
-
 const SkeletonControls = () => {
-  const { initial, loading } = usePlayerContext();
-
-  const onRenderTime = () => {
-    if (initial) {
-      return null;
-    } else if (loading) {
-      return (
-        <Skeleton
-          width="30px"
-          height="15px"
-          startColor="#E2E8F0"
-          endColor="#E2E8F0"
-          borderRadius={3}
-        />
-      );
-    }
-  };
-
   return (
     <SkeletonControlsContainer>
       <SkeletonControlsButtonsContainer>
-        <RotateCcw
-          size={18}
-          color="#101010"
-          style={iconStyle}
-          strokeWidth={2}
+        <IconButton
+          aria-label="-15"
+          icon={<BsArrowCounterclockwise size="20px" />}
+          variant="light"
+          size="sm"
+          isDisabled={true}
         />
 
-        <Play size={28} color="#101010" strokeWidth={1.7} style={iconStyle} />
+        <IconButton
+          aria-label="Play episode"
+          icon={<BsPlay size="42px" />}
+          variant="light"
+          size="lg"
+          isDisabled={true}
+        />
 
-        <RotateCw size={18} color="#101010" style={iconStyle} strokeWidth={2} />
+        <IconButton
+          aria-label="+15"
+          icon={<BsArrowClockwise size="20px" />}
+          variant="light"
+          size="sm"
+          isDisabled={true}
+        />
       </SkeletonControlsButtonsContainer>
 
       <SkeletonControlsSliderContainer>
-        <SkeletonControlsTime>{onRenderTime()}</SkeletonControlsTime>
+        <SkeletonControlsTime>
+          <Skeleton width="30px" height="15px" borderRadius={3} />
+        </SkeletonControlsTime>
 
-        <SliderInput defaultValue={0} value={0} disabled={true}>
+        <Slider defaultValue={0} isDisabled={true}>
           <SliderTrack>
-            <SliderRange />
-            <SliderHandle />
+            <SliderFilledTrack />
           </SliderTrack>
-        </SliderInput>
+          <SliderThumb />
+        </Slider>
 
-        <SkeletonControlsTime>{onRenderTime()}</SkeletonControlsTime>
+        <SkeletonControlsTime>
+          <Skeleton width="30px" height="15px" borderRadius={3} />
+        </SkeletonControlsTime>
       </SkeletonControlsSliderContainer>
     </SkeletonControlsContainer>
   );

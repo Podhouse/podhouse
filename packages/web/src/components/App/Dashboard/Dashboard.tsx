@@ -1,13 +1,13 @@
-import React from "react";
+import { ReactNode, memo } from "react";
 
 import { DashboardContainer } from "./Dashboard.styles";
 
 interface DashboardProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 const Dashboard = ({ children }: DashboardProps) => (
   <DashboardContainer>{children}</DashboardContainer>
 );
 
-export default Dashboard;
+export default memo(Dashboard);

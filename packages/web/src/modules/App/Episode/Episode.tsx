@@ -1,77 +1,27 @@
-import React, { useEffect, Suspense } from "react";
+import React, { Suspense } from "react";
 import Scrollbars from "react-custom-scrollbars";
-import graphql from "babel-plugin-relay/macro";
-import { useQueryLoader } from "react-relay/hooks";
-import { useLocation } from "react-router-dom";
 import { ErrorBoundary } from "react-error-boundary";
+import { useQueryErrorResetBoundary } from "react-query";
 
-import SkeletonPage from "src/components/Skeletons/SkeletonPage/SkeletonPage";
 import ErrorFallback from "src/components/ErrorFallback/ErrorFallback";
+import SkeletonPodcastPage from "src/components/Skeletons/SkeletonPodcastPage/SkeletonPodcastPage";
 
-import EpisodeInfo from "./EpisodeInfo/EpisodeInfo";
+import Header from "./Header/Header";
 
-import { EpisodeQuery } from "./__generated__/EpisodeQuery.graphql";
-
-const query = graphql`
-  query EpisodeQuery($_id: ID!) {
-    episode(_id: $_id) {
-      _id
-      title
-      description
-      publishedDate
-      link
-      image
-      audio
-      duration
-      podcast {
-        id
-        _id
-        name
-        website
-        rss
-        appleId
-      }
-    }
-  }
-`;
-
-type LocationState = {
-  _id: string;
-};
+import { EpisodeContainer } from "./Episode.styles";
 
 const Episode = () => {
-  const { state } = useLocation<LocationState>();
-
-  const [
-    queryReference,
-    loadQuery,
-    disposeQuery,
-  ] = useQueryLoader<EpisodeQuery>(query);
-
-  useEffect(() => {
-    loadQuery({ _id: state._id }, { fetchPolicy: "store-or-network" });
-
-    return () => {
-      disposeQuery();
-    };
-  }, [loadQuery, disposeQuery, state._id]);
-
-  const onRefetchQuery = () => {
-    loadQuery({ _id: state._id }, { fetchPolicy: "store-or-network" });
-  };
+  const { reset } = useQueryErrorResetBoundary();
 
   return (
     <Scrollbars autoHide autoHideTimeout={100} autoHideDuration={100}>
-      {queryReference && (
-        <ErrorBoundary
-          FallbackComponent={ErrorFallback}
-          onReset={onRefetchQuery}
-        >
-          <Suspense fallback={<SkeletonPage episodes={false} />}>
-            <EpisodeInfo queryReference={queryReference} query={query} />
-          </Suspense>
-        </ErrorBoundary>
-      )}
+      <ErrorBoundary FallbackComponent={ErrorFallback} onReset={reset}>
+        <Suspense fallback={<SkeletonPodcastPage />}>
+          <EpisodeContainer>
+            <Header />
+          </EpisodeContainer>
+        </Suspense>
+      </ErrorBoundary>
     </Scrollbars>
   );
 };

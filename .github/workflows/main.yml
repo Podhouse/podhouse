@@ -24,21 +24,6 @@ jobs:
         env:
           CI: true
 
-      - name: Update schema
-        run: yarn update-schema
-        env:
-          CI: true
-
-      - name: Relay
-        run: yarn relay
-        env:
-          CI: true
-
-      - name: Build server
-        run: yarn server:build
-        env:
-          CI: true
-
       - name: Build web
         run: yarn web:build
         env:
@@ -49,11 +34,6 @@ jobs:
         env:
           CI: true
 
-      - name: Lint server
-        run: yarn server:lint
-        env:
-          CI: true
-
       - name: Lint web
         run: yarn web:lint
         env:
@@ -61,11 +41,6 @@ jobs:
 
       - name: Lint landing
         run: yarn landing:lint
-        env:
-          CI: true
-
-      - name: Format server
-        run: yarn server:format
         env:
           CI: true
 
@@ -85,6 +60,6 @@ jobs:
           CI: true
 
       - name: Generate landing sitemap
-        run: yarn web:generate-sitemap
+        run: yarn landing:generate-sitemap
         env:
           CI: true

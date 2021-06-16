@@ -1,39 +1,52 @@
 import React from "react";
-import { Clock, Volume2 } from "react-feather";
 import {
-  SliderInput,
+  Skeleton,
+  IconButton,
+  Slider,
   SliderTrack,
-  SliderRange,
-  SliderHandle,
-} from "@reach/slider";
+  SliderFilledTrack,
+  SliderThumb,
+} from "@chakra-ui/react";
+import { BsListUl, BsClock, BsVolumeUp } from "react-icons/bs";
 
 import {
   SkeletonRightControlsContainer,
   SkeletonVolumeContainer,
 } from "./SkeletonRightControls.styles";
 
-const iconStyle = { cursor: "pointer" };
-
 const SkeletonRightControls = () => (
   <SkeletonRightControlsContainer>
-    {/* <List
-      size={20}
-      strokeWidth={1.7}
-      color="#101010"
-      style={iconStyle}
-    /> */}
+    <IconButton
+      aria-label="Rate"
+      variant="light"
+      icon={<BsClock size="20px" />}
+      alignSelf="center"
+      isDisabled={true}
+    />
 
-    <Clock size={20} strokeWidth={1.7} color="#101010" style={iconStyle} />
+    <IconButton
+      aria-label="Queue"
+      variant="light"
+      icon={<BsListUl size="20px" />}
+      alignSelf="center"
+      isDisabled={true}
+    />
 
     <SkeletonVolumeContainer>
-      <Volume2 size={20} strokeWidth={1.7} color="#101010" style={iconStyle} />
+      <IconButton
+        aria-label="Volume"
+        icon={<BsVolumeUp size="20px" />}
+        variant="light"
+        size="sm"
+        isDisabled={true}
+      />
 
-      <SliderInput defaultValue={0} value={0} disabled={true}>
+      <Slider defaultValue={0} isDisabled={true}>
         <SliderTrack>
-          <SliderRange />
-          <SliderHandle />
+          <SliderFilledTrack />
         </SliderTrack>
-      </SliderInput>
+        <SliderThumb />
+      </Slider>
     </SkeletonVolumeContainer>
   </SkeletonRightControlsContainer>
 );

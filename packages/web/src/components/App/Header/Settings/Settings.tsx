@@ -1,66 +1,46 @@
-import React from "react";
-import { User } from "react-feather";
-import graphql from "babel-plugin-relay/macro";
-import { useLazyLoadQuery } from "react-relay/hooks";
-import { Link } from "@chakra-ui/react";
+import { useCallback } from "react";
+import {
+  IconButton,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  Tooltip,
+  useColorMode,
+} from "@chakra-ui/react";
+import { BsPerson, BsToggleOn, BsToggleOff } from "react-icons/bs";
 
 import { SettingsContainer } from "./Settings.styles";
 
-import { useAuthContext } from "src/machines/Auth/AuthContext";
-import { useSettingsContext } from "src/machines/Settings/SettingsContext";
-
-import useAuthUser from "src/hooks/useAuthUser";
-
-import { getToken } from "src/utils/auth";
-
-import { SettingsQuery } from "./__generated__/SettingsQuery.graphql";
-
-const query = graphql`
-  query SettingsQuery {
-    currentUser {
-      ...useAuthUser_user
-    }
-  }
-`;
-
 const Settings = () => {
-  const { onOpenAuth } = useAuthContext();
-  const { handleSettings } = useSettingsContext();
+  const { colorMode, toggleColorMode } = useColorMode();
 
-  const data = useLazyLoadQuery<SettingsQuery>(
-    query,
-    {},
-    {
-      fetchPolicy: "store-and-network",
-      fetchKey: getToken(),
+  const onColorMode = useCallback(() => {
+    if (colorMode === "dark") {
+      return <BsToggleOn size="16px" />;
+    } else {
+      return <BsToggleOff size="16px" />;
     }
-  );
-
-  const isAuthenticated = useAuthUser(data?.currentUser);
-
-  if (!isAuthenticated) {
-    return (
-      <SettingsContainer>
-        <Link
-          color="brand.900"
-          fontWeight="bold"
-          textTransform="uppercase"
-          onClick={onOpenAuth}
-        >
-          Login
-        </Link>
-      </SettingsContainer>
-    );
-  }
+  }, [colorMode]);
 
   return (
     <SettingsContainer>
-      <User
-        onClick={handleSettings}
-        size={16}
-        color="#B7B7B7"
-        strokeWidth={1.7}
-      />
+      <Menu>
+        <Tooltip label="Settings" aria-label="Settings">
+          <MenuButton
+            as={IconButton}
+            aria-label="Settings menu"
+            variant="light"
+            icon={<BsPerson size="20px" />}
+            alignSelf="center"
+          />
+        </Tooltip>
+        <MenuList>
+          <MenuItem icon={onColorMode()} onClick={toggleColorMode}>
+            Dark mode
+          </MenuItem>
+        </MenuList>
+      </Menu>
     </SettingsContainer>
   );
 };

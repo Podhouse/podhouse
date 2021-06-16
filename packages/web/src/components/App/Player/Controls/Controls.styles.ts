@@ -8,9 +8,12 @@ export const ControlsContainer = styled.div`
   grid-template-columns: 50px 1fr;
   grid-template-rows: 14px 1fr;
   grid-column-gap: 20px;
-  background: none;
 
   @media screen and (min-width: 800px) {
+    width: 100%;
+    max-width: 500px;
+    align-self: center;
+    justify-self: center;
     grid-column: 2 / 3;
     grid-row: 1 / 2;
     grid-template-columns: 1fr;
@@ -65,7 +68,6 @@ export const ControlsTime = styled(Text)`
 
   @media screen and (min-width: 800px) {
     display: block;
-    color: #101010;
     justify-self: center;
   }
 `;

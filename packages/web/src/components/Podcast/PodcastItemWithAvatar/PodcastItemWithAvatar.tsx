@@ -1,36 +1,27 @@
-import React from "react";
+import React, { memo } from "react";
 import { Link as ReactRouterLink } from "react-router-dom";
-
-import {
-  PodcastItemWithAvatarContainer,
-  PodcastItemWithAvatarAvatar,
-} from "./PodcastItemWithAvatar.styles";
-
-import convertPodcastNameToURL from "src/utils/convertPodcastNameToURL";
+import { Image } from "@chakra-ui/react";
 
 interface Props {
-  readonly node: {
-    readonly _id: string;
-    readonly name: string;
-    readonly appleId: number;
-    readonly image: string;
-  };
+  id: number;
+  image: string;
 }
 
-const PodcastItemWithAvatar = ({ node }: Props) => {
-  const route: string = convertPodcastNameToURL(node.name, node.appleId);
-
+const PodcastItemWithAvatar = ({ id, image }: Props) => {
   return (
-    <PodcastItemWithAvatarContainer>
-      <ReactRouterLink to={{ pathname: route, state: { _id: node._id } }}>
-        <PodcastItemWithAvatarAvatar
-          src={node.image}
-          alt="image"
-          loading="lazy"
-        />
-      </ReactRouterLink>
-    </PodcastItemWithAvatarContainer>
+    <ReactRouterLink to={{ pathname: `/podcast/${id}`, state: { id } }}>
+      <Image
+        width="140px"
+        height="140px"
+        cursor="pointer"
+        borderRadius="5px"
+        src={image}
+        alt="image"
+        loading="lazy"
+        objectFit="cover"
+      />
+    </ReactRouterLink>
   );
 };
 
-export default PodcastItemWithAvatar;
+export default memo(PodcastItemWithAvatar);

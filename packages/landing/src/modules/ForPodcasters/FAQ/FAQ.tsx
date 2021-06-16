@@ -6,18 +6,15 @@ import { FAQItemsContainer, FAQItemContainer } from "./FAQ.styles";
 const items = [
   {
     title: "Can I advertise my product/company?",
-    body:
-      "Yes, you can. Shoot us an email and we can discuss it, the price is the same for podcast owners and product/company owners.",
+    body: "Yes, you can. Shoot us an email and we can discuss it, the price is the same for podcast owners and product/company owners.",
   },
   {
     title: "What are the terms of sale to advertise on Podhouse?",
-    body:
-      "After you buy, it will be approved in 24 hours. Ad text and images must be appropriate for a general audience of all ages.",
+    body: "After you buy, it will be approved in 24 hours. Ad text and images must be appropriate for a general audience of all ages.",
   },
   {
     title: "What if my podcast was not approved?",
-    body:
-      "We reserve the right to reject an podcast for any reason, such as quality concerns, content. If your podcast was not approved, your payment will be refunded.",
+    body: "We reserve the right to reject an podcast for any reason, such as quality concerns, content. If your podcast was not approved, your payment will be refunded.",
   },
   {
     title: "How long my podcast will be featured",

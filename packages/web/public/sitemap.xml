@@ -2,13 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
 <url> <loc>https://play.podhouse.app/</loc> </url>
 <url> <loc>https://play.podhouse.app/</loc> </url>
-<url> <loc>https://play.podhouse.app/subscriptions</loc> </url>
+<url> <loc>https://play.podhouse.app/sign-in</loc> </url>
+<url> <loc>https://play.podhouse.app/sign-up</loc> </url>
+<url> <loc>https://play.podhouse.app/forgot-password</loc> </url>
+<url> <loc>https://play.podhouse.app/reset-password</loc> </url>
+<url> <loc>https://play.podhouse.app/podcast/:id</loc> </url>
+<url> <loc>https://play.podhouse.app/episode/:id</loc> </url>
 <url> <loc>https://play.podhouse.app/search</loc> </url>
+<url> <loc>https://play.podhouse.app/subscriptions</loc> </url>
 <url> <loc>https://play.podhouse.app/favorites</loc> </url>
-<url> <loc>https://play.podhouse.app/promote</loc> </url>
-<url> <loc>https://play.podhouse.app/whats-new</loc> </url>
+<url> <loc>https://play.podhouse.app/filters</loc> </url>
 <url> <loc>https://play.podhouse.app/settings</loc> </url>
-<url> <loc>https://play.podhouse.app/podcast/:id/:id</loc> </url>
-<url> <loc>https://play.podhouse.app/episode/:id/:id</loc> </url>
-<url> <loc>https://play.podhouse.app/genre/:id</loc> </url>
+<url> <loc>https://play.podhouse.app/settings/password</loc> </url>
+<url> <loc>https://play.podhouse.app/settings/about</loc> </url>
+<url> <loc>https://play.podhouse.app/settings/faq</loc> </url>
+<url> <loc>https://play.podhouse.app/settings/feedback</loc> </url>
+<url> <loc>https://play.podhouse.app/settings/privacy</loc> </url>
+<url> <loc>https://play.podhouse.app/settings/terms</loc> </url>
+<url> <loc>https://play.podhouse.app/advertise</loc> </url>
 </urlset>

@@ -1,169 +1,134 @@
-import React from "react";
+import { memo } from "react";
+import { Divider, Link as ChakraLink } from "@chakra-ui/react";
 import { Link as ReactRouterLink } from "react-router-dom";
-import { Play, Pause } from "react-feather";
+import { BsPlay, BsPause } from "react-icons/bs";
+import { Interpreter } from "xstate";
+import { useSelector } from "@xstate/react";
 
 import {
   EpisodeItemContainer,
-  EpisodeItemAvatar,
-  EpisodeItemName,
   EpisodeItemDescription,
   EpisodeNameDescription,
   EpisodeItemPublishedDate,
   EpisodeItemDuration,
   EpisodeItemButton,
+  EpisodeDividerContainer,
 } from "./EpisodeItem.styles";
 
-import { usePlayerContext } from "src/machines/Player/PlayerContext";
+import { formatTime, formatDate } from "src/utils/";
 
-import convertEpisodeNameToURL from "src/utils/convertEpisodeNameToURL";
+import { Episode } from "src/queries/types";
 
-interface Props {
-  readonly node: {
-    readonly _id: string;
-    readonly title: string | null;
-    readonly description: string | null;
-    readonly publishedDate: string | null;
-    readonly link: string | null;
-    readonly image: string | null;
-    readonly audio: string | null;
-    readonly duration: string | null;
-    readonly podcast: {
-      readonly _id: string;
-      readonly name: string | null;
-      readonly website: string | null;
-      readonly rss: string | null;
-      readonly appleId: number | null;
-      readonly image: string | null;
-    } | null;
-  } | null;
-}
+import useColor from "src/hooks/useColor";
 
-const EpisodeItem = ({ node }: Props) => {
-  const {
-    loading,
-    playing,
-    paused,
-    onToggle,
-    episode,
-    onEpisode,
-  } = usePlayerContext();
+import {
+  MachineContext,
+  MachineEvent,
+} from "src/machines/Player/PlayerMachine.types";
 
-  const route: string = convertEpisodeNameToURL(
-    node?.title,
-    node?.podcast?.appleId
+type Props = {
+  episode: Episode;
+  service: Interpreter<MachineContext, any, MachineEvent>;
+  onToggle: (episode: Episode) => void;
+  onPlay: () => void;
+  onPause: () => void;
+};
+
+const EpisodeItem = ({
+  episode,
+  service,
+  onToggle,
+  onPlay,
+  onPause,
+}: Props) => {
+  const loading = useSelector(service, (state) => state.matches("loading"));
+  const playing = useSelector(service, (state) =>
+    state.matches("ready.playing")
   );
+  const currentEpisode = useSelector(service, (state) => state.context.episode);
 
-  const renderEpisodeButton = () => {
-    if (episode && episode.title === node?.title) {
+  const onRenderButton = () => {
+    if (currentEpisode?.enclosureUrl === episode.enclosureUrl) {
       if (loading) {
         return (
-          <EpisodeItemButton type="button" width="90px" isLoading={true}>
-            Loading
-          </EpisodeItemButton>
-        );
-      } else if (playing) {
-        return (
           <EpisodeItemButton
-            type="button"
-            width="90px"
-            leftIcon={<Pause size={14} />}
-            onClick={onToggle}
-            bgColor="#101010"
-            color="#ffffff"
-            _hover={{ bg: "#101010" }}
-            _active={{
-              bg: "#101010",
-            }}
-            _focus={{
-              boxShadow:
-                "0 0 1px 2px rgba(0, 0, 0, .50), 0 1px 1px rgba(0, 0, 0, .15)",
-            }}
-          >
-            Pause
-          </EpisodeItemButton>
-        );
-      } else if (paused) {
-        return (
-          <EpisodeItemButton
-            type="button"
-            width="90px"
-            leftIcon={<Play size={14} />}
-            onClick={onToggle}
-            bgColor="#101010"
-            color="#ffffff"
-            _hover={{ bg: "#101010" }}
-            _active={{
-              bg: "#101010",
-            }}
-            _focus={{
-              boxShadow:
-                "0 0 1px 2px rgba(0, 0, 0, .50), 0 1px 1px rgba(0, 0, 0, .15)",
-            }}
-          >
-            Play
-          </EpisodeItemButton>
+            aria-label="Loading"
+            variant="light"
+            isLoading={true}
+          />
         );
       }
+
+      if (playing) {
+        return (
+          <EpisodeItemButton
+            aria-label="Pause episode"
+            icon={<BsPause size="30px" />}
+            variant="light"
+            onClick={onPause}
+          />
+        );
+      }
+
+      return (
+        <EpisodeItemButton
+          aria-label="Play episode"
+          icon={<BsPlay size="30px" />}
+          variant="light"
+          onClick={onPlay}
+        />
+      );
     }
 
     return (
       <EpisodeItemButton
-        type="button"
-        width="90px"
-        leftIcon={<Play size={14} />}
-        onClick={() => onEpisode(node)}
-      >
-        Play
-      </EpisodeItemButton>
+        aria-label="Play episode"
+        icon={<BsPlay size="30px" />}
+        variant="light"
+        onClick={() => onToggle(episode)}
+      />
     );
   };
 
-  const renderEpisodeImage = () => {
-    if (!node) {
-      return "https://ebwu.education/wp-content/themes/claue/assets/images/placeholder.png";
-    } else if (!node.image && node?.podcast?.image) {
-      return node?.podcast?.image;
-    } else if (node && node.image) {
-      return node?.image;
-    }
-  };
-
   return (
-    <EpisodeItemContainer>
-      <ReactRouterLink to={{ pathname: route, state: { _id: node?._id } }}>
-        <EpisodeItemAvatar
-          src={renderEpisodeImage()}
-          alt="image"
-          loading="lazy"
-        />
-      </ReactRouterLink>
+    <>
+      <EpisodeItemContainer>
+        <EpisodeNameDescription>
+          <ChakraLink
+            to={{
+              pathname: `/episode/${episode.id}`,
+              state: { id: episode.id },
+            }}
+            href={`/episode/${episode.id}`}
+            as={ReactRouterLink}
+            color={useColor("#e7e7e7", "#6F6F6F")}
+          >
+            {episode.title}
+          </ChakraLink>
 
-      <EpisodeNameDescription>
-        <EpisodeItemName
-          as={ReactRouterLink}
-          to={{ pathname: route, state: { _id: node?._id } }}
-          fontWeight="500"
-          lineHeight="25px"
-        >
-          {node?.title}
-        </EpisodeItemName>
+          <EpisodeItemDescription>{episode.description}</EpisodeItemDescription>
+        </EpisodeNameDescription>
 
-        <EpisodeItemDescription lineHeight="25px" textAlign="start">
-          {node?.description}
-        </EpisodeItemDescription>
-      </EpisodeNameDescription>
+        <EpisodeItemPublishedDate>
+          {formatDate(episode.datePublished)}
+        </EpisodeItemPublishedDate>
 
-      <EpisodeItemPublishedDate textAlign="start">
-        {node?.publishedDate}
-      </EpisodeItemPublishedDate>
+        <EpisodeItemDuration>
+          {formatTime(episode.duration)}
+        </EpisodeItemDuration>
 
-      <EpisodeItemDuration textAlign="start">
-        {node?.duration}
-      </EpisodeItemDuration>
+        {onRenderButton()}
 
-      {renderEpisodeButton()}
-    </EpisodeItemContainer>
+        <EpisodeDividerContainer>
+          <Divider
+            orientation="horizontal"
+            borderBottomWidth="1px"
+            borderBottomColor={useColor("2C2E34", "#f2f2f2")}
+          />
+        </EpisodeDividerContainer>
+      </EpisodeItemContainer>
+    </>
   );
 };
 
-export default EpisodeItem;
+export default memo(EpisodeItem);

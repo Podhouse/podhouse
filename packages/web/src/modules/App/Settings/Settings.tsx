@@ -1,125 +1,115 @@
-import React, { Suspense } from "react";
-import { Helmet } from "react-helmet";
-import { Box, Text, Link, Stack } from "@chakra-ui/react";
-import Scrollbars from "react-custom-scrollbars";
-import graphql from "babel-plugin-relay/macro";
-import { useLazyLoadQuery } from "react-relay/hooks";
-import { useLocation } from "react-router-dom";
+import React from "react";
+import { Stack, Heading, Text, Button, Grid, GridItem } from "@chakra-ui/react";
+import { Link as ReactRouterLink } from "react-router-dom";
 
-import { SettingsContainer } from "./Settings.styles";
-
-import ChangePassword from "./ChangePassword/ChangePassword";
-
-import useAuthUser from "src/hooks/useAuthUser";
-
-import { useAuthContext } from "src/machines/Auth/AuthContext";
-
-import { getToken } from "src/utils/auth";
-
-import { SettingsUserQuery } from "./__generated__/SettingsUserQuery.graphql";
-
-const query = graphql`
-  query SettingsUserQuery {
-    currentUser {
-      ...useAuthUser_user
-    }
-  }
-`;
-
-const SettingsComponent = () => {
-  const location = useLocation();
-
-  const { handleAuth } = useAuthContext();
-
-  const { currentUser } = useLazyLoadQuery<SettingsUserQuery>(
-    query,
-    {},
-    {
-      fetchPolicy: "store-or-network",
-      fetchKey: getToken(),
-    }
-  );
-
-  const user = useAuthUser(currentUser);
-
-  if (!user) {
-    return (
-      <Box
-        d="flex"
-        alignItems="center"
-        justifyContent="center"
-        w="100%"
-        h="100%"
-        bgColor="red"
-      >
-        <Stack spacing={4} shouldWrapChildren align="center">
-          <Text color="#101010" maxWidth="300px" textAlign="center">
-            You should be logged in to see your subscriptions
-          </Text>
-          <Link
-            color="brand.900"
-            fontWeight="bold"
-            textTransform="uppercase"
-            onClick={handleAuth}
-          >
-            Login
-          </Link>
-        </Stack>
-      </Box>
-    );
-  }
-
+const Settings = () => {
   return (
-    <Scrollbars autoHide autoHideTimeout={100} autoHideDuration={100}>
-      <SettingsContainer>
-        <Helmet>
-          <title>Settings</title>
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <meta charSet="utf-8" />
-          <meta
-            name="description"
-            content="The best podcast web app to listen to your favorite podcasts"
-          />
+    <Stack
+      direction="column"
+      spacing="20px"
+      p="20px"
+      w="100%"
+      h="100%"
+      maxW="500px"
+      margin="0 auto"
+    >
+      <Stack direction="column" spacing="10px">
+        <Heading as="h1" fontSize={36} textAlign="start">
+          Settings
+        </Heading>
 
-          {/* Twitter */}
-          <meta name="twitter:card" content="summary" />
-          <meta property="twitter:title" content="Podhouse" />
-          <meta
-            property="twitter:description"
-            content="The best podcast web app to listen to your favorite podcasts"
-          />
-          <meta
-            property="twitter:image"
-            content="https://i.imgur.com/C1TOvBB.jpg"
-          />
-          <meta property="twitter:url" content={location.pathname} />
+        <Text
+          color="#6F6F6F"
+          fontSize={16}
+          lineHeight="30px"
+          fontWeight="300"
+          textAlign="start"
+        >
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </Text>
+      </Stack>
 
-          {/* Open Graph */}
-          <meta property="og:url" content={location.pathname} key="ogurl" />
-          <meta
-            property="og:image"
-            content="https://i.imgur.com/C1TOvBB.jpg"
-            key="ogimage"
-          />
-          <meta property="og:site_name" content="Podhouse" key="ogsitename" />
-          <meta property="og:title" content="Podhouse" key="ogtitle" />
-          <meta
-            property="og:description"
-            content="The best podcast web app to listen to your favorite podcasts"
-            key="ogdesc"
-          />
-        </Helmet>
+      <Grid templateRows="repeat(6, max-content)" gap={2}>
+        <GridItem w="100%" h="35px">
+          <Button
+            variant="light"
+            as={ReactRouterLink}
+            to="/settings/password"
+            w="100%"
+            h="100%"
+            justifyContent="flex-start"
+          >
+            Password
+          </Button>
+        </GridItem>
 
-        <ChangePassword />
-      </SettingsContainer>
-    </Scrollbars>
+        <GridItem w="100%" h="35px">
+          <Button
+            variant="light"
+            as={ReactRouterLink}
+            to="/settings/about"
+            w="100%"
+            h="100%"
+            justifyContent="flex-start"
+          >
+            About
+          </Button>
+        </GridItem>
+
+        <GridItem w="100%" h="35px">
+          <Button
+            variant="light"
+            as={ReactRouterLink}
+            to="/settings/faq"
+            w="100%"
+            h="100%"
+            justifyContent="flex-start"
+          >
+            Frequently Asked Questions
+          </Button>
+        </GridItem>
+
+        <GridItem w="100%" h="35px">
+          <Button
+            variant="light"
+            as={ReactRouterLink}
+            to="/settings/feedback"
+            w="100%"
+            h="100%"
+            justifyContent="flex-start"
+          >
+            Feedback
+          </Button>
+        </GridItem>
+
+        <GridItem w="100%" h="35px">
+          <Button
+            variant="light"
+            as={ReactRouterLink}
+            to="/settings/privacy"
+            w="100%"
+            h="100%"
+            justifyContent="flex-start"
+          >
+            Privacy Policy
+          </Button>
+        </GridItem>
+
+        <GridItem w="100%" h="35px">
+          <Button
+            variant="light"
+            as={ReactRouterLink}
+            to="/settings/terms"
+            w="100%"
+            h="100%"
+            justifyContent="flex-start"
+          >
+            Terms
+          </Button>
+        </GridItem>
+      </Grid>
+    </Stack>
   );
 };
-
-const Settings = () => (
-  <Suspense fallback={<h1>Loading...</h1>}>
-    <SettingsComponent />
-  </Suspense>
-);
 
 export default Settings;

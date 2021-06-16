@@ -1,4 +1,6 @@
-import React from "react";
+import { memo } from "react";
+import { useColorMode } from "@chakra-ui/react";
+import { useSelector } from "@xstate/react";
 
 import { PlayerContainer } from "./Player.styles";
 
@@ -10,63 +12,57 @@ import SkeletonPodcast from "src/components/Skeletons/SkeletonPlayer/SkeletonPod
 import SkeletonControls from "src/components/Skeletons/SkeletonPlayer/SkeletonControls/SkeletonControls";
 import SkeletonRightControls from "src/components/Skeletons/SkeletonPlayer/SkeletonRightControls/SkeletonRightControls";
 
-import { usePlayerContext } from "src/machines/Player/PlayerContext";
+import { ReturnArgs } from "src/hooks/usePlayer/usePlayer.types";
 
-const Player = () => {
-  const {
-    initial,
-    loading,
-    ready,
-    playing,
-    episode,
-    seek,
-    volume,
-    muted,
-    onPlay,
-    onPause,
-    onMute,
-    onVolume,
-    onSeek,
-    onForward,
-    onBackward,
-  } = usePlayerContext();
+type Props = ReturnArgs;
+
+const Player = (props: Props) => {
+  const initial = useSelector(props.service, (state) =>
+    state.matches("initial")
+  );
+  const loading = useSelector(props.service, (state) =>
+    state.matches("loading")
+  );
+
+  const { colorMode } = useColorMode();
+
+  const backgroundColor = colorMode === "dark" ? "#151419" : "white";
+
+  if (initial) {
+    return <PlayerContainer bgColor={backgroundColor}></PlayerContainer>;
+  }
+
+  if (loading) {
+    return (
+      <PlayerContainer bgColor={backgroundColor}>
+        <SkeletonPodcast />
+        <SkeletonControls />
+        <SkeletonRightControls />
+      </PlayerContainer>
+    );
+  }
 
   return (
-    <PlayerContainer>
-      {loading ? (
-        <SkeletonPodcast />
-      ) : (
-        <Podcast ready={ready} episode={episode} />
-      )}
+    <PlayerContainer bgColor={backgroundColor}>
+      <Podcast service={props.service} />
 
-      {initial || loading ? (
-        <SkeletonControls />
-      ) : (
-        <Controls
-          ready={ready}
-          playing={playing}
-          seek={seek}
-          episode={episode}
-          onPlay={onPlay}
-          onPause={onPause}
-          onSeek={onSeek}
-          onBackward={onBackward}
-          onForward={onForward}
-        />
-      )}
+      <Controls
+        service={props.service}
+        seek={props.seek}
+        onToggle={props.onToggle}
+        onPlay={props.onPlay}
+        onPause={props.onPause}
+        onSeek={props.onSeek}
+        onForward={props.onForward}
+        onBackward={props.onBackward}
+      />
 
-      {initial || loading ? (
-        <SkeletonRightControls />
-      ) : (
-        <RightControls
-          ready={ready}
-          volume={volume}
-          muted={muted}
-          episode={episode}
-          onVolume={onVolume}
-          onMute={onMute}
-        />
-      )}
+      <RightControls
+        service={props.service}
+        onVolume={props.onVolume}
+        onMute={props.onMute}
+        onRate={props.onRate}
+      />
     </PlayerContainer>
   );
 };

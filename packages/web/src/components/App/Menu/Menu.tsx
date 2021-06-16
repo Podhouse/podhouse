@@ -1,81 +1,50 @@
-import React from "react";
-import Scrollbars from "react-custom-scrollbars";
+import { useCallback } from "react";
+import { useColorMode } from "@chakra-ui/react";
 import { Link as ReactRouterLink } from "react-router-dom";
 
-import Navigation from "./Navigation/Navigation";
+import DesktopNavigation from "./DesktopNavigation/DesktopNavigation";
+import MobileNavigation from "./MobileNavigation/MobileNavigation";
 
 import {
   MenuContainer,
-  MenuInsideContainer,
   MenuLogoContainer,
-  MenuPodcastImage,
-  MenuSkeletonPodcastImage,
+  MenuNavigationContainer,
 } from "./Menu.styles";
 
-import { ReactComponent as Logo } from "src/images/logo-2.svg";
+import { ReactComponent as PodhouseDarkLogo } from "src/images/podhouse-logo-dark.svg";
+import { ReactComponent as PodhouseWhiteLogo } from "src/images/podhouse-logo-white.svg";
 
-import { usePlayerContext } from "src/machines/Player/PlayerContext";
-
-import convertEpisodeNameToURL from "src/utils/convertEpisodeNameToURL";
+import useWindowSize from "src/hooks/useWindowSize";
 
 const Menu = () => {
-  const { loading, episode } = usePlayerContext();
+  const { colorMode } = useColorMode();
+  const { innerWidth } = useWindowSize();
 
-  const renderEpisodeImageElement = () => {
-    if (loading)
-      return (
-        <MenuSkeletonPodcastImage startColor="#E2E8F0" endColor="#E2E8F0" />
-      );
+  const borderColor: string = colorMode === "dark" ? "2C2E34" : "#f2f2f2";
 
-    if (!episode) return null;
+  const renderLogo = useCallback(() => {
+    if (colorMode === "light") {
+      return <PodhouseDarkLogo />;
+    } else {
+      return <PodhouseWhiteLogo />;
+    }
+  }, [colorMode]);
 
-    const episodeRoute: string = convertEpisodeNameToURL(
-      episode.title,
-      episode.podcast.appleId
-    );
-
-    const renderEpisodeImageBasedOnData = () => {
-      if (!episode) {
-        return "https://ebwu.education/wp-content/themes/claue/assets/images/placeholder.png";
-      } else if (!episode.image && episode?.podcast?.image) {
-        return episode?.podcast?.image;
-      } else if (episode && episode.image) {
-        return episode?.image;
-      }
-    };
-
-    return (
-      <ReactRouterLink
-        to={{ pathname: episodeRoute, state: { _id: episode._id } }}
-      >
-        <MenuPodcastImage
-          src={renderEpisodeImageBasedOnData()}
-          alt="Episode image"
-        />
-      </ReactRouterLink>
-    );
-  };
+  const renderNavigation = useCallback(() => {
+    if (innerWidth <= 800) {
+      return <MobileNavigation />;
+    } else {
+      return <DesktopNavigation />;
+    }
+  }, [innerWidth]);
 
   return (
-    <MenuContainer>
-      <Scrollbars
-        universal
-        autoHide
-        autoHideTimeout={100}
-        autoHideDuration={100}
-      >
-        <MenuInsideContainer>
-          <MenuLogoContainer>
-            <ReactRouterLink to="/">
-              <Logo />
-            </ReactRouterLink>
-          </MenuLogoContainer>
+    <MenuContainer borderRightWidth="1px" borderRightColor={borderColor}>
+      <MenuLogoContainer>
+        <ReactRouterLink to="/">{renderLogo()}</ReactRouterLink>
+      </MenuLogoContainer>
 
-          <Navigation />
-
-          {renderEpisodeImageElement()}
-        </MenuInsideContainer>
-      </Scrollbars>
+      <MenuNavigationContainer>{renderNavigation()}</MenuNavigationContainer>
     </MenuContainer>
   );
 };

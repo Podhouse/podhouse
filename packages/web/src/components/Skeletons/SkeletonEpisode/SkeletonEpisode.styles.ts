@@ -2,7 +2,8 @@ import styled from "@emotion/styled";
 
 export const SkeletonEpisodeContainer = styled.div`
   width: 100%;
-  height: auto;
+  height: fit-content;
+  max-width: 1000px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, max-content);

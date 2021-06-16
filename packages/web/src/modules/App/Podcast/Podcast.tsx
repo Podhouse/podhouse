@@ -1,128 +1,67 @@
-import React, { useState, useEffect, Suspense } from "react";
+import React, { Suspense, memo } from "react";
 import Scrollbars from "react-custom-scrollbars";
-import graphql from "babel-plugin-relay/macro";
-import { useQueryLoader } from "react-relay/hooks";
-import { useLocation } from "react-router-dom";
 import { ErrorBoundary } from "react-error-boundary";
+import { useQueryErrorResetBoundary } from "react-query";
 
-import SkeletonPage from "src/components/Skeletons/SkeletonPage/SkeletonPage";
 import ErrorFallback from "src/components/ErrorFallback/ErrorFallback";
+import SkeletonPodcastPage from "src/components/Skeletons/SkeletonPodcastPage/SkeletonPodcastPage";
 
-import PodcastInfo from "./PodcastInfo/PodcastInfo";
+import Header from "./Header/Header";
+import Episodes from "./Episodes/Episodes";
 
-import { PodcastQuery } from "./__generated__/PodcastQuery.graphql";
-import { PodcastInfoUserQuery } from "./__generated__/PodcastInfoUserQuery.graphql";
+import { PodcastContainer } from "./Podcast.styles";
 
-const podcastQuery = graphql`
-  query PodcastQuery($_id: ID!) {
-    podcast(_id: $_id) {
-      id
-      _id
-      name
-      appleId
-      author
-      description
-      website
-      rss
-      image
-      ...PodcastEpisodes_episodes
+import { Episode } from "src/machines/Player/PlayerMachine.types";
+
+import { State, Interpreter } from "xstate";
+
+import {
+  MachineContext,
+  MachineEvent,
+} from "src/machines/Player/PlayerMachine.types";
+
+type Props = {
+  state: State<
+    MachineContext,
+    MachineEvent,
+    any,
+    {
+      value: any;
+      context: MachineContext;
     }
-  }
-`;
-
-const userQuery = graphql`
-  query PodcastInfoUserQuery($input: UserSubscribedInput!) {
-    currentUser {
-      id
-      _id
-      subscribed(input: $input)
-    }
-  }
-`;
-
-type ScrollFrameType = {
-  clientHeight: number;
-  clientWidth: number;
-  left: number;
-  scrollHeight: number;
-  scrollLeft: number;
-  scrollTop: number;
-  scrollWidth: number;
-  top: number;
+  >;
+  send: any;
+  service: Interpreter<MachineContext, any, MachineEvent>;
+  onToggle: (episode: Episode) => void;
+  onPlay: () => void;
+  onPause: () => void;
 };
 
-type LocationState = {
-  _id: string;
-};
-
-const Podcast = () => {
-  const [shouldLoadMore, setShouldLoadMore] = useState<boolean>(false);
-
-  const { state } = useLocation<LocationState>();
-
-  const [
-    podcastQueryReference,
-    podcastLoadQuery,
-    podcastDisposeQuery,
-  ] = useQueryLoader<PodcastQuery>(podcastQuery);
-
-  const [
-    userQueryReference,
-    userLoadQuery,
-    userDisposeQuery,
-  ] = useQueryLoader<PodcastInfoUserQuery>(userQuery);
-
-  useEffect(() => {
-    podcastLoadQuery({ _id: state._id }, { fetchPolicy: "store-or-network" });
-    userLoadQuery({ input: { _id: state._id } });
-
-    return () => {
-      podcastDisposeQuery();
-      userDisposeQuery();
-    };
-  }, [
-    podcastLoadQuery,
-    userLoadQuery,
-    podcastDisposeQuery,
-    userDisposeQuery,
-    state._id,
-  ]);
-
-  const onLoadMore = (value: ScrollFrameType) => {
-    if (value.top === 1) {
-      setShouldLoadMore(true);
-    }
-    setShouldLoadMore(false);
-  };
-
-  const onRefetchQuery = () => {
-    podcastLoadQuery({ _id: state._id }, { fetchPolicy: "store-or-network" });
-    userLoadQuery({ input: { _id: state._id } });
-  };
+const Podcast = ({
+  state,
+  send,
+  service,
+  onToggle,
+  onPlay,
+  onPause,
+}: Props) => {
+  const { reset } = useQueryErrorResetBoundary();
 
   return (
-    <Scrollbars
-      onScrollFrame={onLoadMore}
-      autoHide
-      autoHideTimeout={100}
-      autoHideDuration={100}
-    >
-      {podcastQueryReference && (
-        <ErrorBoundary
-          FallbackComponent={ErrorFallback}
-          onReset={onRefetchQuery}
-        >
-          <Suspense fallback={<SkeletonPage episodes={true} />}>
-            <PodcastInfo
-              podcastQueryReference={podcastQueryReference}
-              podcastQuery={podcastQuery}
-              userQueryReference={userQueryReference}
-              userQuery={userQuery}
-              shouldLoadMore={shouldLoadMore}
+    <Scrollbars autoHide autoHideTimeout={100} autoHideDuration={100}>
+      <ErrorBoundary FallbackComponent={ErrorFallback} onReset={reset}>
+        <Suspense fallback={<SkeletonPodcastPage />}>
+          <PodcastContainer>
+            <Header />
+            <Episodes
+              service={service}
+              onToggle={onToggle}
+              onPlay={onPlay}
+              onPause={onPause}
             />
-          </Suspense>
-        </ErrorBoundary>
-      )}
+          </PodcastContainer>
+        </Suspense>
+      </ErrorBoundary>
     </Scrollbars>
   );
 };
