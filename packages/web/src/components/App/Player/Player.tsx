@@ -18,10 +18,10 @@ type Props = ReturnArgs;
 
 const Player = (props: Props) => {
   const initial = useSelector(props.service, (state) =>
-    props.state.matches("initial")
+    state.matches("initial")
   );
   const loading = useSelector(props.service, (state) =>
-    props.state.matches("loading")
+    state.matches("loading")
   );
 
   const { colorMode } = useColorMode();

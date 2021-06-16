@@ -47,8 +47,6 @@ const Podcast = ({
 }: Props) => {
   const { reset } = useQueryErrorResetBoundary();
 
-  console.log("renrerder epiosdessss");
-
   return (
     <Scrollbars autoHide autoHideTimeout={100} autoHideDuration={100}>
       <ErrorBoundary FallbackComponent={ErrorFallback} onReset={reset}>

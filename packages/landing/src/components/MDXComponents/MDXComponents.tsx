@@ -55,6 +55,7 @@ const Quote = (props) => {
   );
 };
 
+/* eslint-disable */
 const MDXComponents = {
   h1: (props) => (
     <Heading

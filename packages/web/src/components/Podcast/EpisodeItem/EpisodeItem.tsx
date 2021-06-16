@@ -47,8 +47,6 @@ const EpisodeItem = ({
   );
   const currentEpisode = useSelector(service, (state) => state.context.episode);
 
-  console.log("EpisodeItem rerender!");
-
   const onRenderButton = () => {
     if (currentEpisode?.enclosureUrl === episode.enclosureUrl) {
       if (loading) {

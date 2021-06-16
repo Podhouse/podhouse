@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { Heading, Link } from "@chakra-ui/react";
 
 import {
@@ -7,9 +8,6 @@ import {
   DownloadHeaderContainer,
   DownloadAssetsContainer,
 } from "./Download.styles";
-
-import PodhouseDark from "../../../../public/images/logo/logo-dark.svg";
-import PodhouseLight from "../../../../public/images/logo/light-logo.svg";
 
 const Download = () => (
   <DownloadContainer>
@@ -39,7 +37,7 @@ const Download = () => (
       </DownloadHeaderContainer>
 
       <DownloadAssetsContainer color="#FFF">
-        <PodhouseDark />
+        <Image src="/images/logo/logo-dark.svg" width={80} height={80} alt="Podhouse logo dark" />
       </DownloadAssetsContainer>
     </DownloadItemContainer>
 
@@ -69,7 +67,7 @@ const Download = () => (
       </DownloadHeaderContainer>
 
       <DownloadAssetsContainer color="#101010">
-        <PodhouseLight />
+        <Image src="/images/logo/light-logo.svg" width={80} height={80} alt="Podhouse logo light" />
       </DownloadAssetsContainer>
     </DownloadItemContainer>
   </DownloadContainer>
