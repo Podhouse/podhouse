@@ -1396,12 +1396,20 @@
     "@chakra-ui/icon" "1.1.9"
     "@chakra-ui/utils" "1.8.0"
 
-"@chakra-ui/color-mode@1.1.8", "@chakra-ui/color-mode@^1.1.8":
+"@chakra-ui/color-mode@1.1.8":
   version "1.1.8"
   resolved "https://registry.yarnpkg.com/@chakra-ui/color-mode/-/color-mode-1.1.8.tgz#a5648c017868d22947827009e5ea4f0cd0d0ad87"
   integrity sha512-hmSK02Eozu42g1yaQIXfJg+8Dag/YoeaQLS8Ygk6OEGEZrILMxLbFEBvzxaCJt5GCKOuVc/9aGsn31N7c4SNrA==
   dependencies:
     "@chakra-ui/hooks" "1.5.2"
+    "@chakra-ui/utils" "1.8.0"
+
+"@chakra-ui/color-mode@^1.1.8":
+  version "1.1.9"
+  resolved "https://registry.yarnpkg.com/@chakra-ui/color-mode/-/color-mode-1.1.9.tgz#7cda49574fb73f793c2b0816be803689a4f51b55"
+  integrity sha512-Bb8HpoJ4dzrYUIOHzIf0Ph+82ZphYEmRxc4Hd/ilCa5PGTHmOh7SSoFs6RToU4j/9Xmz32eKF6ioT6m6Fh8ycQ==
+  dependencies:
+    "@chakra-ui/hooks" "1.5.3"
     "@chakra-ui/utils" "1.8.0"
 
 "@chakra-ui/control-box@1.0.12":
@@ -1462,6 +1470,16 @@
   version "1.5.2"
   resolved "https://registry.yarnpkg.com/@chakra-ui/hooks/-/hooks-1.5.2.tgz#9bde3c698790a0c94286701cad6ec2ce09c1484c"
   integrity sha512-8rpZbrB3yFgKAjEwzafJkYOckRNYDQ6sSt0IWOFsfwGSGB3RxX19tKiGMziqU/djzKEGU85QErsVYVC1v0tJ3A==
+  dependencies:
+    "@chakra-ui/react-utils" "1.1.2"
+    "@chakra-ui/utils" "1.8.0"
+    compute-scroll-into-view "1.0.14"
+    copy-to-clipboard "3.3.1"
+
+"@chakra-ui/hooks@1.5.3":
+  version "1.5.3"
+  resolved "https://registry.yarnpkg.com/@chakra-ui/hooks/-/hooks-1.5.3.tgz#d1988fc028ee04e61d625de2d33b991d4d1b8d8c"
+  integrity sha512-a8j87nnS5mGopsNkEPmvXPOuW+Ua4vS3sQh48esx8WXQ3v9V2/XcJ8+eTA4AMJGhxXCU63brU2BciyN9dkxYwA==
   dependencies:
     "@chakra-ui/react-utils" "1.1.2"
     "@chakra-ui/utils" "1.8.0"
