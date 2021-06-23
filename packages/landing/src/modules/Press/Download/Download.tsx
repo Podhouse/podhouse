@@ -37,7 +37,12 @@ const Download = () => (
       </DownloadHeaderContainer>
 
       <DownloadAssetsContainer color="#FFF">
-        <Image src="/images/logo/logo-dark.svg" width={80} height={80} alt="Podhouse logo dark" />
+        <Image
+          src="/images/logo/logo-dark.svg"
+          width={80}
+          height={80}
+          alt="Podhouse logo dark"
+        />
       </DownloadAssetsContainer>
     </DownloadItemContainer>
 
@@ -67,7 +72,12 @@ const Download = () => (
       </DownloadHeaderContainer>
 
       <DownloadAssetsContainer color="#101010">
-        <Image src="/images/logo/light-logo.svg" width={80} height={80} alt="Podhouse logo light" />
+        <Image
+          src="/images/logo/light-logo.svg"
+          width={80}
+          height={80}
+          alt="Podhouse logo light"
+        />
       </DownloadAssetsContainer>
     </DownloadItemContainer>
   </DownloadContainer>

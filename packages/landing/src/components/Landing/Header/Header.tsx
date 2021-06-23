@@ -24,7 +24,12 @@ const Header = () => (
     <HeaderLogoContainer>
       <NextLink href="/" as="/">
         <Link aria-label="Podhouse logo" href="/">
-          <Image src="/images/logo/PodhouseLogo.svg" width={150} height={43} alt="Podhouse logo" />
+          <Image
+            src="/images/logo/PodhouseLogo.svg"
+            width={150}
+            height={43}
+            alt="Podhouse logo"
+          />
         </Link>
       </NextLink>
     </HeaderLogoContainer>
